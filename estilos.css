@@ -1,0 +1,1516 @@
+/* 
+========================================================================
+   Chef Digital - Digital Recipe Book Custom Stylesheet (Vanilla CSS)
+======================================================================== 
+*/
+
+/* CSS Variables & Design Tokens */
+:root {
+    /* Color Palette */
+    --primary-color: #f59e0b; /* amber-500 */
+    --primary-hover: #d97706; /* amber-600 */
+    --primary-active: #b45309; /* amber-700 */
+    --primary-light: #fffbeb; /* amber-50 */
+    --primary-light-border: #fef3c7; /* amber-100 */
+    
+    --success-color: #16a34a; /* green-600 */
+    --success-hover: #15803d; /* green-700 */
+    --success-light: #f0fdf4; /* green-50 */
+    --success-light-border: #dcfce7; /* green-100 */
+    
+    --danger-color: #ef4444; /* red-500 */
+    --danger-hover: #dc2626; /* red-600 */
+    --danger-light: #fef2f2; /* red-50 */
+    
+    --text-main: #1e293b; /* slate-800 */
+    --text-muted: #64748b; /* slate-500 */
+    --text-light: #94a3b8; /* slate-400 */
+    --text-white: #ffffff;
+    
+    --bg-main: #fafaf9; /* warm-gray-50/40 */
+    --bg-card: #ffffff;
+    --bg-light: #f8fafc; /* slate-50 */
+    
+    --border-color: #f1f5f9; /* slate-100 */
+    --border-dark: #e2e8f0; /* slate-200 */
+    
+    /* Layout */
+    --max-width: 1280px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    /* Animations & Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+}
+
+/* Base resets & setups */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.serif-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-light);
+    border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Typography & Links */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+input {
+    font-family: inherit;
+}
+
+/* App Header styling */
+.header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--primary-light-border);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.brand-text h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+}
+
+.brand-text p {
+    font-size: 11px;
+    color: var(--primary-hover);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Control Buttons & Badges */
+.control-btn {
+    position: relative;
+    padding: 10px;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.control-btn:hover {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+}
+
+.control-btn.btn-planner:hover {
+    color: var(--success-color);
+    background-color: var(--success-light);
+}
+
+.control-btn.btn-shopping:hover {
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.control-btn.btn-favorites.active {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+}
+
+.control-btn.btn-favorites:hover {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+}
+
+.btn-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--bg-card);
+}
+
+.control-btn.btn-planner .btn-badge {
+    background-color: var(--success-color);
+}
+
+/* Layout Grid Main */
+.main-layout {
+    flex-grow: 1;
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .main-layout {
+        flex-direction: row;
+    }
+}
+
+/* Sidebar filter systems */
+.sidebar {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 260px;
+    }
+}
+
+.sidebar-sticky {
+    background-color: var(--bg-card);
+    padding: 24px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--primary-light-border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 112px;
+}
+
+.sidebar-title {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+/* Search input styling */
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 10px 40px 10px 40px;
+    font-size: 14px;
+    outline: none;
+    transition: all var(--transition-fast);
+    color: var(--text-main);
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+}
+
+.search-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+}
+
+.search-clear-btn:hover {
+    background-color: var(--border-dark);
+    color: var(--text-main);
+}
+
+.search-clear-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Categories List in Sidebar */
+.categories-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+@media (min-width: 768px) {
+    .categories-filter-list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}
+
+.category-filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    transition: all var(--transition-fast);
+    width: auto;
+    text-align: left;
+}
+
+@media (min-width: 768px) {
+    .category-filter-btn {
+        width: 100%;
+    }
+}
+
+.category-filter-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-light-border);
+    background-color: var(--primary-light);
+}
+
+.category-filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-filter-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.category-filter-btn.active .category-filter-badge {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: var(--text-white);
+}
+
+/* Recipe Content Grid Section */
+.recipes-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.results-indicator {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.recipes-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 600px) {
+    .recipes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .recipes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Recipe Card Styling */
+.recipe-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.recipe-card:hover {
+    border-color: var(--primary-light-border);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.recipe-card.planned {
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* Card Header */
+.card-header-graphic {
+    height: 112px;
+    background: linear-gradient(135deg, var(--primary-light) 0%, rgba(254, 215, 170, 0.25) 100%);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.card-emoji {
+    font-size: 36px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+    z-index: 10;
+    transition: transform var(--transition-normal);
+}
+
+.recipe-card:hover .card-emoji {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-badges-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 10;
+}
+
+.card-badge {
+    background-color: var(--bg-card);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-badge.planned-badge {
+    background-color: var(--success-light);
+    color: var(--success-color);
+    border-color: var(--success-light-border);
+}
+
+.card-header-graphic::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    bottom: -24px;
+    width: 80px;
+    height: 80px;
+    background: rgba(245, 158, 11, 0.03);
+    border-radius: var(--radius-full);
+    filter: blur(16px);
+    transition: all var(--transition-normal);
+}
+
+.recipe-card:hover .card-header-graphic::after {
+    background: rgba(245, 158, 11, 0.08);
+}
+
+/* Card Body */
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-source {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.4;
+    transition: color var(--transition-fast);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recipe-card:hover .card-title {
+    color: var(--primary-hover);
+}
+
+/* Card Footer Actions */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--bg-light);
+    padding-top: 12px;
+}
+
+.card-ingredients-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-ingredients-count svg {
+    width: 16px;
+    height: 16px;
+    color: var(--text-light);
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-action-btn {
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    color: var(--text-light);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-action-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.card-action-btn:hover {
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+}
+
+/* Specific button hovers */
+.card-action-btn.plan-btn:hover,
+.card-action-btn.plan-btn.active {
+    color: var(--success-color);
+    background-color: var(--success-light);
+}
+
+.card-action-btn.fav-btn:hover,
+.card-action-btn.fav-btn.active {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+}
+
+/* Empty State Styling */
+.empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--border-dark);
+}
+
+.empty-state-icon {
+    display: inline-flex;
+    padding: 16px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+}
+
+.empty-state-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.empty-state h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.empty-state p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ========================================================================
+   Slide-over Drawers (Planner and Shopping List)
+======================================================================== */
+
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 45;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    pointer-events: none;
+}
+
+.drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-xl);
+    z-index: 50;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drawer-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drawer-header-title svg {
+    width: 22px;
+    height: 22px;
+}
+
+.drawer-header-title.planner-title svg {
+    color: var(--success-color);
+}
+
+.drawer-header-title.shopping-title svg {
+    color: var(--primary-color);
+}
+
+.drawer-header-title h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.drawer-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-clear-btn {
+    font-size: 12px;
+    color: var(--danger-color);
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.drawer-clear-btn:hover {
+    background-color: var(--danger-light);
+}
+
+.drawer-close-btn {
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    color: var(--text-light);
+    transition: all var(--transition-fast);
+    display: flex;
+}
+
+.drawer-close-btn:hover {
+    background-color: var(--border-dark);
+    color: var(--text-main);
+}
+
+.drawer-close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Scrollable Content inside drawers */
+.drawer-content {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.drawer-empty-state {
+    text-align: center;
+    padding: 48px 16px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.drawer-empty-state p {
+    font-size: 14px;
+}
+
+.drawer-empty-state p.sub {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* Drawer Cards */
+.drawer-card {
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background-color: rgba(248, 250, 252, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.drawer-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.drawer-card-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drawer-card-emoji {
+    font-size: 24px;
+}
+
+.drawer-card-meta h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.drawer-card-meta span {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-light);
+}
+
+.drawer-card-remove {
+    color: var(--text-light);
+    transition: color var(--transition-fast);
+}
+
+.drawer-card-remove:hover {
+    color: var(--danger-color);
+}
+
+.drawer-card-remove svg {
+    width: 18px;
+    height: 18px;
+}
+
+.drawer-card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border-color);
+    padding-top: 12px;
+}
+
+.drawer-card-bottom span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Portion adjustments in drawer */
+.portion-controls {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.portion-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-radius: 4px;
+    font-size: 13px;
+    transition: background-color var(--transition-fast);
+}
+
+.portion-btn:hover {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+}
+
+.portion-value {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 8px;
+    color: var(--text-main);
+}
+
+/* Drawer Footer */
+.drawer-footer {
+    padding: 24px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-large {
+    width: 100%;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-large-success {
+    background-color: var(--success-color);
+    color: var(--text-white);
+}
+
+.btn-large-success:hover {
+    background-color: var(--success-hover);
+}
+
+.btn-large-primary {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.btn-large-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-large svg {
+    width: 18px;
+    height: 18px;
+}
+
+.drawer-footer-tip {
+    font-size: 10px;
+    text-align: center;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* ========================================================================
+   Shopping Checklist Section Styles
+======================================================================== */
+
+.shopping-section {
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background-color: rgba(248, 250, 252, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.shopping-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shopping-section-header h4 {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.shopping-list-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.shopping-item-li {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.shopping-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.shopping-checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--border-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+}
+
+.shopping-checkbox.checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.shopping-checkbox svg {
+    width: 10px;
+    height: 10px;
+}
+
+.shopping-item-name {
+    font-weight: 500;
+    color: var(--text-main);
+    user-select: none;
+}
+
+.shopping-item-name.checked {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.qty-span {
+    font-weight: 700;
+    color: var(--primary-hover);
+    margin-left: 4px;
+}
+
+.shopping-item-name.checked .qty-span {
+    color: var(--text-light);
+}
+
+/* ========================================================================
+   Immersive Recipe Details Modal
+======================================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-container {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 768px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.open .modal-container {
+    transform: scale(1);
+}
+
+/* Modal Banner Header */
+.modal-header-banner {
+    position: relative;
+    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #f97316 100%);
+    padding: 32px;
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 160px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    padding: 8px;
+    display: flex;
+    transition: background-color var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.modal-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.modal-badge-cat {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modal-badge-src {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--primary-light);
+}
+
+.modal-header-banner h3 {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+    .modal-header-banner h3 {
+        font-size: 28px;
+    }
+}
+
+/* Modal Body Content split into 2 scrollable columns */
+.modal-body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .modal-body {
+        grid-template-columns: 5fr 7fr;
+    }
+}
+
+.modal-section-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.modal-section-title-wrapper h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Ingredients panel */
+.modal-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ingredients-multiplier-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Modal ingredients rendering list */
+.modal-ingredients-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-ingredients-li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.ing-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-dark);
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.ing-checkbox.checked {
+    background-color: var(--primary-light);
+    border-color: var(--primary-hover);
+}
+
+.ing-checkbox svg {
+    width: 12px;
+    height: 12px;
+    color: var(--primary-hover);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.ing-checkbox.checked svg {
+    opacity: 1;
+}
+
+.ing-details-row {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.ing-name {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.ing-qty-tag {
+    color: var(--primary-hover);
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.ing-unit-only-tag {
+    color: var(--primary-hover);
+    font-weight: 600;
+    font-size: 11px;
+    background-color: var(--primary-light);
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--primary-light-border);
+    flex-shrink: 0;
+}
+
+/* Modal action buttons */
+.modal-actions-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.btn-modal-action {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-fast);
+}
+
+.btn-modal-action-planner {
+    background-color: var(--success-light);
+    color: var(--success-color);
+    border: 1px solid var(--success-light-border);
+}
+
+.btn-modal-action-planner:hover {
+    background-color: var(--success-light-border);
+}
+
+.btn-modal-action-planner.planned-active {
+    background-color: var(--success-color);
+    color: var(--text-white);
+    border-color: var(--success-color);
+}
+
+.btn-modal-action-planner.planned-active:hover {
+    background-color: var(--success-hover);
+}
+
+.btn-modal-action-shopping {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    border: 1px solid var(--border-dark);
+}
+
+.btn-modal-action-shopping:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    border-color: var(--primary-light-border);
+}
+
+.btn-modal-action svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Cooking Steps Panel */
+.modal-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.modal-steps-ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-step-li {
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+
+.modal-step-li.completed {
+    opacity: 0.4;
+}
+
+.step-number {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    font-weight: 700;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color var(--transition-fast);
+}
+
+.modal-step-li:hover .step-number {
+    background-color: var(--primary-light-border);
+}
+
+.step-text {
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-top: 2px;
+}
+
+/* Tip Box in Modal */
+.tip-box {
+    background-color: var(--primary-light);
+    border: 1px solid var(--primary-light-border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    display: flex;
+    gap: 12px;
+}
+
+.tip-icon {
+    color: var(--primary-color);
+    flex-shrink: 0;
+    display: flex;
+}
+
+.tip-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.tip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tip-title {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--primary-active);
+}
+
+.tip-text {
+    font-size: 12px;
+    color: var(--primary-active);
+    line-height: 1.5;
+}
+
+/* ========================================================================
+   Toast Notification Styling
+======================================================================== */
+
+.toast-message {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0f172a; /* Slate 900 */
+    color: var(--text-white);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: var(--shadow-xl);
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: toast-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-message.toast-success {
+    background-color: var(--success-color);
+}
+
+.toast-message.toast-error {
+    background-color: var(--danger-color);
+}
+
+@keyframes toast-fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 12px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
