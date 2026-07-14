@@ -21,7 +21,7 @@ const receitasData = {
         {
             "id": 1,
             "title": "Frango com Arroz e Legumes",
-            "category": "marmitas",
+            "category": ["marmitas","arroz"],
             "source": "Marmitas da Semana (Segunda)",
             "emoji": "🍱",
 			"image": "1.png",
@@ -58,7 +58,7 @@ const receitasData = {
         {
             "id": 2,
             "title": "Carne Moída Cremosa com Purê",
-            "category": "marmitas",
+            "category": ["marmitas","carne","batata"],
             "source": "Marmitas da Semana (Terça)",
             "emoji": "🥔",
             "ingredients": [
@@ -94,7 +94,7 @@ const receitasData = {
         {
             "id": 3,
             "title": "Macarrão com Frango ao Molho Branco",
-            "category": "marmitas",
+            "category": ["marmitas","macarrao","frango"],
             "source": "Marmitas da Semana (Quarta)",
             "emoji": "🍝",
             "ingredients": [
@@ -129,7 +129,7 @@ const receitasData = {
         {
             "id": 4,
             "title": "Feijão Tropeiro Simples",
-            "category": "marmitas",
+            "category": ["marmitas","feijao"],
             "source": "Marmitas da Semana (Quinta)",
             "emoji": "🥓",
             "ingredients": [
@@ -165,7 +165,7 @@ const receitasData = {
         {
             "id": 5,
             "title": "Strogonoff de Frango",
-            "category": "marmitas",
+            "category": ["marmitas","frango"],
             "source": "Marmitas da Semana (Sexta)",
             "emoji": "🍛",
             "ingredients": [
@@ -201,7 +201,7 @@ const receitasData = {
         {
             "id": 6,
             "title": "Escondidinho de Carne",
-            "category": "marmitas",
+            "category": ["marmitas","bife","batata"],
             "source": "Marmitas da Semana (Sábado)",
             "emoji": "🥧",
             "ingredients": [
@@ -231,7 +231,7 @@ const receitasData = {
         {
             "id": 7,
             "title": "Arroz de Forno Completo",
-            "category": "marmitas",
+            "category": ["marmitas","arroz"],
             "source": "Marmitas da Semana (Domingo)",
             "emoji": "🍚",
             "ingredients": [
@@ -261,7 +261,7 @@ const receitasData = {
         {
             "id": 8,
             "title": "Frango Assado com Batatas",
-            "category": "frango",
+            "category": ["frango","batata"],
             "source": "6 Receitas de Frango (Opção 1)",
             "emoji": "🍗",
             "ingredients": [
@@ -2897,7 +2897,7 @@ const receitasData = {
         {
             "id": 60,
             "title": "Sopa de Legumes com Frango",
-            "category": "janta",
+            "category": ["janta","sopas","frango"],
             "source": "Receitas de Janta Leve (Opção 1)",
             "emoji": "🥣",
             "ingredients": [
@@ -2954,7 +2954,7 @@ const receitasData = {
         {
             "id": 61,
             "title": "Omelete de Forno com Legumes",
-            "category": "janta",
+            "category": ["janta","lanches"],
             "source": "Receitas de Janta Leve (Opção 2)",
             "emoji": "🍳",
             "ingredients": [
@@ -3006,7 +3006,7 @@ const receitasData = {
         {
             "id": 62,
             "title": "Frango Desfiado com Batata-Doce",
-            "category": "janta",
+            "category": ["janta","frango","batata"],
             "source": "Receitas de Janta Leve (Opção 3)",
             "emoji": "🍠",
             "ingredients": [
@@ -3048,7 +3048,7 @@ const receitasData = {
         {
             "id": 63,
             "title": "Tapioca de Frango com Queijo",
-            "category": "janta",
+            "category": ["janta","lanches","frango"],
             "source": "Receitas de Janta Leve (Opção 4)",
             "emoji": "🌮",
             "ingredients": [
@@ -3167,7 +3167,7 @@ const receitasData = {
         {
             "id": 66,
             "title": "Panqueca de Aveia com Ricota e Espinafre",
-            "category": "janta",
+            "category": ["janta","lanches"],
             "source": "Receitas de Janta Leve (Opção 7)",
             "emoji": "🥞",
             "ingredients": [
@@ -3218,7 +3218,7 @@ const receitasData = {
         {
             "id": 67,
             "title": "Risoto Prático de Legumes",
-            "category": "janta",
+            "category": ["janta","arroz"],
             "source": "Receitas de Janta Leve (Opção 8)",
             "emoji": "🍚",
             "ingredients": [
@@ -3270,7 +3270,7 @@ const receitasData = {
         {
             "id": 68,
             "title": "Filé de Peixe Assado com Legumes",
-            "category": "janta",
+            "category": ["janta","peixe"],
             "source": "Receitas de Janta Leve (Opção 9)",
             "emoji": "🐟",
             "ingredients": [
@@ -4099,7 +4099,7 @@ const receitasData = {
         {
             "id": 86,
             "title": "Frango Grelhado Saudável",
-            "category": "almoco",
+            "category": ["almoco","frango","arroz"],
             "source": "Receitas de Almoço (Card 1)",
             "emoji": "🍱",
             "ingredients": [
@@ -4141,7 +4141,7 @@ const receitasData = {
         {
             "id": 87,
             "title": "Carne de Panela com Batatas",
-            "category": "almoco",
+            "category": ["almoco","bife","batata"],
             "source": "Receitas de Almoço (Card 2)",
             "emoji": "🥩",
             "ingredients": [
@@ -4182,7 +4182,7 @@ const receitasData = {
         {
             "id": 88,
             "title": "Arroz de Forno com Frango Desfiado",
-            "category": "almoco",
+            "category": ["almoco","arroz","frango"],
             "source": "Receitas de Almoço (Card 3)",
             "emoji": "🍛",
             "ingredients": [
@@ -4223,7 +4223,7 @@ const receitasData = {
         {
             "id": 89,
             "title": "Strogonoff de Frango Expresso",
-            "category": "almoco",
+            "category": ["almoco","frango"],
             "source": "Receitas de Almoço (Card 4)",
             "emoji": "🍛",
             "ingredients": [
@@ -4265,7 +4265,7 @@ const receitasData = {
         {
             "id": 90,
             "title": "Feijão Tropeiro com Carne Seca",
-            "category": "almoco",
+            "category": ["almoco","feijao"],
             "source": "Receitas de Almoço (Card 5)",
             "emoji": "🥓",
             "ingredients": [
@@ -4306,7 +4306,7 @@ const receitasData = {
         {
             "id": 91,
             "title": "Escondidinho de Batata com Carne Moída",
-            "category": "almoco",
+            "category": ["almoco","bife","batata"],
             "source": "Receitas de Almoço (Card 6)",
             "emoji": "🥧",
             "ingredients": [
@@ -4347,7 +4347,7 @@ const receitasData = {
         {
             "id": 92,
             "title": "Peixe Assado com Batatas",
-            "category": "almoco",
+            "category": ["almoco","peixe","batata"],
             "source": "Receitas de Almoço (Card 7)",
             "emoji": "🐟",
             "ingredients": [
@@ -4388,7 +4388,7 @@ const receitasData = {
         {
             "id": 93,
             "title": "Macarrão Prático à Bolonhesa",
-            "category": "almoco",
+            "category": ["almoco","macarrao"],
             "source": "Receitas de Almoço (Card 8)",
             "emoji": "🍝",
             "ingredients": [
@@ -4429,7 +4429,7 @@ const receitasData = {
         {
             "id": 94,
             "title": "Frango ao Creme com Arroz e Salada",
-            "category": "almoco",
+            "category": ["almoco","frango","arroz"],
             "source": "Receitas de Almoço (Card 9)",
             "emoji": "🍗",
             "ingredients": [
