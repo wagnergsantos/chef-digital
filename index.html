@@ -492,8 +492,12 @@
                         categoryBadges = `<span class="card-badge">${categories[recipe.category] || recipe.category}</span>`;
                     }
 
+                    const hasImg = recipe.image && recipe.image.trim() !== "";
+                    const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
+                    const headerStyle = hasImg ? `style="background-image: url('${recipe.image}');"` : '';
+
                     card.innerHTML = `
-                        <div class="card-header-graphic">
+                        <div class="${headerClass}" ${headerStyle}>
                             <span class="card-emoji">${recipe.emoji || '🍽️'}</span>
                             <div class="card-badges-wrapper">
                                 ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
@@ -916,6 +920,19 @@
             activeRecipePortions = 1;
             const recipe = recipes.find(r => r.id === id);
             if (!recipe) return;
+
+            // Handle background image in modal header banner
+            const banner = document.querySelector('.modal-header-banner');
+            if (banner) {
+                const hasImg = recipe.image && recipe.image.trim() !== "";
+                if (hasImg) {
+                    banner.classList.add('has-image');
+                    banner.style.backgroundImage = `url('${recipe.image}')`;
+                } else {
+                    banner.classList.remove('has-image');
+                    banner.style.backgroundImage = '';
+                }
+            }
 
             document.getElementById('modal-title').innerText = recipe.title;
             

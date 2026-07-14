@@ -24,6 +24,7 @@ const receitasData = {
             "category": "marmitas",
             "source": "Marmitas da Semana (Segunda)",
             "emoji": "🍱",
+			"image": "1.png",
             "ingredients": [
                 {
                     "name": "Peito de frango em cubos",
@@ -5960,6 +5961,7 @@ const receitasData = {
             "category": "temperos",
             "source": "Sazons Funcionais Otimizados",
             "emoji": "🥩",
+			"image": "132.png",
             "ingredients": [
                 {
                     "name": "Alho em pó",
