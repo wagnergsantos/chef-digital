@@ -1,3 +1,82 @@
+/**
+ * @doc PROMPT PARA IA - GERADOR DE RECEITAS NO FORMATO JSON
+ * 
+ * Se você quiser transformar um texto de receita no formato JSON deste arquivo usando uma IA (como Gemini, ChatGPT, Claude),
+ * copie e envie o texto abaixo antes de enviar a receita:
+ * 
+ * --- COPIE A PARTIR DAQUI ---
+ * Converta a receita fornecida para o formato JSON estruturado seguindo rigorosamente o esquema abaixo.
+ * 
+ * ### REGRAS DE CATEGORIAS (MULTITAG):
+ * O campo "category" suporta uma categoria única (como string) ou múltiplas categorias (como array de strings).
+ * Formatos válidos:
+ * - Categoria única: "category": "bife"
+ * - Múltiplas categorias: "category": ["bife", "feijao", "arroz"]
+ * 
+ * Chaves de categorias válidas (sempre em minúsculas):
+ * - "almoco" (Almoço)
+ * - "janta" (Jantares)
+ * - "sopas" (Sopas & Caldos)
+ * - "molhos" (Molhos)
+ * - "lanches" (Lanches)
+ * - "marmitas" (Marmitas)
+ * - "frango" (Frango)
+ * - "bife" (Carnes/Bifes)
+ * - "peixe" (Peixes)
+ * - "macarrao" (Massas)
+ * - "refogados" (Refogados)
+ * - "feijao" (Feijão)
+ * - "arroz" (Arroz)
+ * - "batata" (Batatas)
+ * - "temperos" (Temperos)
+ * 
+ * ### ESTRUTURA DO JSON:
+ * {
+ *   "id": [Número incremental único baseado no último ID do banco],
+ *   "title": "[Título da receita]",
+ *   "category": "[Chave única como string, ex: 'marmitas', ou array de chaves, ex: ['almoco', 'bife']]",
+ *   "source": "[Fonte da receita, ex: 'Internet' ou null]",
+ *   "emoji": "[Um emoji representativo, ex: 🍲]",
+ *   "image": "[Opcional: Nome do arquivo de imagem, ex: '123.png' ou null]",
+ *   "ingredients": [
+ *     {
+ *       "name": "[Nome do ingrediente, ex: 'Peito de frango em cubos']",
+ *       "qty": [Apenas o número da quantidade, ex: 500 ou 1.5. Se for 'a gosto' ou 'opcional', use null],
+ *       "unit": "[Unidade de medida, ex: 'g', 'ml', 'xícaras', 'unidades', 'a gosto', 'opcional', 'colher (chá)']"
+ *     }
+ *   ],
+ *   "steps": [
+ *     "[Passo 1]",
+ *     "[Passo 2]"
+ *   ],
+ *   "tips": "[Dica curta sobre o preparo, ou null/string vazia]"
+ * }
+ * 
+ * ### REQUISITOS CRÍTICOS:
+ * - Para o campo "category", nunca use strings separadas por vírgula (ex: "bife,feijao"). Use obrigatoriamente um array JSON: ["bife", "feijao"].
+ * - O campo "qty" DEVE ser um número ou null. Nunca coloque texto como "500g" ou "2 colheres" no campo "qty". A unidade de medida deve estar exclusivamente no campo "unit".
+ * - Retorne APENAS o JSON puro. Não explique nada, não use blocos de Markdown ```json. Apenas retorne o objeto JSON da receita.
+ * --- FIM DO PROMPT ---
+ */
+
+/**
+ * @typedef {Object} Ingredient
+ * @property {string} name - Nome do ingrediente
+ * @property {number|null} qty - Quantidade numérica, ou null se for a gosto/opcional
+ * @property {string} unit - Unidade de medida (g, ml, xícaras, a gosto, etc)
+ * 
+ * @typedef {Object} Recipe
+ * @property {number} id - ID único sequencial da receita
+ * @property {string} title - Título da receita
+ * @property {string|string[]} category - Categoria única (string) ou múltiplas categorias (array de strings) para filtro da receita
+ * @property {string|null} source - Origem / Fonte da receita
+ * @property {string} emoji - Emoji representativo da receita
+ * @property {string|null} [image] - Nome do arquivo de imagem (opcional)
+ * @property {Ingredient[]} ingredients - Lista de ingredientes
+ * @property {string[]} steps - Modo de preparo passo a passo
+ * @property {string|null} [tips] - Dicas adicionais
+ */
+ 
 const receitasData = {
     "categories": {
         "todos": "Todos",
