@@ -100,10 +100,13 @@ const receitasData = {
         {
             "id": 1,
             "title": "Frango com Arroz e Legumes",
-            "category": ["marmitas","arroz"],
+            "category": [
+                "marmitas",
+                "arroz"
+            ],
             "source": "Marmitas da Semana (Segunda)",
             "emoji": "🍱",
-			"image": "1.png",
+            "image": "1.png",
             "ingredients": [
                 {
                     "name": "Peito de frango em cubos",
@@ -137,7 +140,11 @@ const receitasData = {
         {
             "id": 2,
             "title": "Carne Moída Cremosa com Purê",
-            "category": ["marmitas","carne","batata"],
+            "category": [
+                "marmitas",
+                "carne",
+                "batata"
+            ],
             "source": "Marmitas da Semana (Terça)",
             "emoji": "🥔",
             "ingredients": [
@@ -168,12 +175,17 @@ const receitasData = {
                 "Faça o purê com as batatas cozidas e amassadas.",
                 "Monte as marmitas acomodando o purê e a carne por cima."
             ],
-            "tips": "Adicione um toque de requeijão ou creme de leite na carne moída para aumentar a cremosidade."
+            "tips": "Adicione um toque de requeijão ou creme de leite na carne moída para aumentar a cremosidade.",
+            "image": "2.png"
         },
         {
             "id": 3,
             "title": "Macarrão com Frango ao Molho Branco",
-            "category": ["marmitas","macarrao","frango"],
+            "category": [
+                "marmitas",
+                "macarrao",
+                "frango"
+            ],
             "source": "Marmitas da Semana (Quarta)",
             "emoji": "🍝",
             "ingredients": [
@@ -203,12 +215,16 @@ const receitasData = {
                 "Refogue o frango cozido e desfiado.",
                 "Misture o creme de leite e finalize com queijo."
             ],
-            "tips": "Adicione uma pitada de noz-moscada ao molho branco para elevar o sabor."
+            "tips": "Adicione uma pitada de noz-moscada ao molho branco para elevar o sabor.",
+            "image": "3.png"
         },
         {
             "id": 4,
             "title": "Feijão Tropeiro Simples",
-            "category": ["marmitas","feijao"],
+            "category": [
+                "marmitas",
+                "feijao"
+            ],
             "source": "Marmitas da Semana (Quinta)",
             "emoji": "🥓",
             "ingredients": [
@@ -239,12 +255,16 @@ const receitasData = {
                 "Misture o feijão cozido e finalize com farinha de mandioca e cheiro-verde.",
                 "Sirva acompanhado de arroz."
             ],
-            "tips": "Couve picada fininha adicionada no final dá mais frescor e riqueza de fibras."
+            "tips": "Couve picada fininha adicionada no final dá mais frescor e riqueza de fibras.",
+            "image": "4.png"
         },
         {
             "id": 5,
             "title": "Strogonoff de Frango",
-            "category": ["marmitas","frango"],
+            "category": [
+                "marmitas",
+                "frango"
+            ],
             "source": "Marmitas da Semana (Sexta)",
             "emoji": "🍛",
             "ingredients": [
@@ -275,12 +295,17 @@ const receitasData = {
                 "Adicione o creme de leite.",
                 "Sirva com arroz branco e batata palha."
             ],
-            "tips": "Se for congelar a marmita, guarde a batata palha em um saquinho separado para não murchar."
+            "tips": "Se for congelar a marmita, guarde a batata palha em um saquinho separado para não murchar.",
+            "image": "5.png"
         },
         {
             "id": 6,
             "title": "Escondidinho de Carne",
-            "category": ["marmitas","bife","batata"],
+            "category": [
+                "marmitas",
+                "bife",
+                "batata"
+            ],
             "source": "Marmitas da Semana (Sábado)",
             "emoji": "🥧",
             "ingredients": [
@@ -305,12 +330,16 @@ const receitasData = {
                 "Em uma marmita refratária, coloque a carne e cubra com o purê de sua preferência.",
                 "Polvilhe queijo e gratine no forno."
             ],
-            "tips": "O purê de mandioca (aipim) traz uma textura mais elástica e cremosa deliciosa."
+            "tips": "O purê de mandioca (aipim) traz uma textura mais elástica e cremosa deliciosa.",
+            "image": "6.png"
         },
         {
             "id": 7,
             "title": "Arroz de Forno Completo",
-            "category": ["marmitas","arroz"],
+            "category": [
+                "marmitas",
+                "arroz"
+            ],
             "source": "Marmitas da Semana (Domingo)",
             "emoji": "🍚",
             "ingredients": [
@@ -335,12 +364,16 @@ const receitasData = {
                 "Leve ao forno até o queijo gratinar e derreter.",
                 "Separe as porções nas marmitas."
             ],
-            "tips": "Perfeito para reaproveitar as sobras de arroz da geladeira!"
+            "tips": "Perfeito para reaproveitar as sobras de arroz da geladeira!",
+            "image": "7.png"
         },
         {
             "id": 8,
             "title": "Frango Assado com Batatas",
-            "category": ["frango","batata"],
+            "category": [
+                "frango",
+                "batata"
+            ],
             "source": "6 Receitas de Frango (Opção 1)",
             "emoji": "🍗",
             "ingredients": [
@@ -381,7 +414,8 @@ const receitasData = {
                 "Em uma assadeira, disponha o frango e as batatas.",
                 "Leve ao forno preaquecido a 200°C por cerca de 1 hora, virando na metade do tempo, até dourar."
             ],
-            "tips": "Crocante por fora e macia por dentro!"
+            "tips": "Crocante por fora e macia por dentro!",
+            "image": null
         },
         {
             "id": 9,
@@ -432,7 +466,8 @@ const receitasData = {
                 "Adicione o milho, tempere com sal, pimenta e misture.",
                 "Desligue o fogo, acrescente o creme de leite e o cheiro-verde. Sirva com arroz branco."
             ],
-            "tips": "Bater metade do milho com o creme de leite no liquidificador antes de colocar na panela cria um creme ainda mais robusto!"
+            "tips": "Bater metade do milho com o creme de leite no liquidificador antes de colocar na panela cria um creme ainda mais robusto!",
+            "image": null
         },
         {
             "id": 10,
@@ -488,7 +523,8 @@ const receitasData = {
                 "Adicione os pimentões, o shoyu, tempere com sal e pimenta.",
                 "Cozinhe por mais 5 minutos e finalize com cebolinha. Sirva com arroz."
             ],
-            "tips": "Adicione amendoim torrado sem casca no final para dar o clássico toque crocante asiático."
+            "tips": "Adicione amendoim torrado sem casca no final para dar o clássico toque crocante asiático.",
+            "image": null
         },
         {
             "id": 11,
@@ -540,7 +576,8 @@ const receitasData = {
                 "Tampe e cozinhe por cerca de 30 minutos em fogo médio.",
                 "Finalize com cheiro-verde e sirva."
             ],
-            "tips": "Sirva com polenta ou arroz branco bem quentinho."
+            "tips": "Sirva com polenta ou arroz branco bem quentinho.",
+            "image": null
         },
         {
             "id": 12,
@@ -581,7 +618,8 @@ const receitasData = {
                 "Grelhe os filés em uma frigideira antiaderente até dourar dos dois lados.",
                 "Sirva com salada ou legumes."
             ],
-            "tips": "Não grelhe em fogo muito baixo para o frango não soltar muita água e ressecar."
+            "tips": "Não grelhe em fogo muito baixo para o frango não soltar muita água e ressecar.",
+            "image": null
         },
         {
             "id": 13,
@@ -643,7 +681,8 @@ const receitasData = {
                 "Junte o brócolis, tempere com sal e pimenta e cozinhe por mais 5 minutos.",
                 "Finalize com cheiro-verde e sirva."
             ],
-            "tips": "Receita rápida de uma panela só para facilitar o pós-janta!"
+            "tips": "Receita rápida de uma panela só para facilitar o pós-janta!",
+            "image": null
         },
         {
             "id": 14,
@@ -683,7 +722,8 @@ const receitasData = {
                 "Misture com o azeite, o alho e os temperos.",
                 "Distribua em uma assadeira e leve ao forno pré-aquecido a 200°C por 35 a 40 minutos, virando na metade do tempo."
             ],
-            "tips": "Crocante por fora e extremamente macia por dentro!"
+            "tips": "Crocante por fora e extremamente macia por dentro!",
+            "image": null
         },
         {
             "id": 15,
@@ -719,7 +759,8 @@ const receitasData = {
                 "Adicione a manteiga e o leite quente aos poucos, mexendo vigorosamente até obter um purê cremoso e homogêneo.",
                 "Tempere a gosto com sal, pimenta e noz-moscada, e sirva."
             ],
-            "tips": "Perfeito para acompanhar carnes grelhadas e peixes!"
+            "tips": "Perfeito para acompanhar carnes grelhadas e peixes!",
+            "image": null
         },
         {
             "id": 16,
@@ -765,7 +806,8 @@ const receitasData = {
                 "Finalize cobrindo com queijo muçarela por cima.",
                 "Leve ao forno a 200°C por cerca de 40 minutos ou até as batatas estarem macios e o queijo gratinado."
             ],
-            "tips": "Cremosa, cheia de sabor e simplesmente irresistível!"
+            "tips": "Cremosa, cheia de sabor e simplesmente irresistível!",
+            "image": null
         },
         {
             "id": 17,
@@ -796,7 +838,8 @@ const receitasData = {
                 "Frite as batatas em óleo bem quente até que dourem.",
                 "Escorra em papel-toalha e finalize temperando com sal imediatamente."
             ],
-            "tips": "O molho na água fria remove o excesso de amido, garantindo que fiquem bem sequinhas."
+            "tips": "O molho na água fria remove o excesso de amido, garantindo que fiquem bem sequinhas.",
+            "image": null
         },
         {
             "id": 18,
@@ -837,7 +880,8 @@ const receitasData = {
                 "Misture o miolo retirado com o bacon/presunto, o requeijão e temperos.",
                 "Recheie as batatas, cubra com o queijo muçarela e leve ao forno para gratinar."
             ],
-            "tips": "Prática, saborosa e refeição completa!"
+            "tips": "Prática, saborosa e refeição completa!",
+            "image": null
         },
         {
             "id": 19,
@@ -873,7 +917,8 @@ const receitasData = {
                 "Adicione as batatas escorridas e os temperos.",
                 "Salteie na frigideira até dourar levemente de todos os lados e finalize com as ervas frescas."
             ],
-            "tips": "Simples, leve e cheia de aroma e frescor!"
+            "tips": "Simples, leve e cheia de aroma e frescor!",
+            "image": null
         },
         {
             "id": 20,
@@ -939,7 +984,8 @@ const receitasData = {
                 "Disponha em uma assadeira untada, decore com fatias de limão e o alecrim por cima.",
                 "Leve ao forno preaquecido a 200°C por 25 a 30 minutos até assar por completo."
             ],
-            "tips": "Fica ótimo com batatas e legumes assados na mesma travessa!"
+            "tips": "Fica ótimo com batatas e legumes assados na mesma travessa!",
+            "image": null
         },
         {
             "id": 21,
@@ -980,7 +1026,8 @@ const receitasData = {
                 "Grelhe em frigideira antiaderente (ou churrasqueira) por 4 minutos de cada lado.",
                 "Sirva bem quente com salada."
             ],
-            "tips": "Dica: Para não grudar na frigideira, seque muito bem os filés com papel-toalha antes de temperar e grelhar."
+            "tips": "Dica: Para não grudar na frigideira, seque muito bem os filés com papel-toalha antes de temperar e grelhar.",
+            "image": null
         },
         {
             "id": 22,
@@ -1043,7 +1090,8 @@ const receitasData = {
                 "Volte os filés para o molho, adicione as azeitonas e cozinhe por mais 5 minutos.",
                 "Finalize com cheiro-verde e sirva."
             ],
-            "tips": "Fica divino servido com arroz branco soltinho e purê de batatas!"
+            "tips": "Fica divino servido com arroz branco soltinho e purê de batatas!",
+            "image": null
         },
         {
             "id": 23,
@@ -1110,7 +1158,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo com a panela tampada por cerca de 20 minutos.",
                 "Finalize salpicando bastante coentro fresco e sirva com arroz."
             ],
-            "tips": "Cozinhar em panela de barro e fogo lento enriquece imensamente o sabor final!"
+            "tips": "Cozinhar em panela de barro e fogo lento enriquece imensamente o sabor final!",
+            "image": null
         },
         {
             "id": 24,
@@ -1161,7 +1210,8 @@ const receitasData = {
                 "Frite em óleo bem quente até que fiquem dourados e crocantes.",
                 "Escorra em papel-toalha e sirva imediatamente acompanhado de batatas fritas."
             ],
-            "tips": "Sirva com molho tártaro ou maionese verde caseira temperada."
+            "tips": "Sirva com molho tártaro ou maionese verde caseira temperada.",
+            "image": null
         },
         {
             "id": 25,
@@ -1217,7 +1267,8 @@ const receitasData = {
                 "Disponha os filés em uma assadeira untada e cubra o topo com a mistura de farinha, pressionando levemente.",
                 "Asse no forno pré-aquecido a 200°C por 20 a 25 minutos até dourar a crosta."
             ],
-            "tips": "Uma excelente forma de consumir peixe assado que permanece incrivelmente suculento por dentro!"
+            "tips": "Uma excelente forma de consumir peixe assado que permanece incrivelmente suculento por dentro!",
+            "image": null
         },
         {
             "id": 26,
@@ -1263,7 +1314,8 @@ const receitasData = {
                 "Deixe curar na geladeira de 20 a 30 minutos.",
                 "Retire da geladeira, acrescente a cebola-roxa, o tomate, a pimenta, o coentro e o sal. Misture bem e sirva gelado."
             ],
-            "tips": "Sirva acompanhado de torradas crocantes ou chips de banana-da-terra."
+            "tips": "Sirva acompanhado de torradas crocantes ou chips de banana-da-terra.",
+            "image": null
         },
         {
             "id": 27,
@@ -1325,7 +1377,8 @@ const receitasData = {
                 "Modele os bolinhos, passe no ovo batido e frite em óleo quente até dourar.",
                 "Escorra em papel-toalha."
             ],
-            "tips": "Perfeito como petisco ou acompanhamento para o almoço de domingo!"
+            "tips": "Perfeito como petisco ou acompanhamento para o almoço de domingo!",
+            "image": null
         },
         {
             "id": 28,
@@ -1381,7 +1434,8 @@ const receitasData = {
                 "Adicione os tomates picados, tempere com sal e pimenta e cozinhe por cerca de 15 minutos em fogo baixo para encorpar.",
                 "Misture o macarrão escorrido ao molho, finalize com o manjericão e sirva com queijo parmesão."
             ],
-            "tips": "Dica: Sempre guarde 1 concha da água do cozimento para ajustar a textura do molho, se necessário!"
+            "tips": "Dica: Sempre guarde 1 concha da água do cozimento para ajustar a textura do molho, se necessário!",
+            "image": null
         },
         {
             "id": 29,
@@ -1437,7 +1491,8 @@ const receitasData = {
                 "Tempere o creme com sal, noz-moscada e pimenta. Junte o creme de leite e o frango desfiado.",
                 "Misture o penne ao molho, coloque em uma travessa, polvilhe a muçarela e leve ao forno rápido para gratinar."
             ],
-            "tips": "Um prato reconfortante para jantares de inverno."
+            "tips": "Um prato reconfortante para jantares de inverno.",
+            "image": null
         },
         {
             "id": 30,
@@ -1493,7 +1548,8 @@ const receitasData = {
                 "Tempere o molho com uma pitada de sal.",
                 "Misture o pesto frio direto na massa quente, decore com tomatinhos e um fio de azeite."
             ],
-            "tips": "Não cozinhe o pesto no fogo! O calor da própria massa cozida é o suficiente para liberar o perfume do manjericão."
+            "tips": "Não cozinhe o pesto no fogo! O calor da própria massa cozida é o suficiente para liberar o perfume do manjericão.",
+            "image": null
         },
         {
             "id": 31,
@@ -1555,7 +1611,8 @@ const receitasData = {
                 "Acrescente a cenoura ralada, o molho de tomate e os temperos. Deixe apurar por 15 minutos em fogo baixo.",
                 "Misture tudo ou deite sobre a massa fresca e sirva com parmesão."
             ],
-            "tips": "A cenoura ralada fina serve para quebrar a acidez natural do molho de tomate sem precisar usar açúcar!"
+            "tips": "A cenoura ralada fina serve para quebrar a acidez natural do molho de tomate sem precisar usar açúcar!",
+            "image": null
         },
         {
             "id": 32,
@@ -1607,7 +1664,8 @@ const receitasData = {
                 "Adicione o queijo parmesão e mexa constantemente até derreter e engrossar levemente.",
                 "Escorra a massa, envolva-a diretamente no molho cremoso e salpique salsa."
             ],
-            "tips": "Refinado, rápido e incrivelmente aveludado!"
+            "tips": "Refinado, rápido e incrivelmente aveludado!",
+            "image": null
         },
         {
             "id": 33,
@@ -1669,7 +1727,8 @@ const receitasData = {
                 "Tempere-os com sal, pimenta e ervas.",
                 "Misture o macarrão na frigideira com os legumes e finalize com queijo, se desejar."
             ],
-            "tips": "Excelente forma de prato único, leve e saudável!"
+            "tips": "Excelente forma de prato único, leve e saudável!",
+            "image": null
         },
         {
             "id": 34,
@@ -1721,7 +1780,8 @@ const receitasData = {
                 "Junte o tomate picado e o pimentão. Tempere com sal e pimenta.",
                 "Deixe refogar até os tomates derreterem e criarem um molho leve encorpado. Finalize com cheiro-verde."
             ],
-            "tips": "Não fique mexendo excessivamente na carne logo que colocar na panela para dourar por igual e não soltar líquidos demais!"
+            "tips": "Não fique mexendo excessivamente na carne logo que colocar na panela para dourar por igual e não soltar líquidos demais!",
+            "image": "34.png"
         },
         {
             "id": 35,
@@ -1773,7 +1833,8 @@ const receitasData = {
                 "Adicione o tomate e o pimentão colorido. Tempere com sal, pimenta e orégano.",
                 "Refogue por mais 5 minutos tampado e finalize salpicando cheiro-verde."
             ],
-            "tips": "Dica de ouro: Cortar todos os ingredientes em tamanhos parecidos faz com que tudo cozinhe por igual."
+            "tips": "Dica de ouro: Cortar todos os ingredientes em tamanhos parecidos faz com que tudo cozinhe por igual.",
+            "image": "35.png"
         },
         {
             "id": 36,
@@ -1831,7 +1892,8 @@ const receitasData = {
                 "Refogue por mais 5 a 7 minutos em fogo médio para que fiquem cozidos porém firmes e crocantes.",
                 "Salpique gergelim e sirva."
             ],
-            "tips": "Cozinhar em fogo médio para alto preserva a cor vibrante e os nutrientes dos legumes frescos!"
+            "tips": "Cozinhar em fogo médio para alto preserva a cor vibrante e os nutrientes dos legumes frescos!",
+            "image": "36.png"
         },
         {
             "id": 37,
@@ -1878,7 +1940,8 @@ const receitasData = {
                 "Cozinhe até os cogumelos soltarem líquido e ele secar, deixando-os levemente dourados.",
                 "Finalize salpicando cheiro-verde."
             ],
-            "tips": "Nunca lave os cogumelos em água corrente sob risco de encharcar! Limpe-os com pano úmido ou papel escovando as impurezas."
+            "tips": "Nunca lave os cogumelos em água corrente sob risco de encharcar! Limpe-os com pano úmido ou papel escovando as impurezas.",
+            "image": "37.png"
         },
         {
             "id": 38,
@@ -1931,7 +1994,8 @@ const receitasData = {
                 "Tampe e cozinhe sob pressão por 25 a 30 minutos.",
                 "Abra, tempere com sal e finalize com cheiro-verde fresco."
             ],
-            "tips": "Deixar o feijão de molho elimina fitatos que causam gases e reduz drasticamente o tempo de cozimento!"
+            "tips": "Deixar o feijão de molho elimina fitatos que causam gases e reduz drasticamente o tempo de cozimento!",
+            "image": null
         },
         {
             "id": 39,
@@ -1978,7 +2042,8 @@ const receitasData = {
                 "Cozinhe na pressão por 20 a 25 minutos.",
                 "Tempere com sal a gosto e amasse algumas conchas de grãos nas paredes da panela para engrossar o caldo."
             ],
-            "tips": "Finalize com coentro ou cheiro-verde para um toque especial de frescor."
+            "tips": "Finalize com coentro ou cheiro-verde para um toque especial de frescor.",
+            "image": null
         },
         {
             "id": 40,
@@ -2035,7 +2100,8 @@ const receitasData = {
                 "Vá adicionando a farinha de mandioca aos poucos, mexendo para agregar os sabores.",
                 "Ajuste com sal e pimenta e sirva quente."
             ],
-            "tips": "Sirva com torresmo estalando de crocante por cima."
+            "tips": "Sirva com torresmo estalando de crocante por cima.",
+            "image": null
         },
         {
             "id": 41,
@@ -2081,7 +2147,8 @@ const receitasData = {
                 "Adicione o feijão, cubra com água e cozinhe por 20 minutos (não deixe desmanchar).",
                 "Adicione o tomate fresco e finalize ajustando o sal e o cheiro-verde."
             ],
-            "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite de oliva extra virgem!"
+            "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite de oliva extra virgem!",
+            "image": null
         },
         {
             "id": 42,
@@ -2118,7 +2185,8 @@ const receitasData = {
                 "Deixe cozinhar com a tampa entreaberta por 15 minutos até a água secar totalmente.",
                 "Desligue o fogo e mantenha a panela tampada por 5 minutos antes de soltar com o garfo."
             ],
-            "tips": "A proporção de ouro é sempre de 2 xícaras de água quente para cada 1 xícara de arroz seco!"
+            "tips": "A proporção de ouro é sempre de 2 xícaras de água quente para cada 1 xícara de arroz seco!",
+            "image": null
         },
         {
             "id": 43,
@@ -2175,7 +2243,8 @@ const receitasData = {
                 "Abaixe o fogo quando ferver e, após 10 minutos, misture as ervilhas e o milho por cima.",
                 "Deixe secar totalmente, desligue e jogue o cheiro-verde salpicado."
             ],
-            "tips": "Colorido, saudável e as crianças adoram!"
+            "tips": "Colorido, saudável e as crianças adoram!",
+            "image": null
         },
         {
             "id": 44,
@@ -2227,7 +2296,8 @@ const receitasData = {
                 "Agregue o frango desfiado, os temperos de sua preferência e a água fervente.",
                 "Cozinhe em fogo baixo até que seque e finalize salpicando cheiro-verde."
             ],
-            "tips": "Um prato prático e muito rico em proteínas para o dia a dia!"
+            "tips": "Um prato prático e muito rico em proteínas para o dia a dia!",
+            "image": null
         },
         {
             "id": 45,
@@ -2269,7 +2339,8 @@ const receitasData = {
                 "Cozinhe em fogo brando com panela tampada.",
                 "Finalize com cheiro-verde fresco."
             ],
-            "tips": "O alho em lâminas confere um visual lindo e um sabor único à massa."
+            "tips": "O alho em lâminas confere um visual lindo e um sabor único à massa.",
+            "image": null
         },
         {
             "id": 46,
@@ -2321,7 +2392,8 @@ const receitasData = {
                 "Deixe refogar de 5 a 8 minutos até estarem tenros e brilhantes.",
                 "Finalize com cheiro-verde."
             ],
-            "tips": "Perfeito como prato de entrada ou guarnição saudável."
+            "tips": "Perfeito como prato de entrada ou guarnição saudável.",
+            "image": null
         },
         {
             "id": 47,
@@ -2378,7 +2450,8 @@ const receitasData = {
                 "Acrescente o brócolis picadinho e o pimentão.",
                 "Cozinhe até dourar bem e amaciar o brócolis. Finalize com cheiro-verde."
             ],
-            "tips": "A páprica defumada traz um leve toque defumado irresistível ao frango grelhado."
+            "tips": "A páprica defumada traz um leve toque defumado irresistível ao frango grelhado.",
+            "image": null
         },
         {
             "id": 48,
@@ -2435,7 +2508,8 @@ const receitasData = {
                 "Tempere com sal, pimenta e cominho.",
                 "Refogue tampado por mais 5 minutos e finalize com cheiro-verde."
             ],
-            "tips": "Fica incrível servido sobre um purê cremoso ou arroz."
+            "tips": "Fica incrível servido sobre um purê cremoso ou arroz.",
+            "image": null
         },
         {
             "id": 49,
@@ -2487,7 +2561,8 @@ const receitasData = {
                 "Junte o pimentão e mexa por 3 minutos.",
                 "Finalize salpicando bastante salsinha fresca."
             ],
-            "tips": "Atenção: Não cozinhe o camarão demais para que não fique duro ou com textura borrachuda."
+            "tips": "Atenção: Não cozinhe o camarão demais para que não fique duro ou com textura borrachuda.",
+            "image": null
         },
         {
             "id": 50,
@@ -2538,7 +2613,8 @@ const receitasData = {
                 "Coloque o shoyu e misture tudo.",
                 "Cozinhe por 5 minutos tampado e finalize salpicando sementes de gergelim e cebolinha."
             ],
-            "tips": "Opção vegana excelente, leve e rica em proteínas vegetais!"
+            "tips": "Opção vegana excelente, leve e rica em proteínas vegetais!",
+            "image": null
         },
         {
             "id": 51,
@@ -2585,7 +2661,8 @@ const receitasData = {
                 "Deixe cozinhar de 5 a 7 minutos até dourarem.",
                 "Finalize com cheiro-verde fresquinho e sirva."
             ],
-            "tips": "Maravilhoso para servir como entrada, cobertura de bifes ou acompanhando massas!"
+            "tips": "Maravilhoso para servir como entrada, cobertura de bifes ou acompanhando massas!",
+            "image": null
         },
         {
             "id": 52,
@@ -2638,7 +2715,8 @@ const receitasData = {
                 "Volte os bifes e os sucos liberados à frigideira, adicione a água e tampe cozinhando por mais 2 minutos.",
                 "Finalize com cheiro-verde e sirva."
             ],
-            "tips": "Dica: Não fure a carne com garfos enquanto sela para que os sucos permaneçam selados no interior do bife!"
+            "tips": "Dica: Não fure a carne com garfos enquanto sela para que os sucos permaneçam selados no interior do bife!",
+            "image": null
         },
         {
             "id": 53,
@@ -2691,7 +2769,8 @@ const receitasData = {
                 "Mexa constantemente até o molho encorpar.",
                 "Retorne os bifes reservados ao molho quente por 1 minuto e finalize salpicando salsinha."
             ],
-            "tips": "Harmoniza perfeitamente acompanhado de arroz branco e batata palha ou purê!"
+            "tips": "Harmoniza perfeitamente acompanhado de arroz branco e batata palha ou purê!",
+            "image": null
         },
         {
             "id": 54,
@@ -2744,7 +2823,8 @@ const receitasData = {
                 "Com uma colher, vá banhando continuamente o topo dos bifes com a manteiga derretida e aromatizada por 2 minutos.",
                 "Sirva bem quente."
             ],
-            "tips": "Usar manteiga de boa qualidade proporciona uma cor dourada e um brilho insuperáveis!"
+            "tips": "Usar manteiga de boa qualidade proporciona uma cor dourada e um brilho insuperáveis!",
+            "image": null
         },
         {
             "id": 55,
@@ -2807,7 +2887,8 @@ const receitasData = {
                 "Acrescente a água com o amido dissolvido e mexa até engrossar de forma aveludada.",
                 "Deite os bifes de volta ao molho borbulhante e sirva."
             ],
-            "tips": "Prato sofisticado digno de restaurante que você faz em 15 minutos em casa!"
+            "tips": "Prato sofisticado digno de restaurante que você faz em 15 minutos em casa!",
+            "image": null
         },
         {
             "id": 56,
@@ -2848,7 +2929,8 @@ const receitasData = {
                 "Grelhe em frigideira quente por 6 a 7 minutos de cada lado até ficar dourado.",
                 "Sirva com acompanhamentos frescos."
             ],
-            "tips": "Excelente servido com batata-doce assada!"
+            "tips": "Excelente servido com batata-doce assada!",
+            "image": null
         },
         {
             "id": 57,
@@ -2889,7 +2971,8 @@ const receitasData = {
                 "Adicione a mostarda e o creme de leite, mexendo ativamente.",
                 "Retorne os filés ao molho cremoso de mostarda, mexe bem e finalize com salsinha picada."
             ],
-            "tips": "Sirva acompanhado de arroz branco - fica simplesmente irresistível!"
+            "tips": "Sirva acompanhado de arroz branco - fica simplesmente irresistível!",
+            "image": null
         },
         {
             "id": 58,
@@ -2930,7 +3013,8 @@ const receitasData = {
                 "Adicione o frango desfiado e tempere a gosto.",
                 "Misture o pote inteiro de requeijão cremoso até homogeneizar e finalize com cheiro-verde."
             ],
-            "tips": "Dica: Essa receita é um recheio perfeito para panquecas, tortas ou recheio de tapiocas."
+            "tips": "Dica: Essa receita é um recheio perfeito para panquecas, tortas ou recheio de tapiocas.",
+            "image": null
         },
         {
             "id": 59,
@@ -2971,12 +3055,17 @@ const receitasData = {
                 "Acrescente o molho de tomate.",
                 "Volte o frango para a panela, misture tudo tampado por 5 minutos e finalize com folhas frescas de manjericão."
             ],
-            "tips": "Refeição super leve, de baixa caloria e extremamente saudável."
+            "tips": "Refeição super leve, de baixa caloria e extremamente saudável.",
+            "image": null
         },
         {
             "id": 60,
             "title": "Sopa de Legumes com Frango",
-            "category": ["janta","sopas","frango"],
+            "category": [
+                "janta",
+                "sopas",
+                "frango"
+            ],
             "source": "Receitas de Janta Leve (Opção 1)",
             "emoji": "🥣",
             "ingredients": [
@@ -3028,12 +3117,16 @@ const receitasData = {
                 "Adicione o peito de frango cozido e desfiado, os temperos e ferva por mais 5 minutos.",
                 "Finalize salpicando cheiro-verde fresco."
             ],
-            "tips": "Quente, aconchegante e perfeita para noites frias de descanso rápido. Pronta em 30 min!"
+            "tips": "Quente, aconchegante e perfeita para noites frias de descanso rápido. Pronta em 30 min!",
+            "image": null
         },
         {
             "id": 61,
             "title": "Omelete de Forno com Legumes",
-            "category": ["janta","lanches"],
+            "category": [
+                "janta",
+                "lanches"
+            ],
             "source": "Receitas de Janta Leve (Opção 2)",
             "emoji": "🍳",
             "ingredients": [
@@ -3080,12 +3173,17 @@ const receitasData = {
                 "Polvilhe o queijo ralado por toda a superfície.",
                 "Leve ao forno a 180°C pré-aquecido por cerca de 20 minutos até inflar e dourar."
             ],
-            "tips": "Receita pronta em apenas 25 minutos! Altamente proteica e de fácil digestão."
+            "tips": "Receita pronta em apenas 25 minutos! Altamente proteica e de fácil digestão.",
+            "image": null
         },
         {
             "id": 62,
             "title": "Frango Desfiado com Batata-Doce",
-            "category": ["janta","frango","batata"],
+            "category": [
+                "janta",
+                "frango",
+                "batata"
+            ],
             "source": "Receitas de Janta Leve (Opção 3)",
             "emoji": "🍠",
             "ingredients": [
@@ -3122,12 +3220,17 @@ const receitasData = {
                 "Adicione a batata-doce cozida e escorrida à frigideira e salteie delicadamente para misturar os sabores.",
                 "Finalize salpicando cheiro-verde e sirva."
             ],
-            "tips": "Combinação clássica 'maromba', excelente refeição pré ou pós-treino noturno!"
+            "tips": "Combinação clássica 'maromba', excelente refeição pré ou pós-treino noturno!",
+            "image": null
         },
         {
             "id": 63,
             "title": "Tapioca de Frango com Queijo",
-            "category": ["janta","lanches","frango"],
+            "category": [
+                "janta",
+                "lanches",
+                "frango"
+            ],
             "source": "Receitas de Janta Leve (Opção 4)",
             "emoji": "🌮",
             "ingredients": [
@@ -3158,7 +3261,8 @@ const receitasData = {
                 "Coloque o queijo, o frango desfiado temperado, o tomate e o orégano em uma das metades.",
                 "Dobre a tapioca ao meio, abafe por 30 segundos para o queijo derreter e sirva quente."
             ],
-            "tips": "Substituto leve e sem glúten para o pão no jantar. Pronta em 15 minutos!"
+            "tips": "Substituto leve e sem glúten para o pão no jantar. Pronta em 15 minutos!",
+            "image": null
         },
         {
             "id": 64,
@@ -3200,7 +3304,8 @@ const receitasData = {
                 "Despeje o creme de mandioca na panela de refogado, tempere e ferva em fogo brando por 10 minutos.",
                 "Sirva com cheiro-verde."
             ],
-            "tips": "Creme denso e extremamente saboroso que confere imensa saciedade."
+            "tips": "Creme denso e extremamente saboroso que confere imensa saciedade.",
+            "image": null
         },
         {
             "id": 65,
@@ -3241,12 +3346,16 @@ const receitasData = {
                 "Adicione o grão-de-bico cozido, mexa e aqueça por 3 minutos.",
                 "Tempere fora do fogo com sal, limão fresco, azeite extra virgem, pimenta e salsinha."
             ],
-            "tips": "Refeição saudável, rica em fibras e proteínas vegetais, excelente digestibilidade noturna."
+            "tips": "Refeição saudável, rica em fibras e proteínas vegetais, excelente digestibilidade noturna.",
+            "image": null
         },
         {
             "id": 66,
             "title": "Panqueca de Aveia com Ricota e Espinafre",
-            "category": ["janta","lanches"],
+            "category": [
+                "janta",
+                "lanches"
+            ],
             "source": "Receitas de Janta Leve (Opção 7)",
             "emoji": "🥞",
             "ingredients": [
@@ -3292,12 +3401,16 @@ const receitasData = {
                 "Misture a ricota com o espinafre refogado e tempere.",
                 "Recheie as panquecas, enrole-as, disponha em uma travessa e cubra com molho de tomate quente. Leve ao forno rápido por 10 minutos."
             ],
-            "tips": "Receita leve e de baixo índice glicêmico para auxiliar no bem-estar noturno!"
+            "tips": "Receita leve e de baixo índice glicêmico para auxiliar no bem-estar noturno!",
+            "image": null
         },
         {
             "id": 67,
             "title": "Risoto Prático de Legumes",
-            "category": ["janta","arroz"],
+            "category": [
+                "janta",
+                "arroz"
+            ],
             "source": "Receitas de Janta Leve (Opção 8)",
             "emoji": "🍚",
             "ingredients": [
@@ -3344,12 +3457,16 @@ const receitasData = {
                 "Quando o arroz estiver no meio do cozimento, incorpore a cenoura, abobrinha e ervilhas.",
                 "Continue mexendo até ficar macio e cremoso. Finalize desligando o fogo, jogando queijo parmesão ralado e mexendo vigorosamente."
             ],
-            "tips": "O segredo do risoto perfeito está em mexer constantemente para liberar o amido do arroz, criando o próprio creme!"
+            "tips": "O segredo do risoto perfeito está em mexer constantemente para liberar o amido do arroz, criando o próprio creme!",
+            "image": null
         },
         {
             "id": 68,
             "title": "Filé de Peixe Assado com Legumes",
-            "category": ["janta","peixe"],
+            "category": [
+                "janta",
+                "peixe"
+            ],
             "source": "Receitas de Janta Leve (Opção 9)",
             "emoji": "🐟",
             "ingredients": [
@@ -3385,7 +3502,8 @@ const receitasData = {
                 "Coloque o peixe por cima dos vegetais e regue com um bom fio de azeite.",
                 "Asse em forno pré-aquecido a 200°C por cerca de 25 a 30 minutos."
             ],
-            "tips": "Uma janta ideal, equilibrada, livre de gorduras pesadas e com digestão fantástica para garantir uma boa noite de sono!"
+            "tips": "Uma janta ideal, equilibrada, livre de gorduras pesadas e com digestão fantástica para garantir uma boa noite de sono!",
+            "image": null
         },
         {
             "id": 69,
@@ -3437,7 +3555,8 @@ const receitasData = {
                 "Despeje o creme de batatas na panela com a calabresa, misture bem e deixe ferver por 5 minutos.",
                 "Adicione a couve fatiada e apague o fogo para que ela cozinhe apenas com o calor do caldo. Finalize com cheiro-verde."
             ],
-            "tips": "A couve adicionada no final mantém sua cor verde brilhante e textura crocante perfeita!"
+            "tips": "A couve adicionada no final mantém sua cor verde brilhante e textura crocante perfeita!",
+            "image": null
         },
         {
             "id": 70,
@@ -3484,7 +3603,8 @@ const receitasData = {
                 "Adicione o creme de mandioca, ajuste o sal e pimenta e cozinhe em fogo brando por mais 10 minutos para apurar o sabor.",
                 "Finalize salpicando bastante cheiro-verde fresco."
             ],
-            "tips": "Sirva acompanhado de torradas regadas com azeite de oliva e alho."
+            "tips": "Sirva acompanhado de torradas regadas com azeite de oliva e alho.",
+            "image": null
         },
         {
             "id": 71,
@@ -3536,7 +3656,8 @@ const receitasData = {
                 "Despeje o creme de milho e deixe cozinhar em fogo brando, mexendo sempre, por cerca de 10 a 15 minutos até reduzir.",
                 "Desligue o fogo, misture o creme de leite e finalize salpicando cheiro-verde fresco."
             ],
-            "tips": "A páprica defumada adiciona uma complexidade de sabor incrível que contrasta perfeitamente com o adocicado do milho."
+            "tips": "A páprica defumada adiciona uma complexidade de sabor incrível que contrasta perfeitamente com o adocicado do milho.",
+            "image": null
         },
         {
             "id": 72,
@@ -3587,7 +3708,8 @@ const receitasData = {
                 "Adicione o creme de leite aos poucos, misturando constantemente em fogo mínimo.",
                 "Tempere a gosto com sal, pimenta-do-reino e orégano e sirva quente com sua massa preferida."
             ],
-            "tips": "Combina perfeitamente com massas recheadas de queijo como ravióli ou capeletti."
+            "tips": "Combina perfeitamente com massas recheadas de queijo como ravióli ou capeletti.",
+            "image": null
         },
         {
             "id": 73,
@@ -3633,7 +3755,8 @@ const receitasData = {
                 "Abaixe o fogo, tampe parcialmente e deixe cozinhar por cerca de 30 a 40 minutos, mexendo ocasionalmente, até que os tomates se desmanchem e incorporem.",
                 "Ajuste o sal, a pimenta-do-reino e adicione folhas de manjericão fresco minutos antes de desligar."
             ],
-            "tips": "Se preferir um molho liso de pizzaria, passe o molho pronto por uma peneira ou bata no liquidificador."
+            "tips": "Se preferir um molho liso de pizzaria, passe o molho pronto por uma peneira ou bata no liquidificador.",
+            "image": null
         },
         {
             "id": 74,
@@ -3680,7 +3803,8 @@ const receitasData = {
                 "Incorpore o queijo muçarela e o parmesão, mexendo até derreterem completamente.",
                 "Finalize temperando com sal e uma pitada sutil de noz-moscada ralada."
             ],
-            "tips": "Sirva imediatamente, pois molhos à base de queijo tendem a engrossar rápido ao esfriar!"
+            "tips": "Sirva imediatamente, pois molhos à base de queijo tendem a engrossar rápido ao esfriar!",
+            "image": null
         },
         {
             "id": 75,
@@ -3721,7 +3845,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo até obter um molho encorpado e liso.",
                 "Desligue o fogo, misture a caixinha de creme de leite e tempere a gosto com sal, pimenta-do-reino e noz-moscada."
             ],
-            "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folha de louro antes de montar o molho!"
+            "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folha de louro antes de montar o molho!",
+            "image": null
         },
         {
             "id": 76,
@@ -3768,7 +3893,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo com tampa por 15 minutos até engrossar de forma homogênea.",
                 "Adicione sal, pimenta e finalize salpicando cheiro-verde fresco."
             ],
-            "tips": "Excelente base para lasanhas de queijo e presunto ou espaguete tradicional!"
+            "tips": "Excelente base para lasanhas de queijo e presunto ou espaguete tradicional!",
+            "image": null
         },
         {
             "id": 77,
@@ -3814,7 +3940,8 @@ const receitasData = {
                 "Adicione uma colher de água quente do cozimento da massa para criar uma emulsão leve.",
                 "Retire do fogo, jogue a massa quente diretamente no molho e polvilhe o parmesão e a salsinha fresca."
             ],
-            "tips": "A simplicidade desse molho italiano clássico brilha imensamente quando finalizado com raspas de limão siciliano!"
+            "tips": "A simplicidade desse molho italiano clássico brilha imensamente quando finalizado com raspas de limão siciliano!",
+            "image": null
         },
         {
             "id": 78,
@@ -3855,7 +3982,8 @@ const receitasData = {
                 "Adicione o alho amassado e refogue até dourar.",
                 "Despeje o feijão batido na panela, tempere a gosto e cozinhe por 15 minutos até engrossar e encorpar sabor."
             ],
-            "tips": "Sirva bem quente com croutons e gotas de pimenta."
+            "tips": "Sirva bem quente com croutons e gotas de pimenta.",
+            "image": null
         },
         {
             "id": 79,
@@ -3906,7 +4034,8 @@ const receitasData = {
                 "Cozinhe em fogo médio até que todos os legumes estejam bem macios.",
                 "Incorpore o frango cozido e desfiado, tempere com sal e pimenta e ferva por mais 5 minutos antes de servir."
             ],
-            "tips": "Se preferir uma sopa mais espessa, amasse alguns pedaços de batata direto no caldo."
+            "tips": "Se preferir uma sopa mais espessa, amasse alguns pedaços de batata direto no caldo.",
+            "image": null
         },
         {
             "id": 80,
@@ -3957,7 +4086,8 @@ const receitasData = {
                 "Adicione o molho de tomate à carne e deixe apurar.",
                 "Monte colocando a polenta cremosa no fundo da travessa e despejando a carne com molho por cima."
             ],
-            "tips": "Adicione duas colheres de creme de leite ou requeijão na polenta cozida para um toque extra aveludado."
+            "tips": "Adicione duas colheres de creme de leite ou requeijão na polenta cozida para um toque extra aveludado.",
+            "image": null
         },
         {
             "id": 81,
@@ -4003,7 +4133,8 @@ const receitasData = {
                 "Em um refratário médio, faça camadas de purê de batatas no fundo, a carne refogada no meio e o restante do purê no topo.",
                 "Polvilhe queijo generosamente e leve ao forno pré-aquecido a 200°C por 20 minutos para gratinar."
             ],
-            "tips": "Pode ser feito também substituindo a batata por mandioca ou abóbora cabotiá!"
+            "tips": "Pode ser feito também substituindo a batata por mandioca ou abóbora cabotiá!",
+            "image": null
         },
         {
             "id": 82,
@@ -4044,7 +4175,8 @@ const receitasData = {
                 "Em uma panela, derreta a manteiga e refogue a cebola ralada rápida.",
                 "Adicione o líquido batido e cozinhe em fogo baixo mexendo sempre até engrossar saborosamente. Tempere."
             ],
-            "tips": "Sirva acompanhado de arroz e frango grelhado de domingo."
+            "tips": "Sirva acompanhado de arroz e frango grelhado de domingo.",
+            "image": null
         },
         {
             "id": 83,
@@ -4085,7 +4217,8 @@ const receitasData = {
                 "Leve ao fogo médio, mexendo constantemente para não criar grumos, até ferver e engrossar de forma aveludada.",
                 "Apague o fogo, misture a baunilha e sirva imediatamente em canecas."
             ],
-            "tips": "Se quiser ainda mais cremosidade, adicione um quadradinho de chocolate meio amargo no final para derreter!"
+            "tips": "Se quiser ainda mais cremosidade, adicione um quadradinho de chocolate meio amargo no final para derreter!",
+            "image": null
         },
         {
             "id": 84,
@@ -4126,7 +4259,8 @@ const receitasData = {
                 "Junte o creme batido à panela de calabresa.",
                 "Deixe ferver por 10 minutos para apurar o sal e finalize salpicando cheiro-verde."
             ],
-            "tips": "Delicioso prato único para noites frias de outono."
+            "tips": "Delicioso prato único para noites frias de outono.",
+            "image": null
         },
         {
             "id": 85,
@@ -4173,12 +4307,17 @@ const receitasData = {
                 "Deixe cozinhar em fogo baixo até que o arroz e a cenoura estejam completamente macios.",
                 "Tempere com sal e pimenta e finalize com cheiro-verde."
             ],
-            "tips": "Comida afetiva perfeita para combater resfriados e confortar o corpo!"
+            "tips": "Comida afetiva perfeita para combater resfriados e confortar o corpo!",
+            "image": null
         },
         {
             "id": 86,
             "title": "Frango Grelhado Saudável",
-            "category": ["almoco","frango","arroz"],
+            "category": [
+                "almoco",
+                "frango",
+                "arroz"
+            ],
             "source": "Receitas de Almoço (Card 1)",
             "emoji": "🍱",
             "ingredients": [
@@ -4215,12 +4354,17 @@ const receitasData = {
                 "Refogue a cenoura e abobrinha rapidamente em azeite com alho.",
                 "Sirva o frango com arroz e legumes coloridos."
             ],
-            "tips": "Excelente opção fitness e balanceada."
+            "tips": "Excelente opção fitness e balanceada.",
+            "image": null
         },
         {
             "id": 87,
             "title": "Carne de Panela com Batatas",
-            "category": ["almoco","bife","batata"],
+            "category": [
+                "almoco",
+                "bife",
+                "batata"
+            ],
             "source": "Receitas de Almoço (Card 2)",
             "emoji": "🥩",
             "ingredients": [
@@ -4256,12 +4400,17 @@ const receitasData = {
                 "Adicione as batatas cortadas e deixe cozinhar no próprio caldo até ficarem macias.",
                 "Finalize salpicando cheiro-verde fresco antes de servir."
             ],
-            "tips": "Cozinhar em fogo brando encorpa muito o caldo!"
+            "tips": "Cozinhar em fogo brando encorpa muito o caldo!",
+            "image": null
         },
         {
             "id": 88,
             "title": "Arroz de Forno com Frango Desfiado",
-            "category": ["almoco","arroz","frango"],
+            "category": [
+                "almoco",
+                "arroz",
+                "frango"
+            ],
             "source": "Receitas de Almoço (Card 3)",
             "emoji": "🍛",
             "ingredients": [
@@ -4297,12 +4446,16 @@ const receitasData = {
                 "Cubra totalmente com queijo ralado ou muçarela fatiada.",
                 "Leve ao forno a 200°C por 15 minutos até dourar e gratinar."
             ],
-            "tips": "Se sobrou arroz da janta anterior, essa receita é ideal para dar vida nova a ele!"
+            "tips": "Se sobrou arroz da janta anterior, essa receita é ideal para dar vida nova a ele!",
+            "image": null
         },
         {
             "id": 89,
             "title": "Strogonoff de Frango Expresso",
-            "category": ["almoco","frango"],
+            "category": [
+                "almoco",
+                "frango"
+            ],
             "source": "Receitas de Almoço (Card 4)",
             "emoji": "🍛",
             "ingredients": [
@@ -4339,12 +4492,16 @@ const receitasData = {
                 "Desligue o fogo e incorpore o creme de leite.",
                 "Sirva com arroz branco soltinho e batata palha por cima."
             ],
-            "tips": "Prato preferido das crianças de preparo extremamente rápido!"
+            "tips": "Prato preferido das crianças de preparo extremamente rápido!",
+            "image": null
         },
         {
             "id": 90,
             "title": "Feijão Tropeiro com Carne Seca",
-            "category": ["almoco","feijao"],
+            "category": [
+                "almoco",
+                "feijao"
+            ],
             "source": "Receitas de Almoço (Card 5)",
             "emoji": "🥓",
             "ingredients": [
@@ -4380,12 +4537,17 @@ const receitasData = {
                 "Adicione os ovos fritos mexidos em cubos.",
                 "Adicione a farinha de mandioca aos poucos, mexendo para não secar demais, e jogue cheiro-verde fresco."
             ],
-            "tips": "Delicioso se servido com couve refogada no alho ao lado!"
+            "tips": "Delicioso se servido com couve refogada no alho ao lado!",
+            "image": null
         },
         {
             "id": 91,
             "title": "Escondidinho de Batata com Carne Moída",
-            "category": ["almoco","bife","batata"],
+            "category": [
+                "almoco",
+                "bife",
+                "batata"
+            ],
             "source": "Receitas de Almoço (Card 6)",
             "emoji": "🥧",
             "ingredients": [
@@ -4421,12 +4583,17 @@ const receitasData = {
                 "Monte refratários em camadas de carne moída por baixo e purê de batatas por cima.",
                 "Polvilhe queijo e leve ao forno para gratinar."
             ],
-            "tips": "Coloque uma colher de azeite por cima para que o queijo gratine de forma uniforme."
+            "tips": "Coloque uma colher de azeite por cima para que o queijo gratine de forma uniforme.",
+            "image": null
         },
         {
             "id": 92,
             "title": "Peixe Assado com Batatas",
-            "category": ["almoco","peixe","batata"],
+            "category": [
+                "almoco",
+                "peixe",
+                "batata"
+            ],
             "source": "Receitas de Almoço (Card 7)",
             "emoji": "🐟",
             "ingredients": [
@@ -4462,12 +4629,16 @@ const receitasData = {
                 "Regue abundantemente com azeite de oliva extra virgem.",
                 "Asse em forno médio por cerca de 35 a 40 minutos até que as batatas estejam tenras."
             ],
-            "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo."
+            "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo.",
+            "image": null
         },
         {
             "id": 93,
             "title": "Macarrão Prático à Bolonhesa",
-            "category": ["almoco","macarrao"],
+            "category": [
+                "almoco",
+                "macarrao"
+            ],
             "source": "Receitas de Almoço (Card 8)",
             "emoji": "🍝",
             "ingredients": [
@@ -4503,12 +4674,17 @@ const receitasData = {
                 "Adicione o molho de tomate e tempere com sal e orégano.",
                 "Escorra a massa e envolva ao molho bolonhesa quentinho, servindo salpicado de parmesão."
             ],
-            "tips": "Prato único para quem busca praticidade sem abrir mão de sabor clássico."
+            "tips": "Prato único para quem busca praticidade sem abrir mão de sabor clássico.",
+            "image": null
         },
         {
             "id": 94,
             "title": "Frango ao Creme com Arroz e Salada",
-            "category": ["almoco","frango","arroz"],
+            "category": [
+                "almoco",
+                "frango",
+                "arroz"
+            ],
             "source": "Receitas de Almoço (Card 9)",
             "emoji": "🍗",
             "ingredients": [
@@ -4544,7 +4720,8 @@ const receitasData = {
                 "Acrescente o creme de leite e deixe ferver por 5 minutos tampado.",
                 "Sirva o frango com arroz soltinho e salada verde de folhas."
             ],
-            "tips": "Delicioso se salpicado de sementes de girassol tostadas na salada!"
+            "tips": "Delicioso se salpicado de sementes de girassol tostadas na salada!",
+            "image": null
         },
         {
             "id": 95,
@@ -4580,7 +4757,8 @@ const receitasData = {
                 "Feche o sanduíche.",
                 "Leve à sanduicheira ou doure na frigideira até o queijo derreter completamente."
             ],
-            "tips": "Lanche clássico e reconfortante perfeito para tardes frias com café."
+            "tips": "Lanche clássico e reconfortante perfeito para tardes frias com café.",
+            "image": "95.png"
         },
         {
             "id": 96,
@@ -4616,7 +4794,8 @@ const receitasData = {
                 "Recheie com o frango cozido e desfiado temperado, a fatia de queijo e orégano.",
                 "Dobre ao meio e espere derreter."
             ],
-            "tips": "Substituto leve e sem glúten para o jantar ou lanche pós-treino rápido."
+            "tips": "Substituto leve e sem glúten para o jantar ou lanche pós-treino rápido.",
+            "image": "96.png"
         },
         {
             "id": 97,
@@ -4657,7 +4836,8 @@ const receitasData = {
                 "Recheie com presunto e queijo fatiados.",
                 "Leve à frigideira quente untada com manteiga, dourando de ambos os lados até gratinar."
             ],
-            "tips": "Receita clássica francesa (Pain Perdu) na versão salgada e deliciosa."
+            "tips": "Receita clássica francesa (Pain Perdu) na versão salgada e deliciosa.",
+            "image": "97.png"
         },
         {
             "id": 98,
@@ -4698,7 +4878,8 @@ const receitasData = {
                 "Despeje em uma caneca untada com fio de azeite.",
                 "Leve ao micro-ondas por 2 a 3 minutos na potência máxima."
             ],
-            "tips": "Lanche rápido e proteico perfeito para quem tem pressa!"
+            "tips": "Lanche rápido e proteico perfeito para quem tem pressa!",
+            "image": "98.png"
         },
         {
             "id": 99,
@@ -4743,7 +4924,8 @@ const receitasData = {
                 "Monte adicionando o frango desfiado, as rodelas de tomate, alface e a cenoura ralada.",
                 "Feche o sanduíche e sirva geladinho."
             ],
-            "tips": "Lanche fresco excelente para transportar para o trabalho."
+            "tips": "Lanche fresco excelente para transportar para o trabalho.",
+            "image": "99.png"
         },
         {
             "id": 100,
@@ -4773,7 +4955,8 @@ const receitasData = {
                 "Recheie com presunto e queijo fatiados de forma proporcional.",
                 "Leve ao forno quente ou airfryer por 5 minutos até derreter o queijo e aquecer os pães."
             ],
-            "tips": "Especialmente saboroso se feito na hora do café da tarde!"
+            "tips": "Especialmente saboroso se feito na hora do café da tarde!",
+            "image": "100.png"
         },
         {
             "id": 101,
@@ -4808,7 +4991,8 @@ const receitasData = {
                 "Despeje em uma frigideira antiaderente morna e doure de ambos os lados.",
                 "Recheie com seu ingrediente favorito (queijo e frango, por exemplo), dobre e sirva."
             ],
-            "tips": "Receita de lanche saudável que dá muita saciedade e energia."
+            "tips": "Receita de lanche saudável que dá muita saciedade e energia.",
+            "image": "101.png"
         },
         {
             "id": 102,
@@ -4848,12 +5032,17 @@ const receitasData = {
                 "Bata vigorosamente por 2 minutos até obter consistência cremosa.",
                 "Sirva bem geladinho."
             ],
-            "tips": "Perfeito para substituir café da manhã ou reforçar lanches da manhã antes do trabalho!"
+            "tips": "Perfeito para substituir café da manhã ou reforçar lanches da manhã antes do trabalho!",
+            "image": "102.png"
         },
         {
             "id": 103,
             "title": "Wrap de Frango com Atum",
-            "category": "lanches",
+            "category": [
+                "lanches",
+                "frango",
+                "peixe"
+            ],
             "source": "Receitas de Lanches Práticos (Card 9)",
             "emoji": "🌯",
             "ingredients": [
@@ -4888,7 +5077,8 @@ const receitasData = {
                 "Adicione a proteína escolhida (frango ou atum escorrido), a alface picada e tomate.",
                 "Enrole apertado como um rocambole fatiando no meio para facilitar a mordida."
             ],
-            "tips": "Uma delícia saudável de baixa caloria."
+            "tips": "Uma delícia saudável de baixa caloria.",
+            "image": "103.png"
         },
         {
             "id": 104,
@@ -4929,7 +5119,8 @@ const receitasData = {
                 "Distribua em formas de gelo e leve ao congelador até firmar.",
                 "Ideal para usar em sopas, arroz e pratos leves do dia a dia."
             ],
-            "tips": "Desenforme os cubos congelados e guarde-os em um saco hermético no freezer para facilitar o uso!"
+            "tips": "Desenforme os cubos congelados e guarde-os em um saco hermético no freezer para facilitar o uso!",
+            "image": "104.png"
         },
         {
             "id": 105,
@@ -4970,7 +5161,8 @@ const receitasData = {
                 "Preencha forminhas de gelo com a mistura e congele.",
                 "Excelente para encorpar molhos escuros e pratos com sabor mais intenso."
             ],
-            "tips": "Substitui com extrema vantagem à saúde os tabletes industrializados carregados de sódio."
+            "tips": "Substitui com extrema vantagem à saúde os tabletes industrializados carregados de sódio.",
+            "image": "105.png"
         },
         {
             "id": 106,
@@ -5011,7 +5203,8 @@ const receitasData = {
                 "Reduza o líquido filtrado no fogo e despeje em fôrmas para congelamento.",
                 "Perfeito como base rica para sopas de frutos do mar, risotos e mariscos."
             ],
-            "tips": "Caldo de peixe não deve ferver por horas como o de carne para não amargar; 30 minutos bastam."
+            "tips": "Caldo de peixe não deve ferver por horas como o de carne para não amargar; 30 minutos bastam.",
+            "image": "106.png"
         },
         {
             "id": 107,
@@ -5052,7 +5245,8 @@ const receitasData = {
                 "Disponha nas fôrmas de gelo e congele.",
                 "Uma opção leve, versátil e balanceada para qualquer tipo de preparação culinária."
             ],
-            "tips": "Você pode aproveitar talos de brócolis, folhas de salsão e cascas de cebola bem lavadas para essa receita."
+            "tips": "Você pode aproveitar talos de brócolis, folhas de salsão e cascas de cebola bem lavadas para essa receita.",
+            "image": "107.png"
         },
         {
             "id": 108,
@@ -5088,7 +5282,8 @@ const receitasData = {
                 "Despeje toda a mistura em uma frigideira antiaderente untada e aquecida.",
                 "Cozinhe em fogo baixo por 3 a 5 minutos de cada lado até dourar e firmar."
             ],
-            "tips": "Pronto em apenas 10 minutos! Uma refeição rápida e rica em proteínas."
+            "tips": "Pronto em apenas 10 minutos! Uma refeição rápida e rica em proteínas.",
+            "image": null
         },
         {
             "id": 109,
@@ -5124,7 +5319,8 @@ const receitasData = {
                 "Misture a massa escorrida diretamente na frigideira com o azeite de alho.",
                 "Incorpore bem e sirva quente."
             ],
-            "tips": "Adicione uma pitada de pimenta calabresa seca junto ao alho para uma versão Alho, Óleo e Pimenta clássica."
+            "tips": "Adicione uma pitada de pimenta calabresa seca junto ao alho para uma versão Alho, Óleo e Pimenta clássica.",
+            "image": null
         },
         {
             "id": 110,
@@ -5159,7 +5355,8 @@ const receitasData = {
                 "Deixe a carne descansar por 5 minutos para fixar os sabores.",
                 "Grelhe em uma frigideira antiaderente bem quente por cerca de 8 minutos de cada lado, até dourar uniformemente."
             ],
-            "tips": "Fica perfeito se combinado com arroz integral e ovos cozidos para ganho de massa muscular magra!"
+            "tips": "Fica perfeito se combinado com arroz integral e ovos cozidos para ganho de massa muscular magra!",
+            "image": null
         },
         {
             "id": 111,
@@ -5195,7 +5392,8 @@ const receitasData = {
                 "Acrescente a água quente e ajuste o sal.",
                 "Cozinhe em fogo brando com a tampa entreaberta até secar a água por completo."
             ],
-            "tips": "Refeição completa pronta em 20 minutos com apenas uma panela para lavar."
+            "tips": "Refeição completa pronta em 20 minutos com apenas uma panela para lavar.",
+            "image": null
         },
         {
             "id": 112,
@@ -5230,7 +5428,8 @@ const receitasData = {
                 "Leve à sanduicheira ou doure em uma frigideira quente com um pouco de manteiga.",
                 "Aqueça até o pão ficar crocante e o queijo derreter por completo."
             ],
-            "tips": "Pronto em 5 minutos, o tomate quebra a gordura do queijo e traz frescor."
+            "tips": "Pronto em 5 minutos, o tomate quebra a gordura do queijo e traz frescor.",
+            "image": null
         },
         {
             "id": 113,
@@ -5260,7 +5459,8 @@ const receitasData = {
                 "Assim que a base se unir, adicione o queijo e o frango desfiado temperado sobre uma das metades.",
                 "Dobre a massa ao meio e sirva quente."
             ],
-            "tips": "Excelente opção rápida de lanche ou café da manhã fit."
+            "tips": "Excelente opção rápida de lanche ou café da manhã fit.",
+            "image": null
         },
         {
             "id": 114,
@@ -5295,7 +5495,8 @@ const receitasData = {
                 "Acrescente os ovos diretamente na frigideira e mexa até que fiquem cozidos em pedaços.",
                 "Adicione o arroz cozido frio, misture tudo e aqueça bem."
             ],
-            "tips": "Ótima receita de 15 minutos para reaproveitar as sobras de arroz da geladeira!"
+            "tips": "Ótima receita de 15 minutos para reaproveitar as sobras de arroz da geladeira!",
+            "image": null
         },
         {
             "id": 115,
@@ -5325,7 +5526,8 @@ const receitasData = {
                 "Adicione a cebola fatiada na panela junto com os sucos da carne.",
                 "Refogue em fogo médio por mais 5 minutos até a cebola murchar e caramelizar levemente."
             ],
-            "tips": "Use cores rápidos como patinho, alcatra ou contrafilé para manter a suculência."
+            "tips": "Use cores rápidos como patinho, alcatra ou contrafilé para manter a suculência.",
+            "image": null
         },
         {
             "id": 116,
@@ -5360,7 +5562,8 @@ const receitasData = {
                 "Em um frasco ou pote de vidro, junte o azeite, o vinagre e o suco de limão.",
                 "Tempere com sal e pimenta, feche o frasco e agite vigorosamente até emulsionar."
             ],
-            "tips": "Excelente para saladas de folhas duras, churrasco ou para acompanhar feijão."
+            "tips": "Excelente para saladas de folhas duras, churrasco ou para acompanhar feijão.",
+            "image": "116.png"
         },
         {
             "id": 117,
@@ -5390,7 +5593,8 @@ const receitasData = {
                 "Adicione as ervas secas trituradas (orégano, tomilho e alecrim).",
                 "Ajuste com sal e pimenta, batendo com um garfo até obter um molho homogêneo."
             ],
-            "tips": "Muito refrescante, combina perfeitamente com saladas verdes e peixes grelhados."
+            "tips": "Muito refrescante, combina perfeitamente com saladas verdes e peixes grelhados.",
+            "image": "117.png"
         },
         {
             "id": 118,
@@ -5430,7 +5634,8 @@ const receitasData = {
                 "Adicione as ervas frescas limpas (salsinha, coentro e hortelã).",
                 "Bata tudo até obter um molho de consistência cremosa e coloração verde uniforme. Ajuste o sal."
             ],
-            "tips": "Cremoso, leve e com baixas calorias, excelente substituto para molhos à base de maionese pesada."
+            "tips": "Cremoso, leve e com baixas calorias, excelente substituto para molhos à base de maionese pesada.",
+            "image": "118.png"
         },
         {
             "id": 119,
@@ -5470,7 +5675,8 @@ const receitasData = {
                 "Adicione o suco de limão (a mistura vai engrossar e clarear inicialmente).",
                 "Vá adicionando a água morna aos poucos, mexendo sempre até atingir uma consistência fluida de molho. Finalize com sal."
             ],
-            "tips": "Clássico da culinária árabe, fica excelente em saladas de tomate, pepino ou grão-de-bico."
+            "tips": "Clássico da culinária árabe, fica excelente em saladas de tomate, pepino ou grão-de-bico.",
+            "image": "119.png"
         },
         {
             "id": 120,
@@ -5510,7 +5716,8 @@ const receitasData = {
                 "Adicione a mostarda, o suco de limão e o azeite de oliva.",
                 "Bata vigorosamente com um garfo ou fouet pequeno até emulsionar e tempere com sal."
             ],
-            "tips": "O contraste entre a acidez frutada do maracujá e a picância da mostarda é perfeito para saladas tropicais."
+            "tips": "O contraste entre a acidez frutada do maracujá e a picância da mostarda é perfeito para saladas tropicais.",
+            "image": "120.png"
         },
         {
             "id": 121,
@@ -5550,7 +5757,8 @@ const receitasData = {
                 "Adicione o gengibre fresco ralado na hora e um toque de suco de laranja.",
                 "Misture tudo muito bem até unificar os líquidos e tempere com sal se achar necessário."
             ],
-            "tips": "Traz o perfil clássico de sabor oriental (umami), combinando muito bem com saladas de repolho ou acelga."
+            "tips": "Traz o perfil clássico de sabor oriental (umami), combinando muito bem com saladas de repolho ou acelga.",
+            "image": "121.png"
         },
         {
             "id": 122,
@@ -5590,7 +5798,8 @@ const receitasData = {
                 "Em um bowl, junte o iogurte, a hortelã picada, o suco de limão e o azeite.",
                 "Misture bem com uma colher e tempere com uma pitada de sal."
             ],
-            "tips": "Extremamente refrescante para os dias quentes, combina muito com saladas contendo pepino e mix de folhas."
+            "tips": "Extremamente refrescante para os dias quentes, combina muito com saladas contendo pepino e mix de folhas.",
+            "image": "122.png"
         },
         {
             "id": 123,
@@ -5625,7 +5834,8 @@ const receitasData = {
                 "Adicione o azeite de oliva e o gengibre fresco ralado fininho.",
                 "Tempere com sal e pimenta-do-reino, feche o pote e agite bem para homogeneizar."
             ],
-            "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango desfiado ou cenoura."
+            "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango desfiado ou cenoura.",
+            "image": "123.png"
         },
         {
             "id": 124,
@@ -5676,7 +5886,8 @@ const receitasData = {
                 "Disponha os filés temperados por cima dos vegetais e regue com o restante da marinada.",
                 "Leve ao forno preaquecido a 200°C por cerca de 30 minutos até o peixe assar por completo."
             ],
-            "tips": "Para um toque especial de chef, finalize salpicando cheiro-verde fresco e raspas de limão ao sair do forno!"
+            "tips": "Para um toque especial de chef, finalize salpicando cheiro-verde fresco e raspas de limão ao sair do forno!",
+            "image": null
         },
         {
             "id": 125,
@@ -5728,7 +5939,8 @@ const receitasData = {
                 "Acrescente o restante do suco de limão e as raspas, voltando os filés para a frigideira por mais 2 minutos.",
                 "Finalize com cheiro-verde picado e sirva."
             ],
-            "tips": "Molho sofisticado e aveludado que fica delicioso se servido com purê de batatas ou arroz com brócolis."
+            "tips": "Molho sofisticado e aveludado que fica delicioso se servido com purê de batatas ou arroz com brócolis.",
+            "image": null
         },
         {
             "id": 126,
@@ -5779,7 +5991,8 @@ const receitasData = {
                 "Regue tudo uniformemente com o azeite de dendê e o leite de coco.",
                 "Cozinhe em fogo baixo com a panela tampada por cerca de 20 minutos (evite mexer para não quebrar o peixe). Finalize com coentro."
             ],
-            "tips": "Dica tradicional: Sirva bem quente acompanhado de um pirão feito com o próprio caldo da moqueca e farinha de mandioca!"
+            "tips": "Dica tradicional: Sirva bem quente acompanhado de um pirão feito com o próprio caldo da moqueca e farinha de mandioca!",
+            "image": null
         },
         {
             "id": 127,
@@ -5830,7 +6043,8 @@ const receitasData = {
                 "Disponha os filés em uma assadeira untada ou forrada com papel manteiga.",
                 "Pincele ou regue com um fio de azeite por cima e leve ao forno a 200°C por cerca de 25 minutos ou até dourar."
             ],
-            "tips": "Para uma crocância ainda mais potente e estilo restaurante, substitua a farinha de rosca tradicional por farinha panko!"
+            "tips": "Para uma crocância ainda mais potente e estilo restaurante, substitua a farinha de rosca tradicional por farinha panko!",
+            "image": null
         },
         {
             "id": 128,
@@ -5888,7 +6102,8 @@ const receitasData = {
                 "Adicione os cubos de peixe e cozinhe por mais 10 minutos.",
                 "Acerte o sal, adicione pimenta a gosto e finalize com cheiro-verde. Sirva quente com torradas."
             ],
-            "tips": "Pode ser servido rústico em pedaços ou batido no liquidificador antes de adicionar o cheiro-verde para virar um creme homogêneo."
+            "tips": "Pode ser servido rústico em pedaços ou batido no liquidificador antes de adicionar o cheiro-verde para virar um creme homogêneo.",
+            "image": null
         },
         {
             "id": 129,
@@ -5940,7 +6155,8 @@ const receitasData = {
                 "Bata tudo até formar uma pasta cremosa e homogênea.",
                 "Transfira para um pote de vidro limpo com tampa e conserve sob refrigeração na geladeira."
             ],
-            "tips": "Ideal para temperar de forma ultra rápida frango, peixe e arroz durante a semana corrida. Use pequenas porções."
+            "tips": "Ideal para temperar de forma ultra rápida frango, peixe e arroz durante a semana corrida. Use pequenas porções.",
+            "image": null
         },
         {
             "id": 130,
@@ -5981,7 +6197,8 @@ const receitasData = {
                 "Triture na função pulsar até que o sal grosso quebre e se misture uniformemente com as ervas, formando um pó fino.",
                 "Armazene em potes de vidro bem vedados em local seco e arejado."
             ],
-            "tips": "Excelente estratégia para reduzir o consumo de sódio no dia a dia, pois as ervas intensificam o sabor salgado natural dos alimentos."
+            "tips": "Excelente estratégia para reduzir o consumo de sódio no dia a dia, pois as ervas intensificam o sabor salgado natural dos alimentos.",
+            "image": "130.png"
         },
         {
             "id": 131,
@@ -6032,7 +6249,8 @@ const receitasData = {
                 "Bata tudo até atingir a consistência de um pó fino, aromático e amarelado.",
                 "Guarde em um pote de vidro bem fechado, fora da geladeira."
             ],
-            "tips": "Super funcional, a linhaça traz gorduras boas e a cúrcuma age como um potente antioxidente natural. Dura de 15 dias a 3 meses se bem vedado!"
+            "tips": "Super funcional, a linhaça traz gorduras boas e a cúrcuma age como um potente antioxidente natural. Dura de 15 dias a 3 meses se bem vedado!",
+            "image": "131.png"
         },
         {
             "id": 132,
@@ -6040,7 +6258,7 @@ const receitasData = {
             "category": "temperos",
             "source": "Sazons Funcionais Otimizados",
             "emoji": "🥩",
-			"image": "132.png",
+            "image": "132.png",
             "ingredients": [
                 {
                     "name": "Alho em pó",
@@ -6129,7 +6347,8 @@ const receitasData = {
                 "Incorpore a levedura nutricional, o gengibre, a mostarda e o amido de milho.",
                 "Agite bem no pote até homogeneizar o pó amarelo solar."
             ],
-            "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'."
+            "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'.",
+            "image": null
         },
         {
             "id": 134,
@@ -6169,7 +6388,8 @@ const receitasData = {
                 "Passe o chimichurri seco rapidamente por um moedor de café se preferir flocos menores.",
                 "Misture com o amido e guarde em pote vedado."
             ],
-            "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados."
+            "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados.",
+            "image": null
         },
         {
             "id": 135,
@@ -6214,7 +6434,8 @@ const receitasData = {
                 "Misture as raspas de limão siciliano desidratadas para aromas essenciais reais.",
                 "Agite energicamente e vede."
             ],
-            "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial."
+            "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial.",
+            "image": null
         },
         {
             "id": 136,
@@ -6259,7 +6480,8 @@ const receitasData = {
                 "Incorpore a levedura nutricional e cenoura em pó para um perfil de caldo de vegetais.",
                 "Finalize com o amido de milho e agite bem."
             ],
-            "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves."
+            "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves.",
+            "image": null
         },
         {
             "id": 137,
@@ -6304,7 +6526,8 @@ const receitasData = {
                 "Adicione uma pitada de ácido cítrico para o efeito vinagrete instantâneo e o gergelim para crocância.",
                 "Guarde em vidro bem vedado."
             ],
-            "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite."
+            "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite.",
+            "image": null
         },
         {
             "id": 138,
@@ -6349,7 +6572,8 @@ const receitasData = {
                 "Incorpore o pó sutil de fumaça e o amido.",
                 "Agite muito bem e vede."
             ],
-            "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano!"
+            "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano!",
+            "image": null
         },
         {
             "id": 139,
@@ -6399,7 +6623,8 @@ const receitasData = {
                 "Acrescente a pimenta aromática e o amido de milho.",
                 "Misture bem até obter um tom avermelhado terroso característico."
             ],
-            "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca."
+            "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca.",
+            "image": null
         },
         {
             "id": 140,
@@ -6434,7 +6659,8 @@ const receitasData = {
                 "Misture com o açafrão-da-terra para um arroz solar perfumado.",
                 "Adicione o amido de milho e agite bem."
             ],
-            "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado."
+            "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado.",
+            "image": null
         },
         {
             "id": 141,
@@ -6479,7 +6705,8 @@ const receitasData = {
                 "Agregue o tomate em pó e o parmesão microfino.",
                 "Incorpore o amido de milho, agite e feche hermeticamente."
             ],
-            "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato!"
+            "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato!",
+            "image": null
         },
         {
             "id": 142,
@@ -6524,7 +6751,8 @@ const receitasData = {
                 "Misture com os demais temperos secos, a salsa e o amido de milho.",
                 "Armazene vedado."
             ],
-            "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar."
+            "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar.",
+            "image": null
         },
         {
             "id": 143,
@@ -6569,7 +6797,86 @@ const receitasData = {
                 "Adicione a pitada de mostarda e o açúcar mascavo.",
                 "Integre com o amido e vede."
             ],
-            "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard)."
+            "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard).",
+            "image": null
+        },
+        {
+            "id": 144,
+            "title": "Arroz Biro-Biro",
+            "category": [
+                "almoco",
+                "arroz"
+            ],
+            "source": "Tudo Gostoso",
+            "emoji": "🍚",
+            "image": "144.png",
+            "ingredients": [
+                {
+                    "name": "Arroz",
+                    "qty": 3,
+                    "unit": "xícaras (chá)"
+                },
+                {
+                    "name": "Alho",
+                    "qty": 2,
+                    "unit": "dentes"
+                },
+                {
+                    "name": "Cebola",
+                    "qty": 1,
+                    "unit": "unidade pequena"
+                },
+                {
+                    "name": "Manteiga",
+                    "qty": 1,
+                    "unit": "colher de sopa"
+                },
+                {
+                    "name": "Óleo",
+                    "qty": 1,
+                    "unit": "colher de sopa"
+                },
+                {
+                    "name": "Sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Água quente",
+                    "qty": null,
+                    "unit": "o suficiente para cobrir"
+                },
+                {
+                    "name": "Ovos",
+                    "qty": 3,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "Bacon picado",
+                    "qty": 300,
+                    "unit": "g"
+                },
+                {
+                    "name": "Linguiça calabresa picada",
+                    "qty": 100,
+                    "unit": "g"
+                },
+                {
+                    "name": "Batata palha",
+                    "qty": 1,
+                    "unit": "pacote"
+                }
+            ],
+            "steps": [
+                "Lave o arroz, escorra bem e reserve.",
+                "Em uma panela, aqueça o óleo e refogue a cebola e o alho.",
+                "Adicione o arroz e refogue bem. Despeje a água quente, tempere com sal e cozinhe em fogo médio até que o arroz fique macio e soltinho. Reserve.",
+                "Em outra panela, frite o bacon picado em fogo médio até ficar bem dourado e crocante. Retire o bacon da panela e reserve.",
+                "Na mesma gordura do bacon (ou retirando o excesso se preferir), frite os 3 ovos mexendo levemente para que fiquem em pedaços.",
+                "Em uma travessa grande, misture delicadamente o arroz cozido, o bacon frito, os ovos e a batata palha.",
+                "Sirva em seguida, enquanto a batata palha ainda está crocante."
+            ],
+            "tips": "Para garantir a máxima crocância, adicione a batata palha apenas na hora exata de servir. Acompanha perfeitamente carnes grelhadas ou churrasco."
         }
     ]
 };
