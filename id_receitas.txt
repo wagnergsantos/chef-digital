@@ -1,9 +1,0 @@
-31 - Macarrão à Bolonhesa
-63 - Tapioca de Frango com Queijo
-64 - Creme de Mandioca com Calabresa
-65 - Salada Quente de Grão-de-Bico
-66 - Panqueca de Aveia com Ricota e Espinafre
-71 - Caldo de Kenga de Milho
-110 - Frango Grelhado Vapt-Vupt
-112 - Sanduíche Quente Especial
-113 - Tapioca Prática de Frango

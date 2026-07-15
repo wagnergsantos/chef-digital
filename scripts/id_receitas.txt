@@ -1,0 +1,138 @@
+1 - Frango com Arroz e Legumes
+2 - Carne Moída Cremosa com Purê
+3 - Macarrão com Frango ao Molho Branco
+4 - Feijão Tropeiro Simples
+5 - Strogonoff de Frango
+6 - Escondidinho de Carne
+7 - Arroz de Forno Completo
+8 - Frango Assado com Batatas
+9 - Frango Cremoso com Milho
+10 - Frango Xadrez
+11 - Frango ao Molho de Tomate
+12 - Filé de Frango ao Limão
+13 - Frango com Legumes na Panela
+14 - Batata Rústica Assada
+15 - Purê de Batata Cremoso
+16 - Batata Gratinada com Queijo
+17 - Batata Frita Sequinha
+18 - Batata Recheada ao Forno
+19 - Batata Salteada com Ervas
+20 - Peixe Assado com Ervas
+21 - Peixe Grelhado Simples
+22 - Peixe ao Molho de Tomate
+23 - Moqueca de Peixe
+24 - Fish and Chips (Peixe Empanado)
+25 - Peixe com Crosta de Ervas
+26 - Ceviche de Peixe
+27 - Bolinho de Peixe
+28 - Espaguete ao Molho de Tomate Caseiro
+29 - Penne ao Molho Branco com Frango
+30 - Parafuso ao Molho de Pesto
+32 - Fettuccine ao Molho Alfredo
+33 - Macarrão com Legumes Salteados
+34 - Refogado de Carne Tradicional
+35 - Refogado de Frango da Roça
+36 - Refogado de Legumes Especial
+37 - Refogado de Cogumelos na Manteiga
+38 - Feijão Preto Tradicional
+39 - Feijão Carioca Simples
+40 - Feijão Tropeiro Tradicional
+41 - Feijão Fradinho
+42 - Arroz Branco Soltinho
+43 - Arroz Rico com Legumes
+44 - Arroz Cremoso com Frango
+45 - Arroz ao Alho Dourado
+46 - Refogado de Legumes Express
+47 - Refogado de Frango e Brócolis
+48 - Refogado de Carne de Panela
+49 - Refogado de Camarão com Pimentão
+50 - Refogado de Tofu com Vegetais
+51 - Refogado Expresso de Cogumelos
+52 - Bife Acebolado Clássico
+53 - Bife ao Molho de Mostarda
+54 - Bife ao Alho e Ervas Finas
+55 - Bife ao Molho Madeira com Cogumelos
+56 - Frango Grelhado Clássico
+57 - Frango Cremoso com Mostarda
+58 - Frango Desfiado com Requeijão
+59 - Frango ao Molho de Tomate Fit
+60 - Sopa de Legumes com Frango
+61 - Omelete de Forno com Legumes
+62 - Frango Desfiado com Batata-Doce
+67 - Risoto Prático de Legumes
+68 - Filé de Peixe Assado com Legumes
+69 - Caldo Verde Tradicional
+70 - Caldo de Mandioca Cremoso
+72 - Molho Rosé de Tomate
+73 - Molho de Tomate Rústico Caseiro
+74 - Molho de Carne Moída
+75 - Molho Branco Cremoso (Béchamel)
+76 - Molho Clássico à Bolonhesa
+77 - Molho de Queijo Aveludado
+78 - Caldo de Feijão Reconfortante
+79 - Sopa de Legumes Clássica
+80 - Polenta Cremosa com Carne Moída
+81 - Escondidinho de Batata com Carne
+82 - Creme de Milho Aconchegante
+83 - Chocolate Quente Cremoso
+84 - Caldo de Mandioca com Calabresa
+85 - Canja de Galinha Tradicional
+86 - Frango Grelhado Saudável
+87 - Carne de Panela com Batatas
+88 - Arroz de Forno com Frango Desfiado
+89 - Strogonoff de Frango Expresso
+90 - Feijão Tropeiro com Carne Seca
+91 - Escondidinho de Batata com Carne Moída
+92 - Peixe Assado com Batatas
+93 - Macarrão Prático à Bolonhesa
+94 - Frango ao Creme com Arroz e Salada
+95 - Misto Quente Tradicional
+96 - Tapioca de Frango com Queijo
+97 - Pão na Frigideira com Ovo
+98 - Omelete de Caneca de Micro-ondas
+99 - Sanduíche Natural de Frango
+100 - Pão de Queijo Recheado
+101 - Crepioca Proteica
+102 - Vitamina de Frutas Energética
+103 - Wrap de Frango com Atum
+104 - Cubo de Caldo de Frango Caseiro
+105 - Cubo de Caldo de Carne Caseiro
+106 - Cubo de Caldo de Peixe Caseiro
+107 - Cubo de Caldo de Legumes Caseiro
+108 - Omelete Completa de Frigideira
+109 - Macarrão Alho e Óleo Expresso
+111 - Arroz de Panela Única com Calabresa
+114 - Arroz com Ovo e Legumes Salteados
+115 - Carne Acebolada de Frigideira
+116 - Molho Vinagrete Clássico
+117 - Molho de Limão com Ervas Finas
+118 - Molho Deusa Verde (Green Goddess)
+119 - Molho de Tahine e Aloo
+120 - Molho de Maracujá e Mostarda
+121 - Molho de Gergelim e Gengibre Asiático
+122 - Molho Cremoso de Iogurte e Hortelã
+123 - Molho Citrus de Laranja e Gengibre
+124 - Tilápia Assada com Legumes
+125 - Peixe ao Molho de Limão Gourmet
+126 - Moqueca de Peixe com Leite de Coco
+127 - Peixe Empanado Assado Crocante
+128 - Caldinho de Peixe Cremoso
+129 - Tempero Caseiro Completo
+130 - Sal de Ervas Secas Funcional
+131 - O Verdadeiro Sal de Ouro Aromático
+132 - Sazón Carne Caseiro
+133 - Sazón Frango Caseiro
+134 - Sazón Alho Caseiro
+135 - Sazón Limão Caseiro
+136 - Sazón Legumes Caseiro
+137 - Sazón Saladas Caseiro
+138 - Sazón Feijão Caseiro
+139 - Sazón Nordeste Caseiro
+140 - Sazón Arroz Caseiro
+141 - Sazón Massas Caseiro
+142 - Sazón Peixes Caseiro
+143 - Sazón Churrasco Caseiro
+144 - Arroz Biro-Biro
+145 - Sopa Cremosa de Legumes com Frango
+146 - Sopa de Feijão com Macarrão
+147 - Sopa Cremosa de Abóbora

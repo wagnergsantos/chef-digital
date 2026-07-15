@@ -2,6 +2,10 @@ import os
 import json
 import re
 
+# Resolve paths dynamically relative to this script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
+
 def update_txt_file(txt_file_path):
     if not os.path.exists(txt_file_path):
         print(f"Warning: {txt_file_path} not found. Skipping text file update.")
@@ -24,7 +28,8 @@ def update_txt_file(txt_file_path):
         if match:
             recipe_id = match.group(1)
             img_filename = f"{recipe_id}.png"
-            if os.path.exists(img_filename):
+            img_path = os.path.join(PROJECT_ROOT, img_filename)
+            if os.path.exists(img_path):
                 # Image exists, so we resolve it and remove it from the list
                 removed_ids.append(int(recipe_id))
             else:
@@ -40,11 +45,11 @@ def update_txt_file(txt_file_path):
 
 def main():
     # 1. Update id_receitas.txt first
-    txt_file = 'id_receitas.txt'
+    txt_file = os.path.join(SCRIPT_DIR, 'id_receitas.txt')
     removed_ids = update_txt_file(txt_file)
 
     # 2. Read receitas.js
-    js_file_path = 'receitas.js'
+    js_file_path = os.path.join(PROJECT_ROOT, 'receitas.js')
     if not os.path.exists(js_file_path):
         print(f"Error: {js_file_path} not found.")
         return
@@ -86,9 +91,10 @@ def main():
         
         # Check if {recipe_id}.png exists
         img_filename = f"{recipe_id}.png"
+        img_path = os.path.join(PROJECT_ROOT, img_filename)
         old_image = recipe.get("image")
         
-        if os.path.exists(img_filename):
+        if os.path.exists(img_path):
             recipe["image"] = img_filename
             if old_image != img_filename:
                 updated_count += 1
