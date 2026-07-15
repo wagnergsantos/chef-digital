@@ -1,9 +1,3 @@
-14 - Batata Rústica Assada
-15 - Purê de Batata Cremoso
-16 - Batata Gratinada com Queijo
-17 - Batata Frita Sequinha
-18 - Batata Recheada ao Forno
-19 - Batata Salteada com Ervas
 20 - Peixe Assado com Ervas
 21 - Peixe Grelhado Simples
 22 - Peixe ao Molho de Tomate
@@ -18,12 +12,6 @@
 31 - Macarrão à Bolonhesa
 32 - Fettuccine ao Molho Alfredo
 33 - Macarrão com Legumes Salteados
-46 - Refogado de Legumes Express
-47 - Refogado de Frango e Brócolis
-48 - Refogado de Carne de Panela
-49 - Refogado de Camarão com Pimentão
-50 - Refogado de Tofu com Vegetais
-51 - Refogado Expresso de Cogumelos
 52 - Bife Acebolado Clássico
 53 - Bife ao Molho de Mostarda
 54 - Bife ao Alho e Ervas Finas
@@ -62,11 +50,7 @@
 113 - Tapioca Prática de Frango
 114 - Arroz com Ovo e Legumes Salteados
 115 - Carne Acebolada de Frigideira
-124 - Tilápia Assada com Legumes
-125 - Peixe ao Molho de Limão Gourmet
-126 - Moqueca de Peixe com Leite de Coco
 127 - Peixe Empanado Assado Crocante
-128 - Caldinho de Peixe Cremoso
 133 - Sazón Frango Caseiro
 134 - Sazón Alho Caseiro
 135 - Sazón Limão Caseiro

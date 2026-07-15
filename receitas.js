@@ -723,7 +723,7 @@ const receitasData = {
                 "Distribua em uma assadeira e leve ao forno pré-aquecido a 200°C por 35 a 40 minutos, virando na metade do tempo."
             ],
             "tips": "Crocante por fora e extremamente macia por dentro!",
-            "image": null
+            "image": "14.png"
         },
         {
             "id": 15,
@@ -760,7 +760,7 @@ const receitasData = {
                 "Tempere a gosto com sal, pimenta e noz-moscada, e sirva."
             ],
             "tips": "Perfeito para acompanhar carnes grelhadas e peixes!",
-            "image": null
+            "image": "15.png"
         },
         {
             "id": 16,
@@ -807,7 +807,7 @@ const receitasData = {
                 "Leve ao forno a 200°C por cerca de 40 minutos ou até as batatas estarem macios e o queijo gratinado."
             ],
             "tips": "Cremosa, cheia de sabor e simplesmente irresistível!",
-            "image": null
+            "image": "16.png"
         },
         {
             "id": 17,
@@ -839,7 +839,7 @@ const receitasData = {
                 "Escorra em papel-toalha e finalize temperando com sal imediatamente."
             ],
             "tips": "O molho na água fria remove o excesso de amido, garantindo que fiquem bem sequinhas.",
-            "image": null
+            "image": "17.png"
         },
         {
             "id": 18,
@@ -881,7 +881,7 @@ const receitasData = {
                 "Recheie as batatas, cubra com o queijo muçarela e leve ao forno para gratinar."
             ],
             "tips": "Prática, saborosa e refeição completa!",
-            "image": null
+            "image": "18.png"
         },
         {
             "id": 19,
@@ -918,7 +918,7 @@ const receitasData = {
                 "Salteie na frigideira até dourar levemente de todos os lados e finalize com as ervas frescas."
             ],
             "tips": "Simples, leve e cheia de aroma e frescor!",
-            "image": null
+            "image": "19.png"
         },
         {
             "id": 20,
@@ -2393,7 +2393,7 @@ const receitasData = {
                 "Finalize com cheiro-verde."
             ],
             "tips": "Perfeito como prato de entrada ou guarnição saudável.",
-            "image": null
+            "image": "46.png"
         },
         {
             "id": 47,
@@ -2451,7 +2451,7 @@ const receitasData = {
                 "Cozinhe até dourar bem e amaciar o brócolis. Finalize com cheiro-verde."
             ],
             "tips": "A páprica defumada traz um leve toque defumado irresistível ao frango grelhado.",
-            "image": null
+            "image": "47.png"
         },
         {
             "id": 48,
@@ -2509,7 +2509,7 @@ const receitasData = {
                 "Refogue tampado por mais 5 minutos e finalize com cheiro-verde."
             ],
             "tips": "Fica incrível servido sobre um purê cremoso ou arroz.",
-            "image": null
+            "image": "48.png"
         },
         {
             "id": 49,
@@ -2562,7 +2562,7 @@ const receitasData = {
                 "Finalize salpicando bastante salsinha fresca."
             ],
             "tips": "Atenção: Não cozinhe o camarão demais para que não fique duro ou com textura borrachuda.",
-            "image": null
+            "image": "49.png"
         },
         {
             "id": 50,
@@ -2614,7 +2614,7 @@ const receitasData = {
                 "Cozinhe por 5 minutos tampado e finalize salpicando sementes de gergelim e cebolinha."
             ],
             "tips": "Opção vegana excelente, leve e rica em proteínas vegetais!",
-            "image": null
+            "image": "50.png"
         },
         {
             "id": 51,
@@ -2662,7 +2662,7 @@ const receitasData = {
                 "Finalize com cheiro-verde fresquinho e sirva."
             ],
             "tips": "Maravilhoso para servir como entrada, cobertura de bifes ou acompanhando massas!",
-            "image": null
+            "image": "51.png"
         },
         {
             "id": 52,
@@ -5887,7 +5887,7 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por cerca de 30 minutos até o peixe assar por completo."
             ],
             "tips": "Para um toque especial de chef, finalize salpicando cheiro-verde fresco e raspas de limão ao sair do forno!",
-            "image": null
+            "image": "124.png"
         },
         {
             "id": 125,
@@ -5940,7 +5940,7 @@ const receitasData = {
                 "Finalize com cheiro-verde picado e sirva."
             ],
             "tips": "Molho sofisticado e aveludado que fica delicioso se servido com purê de batatas ou arroz com brócolis.",
-            "image": null
+            "image": "125.png"
         },
         {
             "id": 126,
@@ -5992,7 +5992,7 @@ const receitasData = {
                 "Cozinhe em fogo baixo com a panela tampada por cerca de 20 minutos (evite mexer para não quebrar o peixe). Finalize com coentro."
             ],
             "tips": "Dica tradicional: Sirva bem quente acompanhado de um pirão feito com o próprio caldo da moqueca e farinha de mandioca!",
-            "image": null
+            "image": "126.png"
         },
         {
             "id": 127,
@@ -6103,7 +6103,7 @@ const receitasData = {
                 "Acerte o sal, adicione pimenta a gosto e finalize com cheiro-verde. Sirva quente com torradas."
             ],
             "tips": "Pode ser servido rústico em pedaços ou batido no liquidificador antes de adicionar o cheiro-verde para virar um creme homogêneo.",
-            "image": null
+            "image": "128.png"
         },
         {
             "id": 129,
