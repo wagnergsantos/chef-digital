@@ -624,7 +624,10 @@ const receitasData = {
         {
             "id": 13,
             "title": "Frango com Legumes na Panela",
-            "category": "frango",
+            "category": [
+                "frango",
+                "refogados"
+            ],
             "source": "6 Receitas de Frango (Opção 6)",
             "emoji": "🥦",
             "ingredients": [
@@ -2423,6 +2426,16 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
+                    "name": "Batatas médias cortadas",
+                    "qty": 3,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "Cenouras médias cortadas",
+                    "qty": 3,
+                    "unit": "unidades"
+                },
+                {
                     "name": "Óleo ou azeite",
                     "qty": 1,
                     "unit": "fio"
@@ -2439,11 +2452,12 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Aqueça o óleo e doure o alho e cebola.",
-                "Coloque as tiras de carne e refogue em fogo alto até selar.",
-                "Adicione o pimentão e o tomate cortados.",
-                "Tempere com sal, pimenta e cominho.",
-                "Refogue tampado por mais 5 minutos e finalize com cheiro-verde."
+                "Aqueça o óleo e doure o alho, pimentão e cebola.",
+                "Doure a carne na panela com alho e cebola fatiados.",
+                "Adicione os tomate cortados.",
+                "Acrescente água fervente até cobrir, tempere e cozinhe tampado até amaciar.",
+                "Adicione as batatas e cenouras cortadas e deixe cozinhar no próprio caldo até ficarem macias.",
+                "Finalize salpicando cheiro-verde fresco antes de servir."
             ],
             "tips": "Fica incrível servido sobre um purê cremoso ou arroz.",
             "image": "48.png"
@@ -3743,7 +3757,10 @@ const receitasData = {
         {
             "id": 80,
             "title": "Polenta Cremosa com Carne Moída",
-            "category": "janta",
+            "category": [
+                "janta",
+                "almoco"
+            ],
             "source": "Receitas para Dias Frios (Opção 3)",
             "emoji": "🌽",
             "ingredients": [
@@ -3795,7 +3812,11 @@ const receitasData = {
         {
             "id": 81,
             "title": "Escondidinho de Batata com Carne",
-            "category": "janta",
+            "category": [
+                "janta",
+                "bife",
+                "batata"
+            ],
             "source": "Receitas para Dias Frios (Opção 4)",
             "emoji": "🥔",
             "ingredients": [
@@ -3842,7 +3863,10 @@ const receitasData = {
         {
             "id": 82,
             "title": "Creme de Milho Aconchegante",
-            "category": "refogados",
+            "category": [
+                "refogados",
+                "janta"
+            ],
             "source": "Receitas para Dias Frios (Opção 5)",
             "emoji": "🌽",
             "ingredients": [
@@ -4059,52 +4083,6 @@ const receitasData = {
             ],
             "tips": "Excelente opção fitness e balanceada.",
             "image": "86.png"
-        },
-        {
-            "id": 87,
-            "title": "Carne de Panela com Batatas",
-            "category": [
-                "almoco",
-                "bife",
-                "batata"
-            ],
-            "source": "Receitas de Almoço (Card 2)",
-            "emoji": "🥩",
-            "ingredients": [
-                {
-                    "name": "Carne bovina em cubos (acém, paleta)",
-                    "qty": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "Batatas médias cortadas",
-                    "qty": 3,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Cebola picada",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Dentes de alho picados",
-                    "qty": 3,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Sal, pimenta e cheiro-verde",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Doure a carne na panela com alho e cebola fatiados.",
-                "Acrescente água fervente até cobrir, tempere e cozinhe tampado até amaciar.",
-                "Adicione as batatas cortadas e deixe cozinhar no próprio caldo até ficarem macias.",
-                "Finalize salpicando cheiro-verde fresco antes de servir."
-            ],
-            "tips": "Cozinhar em fogo brando encorpa muito o caldo!",
-            "image": "87.png"
         },
         {
             "id": 88,
@@ -4954,7 +4932,10 @@ const receitasData = {
         {
             "id": 108,
             "title": "Omelete Completa de Frigideira",
-            "category": "lanches",
+            "category": [
+                "lanches",
+                "janta"
+            ],
             "source": "Receitas de Pratos Rápidos (Opção 1)",
             "emoji": "🍳",
             "ingredients": [
