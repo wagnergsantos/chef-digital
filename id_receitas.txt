@@ -58,7 +58,6 @@
 69 - Caldo Verde Tradicional
 70 - Caldo de Mandioca Cremoso
 71 - Caldo de Kenga de Milho
-76 - Molho Clássico à Bolonhesa
 78 - Caldo de Feijão Reconfortante
 79 - Sopa de Legumes Clássica
 80 - Polenta Cremosa com Carne Moída

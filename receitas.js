@@ -3894,7 +3894,7 @@ const receitasData = {
                 "Adicione sal, pimenta e finalize salpicando cheiro-verde fresco."
             ],
             "tips": "Excelente base para lasanhas de queijo e presunto ou espaguete tradicional!",
-            "image": null
+            "image": "76.png"
         },
         {
             "id": 77,
