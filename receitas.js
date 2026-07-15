@@ -415,7 +415,7 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por cerca de 1 hora, virando na metade do tempo, até dourar."
             ],
             "tips": "Crocante por fora e macia por dentro!",
-            "image": null
+            "image": "8.png"
         },
         {
             "id": 9,
@@ -467,7 +467,7 @@ const receitasData = {
                 "Desligue o fogo, acrescente o creme de leite e o cheiro-verde. Sirva com arroz branco."
             ],
             "tips": "Bater metade do milho com o creme de leite no liquidificador antes de colocar na panela cria um creme ainda mais robusto!",
-            "image": null
+            "image": "9.png"
         },
         {
             "id": 10,
@@ -524,7 +524,7 @@ const receitasData = {
                 "Cozinhe por mais 5 minutos e finalize com cebolinha. Sirva com arroz."
             ],
             "tips": "Adicione amendoim torrado sem casca no final para dar o clássico toque crocante asiático.",
-            "image": null
+            "image": "10.png"
         },
         {
             "id": 11,
@@ -577,7 +577,7 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Sirva com polenta ou arroz branco bem quentinho.",
-            "image": null
+            "image": "11.png"
         },
         {
             "id": 12,
@@ -619,7 +619,7 @@ const receitasData = {
                 "Sirva com salada ou legumes."
             ],
             "tips": "Não grelhe em fogo muito baixo para o frango não soltar muita água e ressecar.",
-            "image": null
+            "image": "12.png"
         },
         {
             "id": 13,
@@ -682,7 +682,7 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Receita rápida de uma panela só para facilitar o pós-janta!",
-            "image": null
+            "image": "13.png"
         },
         {
             "id": 14,
@@ -1995,7 +1995,7 @@ const receitasData = {
                 "Abra, tempere com sal e finalize com cheiro-verde fresco."
             ],
             "tips": "Deixar o feijão de molho elimina fitatos que causam gases e reduz drasticamente o tempo de cozimento!",
-            "image": null
+            "image": "38.png"
         },
         {
             "id": 39,
@@ -2043,7 +2043,7 @@ const receitasData = {
                 "Tempere com sal a gosto e amasse algumas conchas de grãos nas paredes da panela para engrossar o caldo."
             ],
             "tips": "Finalize com coentro ou cheiro-verde para um toque especial de frescor.",
-            "image": null
+            "image": "39.png"
         },
         {
             "id": 40,
@@ -2101,11 +2101,11 @@ const receitasData = {
                 "Ajuste com sal e pimenta e sirva quente."
             ],
             "tips": "Sirva com torresmo estalando de crocante por cima.",
-            "image": null
+            "image": "40.png"
         },
         {
             "id": 41,
-            "title": "Feijão Fradinho de Verão",
+            "title": "Feijão Fradinho",
             "category": "feijao",
             "source": "Receitas de Feijão (Opção 4)",
             "emoji": "🥗",
@@ -2148,7 +2148,7 @@ const receitasData = {
                 "Adicione o tomate fresco e finalize ajustando o sal e o cheiro-verde."
             ],
             "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite de oliva extra virgem!",
-            "image": null
+            "image": "41.png"
         },
         {
             "id": 42,
@@ -6156,7 +6156,7 @@ const receitasData = {
                 "Transfira para um pote de vidro limpo com tampa e conserve sob refrigeração na geladeira."
             ],
             "tips": "Ideal para temperar de forma ultra rápida frango, peixe e arroz durante a semana corrida. Use pequenas porções.",
-            "image": null
+            "image": "129.png"
         },
         {
             "id": 130,
