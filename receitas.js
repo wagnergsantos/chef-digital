@@ -1211,7 +1211,7 @@ const receitasData = {
                 "Escorra em papel-toalha e sirva imediatamente acompanhado de batatas fritas."
             ],
             "tips": "Sirva com molho tártaro ou maionese verde caseira temperada.",
-            "image": null
+            "image": "24.png"
         },
         {
             "id": 25,
@@ -1268,7 +1268,7 @@ const receitasData = {
                 "Asse no forno pré-aquecido a 200°C por 20 a 25 minutos até dourar a crosta."
             ],
             "tips": "Uma excelente forma de consumir peixe assado que permanece incrivelmente suculento por dentro!",
-            "image": null
+            "image": "25.png"
         },
         {
             "id": 26,
@@ -1315,7 +1315,7 @@ const receitasData = {
                 "Retire da geladeira, acrescente a cebola-roxa, o tomate, a pimenta, o coentro e o sal. Misture bem e sirva gelado."
             ],
             "tips": "Sirva acompanhado de torradas crocantes ou chips de banana-da-terra.",
-            "image": null
+            "image": "26.png"
         },
         {
             "id": 27,
@@ -1378,7 +1378,7 @@ const receitasData = {
                 "Escorra em papel-toalha."
             ],
             "tips": "Perfeito como petisco ou acompanhamento para o almoço de domingo!",
-            "image": null
+            "image": "27.png"
         },
         {
             "id": 28,
@@ -6044,7 +6044,7 @@ const receitasData = {
                 "Pincele ou regue com um fio de azeite por cima e leve ao forno a 200°C por cerca de 25 minutos ou até dourar."
             ],
             "tips": "Para uma crocância ainda mais potente e estilo restaurante, substitua a farinha de rosca tradicional por farinha panko!",
-            "image": null
+            "image": "127.png"
         },
         {
             "id": 128,

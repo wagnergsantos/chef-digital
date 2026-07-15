@@ -1,7 +1,3 @@
-24 - Fish and Chips (Peixe Empanado)
-25 - Peixe com Crosta de Ervas
-26 - Ceviche de Peixe
-27 - Bolinho de Peixe
 31 - Macarrão à Bolonhesa
 63 - Tapioca de Frango com Queijo
 64 - Creme de Mandioca com Calabresa
@@ -11,4 +7,3 @@
 110 - Frango Grelhado Vapt-Vupt
 112 - Sanduíche Quente Especial
 113 - Tapioca Prática de Frango
-127 - Peixe Empanado Assado Crocante
