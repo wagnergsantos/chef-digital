@@ -3709,7 +3709,7 @@ const receitasData = {
                 "Tempere a gosto com sal, pimenta-do-reino e orégano e sirva quente com sua massa preferida."
             ],
             "tips": "Combina perfeitamente com massas recheadas de queijo como ravióli ou capeletti.",
-            "image": null
+            "image": "72.png"
         },
         {
             "id": 73,
@@ -3756,11 +3756,11 @@ const receitasData = {
                 "Ajuste o sal, a pimenta-do-reino e adicione folhas de manjericão fresco minutos antes de desligar."
             ],
             "tips": "Se preferir um molho liso de pizzaria, passe o molho pronto por uma peneira ou bata no liquidificador.",
-            "image": null
+            "image": "73.png"
         },
         {
             "id": 74,
-            "title": "Molho de Queijo Aveludado",
+            "title": "Molho de Carne Moída",
             "category": "molhos",
             "source": "6 Molhos para Macarrão (Card 3)",
             "emoji": "🧀",
@@ -3804,7 +3804,7 @@ const receitasData = {
                 "Finalize temperando com sal e uma pitada sutil de noz-moscada ralada."
             ],
             "tips": "Sirva imediatamente, pois molhos à base de queijo tendem a engrossar rápido ao esfriar!",
-            "image": null
+            "image": "74.png"
         },
         {
             "id": 75,
@@ -3846,7 +3846,7 @@ const receitasData = {
                 "Desligue o fogo, misture a caixinha de creme de leite e tempere a gosto com sal, pimenta-do-reino e noz-moscada."
             ],
             "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folha de louro antes de montar o molho!",
-            "image": null
+            "image": "75.png"
         },
         {
             "id": 76,
@@ -3898,7 +3898,7 @@ const receitasData = {
         },
         {
             "id": 77,
-            "title": "Molho de Alho e Manteiga Aromático",
+            "title": "Molho de Queijo Aveludado",
             "category": "molhos",
             "source": "6 Molhos para Macarrão (Card 6)",
             "emoji": "🧄",
@@ -3941,7 +3941,7 @@ const receitasData = {
                 "Retire do fogo, jogue a massa quente diretamente no molho e polvilhe o parmesão e a salsinha fresca."
             ],
             "tips": "A simplicidade desse molho italiano clássico brilha imensamente quando finalizado com raspas de limão siciliano!",
-            "image": null
+            "image": "77.png"
         },
         {
             "id": 78,
