@@ -985,7 +985,7 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por 25 a 30 minutos até assar por completo."
             ],
             "tips": "Fica ótimo com batatas e legumes assados na mesma travessa!",
-            "image": null
+            "image": "20.png"
         },
         {
             "id": 21,
@@ -1027,7 +1027,7 @@ const receitasData = {
                 "Sirva bem quente com salada."
             ],
             "tips": "Dica: Para não grudar na frigideira, seque muito bem os filés com papel-toalha antes de temperar e grelhar.",
-            "image": null
+            "image": "21.png"
         },
         {
             "id": 22,
@@ -1091,7 +1091,7 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Fica divino servido com arroz branco soltinho e purê de batatas!",
-            "image": null
+            "image": "22.png"
         },
         {
             "id": 23,
@@ -1159,7 +1159,7 @@ const receitasData = {
                 "Finalize salpicando bastante coentro fresco e sirva com arroz."
             ],
             "tips": "Cozinhar em panela de barro e fogo lento enriquece imensamente o sabor final!",
-            "image": null
+            "image": "23.png"
         },
         {
             "id": 24,
@@ -1435,7 +1435,7 @@ const receitasData = {
                 "Misture o macarrão escorrido ao molho, finalize com o manjericão e sirva com queijo parmesão."
             ],
             "tips": "Dica: Sempre guarde 1 concha da água do cozimento para ajustar a textura do molho, se necessário!",
-            "image": null
+            "image": "28.png"
         },
         {
             "id": 29,
@@ -1492,7 +1492,7 @@ const receitasData = {
                 "Misture o penne ao molho, coloque em uma travessa, polvilhe a muçarela e leve ao forno rápido para gratinar."
             ],
             "tips": "Um prato reconfortante para jantares de inverno.",
-            "image": null
+            "image": "29.png"
         },
         {
             "id": 30,
@@ -1549,7 +1549,7 @@ const receitasData = {
                 "Misture o pesto frio direto na massa quente, decore com tomatinhos e um fio de azeite."
             ],
             "tips": "Não cozinhe o pesto no fogo! O calor da própria massa cozida é o suficiente para liberar o perfume do manjericão.",
-            "image": null
+            "image": "30.png"
         },
         {
             "id": 31,
@@ -1665,7 +1665,7 @@ const receitasData = {
                 "Escorra a massa, envolva-a diretamente no molho cremoso e salpique salsa."
             ],
             "tips": "Refinado, rápido e incrivelmente aveludado!",
-            "image": null
+            "image": "32.png"
         },
         {
             "id": 33,
@@ -1728,7 +1728,7 @@ const receitasData = {
                 "Misture o macarrão na frigideira com os legumes e finalize com queijo, se desejar."
             ],
             "tips": "Excelente forma de prato único, leve e saudável!",
-            "image": null
+            "image": "33.png"
         },
         {
             "id": 34,
@@ -6348,7 +6348,7 @@ const receitasData = {
                 "Agite bem no pote até homogeneizar o pó amarelo solar."
             ],
             "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'.",
-            "image": null
+            "image": "133.png"
         },
         {
             "id": 134,
@@ -6389,7 +6389,7 @@ const receitasData = {
                 "Misture com o amido e guarde em pote vedado."
             ],
             "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados.",
-            "image": null
+            "image": "134.png"
         },
         {
             "id": 135,
@@ -6435,7 +6435,7 @@ const receitasData = {
                 "Agite energicamente e vede."
             ],
             "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial.",
-            "image": null
+            "image": "135.png"
         },
         {
             "id": 136,
@@ -6481,7 +6481,7 @@ const receitasData = {
                 "Finalize com o amido de milho e agite bem."
             ],
             "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves.",
-            "image": null
+            "image": "136.png"
         },
         {
             "id": 137,
@@ -6527,7 +6527,7 @@ const receitasData = {
                 "Guarde em vidro bem vedado."
             ],
             "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite.",
-            "image": null
+            "image": "137.png"
         },
         {
             "id": 138,
@@ -6573,7 +6573,7 @@ const receitasData = {
                 "Agite muito bem e vede."
             ],
             "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano!",
-            "image": null
+            "image": "138.png"
         },
         {
             "id": 139,
@@ -6624,7 +6624,7 @@ const receitasData = {
                 "Misture bem até obter um tom avermelhado terroso característico."
             ],
             "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca.",
-            "image": null
+            "image": "139.png"
         },
         {
             "id": 140,
@@ -6660,7 +6660,7 @@ const receitasData = {
                 "Adicione o amido de milho e agite bem."
             ],
             "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado.",
-            "image": null
+            "image": "140.png"
         },
         {
             "id": 141,
@@ -6706,7 +6706,7 @@ const receitasData = {
                 "Incorpore o amido de milho, agite e feche hermeticamente."
             ],
             "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato!",
-            "image": null
+            "image": "141.png"
         },
         {
             "id": 142,
@@ -6752,7 +6752,7 @@ const receitasData = {
                 "Armazene vedado."
             ],
             "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar.",
-            "image": null
+            "image": "142.png"
         },
         {
             "id": 143,
@@ -6798,7 +6798,7 @@ const receitasData = {
                 "Integre com o amido e vede."
             ],
             "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard).",
-            "image": null
+            "image": "143.png"
         },
         {
             "id": 144,

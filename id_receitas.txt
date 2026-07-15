@@ -1,17 +1,8 @@
-20 - Peixe Assado com Ervas
-21 - Peixe Grelhado Simples
-22 - Peixe ao Molho de Tomate
-23 - Moqueca de Peixe
 24 - Fish and Chips (Peixe Empanado)
 25 - Peixe com Crosta de Ervas
 26 - Ceviche de Peixe
 27 - Bolinho de Peixe
-28 - Espaguete ao Molho de Tomate Caseiro
-29 - Penne ao Molho Branco com Frango
-30 - Parafuso ao Molho de Pesto
 31 - Macarrão à Bolonhesa
-32 - Fettuccine ao Molho Alfredo
-33 - Macarrão com Legumes Salteados
 63 - Tapioca de Frango com Queijo
 64 - Creme de Mandioca com Calabresa
 65 - Salada Quente de Grão-de-Bico
@@ -21,14 +12,3 @@
 112 - Sanduíche Quente Especial
 113 - Tapioca Prática de Frango
 127 - Peixe Empanado Assado Crocante
-133 - Sazón Frango Caseiro
-134 - Sazón Alho Caseiro
-135 - Sazón Limão Caseiro
-136 - Sazón Legumes Caseiro
-137 - Sazón Saladas Caseiro
-138 - Sazón Feijão Caseiro
-139 - Sazón Nordeste Caseiro
-140 - Sazón Arroz Caseiro
-141 - Sazón Massas Caseiro
-142 - Sazón Peixes Caseiro
-143 - Sazón Churrasco Caseiro
