@@ -3118,7 +3118,7 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde fresco."
             ],
             "tips": "Quente, aconchegante e perfeita para noites frias de descanso rápido. Pronta em 30 min!",
-            "image": null
+            "image": "60.png"
         },
         {
             "id": 61,
@@ -3174,7 +3174,7 @@ const receitasData = {
                 "Leve ao forno a 180°C pré-aquecido por cerca de 20 minutos até inflar e dourar."
             ],
             "tips": "Receita pronta em apenas 25 minutos! Altamente proteica e de fácil digestão.",
-            "image": null
+            "image": "61.png"
         },
         {
             "id": 62,
@@ -3221,7 +3221,7 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde e sirva."
             ],
             "tips": "Combinação clássica 'maromba', excelente refeição pré ou pós-treino noturno!",
-            "image": null
+            "image": "62.png"
         },
         {
             "id": 63,
@@ -3458,7 +3458,7 @@ const receitasData = {
                 "Continue mexendo até ficar macio e cremoso. Finalize desligando o fogo, jogando queijo parmesão ralado e mexendo vigorosamente."
             ],
             "tips": "O segredo do risoto perfeito está em mexer constantemente para liberar o amido do arroz, criando o próprio creme!",
-            "image": null
+            "image": "67.png"
         },
         {
             "id": 68,
@@ -3503,7 +3503,7 @@ const receitasData = {
                 "Asse em forno pré-aquecido a 200°C por cerca de 25 a 30 minutos."
             ],
             "tips": "Uma janta ideal, equilibrada, livre de gorduras pesadas e com digestão fantástica para garantir uma boa noite de sono!",
-            "image": null
+            "image": "68.png"
         },
         {
             "id": 69,
@@ -3983,7 +3983,7 @@ const receitasData = {
                 "Despeje o feijão batido na panela, tempere a gosto e cozinhe por 15 minutos até engrossar e encorpar sabor."
             ],
             "tips": "Sirva bem quente com croutons e gotas de pimenta.",
-            "image": null
+            "image": "78.png"
         },
         {
             "id": 79,
@@ -4035,7 +4035,7 @@ const receitasData = {
                 "Incorpore o frango cozido e desfiado, tempere com sal e pimenta e ferva por mais 5 minutos antes de servir."
             ],
             "tips": "Se preferir uma sopa mais espessa, amasse alguns pedaços de batata direto no caldo.",
-            "image": null
+            "image": "79.png"
         },
         {
             "id": 80,
@@ -4134,7 +4134,7 @@ const receitasData = {
                 "Polvilhe queijo generosamente e leve ao forno pré-aquecido a 200°C por 20 minutos para gratinar."
             ],
             "tips": "Pode ser feito também substituindo a batata por mandioca ou abóbora cabotiá!",
-            "image": null
+            "image": "81.png"
         },
         {
             "id": 82,
@@ -4176,7 +4176,7 @@ const receitasData = {
                 "Adicione o líquido batido e cozinhe em fogo baixo mexendo sempre até engrossar saborosamente. Tempere."
             ],
             "tips": "Sirva acompanhado de arroz e frango grelhado de domingo.",
-            "image": null
+            "image": "82.png"
         },
         {
             "id": 83,
@@ -4218,7 +4218,7 @@ const receitasData = {
                 "Apague o fogo, misture a baunilha e sirva imediatamente em canecas."
             ],
             "tips": "Se quiser ainda mais cremosidade, adicione um quadradinho de chocolate meio amargo no final para derreter!",
-            "image": null
+            "image": "83.png"
         },
         {
             "id": 84,
@@ -4260,7 +4260,7 @@ const receitasData = {
                 "Deixe ferver por 10 minutos para apurar o sal e finalize salpicando cheiro-verde."
             ],
             "tips": "Delicioso prato único para noites frias de outono.",
-            "image": null
+            "image": "84.png"
         },
         {
             "id": 85,
@@ -4308,7 +4308,7 @@ const receitasData = {
                 "Tempere com sal e pimenta e finalize com cheiro-verde."
             ],
             "tips": "Comida afetiva perfeita para combater resfriados e confortar o corpo!",
-            "image": null
+            "image": "85.png"
         },
         {
             "id": 86,
@@ -5283,7 +5283,7 @@ const receitasData = {
                 "Cozinhe em fogo baixo por 3 a 5 minutos de cada lado até dourar e firmar."
             ],
             "tips": "Pronto em apenas 10 minutos! Uma refeição rápida e rica em proteínas.",
-            "image": null
+            "image": "108.png"
         },
         {
             "id": 109,
@@ -5320,7 +5320,7 @@ const receitasData = {
                 "Incorpore bem e sirva quente."
             ],
             "tips": "Adicione uma pitada de pimenta calabresa seca junto ao alho para uma versão Alho, Óleo e Pimenta clássica.",
-            "image": null
+            "image": "109.png"
         },
         {
             "id": 110,
@@ -5393,7 +5393,7 @@ const receitasData = {
                 "Cozinhe em fogo brando com a tampa entreaberta até secar a água por completo."
             ],
             "tips": "Refeição completa pronta em 20 minutos com apenas uma panela para lavar.",
-            "image": null
+            "image": "111.png"
         },
         {
             "id": 112,
@@ -5496,7 +5496,7 @@ const receitasData = {
                 "Adicione o arroz cozido frio, misture tudo e aqueça bem."
             ],
             "tips": "Ótima receita de 15 minutos para reaproveitar as sobras de arroz da geladeira!",
-            "image": null
+            "image": "114.png"
         },
         {
             "id": 115,
@@ -5527,7 +5527,7 @@ const receitasData = {
                 "Refogue em fogo médio por mais 5 minutos até a cebola murchar e caramelizar levemente."
             ],
             "tips": "Use cores rápidos como patinho, alcatra ou contrafilé para manter a suculência.",
-            "image": null
+            "image": "115.png"
         },
         {
             "id": 116,

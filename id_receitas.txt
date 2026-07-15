@@ -12,31 +12,14 @@
 31 - Macarrão à Bolonhesa
 32 - Fettuccine ao Molho Alfredo
 33 - Macarrão com Legumes Salteados
-60 - Sopa de Legumes com Frango
-61 - Omelete de Forno com Legumes
-62 - Frango Desfiado com Batata-Doce
 63 - Tapioca de Frango com Queijo
 64 - Creme de Mandioca com Calabresa
 65 - Salada Quente de Grão-de-Bico
 66 - Panqueca de Aveia com Ricota e Espinafre
-67 - Risoto Prático de Legumes
-68 - Filé de Peixe Assado com Legumes
 71 - Caldo de Kenga de Milho
-78 - Caldo de Feijão Reconfortante
-79 - Sopa de Legumes Clássica
-81 - Escondidinho de Batata com Carne
-82 - Creme de Milho Aconchegante
-83 - Chocolate Quente Cremoso
-84 - Caldo de Mandioca com Calabresa
-85 - Canja de Galinha Tradicional
-108 - Omelete Completa de Frigideira
-109 - Macarrão Alho e Óleo Expresso
 110 - Frango Grelhado Vapt-Vupt
-111 - Arroz de Panela Única com Calabresa
 112 - Sanduíche Quente Especial
 113 - Tapioca Prática de Frango
-114 - Arroz com Ovo e Legumes Salteados
-115 - Carne Acebolada de Frigideira
 127 - Peixe Empanado Assado Crocante
 133 - Sazón Frango Caseiro
 134 - Sazón Alho Caseiro
