@@ -6877,6 +6877,205 @@ const receitasData = {
                 "Sirva em seguida, enquanto a batata palha ainda está crocante."
             ],
             "tips": "Para garantir a máxima crocância, adicione a batata palha apenas na hora exata de servir. Acompanha perfeitamente carnes grelhadas ou churrasco."
+        },
+        {
+            "id": 145,
+            "title": "Sopa Cremosa de Legumes com Frango",
+            "category": [
+                "sopas",
+                "janta",
+                "frango"
+            ],
+            "source": null,
+            "emoji": "🍲",
+            "image": "145.png",
+            "ingredients": [
+                {
+                    "name": "peito de frango desfiado",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "batatas picadas",
+                    "qty": 2,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "cenoura picada",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "chuchu picado",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "cebola pequena",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "dentes de alho",
+                    "qty": 2,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "azeite",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "água",
+                    "qty": 1,
+                    "unit": "litro"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
+                    "qty": null,
+                    "unit": "a gosto"
+                }
+            ],
+            "steps": [
+                "Refogue a cebola e o alho no azeite.",
+                "Acrescente o frango e misture.",
+                "Adicione os legumes e a água.",
+                "Cozinhe por cerca de 25 minutos.",
+                "Amasse parte dos legumes para deixar a sopa bem cremosa.",
+                "Finalize com o cheiro-verde e sirva."
+            ],
+            "tips": "Para um toque extra de cremosidade, você pode bater uma parte pequena dos legumes no liquidificador com um pouco do caldo antes de voltar para a panela."
+        },
+        {
+            "id": 146,
+            "title": "Sopa de Feijão com Macarrão",
+            "category": [
+                "sopas",
+                "janta",
+                "feijao",
+                "macarrao"
+            ],
+            "source": null,
+            "emoji": "🍜",
+            "image": "146.png",
+            "ingredients": [
+                {
+                    "name": "feijão cozido",
+                    "qty": 2,
+                    "unit": "xícaras"
+                },
+                {
+                    "name": "macarrão pequeno",
+                    "qty": 0.5,
+                    "unit": "xícara"
+                },
+                {
+                    "name": "tomate picado",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "cebola pequena",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "dentes de alho",
+                    "qty": 2,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "água",
+                    "qty": 1,
+                    "unit": "litro"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
+                    "qty": null,
+                    "unit": "a gosto"
+                }
+            ],
+            "steps": [
+                "Bata parte do feijão cozido no liquidificador com um pouco de água para formar uma base lisa.",
+                "Refogue o alho, a cebola e o tomate picado em uma panela.",
+                "Acrescente o feijão batido, o restante dos grãos inteiros e a água restante.",
+                "Coloque o macarrão.",
+                "Cozinhe em fogo médio até que o macarrão fique macio.",
+                "Finalize com cheiro-verde e sirva bem quente."
+            ],
+            "tips": "Sirva acompanhado de torradas com alho ou bacon crocante salpicado por cima."
+        },
+        {
+            "id": 147,
+            "title": "Sopa Cremosa de Abóbora",
+            "category": [
+                "sopas",
+                "janta"
+            ],
+            "source": null,
+            "emoji": "🥣",
+            "image": "147.png",
+            "ingredients": [
+                {
+                    "name": "abóbora cabotiá",
+                    "qty": 500,
+                    "unit": "g"
+                },
+                {
+                    "name": "cebola",
+                    "qty": 1,
+                    "unit": "unidade"
+                },
+                {
+                    "name": "dentes de alho",
+                    "qty": 2,
+                    "unit": "unidades"
+                },
+                {
+                    "name": "manteiga",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "água",
+                    "qty": 700,
+                    "unit": "ml"
+                },
+                {
+                    "name": "creme de leite",
+                    "qty": null,
+                    "unit": "opcional"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                }
+            ],
+            "steps": [
+                "Refogue a cebola e o alho picados na manteiga até dourarem.",
+                "Acrescente a abóbora limpa e picada junto com a água.",
+                "Cozinhe em fogo médio até que a abóbora fique completamente macia.",
+                "Transfira tudo para o liquidificador e bata bem até obter um creme liso e homogêneo.",
+                "Volte o creme para a panela, ajuste o sal e a pimenta-do-reino.",
+                "Adicione o creme de leite se desejar um toque aveludado extra e sirva quente."
+            ],
+            "tips": "Finalize com sementes de abóbora tostadas ou queijo ralado para adicionar textura ao prato."
         }
     ]
 };
