@@ -219,155 +219,6 @@ const receitasData = {
             "image": "3.png"
         },
         {
-            "id": 4,
-            "title": "Feijão Tropeiro Simples",
-            "category": [
-                "marmitas",
-                "feijao"
-            ],
-            "source": "Marmitas da Semana (Quinta)",
-            "emoji": "🥓",
-            "ingredients": [
-                {
-                    "name": "Feijão cozido (sem caldo)",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Bacon ou calabresa em cubos",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Farinha de mandioca",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Ovo e cheiro-verde",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Refogue o bacon/calabresa.",
-                "Adicione o ovo e mexa para que fique mexido.",
-                "Misture o feijão cozido e finalize com farinha de mandioca e cheiro-verde.",
-                "Sirva acompanhado de arroz."
-            ],
-            "tips": "Couve picada fininha adicionada no final dá mais frescor e riqueza de fibras.",
-            "image": "4.png"
-        },
-        {
-            "id": 5,
-            "title": "Strogonoff de Frango",
-            "category": [
-                "marmitas",
-                "frango"
-            ],
-            "source": "Marmitas da Semana (Sexta)",
-            "emoji": "🍛",
-            "ingredients": [
-                {
-                    "name": "Peito de frango em cubos",
-                    "qty": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "Creme de leite",
-                    "qty": 1,
-                    "unit": "caixinha"
-                },
-                {
-                    "name": "Molho de tomate (ou ketchup/mostarda)",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Batata palha",
-                    "qty": null,
-                    "unit": "para acompanhar"
-                }
-            ],
-            "steps": [
-                "Doure o frango na panela quente.",
-                "Acrescente o molho de tomate e condimentos a gosto.",
-                "Adicione o creme de leite.",
-                "Sirva com arroz branco e batata palha."
-            ],
-            "tips": "Se for congelar a marmita, guarde a batata palha em um saquinho separado para não murchar.",
-            "image": "5.png"
-        },
-        {
-            "id": 6,
-            "title": "Escondidinho de Carne",
-            "category": [
-                "marmitas",
-                "bife",
-                "batata"
-            ],
-            "source": "Marmitas da Semana (Sábado)",
-            "emoji": "🥧",
-            "ingredients": [
-                {
-                    "name": "Carne moída temperada",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Purê de mandioca ou batata",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Queijo para gratinar",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Faça a carne refogada saborosa.",
-                "Em uma marmita refratária, coloque a carne e cubra com o purê de sua preferência.",
-                "Polvilhe queijo e gratine no forno."
-            ],
-            "tips": "O purê de mandioca (aipim) traz uma textura mais elástica e cremosa deliciosa.",
-            "image": "6.png"
-        },
-        {
-            "id": 7,
-            "title": "Arroz de Forno Completo",
-            "category": [
-                "marmitas",
-                "arroz"
-            ],
-            "source": "Marmitas da Semana (Domingo)",
-            "emoji": "🍚",
-            "ingredients": [
-                {
-                    "name": "Arroz cozido",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Frango desfiado ou presunto",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Milho, ervilha e queijo picado",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Misture todos os ingredientes em uma travessa.",
-                "Leve ao forno até o queijo gratinar e derreter.",
-                "Separe as porções nas marmitas."
-            ],
-            "tips": "Perfeito para reaproveitar as sobras de arroz da geladeira!",
-            "image": "7.png"
-        },
-        {
             "id": 8,
             "title": "Frango Assado com Batatas",
             "category": [
@@ -1095,74 +946,6 @@ const receitasData = {
             ],
             "tips": "Fica divino servido com arroz branco soltinho e purê de batatas!",
             "image": "22.png"
-        },
-        {
-            "id": 23,
-            "title": "Moqueca de Peixe",
-            "category": "peixe",
-            "source": "Receitas de Peixe (Opção 4)",
-            "emoji": "🥘",
-            "ingredients": [
-                {
-                    "name": "Peito de peixe em postas",
-                    "qty": 600,
-                    "unit": "g"
-                },
-                {
-                    "name": "Suco de limão",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Dentes de alho",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Cebola em rodelas",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Pimentão verde em tiras",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Pimentão vermelho em tiras",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Tomates em rodelas",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Leite de coco",
-                    "qty": 200,
-                    "unit": "ml"
-                },
-                {
-                    "name": "Azeite de dendê",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Sal, pimenta e coentro",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Tempere as postas de peixe com o limão, sal e alho.",
-                "Em uma panela (de preferência de barro), faça camadas intercaladas de peixe, cebola, tomates e pimentões.",
-                "Regue tudo com o azeite de dendê e o leite de coco.",
-                "Cozinhe em fogo baixo com a panela tampada por cerca de 20 minutos.",
-                "Finalize salpicando bastante coentro fresco e sirva com arroz."
-            ],
-            "tips": "Cozinhar em panela de barro e fogo lento enriquece imensamente o sabor final!",
-            "image": "23.png"
         },
         {
             "id": 24,
@@ -3010,68 +2793,6 @@ const receitasData = {
             "image": "59.png"
         },
         {
-            "id": 60,
-            "title": "Sopa de Legumes com Frango",
-            "category": [
-                "janta",
-                "sopas",
-                "frango"
-            ],
-            "source": "Receitas de Janta Leve (Opção 1)",
-            "emoji": "🥣",
-            "ingredients": [
-                {
-                    "name": "Peito de frango desfiado",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Batata picadinha",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Cenoura cortada em cubos",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Chuchu picado",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Abobrinha pequena picada",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Cebola média picada",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Dentes de alho picados",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Sal, pimenta-do-reino e cheiro-verde",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Aqueça o azeite e refogue o alho e a cebola.",
-                "Adicione todos os legumes cortados finos e refogue-os por alguns minutos.",
-                "Cubra totalmente com água quente e deixe cozinhar até estarem macios.",
-                "Adicione o peito de frango cozido e desfiado, os temperos e ferva por mais 5 minutos.",
-                "Finalize salpicando cheiro-verde fresco."
-            ],
-            "tips": "Quente, aconchegante e perfeita para noites frias de descanso rápido. Pronta em 30 min!",
-            "image": "60.png"
-        },
-        {
             "id": 61,
             "title": "Omelete de Forno com Legumes",
             "category": [
@@ -3329,54 +3050,6 @@ const receitasData = {
             "image": "69.png"
         },
         {
-            "id": 70,
-            "title": "Caldo de Mandioca Cremoso",
-            "category": "sopas",
-            "source": "Caldos de Inverno",
-            "emoji": "🥣",
-            "ingredients": [
-                {
-                    "name": "Mandioca (aipim) limpa",
-                    "qty": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "Linguiça calabresa em cubos",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Cebola picada",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Dentes de alho picados",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Água de cozimento",
-                    "qty": 1,
-                    "unit": "litro"
-                },
-                {
-                    "name": "Sal, pimenta e cheiro-verde",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Cozinhe a mandioca na água com um pouco de sal até ficar desmanchando.",
-                "Retire os fiapos centrais da mandioca e bata os pedaços no liquidificador com a água quente do cozimento até virar um creme homogêneo.",
-                "Em uma panela grande, refogue o alho e cebola e frite bem os cubos de calabresa.",
-                "Adicione o creme de mandioca, ajuste o sal e pimenta e cozinhe em fogo brando por mais 10 minutos para apurar o sabor.",
-                "Finalize salpicando bastante cheiro-verde fresco."
-            ],
-            "tips": "Sirva acompanhado de torradas regadas com azeite de oliva e alho.",
-            "image": "70.png"
-        },
-        {
             "id": 72,
             "title": "Molho Rosé de Tomate",
             "category": "molhos",
@@ -3474,54 +3147,6 @@ const receitasData = {
             ],
             "tips": "Se preferir um molho liso de pizzaria, passe o molho pronto por uma peneira ou bata no liquidificador.",
             "image": "73.png"
-        },
-        {
-            "id": 74,
-            "title": "Molho de Carne Moída",
-            "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 3)",
-            "emoji": "🧀",
-            "ingredients": [
-                {
-                    "name": "Manteiga",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Farinha de trigo",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Leite morno",
-                    "qty": 500,
-                    "unit": "ml"
-                },
-                {
-                    "name": "Queijo muçarela ralado",
-                    "qty": 1,
-                    "unit": "xícara"
-                },
-                {
-                    "name": "Queijo parmesão ralado",
-                    "qty": 0.5,
-                    "unit": "xícara"
-                },
-                {
-                    "name": "Sal e noz-moscada",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Em uma panela, derreta a manteiga e adicione a farinha de trigo, mexendo ativamente por 1 minuto para cozinhar o trigo.",
-                "Adicione o leite morno aos poucos, mexendo vigorosamente com um batedor de arame (fouet) para não empelotar.",
-                "Deixe o creme ferver e engrossar levemente em fogo baixo.",
-                "Incorpore o queijo muçarela e o parmesão, mexendo até derreterem completamente.",
-                "Finalize temperando com sal e uma pitada sutil de noz-moscada ralada."
-            ],
-            "tips": "Sirva imediatamente, pois molhos à base de queijo tendem a engrossar rápido ao esfriar!",
-            "image": "74.png"
         },
         {
             "id": 75,
@@ -3701,58 +3326,6 @@ const receitasData = {
             ],
             "tips": "Sirva bem quente com croutons e gotas de pimenta.",
             "image": "78.png"
-        },
-        {
-            "id": 79,
-            "title": "Sopa de Legumes Clássica",
-            "category": "sopas",
-            "source": "Receitas para Dias Frios (Opção 2)",
-            "emoji": "🥦",
-            "ingredients": [
-                {
-                    "name": "Peito de frango cozido e desfiado",
-                    "qty": 2,
-                    "unit": "xícaras"
-                },
-                {
-                    "name": "Batata picadinha",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Cenoura cortada em cubinhos",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Chuchu cortado pequeno",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Cebola picada",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Dentes de alho picados",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Sal, pimenta e cheiro-verde",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Refogue a cebola e o alho no azeite até murcharem.",
-                "Adicione os legumes cortados finos e cubra com água fervente.",
-                "Cozinhe em fogo médio até que todos os legumes estejam bem macios.",
-                "Incorpore o frango cozido e desfiado, tempere com sal e pimenta e ferva por mais 5 minutos antes de servir."
-            ],
-            "tips": "Se preferir uma sopa mais espessa, amasse alguns pedaços de batata direto no caldo.",
-            "image": "79.png"
         },
         {
             "id": 80,
@@ -4038,53 +3611,6 @@ const receitasData = {
             "image": "85.png"
         },
         {
-            "id": 86,
-            "title": "Frango Grelhado Saudável",
-            "category": [
-                "almoco",
-                "frango",
-                "arroz"
-            ],
-            "source": "Receitas de Almoço (Card 1)",
-            "emoji": "🍱",
-            "ingredients": [
-                {
-                    "name": "Filés de peito de frango",
-                    "qty": 2,
-                    "unit": "unidades"
-                },
-                {
-                    "name": "Arroz",
-                    "qty": 2,
-                    "unit": "xícaras"
-                },
-                {
-                    "name": "Cenoura em tiras",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Abobrinha em cubos",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Sal, alho e azeite",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Tempere os filés de frango com sal, alho e azeite.",
-                "Grelhe os filés em uma frigideira bem quente até dourar.",
-                "Cozinhe o arroz tradicionalmente.",
-                "Refogue a cenoura e abobrinha rapidamente em azeite com alho.",
-                "Sirva o frango com arroz e legumes coloridos."
-            ],
-            "tips": "Excelente opção fitness e balanceada.",
-            "image": "86.png"
-        },
-        {
             "id": 88,
             "title": "Arroz de Forno com Frango Desfiado",
             "category": [
@@ -4222,52 +3748,6 @@ const receitasData = {
             "image": "90.png"
         },
         {
-            "id": 91,
-            "title": "Escondidinho de Batata com Carne Moída",
-            "category": [
-                "almoco",
-                "bife",
-                "batata"
-            ],
-            "source": "Receitas de Almoço (Card 6)",
-            "emoji": "🥧",
-            "ingredients": [
-                {
-                    "name": "Carne moída",
-                    "qty": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "Cebola picada e dentes de alho",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Batatas descascadas",
-                    "qty": 1,
-                    "unit": "kg"
-                },
-                {
-                    "name": "Leite",
-                    "qty": 0.5,
-                    "unit": "xícara"
-                },
-                {
-                    "name": "Queijo ralado",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Cozinhe as batatas e faça o purê adicionando leite e sal.",
-                "Refogue a carne moída com alho, cebola e temperos de preferência.",
-                "Monte refratários em camadas de carne moída por baixo e purê de batatas por cima.",
-                "Polvilhe queijo e leve ao forno para gratinar."
-            ],
-            "tips": "Coloque uma colher de azeite por cima para que o queijo gratine de forma uniforme.",
-            "image": "91.png"
-        },
-        {
             "id": 92,
             "title": "Peixe Assado com Batatas",
             "category": [
@@ -4312,51 +3792,6 @@ const receitasData = {
             ],
             "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo.",
             "image": "92.png"
-        },
-        {
-            "id": 93,
-            "title": "Macarrão Prático à Bolonhesa",
-            "category": [
-                "almoco",
-                "macarrao"
-            ],
-            "source": "Receitas de Almoço (Card 8)",
-            "emoji": "🍝",
-            "ingredients": [
-                {
-                    "name": "Macarrão de sua escolha",
-                    "qty": 500,
-                    "unit": "g"
-                },
-                {
-                    "name": "Carne moída",
-                    "qty": 300,
-                    "unit": "g"
-                },
-                {
-                    "name": "Cebola e dentes de alho picados",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Sachê de molho de tomate",
-                    "qty": 1,
-                    "unit": "unidade"
-                },
-                {
-                    "name": "Sal, orégano e queijo ralado",
-                    "qty": null,
-                    "unit": "a gosto"
-                }
-            ],
-            "steps": [
-                "Cozinhe o macarrão em água abundante salgada até ficar al dente.",
-                "Frite a carne moída com cebola e alho.",
-                "Adicione o molho de tomate e tempere com sal e orégano.",
-                "Escorra a massa e envolva ao molho bolonhesa quentinho, servindo salpicado de parmesão."
-            ],
-            "tips": "Prato único para quem busca praticidade sem abrir mão de sabor clássico.",
-            "image": "93.png"
         },
         {
             "id": 94,
