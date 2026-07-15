@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-15T20:06:00Z",
+  "title": "Design System: Chef Digital",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Amber Warmth", "canonical": "oklch(76% 0.18 78)", "tonalRamp": ["#78350f", "#92400e", "#b45309", "#d97706", "#f59e0b", "#fbbf24", "#fcd34d", "#fde68a", "#fef3c7", "#fffbeb"] },
+      "success": { "role": "success", "displayName": "Success Green", "canonical": "oklch(62% 0.17 145)", "tonalRamp": ["#064e3b", "#065f46", "#047857", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0", "#d1fae5", "#ecfdf5"] },
+      "danger": { "role": "danger", "displayName": "Danger Red", "canonical": "oklch(60% 0.22 29)", "tonalRamp": ["#7f1d1d", "#991b1b", "#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca", "#fee2e2", "#fef2f2"] },
+      "neutral-bg": { "role": "neutral", "displayName": "Background Main", "canonical": "oklch(98% 0.005 85)", "tonalRamp": ["#1c1917", "#292524", "#44403c", "#57534e", "#78716c", "#a8a29e", "#d6d3d1", "#e7e5e4", "#f5f5f4", "#fafaf9"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display Font", "purpose": "Recipe titles inside modal overlay." },
+      "body": { "displayName": "Body Font", "purpose": "Recipe ingredients, steps, layout content, and buttons." }
+    },
+    "shadows": [
+      { "name": "Card Hover", "value": "0 4px 6px -1px rgba(0, 0, 0, 0.05)", "purpose": "Interactive recipe card on hover." },
+      { "name": "Overlay Drop", "value": "0 20px 25px -5px rgba(0, 0, 0, 0.08)", "purpose": "Slide-over drawers and detailed recipe modal." }
+    ],
+    "motion": [
+      { "name": "Fast transition", "value": "0.15s ease", "purpose": "Button and filter states hover feedback." },
+      { "name": "Normal transition", "value": "0.25s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Recipe card shift and modal/drawer slide animations." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "640px" },
+      { "name": "tablet", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Control Button",
+      "kind": "button",
+      "refersTo": "button-control",
+      "description": "Header navigation/action button with hover feedback.",
+      "html": "<button class=\"ds-control-btn\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" stroke-width=\"2\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z\" /></svg></button>",
+      "css": ".ds-control-btn { position: relative; padding: 10px; color: #64748b; border-radius: 12px; transition: all 0.15s ease; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; } .ds-control-btn:hover { background-color: #f8fafc; color: #1e293b; } .ds-control-btn svg { width: 24px; height: 24px; }"
+    },
+    {
+      "name": "Large Primary Button",
+      "kind": "button",
+      "refersTo": "button-large-primary",
+      "description": "Full-width primary action button.",
+      "html": "<button class=\"ds-btn-large ds-btn-large-primary\"><span>Copiar Lista</span></button>",
+      "css": ".ds-btn-large { width: 100%; padding: 14px; font-weight: 700; font-size: 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.15s ease; border: none; cursor: pointer; } .ds-btn-large-primary { background-color: #f59e0b; color: #ffffff; } .ds-btn-large-primary:hover { background-color: #d97706; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Caderno de Receitas Moderno",
+    "overview": "O Chef Digital combina a sensação clássica e o calor editorial de um livro de receitas físico com a eficiência dinâmica de um utilitário de cozinha digital moderna. O design prioriza a clareza e a legibilidade na bancada de preparo, eliminando qualquer tipo de publicidade, pop-up ou poluição visual comum em blogs culinários comerciais.",
+    "keyCharacteristics": [
+      "Estilo editorial refinado com tipografia serifada clássica nos títulos principais.",
+      "Usabilidade rápida por meio de gavetas deslizantes (drawers) e modais para tarefas rápidas.",
+      "Densidade visual confortável, adequada para visualização a distância na cozinha.",
+      "Controles interativos amplos com cantos confortavelmente arredondados."
+    ],
+    "rules": [
+      { "name": "The Amber Warmth Rule", "body": "O tom primário de âmbar (#f59e0b) é reservado para marca, estados ativos e ações primárias. Ele nunca deve exceder 10% da superfície de qualquer tela para manter sua força de destaque.", "section": "colors" },
+      { "name": "The Editorial Contrast Rule", "body": "Títulos de receitas usam sempre 'Playfair Display' para manter a herança tátil dos livros de culinária físicos. Textos utilitários, ingredientes e modos de preparo utilizam exclusivamente a fonte 'Inter'.", "section": "typography" },
+      { "name": "The State Elevation Rule", "body": "Superfícies estáticas permanecem no nível do plano de fundo com contornos planos de 1px. Sombras e elevações discretas só são ativadas em resposta ao hover ou foco do usuário.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do usar 'Playfair Display' apenas para títulos de receitas em locais de destaque.",
+      "Do garantir que todo texto de ingredientes e modos de preparo tenha no mínimo 4.5:1 de contraste.",
+      "Do projetar ações primárias com dimensões amplas (mínimo de 44px de altura) facilitando o toque na cozinha."
+    ],
+    "donts": [
+      "Don't aplicar bordas coloridas espessas (como border-left maior que 1px) como decorações em cards ou alertas.",
+      "Don't utilizar textos com gradientes de cores ou fundos com efeitos de vidro embaçado (glassmorphism) de forma puramente decorativa.",
+      "Don't adicionar kickers/eyebrows em maiúsculas com espaçamento largo acima de cada título de seção.",
+      "Don't permitir que elementos de texto fiquem espremidos ou com tamanhos de fonte minúsculos nas visualizações mobile."
+    ]
+  }
+}

@@ -8,6 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     <!-- Local Custom CSS (Vanilla CSS Stylesheet) -->
     <link rel="stylesheet" href="estilos.css">
+    <!-- Inline Script to prevent Theme Flash on load -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('chef_digital_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else {
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+            }
+        })();
+    </script>
     <!-- Local Custom Database (Avoids CORS issues on file:// protocol) -->
     <script src="receitas.js"></script>
 </head>
@@ -30,25 +42,29 @@
 
             <!-- Header Controls -->
             <div class="header-controls">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" onclick="toggleTheme()" class="control-btn btn-theme" title="Alternar Tema" aria-label="Alternar tema de cores">
+                </button>
+
                 <!-- Planner Trigger Button -->
-                <button onclick="togglePlanner()" class="control-btn btn-planner" title="Menu Semanal">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button onclick="togglePlanner()" class="control-btn btn-planner" title="Menu Semanal" aria-label="Planejador de menu semanal">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     <span id="planner-badge" class="btn-badge hidden">0</span>
                 </button>
 
                 <!-- Shopping List Trigger Button -->
-                <button onclick="toggleShoppingList()" class="control-btn btn-shopping" title="Lista de Compras">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button onclick="toggleShoppingList()" class="control-btn btn-shopping" title="Lista de Compras" aria-label="Lista de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                     <span id="shopping-list-badge" class="btn-badge hidden">0</span>
                 </button>
                 
                 <!-- Favorites Only Toggle -->
-                <button id="favs-toggle" onclick="toggleFavoritesOnly()" class="control-btn btn-favorites" title="Visualizar Favoritos">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <button id="favs-toggle" onclick="toggleFavoritesOnly()" class="control-btn btn-favorites" title="Visualizar Favoritos" aria-label="Filtrar por receitas favoritas">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                 </button>
@@ -66,14 +82,14 @@
                 <div>
                     <span class="sidebar-title">Buscar</span>
                     <div class="search-box">
-                        <input type="text" id="search-input" onkeyup="filterRecipes()" placeholder="Nome ou ingrediente..." class="search-input">
+                        <input type="text" id="search-input" onkeyup="filterRecipes()" placeholder="Buscar por título..." class="search-input" aria-label="Buscar receitas por título">
                         <span class="search-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
                         </span>
-                        <button id="search-clear-btn" onclick="clearSearch()" class="search-clear-btn hidden" title="Limpar busca">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <button id="search-clear-btn" onclick="clearSearch()" class="search-clear-btn hidden" title="Limpar busca" aria-label="Limpar busca">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
                         </button>
@@ -87,6 +103,14 @@
                         <!-- Filled dynamically -->
                     </div>
                 </div>
+
+                <!-- Clear Filters Button -->
+                <button id="clear-filters-btn" onclick="clearAllFilters()" class="clear-filters-btn hidden" title="Limpar todos os filtros ativos" aria-label="Limpar todos os filtros ativos">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span>Limpar Filtros</span>
+                </button>
             </div>
         </aside>
 
@@ -117,21 +141,21 @@
     </main>
 
     <!-- Drawer Backdrop Overlay -->
-    <div id="drawer-backdrop" class="drawer-backdrop" onclick="closeAllDrawers()"></div>
+    <div id="drawer-backdrop" class="drawer-backdrop" onclick="closeAllDrawers()" aria-hidden="true" tabindex="-1"></div>
 
     <!-- Slide-over for Weekly Menu Planner (Right Drawer) -->
-    <div id="planner-drawer" class="drawer">
+    <div id="planner-drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="planner-drawer-title">
         <div class="drawer-header">
             <div class="drawer-header-title planner-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <h3>Menu da Semana</h3>
+                <h3 id="planner-drawer-title">Menu da Semana</h3>
             </div>
             <div class="drawer-header-actions">
-                <button onclick="clearPlanner()" class="drawer-clear-btn">Limpar Menu</button>
-                <button onclick="togglePlanner()" class="drawer-close-btn" title="Fechar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <button onclick="clearPlanner()" class="drawer-clear-btn" aria-label="Limpar menu semanal">Limpar Menu</button>
+                <button onclick="togglePlanner()" class="drawer-close-btn" title="Fechar" aria-label="Fechar menu semanal">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </button>
@@ -144,7 +168,7 @@
         <!-- Footer actions -->
         <div class="drawer-footer">
             <button onclick="generateConsolidatedShoppingList()" class="btn-large btn-large-success">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
                 <span>Consolidar Lista de Compras</span>
@@ -154,18 +178,18 @@
     </div>
 
     <!-- Slide-over for Shopping List (Right Drawer) -->
-    <div id="shopping-list-drawer" class="drawer">
+    <div id="shopping-list-drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="shopping-drawer-title">
         <div class="drawer-header">
             <div class="drawer-header-title shopping-title">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
-                <h3>Lista de Compras</h3>
+                <h3 id="shopping-drawer-title">Lista de Compras</h3>
             </div>
             <div class="drawer-header-actions">
-                <button onclick="clearShoppingList()" class="drawer-clear-btn">Limpar Tudo</button>
-                <button onclick="toggleShoppingList()" class="drawer-close-btn" title="Fechar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <button onclick="clearShoppingList()" class="drawer-clear-btn" aria-label="Limpar lista de compras">Limpar Tudo</button>
+                <button onclick="toggleShoppingList()" class="drawer-close-btn" title="Fechar" aria-label="Fechar lista de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </button>
@@ -182,7 +206,7 @@
         <!-- Footer actions -->
         <div class="drawer-footer">
             <button onclick="copyShoppingList()" class="btn-large btn-large-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
                 </svg>
                 <span>Copiar Lista</span>
@@ -191,12 +215,12 @@
     </div>
 
     <!-- Details Modal / Full Recipe Immersive Screen -->
-    <div id="recipe-modal" class="modal-overlay" onclick="closeRecipeModalOnBackdrop(event)">
+    <div id="recipe-modal" class="modal-overlay" onclick="closeRecipeModalOnBackdrop(event)" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-container" id="recipe-modal-content">
             <!-- Image Header Banner -->
             <div class="modal-header-banner">
-                <button onclick="closeRecipeModal()" class="modal-close-btn" title="Fechar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <button onclick="closeRecipeModal()" class="modal-close-btn" title="Fechar" aria-label="Fechar receita">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
                 </button>
@@ -215,9 +239,9 @@
                         <h4>Ingredientes</h4>
                         <!-- Servings multiplier -->
                         <div class="portion-controls">
-                            <button onclick="changePortions(-1)" class="portion-btn">-</button>
+                            <button onclick="changePortions(-1)" class="portion-btn" aria-label="Diminuir porções">-</button>
                             <span id="portions-multiplier" class="portion-value">1x</span>
-                            <button onclick="changePortions(1)" class="portion-btn">+</button>
+                            <button onclick="changePortions(1)" class="portion-btn" aria-label="Aumentar porções">+</button>
                         </div>
                     </div>
 
@@ -228,14 +252,14 @@
 
                     <div class="modal-actions-wrapper">
                         <button id="modal-planner-btn" onclick="addCurrentRecipeToPlanner()" class="btn-modal-action btn-modal-action-planner">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                             <span id="modal-planner-text">Planejar essa refeição</span>
                         </button>
                         
                         <button onclick="addCurrentRecipeToShoppingList()" class="btn-modal-action btn-modal-action-shopping">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <span>Adicionar tudo à lista de compras</span>
@@ -255,7 +279,7 @@
                     <!-- Extra details (Tip box) -->
                     <div id="modal-tips-container" class="tip-box hidden">
                         <div class="tip-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                             </svg>
                         </div>
@@ -283,6 +307,39 @@
         let activeRecipeId = null;
         let showFavoritesOnly = false;
 
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('chef_digital_theme', next);
+            updateThemeToggleIcon();
+            showToast(`Tema alterado para Modo ${next === 'dark' ? 'Escuro' : 'Claro'}`);
+        }
+
+        function updateThemeToggleIcon() {
+            const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            const themeBtn = document.getElementById('theme-toggle');
+            if (!themeBtn) return;
+            
+            if (current === 'dark') {
+                themeBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
+                    </svg>
+                `;
+                themeBtn.title = "Alternar para Modo Claro";
+                themeBtn.setAttribute('aria-label', "Alternar para Modo Claro");
+            } else {
+                themeBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                `;
+                themeBtn.title = "Alternar para Modo Escuro";
+                themeBtn.setAttribute('aria-label', "Alternar para Modo Escuro");
+            }
+        }
+
         // Document Ready init
         window.onload = function() {
             try {
@@ -292,7 +349,7 @@
                 categories = receitasData.categories;
                 recipes = receitasData.recipes;
                 
-                renderCategoryFilters();
+                updateThemeToggleIcon();
                 renderRecipes();
                 updateShoppingListBadge();
                 updatePlannerBadge();
@@ -338,21 +395,44 @@
             const container = document.getElementById('category-filters');
             container.innerHTML = '';
 
-            Object.keys(categories).forEach(key => {
+            // Get all category keys
+            const keys = Object.keys(categories);
+            
+            // Sort keys: keep 'todos' at the beginning, and sort others alphabetically by description
+            const sortedKeys = keys.filter(k => k === 'todos').concat(
+                keys.filter(k => k !== 'todos').sort((a, b) => {
+                    const descA = categories[a] || '';
+                    const descB = categories[b] || '';
+                    return descA.localeCompare(descB, 'pt-BR');
+                })
+            );
+
+            sortedKeys.forEach(key => {
                 const button = document.createElement('button');
                 button.className = `category-filter-btn ${activeCategory === key ? 'active' : ''}`;
                 button.onclick = () => selectCategory(key);
                 
-                // Get counts for category supporting multitag
+                // Get counts for category supporting multitag and current active filters (except activeCategory itself)
                 let count = 0;
                 if (key === 'todos') {
-                    count = recipes.length;
+                    count = recipes.filter(r => {
+                        const searchMatch = !searchQuery || 
+                            r.title.toLowerCase().includes(searchQuery);
+                        const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
+                        return searchMatch && favoriteMatch;
+                    }).length;
                 } else {
                     count = recipes.filter(r => {
+                        let categoryMatch = false;
                         if (Array.isArray(r.category)) {
-                            return r.category.includes(key);
+                            categoryMatch = r.category.includes(key);
+                        } else {
+                            categoryMatch = r.category === key;
                         }
-                        return r.category === key;
+                        const searchMatch = !searchQuery || 
+                            r.title.toLowerCase().includes(searchQuery);
+                        const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
+                        return categoryMatch && searchMatch && favoriteMatch;
                     }).length;
                 }
 
@@ -360,6 +440,12 @@
                     <span>${categories[key]}</span>
                     <span class="category-filter-badge">${count}</span>
                 `;
+                
+                // Skip rendering if the category is empty, unless it's 'todos' or the currently active category
+                if (count === 0 && key !== 'todos' && key !== activeCategory) {
+                    return;
+                }
+
                 container.appendChild(button);
             });
         }
@@ -368,7 +454,6 @@
             activeCategory = categoryKey;
             showFavoritesOnly = false; // Reset favorites-only filter when clicking category
             document.getElementById('favs-toggle').classList.remove('active');
-            renderCategoryFilters();
             renderRecipes();
         }
 
@@ -379,7 +464,6 @@
             if (showFavoritesOnly) {
                 btn.classList.add('active');
                 activeCategory = 'todos';
-                renderCategoryFilters();
             } else {
                 btn.classList.remove('active');
             }
@@ -411,6 +495,47 @@
             renderRecipes();
         }
 
+        // Helper to update the visibility of Clear Filters button
+        function updateClearFiltersBtnVisibility() {
+            const clearFiltersBtn = document.getElementById('clear-filters-btn');
+            if (!clearFiltersBtn) return;
+            
+            const hasActiveFilters = (searchQuery.length > 0) || 
+                                     (activeCategory !== 'todos') || 
+                                     showFavoritesOnly;
+                                     
+            if (hasActiveFilters) {
+                clearFiltersBtn.classList.remove('hidden');
+            } else {
+                clearFiltersBtn.classList.add('hidden');
+            }
+        }
+
+        // Clear all filters action
+        function clearAllFilters() {
+            // Clear search
+            const input = document.getElementById('search-input');
+            if (input) input.value = '';
+            searchQuery = '';
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) {
+                clearBtn.classList.add('hidden');
+            }
+
+            // Clear active category
+            activeCategory = 'todos';
+
+            // Clear favorites filter
+            showFavoritesOnly = false;
+            const favsBtn = document.getElementById('favs-toggle');
+            if (favsBtn) {
+                favsBtn.classList.remove('active');
+            }
+
+            // Re-render
+            renderRecipes();
+        }
+
         // Render card grid based on filters and search
         function renderRecipes() {
             const grid = document.getElementById('recipes-grid');
@@ -430,10 +555,9 @@
                     }
                 }
                 
-                // Search Match (Check Title + Ingredients names)
+                // Search Match (Check Title only)
                 const searchMatch = !searchQuery || 
-                    recipe.title.toLowerCase().includes(searchQuery) ||
-                    recipe.ingredients.some(ing => ing.name && ing.name.toLowerCase().includes(searchQuery));
+                    recipe.title.toLowerCase().includes(searchQuery);
 
                 // Favorites Filter
                 const favoriteMatch = !showFavoritesOnly || favorites.includes(recipe.id);
@@ -469,8 +593,7 @@
                 emptyState.classList.remove('hidden');
             } else {
                 emptyState.classList.add('hidden');
-                
-                filtered.forEach(recipe => {
+                      filtered.forEach(recipe => {
                     const isFav = favorites.includes(recipe.id);
                     const isPlanned = plannedRecipes.some(p => p.id === recipe.id);
                     const card = document.createElement('div');
@@ -494,10 +617,11 @@
                     const hasImg = recipe.image && recipe.image.trim() !== "";
                     const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
                     const headerStyle = hasImg ? `style="background-image: url('${recipe.image}');"` : '';
+                    const a11yImgAttributes = hasImg ? `role="img" aria-label="Foto de ${recipe.title}"` : '';
 
                     card.innerHTML = `
-                        <div class="${headerClass}" ${headerStyle}>
-                            <span class="card-emoji">${recipe.emoji || '🍽️'}</span>
+                        <div class="${headerClass}" ${headerStyle} ${a11yImgAttributes}>
+                            <span class="card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽️'}</span>
                             <div class="card-badges-wrapper">
                                 ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
                                 ${categoryBadges}
@@ -512,21 +636,21 @@
                             
                             <div class="card-footer">
                                 <span class="card-ingredients-count">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                     </svg>
                                     ${recipe.ingredients.length} ing.
                                 </span>
                                 
                                 <div class="card-actions">
-                                    <button onclick="togglePlanRecipe(${recipe.id})" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <button onclick="togglePlanRecipe(${recipe.id})" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana" aria-label="Planejar ${recipe.title} para a semana" aria-pressed="${isPlanned}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                     </button>
 
-                                    <button onclick="toggleFavorite(${recipe.id})" class="card-action-btn fav-btn ${isFav ? 'active' : ''}" title="Adicionar aos favoritos">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <button onclick="toggleFavorite(${recipe.id})" class="card-action-btn fav-btn ${isFav ? 'active' : ''}" title="Adicionar aos favoritos" aria-label="Adicionar ${recipe.title} aos favoritos" aria-pressed="${isFav}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                         </svg>
                                     </button>
@@ -537,6 +661,10 @@
                     grid.appendChild(card);
                 });
             }
+
+            // Dynamically refresh category filters' count and update clear button visibility
+            renderCategoryFilters();
+            updateClearFiltersBtnVisibility();
         }
 
         // Favorite Toggle functionality
@@ -550,6 +678,58 @@
             renderRecipes();
         }
 
+        // Focus trap and keydown event handling helper for accessibility
+        let previouslyFocusedElement = null;
+
+        function trapFocus(e, containerId) {
+            const container = document.getElementById(containerId);
+            const focusableEls = container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusableEls.length === 0) return;
+            const firstFocusableEl = focusableEls[0];
+            const lastFocusableEl = focusableEls[focusableEls.length - 1];
+
+            const isTabPressed = (e.key === 'Tab' || e.keyCode === 9);
+
+            if (!isTabPressed) {
+                return;
+            }
+
+            if (e.shiftKey) { /* shift + tab */
+                if (document.activeElement === firstFocusableEl) {
+                    lastFocusableEl.focus();
+                    e.preventDefault();
+                }
+            } else { /* tab */
+                if (document.activeElement === lastFocusableEl) {
+                    firstFocusableEl.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+
+        // Global key listener for Esc and dialog focus trap
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('recipe-modal');
+            const planner = document.getElementById('planner-drawer');
+            const shopping = document.getElementById('shopping-list-drawer');
+
+            if (e.key === 'Escape' || e.keyCode === 27) {
+                if (modal.classList.contains('open')) {
+                    closeRecipeModal();
+                } else if (planner.classList.contains('open') || shopping.classList.contains('open')) {
+                    closeAllDrawers();
+                }
+            }
+
+            if (modal.classList.contains('open')) {
+                trapFocus(e, 'recipe-modal-content');
+            } else if (planner.classList.contains('open')) {
+                trapFocus(e, 'planner-drawer');
+            } else if (shopping.classList.contains('open')) {
+                trapFocus(e, 'shopping-list-drawer');
+            }
+        });
+
         // Drawer Toggle & Core logic
         function togglePlanner() {
             const drawer = document.getElementById('planner-drawer');
@@ -558,15 +738,24 @@
             if (drawer.classList.contains('open')) {
                 drawer.classList.remove('open');
                 backdrop.classList.remove('active');
+                if (previouslyFocusedElement) {
+                    previouslyFocusedElement.focus();
+                    previouslyFocusedElement = null;
+                }
             } else {
                 // If shopping drawer is open, close it first
                 const shopDrawer = document.getElementById('shopping-list-drawer');
                 if (shopDrawer.classList.contains('open')) {
                     shopDrawer.classList.remove('open');
                 }
+                previouslyFocusedElement = document.activeElement;
                 drawer.classList.add('open');
                 backdrop.classList.add('active');
                 renderPlanner();
+                setTimeout(() => {
+                    const firstEl = drawer.querySelector('button, input');
+                    if (firstEl) firstEl.focus();
+                }, 100);
             }
         }
 
@@ -577,15 +766,24 @@
             if (drawer.classList.contains('open')) {
                 drawer.classList.remove('open');
                 backdrop.classList.remove('active');
+                if (previouslyFocusedElement) {
+                    previouslyFocusedElement.focus();
+                    previouslyFocusedElement = null;
+                }
             } else {
                 // If planner is open, close it first
                 const plannerDrawer = document.getElementById('planner-drawer');
                 if (plannerDrawer.classList.contains('open')) {
                     plannerDrawer.classList.remove('open');
                 }
+                previouslyFocusedElement = document.activeElement;
                 drawer.classList.add('open');
                 backdrop.classList.add('active');
                 renderShoppingList();
+                setTimeout(() => {
+                    const firstEl = drawer.querySelector('button, input');
+                    if (firstEl) firstEl.focus();
+                }, 100);
             }
         }
 
@@ -593,6 +791,10 @@
             document.getElementById('planner-drawer').classList.remove('open');
             document.getElementById('shopping-list-drawer').classList.remove('open');
             document.getElementById('drawer-backdrop').classList.remove('active');
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+                previouslyFocusedElement = null;
+            }
         }
 
         function togglePlanRecipe(id) {
@@ -670,22 +872,22 @@
                 card.innerHTML = `
                     <div class="drawer-card-top">
                         <div class="drawer-card-info">
-                            <span class="drawer-card-emoji">${recipe.emoji || '🍽'}</span>
+                            <span class="drawer-card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽'}</span>
                             <div class="drawer-card-meta">
                                 <h4>${recipe.title}</h4>
                                 <span>${recipe.source || ''}</span>
                             </div>
                         </div>
-                        <button onclick="togglePlanRecipe(${recipe.id}); renderPlanner();" class="drawer-card-remove" title="Remover do menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        <button onclick="togglePlanRecipe(${recipe.id}); renderPlanner();" class="drawer-card-remove" title="Remover do menu" aria-label="Remover ${recipe.title} do planejamento">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
                     </div>
                     <div class="drawer-card-bottom">
                         <span>Porções:</span>
                         <div class="portion-controls">
-                            <button onclick="changePlannerRecipePortions(${recipe.id}, -1)" class="portion-btn">-</button>
+                            <button onclick="changePlannerRecipePortions(${recipe.id}, -1)" class="portion-btn" aria-label="Diminuir porções">-</button>
                             <span class="portion-value">${p.portions}x</span>
-                            <button onclick="changePlannerRecipePortions(${recipe.id}, 1)" class="portion-btn">+</button>
+                            <button onclick="changePlannerRecipePortions(${recipe.id}, 1)" class="portion-btn" aria-label="Aumentar porções">+</button>
                         </div>
                     </div>
                 `;
@@ -819,8 +1021,8 @@
                 section.innerHTML = `
                     <div class="shopping-section-header">
                         <h4>${recipeTitle}</h4>
-                        <button onclick="removeRecipeFromShoppingList('${recipeTitle}')" class="drawer-card-remove" title="Remover grupo de compras">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        <button onclick="removeRecipeFromShoppingList('${recipeTitle}')" class="drawer-card-remove" title="Remover grupo de compras" aria-label="Remover grupo de compras de ${recipeTitle}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                         </button>
                     </div>
                 `;
@@ -840,10 +1042,11 @@
                         displayQty = ` - <span class="qty-span">${item.unit}</span>`;
                     }
 
+                    const rawQtyText = displayQty ? `, quantidade ${item.qty !== null ? Number(item.qty.toFixed(2)).toString() : ''} ${item.unit}` : '';
                     li.innerHTML = `
-                        <div class="shopping-checkbox-wrapper" onclick="toggleShoppingItemCheck('${recipeTitle}', ${index})">
+                        <div class="shopping-checkbox-wrapper" onclick="toggleShoppingItemCheck('${recipeTitle}', ${index})" role="checkbox" aria-checked="${item.checked}" tabindex="0" onkeydown="if(event.key === ' ' || event.key === 'Enter') { toggleShoppingItemCheck('${recipeTitle}', ${index}); event.preventDefault(); }" aria-label="${item.name}${rawQtyText}">
                             <div class="shopping-checkbox ${item.checked ? 'checked' : ''}">
-                                ${item.checked ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>' : ''}
+                                ${item.checked ? '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>' : ''}
                             </div>
                             <span class="shopping-item-name ${item.checked ? 'checked' : ''}">${item.name}${displayQty}</span>
                         </div>
@@ -994,12 +1197,21 @@
 
             // Open animations
             const modal = document.getElementById('recipe-modal');
+            previouslyFocusedElement = document.activeElement;
             modal.classList.add('open');
+            setTimeout(() => {
+                const closeBtn = modal.querySelector('.modal-close-btn');
+                if (closeBtn) closeBtn.focus();
+            }, 100);
         }
 
         function closeRecipeModal() {
             const modal = document.getElementById('recipe-modal');
             modal.classList.remove('open');
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+                previouslyFocusedElement = null;
+            }
         }
 
         function closeRecipeModalOnBackdrop(e) {
@@ -1040,8 +1252,8 @@
                 }
 
                 li.innerHTML = `
-                    <div class="ing-checkbox" onclick="this.classList.toggle('checked'); this.nextElementSibling.querySelector('.ing-name').style.textDecoration = this.classList.contains('checked') ? 'line-through' : 'none'; this.nextElementSibling.querySelector('.ing-name').style.opacity = this.classList.contains('checked') ? '0.5' : '1';">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    <div class="ing-checkbox" role="checkbox" aria-checked="false" tabindex="0" onkeydown="if(event.key === ' ' || event.key === 'Enter') { this.classList.toggle('checked'); this.setAttribute('aria-checked', this.classList.contains('checked')); this.nextElementSibling.querySelector('.ing-name').style.textDecoration = this.classList.contains('checked') ? 'line-through' : 'none'; this.nextElementSibling.querySelector('.ing-name').style.opacity = this.classList.contains('checked') ? '0.5' : '1'; event.preventDefault(); }" onclick="this.classList.toggle('checked'); this.setAttribute('aria-checked', this.classList.contains('checked')); this.nextElementSibling.querySelector('.ing-name').style.textDecoration = this.classList.contains('checked') ? 'line-through' : 'none'; this.nextElementSibling.querySelector('.ing-name').style.opacity = this.classList.contains('checked') ? '0.5' : '1';" aria-label="${ing.name}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
                     </div>
                     <div class="ing-details-row">
                         <span class="ing-name">${ing.name}</span>
