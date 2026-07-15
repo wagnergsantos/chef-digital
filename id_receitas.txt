@@ -12,10 +12,6 @@
 31 - Macarrão à Bolonhesa
 32 - Fettuccine ao Molho Alfredo
 33 - Macarrão com Legumes Salteados
-52 - Bife Acebolado Clássico
-53 - Bife ao Molho de Mostarda
-54 - Bife ao Alho e Ervas Finas
-55 - Bife ao Molho Madeira com Cogumelos
 60 - Sopa de Legumes com Frango
 61 - Omelete de Forno com Legumes
 62 - Frango Desfiado com Batata-Doce
@@ -33,15 +29,6 @@
 83 - Chocolate Quente Cremoso
 84 - Caldo de Mandioca com Calabresa
 85 - Canja de Galinha Tradicional
-86 - Frango Grelhado Saudável
-87 - Carne de Panela com Batatas
-88 - Arroz de Forno com Frango Desfiado
-89 - Strogonoff de Frango Expresso
-90 - Feijão Tropeiro com Carne Seca
-91 - Escondidinho de Batata com Carne Moída
-92 - Peixe Assado com Batatas
-93 - Macarrão Prático à Bolonhesa
-94 - Frango ao Creme com Arroz e Salada
 108 - Omelete Completa de Frigideira
 109 - Macarrão Alho e Óleo Expresso
 110 - Frango Grelhado Vapt-Vupt

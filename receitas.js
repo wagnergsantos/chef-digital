@@ -2716,7 +2716,7 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Dica: Não fure a carne com garfos enquanto sela para que os sucos permaneçam selados no interior do bife!",
-            "image": null
+            "image": "52.png"
         },
         {
             "id": 53,
@@ -2770,7 +2770,7 @@ const receitasData = {
                 "Retorne os bifes reservados ao molho quente por 1 minuto e finalize salpicando salsinha."
             ],
             "tips": "Harmoniza perfeitamente acompanhado de arroz branco e batata palha ou purê!",
-            "image": null
+            "image": "53.png"
         },
         {
             "id": 54,
@@ -2824,7 +2824,7 @@ const receitasData = {
                 "Sirva bem quente."
             ],
             "tips": "Usar manteiga de boa qualidade proporciona uma cor dourada e um brilho insuperáveis!",
-            "image": null
+            "image": "54.png"
         },
         {
             "id": 55,
@@ -2888,7 +2888,7 @@ const receitasData = {
                 "Deite os bifes de volta ao molho borbulhante e sirva."
             ],
             "tips": "Prato sofisticado digno de restaurante que você faz em 15 minutos em casa!",
-            "image": null
+            "image": "55.png"
         },
         {
             "id": 56,
@@ -4355,7 +4355,7 @@ const receitasData = {
                 "Sirva o frango com arroz e legumes coloridos."
             ],
             "tips": "Excelente opção fitness e balanceada.",
-            "image": null
+            "image": "86.png"
         },
         {
             "id": 87,
@@ -4401,7 +4401,7 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde fresco antes de servir."
             ],
             "tips": "Cozinhar em fogo brando encorpa muito o caldo!",
-            "image": null
+            "image": "87.png"
         },
         {
             "id": 88,
@@ -4447,7 +4447,7 @@ const receitasData = {
                 "Leve ao forno a 200°C por 15 minutos até dourar e gratinar."
             ],
             "tips": "Se sobrou arroz da janta anterior, essa receita é ideal para dar vida nova a ele!",
-            "image": null
+            "image": "88.png"
         },
         {
             "id": 89,
@@ -4493,7 +4493,7 @@ const receitasData = {
                 "Sirva com arroz branco soltinho e batata palha por cima."
             ],
             "tips": "Prato preferido das crianças de preparo extremamente rápido!",
-            "image": null
+            "image": "89.png"
         },
         {
             "id": 90,
@@ -4538,7 +4538,7 @@ const receitasData = {
                 "Adicione a farinha de mandioca aos poucos, mexendo para não secar demais, e jogue cheiro-verde fresco."
             ],
             "tips": "Delicioso se servido com couve refogada no alho ao lado!",
-            "image": null
+            "image": "90.png"
         },
         {
             "id": 91,
@@ -4584,7 +4584,7 @@ const receitasData = {
                 "Polvilhe queijo e leve ao forno para gratinar."
             ],
             "tips": "Coloque uma colher de azeite por cima para que o queijo gratine de forma uniforme.",
-            "image": null
+            "image": "91.png"
         },
         {
             "id": 92,
@@ -4630,7 +4630,7 @@ const receitasData = {
                 "Asse em forno médio por cerca de 35 a 40 minutos até que as batatas estejam tenras."
             ],
             "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo.",
-            "image": null
+            "image": "92.png"
         },
         {
             "id": 93,
@@ -4675,7 +4675,7 @@ const receitasData = {
                 "Escorra a massa e envolva ao molho bolonhesa quentinho, servindo salpicado de parmesão."
             ],
             "tips": "Prato único para quem busca praticidade sem abrir mão de sabor clássico.",
-            "image": null
+            "image": "93.png"
         },
         {
             "id": 94,
@@ -4721,7 +4721,7 @@ const receitasData = {
                 "Sirva o frango com arroz soltinho e salada verde de folhas."
             ],
             "tips": "Delicioso se salpicado de sementes de girassol tostadas na salada!",
-            "image": null
+            "image": "94.png"
         },
         {
             "id": 95,
