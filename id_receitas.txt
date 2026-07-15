@@ -28,10 +28,6 @@
 39 - Feijão Carioca Simples
 40 - Feijão Tropeiro Tradicional
 41 - Feijão Fradinho de Verão
-42 - Arroz Branco Soltinho
-43 - Arroz Rico com Legumes
-44 - Arroz Cremoso com Frango
-45 - Arroz ao Alho Dourado
 46 - Refogado de Legumes Express
 47 - Refogado de Frango e Brócolis
 48 - Refogado de Carne de Panela
@@ -42,10 +38,6 @@
 53 - Bife ao Molho de Mostarda
 54 - Bife ao Alho e Ervas Finas
 55 - Bife ao Molho Madeira com Cogumelos
-56 - Frango Grelhado Clássico
-57 - Frango Cremoso com Mostarda
-58 - Frango Desfiado com Requeijão
-59 - Frango ao Molho de Tomate Fit
 60 - Sopa de Legumes com Frango
 61 - Omelete de Forno com Legumes
 62 - Frango Desfiado com Batata-Doce
@@ -55,12 +47,9 @@
 66 - Panqueca de Aveia com Ricota e Espinafre
 67 - Risoto Prático de Legumes
 68 - Filé de Peixe Assado com Legumes
-69 - Caldo Verde Tradicional
-70 - Caldo de Mandioca Cremoso
 71 - Caldo de Kenga de Milho
 78 - Caldo de Feijão Reconfortante
 79 - Sopa de Legumes Clássica
-80 - Polenta Cremosa com Carne Moída
 81 - Escondidinho de Batata com Carne
 82 - Creme de Milho Aconchegante
 83 - Chocolate Quente Cremoso

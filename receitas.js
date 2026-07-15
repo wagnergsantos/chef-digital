@@ -2186,7 +2186,7 @@ const receitasData = {
                 "Desligue o fogo e mantenha a panela tampada por 5 minutos antes de soltar com o garfo."
             ],
             "tips": "A proporção de ouro é sempre de 2 xícaras de água quente para cada 1 xícara de arroz seco!",
-            "image": null
+            "image": "42.png"
         },
         {
             "id": 43,
@@ -2244,7 +2244,7 @@ const receitasData = {
                 "Deixe secar totalmente, desligue e jogue o cheiro-verde salpicado."
             ],
             "tips": "Colorido, saudável e as crianças adoram!",
-            "image": null
+            "image": "43.png"
         },
         {
             "id": 44,
@@ -2297,7 +2297,7 @@ const receitasData = {
                 "Cozinhe em fogo baixo até que seque e finalize salpicando cheiro-verde."
             ],
             "tips": "Um prato prático e muito rico em proteínas para o dia a dia!",
-            "image": null
+            "image": "44.png"
         },
         {
             "id": 45,
@@ -2340,7 +2340,7 @@ const receitasData = {
                 "Finalize com cheiro-verde fresco."
             ],
             "tips": "O alho em lâminas confere um visual lindo e um sabor único à massa.",
-            "image": null
+            "image": "45.png"
         },
         {
             "id": 46,
@@ -2930,7 +2930,7 @@ const receitasData = {
                 "Sirva com acompanhamentos frescos."
             ],
             "tips": "Excelente servido com batata-doce assada!",
-            "image": null
+            "image": "56.png"
         },
         {
             "id": 57,
@@ -2972,7 +2972,7 @@ const receitasData = {
                 "Retorne os filés ao molho cremoso de mostarda, mexe bem e finalize com salsinha picada."
             ],
             "tips": "Sirva acompanhado de arroz branco - fica simplesmente irresistível!",
-            "image": null
+            "image": "57.png"
         },
         {
             "id": 58,
@@ -3014,7 +3014,7 @@ const receitasData = {
                 "Misture o pote inteiro de requeijão cremoso até homogeneizar e finalize com cheiro-verde."
             ],
             "tips": "Dica: Essa receita é um recheio perfeito para panquecas, tortas ou recheio de tapiocas.",
-            "image": null
+            "image": "58.png"
         },
         {
             "id": 59,
@@ -3056,7 +3056,7 @@ const receitasData = {
                 "Volte o frango para a panela, misture tudo tampado por 5 minutos e finalize com folhas frescas de manjericão."
             ],
             "tips": "Refeição super leve, de baixa caloria e extremamente saudável.",
-            "image": null
+            "image": "59.png"
         },
         {
             "id": 60,
@@ -3556,7 +3556,7 @@ const receitasData = {
                 "Adicione a couve fatiada e apague o fogo para que ela cozinhe apenas com o calor do caldo. Finalize com cheiro-verde."
             ],
             "tips": "A couve adicionada no final mantém sua cor verde brilhante e textura crocante perfeita!",
-            "image": null
+            "image": "69.png"
         },
         {
             "id": 70,
@@ -3604,7 +3604,7 @@ const receitasData = {
                 "Finalize salpicando bastante cheiro-verde fresco."
             ],
             "tips": "Sirva acompanhado de torradas regadas com azeite de oliva e alho.",
-            "image": null
+            "image": "70.png"
         },
         {
             "id": 71,
@@ -4087,7 +4087,7 @@ const receitasData = {
                 "Monte colocando a polenta cremosa no fundo da travessa e despejando a carne com molho por cima."
             ],
             "tips": "Adicione duas colheres de creme de leite ou requeijão na polenta cozida para um toque extra aveludado.",
-            "image": null
+            "image": "80.png"
         },
         {
             "id": 81,
