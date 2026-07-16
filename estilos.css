@@ -43,8 +43,13 @@
     --radius-full: 9999px;
     
     /* Animations & Transitions */
-    --transition-fast: 0.15s ease;
-    --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --transition-fast: 0.12s var(--ease-out-quart);
+    --transition-normal: 0.24s var(--ease-out-quart);
+    --transition-slow: 0.35s var(--ease-out-quart);
     
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -127,6 +132,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Accessibility Focus Ring */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+[role="checkbox"]:focus-visible,
+[role="button"]:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
 body {
@@ -215,10 +230,11 @@ input {
 }
 
 .brand-text h1 {
-    font-size: 20px;
-    font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -0.025em;
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.015em;
     line-height: 1.2;
 }
 
@@ -242,7 +258,7 @@ input {
     padding: 10px;
     color: var(--text-muted);
     border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -251,11 +267,17 @@ input {
 .control-btn svg {
     width: 24px;
     height: 24px;
+    transition: transform var(--transition-fast);
 }
 
 .control-btn:hover {
     background-color: var(--bg-light);
     color: var(--text-main);
+    transform: scale(1.04);
+}
+
+.control-btn:active {
+    transform: scale(0.96);
 }
 
 .control-btn.btn-planner:hover {
@@ -498,7 +520,8 @@ input {
 }
 
 .results-header h2 {
-    font-size: 18px;
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: 22px;
     font-weight: 700;
     color: var(--text-main);
 }
@@ -528,6 +551,17 @@ input {
 }
 
 /* Recipe Card Styling */
+@keyframes card-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .recipe-card {
     background-color: var(--bg-card);
     border-radius: var(--radius-lg);
@@ -536,14 +570,16 @@ input {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all var(--transition-normal);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
     cursor: pointer;
+    animation: card-entrance 0.32s var(--ease-out-quart) both;
+    animation-delay: calc(var(--i, 0) * 30ms);
 }
 
 .recipe-card:hover {
     border-color: var(--primary-light-border);
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
 }
 
 .recipe-card.planned {
@@ -566,6 +602,15 @@ input {
 .card-header-graphic.has-image {
     background-size: cover;
     background-position: center;
+}
+
+.card-header-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 }
 
 .card-header-graphic.has-image::before {
@@ -707,7 +752,7 @@ input {
     height: 44px;
     border-radius: var(--radius-md);
     color: var(--text-light);
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -716,23 +761,29 @@ input {
 .card-action-btn svg {
     width: 18px;
     height: 18px;
+    transition: transform var(--transition-fast);
 }
 
 .card-action-btn:hover {
     background-color: var(--bg-light);
     color: var(--text-muted);
+    transform: scale(1.05);
+}
+
+.card-action-btn:active {
+    transform: scale(0.95);
 }
 
 /* Specific button hovers */
 .card-action-btn.plan-btn:hover,
 .card-action-btn.plan-btn.active {
-    color: var(--success-color);
+    color: var(--success-hover);
     background-color: var(--success-light);
 }
 
 .card-action-btn.fav-btn:hover,
 .card-action-btn.fav-btn.active {
-    color: var(--danger-color);
+    color: var(--danger-hover);
     background-color: var(--danger-light);
 }
 
@@ -786,7 +837,7 @@ input {
     backdrop-filter: blur(2px);
     z-index: 45;
     opacity: 0;
-    transition: opacity var(--transition-normal);
+    transition: opacity 0.28s var(--ease-out-quart);
     pointer-events: none;
 }
 
@@ -806,7 +857,7 @@ input {
     box-shadow: var(--shadow-xl);
     z-index: 50;
     transform: translateX(100%);
-    transition: transform var(--transition-normal);
+    transition: transform 0.32s var(--ease-out-quint);
     border-left: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -845,9 +896,10 @@ input {
 }
 
 .drawer-header-title h3 {
-    font-size: 16px;
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: 18px;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--text-main);
 }
 
 .drawer-header-actions {
@@ -874,7 +926,7 @@ input {
     height: 44px;
     border-radius: var(--radius-md);
     color: var(--text-light);
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -883,6 +935,11 @@ input {
 .drawer-close-btn:hover {
     background-color: var(--border-dark);
     color: var(--text-main);
+    transform: scale(1.04);
+}
+
+.drawer-close-btn:active {
+    transform: scale(0.96);
 }
 
 .drawer-close-btn svg {
@@ -1015,12 +1072,17 @@ input {
     color: var(--text-muted);
     border-radius: var(--radius-md);
     font-size: 16px;
-    transition: background-color var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .portion-btn:hover {
     background-color: var(--bg-light);
     color: var(--text-main);
+    transform: scale(1.05);
+}
+
+.portion-btn:active {
+    transform: scale(0.95);
 }
 
 .portion-value {
@@ -1050,8 +1112,17 @@ input {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
     box-shadow: var(--shadow-sm);
+}
+
+.btn-large:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-large:active {
+    transform: translateY(1px);
 }
 
 .btn-large-success {
@@ -1144,7 +1215,15 @@ input {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.shopping-checkbox:hover {
+    transform: scale(1.05);
+}
+
+.shopping-checkbox:active {
+    transform: scale(0.95);
 }
 
 .shopping-checkbox.checked {
@@ -1156,6 +1235,14 @@ input {
 .shopping-checkbox svg {
     width: 10px;
     height: 10px;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: transform 0.18s var(--ease-out-quart), opacity 0.18s var(--ease-out-quart);
+}
+
+.shopping-checkbox.checked svg {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .shopping-item-name {
@@ -1194,7 +1281,7 @@ input {
     justify-content: center;
     padding: 16px;
     opacity: 0;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.24s var(--ease-out-quart);
     pointer-events: none;
 }
 
@@ -1213,12 +1300,14 @@ input {
     box-shadow: var(--shadow-xl);
     display: flex;
     flex-direction: column;
-    transform: scale(0.95);
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: transform 0.3s var(--ease-out-quart), opacity 0.3s var(--ease-out-quart);
 }
 
 .modal-overlay.open .modal-container {
-    transform: scale(1);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Modal Banner Header */
@@ -1268,11 +1357,16 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
 }
 
 .modal-close-btn:hover {
     background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.modal-close-btn:active {
+    transform: scale(0.95);
 }
 
 .modal-close-btn svg {
@@ -1345,9 +1439,10 @@ input {
 }
 
 .modal-section-title-wrapper h4 {
-    font-size: 16px;
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: 18px;
     font-weight: 700;
-    color: #0f172a;
+    color: var(--text-main);
 }
 
 /* Ingredients panel */
@@ -1393,7 +1488,15 @@ input {
     justify-content: center;
     flex-shrink: 0;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ing-checkbox:hover {
+    transform: scale(1.05);
+}
+
+.ing-checkbox:active {
+    transform: scale(0.95);
 }
 
 .ing-checkbox.checked {
@@ -1406,11 +1509,13 @@ input {
     height: 12px;
     color: var(--primary-hover);
     opacity: 0;
-    transition: opacity var(--transition-fast);
+    transform: scale(0.6);
+    transition: transform 0.18s var(--ease-out-quart), opacity 0.18s var(--ease-out-quart);
 }
 
 .ing-checkbox.checked svg {
     opacity: 1;
+    transform: scale(1);
 }
 
 .ing-details-row {
@@ -1462,7 +1567,15 @@ input {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-modal-action:hover {
+    transform: translateY(-1px);
+}
+
+.btn-modal-action:active {
+    transform: translateY(1px);
 }
 
 .btn-modal-action-planner {
@@ -1520,11 +1633,19 @@ input {
     display: flex;
     gap: 12px;
     cursor: pointer;
-    transition: opacity var(--transition-fast);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.modal-step-li:hover {
+    transform: translateX(4px);
 }
 
 .modal-step-li.completed {
     opacity: 0.4;
+}
+
+.ing-name, .shopping-item-name {
+    transition: color 0.22s var(--ease-out-quart), opacity 0.22s var(--ease-out-quart);
 }
 
 .step-number {

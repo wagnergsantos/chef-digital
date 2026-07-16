@@ -381,12 +381,12 @@
             document.body.appendChild(toast);
             
             setTimeout(() => {
-                toast.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                toast.style.transition = 'opacity 0.24s cubic-bezier(0.25, 1, 0.5, 1), transform 0.24s cubic-bezier(0.25, 1, 0.5, 1)';
                 toast.style.opacity = '0';
                 toast.style.transform = 'translate(-50%, 12px)';
                 setTimeout(() => {
                     toast.remove();
-                }, 250);
+                }, 240);
             }, 2000);
         }
 
@@ -394,6 +394,7 @@
         function renderCategoryFilters() {
             const container = document.getElementById('category-filters');
             container.innerHTML = '';
+            const fragment = document.createDocumentFragment();
 
             // Get all category keys
             const keys = Object.keys(categories);
@@ -408,10 +409,6 @@
             );
 
             sortedKeys.forEach(key => {
-                const button = document.createElement('button');
-                button.className = `category-filter-btn ${activeCategory === key ? 'active' : ''}`;
-                button.onclick = () => selectCategory(key);
-                
                 // Get counts for category supporting multitag and current active filters (except activeCategory itself)
                 let count = 0;
                 if (key === 'todos') {
@@ -436,18 +433,22 @@
                     }).length;
                 }
 
-                button.innerHTML = `
-                    <span>${categories[key]}</span>
-                    <span class="category-filter-badge">${count}</span>
-                `;
-                
                 // Skip rendering if the category is empty, unless it's 'todos' or the currently active category
                 if (count === 0 && key !== 'todos' && key !== activeCategory) {
                     return;
                 }
 
-                container.appendChild(button);
+                const button = document.createElement('button');
+                button.className = `category-filter-btn ${activeCategory === key ? 'active' : ''}`;
+                button.onclick = () => selectCategory(key);
+                button.innerHTML = `
+                    <span>${categories[key]}</span>
+                    <span class="category-filter-badge">${count}</span>
+                `;
+
+                fragment.appendChild(button);
             });
+            container.appendChild(fragment);
         }
 
         function selectCategory(categoryKey) {
@@ -593,11 +594,13 @@
                 emptyState.classList.remove('hidden');
             } else {
                 emptyState.classList.add('hidden');
-                      filtered.forEach(recipe => {
+                const fragment = document.createDocumentFragment();
+                filtered.forEach((recipe, index) => {
                     const isFav = favorites.includes(recipe.id);
                     const isPlanned = plannedRecipes.some(p => p.id === recipe.id);
                     const card = document.createElement('div');
                     card.className = `recipe-card ${isPlanned ? 'planned' : ''}`;
+                    card.style.setProperty('--i', index);
                     card.onclick = (e) => {
                         // Avoid triggering modal if clicking actions directly
                         if (e.target.closest('.card-action-btn')) return;
@@ -616,11 +619,10 @@
 
                     const hasImg = recipe.image && recipe.image.trim() !== "";
                     const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
-                    const headerStyle = hasImg ? `style="background-image: url('${recipe.image}');"` : '';
-                    const a11yImgAttributes = hasImg ? `role="img" aria-label="Foto de ${recipe.title}"` : '';
 
                     card.innerHTML = `
-                        <div class="${headerClass}" ${headerStyle} ${a11yImgAttributes}>
+                        <div class="${headerClass}">
+                            ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${recipe.title}" loading="lazy" />` : ''}
                             <span class="card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽️'}</span>
                             <div class="card-badges-wrapper">
                                 ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
@@ -658,8 +660,9 @@
                             </div>
                         </div>
                     `;
-                    grid.appendChild(card);
+                    fragment.appendChild(card);
                 });
+                grid.appendChild(fragment);
             }
 
             // Dynamically refresh category filters' count and update clear button visibility
