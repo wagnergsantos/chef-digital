@@ -173,7 +173,7 @@
                 </svg>
                 <span>Consolidar Lista de Compras</span>
             </button>
-            <p class="drawer-footer-tip">Essa ação junta e soma de forma inteligente as quantidades de ingredientes idênticos de todas as receitas planejadas!</p>
+            <p class="drawer-footer-tip">Essa ação junta e soma as quantidades de ingredientes das receitas planejadas na sua lista de compras, sem apagar seus outros itens!</p>
         </div>
     </div>
 
@@ -904,8 +904,17 @@
                 return;
             }
 
-            // Clean the shopping list state for a consolidated overview
-            shoppingList = {};
+            // 1. Mapear itens que já estavam marcados como comprados para manter o estado (checked)
+            const checkedItemsMap = new Set();
+            if (shoppingList["Menu Semanal Consolidado"]) {
+                shoppingList["Menu Semanal Consolidado"].forEach(item => {
+                    if (item.checked) {
+                        checkedItemsMap.add(item.name.trim().toLowerCase());
+                    }
+                });
+            }
+
+            // 2. Limpar apenas o grupo do menu semanal consolidado para recriação
             shoppingList["Menu Semanal Consolidado"] = [];
 
             const tempConsolidated = {};
@@ -926,17 +935,19 @@
                             tempConsolidated[key].qty += scaledQty;
                         }
                     } else {
+                        // Preserva o estado 'checked' se já estava marcado antes
+                        const wasChecked = checkedItemsMap.has(normName.toLowerCase());
                         tempConsolidated[key] = {
                             name: normName,
                             qty: scaledQty,
                             unit: ing.unit,
-                            checked: false
+                            checked: wasChecked
                         };
                     }
                 });
             });
 
-            // Convert raw map keys to actual checklist layout structure
+            // 3. Converter de mapa para array no grupo correspondente da lista de compras
             Object.keys(tempConsolidated).forEach(k => {
                 shoppingList["Menu Semanal Consolidado"].push(tempConsolidated[k]);
             });
@@ -944,7 +955,7 @@
             saveShoppingList();
             updateShoppingListBadge();
             
-            // Drawer view transitions
+            // Transição suave de drawers
             document.getElementById('planner-drawer').classList.remove('open');
             setTimeout(() => {
                 toggleShoppingList();
