@@ -27,6 +27,9 @@
     --text-light: #57657a; /* slate-550 (WCAG AA compliant contrast) */
     --text-white: #ffffff;
     
+    --btn-primary-text: var(--text-white);
+    --btn-success-text: var(--text-white);
+    
     --bg-main: #fafaf9; /* warm-gray-50/40 */
     --bg-card: #ffffff;
     --bg-light: #f8fafc; /* slate-50 */
@@ -80,6 +83,9 @@
         --text-muted: #cbd5e1; /* slate-300 */
         --text-light: #94a3b8; /* slate-400 */
         
+        --btn-primary-text: #1c1917;
+        --btn-success-text: #1c1917;
+        
         --bg-main: #0c0a09; /* warm-stone-950 */
         --bg-card: #1c1917; /* warm-stone-900 */
         --bg-light: #292524; /* warm-stone-800 */
@@ -113,6 +119,9 @@
     --text-main: #f1f5f9; /* slate-100 */
     --text-muted: #cbd5e1; /* slate-300 */
     --text-light: #94a3b8; /* slate-400 */
+    
+    --btn-primary-text: #1c1917;
+    --btn-success-text: #1c1917;
     
     --bg-main: #0c0a09; /* warm-stone-950 */
     --bg-card: #1c1917; /* warm-stone-900 */
@@ -980,7 +989,7 @@ input {
     border: 1px solid var(--border-color);
     padding: 16px;
     border-radius: var(--radius-md);
-    background-color: rgba(248, 250, 252, 0.6);
+    background-color: var(--bg-light);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1127,7 +1136,7 @@ input {
 
 .btn-large-success {
     background-color: var(--success-color);
-    color: var(--text-white);
+    color: var(--btn-success-text);
 }
 
 .btn-large-success:hover {
@@ -1136,7 +1145,7 @@ input {
 
 .btn-large-primary {
     background-color: var(--primary-color);
-    color: var(--text-white);
+    color: var(--btn-primary-text);
 }
 
 .btn-large-primary:hover {
@@ -1163,7 +1172,7 @@ input {
     border: 1px solid var(--border-color);
     padding: 16px;
     border-radius: var(--radius-md);
-    background-color: rgba(248, 250, 252, 0.6);
+    background-color: var(--bg-light);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -1227,9 +1236,9 @@ input {
 }
 
 .shopping-checkbox.checked {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--text-white);
+    background-color: var(--primary-light);
+    border-color: var(--primary-hover);
+    color: var(--primary-hover);
 }
 
 .shopping-checkbox svg {

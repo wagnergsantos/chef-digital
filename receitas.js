@@ -1,61 +1,69 @@
 /**
  * @doc PROMPT PARA IA - GERADOR DE RECEITAS NO FORMATO JSON
  * 
- * Se você quiser transformar um texto de receita no formato JSON deste arquivo usando uma IA (como Gemini, ChatGPT, Claude),
- * copie e envie o texto abaixo antes de enviar a receita:
- * 
+ * Se você quiser transformar um texto de receita no formato JSON deste arquivo usando uma IA (como Gemini,
+ChatGPT,
+Claude),
+* copie e envie o texto abaixo antes de enviar a receita:* 
  * --- COPIE A PARTIR DAQUI ---
  * Converta a receita fornecida para o formato JSON estruturado seguindo rigorosamente o esquema abaixo.
  * 
- * ### REGRAS DE CATEGORIAS (MULTITAG):
- * O campo "category" suporta uma categoria única (como string) ou múltiplas categorias (como array de strings).
- * Formatos válidos:
- * - Categoria única: "category": "bife"
- * - Múltiplas categorias: "category": ["bife", "feijao", "arroz"]
+ * ### REGRAS DE CATEGORIAS (MULTITAG):* O campo"category"suporta uma categoria única (como string) ou múltiplas categorias (como array de strings).
+ * Formatos válidos:* - Categoria única:"category":"bife"* - Múltiplas categorias:"category":[
+   "bife",
+   "feijao",
+   "arroz"
+]* 
+ * Chaves de categorias válidas (sempre em minúsculas):* -"almoco"(Almoço)
+ * -"janta"(Jantares)
+ * -"sopas"(Sopas & Caldos)
+ * -"molhos"(Molhos)
+ * -"lanches"(Lanches)
+ * -"marmitas"(Marmitas)
+ * -"frango"(Frango)
+ * -"bife"(Carnes/Bifes)
+ * -"peixe"(Peixes)
+ * -"macarrao"(Massas)
+ * -"refogados"(Refogados)
+ * -"feijao"(Feijão)
+ * -"arroz"(Arroz)
+ * -"batata"(Batatas)
+ * -"temperos"(Temperos)
  * 
- * Chaves de categorias válidas (sempre em minúsculas):
- * - "almoco" (Almoço)
- * - "janta" (Jantares)
- * - "sopas" (Sopas & Caldos)
- * - "molhos" (Molhos)
- * - "lanches" (Lanches)
- * - "marmitas" (Marmitas)
- * - "frango" (Frango)
- * - "bife" (Carnes/Bifes)
- * - "peixe" (Peixes)
- * - "macarrao" (Massas)
- * - "refogados" (Refogados)
- * - "feijao" (Feijão)
- * - "arroz" (Arroz)
- * - "batata" (Batatas)
- * - "temperos" (Temperos)
- * 
- * ### ESTRUTURA DO JSON:
- * {
- *   "id": [Número incremental único baseado no último ID do banco],
- *   "title": "[Título da receita]",
- *   "category": "[Chave única como string, ex: 'marmitas', ou array de chaves, ex: ['almoco', 'bife']]",
- *   "source": "[Fonte da receita, ex: 'Internet' ou null]",
- *   "emoji": "[Um emoji representativo, ex: 🍲]",
- *   "image": "[Opcional: Nome do arquivo de imagem, ex: '123.png' ou null]",
- *   "ingredients": [
- *     {
- *       "name": "[Nome do ingrediente, ex: 'Peito de frango em cubos']",
- *       "qty": [Apenas o número da quantidade, ex: 500 ou 1.5. Se for 'a gosto' ou 'opcional', use null],
- *       "unit": "[Unidade de medida, ex: 'g', 'ml', 'xícaras', 'unidades', 'a gosto', 'opcional', 'colher (chá)']"
- *     }
- *   ],
- *   "steps": [
- *     "[Passo 1]",
- *     "[Passo 2]"
- *   ],
- *   "tips": "[Dica curta sobre o preparo, ou null/string vazia]"
- * }
- * 
- * ### REQUISITOS CRÍTICOS:
- * - Para o campo "category", nunca use strings separadas por vírgula (ex: "bife,feijao"). Use obrigatoriamente um array JSON: ["bife", "feijao"].
- * - O campo "qty" DEVE ser um número ou null. Nunca coloque texto como "500g" ou "2 colheres" no campo "qty". A unidade de medida deve estar exclusivamente no campo "unit".
- * - Retorne APENAS o JSON puro. Não explique nada, não use blocos de Markdown ```json. Apenas retorne o objeto JSON da receita.
+ * ### ESTRUTURA DO JSON:*{
+   *"id":[
+      Número incremental único baseado no último ID do banco
+   ],
+   *"title":"[Título da receita]",
+   *"category":"[Chave única como string, ex: 'marmitas', ou array de chaves, ex: ['almoco', 'bife']]",
+   *"source":"[Fonte da receita, ex: 'Internet' ou null]",
+   *"emoji":"[Um emoji representativo, ex: 🍲]",
+   *"image":"[Opcional: Nome do arquivo de imagem, ex: '123.png' ou null]",
+   *"ingredients":[
+      *{
+         *"name":"[Nome do ingrediente, ex: 'Peito de frango em cubos']",
+         *"qty":[
+            Apenas o número da quantidade,
+            ex:500 ou 1.5. Se for'a gosto'ou'opcional',
+            use null
+         ],
+         *"unit":"[Unidade de medida, ex: 'g', 'ml', 'xícaras', 'unidades', 'a gosto', 'opcional', 'colher (chá)']"*
+      }*
+   ],
+   *"steps":[
+      *"[Passo 1]",
+      *"[Passo 2]"*
+   ],
+   *"tips":"[Dica curta sobre o preparo, ou null/string vazia]"*
+}* 
+ * ### REQUISITOS CRÍTICOS:* - Para o campo"category",
+nunca use strings separadas por vírgula (ex:"bife,feijao"). Use obrigatoriamente um array JSON:[
+   "bife",
+   "feijao"
+].
+ * - O campo"qty"DEVE ser um número ou null. Nunca coloque texto como"500g"ou"2 colheres"no campo"qty". A unidade de medida deve estar exclusivamente no campo"unit".
+ * - Retorne APENAS o JSON puro. Não explique nada,
+não use blocos de Markdown```json. Apenas retorne o objeto JSON da receita.
  * --- FIM DO PROMPT ---
  */
 
@@ -5268,554 +5276,685 @@ const receitasData = {
             "tips": "Super funcional, a linhaça traz gorduras boas e a cúrcuma age como um potente antioxidente natural. Dura de 15 dias a 3 meses se bem vedado!",
             "image": "131.png"
         },
-        {
-            "id": 132,
-            "title": "Sazón Carne Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🥩",
-            "image": "132.png",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Páprica defumada",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Tomate em pó (Segredo Umami)",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Cacau 100% em pó + cominho (Toque do Chef)",
-                    "qty": null,
-                    "unit": "uma pitada"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Misture o alho, a cebola, a páprica defumada, o tomate em pó e o amido de milho em uma tigela.",
-                "Adicione uma pitada sutil de cacau 100% e cominho para cor terrosa e profundidade.",
-                "Agite muito bem dentro de um pote hermético seco.",
-                "Guarde bem fechado."
-            ],
-            "tips": "O tomate em pó é rico em ácido glutâmico natural (MSG saudável), que realça o sabor da carne instantaneamente!"
-        },
-        {
-            "id": 133,
-            "title": "Sazón Frango Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🍗",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Mix Pega Marido",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cúrcuma (açafrão-da-terra)",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Levedura Nutricional (Segredo Umami)",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Gengibre em pó + mostarda em pó (Toque do Chef)",
-                    "qty": null,
-                    "unit": "uma pitada"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Combine o alho em pó, a cebola em pó, o Pega Marido e a cúrcuma.",
-                "Incorpore a levedura nutricional, o gengibre, a mostarda e o amido de milho.",
-                "Agite bem no pote até homogeneizar o pó amarelo solar."
-            ],
-            "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'.",
-            "image": "133.png"
-        },
-        {
-            "id": 134,
-            "title": "Sazón Alho Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🧄",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 5,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 3,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Chimichurri desidratado",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Sal refinado de alta qualidade",
-                    "qty": 1,
-                    "unit": "colher (chá)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Combine todos os ingredientes finos em pó.",
-                "Passe o chimichurri seco rapidamente por um moedor de café se preferir flocos menores.",
-                "Misture com o amido e guarde em pote vedado."
-            ],
-            "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados.",
-            "image": "134.png"
-        },
-        {
-            "id": 135,
-            "title": "Sazón Limão Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🍋",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Lemon Pepper de alta qualidade",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Raspas de limão siciliano desidratadas e moídas",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Ácido cítrico em pó (Toque Cítrico Vibrante)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Combine os pós finos e a colher de ácido cítrico.",
-                "Misture as raspas de limão siciliano desidratadas para aromas essenciais reais.",
-                "Agite energicamente e vede."
-            ],
-            "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial.",
-            "image": "135.png"
-        },
-        {
-            "id": 136,
-            "title": "Sazón Legumes Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🌽",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Salsa desidratada bem fina",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Cúrcuma",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Cenoura em pó + Levedura Nutricional",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Misture o alho, cebola, salsa e açafrão.",
-                "Incorpore a levedura nutricional e cenoura em pó para um perfil de caldo de vegetais.",
-                "Finalize com o amido de milho e agite bem."
-            ],
-            "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves.",
-            "image": "136.png"
-        },
-        {
-            "id": 137,
-            "title": "Sazón Saladas Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🥗",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Manjericão desidratado moído",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Orégano seco",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Ácido cítrico em pó + gergelim tostado",
-                    "qty": null,
-                    "unit": "a gosto"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Triture as ervas levemente para misturarem de forma uniforme no alho e cebola.",
-                "Adicione uma pitada de ácido cítrico para o efeito vinagrete instantâneo e o gergelim para crocância.",
-                "Guarde em vidro bem vedado."
-            ],
-            "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite.",
-            "image": "137.png"
-        },
-        {
-            "id": 138,
-            "title": "Sazón Feijão Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🫘",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Louro moído em pó fino",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Páprica defumada",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Fumaça em pó (Pó de fumaça condensada)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Misture o alho, cebola, louro e páprica.",
-                "Incorpore o pó sutil de fumaça e o amido.",
-                "Agite muito bem e vede."
-            ],
-            "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano!",
-            "image": "138.png"
-        },
-        {
-            "id": 139,
-            "title": "Sazón Nordeste Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🌵",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Coentro em pó",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Cominho em pó",
-                    "qty": 0.5,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Colorau",
-                    "qty": 0.5,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Pimenta-de-cheiro desidratada ou pimenta-do-reino branca",
-                    "qty": null,
-                    "unit": "uma pitada"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Adicione o colorau, cominho, coentro, alho e cebola no frasco.",
-                "Acrescente a pimenta aromática e o amido de milho.",
-                "Misture bem até obter um tom avermelhado terroso característico."
-            ],
-            "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca.",
-            "image": "139.png"
-        },
-        {
-            "id": 140,
-            "title": "Sazón Arroz Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🍚",
-            "ingredients": [
-                {
-                    "name": "Alho em pó (Protagonista absoluto)",
-                    "qty": 6,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó (Reduzida)",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cúrcuma (açafrão-da-terra)",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Ajuste na proporção: 3 partes de alho para 1 de cebola.",
-                "Misture com o açafrão-da-terra para um arroz solar perfumado.",
-                "Adicione o amido de milho e agite bem."
-            ],
-            "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado.",
-            "image": "140.png"
-        },
-        {
-            "id": 141,
-            "title": "Sazón Massas Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🍝",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Orégano + Manjericão desidratado",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Páprica defumada",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Tomate em pó + Queijo parmesão ralado microfino",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Combine o alho, cebola, as ervas secas e a páprica.",
-                "Agregue o tomate em pó e o parmesão microfino.",
-                "Incorpore o amido de milho, agite e feche hermeticamente."
-            ],
-            "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato!",
-            "image": "141.png"
-        },
-        {
-            "id": 142,
-            "title": "Sazón Peixes Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🐟",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Lemon Pepper",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Páprica defumada + Salsa desidratada",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Semente de coentro moída (Aroma cítrico herbal)",
-                    "qty": 1,
-                    "unit": "colher (chá)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Adicione as sementes de coentro moídas, ricas em notas cítricas.",
-                "Misture com os demais temperos secos, a salsa e o amido de milho.",
-                "Armazene vedado."
-            ],
-            "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar.",
-            "image": "142.png"
-        },
-        {
-            "id": 143,
-            "title": "Sazón Churrasco Caseiro",
-            "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
-            "emoji": "🍖",
-            "ingredients": [
-                {
-                    "name": "Alho em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Cebola em pó",
-                    "qty": 4,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Páprica defumada",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
-                },
-                {
-                    "name": "Pimenta-do-reino moída de boa qualidade",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
-                },
-                {
-                    "name": "Açúcar mascavo + Mostarda em pó (Efeito Dry Rub)",
-                    "qty": 1,
-                    "unit": "colher (chá)"
-                },
-                {
-                    "name": "Amido de milho (Anti-empedramento)",
-                    "qty": 1,
-                    "unit": "colher (café)"
-                }
-            ],
-            "steps": [
-                "Misture o alho, cebola, páprica, pimenta preta.",
-                "Adicione a pitada de mostarda e o açúcar mascavo.",
-                "Integre com o amido e vede."
-            ],
-            "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard).",
-            "image": "143.png"
-        },
+    {
+        "id": 132,
+        "title": "Sazón Carne Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🥩",
+        "image": "132.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Páprica defumada",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Tomate em pó (Segredo Umami)",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Cacau 100% em pó (Toque do Chef)",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Cominho em pó (Toque do Chef)",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Misture o alho, a cebola, a páprica defumada, o tomate em pó, o sal e o amido de milho em uma tigela.",
+            "Adicione o cacau 100% em pó para cor terrosa e profundidade.",
+            "Adicione o cominho em pó para aquele toque característico de churrasco.",
+            "Agite muito bem dentro de um pote hermético seco.",
+            "Guarde bem fechado em local escuro e arejado."
+        ],
+        "tips": "O tomate em pó é rico em ácido glutâmico natural (MSG saudável), que realça o sabor da carne instantaneamente! O cacau adiciona profundidade sem doçura."
+    },
+    {
+        "id": 133,
+        "title": "Sazón Frango Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🍗",
+        "image": "133.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Mix Pega Marido",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cúrcuma (açafrão-da-terra)",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Levedura Nutricional (Segredo Umami)",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Gengibre em pó (Toque do Chef)",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Mostarda em pó (Toque do Chef)",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Combine o alho em pó, a cebola em pó, o Pega Marido e a cúrcuma em uma tigela.",
+            "Incorpore a levedura nutricional, o gengibre, a mostarda e o sal.",
+            "Adicione o amido de milho e misture até homogeneizar.",
+            "Agite bem no pote até obter o pó amarelo solar característico.",
+            "Armazene em pote hermético de vidro escuro."
+        ],
+        "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'. O gengibre realça o sabor do frango sem competir."
+    },
+    {
+        "id": 134,
+        "title": "Sazón Alho Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🧄",
+        "image": "134.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 5,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 3,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Chimichurri desidratado",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Sal refinado de alta qualidade",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Pimenta-do-reino branca moída",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Combine todos os ingredientes finos em pó em uma tigela grande.",
+            "Passe o chimichurri seco rapidamente por um moedor de café se preferir flocos menores.",
+            "Adicione a pimenta-do-reino branca para aquele fundo picante sutil.",
+            "Misture com o amido e guarde em pote vedado hermeticamente."
+        ],
+        "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados. A pimenta branca complementa o alho sem escurecer a cor do prato."
+    },
+    {
+        "id": 135,
+        "title": "Sazón Limão Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🍋",
+        "image": "135.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Lemon Pepper de alta qualidade",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Raspas de limão siciliano desidratadas e moídas",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Ácido cítrico em pó (Toque Cítrico Vibrante)",
+                "qty": 1,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Combine os pós finos (alho, cebola, lemon pepper, sal) e a colher de ácido cítrico.",
+            "Misture as raspas de limão siciliano desidratadas para aromas essenciais reais.",
+            "Agite energicamente até homogeneizar completamente.",
+            "Transfira para pote hermético e vede bem."
+        ],
+        "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial. Ideal para peixes, frangos grelhados e saladas."
+    },
+    {
+        "id": 136,
+        "title": "Sazón Legumes Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🌽",
+        "image": "136.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Salsa desidratada bem fina",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Cúrcuma (açafrão-da-terra)",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Cenoura em pó",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Levedura Nutricional",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Misture o alho, cebola, salsa e açafrão em uma tigela.",
+            "Incorpore a levedura nutricional e cenoura em pó para um perfil de caldo de vegetais.",
+            "Adicione o sal refinado e misture bem.",
+            "Finalize com o amido de milho e agite até homogeneizar.",
+            "Armazene em pote de vidro escuro."
+        ],
+        "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves. A cenoura em pó adiciona doçura natural e cor vibrante."
+    },
+    {
+        "id": 137,
+        "title": "Sazón Saladas Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🥗",
+        "image": "137.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Manjericão desidratado moído",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Orégano seco",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Ácido cítrico em pó",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Gergelim tostado",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Triture as ervas levemente para misturarem de forma uniforme no alho e cebola.",
+            "Adicione o ácido cítrico para o efeito vinagrete instantâneo.",
+            "Incorpore o gergelim tostado para crocância e nutrição.",
+            "Adicione o sal refinado e misture bem.",
+            "Guarde em vidro bem vedado, longe da luz."
+        ],
+        "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite. O gergelim tostado adiciona textura e ômega-3."
+    },
+    {
+        "id": 138,
+        "title": "Sazón Feijão Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🫘",
+        "image": "138.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Louro moído em pó fino",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Páprica defumada",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Fumaça em pó (Pó de fumaça condensada)",
+                "qty": 1,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Cominho em pó",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Misture o alho, cebola, louro e páprica em uma tigela.",
+            "Adicione o cominho em pó para profundidade aromática.",
+            "Incorpore o pó sutil de fumaça e o sal.",
+            "Adicione o amido de milho e misture muito bem.",
+            "Transfira para pote hermético e vede."
+        ],
+        "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano! O cominho reforça o perfil brasileiro."
+    },
+    {
+        "id": 139,
+        "title": "Sazón Nordeste Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🌵",
+        "image": "139.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Coentro em pó",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Cominho em pó",
+                "qty": 0.5,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Colorau (urucum)",
+                "qty": 0.5,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Pimenta-de-cheiro desidratada moída",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Pimenta-do-reino branca moída",
+                "qty": 0.5,
+                "unit": "colher (café)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Adicione o colorau, cominho, coentro, alho e cebola no frasco.",
+            "Acrescente a pimenta-de-cheiro e a pimenta-do-reino branca.",
+            "Adicione o sal refinado e o amido de milho.",
+            "Misture bem até obter um tom avermelhado terroso característico.",
+            "Armazene em pote hermético de vidro escuro."
+        ],
+        "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca. A pimenta branca complementa sem competir com o colorau."
+    },
+    {
+        "id": 140,
+        "title": "Sazón Arroz Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🍚",
+        "image": "140.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó (Protagonista absoluto)",
+                "qty": 6,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó (Reduzida)",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cúrcuma (açafrão-da-terra)",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Mantenha a proporção: 3 partes de alho para 1 de cebola.",
+            "Misture o alho em pó, a cebola em pó e o sal em uma tigela.",
+            "Adicione o açafrão-da-terra para um arroz solar perfumado.",
+            "Incorpore o amido de milho e agite bem até homogeneizar.",
+            "Armazene em pote hermético."
+        ],
+        "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado. A cúrcuma proporciona cor dourada e benefícios anti-inflamatórios."
+    },
+    {
+        "id": 141,
+        "title": "Sazón Massas Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🍝",
+        "image": "141.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Orégano seco",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Manjericão desidratado",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Páprica defumada",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Tomate em pó",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Queijo parmesão ralado microfino",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Combine o alho, cebola, as ervas secas (orégano e manjericão) e a páprica.",
+            "Agregue o tomate em pó e o parmesão microfino.",
+            "Adicione o sal refinado e misture bem.",
+            "Incorpore o amido de milho, agite e feche hermeticamente.",
+            "Mantenha refrigerado se usar parmesão real (não desidratado)."
+        ],
+        "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato! O parmesão real deve ser mantido refrigerado."
+    },
+    {
+        "id": 142,
+        "title": "Sazón Peixes Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🐟",
+        "image": "142.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Lemon Pepper",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Páprica defumada",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Salsa desidratada",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Semente de coentro moída (Aroma cítrico herbal)",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Sal refinado",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Adicione as sementes de coentro moídas, ricas em notas cítricas, em uma tigela.",
+            "Misture com o alho em pó, cebola em pó, lemon pepper e sal.",
+            "Incorpore a páprica defumada e a salsa desidratada.",
+            "Adicione o amido de milho e misture até homogeneizar.",
+            "Armazene vedado em local fresco."
+        ],
+        "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar. A páprica defumada adiciona profundidade sem competir com o frescor."
+    },
+    {
+        "id": 143,
+        "title": "Sazón Churrasco Caseiro",
+        "category": "temperos",
+        "source": "Sazons Funcionais Otimizados",
+        "emoji": "🍖",
+        "image": "143.png",
+        "ingredients": [
+            {
+                "name": "Alho em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Cebola em pó",
+                "qty": 4,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Páprica defumada",
+                "qty": 2,
+                "unit": "colheres (sopa)"
+            },
+            {
+                "name": "Pimenta-do-reino moída de boa qualidade",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Açúcar mascavo (Efeito Dry Rub)",
+                "qty": 1,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Mostarda em pó (Efeito Dry Rub)",
+                "qty": 0.5,
+                "unit": "colher (chá)"
+            },
+            {
+                "name": "Sal grosso moído",
+                "qty": 1,
+                "unit": "colher (sopa)"
+            },
+            {
+                "name": "Amido de milho (Anti-empedramento)",
+                "qty": 1,
+                "unit": "colher (café)"
+            }
+        ],
+        "steps": [
+            "Misture o alho, cebola, páprica e pimenta preta em uma tigela.",
+            "Adicione o sal grosso moído para textura e sabor intenso.",
+            "Adicione o açúcar mascavo para caramelização.",
+            "Incorpore a mostarda em pó para o clássico efeito dry rub.",
+            "Integre com o amido e vede hermeticamente."
+        ],
+        "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard). A mostarda em pó ajuda a formar a crosta perfeita."
+    },
         {
             "id": 144,
             "title": "Arroz Biro-Biro",
