@@ -83,6 +83,19 @@ try {
         throw new Error(`Test 6 Failed: expected matches=false, got matches=true`);
     }
 
+    // Test 7: matchRecipeSearch with recipe having undefined ingredients (defensive check)
+    const recipeNoIngredients = {
+        title: "Suco de Laranja"
+    };
+    const res7 = matchRecipeSearch(recipeNoIngredients, "Laranja");
+    if (!res7.matches) {
+        throw new Error(`Test 7 Failed: expected matches=true (matching title), got matches=false`);
+    }
+    const res7_fail = matchRecipeSearch(recipeNoIngredients, "Acucar");
+    if (res7_fail.matches) {
+        throw new Error(`Test 7 Fail Case Failed: expected matches=false (term not found), got matches=true`);
+    }
+
     console.log("All tests passed successfully!");
 } catch (err) {
     console.error("Test execution failed:", err.message);

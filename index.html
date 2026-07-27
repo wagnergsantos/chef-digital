@@ -82,7 +82,7 @@
                 <div>
                     <span class="sidebar-title">Buscar</span>
                     <div class="search-box">
-                        <input type="text" id="search-input" onkeyup="filterRecipes()" placeholder="Buscar por título..." class="search-input" aria-label="Buscar receitas por título">
+                        <input type="text" id="search-input" onkeyup="filterRecipes()" placeholder="Buscar por título ou ingrediente..." class="search-input" aria-label="Buscar receitas por título ou ingrediente">
                         <span class="search-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -354,7 +354,8 @@
 
             const allTermsMatch = terms.every(term => {
                 if (normTitle.includes(term)) return true;
-                const hitIngredient = recipe.ingredients.find(ing =>
+                const ingredients = recipe.ingredients || [];
+                const hitIngredient = ingredients.find(ing =>
                     normalizeSearchText(ing.name).includes(term));
                 if (hitIngredient) {
                     if (!matchedIngredients.includes(hitIngredient.name)) {
@@ -441,8 +442,7 @@
                 let count = 0;
                 if (key === 'todos') {
                     count = recipes.filter(r => {
-                        const searchMatch = !searchQuery || 
-                            r.title.toLowerCase().includes(searchQuery);
+                        const searchMatch = matchRecipeSearch(r, searchQuery).matches;
                         const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
                         return searchMatch && favoriteMatch;
                     }).length;
@@ -454,8 +454,7 @@
                         } else {
                             categoryMatch = r.category === key;
                         }
-                        const searchMatch = !searchQuery || 
-                            r.title.toLowerCase().includes(searchQuery);
+                        const searchMatch = matchRecipeSearch(r, searchQuery).matches;
                         const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
                         return categoryMatch && searchMatch && favoriteMatch;
                     }).length;
@@ -585,8 +584,7 @@
                 }
                 
                 // Search Match (Check Title only)
-                const searchMatch = !searchQuery || 
-                    recipe.title.toLowerCase().includes(searchQuery);
+                const searchMatch = matchRecipeSearch(recipe, searchQuery).matches;
 
                 // Favorites Filter
                 const favoriteMatch = !showFavoritesOnly || favorites.includes(recipe.id);
