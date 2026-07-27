@@ -306,7 +306,12 @@
         let hasMigrated = false;
         plannedRecipes = plannedRecipes.map(p => {
             if (p.portions !== undefined && p.people === undefined) {
-                p.people = p.portions;
+                let servings = 1;
+                if (typeof receitasData !== 'undefined' && receitasData.recipes) {
+                    const recipe = receitasData.recipes.find(r => r.id === p.id);
+                    if (recipe && recipe.servings) servings = recipe.servings;
+                }
+                p.people = p.portions * servings;
                 delete p.portions;
                 hasMigrated = true;
             }
