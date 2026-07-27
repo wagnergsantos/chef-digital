@@ -114,8 +114,8 @@ git diff
 - Descricao curta objetiva, no imperativo, sem floreio
 - Cada bullet em no maximo 1 linha: `caminho/do/arquivo.ext: o que mudou`
 - Nao inventar arquivos, tickets, impactos ou alteracoes
-- Em Git com staged, priorizar o que esta staged para o resumo do commit
-- Em Git sem staged, deixar claro que o commit ainda depende de stage
+- Identificar quais arquivos foram modificados ativamente na sessao atual do agente e quais ja estavam modificados antes (fora da sessao).
+- O resumo deve focar principalmente nas alteracoes produzidas na sessao atual, adicionando notas caso haja outros arquivos modificados/untracked que nao fazem parte da sessao.
 
 ## Formato de saida esperado
 tipo(escopo): descricao resumida em uma linha
@@ -141,10 +141,13 @@ Depois de exibir o resumo:
 - **Nunca** executar commit sem confirmacao explicita.
 - No modo `push`, deixar claro na pergunta que, apos confirmado o commit, o push sera executado logo em seguida sem nova confirmacao.
 
-## 3) Preparar o conjunto do commit
-- Se houver staged, commitar apenas o que esta staged
-- Se nao houver staged, informar isso explicitamente e combinar com o usuario como preparar o stage
-- Quando o usuario pedir para stagear, preferir selecao especifica/atomica em vez de stage geral
+## 3) Preparar o conjunto do commit (Automacao de Stage)
+- Identificar quais arquivos foram criados ou modificados ativamente durante a sessao atual do agente e **stagea-los automaticamente** (sem necessidade de confirmacao previa de stage).
+- Identificar arquivos modificados ou untracked que **nao** foram trabalhados na sessao atual do agente.
+- Se houver arquivos modificados ou untracked fora da sessao atual:
+  - Perguntar explicitamente ao usuario se deseja adiciona-los ao stage para o commit.
+  - Se a resposta for positiva, stagear os arquivos indicados e prosseguir.
+  - Se a resposta for negativa, prosseguir apenas com as alteracoes da sessao atual (e outros arquivos ja staged previamente).
 
 ## 4) Commit com mensagem multiline em UTF-8
 - Criar `commit-msg.txt` na raiz do projeto com **UTF-8**
