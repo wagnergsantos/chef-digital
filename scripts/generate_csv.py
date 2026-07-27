@@ -59,7 +59,8 @@ def main():
             "id": recipe_id,
             "titulo": title,
             "ingrediente": ing_str,
-            "categorias": cat_str
+            "categorias": cat_str,
+            "porcoes": str(recipe.get("servings")) if recipe.get("servings") is not None else ""
         })
 
     print(f"Escrevendo {len(rows)} receitas em {csv_file_path}...")
@@ -70,10 +71,8 @@ def main():
         # Escreve o cabeçalho
         writer.writerow(["id", "titulo", "ingrediente", "categorias", "porcoes"])
         
-        for row, recipe in zip(rows, recipes):
-            portions = recipe.get("servings")
-            portions_str = str(portions) if portions is not None else ""
-            writer.writerow([row["id"], row["titulo"], row["ingrediente"], row["categorias"], portions_str])
+        for row in rows:
+            writer.writerow([row["id"], row["titulo"], row["ingrediente"], row["categorias"], row["porcoes"]])
 
     print("Arquivo receitas.csv gerado com sucesso com aspas e sem quantidades na pasta scripts!")
 
