@@ -350,6 +350,14 @@
                 .replace(/'/g, '&#039;');
         }
 
+        function scaleIngredientQty(qty, activePortions, servings) {
+            if (qty === null) return null;
+            if (servings !== undefined && servings !== null) {
+                return qty * (activePortions / servings);
+            }
+            return qty * activePortions;
+        }
+
         function normalizeSearchText(str) {
             return (str || '').toString().toLowerCase()
                 .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1020,7 +1028,7 @@
                 // Check if already in list to avoid duplicates
                 const exists = shoppingList[recipe.title].some(item => item.name === ing.name);
                 if (!exists) {
-                    let qtyVal = ing.qty !== null ? ing.qty * activeRecipePortions : null;
+                    let qtyVal = scaleIngredientQty(ing.qty, activeRecipePortions, recipe.servings);
                     shoppingList[recipe.title].push({
                         name: ing.name,
                         qty: qtyVal,
@@ -1178,9 +1186,17 @@
         // Recipe View Modal details logic
         function openRecipeModal(id) {
             activeRecipeId = id;
-            activeRecipePortions = 1;
             const recipe = recipes.find(r => r.id === id);
             if (!recipe) return;
+
+            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+            if (isServingsMode) {
+                activeRecipePortions = recipe.servings;
+                document.getElementById('portions-multiplier').innerText = `${activeRecipePortions} pessoas`;
+            } else {
+                activeRecipePortions = 1;
+                document.getElementById('portions-multiplier').innerText = `${activeRecipePortions}x`;
+            }
 
             // Handle background image in modal header banner
             const banner = document.querySelector('.modal-header-banner');
@@ -1213,7 +1229,6 @@
                 modalSourceBadge.innerText = '';
                 modalSourceBadge.style.display = 'none';
             }
-            document.getElementById('portions-multiplier').innerText = `${activeRecipePortions}x`;
 
             // Adjust modal planner button text
             const isPlanned = plannedRecipes.some(p => p.id === id);
@@ -1281,10 +1296,20 @@
 
         // Adjust serving size multiplier
         function changePortions(dir) {
+            const recipe = recipes.find(r => r.id === activeRecipeId);
+            if (!recipe) return;
+
             let next = activeRecipePortions + dir;
-            if (next >= 1 && next <= 10) {
+            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+            const maxLimit = isServingsMode ? 20 : 10;
+
+            if (next >= 1 && next <= maxLimit) {
                 activeRecipePortions = next;
-                document.getElementById('portions-multiplier').innerText = `${activeRecipePortions}x`;
+                if (isServingsMode) {
+                    document.getElementById('portions-multiplier').innerText = `${activeRecipePortions} pessoas`;
+                } else {
+                    document.getElementById('portions-multiplier').innerText = `${activeRecipePortions}x`;
+                }
                 updateIngredientsList();
             }
         }
@@ -1303,7 +1328,7 @@
                 
                 let qtyDisplay = '';
                 if (ing.qty !== null) {
-                    const scaledQty = ing.qty * activeRecipePortions;
+                    const scaledQty = scaleIngredientQty(ing.qty, activeRecipePortions, recipe.servings);
                     const formattedQty = Number(scaledQty.toFixed(2)).toString();
                     qtyDisplay = `<strong class="ing-qty-tag">${formattedQty} ${ing.unit}</strong>`;
                 } else if (ing.unit) {
