@@ -340,6 +340,34 @@
             }
         }
 
+        function normalizeSearchText(str) {
+            return (str || '').toString().toLowerCase()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function matchRecipeSearch(recipe, rawQuery) {
+            const terms = normalizeSearchText(rawQuery).split(/\s+/).filter(Boolean);
+            if (terms.length === 0) return { matches: true, matchedIngredients: [] };
+
+            const normTitle = normalizeSearchText(recipe.title);
+            const matchedIngredients = [];
+
+            const allTermsMatch = terms.every(term => {
+                if (normTitle.includes(term)) return true;
+                const hitIngredient = recipe.ingredients.find(ing =>
+                    normalizeSearchText(ing.name).includes(term));
+                if (hitIngredient) {
+                    if (!matchedIngredients.includes(hitIngredient.name)) {
+                        matchedIngredients.push(hitIngredient.name);
+                    }
+                    return true;
+                }
+                return false;
+            });
+
+            return { matches: allTermsMatch, matchedIngredients: allTermsMatch ? matchedIngredients : [] };
+        }
+
         // Document Ready init
         window.onload = function() {
             try {
