@@ -722,6 +722,13 @@ input {
     overflow: hidden;
 }
 
+.card-search-match {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
 .recipe-card:hover .card-title {
     color: var(--primary-hover);
 }
