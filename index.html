@@ -380,6 +380,17 @@
                 .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
 
+        function recipeIsFullyStocked(recipe) {
+            if (!pantryItems || pantryItems.length === 0) return false;
+            const normPantry = pantryItems.map(normalizeSearchText);
+            return recipe.ingredients.every(ing => {
+                const unit = (ing.unit || '').toLowerCase();
+                if (unit.includes('a gosto') || unit.includes('opcional')) return true;
+                const normIng = normalizeSearchText(ing.name);
+                return normPantry.some(p => normIng.includes(p) || p.includes(normIng));
+            });
+        }
+
         function matchRecipeSearch(recipe, rawQuery) {
             const terms = normalizeSearchText(rawQuery).split(/\s+/).filter(Boolean);
             if (terms.length === 0) return { matches: true, matchedIngredients: [] };
