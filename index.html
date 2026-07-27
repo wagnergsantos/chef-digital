@@ -303,6 +303,18 @@
         let favorites = JSON.parse(localStorage.getItem('chef_digital_favorites')) || [];
         let shoppingList = JSON.parse(localStorage.getItem('chef_digital_shopping')) || {};
         let plannedRecipes = JSON.parse(localStorage.getItem('chef_digital_planned')) || [];
+        let hasMigrated = false;
+        plannedRecipes = plannedRecipes.map(p => {
+            if (p.portions !== undefined && p.people === undefined) {
+                p.people = p.portions;
+                delete p.portions;
+                hasMigrated = true;
+            }
+            return p;
+        });
+        if (hasMigrated) {
+            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedRecipes));
+        }
         let activeRecipePortions = 1;
         let activeRecipeId = null;
         let showFavoritesOnly = false;
@@ -858,7 +870,9 @@
             if (index !== -1) {
                 plannedRecipes.splice(index, 1);
             } else {
-                plannedRecipes.push({ id: id, portions: 1 });
+                const recipe = recipes.find(r => r.id === id);
+                const defaultPeople = (recipe && recipe.servings !== undefined && recipe.servings !== null) ? recipe.servings : 1;
+                plannedRecipes.push({ id: id, people: defaultPeople });
             }
             savePlanner();
             updatePlannerBadge();
@@ -874,9 +888,13 @@
         function changePlannerRecipePortions(id, dir) {
             const plan = plannedRecipes.find(p => p.id === id);
             if (plan) {
-                let next = plan.portions + dir;
-                if (next >= 1 && next <= 10) {
-                    plan.portions = next;
+                const recipe = recipes.find(r => r.id === id);
+                const isServingsMode = recipe && recipe.servings !== undefined && recipe.servings !== null;
+                const maxLimit = isServingsMode ? 20 : 10;
+                
+                let next = plan.people + dir;
+                if (next >= 1 && next <= maxLimit) {
+                    plan.people = next;
                     savePlanner();
                     renderPlanner();
                 }
@@ -924,7 +942,12 @@
                 if (!recipe) return;
 
                 const card = document.createElement('div');
-                card.className = "drawer-card";
+                card.className = 'drawer-card';
+                
+                const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+                const displayValue = isServingsMode ? `${p.people} pessoas` : `${p.people}x`;
+                const labelText = isServingsMode ? "Pessoas:" : "Porções:";
+
                 card.innerHTML = `
                     <div class="drawer-card-top">
                         <div class="drawer-card-info">
@@ -939,10 +962,10 @@
                         </button>
                     </div>
                     <div class="drawer-card-bottom">
-                        <span>Porções:</span>
+                        <span>${labelText}</span>
                         <div class="portion-controls">
                             <button onclick="changePlannerRecipePortions(${recipe.id}, -1)" class="portion-btn" aria-label="Diminuir porções">-</button>
-                            <span class="portion-value">${p.portions}x</span>
+                            <span class="portion-value">${displayValue}</span>
                             <button onclick="changePlannerRecipePortions(${recipe.id}, 1)" class="portion-btn" aria-label="Aumentar porções">+</button>
                         </div>
                     </div>
@@ -981,7 +1004,7 @@
                     const normUnit = (ing.unit || "").toLowerCase().trim();
                     const key = `${normName.toLowerCase()}|${normUnit}`;
 
-                    let scaledQty = ing.qty !== null ? ing.qty * p.portions : null;
+                    let scaledQty = scaleIngredientQty(ing.qty, p.people, recipe.servings);
 
                     if (tempConsolidated[key]) {
                         if (tempConsolidated[key].qty !== null && scaledQty !== null) {
