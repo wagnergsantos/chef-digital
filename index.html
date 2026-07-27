@@ -323,6 +323,8 @@
         let activeRecipePortions = 1;
         let activeRecipeId = null;
         let showFavoritesOnly = false;
+        let pantryItems = [];
+        let pantryFilterActive = false;
 
         function toggleTheme() {
             const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
