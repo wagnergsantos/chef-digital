@@ -96,6 +96,20 @@ try {
         throw new Error(`Test 7 Fail Case Failed: expected matches=false (term not found), got matches=true`);
     }
 
+    // Test 8: matchRecipeSearch with recipe having invalid/non-array ingredients field
+    const recipeInvalidIngredients = {
+        title: "Suco de Uva",
+        ingredients: "Not an array, just a string"
+    };
+    const res8 = matchRecipeSearch(recipeInvalidIngredients, "Uva");
+    if (!res8.matches) {
+        throw new Error(`Test 8 Failed: expected matches=true (matching title), got matches=false`);
+    }
+    const res8_fail = matchRecipeSearch(recipeInvalidIngredients, "Uva mercada");
+    if (res8_fail.matches) {
+        throw new Error(`Test 8 Fail Case Failed: expected matches=false (term not found), got matches=true`);
+    }
+
     console.log("All tests passed successfully!");
 } catch (err) {
     console.error("Test execution failed:", err.message);

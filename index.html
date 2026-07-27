@@ -340,6 +340,16 @@
             }
         }
 
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.toString()
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         function normalizeSearchText(str) {
             return (str || '').toString().toLowerCase()
                 .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -354,7 +364,7 @@
 
             const allTermsMatch = terms.every(term => {
                 if (normTitle.includes(term)) return true;
-                const ingredients = recipe.ingredients || [];
+                const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
                 const hitIngredient = ingredients.find(ing =>
                     normalizeSearchText(ing.name).includes(term));
                 if (hitIngredient) {
@@ -624,6 +634,7 @@
                 filtered.forEach((recipe, index) => {
                     const isFav = favorites.includes(recipe.id);
                     const isPlanned = plannedRecipes.some(p => p.id === recipe.id);
+                    const { matchedIngredients } = matchRecipeSearch(recipe, searchQuery);
                     const card = document.createElement('div');
                     card.className = `recipe-card ${isPlanned ? 'planned' : ''}`;
                     card.style.setProperty('--i', index);
@@ -658,8 +669,9 @@
                         
                         <div class="card-body">
                             <div class="card-info">
-                                <span class="card-source">${recipe.source || ''}</span>
-                                <h4 class="card-title">${recipe.title}</h4>
+                                <span class="card-source">${escapeHtml(recipe.source || '')}</span>
+                                <h4 class="card-title">${escapeHtml(recipe.title)}</h4>
+                                ${matchedIngredients && matchedIngredients.length > 0 ? `<p class="card-search-match">🔍 Contém: ${escapeHtml(matchedIngredients.join(', '))}</p>` : ''}
                             </div>
                             
                             <div class="card-footer">
