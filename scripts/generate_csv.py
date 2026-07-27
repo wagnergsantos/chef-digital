@@ -68,10 +68,12 @@ def main():
     with open(csv_file_path, 'w', encoding='utf-8-sig', newline='') as f:
         writer = csv.writer(f, delimiter=';', quoting=csv.QUOTE_ALL)
         # Escreve o cabeçalho
-        writer.writerow(["id", "titulo", "ingrediente", "categorias"])
+        writer.writerow(["id", "titulo", "ingrediente", "categorias", "porcoes"])
         
-        for row in rows:
-            writer.writerow([row["id"], row["titulo"], row["ingrediente"], row["categorias"]])
+        for row, recipe in zip(rows, recipes):
+            portions = recipe.get("servings")
+            portions_str = str(portions) if portions is not None else ""
+            writer.writerow([row["id"], row["titulo"], row["ingrediente"], row["categorias"], portions_str])
 
     print("Arquivo receitas.csv gerado com sucesso com aspas e sem quantidades na pasta scripts!")
 

@@ -143,7 +143,8 @@ const receitasData = {
                 "Refogue os legumes rapidamente.",
                 "Monte as marmitas equilibrando proteína, carboidrato e legumes."
             ],
-            "tips": "Excelente opção para ganho de massa muscular magra e fácil pesagem das porções!"
+            "tips": "Excelente opção para ganho de massa muscular magra e fácil pesagem das porções!",
+            "servings": 4
         },
         {
             "id": 2,
@@ -184,7 +185,8 @@ const receitasData = {
                 "Monte as marmitas acomodando o purê e a carne por cima."
             ],
             "tips": "Adicione um toque de requeijão ou creme de leite na carne moída para aumentar a cremosidade.",
-            "image": "2.png"
+            "image": "2.png",
+            "servings": 4
         },
         {
             "id": 3,
@@ -224,7 +226,8 @@ const receitasData = {
                 "Misture o creme de leite e finalize com queijo."
             ],
             "tips": "Adicione uma pitada de noz-moscada ao molho branco para elevar o sabor.",
-            "image": "3.png"
+            "image": "3.png",
+            "servings": 4
         },
         {
             "id": 8,
@@ -274,7 +277,8 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por cerca de 1 hora, virando na metade do tempo, até dourar."
             ],
             "tips": "Crocante por fora e macia por dentro!",
-            "image": "8.png"
+            "image": "8.png",
+            "servings": 4
         },
         {
             "id": 9,
@@ -326,7 +330,8 @@ const receitasData = {
                 "Desligue o fogo, acrescente o creme de leite e o cheiro-verde. Sirva com arroz branco."
             ],
             "tips": "Bater metade do milho com o creme de leite no liquidificador antes de colocar na panela cria um creme ainda mais robusto!",
-            "image": "9.png"
+            "image": "9.png",
+            "servings": 4
         },
         {
             "id": 10,
@@ -383,7 +388,8 @@ const receitasData = {
                 "Cozinhe por mais 5 minutos e finalize com cebolinha. Sirva com arroz."
             ],
             "tips": "Adicione amendoim torrado sem casca no final para dar o clássico toque crocante asiático.",
-            "image": "10.png"
+            "image": "10.png",
+            "servings": 4
         },
         {
             "id": 11,
@@ -436,7 +442,8 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Sirva com polenta ou arroz branco bem quentinho.",
-            "image": "11.png"
+            "image": "11.png",
+            "servings": 4
         },
         {
             "id": 12,
@@ -478,7 +485,8 @@ const receitasData = {
                 "Sirva com salada ou legumes."
             ],
             "tips": "Não grelhe em fogo muito baixo para o frango não soltar muita água e ressecar.",
-            "image": "12.png"
+            "image": "12.png",
+            "servings": 4
         },
         {
             "id": 13,
@@ -544,7 +552,8 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Receita rápida de uma panela só para facilitar o pós-janta!",
-            "image": "13.png"
+            "image": "13.png",
+            "servings": 4
         },
         {
             "id": 14,
@@ -585,7 +594,8 @@ const receitasData = {
                 "Distribua em uma assadeira e leve ao forno pré-aquecido a 200°C por 35 a 40 minutos, virando na metade do tempo."
             ],
             "tips": "Crocante por fora e extremamente macia por dentro!",
-            "image": "14.png"
+            "image": "14.png",
+            "servings": 4
         },
         {
             "id": 15,
@@ -622,7 +632,8 @@ const receitasData = {
                 "Tempere a gosto com sal, pimenta e noz-moscada, e sirva."
             ],
             "tips": "Perfeito para acompanhar carnes grelhadas e peixes!",
-            "image": "15.png"
+            "image": "15.png",
+            "servings": 4
         },
         {
             "id": 16,
@@ -669,7 +680,8 @@ const receitasData = {
                 "Leve ao forno a 200°C por cerca de 40 minutos ou até as batatas estarem macios e o queijo gratinado."
             ],
             "tips": "Cremosa, cheia de sabor e simplesmente irresistível!",
-            "image": "16.png"
+            "image": "16.png",
+            "servings": 4
         },
         {
             "id": 17,
@@ -701,7 +713,8 @@ const receitasData = {
                 "Escorra em papel-toalha e finalize temperando com sal imediatamente."
             ],
             "tips": "O molho na água fria remove o excesso de amido, garantindo que fiquem bem sequinhas.",
-            "image": "17.png"
+            "image": "17.png",
+            "servings": 4
         },
         {
             "id": 18,
@@ -743,7 +756,8 @@ const receitasData = {
                 "Recheie as batatas, cubra com o queijo muçarela e leve ao forno para gratinar."
             ],
             "tips": "Prática, saborosa e refeição completa!",
-            "image": "18.png"
+            "image": "18.png",
+            "servings": 4
         },
         {
             "id": 19,
@@ -780,7 +794,8 @@ const receitasData = {
                 "Salteie na frigideira até dourar levemente de todos os lados e finalize com as ervas frescas."
             ],
             "tips": "Simples, leve e cheia de aroma e frescor!",
-            "image": "19.png"
+            "image": "19.png",
+            "servings": 4
         },
         {
             "id": 20,
@@ -847,7 +862,8 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por 25 a 30 minutos até assar por completo."
             ],
             "tips": "Fica ótimo com batatas e legumes assados na mesma travessa!",
-            "image": "20.png"
+            "image": "20.png",
+            "servings": 4
         },
         {
             "id": 21,
@@ -889,7 +905,8 @@ const receitasData = {
                 "Sirva bem quente com salada."
             ],
             "tips": "Dica: Para não grudar na frigideira, seque muito bem os filés com papel-toalha antes de temperar e grelhar.",
-            "image": "21.png"
+            "image": "21.png",
+            "servings": 4
         },
         {
             "id": 22,
@@ -953,7 +970,8 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Fica divino servido com arroz branco soltinho e purê de batatas!",
-            "image": "22.png"
+            "image": "22.png",
+            "servings": 4
         },
         {
             "id": 24,
@@ -1005,7 +1023,8 @@ const receitasData = {
                 "Escorra em papel-toalha e sirva imediatamente acompanhado de batatas fritas."
             ],
             "tips": "Sirva com molho tártaro ou maionese verde caseira temperada.",
-            "image": "24.png"
+            "image": "24.png",
+            "servings": 4
         },
         {
             "id": 25,
@@ -1062,7 +1081,8 @@ const receitasData = {
                 "Asse no forno pré-aquecido a 200°C por 20 a 25 minutos até dourar a crosta."
             ],
             "tips": "Uma excelente forma de consumir peixe assado que permanece incrivelmente suculento por dentro!",
-            "image": "25.png"
+            "image": "25.png",
+            "servings": 4
         },
         {
             "id": 26,
@@ -1109,7 +1129,8 @@ const receitasData = {
                 "Retire da geladeira, acrescente a cebola-roxa, o tomate, a pimenta, o coentro e o sal. Misture bem e sirva gelado."
             ],
             "tips": "Sirva acompanhado de torradas crocantes ou chips de banana-da-terra.",
-            "image": "26.png"
+            "image": "26.png",
+            "servings": 4
         },
         {
             "id": 27,
@@ -1172,7 +1193,8 @@ const receitasData = {
                 "Escorra em papel-toalha."
             ],
             "tips": "Perfeito como petisco ou acompanhamento para o almoço de domingo!",
-            "image": "27.png"
+            "image": "27.png",
+            "servings": 4
         },
         {
             "id": 28,
@@ -1229,7 +1251,8 @@ const receitasData = {
                 "Misture o macarrão escorrido ao molho, finalize com o manjericão e sirva com queijo parmesão."
             ],
             "tips": "Dica: Sempre guarde 1 concha da água do cozimento para ajustar a textura do molho, se necessário!",
-            "image": "28.png"
+            "image": "28.png",
+            "servings": 4
         },
         {
             "id": 29,
@@ -1286,7 +1309,8 @@ const receitasData = {
                 "Misture o penne ao molho, coloque em uma travessa, polvilhe a muçarela e leve ao forno rápido para gratinar."
             ],
             "tips": "Um prato reconfortante para jantares de inverno.",
-            "image": "29.png"
+            "image": "29.png",
+            "servings": 4
         },
         {
             "id": 30,
@@ -1343,7 +1367,8 @@ const receitasData = {
                 "Misture o pesto frio direto na massa quente, decore com tomatinhos e um fio de azeite."
             ],
             "tips": "Não cozinhe o pesto no fogo! O calor da própria massa cozida é o suficiente para liberar o perfume do manjericão.",
-            "image": "30.png"
+            "image": "30.png",
+            "servings": 4
         },
         {
             "id": 32,
@@ -1396,7 +1421,8 @@ const receitasData = {
                 "Escorra a massa, envolva-a diretamente no molho cremoso e salpique salsa."
             ],
             "tips": "Refinado, rápido e incrivelmente aveludado!",
-            "image": "32.png"
+            "image": "32.png",
+            "servings": 4
         },
         {
             "id": 33,
@@ -1459,7 +1485,8 @@ const receitasData = {
                 "Misture o macarrão na frigideira com os legumes e finalize com queijo, se desejar."
             ],
             "tips": "Excelente forma de prato único, leve e saudável!",
-            "image": "33.png"
+            "image": "33.png",
+            "servings": 4
         },
         {
             "id": 34,
@@ -1512,7 +1539,8 @@ const receitasData = {
                 "Deixe refogar até os tomates derreterem e criarem um molho leve encorpado. Finalize com cheiro-verde."
             ],
             "tips": "Não fique mexendo excessivamente na carne logo que colocar na panela para dourar por igual e não soltar líquidos demais!",
-            "image": "34.png"
+            "image": "34.png",
+            "servings": 4
         },
         {
             "id": 35,
@@ -1565,7 +1593,8 @@ const receitasData = {
                 "Refogue por mais 5 minutos tampado e finalize salpicando cheiro-verde."
             ],
             "tips": "Dica de ouro: Cortar todos os ingredientes em tamanhos parecidos faz com que tudo cozinhe por igual.",
-            "image": "35.png"
+            "image": "35.png",
+            "servings": 4
         },
         {
             "id": 36,
@@ -1624,7 +1653,8 @@ const receitasData = {
                 "Salpique gergelim e sirva."
             ],
             "tips": "Cozinhar em fogo médio para alto preserva a cor vibrante e os nutrientes dos legumes frescos!",
-            "image": "36.png"
+            "image": "36.png",
+            "servings": 4
         },
         {
             "id": 37,
@@ -1672,7 +1702,8 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde."
             ],
             "tips": "Nunca lave os cogumelos em água corrente sob risco de encharcar! Limpe-os com pano úmido ou papel escovando as impurezas.",
-            "image": "37.png"
+            "image": "37.png",
+            "servings": 4
         },
         {
             "id": 38,
@@ -1726,7 +1757,8 @@ const receitasData = {
                 "Abra, tempere com sal e finalize com cheiro-verde fresco."
             ],
             "tips": "Deixar o feijão de molho elimina fitatos que causam gases e reduz drasticamente o tempo de cozimento!",
-            "image": "38.png"
+            "image": "38.png",
+            "servings": 4
         },
         {
             "id": 39,
@@ -1774,7 +1806,8 @@ const receitasData = {
                 "Tempere com sal a gosto e amasse algumas conchas de grãos nas paredes da panela para engrossar o caldo."
             ],
             "tips": "Finalize com coentro ou cheiro-verde para um toque especial de frescor.",
-            "image": "39.png"
+            "image": "39.png",
+            "servings": 4
         },
         {
             "id": 40,
@@ -1832,7 +1865,8 @@ const receitasData = {
                 "Ajuste com sal e pimenta e sirva quente."
             ],
             "tips": "Sirva com torresmo estalando de crocante por cima.",
-            "image": "40.png"
+            "image": "40.png",
+            "servings": 4
         },
         {
             "id": 41,
@@ -1879,7 +1913,8 @@ const receitasData = {
                 "Adicione o tomate fresco e finalize ajustando o sal e o cheiro-verde."
             ],
             "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite de oliva extra virgem!",
-            "image": "41.png"
+            "image": "41.png",
+            "servings": 4
         },
         {
             "id": 42,
@@ -1917,7 +1952,8 @@ const receitasData = {
                 "Desligue o fogo e mantenha a panela tampada por 5 minutos antes de soltar com o garfo."
             ],
             "tips": "A proporção de ouro é sempre de 2 xícaras de água quente para cada 1 xícara de arroz seco!",
-            "image": "42.png"
+            "image": "42.png",
+            "servings": 4
         },
         {
             "id": 43,
@@ -1975,7 +2011,8 @@ const receitasData = {
                 "Deixe secar totalmente, desligue e jogue o cheiro-verde salpicado."
             ],
             "tips": "Colorido, saudável e as crianças adoram!",
-            "image": "43.png"
+            "image": "43.png",
+            "servings": 4
         },
         {
             "id": 44,
@@ -2028,7 +2065,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo até que seque e finalize salpicando cheiro-verde."
             ],
             "tips": "Um prato prático e muito rico em proteínas para o dia a dia!",
-            "image": "44.png"
+            "image": "44.png",
+            "servings": 4
         },
         {
             "id": 45,
@@ -2071,7 +2109,8 @@ const receitasData = {
                 "Finalize com cheiro-verde fresco."
             ],
             "tips": "O alho em lâminas confere um visual lindo e um sabor único à massa.",
-            "image": "45.png"
+            "image": "45.png",
+            "servings": 4
         },
         {
             "id": 46,
@@ -2124,7 +2163,8 @@ const receitasData = {
                 "Finalize com cheiro-verde."
             ],
             "tips": "Perfeito como prato de entrada ou guarnição saudável.",
-            "image": "46.png"
+            "image": "46.png",
+            "servings": 4
         },
         {
             "id": 47,
@@ -2182,7 +2222,8 @@ const receitasData = {
                 "Cozinhe até dourar bem e amaciar o brócolis. Finalize com cheiro-verde."
             ],
             "tips": "A páprica defumada traz um leve toque defumado irresistível ao frango grelhado.",
-            "image": "47.png"
+            "image": "47.png",
+            "servings": 4
         },
         {
             "id": 48,
@@ -2251,7 +2292,8 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde fresco antes de servir."
             ],
             "tips": "Fica incrível servido sobre um purê cremoso ou arroz.",
-            "image": "48.png"
+            "image": "48.png",
+            "servings": 4
         },
         {
             "id": 49,
@@ -2304,7 +2346,8 @@ const receitasData = {
                 "Finalize salpicando bastante salsinha fresca."
             ],
             "tips": "Atenção: Não cozinhe o camarão demais para que não fique duro ou com textura borrachuda.",
-            "image": "49.png"
+            "image": "49.png",
+            "servings": 4
         },
         {
             "id": 50,
@@ -2356,7 +2399,8 @@ const receitasData = {
                 "Cozinhe por 5 minutos tampado e finalize salpicando sementes de gergelim e cebolinha."
             ],
             "tips": "Opção vegana excelente, leve e rica em proteínas vegetais!",
-            "image": "50.png"
+            "image": "50.png",
+            "servings": 4
         },
         {
             "id": 51,
@@ -2404,7 +2448,8 @@ const receitasData = {
                 "Finalize com cheiro-verde fresquinho e sirva."
             ],
             "tips": "Maravilhoso para servir como entrada, cobertura de bifes ou acompanhando massas!",
-            "image": "51.png"
+            "image": "51.png",
+            "servings": 4
         },
         {
             "id": 52,
@@ -2458,7 +2503,8 @@ const receitasData = {
                 "Finalize com cheiro-verde e sirva."
             ],
             "tips": "Dica: Não fure a carne com garfos enquanto sela para que os sucos permaneçam selados no interior do bife!",
-            "image": "52.png"
+            "image": "52.png",
+            "servings": 4
         },
         {
             "id": 53,
@@ -2512,7 +2558,8 @@ const receitasData = {
                 "Retorne os bifes reservados ao molho quente por 1 minuto e finalize salpicando salsinha."
             ],
             "tips": "Harmoniza perfeitamente acompanhado de arroz branco e batata palha ou purê!",
-            "image": "53.png"
+            "image": "53.png",
+            "servings": 4
         },
         {
             "id": 54,
@@ -2566,7 +2613,8 @@ const receitasData = {
                 "Sirva bem quente."
             ],
             "tips": "Usar manteiga de boa qualidade proporciona uma cor dourada e um brilho insuperáveis!",
-            "image": "54.png"
+            "image": "54.png",
+            "servings": 4
         },
         {
             "id": 55,
@@ -2630,7 +2678,8 @@ const receitasData = {
                 "Deite os bifes de volta ao molho borbulhante e sirva."
             ],
             "tips": "Prato sofisticado digno de restaurante que você faz em 15 minutos em casa!",
-            "image": "55.png"
+            "image": "55.png",
+            "servings": 4
         },
         {
             "id": 56,
@@ -2672,7 +2721,8 @@ const receitasData = {
                 "Sirva com acompanhamentos frescos."
             ],
             "tips": "Excelente servido com batata-doce assada!",
-            "image": "56.png"
+            "image": "56.png",
+            "servings": 4
         },
         {
             "id": 57,
@@ -2714,7 +2764,8 @@ const receitasData = {
                 "Retorne os filés ao molho cremoso de mostarda, mexe bem e finalize com salsinha picada."
             ],
             "tips": "Sirva acompanhado de arroz branco - fica simplesmente irresistível!",
-            "image": "57.png"
+            "image": "57.png",
+            "servings": 4
         },
         {
             "id": 58,
@@ -2756,7 +2807,8 @@ const receitasData = {
                 "Misture o pote inteiro de requeijão cremoso até homogeneizar e finalize com cheiro-verde."
             ],
             "tips": "Dica: Essa receita é um recheio perfeito para panquecas, tortas ou recheio de tapiocas.",
-            "image": "58.png"
+            "image": "58.png",
+            "servings": 4
         },
         {
             "id": 59,
@@ -2798,7 +2850,8 @@ const receitasData = {
                 "Volte o frango para a panela, misture tudo tampado por 5 minutos e finalize com folhas frescas de manjericão."
             ],
             "tips": "Refeição super leve, de baixa caloria e extremamente saudável.",
-            "image": "59.png"
+            "image": "59.png",
+            "servings": 4
         },
         {
             "id": 61,
@@ -2854,7 +2907,8 @@ const receitasData = {
                 "Leve ao forno a 180°C pré-aquecido por cerca de 20 minutos até inflar e dourar."
             ],
             "tips": "Receita pronta em apenas 25 minutos! Altamente proteica e de fácil digestão.",
-            "image": "61.png"
+            "image": "61.png",
+            "servings": 4
         },
         {
             "id": 62,
@@ -2901,7 +2955,8 @@ const receitasData = {
                 "Finalize salpicando cheiro-verde e sirva."
             ],
             "tips": "Combinação clássica 'maromba', excelente refeição pré ou pós-treino noturno!",
-            "image": "62.png"
+            "image": "62.png",
+            "servings": 4
         },
         {
             "id": 67,
@@ -2957,7 +3012,8 @@ const receitasData = {
                 "Continue mexendo até ficar macio e cremoso. Finalize desligando o fogo, jogando queijo parmesão ralado e mexendo vigorosamente."
             ],
             "tips": "O segredo do risoto perfeito está em mexer constantemente para liberar o amido do arroz, criando o próprio creme!",
-            "image": "67.png"
+            "image": "67.png",
+            "servings": 4
         },
         {
             "id": 68,
@@ -3002,7 +3058,8 @@ const receitasData = {
                 "Asse em forno pré-aquecido a 200°C por cerca de 25 a 30 minutos."
             ],
             "tips": "Uma janta ideal, equilibrada, livre de gorduras pesadas e com digestão fantástica para garantir uma boa noite de sono!",
-            "image": "68.png"
+            "image": "68.png",
+            "servings": 4
         },
         {
             "id": 69,
@@ -3055,7 +3112,8 @@ const receitasData = {
                 "Adicione a couve fatiada e apague o fogo para que ela cozinhe apenas com o calor do caldo. Finalize com cheiro-verde."
             ],
             "tips": "A couve adicionada no final mantém sua cor verde brilhante e textura crocante perfeita!",
-            "image": "69.png"
+            "image": "69.png",
+            "servings": 4
         },
         {
             "id": 72,
@@ -3107,7 +3165,8 @@ const receitasData = {
                 "Tempere a gosto com sal, pimenta-do-reino e orégano e sirva quente com sua massa preferida."
             ],
             "tips": "Combina perfeitamente com massas recheadas de queijo como ravióli ou capeletti.",
-            "image": "72.png"
+            "image": "72.png",
+            "servings": 4
         },
         {
             "id": 73,
@@ -3154,7 +3213,8 @@ const receitasData = {
                 "Ajuste o sal, a pimenta-do-reino e adicione folhas de manjericão fresco minutos antes de desligar."
             ],
             "tips": "Se preferir um molho liso de pizzaria, passe o molho pronto por uma peneira ou bata no liquidificador.",
-            "image": "73.png"
+            "image": "73.png",
+            "servings": 4
         },
         {
             "id": 75,
@@ -3196,7 +3256,8 @@ const receitasData = {
                 "Desligue o fogo, misture a caixinha de creme de leite e tempere a gosto com sal, pimenta-do-reino e noz-moscada."
             ],
             "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folha de louro antes de montar o molho!",
-            "image": "75.png"
+            "image": "75.png",
+            "servings": 4
         },
         {
             "id": 76,
@@ -3244,7 +3305,8 @@ const receitasData = {
                 "Adicione sal, pimenta e finalize salpicando cheiro-verde fresco."
             ],
             "tips": "Excelente base para lasanhas de queijo e presunto ou espaguete tradicional!",
-            "image": "76.png"
+            "image": "76.png",
+            "servings": 4
         },
         {
             "id": 77,
@@ -3291,7 +3353,8 @@ const receitasData = {
                 "Retire do fogo, jogue a massa quente diretamente no molho e polvilhe o parmesão e a salsinha fresca."
             ],
             "tips": "A simplicidade desse molho italiano clássico brilha imensamente quando finalizado com raspas de limão siciliano!",
-            "image": "77.png"
+            "image": "77.png",
+            "servings": 4
         },
         {
             "id": 78,
@@ -3333,7 +3396,8 @@ const receitasData = {
                 "Despeje o feijão batido na panela, tempere a gosto e cozinhe por 15 minutos até engrossar e encorpar sabor."
             ],
             "tips": "Sirva bem quente com croutons e gotas de pimenta.",
-            "image": "78.png"
+            "image": "78.png",
+            "servings": 4
         },
         {
             "id": 80,
@@ -3388,7 +3452,8 @@ const receitasData = {
                 "Monte colocando a polenta cremosa no fundo da travessa e despejando a carne com molho por cima."
             ],
             "tips": "Adicione duas colheres de creme de leite ou requeijão na polenta cozida para um toque extra aveludado.",
-            "image": "80.png"
+            "image": "80.png",
+            "servings": 4
         },
         {
             "id": 81,
@@ -3439,7 +3504,8 @@ const receitasData = {
                 "Polvilhe queijo generosamente e leve ao forno pré-aquecido a 200°C por 20 minutos para gratinar."
             ],
             "tips": "Pode ser feito também substituindo a batata por mandioca ou abóbora cabotiá!",
-            "image": "81.png"
+            "image": "81.png",
+            "servings": 4
         },
         {
             "id": 82,
@@ -3484,7 +3550,8 @@ const receitasData = {
                 "Adicione o líquido batido e cozinhe em fogo baixo mexendo sempre até engrossar saborosamente. Tempere."
             ],
             "tips": "Sirva acompanhado de arroz e frango grelhado de domingo.",
-            "image": "82.png"
+            "image": "82.png",
+            "servings": 4
         },
         {
             "id": 83,
@@ -3526,7 +3593,8 @@ const receitasData = {
                 "Apague o fogo, misture a baunilha e sirva imediatamente em canecas."
             ],
             "tips": "Se quiser ainda mais cremosidade, adicione um quadradinho de chocolate meio amargo no final para derreter!",
-            "image": "83.png"
+            "image": "83.png",
+            "servings": 4
         },
         {
             "id": 84,
@@ -3568,7 +3636,8 @@ const receitasData = {
                 "Deixe ferver por 10 minutos para apurar o sal e finalize salpicando cheiro-verde."
             ],
             "tips": "Delicioso prato único para noites frias de outono.",
-            "image": "84.png"
+            "image": "84.png",
+            "servings": 4
         },
         {
             "id": 85,
@@ -3616,7 +3685,8 @@ const receitasData = {
                 "Tempere com sal e pimenta e finalize com cheiro-verde."
             ],
             "tips": "Comida afetiva perfeita para combater resfriados e confortar o corpo!",
-            "image": "85.png"
+            "image": "85.png",
+            "servings": 4
         },
         {
             "id": 88,
@@ -3662,7 +3732,8 @@ const receitasData = {
                 "Leve ao forno a 200°C por 15 minutos até dourar e gratinar."
             ],
             "tips": "Se sobrou arroz da janta anterior, essa receita é ideal para dar vida nova a ele!",
-            "image": "88.png"
+            "image": "88.png",
+            "servings": 4
         },
         {
             "id": 89,
@@ -3708,7 +3779,8 @@ const receitasData = {
                 "Sirva com arroz branco soltinho e batata palha por cima."
             ],
             "tips": "Prato preferido das crianças de preparo extremamente rápido!",
-            "image": "89.png"
+            "image": "89.png",
+            "servings": 4
         },
         {
             "id": 90,
@@ -3753,7 +3825,8 @@ const receitasData = {
                 "Adicione a farinha de mandioca aos poucos, mexendo para não secar demais, e jogue cheiro-verde fresco."
             ],
             "tips": "Delicioso se servido com couve refogada no alho ao lado!",
-            "image": "90.png"
+            "image": "90.png",
+            "servings": 4
         },
         {
             "id": 92,
@@ -3799,7 +3872,8 @@ const receitasData = {
                 "Asse em forno médio por cerca de 35 a 40 minutos até que as batatas estejam tenras."
             ],
             "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo.",
-            "image": "92.png"
+            "image": "92.png",
+            "servings": 4
         },
         {
             "id": 94,
@@ -3845,7 +3919,8 @@ const receitasData = {
                 "Sirva o frango com arroz soltinho e salada verde de folhas."
             ],
             "tips": "Delicioso se salpicado de sementes de girassol tostadas na salada!",
-            "image": "94.png"
+            "image": "94.png",
+            "servings": 4
         },
         {
             "id": 95,
@@ -3882,7 +3957,8 @@ const receitasData = {
                 "Leve à sanduicheira ou doure na frigideira até o queijo derreter completamente."
             ],
             "tips": "Lanche clássico e reconfortante perfeito para tardes frias com café.",
-            "image": "95.png"
+            "image": "95.png",
+            "servings": 4
         },
         {
             "id": 96,
@@ -3919,7 +3995,8 @@ const receitasData = {
                 "Dobre ao meio e espere derreter."
             ],
             "tips": "Substituto leve e sem glúten para o jantar ou lanche pós-treino rápido.",
-            "image": "96.png"
+            "image": "96.png",
+            "servings": 4
         },
         {
             "id": 97,
@@ -3961,7 +4038,8 @@ const receitasData = {
                 "Leve à frigideira quente untada com manteiga, dourando de ambos os lados até gratinar."
             ],
             "tips": "Receita clássica francesa (Pain Perdu) na versão salgada e deliciosa.",
-            "image": "97.png"
+            "image": "97.png",
+            "servings": 4
         },
         {
             "id": 98,
@@ -4003,7 +4081,8 @@ const receitasData = {
                 "Leve ao micro-ondas por 2 a 3 minutos na potência máxima."
             ],
             "tips": "Lanche rápido e proteico perfeito para quem tem pressa!",
-            "image": "98.png"
+            "image": "98.png",
+            "servings": 4
         },
         {
             "id": 99,
@@ -4049,7 +4128,8 @@ const receitasData = {
                 "Feche o sanduíche e sirva geladinho."
             ],
             "tips": "Lanche fresco excelente para transportar para o trabalho.",
-            "image": "99.png"
+            "image": "99.png",
+            "servings": 4
         },
         {
             "id": 100,
@@ -4080,7 +4160,8 @@ const receitasData = {
                 "Leve ao forno quente ou airfryer por 5 minutos até derreter o queijo e aquecer os pães."
             ],
             "tips": "Especialmente saboroso se feito na hora do café da tarde!",
-            "image": "100.png"
+            "image": "100.png",
+            "servings": 4
         },
         {
             "id": 101,
@@ -4116,7 +4197,8 @@ const receitasData = {
                 "Recheie com seu ingrediente favorito (queijo e frango, por exemplo), dobre e sirva."
             ],
             "tips": "Receita de lanche saudável que dá muita saciedade e energia.",
-            "image": "101.png"
+            "image": "101.png",
+            "servings": 4
         },
         {
             "id": 102,
@@ -4157,7 +4239,8 @@ const receitasData = {
                 "Sirva bem geladinho."
             ],
             "tips": "Perfeito para substituir café da manhã ou reforçar lanches da manhã antes do trabalho!",
-            "image": "102.png"
+            "image": "102.png",
+            "servings": 4
         },
         {
             "id": 103,
@@ -4202,7 +4285,8 @@ const receitasData = {
                 "Enrole apertado como um rocambole fatiando no meio para facilitar a mordida."
             ],
             "tips": "Uma delícia saudável de baixa caloria.",
-            "image": "103.png"
+            "image": "103.png",
+            "servings": 4
         },
         {
             "id": 104,
@@ -4244,7 +4328,8 @@ const receitasData = {
                 "Ideal para usar em sopas, arroz e pratos leves do dia a dia."
             ],
             "tips": "Desenforme os cubos congelados e guarde-os em um saco hermético no freezer para facilitar o uso!",
-            "image": "104.png"
+            "image": "104.png",
+            "servings": null
         },
         {
             "id": 105,
@@ -4286,7 +4371,8 @@ const receitasData = {
                 "Excelente para encorpar molhos escuros e pratos com sabor mais intenso."
             ],
             "tips": "Substitui com extrema vantagem à saúde os tabletes industrializados carregados de sódio.",
-            "image": "105.png"
+            "image": "105.png",
+            "servings": null
         },
         {
             "id": 106,
@@ -4328,7 +4414,8 @@ const receitasData = {
                 "Perfeito como base rica para sopas de frutos do mar, risotos e mariscos."
             ],
             "tips": "Caldo de peixe não deve ferver por horas como o de carne para não amargar; 30 minutos bastam.",
-            "image": "106.png"
+            "image": "106.png",
+            "servings": null
         },
         {
             "id": 107,
@@ -4370,7 +4457,8 @@ const receitasData = {
                 "Uma opção leve, versátil e balanceada para qualquer tipo de preparação culinária."
             ],
             "tips": "Você pode aproveitar talos de brócolis, folhas de salsão e cascas de cebola bem lavadas para essa receita.",
-            "image": "107.png"
+            "image": "107.png",
+            "servings": null
         },
         {
             "id": 108,
@@ -4410,7 +4498,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo por 3 a 5 minutos de cada lado até dourar e firmar."
             ],
             "tips": "Pronto em apenas 10 minutos! Uma refeição rápida e rica em proteínas.",
-            "image": "108.png"
+            "image": "108.png",
+            "servings": 4
         },
         {
             "id": 109,
@@ -4447,7 +4536,8 @@ const receitasData = {
                 "Incorpore bem e sirva quente."
             ],
             "tips": "Adicione uma pitada de pimenta calabresa seca junto ao alho para uma versão Alho, Óleo e Pimenta clássica.",
-            "image": "109.png"
+            "image": "109.png",
+            "servings": 4
         },
         {
             "id": 111,
@@ -4484,7 +4574,8 @@ const receitasData = {
                 "Cozinhe em fogo brando com a tampa entreaberta até secar a água por completo."
             ],
             "tips": "Refeição completa pronta em 20 minutos com apenas uma panela para lavar.",
-            "image": "111.png"
+            "image": "111.png",
+            "servings": 4
         },
         {
             "id": 114,
@@ -4520,7 +4611,8 @@ const receitasData = {
                 "Adicione o arroz cozido frio, misture tudo e aqueça bem."
             ],
             "tips": "Ótima receita de 15 minutos para reaproveitar as sobras de arroz da geladeira!",
-            "image": "114.png"
+            "image": "114.png",
+            "servings": 4
         },
         {
             "id": 115,
@@ -4551,7 +4643,8 @@ const receitasData = {
                 "Refogue em fogo médio por mais 5 minutos até a cebola murchar e caramelizar levemente."
             ],
             "tips": "Use cores rápidos como patinho, alcatra ou contrafilé para manter a suculência.",
-            "image": "115.png"
+            "image": "115.png",
+            "servings": 4
         },
         {
             "id": 116,
@@ -4587,7 +4680,8 @@ const receitasData = {
                 "Tempere com sal e pimenta, feche o frasco e agite vigorosamente até emulsionar."
             ],
             "tips": "Excelente para saladas de folhas duras, churrasco ou para acompanhar feijão.",
-            "image": "116.png"
+            "image": "116.png",
+            "servings": 4
         },
         {
             "id": 117,
@@ -4618,7 +4712,8 @@ const receitasData = {
                 "Ajuste com sal e pimenta, batendo com um garfo até obter um molho homogêneo."
             ],
             "tips": "Muito refrescante, combina perfeitamente com saladas verdes e peixes grelhados.",
-            "image": "117.png"
+            "image": "117.png",
+            "servings": 4
         },
         {
             "id": 118,
@@ -4659,7 +4754,8 @@ const receitasData = {
                 "Bata tudo até obter um molho de consistência cremosa e coloração verde uniforme. Ajuste o sal."
             ],
             "tips": "Cremoso, leve e com baixas calorias, excelente substituto para molhos à base de maionese pesada.",
-            "image": "118.png"
+            "image": "118.png",
+            "servings": 4
         },
         {
             "id": 119,
@@ -4700,7 +4796,8 @@ const receitasData = {
                 "Vá adicionando a água morna aos poucos, mexendo sempre até atingir uma consistência fluida de molho. Finalize com sal."
             ],
             "tips": "Clássico da culinária árabe, fica excelente em saladas de tomate, pepino ou grão-de-bico.",
-            "image": "119.png"
+            "image": "119.png",
+            "servings": 4
         },
         {
             "id": 120,
@@ -4741,7 +4838,8 @@ const receitasData = {
                 "Bata vigorosamente com um garfo ou fouet pequeno até emulsionar e tempere com sal."
             ],
             "tips": "O contraste entre a acidez frutada do maracujá e a picância da mostarda é perfeito para saladas tropicais.",
-            "image": "120.png"
+            "image": "120.png",
+            "servings": 4
         },
         {
             "id": 121,
@@ -4782,7 +4880,8 @@ const receitasData = {
                 "Misture tudo muito bem até unificar os líquidos e tempere com sal se achar necessário."
             ],
             "tips": "Traz o perfil clássico de sabor oriental (umami), combinando muito bem com saladas de repolho ou acelga.",
-            "image": "121.png"
+            "image": "121.png",
+            "servings": 4
         },
         {
             "id": 122,
@@ -4823,7 +4922,8 @@ const receitasData = {
                 "Misture bem com uma colher e tempere com uma pitada de sal."
             ],
             "tips": "Extremamente refrescante para os dias quentes, combina muito com saladas contendo pepino e mix de folhas.",
-            "image": "122.png"
+            "image": "122.png",
+            "servings": 4
         },
         {
             "id": 123,
@@ -4859,7 +4959,8 @@ const receitasData = {
                 "Tempere com sal e pimenta-do-reino, feche o pote e agite bem para homogeneizar."
             ],
             "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango desfiado ou cenoura.",
-            "image": "123.png"
+            "image": "123.png",
+            "servings": 4
         },
         {
             "id": 124,
@@ -4911,7 +5012,8 @@ const receitasData = {
                 "Leve ao forno preaquecido a 200°C por cerca de 30 minutos até o peixe assar por completo."
             ],
             "tips": "Para um toque especial de chef, finalize salpicando cheiro-verde fresco e raspas de limão ao sair do forno!",
-            "image": "124.png"
+            "image": "124.png",
+            "servings": 4
         },
         {
             "id": 125,
@@ -4964,7 +5066,8 @@ const receitasData = {
                 "Finalize com cheiro-verde picado e sirva."
             ],
             "tips": "Molho sofisticado e aveludado que fica delicioso se servido com purê de batatas ou arroz com brócolis.",
-            "image": "125.png"
+            "image": "125.png",
+            "servings": 4
         },
         {
             "id": 126,
@@ -5016,7 +5119,8 @@ const receitasData = {
                 "Cozinhe em fogo baixo com a panela tampada por cerca de 20 minutos (evite mexer para não quebrar o peixe). Finalize com coentro."
             ],
             "tips": "Dica tradicional: Sirva bem quente acompanhado de um pirão feito com o próprio caldo da moqueca e farinha de mandioca!",
-            "image": "126.png"
+            "image": "126.png",
+            "servings": 4
         },
         {
             "id": 127,
@@ -5068,7 +5172,8 @@ const receitasData = {
                 "Pincele ou regue com um fio de azeite por cima e leve ao forno a 200°C por cerca de 25 minutos ou até dourar."
             ],
             "tips": "Para uma crocância ainda mais potente e estilo restaurante, substitua a farinha de rosca tradicional por farinha panko!",
-            "image": "127.png"
+            "image": "127.png",
+            "servings": 4
         },
         {
             "id": 128,
@@ -5127,7 +5232,8 @@ const receitasData = {
                 "Acerte o sal, adicione pimenta a gosto e finalize com cheiro-verde. Sirva quente com torradas."
             ],
             "tips": "Pode ser servido rústico em pedaços ou batido no liquidificador antes de adicionar o cheiro-verde para virar um creme homogêneo.",
-            "image": "128.png"
+            "image": "128.png",
+            "servings": 4
         },
         {
             "id": 129,
@@ -5180,7 +5286,8 @@ const receitasData = {
                 "Transfira para um pote de vidro limpo com tampa e conserve sob refrigeração na geladeira."
             ],
             "tips": "Ideal para temperar de forma ultra rápida frango, peixe e arroz durante a semana corrida. Use pequenas porções.",
-            "image": "129.png"
+            "image": "129.png",
+            "servings": null
         },
         {
             "id": 130,
@@ -5222,7 +5329,8 @@ const receitasData = {
                 "Armazene em potes de vidro bem vedados em local seco e arejado."
             ],
             "tips": "Excelente estratégia para reduzir o consumo de sódio no dia a dia, pois as ervas intensificam o sabor salgado natural dos alimentos.",
-            "image": "130.png"
+            "image": "130.png",
+            "servings": null
         },
         {
             "id": 131,
@@ -5274,687 +5382,700 @@ const receitasData = {
                 "Guarde em um pote de vidro bem fechado, fora da geladeira."
             ],
             "tips": "Super funcional, a linhaça traz gorduras boas e a cúrcuma age como um potente antioxidente natural. Dura de 15 dias a 3 meses se bem vedado!",
-            "image": "131.png"
+            "image": "131.png",
+            "servings": null
         },
-    {
-        "id": 132,
-        "title": "Sazón Carne Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🥩",
-        "image": "132.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Páprica defumada",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Tomate em pó (Segredo Umami)",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Cacau 100% em pó (Toque do Chef)",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Cominho em pó (Toque do Chef)",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Misture o alho, a cebola, a páprica defumada, o tomate em pó, o sal e o amido de milho em uma tigela.",
-            "Adicione o cacau 100% em pó para cor terrosa e profundidade.",
-            "Adicione o cominho em pó para aquele toque característico de churrasco.",
-            "Agite muito bem dentro de um pote hermético seco.",
-            "Guarde bem fechado em local escuro e arejado."
-        ],
-        "tips": "O tomate em pó é rico em ácido glutâmico natural (MSG saudável), que realça o sabor da carne instantaneamente! O cacau adiciona profundidade sem doçura."
-    },
-    {
-        "id": 133,
-        "title": "Sazón Frango Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🍗",
-        "image": "133.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Mix Pega Marido",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cúrcuma (açafrão-da-terra)",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Levedura Nutricional (Segredo Umami)",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Gengibre em pó (Toque do Chef)",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Mostarda em pó (Toque do Chef)",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Combine o alho em pó, a cebola em pó, o Pega Marido e a cúrcuma em uma tigela.",
-            "Incorpore a levedura nutricional, o gengibre, a mostarda e o sal.",
-            "Adicione o amido de milho e misture até homogeneizar.",
-            "Agite bem no pote até obter o pó amarelo solar característico.",
-            "Armazene em pote hermético de vidro escuro."
-        ],
-        "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'. O gengibre realça o sabor do frango sem competir."
-    },
-    {
-        "id": 134,
-        "title": "Sazón Alho Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🧄",
-        "image": "134.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 5,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 3,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Chimichurri desidratado",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Sal refinado de alta qualidade",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Pimenta-do-reino branca moída",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Combine todos os ingredientes finos em pó em uma tigela grande.",
-            "Passe o chimichurri seco rapidamente por um moedor de café se preferir flocos menores.",
-            "Adicione a pimenta-do-reino branca para aquele fundo picante sutil.",
-            "Misture com o amido e guarde em pote vedado hermeticamente."
-        ],
-        "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados. A pimenta branca complementa o alho sem escurecer a cor do prato."
-    },
-    {
-        "id": 135,
-        "title": "Sazón Limão Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🍋",
-        "image": "135.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Lemon Pepper de alta qualidade",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Raspas de limão siciliano desidratadas e moídas",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Ácido cítrico em pó (Toque Cítrico Vibrante)",
-                "qty": 1,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Combine os pós finos (alho, cebola, lemon pepper, sal) e a colher de ácido cítrico.",
-            "Misture as raspas de limão siciliano desidratadas para aromas essenciais reais.",
-            "Agite energicamente até homogeneizar completamente.",
-            "Transfira para pote hermético e vede bem."
-        ],
-        "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial. Ideal para peixes, frangos grelhados e saladas."
-    },
-    {
-        "id": 136,
-        "title": "Sazón Legumes Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🌽",
-        "image": "136.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Salsa desidratada bem fina",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Cúrcuma (açafrão-da-terra)",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Cenoura em pó",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Levedura Nutricional",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Misture o alho, cebola, salsa e açafrão em uma tigela.",
-            "Incorpore a levedura nutricional e cenoura em pó para um perfil de caldo de vegetais.",
-            "Adicione o sal refinado e misture bem.",
-            "Finalize com o amido de milho e agite até homogeneizar.",
-            "Armazene em pote de vidro escuro."
-        ],
-        "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves. A cenoura em pó adiciona doçura natural e cor vibrante."
-    },
-    {
-        "id": 137,
-        "title": "Sazón Saladas Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🥗",
-        "image": "137.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Manjericão desidratado moído",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Orégano seco",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Ácido cítrico em pó",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Gergelim tostado",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Triture as ervas levemente para misturarem de forma uniforme no alho e cebola.",
-            "Adicione o ácido cítrico para o efeito vinagrete instantâneo.",
-            "Incorpore o gergelim tostado para crocância e nutrição.",
-            "Adicione o sal refinado e misture bem.",
-            "Guarde em vidro bem vedado, longe da luz."
-        ],
-        "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite. O gergelim tostado adiciona textura e ômega-3."
-    },
-    {
-        "id": 138,
-        "title": "Sazón Feijão Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🫘",
-        "image": "138.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Louro moído em pó fino",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Páprica defumada",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Fumaça em pó (Pó de fumaça condensada)",
-                "qty": 1,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Cominho em pó",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Misture o alho, cebola, louro e páprica em uma tigela.",
-            "Adicione o cominho em pó para profundidade aromática.",
-            "Incorpore o pó sutil de fumaça e o sal.",
-            "Adicione o amido de milho e misture muito bem.",
-            "Transfira para pote hermético e vede."
-        ],
-        "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano! O cominho reforça o perfil brasileiro."
-    },
-    {
-        "id": 139,
-        "title": "Sazón Nordeste Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🌵",
-        "image": "139.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Coentro em pó",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Cominho em pó",
-                "qty": 0.5,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Colorau (urucum)",
-                "qty": 0.5,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Pimenta-de-cheiro desidratada moída",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Pimenta-do-reino branca moída",
-                "qty": 0.5,
-                "unit": "colher (café)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Adicione o colorau, cominho, coentro, alho e cebola no frasco.",
-            "Acrescente a pimenta-de-cheiro e a pimenta-do-reino branca.",
-            "Adicione o sal refinado e o amido de milho.",
-            "Misture bem até obter um tom avermelhado terroso característico.",
-            "Armazene em pote hermético de vidro escuro."
-        ],
-        "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca. A pimenta branca complementa sem competir com o colorau."
-    },
-    {
-        "id": 140,
-        "title": "Sazón Arroz Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🍚",
-        "image": "140.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó (Protagonista absoluto)",
-                "qty": 6,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó (Reduzida)",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cúrcuma (açafrão-da-terra)",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Mantenha a proporção: 3 partes de alho para 1 de cebola.",
-            "Misture o alho em pó, a cebola em pó e o sal em uma tigela.",
-            "Adicione o açafrão-da-terra para um arroz solar perfumado.",
-            "Incorpore o amido de milho e agite bem até homogeneizar.",
-            "Armazene em pote hermético."
-        ],
-        "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado. A cúrcuma proporciona cor dourada e benefícios anti-inflamatórios."
-    },
-    {
-        "id": 141,
-        "title": "Sazón Massas Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🍝",
-        "image": "141.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Orégano seco",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Manjericão desidratado",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Páprica defumada",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Tomate em pó",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Queijo parmesão ralado microfino",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Combine o alho, cebola, as ervas secas (orégano e manjericão) e a páprica.",
-            "Agregue o tomate em pó e o parmesão microfino.",
-            "Adicione o sal refinado e misture bem.",
-            "Incorpore o amido de milho, agite e feche hermeticamente.",
-            "Mantenha refrigerado se usar parmesão real (não desidratado)."
-        ],
-        "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato! O parmesão real deve ser mantido refrigerado."
-    },
-    {
-        "id": 142,
-        "title": "Sazón Peixes Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🐟",
-        "image": "142.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Lemon Pepper",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Páprica defumada",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Salsa desidratada",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Semente de coentro moída (Aroma cítrico herbal)",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Sal refinado",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Adicione as sementes de coentro moídas, ricas em notas cítricas, em uma tigela.",
-            "Misture com o alho em pó, cebola em pó, lemon pepper e sal.",
-            "Incorpore a páprica defumada e a salsa desidratada.",
-            "Adicione o amido de milho e misture até homogeneizar.",
-            "Armazene vedado em local fresco."
-        ],
-        "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar. A páprica defumada adiciona profundidade sem competir com o frescor."
-    },
-    {
-        "id": 143,
-        "title": "Sazón Churrasco Caseiro",
-        "category": "temperos",
-        "source": "Sazons Funcionais Otimizados",
-        "emoji": "🍖",
-        "image": "143.png",
-        "ingredients": [
-            {
-                "name": "Alho em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Cebola em pó",
-                "qty": 4,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Páprica defumada",
-                "qty": 2,
-                "unit": "colheres (sopa)"
-            },
-            {
-                "name": "Pimenta-do-reino moída de boa qualidade",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Açúcar mascavo (Efeito Dry Rub)",
-                "qty": 1,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Mostarda em pó (Efeito Dry Rub)",
-                "qty": 0.5,
-                "unit": "colher (chá)"
-            },
-            {
-                "name": "Sal grosso moído",
-                "qty": 1,
-                "unit": "colher (sopa)"
-            },
-            {
-                "name": "Amido de milho (Anti-empedramento)",
-                "qty": 1,
-                "unit": "colher (café)"
-            }
-        ],
-        "steps": [
-            "Misture o alho, cebola, páprica e pimenta preta em uma tigela.",
-            "Adicione o sal grosso moído para textura e sabor intenso.",
-            "Adicione o açúcar mascavo para caramelização.",
-            "Incorpore a mostarda em pó para o clássico efeito dry rub.",
-            "Integre com o amido e vede hermeticamente."
-        ],
-        "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard). A mostarda em pó ajuda a formar a crosta perfeita."
-    },
+        {
+            "id": 132,
+            "title": "Sazón Carne Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🥩",
+            "image": "132.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Páprica defumada",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Tomate em pó (Segredo Umami)",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Cacau 100% em pó (Toque do Chef)",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Cominho em pó (Toque do Chef)",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Misture o alho, a cebola, a páprica defumada, o tomate em pó, o sal e o amido de milho em uma tigela.",
+                "Adicione o cacau 100% em pó para cor terrosa e profundidade.",
+                "Adicione o cominho em pó para aquele toque característico de churrasco.",
+                "Agite muito bem dentro de um pote hermético seco.",
+                "Guarde bem fechado em local escuro e arejado."
+            ],
+            "tips": "O tomate em pó é rico em ácido glutâmico natural (MSG saudável), que realça o sabor da carne instantaneamente! O cacau adiciona profundidade sem doçura.",
+            "servings": null
+        },
+        {
+            "id": 133,
+            "title": "Sazón Frango Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🍗",
+            "image": "133.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Mix Pega Marido",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Levedura Nutricional (Segredo Umami)",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Gengibre em pó (Toque do Chef)",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Mostarda em pó (Toque do Chef)",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Combine o alho em pó, a cebola em pó, o Pega Marido e a cúrcuma em uma tigela.",
+                "Incorpore a levedura nutricional, o gengibre, a mostarda e o sal.",
+                "Adicione o amido de milho e misture até homogeneizar.",
+                "Agite bem no pote até obter o pó amarelo solar característico.",
+                "Armazene em pote hermético de vidro escuro."
+            ],
+            "tips": "A levedura nutricional traz aquele sabor clássico e viciante de 'caldo de galinha de vó'. O gengibre realça o sabor do frango sem competir.",
+            "servings": null
+        },
+        {
+            "id": 134,
+            "title": "Sazón Alho Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🧄",
+            "image": "134.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 5,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 3,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Chimichurri desidratado",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Sal refinado de alta qualidade",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Pimenta-do-reino branca moída",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Combine todos os ingredientes finos em pó em uma tigela grande.",
+                "Passe o chimichurri seco rapidamente por um moedor de café se preferir flocos menores.",
+                "Adicione a pimenta-do-reino branca para aquele fundo picante sutil.",
+                "Misture com o amido e guarde em pote vedado hermeticamente."
+            ],
+            "tips": "Perfeito para pães de alho, arroz rápido, batatas e ensopados. A pimenta branca complementa o alho sem escurecer a cor do prato.",
+            "servings": null
+        },
+        {
+            "id": 135,
+            "title": "Sazón Limão Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🍋",
+            "image": "135.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Lemon Pepper de alta qualidade",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Raspas de limão siciliano desidratadas e moídas",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Ácido cítrico em pó (Toque Cítrico Vibrante)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Combine os pós finos (alho, cebola, lemon pepper, sal) e a colher de ácido cítrico.",
+                "Misture as raspas de limão siciliano desidratadas para aromas essenciais reais.",
+                "Agite energicamente até homogeneizar completamente.",
+                "Transfira para pote hermético e vede bem."
+            ],
+            "tips": "O ácido cítrico de grau culinário faz o sabor vibrar nas papilas gustativas, imitando a acidez industrial. Ideal para peixes, frangos grelhados e saladas.",
+            "servings": null
+        },
+        {
+            "id": 136,
+            "title": "Sazón Legumes Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🌽",
+            "image": "136.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Salsa desidratada bem fina",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Cenoura em pó",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Levedura Nutricional",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Misture o alho, cebola, salsa e açafrão em uma tigela.",
+                "Incorpore a levedura nutricional e cenoura em pó para um perfil de caldo de vegetais.",
+                "Adicione o sal refinado e misture bem.",
+                "Finalize com o amido de milho e agite até homogeneizar.",
+                "Armazene em pote de vidro escuro."
+            ],
+            "tips": "Maravilhoso sobre legumes no vapor, purês e sopas leves. A cenoura em pó adiciona doçura natural e cor vibrante.",
+            "servings": null
+        },
+        {
+            "id": 137,
+            "title": "Sazón Saladas Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🥗",
+            "image": "137.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Manjericão desidratado moído",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Orégano seco",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Ácido cítrico em pó",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Gergelim tostado",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Triture as ervas levemente para misturarem de forma uniforme no alho e cebola.",
+                "Adicione o ácido cítrico para o efeito vinagrete instantâneo.",
+                "Incorpore o gergelim tostado para crocância e nutrição.",
+                "Adicione o sal refinado e misture bem.",
+                "Guarde em vidro bem vedado, longe da luz."
+            ],
+            "tips": "Polvilhe diretamente sobre tomates fatiados, folhas verdes ou misture no azeite. O gergelim tostado adiciona textura e ômega-3.",
+            "servings": null
+        },
+        {
+            "id": 138,
+            "title": "Sazón Feijão Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🫘",
+            "image": "138.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Louro moído em pó fino",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Páprica defumada",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Fumaça em pó (Pó de fumaça condensada)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Cominho em pó",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Misture o alho, cebola, louro e páprica em uma tigela.",
+                "Adicione o cominho em pó para profundidade aromática.",
+                "Incorpore o pó sutil de fumaça e o sal.",
+                "Adicione o amido de milho e misture muito bem.",
+                "Transfira para pote hermético e vede."
+            ],
+            "tips": "A fumaça em pó dá aquele toque clássico de bacon de fazenda, mesmo que seja um feijão totalmente vegetariano! O cominho reforça o perfil brasileiro.",
+            "servings": null
+        },
+        {
+            "id": 139,
+            "title": "Sazón Nordeste Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🌵",
+            "image": "139.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Coentro em pó",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Cominho em pó",
+                    "qty": 0.5,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Colorau (urucum)",
+                    "qty": 0.5,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Pimenta-de-cheiro desidratada moída",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Pimenta-do-reino branca moída",
+                    "qty": 0.5,
+                    "unit": "colher (café)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Adicione o colorau, cominho, coentro, alho e cebola no frasco.",
+                "Acrescente a pimenta-de-cheiro e a pimenta-do-reino branca.",
+                "Adicione o sal refinado e o amido de milho.",
+                "Misture bem até obter um tom avermelhado terroso característico.",
+                "Armazene em pote hermético de vidro escuro."
+            ],
+            "tips": "Traz a ardência aromática típica da culinária nordestina sem queimar excessivamente a boca. A pimenta branca complementa sem competir com o colorau.",
+            "servings": null
+        },
+        {
+            "id": 140,
+            "title": "Sazón Arroz Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🍚",
+            "image": "140.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó (Protagonista absoluto)",
+                    "qty": 6,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó (Reduzida)",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Mantenha a proporção: 3 partes de alho para 1 de cebola.",
+                "Misture o alho em pó, a cebola em pó e o sal em uma tigela.",
+                "Adicione o açafrão-da-terra para um arroz solar perfumado.",
+                "Incorpore o amido de milho e agite bem até homogeneizar.",
+                "Armazene em pote hermético."
+            ],
+            "tips": "No arroz brasileiro, o alho deve reinar. Reduzir a cebola evita que o arroz fique adocicado. A cúrcuma proporciona cor dourada e benefícios anti-inflamatórios.",
+            "servings": null
+        },
+        {
+            "id": 141,
+            "title": "Sazón Massas Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🍝",
+            "image": "141.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Orégano seco",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Manjericão desidratado",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Páprica defumada",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Tomate em pó",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Queijo parmesão ralado microfino",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Combine o alho, cebola, as ervas secas (orégano e manjericão) e a páprica.",
+                "Agregue o tomate em pó e o parmesão microfino.",
+                "Adicione o sal refinado e misture bem.",
+                "Incorpore o amido de milho, agite e feche hermeticamente.",
+                "Mantenha refrigerado se usar parmesão real (não desidratado)."
+            ],
+            "tips": "Cria um molho marinara ou pomodoro express instantâneo incrivelmente saboroso direto no prato! O parmesão real deve ser mantido refrigerado.",
+            "servings": null
+        },
+        {
+            "id": 142,
+            "title": "Sazón Peixes Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🐟",
+            "image": "142.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Lemon Pepper",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Páprica defumada",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Salsa desidratada",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Semente de coentro moída (Aroma cítrico herbal)",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Sal refinado",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Adicione as sementes de coentro moídas, ricas em notas cítricas, em uma tigela.",
+                "Misture com o alho em pó, cebola em pó, lemon pepper e sal.",
+                "Incorpore a páprica defumada e a salsa desidratada.",
+                "Adicione o amido de milho e misture até homogeneizar.",
+                "Armazene vedado em local fresco."
+            ],
+            "tips": "O aroma cítrico da semente de coentro é o par absoluto e clássico para pescados e frutos do mar. A páprica defumada adiciona profundidade sem competir com o frescor.",
+            "servings": null
+        },
+        {
+            "id": 143,
+            "title": "Sazón Churrasco Caseiro",
+            "category": "temperos",
+            "source": "Sazons Funcionais Otimizados",
+            "emoji": "🍖",
+            "image": "143.png",
+            "ingredients": [
+                {
+                    "name": "Alho em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Cebola em pó",
+                    "qty": 4,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Páprica defumada",
+                    "qty": 2,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "Pimenta-do-reino moída de boa qualidade",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Açúcar mascavo (Efeito Dry Rub)",
+                    "qty": 1,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Mostarda em pó (Efeito Dry Rub)",
+                    "qty": 0.5,
+                    "unit": "colher (chá)"
+                },
+                {
+                    "name": "Sal grosso moído",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "Amido de milho (Anti-empedramento)",
+                    "qty": 1,
+                    "unit": "colher (café)"
+                }
+            ],
+            "steps": [
+                "Misture o alho, cebola, páprica e pimenta preta em uma tigela.",
+                "Adicione o sal grosso moído para textura e sabor intenso.",
+                "Adicione o açúcar mascavo para caramelização.",
+                "Incorpore a mostarda em pó para o clássico efeito dry rub.",
+                "Integre com o amido e vede hermeticamente."
+            ],
+            "tips": "O açúcar mascavo carameliza sutilmente a gordura da carne na grelha sob fogo alto (Reação de Maillard). A mostarda em pó ajuda a formar a crosta perfeita.",
+            "servings": null
+        },
         {
             "id": 144,
             "title": "Arroz Biro-Biro",
@@ -6031,7 +6152,8 @@ const receitasData = {
                 "Em uma travessa grande, misture delicadamente o arroz cozido, o bacon frito, os ovos e a batata palha.",
                 "Sirva em seguida, enquanto a batata palha ainda está crocante."
             ],
-            "tips": "Para garantir a máxima crocância, adicione a batata palha apenas na hora exata de servir. Acompanha perfeitamente carnes grelhadas ou churrasco."
+            "tips": "Para garantir a máxima crocância, adicione a batata palha apenas na hora exata de servir. Acompanha perfeitamente carnes grelhadas ou churrasco.",
+            "servings": 4
         },
         {
             "id": 145,
@@ -6104,7 +6226,8 @@ const receitasData = {
                 "Amasse parte dos legumes para deixar a sopa bem cremosa.",
                 "Finalize com o cheiro-verde e sirva."
             ],
-            "tips": "Para um toque extra de cremosidade, você pode bater uma parte pequena dos legumes no liquidificador com um pouco do caldo antes de voltar para a panela."
+            "tips": "Para um toque extra de cremosidade, você pode bater uma parte pequena dos legumes no liquidificador com um pouco do caldo antes de voltar para a panela.",
+            "servings": 4
         },
         {
             "id": 146,
@@ -6168,7 +6291,8 @@ const receitasData = {
                 "Cozinhe em fogo médio até que o macarrão fique macio.",
                 "Finalize com cheiro-verde e sirva bem quente."
             ],
-            "tips": "Sirva acompanhado de torradas com alho ou bacon crocante salpicado por cima."
+            "tips": "Sirva acompanhado de torradas com alho ou bacon crocante salpicado por cima.",
+            "servings": 4
         },
         {
             "id": 147,
@@ -6230,7 +6354,8 @@ const receitasData = {
                 "Volte o creme para a panela, ajuste o sal e a pimenta-do-reino.",
                 "Adicione o creme de leite se desejar um toque aveludado extra e sirva quente."
             ],
-            "tips": "Finalize com sementes de abóbora tostadas ou queijo ralado para adicionar textura ao prato."
+            "tips": "Finalize com sementes de abóbora tostadas ou queijo ralado para adicionar textura ao prato.",
+            "servings": 4
         }
     ]
 };
