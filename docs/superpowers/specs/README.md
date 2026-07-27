@@ -7,7 +7,7 @@ cada vez, imediatamente antes de implementar aquela feature específica.
 
 | Ordem | Spec | Depende de | Status |
 |---|---|---|---|
-| 1 | [Busca por Título e Ingrediente](2026-07-27-busca-ingrediente-design.md) | — | ⬜ Não implementado |
+| 1 | [Busca por Título e Ingrediente](2026-07-27-busca-ingrediente-design.md) | — | ✅ Implementado |
 | 2 | [Porções Reais da Receita (`recipe.servings`)](2026-07-27-recipe-servings-design.md) | — | ⬜ Não implementado |
 | 3 | [Despensa (Filtro "Posso Fazer com o que Tenho")](2026-07-27-despensa-design.md) | Busca por Ingrediente (usa `normalizeSearchText()`) | ⬜ Não implementado |
 | 4 | [Tela Ativa Durante o Preparo (Wake Lock)](2026-07-27-wake-lock-design.md) | — | ⬜ Não implementado |
