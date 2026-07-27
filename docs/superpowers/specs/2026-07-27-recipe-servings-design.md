@@ -2,7 +2,7 @@
 
 **Data:** 2026-07-27
 **Autor:** GitHub Copilot CLI (pair programmer)
-**Status:** Em Revisão
+**Status:** Aprovado e Implementado
 **Projeto:** Chef Digital (Livro de Receitas & Planejador)
 
 ---
