@@ -2213,3 +2213,49 @@ input {
     flex-direction: column;
     gap: 12px;
 }
+
+/* ========================================================================
+   Day Picker Popover (seleção de dia da semana no botão de calendário)
+======================================================================== */
+
+.day-picker-popover {
+    position: absolute;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: 6px;
+    gap: 2px;
+}
+
+.day-picker-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    border-radius: var(--radius-sm);
+    text-align: left;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.day-picker-option:hover {
+    background-color: var(--bg-light);
+}
+
+.day-picker-option.active {
+    color: var(--success-hover);
+    background-color: var(--success-light);
+    font-weight: 700;
+}
+
+.day-picker-check {
+    font-size: 13px;
+}
