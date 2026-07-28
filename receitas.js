@@ -348,7 +348,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "alho picados",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "dentes"
                 },
@@ -401,7 +401,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "alho picados",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "dentes"
                 },
@@ -454,7 +454,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "alho picados",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "dentes"
                 },
@@ -503,7 +503,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "alho picados",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "dentes"
                 },
@@ -564,7 +564,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -613,7 +613,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -832,7 +832,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -880,7 +880,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1001,7 +1001,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1029,7 +1029,7 @@ const receitasData = {
             "steps": [
                 "Tempere o peixe com limão, sal e pimenta.",
                 "Doure rapidamente os filés no azeite e reserve-os.",
-                "Na mesma panela, refogue a cebola e o alho picados.",
+                "Na mesma panela, refogue a cebola e o alho picado.",
                 "Acrescente os tomates picados e o molho. Cozinhe por 5 minutos.",
                 "Volte os filés para o molho, adicione as azeitonas e cozinhe por mais 5 minutos.",
                 "Finalize com cheiro-verde e sirva."
@@ -1220,7 +1220,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1279,7 +1279,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1395,7 +1395,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "azeite de oliva extra virgem",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -1453,12 +1453,12 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "creme de leite fresco ou caixinha",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "xícara"
                 },
@@ -1507,7 +1507,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura cortada em tiras finas",
+                    "name": "cenoura em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1522,12 +1522,12 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -1576,7 +1576,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1630,7 +1630,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1669,7 +1669,7 @@ const receitasData = {
             "emoji": "🥕",
             "ingredients": [
                 {
-                    "name": "cenoura cortada em rodelas finas",
+                    "name": "cenoura em rodelas finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1694,7 +1694,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1739,7 +1739,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1788,7 +1788,7 @@ const receitasData = {
                     "unit": "gomo"
                 },
                 {
-                    "name": "bacon picadinho",
+                    "name": "bacon picado",
                     "qty": 150,
                     "unit": "g"
                 },
@@ -1798,7 +1798,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1843,7 +1843,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1887,7 +1887,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "bacon picadinho",
+                    "name": "bacon picado",
                     "qty": 150,
                     "unit": "g"
                 },
@@ -1902,7 +1902,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1951,7 +1951,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1977,7 +1977,7 @@ const receitasData = {
                 "Adicione o feijão, cubra com água e cozinhe por 20 minutos (não deixe desmanchar).",
                 "Adicione o tomate fresco e finalize ajustando o sal e o cheiro-verde."
             ],
-            "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite de oliva extra virgem!",
+            "tips": "Pode ser consumido morno ou gelado como uma salada refrescante com azeite!",
             "image": "41.png",
             "servings": 4
         },
@@ -2038,7 +2038,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "cebola picadinha",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2048,7 +2048,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura cortada em cubinhos",
+                    "name": "cenoura em cubinhos",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2102,7 +2102,7 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "cebola e alho picados",
+                    "name": "cebola e alho picado",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2190,7 +2190,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura cortada em tiras finas",
+                    "name": "cenoura em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2205,7 +2205,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2249,7 +2249,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2308,7 +2308,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2388,7 +2388,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -2432,7 +2432,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura cortada em tiras finas",
+                    "name": "cenoura em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2485,7 +2485,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2500,7 +2500,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "cheiro-verde para finalizar",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2524,7 +2524,7 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "bifes de qualidade (alcatra, contrafilé)",
+                    "name": "bifes",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -2544,7 +2544,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2554,7 +2554,7 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "cheiro-verde picadinho",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "opcional"
                 }
@@ -2589,7 +2589,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2704,7 +2704,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2845,12 +2845,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picadinha",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2893,7 +2893,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "cebola picadinha",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2997,17 +2997,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola picadinha",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva, sal, pimenta e cheiro-verde",
+                    "name": "azeite, sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3039,12 +3039,12 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "cebola picadinha",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura pequena em cubos",
+                    "name": "cenoura em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3064,13 +3064,13 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "azeite de oliva, sal, pimenta e parmesão",
+                    "name": "azeite, sal, pimenta e parmesão",
                     "qty": null,
                     "unit": "q.b."
                 }
             ],
             "steps": [
-                "Aqueça o azeite de oliva em uma panela e doure a cebola picadinha.",
+                "Aqueça o azeite em uma panela e doure a cebola picada.",
                 "Adicione o arroz arbóreo e mexa por 1 minuto para selar os grãos.",
                 "Vá regando com o caldo de legumes quente de concha em concha, mexendo sempre à medida que o arroz absorve.",
                 "Quando o arroz estiver no meio do cozimento, incorpore a cenoura, abobrinha e ervilhas.",
@@ -3170,7 +3170,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Cozinhe as batatas descascadas com a cebola, o alho e o sal na água até ficarem bem macias.",
+                "Cozinhe as batatas com a cebola, o alho e o sal na água até ficarem bem macias.",
                 "Bata as batatas cozidas junto com a água do cozimento no liquidificador para formar um creme liso.",
                 "Em outra panela, frite a calabresa em rodelas até dourar.",
                 "Despeje o creme de batatas na panela com a calabresa, misture bem e deixe ferver por 5 minutos.",
@@ -3193,7 +3193,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "creme de leite fresco ou caixinha",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
@@ -3203,12 +3203,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -3251,12 +3251,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -3272,7 +3272,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Em uma panela grande, refogue a cebola e o alho picados no azeite quente.",
+                "Em uma panela grande, refogue a cebola e o alho picado no azeite quente.",
                 "Adicione todos os tomates picados com sementes e pele para um molho rústico e autêntico.",
                 "Abaixe o fogo, tampe parcialmente e deixe cozinhar por cerca de 30 a 40 minutos, mexendo ocasionalmente, até que os tomates se desmanchem e incorporem.",
                 "Ajuste o sal, a pimenta-do-reino e adicione folhas de manjericão fresco minutos antes de desligar."
@@ -3352,7 +3352,7 @@ const receitasData = {
                     "unit": "lata"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -3386,7 +3386,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -3434,7 +3434,7 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "bacon picadinho",
+                    "name": "bacon picado",
                     "qty": 100,
                     "unit": "g"
                 },
@@ -3500,7 +3500,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3532,7 +3532,7 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "batatas descascadas",
+                    "name": "batatas",
                     "qty": 1,
                     "unit": "kg"
                 },
@@ -3542,7 +3542,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola e alho picados",
+                    "name": "cebola e alho picado",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -3636,7 +3636,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "amido de milho (maizena)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -3684,7 +3684,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3717,12 +3717,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "arroz agulhinha lavado",
+                    "name": "arroz agulhinha",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "cenoura picada em cubinhos",
+                    "name": "cenoura em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3732,7 +3732,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3933,7 +3933,7 @@ const receitasData = {
             "steps": [
                 "Tempere o peixe com suco de limão, sal e pimenta.",
                 "Em um refratário untado, disponha fatias de batata cruas, cebola em rodelas e os filés por cima.",
-                "Regue abundantemente com azeite de oliva extra virgem.",
+                "Regue abundantemente com azeite.",
                 "Asse em forno médio por cerca de 35 a 40 minutos até que as batatas estejam tenras."
             ],
             "tips": "Cobrir com papel alumínio nos primeiros 20 minutos de cozimento agiliza o processo.",
@@ -3962,7 +3962,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -4516,7 +4516,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Pique os legumes e refogue-os levemente no azeite de oliva antes de adicionar água.",
+                "Pique os legumes e refogue-os levemente no azeite antes de adicionar água.",
                 "Cozinhe até que fiquem macios e bata tudo no liquidificador até obter um purê denso.",
                 "Disponha nas fôrmas de gelo e congele.",
                 "Uma opção leve, versátil e balanceada para qualquer tipo de preparação culinária."
@@ -4579,12 +4579,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -4724,7 +4724,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -4772,7 +4772,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Misture o suco de limão fresco com o azeite de oliva.",
+                "Misture o suco de limão fresco com o azeite.",
                 "Adicione as ervas secas trituradas (orégano, tomilho e alecrim).",
                 "Ajuste com sal e pimenta, batendo com um garfo até obter um molho homogêneo."
             ],
@@ -4803,7 +4803,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -4887,7 +4887,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -4899,7 +4899,7 @@ const receitasData = {
             ],
             "steps": [
                 "Extraia a polpa do maracujá e coloque em um bowl pequeno.",
-                "Adicione a mostarda, o suco de limão e o azeite de oliva.",
+                "Adicione a mostarda, o suco de limão e o azeite.",
                 "Bata vigorosamente com um garfo ou fouet pequeno até emulsionar e tempere com sal."
             ],
             "tips": "O contraste entre a acidez frutada do maracujá e a picância da mostarda é perfeito para saladas tropicais.",
@@ -4971,7 +4971,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -5003,7 +5003,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -5020,7 +5020,7 @@ const receitasData = {
             ],
             "steps": [
                 "Esprema o suco de uma laranja e coloque em um potinho de vidro.",
-                "Adicione o azeite de oliva e o gengibre fresco ralado fininho.",
+                "Adicione o azeite e o gengibre fresco ralado fininho.",
                 "Tempere com sal e pimenta-do-reino, feche o pote e agite bem para homogeneizar."
             ],
             "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango desfiado ou cenoura.",
@@ -5045,12 +5045,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -5103,7 +5103,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5152,7 +5152,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5263,7 +5263,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picados",
+                    "name": "dentes de alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5323,7 +5323,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "azeite de oliva",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
@@ -5494,7 +5494,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5558,7 +5558,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5607,7 +5607,7 @@ const receitasData = {
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5660,7 +5660,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5718,7 +5718,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5777,7 +5777,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5836,7 +5836,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5900,7 +5900,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5944,7 +5944,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6008,7 +6008,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6067,7 +6067,7 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6126,7 +6126,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "amido de milho (anti-empedramento)",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6412,7 +6412,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Refogue a cebola e o alho picados na manteiga até dourarem.",
+                "Refogue a cebola e o alho picado na manteiga até dourarem.",
                 "Acrescente a abóbora limpa e picada junto com a água.",
                 "Cozinhe em fogo médio até que a abóbora fique completamente macia.",
                 "Transfira tudo para o liquidificador e bata bem até obter um creme liso e homogêneo.",
