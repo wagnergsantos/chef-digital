@@ -598,6 +598,11 @@ button,
     cursor: pointer;
     animation: card-entrance 0.32s var(--ease-out-quart) both;
     animation-delay: calc(var(--i, 0) * 30ms);
+    /* Perf: cards fora da viewport pulam layout/estilo/pintura (navegador
+       "congela" o conteúdo até rolar até eles). O tamanho reservado abaixo
+       evita que a rolagem pule quando um card sai/entra desse estado. */
+    content-visibility: auto;
+    contain-intrinsic-block-size: 380px;
 }
 
 .recipe-card:hover {
