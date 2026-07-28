@@ -117,22 +117,47 @@ const receitasData = {
             "image": "1.png",
             "ingredients": [
                 {
-                    "name": "Peito de frango em cubos",
+                    "name": "peito de frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Arroz",
+                    "name": "arroz",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Cenoura, brócolis e milho",
+                    "name": "cenoura",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Alho, cebola, sal e azeite",
+                    "name": "brócolis",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "milho",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "alho",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "cebola",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -158,22 +183,22 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "Carne moída (patinho ou acém)",
+                    "name": "carne moída (patinho ou acém)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Batatas grandes",
+                    "name": "batatas grandes",
                     "qty": 5,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Molho de tomate",
+                    "name": "molho de tomate",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Queijo ralado",
+                    "name": "queijo ralado",
                     "qty": null,
                     "unit": "opcional"
                 }
@@ -200,22 +225,27 @@ const receitasData = {
             "emoji": "🍝",
             "ingredients": [
                 {
-                    "name": "Macarrão de sua preferência",
+                    "name": "macarrão",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Frango desfiado",
+                    "name": "frango desfiado",
                     "qty": 400,
                     "unit": "g"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Alho e queijo ralado",
+                    "name": "alho",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "queijo ralado",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -240,32 +270,42 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Frango (coxas e sobrecoxas)",
+                    "name": "frango (coxas e sobrecoxas)",
                     "qty": 1,
                     "unit": "kg"
                 },
                 {
-                    "name": "Batatas grandes",
+                    "name": "batatas grandes",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "alho picado",
                     "qty": 4,
-                    "unit": "unidades"
+                    "unit": "dentes"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e orégano",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -288,37 +328,37 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "Peito de frango em tiras",
+                    "name": "peito de frango em tiras",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Lata de milho verde (escorrido)",
+                    "name": "lata de milho verde",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "alho picados",
                     "qty": 2,
-                    "unit": "unidades"
+                    "unit": "dentes"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -341,42 +381,42 @@ const receitasData = {
             "emoji": "🫑",
             "ingredients": [
                 {
-                    "name": "Peito de frango em cubos",
+                    "name": "peito de frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Pimentão vermelho picado",
+                    "name": "pimentão vermelho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão verde picado",
+                    "name": "pimentão verde picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "alho picados",
                     "qty": 3,
-                    "unit": "unidades"
+                    "unit": "dentes"
                 },
                 {
-                    "name": "Molho shoyu",
+                    "name": "molho shoyu",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Óleo",
+                    "name": "óleo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal, pimenta e cebolinha",
+                    "name": "sal, pimenta e cebolinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -399,37 +439,37 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "Frango (em pedaços)",
+                    "name": "frango (em pedaços)",
                     "qty": 1,
                     "unit": "kg"
                 },
                 {
-                    "name": "Sachê de molho de tomate",
+                    "name": "sachê de molho de tomate",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "alho picados",
                     "qty": 3,
-                    "unit": "unidades"
+                    "unit": "dentes"
                 },
                 {
-                    "name": "Óleo",
+                    "name": "óleo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -453,27 +493,27 @@ const receitasData = {
             "emoji": "🍋",
             "ingredients": [
                 {
-                    "name": "Filé de frango",
+                    "name": "filé de frango",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "alho picados",
                     "qty": 2,
-                    "unit": "unidades"
+                    "unit": "dentes"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e ervas",
+                    "name": "sal, pimenta-do-reino e ervas",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -499,47 +539,47 @@ const receitasData = {
             "emoji": "🥦",
             "ingredients": [
                 {
-                    "name": "Frango em cubos",
+                    "name": "frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Batata em cubos",
+                    "name": "batata em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura em rodelas",
+                    "name": "cenoura em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Brócolis em buquês",
+                    "name": "brócolis em buquês",
                     "qty": 0.5,
                     "unit": "maço"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo",
+                    "name": "óleo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -563,42 +603,42 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "Batatas com casca",
+                    "name": "batatas com casca",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Pimenta-do-reino",
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Páprica",
+                    "name": "páprica",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Alecrim",
+                    "name": "alecrim",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Salsinha",
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -620,22 +660,22 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Batata",
+                    "name": "batata",
                     "qty": 1,
                     "unit": "kg"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Leite quente",
+                    "name": "leite quente",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal, pimenta-do-reino e noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -658,32 +698,32 @@ const receitasData = {
             "emoji": "🧀",
             "ingredients": [
                 {
-                    "name": "Batatas fatiadas em rodelas finas",
+                    "name": "batatas fatiadas em rodelas finas",
                     "qty": 5,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Leite",
+                    "name": "leite",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Queijo muçarela ralado",
+                    "name": "queijo muçarela ralado",
                     "qty": 1.5,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal, pimenta-do-reino e noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -706,17 +746,17 @@ const receitasData = {
             "emoji": "🍟",
             "ingredients": [
                 {
-                    "name": "Batatas grandes",
+                    "name": "batatas grandes",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo para fritar",
+                    "name": "óleo para fritar",
                     "qty": null,
                     "unit": "o suficiente"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -739,27 +779,27 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "Batatas grandes",
+                    "name": "batatas grandes",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Presunto ou bacon picado",
+                    "name": "presunto ou bacon picado",
                     "qty": 200,
                     "unit": "g"
                 },
                 {
-                    "name": "Requeijão cremoso",
+                    "name": "requeijão cremoso",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Queijo muçarela ralado",
+                    "name": "queijo muçarela ralado",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal, pimenta-do-reino e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -782,32 +822,32 @@ const receitasData = {
             "emoji": "🌿",
             "ingredients": [
                 {
-                    "name": "Batatinhas (tipo bolinha)",
+                    "name": "batatinhas (tipo bolinha)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Azeite ou manteiga",
+                    "name": "azeite ou manteiga",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Pimenta",
+                    "name": "pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Ervas (salsa, alecrim ou tomilho)",
+                    "name": "ervas (salsa, alecrim ou tomilho)",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -830,52 +870,52 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe (tilápia ou merluza)",
+                    "name": "filés de peixe (tilápia ou merluza)",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Pimenta-do-reino",
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Salsinha picada",
+                    "name": "salsinha picada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cebolinha picada",
+                    "name": "cebolinha picada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Ramo de alecrim",
+                    "name": "ramo de alecrim",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Fatias de limão",
+                    "name": "fatias de limão",
                     "qty": null,
                     "unit": "para decorar"
                 }
@@ -898,27 +938,27 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe de sua escolha",
+                    "name": "filés de peixe de sua escolha",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho amassados",
+                    "name": "dentes de alho amassados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -941,47 +981,47 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "Filés de peixe",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Tomates picados",
+                    "name": "tomates picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Molho de tomate",
+                    "name": "molho de tomate",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Azeitonas fatiadas",
+                    "name": "azeitonas fatiadas",
                     "qty": null,
                     "unit": "opcional"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1006,37 +1046,37 @@ const receitasData = {
             "emoji": "🍟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Farinha de trigo",
+                    "name": "farinha de trigo",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Ovo batido",
+                    "name": "ovo batido",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Farinha panko ou de rosca",
+                    "name": "farinha panko ou de rosca",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Óleo para fritar",
+                    "name": "óleo para fritar",
                     "qty": null,
                     "unit": "o suficiente"
                 },
                 {
-                    "name": "Sal e pimenta",
+                    "name": "sal e pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1059,42 +1099,42 @@ const receitasData = {
             "emoji": "🌿",
             "ingredients": [
                 {
-                    "name": "Filés de peixe",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Farinha de rosca",
+                    "name": "farinha de rosca",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Queijo parmesão ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Salsinha picada",
+                    "name": "salsinha picada",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal e pimenta",
+                    "name": "sal e pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1117,32 +1157,32 @@ const receitasData = {
             "emoji": "🥗",
             "ingredients": [
                 {
-                    "name": "Peixe branco fresco (robalo, tilápia)",
+                    "name": "peixe branco fresco (robalo, tilápia)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 6,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola-roxa fatiada fina",
+                    "name": "cebola-roxa fatiada fina",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate sem sementes picado",
+                    "name": "tomate sem sementes picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimenta dedo-de-moça (sem sementes) picada",
+                    "name": "pimenta dedo-de-moça (sem sementes) picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Coentro e sal",
+                    "name": "coentro e sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1165,47 +1205,47 @@ const receitasData = {
             "emoji": "🧆",
             "ingredients": [
                 {
-                    "name": "Peixe cozido e desfiado",
+                    "name": "peixe cozido e desfiado",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Batata cozida e bem amassada",
+                    "name": "batata cozida e bem amassada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Salsinha picada",
+                    "name": "salsinha picada",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Ovo batido",
+                    "name": "ovo batido",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Farinha de trigo (se necessário dar ponto)",
+                    "name": "farinha de trigo (se necessário dar ponto)",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Óleo para fritar",
+                    "name": "óleo para fritar",
                     "qty": null,
                     "unit": "o suficiente"
                 },
                 {
-                    "name": "Sal, pimenta e cominho",
+                    "name": "sal, pimenta e cominho",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1229,42 +1269,42 @@ const receitasData = {
             "emoji": "🍝",
             "ingredients": [
                 {
-                    "name": "Espaguete",
+                    "name": "espaguete",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Tomates maduros picados",
+                    "name": "tomates maduros picados",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Folhas de manjericão fresco",
+                    "name": "folhas de manjericão fresco",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Queijo parmesão ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": null,
                     "unit": "opcional"
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1287,42 +1327,42 @@ const receitasData = {
             "emoji": "🥛",
             "ingredients": [
                 {
-                    "name": "Penne",
+                    "name": "penne",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Farinha de trigo",
+                    "name": "farinha de trigo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Leite integral",
+                    "name": "leite integral",
                     "qty": 500,
                     "unit": "ml"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 0.5,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Queijo muçarela ralado",
+                    "name": "queijo muçarela ralado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Sal, noz-moscada, pimenta e salsa",
+                    "name": "sal, noz-moscada, pimenta e salsa",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1345,42 +1385,42 @@ const receitasData = {
             "emoji": "🌱",
             "ingredients": [
                 {
-                    "name": "Parafuso (Fusilli)",
+                    "name": "parafuso (fusilli)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Folhas de manjericão fresco",
+                    "name": "folhas de manjericão fresco",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Azeite de oliva extra virgem",
+                    "name": "azeite de oliva extra virgem",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Nozes ou castanhas picadas",
+                    "name": "nozes ou castanhas picadas",
                     "qty": 0.25,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Dente de alho",
+                    "name": "dente de alho",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Queijo parmesão ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Tomatinhos-cereja",
+                    "name": "tomatinhos-cereja",
                     "qty": null,
                     "unit": "para decorar"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1403,37 +1443,37 @@ const receitasData = {
             "emoji": "🧈",
             "ingredients": [
                 {
-                    "name": "Fettuccine",
+                    "name": "fettuccine",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Manteiga de qualidade",
+                    "name": "manteiga de qualidade",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Creme de leite fresco ou caixinha",
+                    "name": "creme de leite fresco ou caixinha",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Queijo parmesão de boa qualidade ralado",
+                    "name": "queijo parmesão de boa qualidade ralado",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Salsa picada",
+                    "name": "salsa picada",
                     "qty": null,
                     "unit": "para finalizar"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal, pimenta-do-reino e noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1457,47 +1497,47 @@ const receitasData = {
             "emoji": "🥕",
             "ingredients": [
                 {
-                    "name": "Macarrão penne ou gravatinha",
+                    "name": "macarrão penne ou gravatinha",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Abobrinha em cubos pequenos",
+                    "name": "abobrinha em cubos pequenos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura cortada em tiras finas",
+                    "name": "cenoura cortada em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão vermelho em tiras",
+                    "name": "pimentão vermelho em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Brócolis cortado em buquês",
+                    "name": "brócolis cortado em buquês",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e ervas",
+                    "name": "sal, pimenta e ervas",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Queijo ralado",
+                    "name": "queijo ralado",
                     "qty": null,
                     "unit": "opcional"
                 }
@@ -1521,37 +1561,37 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "Carne em tiras (patinho, alcatra)",
+                    "name": "carne em tiras (patinho, alcatra)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Cebola fatiada",
+                    "name": "cebola fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Tomate picado",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão",
+                    "name": "pimentão",
                     "qty": 0.5,
                     "unit": "unidade (opcional)"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal, pimenta-do-reino e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1575,37 +1615,37 @@ const receitasData = {
             "emoji": "🐔",
             "ingredients": [
                 {
-                    "name": "Peito de frango em tiras",
+                    "name": "peito de frango em tiras",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Cebola fatiada",
+                    "name": "cebola fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Pimentão colorido em tiras",
+                    "name": "pimentão colorido em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate picado",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta, orégano e cheiro-verde",
+                    "name": "sal, pimenta, orégano e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1629,42 +1669,42 @@ const receitasData = {
             "emoji": "🥕",
             "ingredients": [
                 {
-                    "name": "Cenoura cortada em rodelas finas",
+                    "name": "cenoura cortada em rodelas finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Abobrinha fatiada em meia-lua",
+                    "name": "abobrinha fatiada em meia-lua",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão colorido em tiras",
+                    "name": "pimentão colorido em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Brócolis cortado em buquês",
+                    "name": "brócolis cortado em buquês",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Gergelim",
+                    "name": "gergelim",
                     "qty": null,
                     "unit": "opcional"
                 },
                 {
-                    "name": "Sal, pimenta e ervas",
+                    "name": "sal, pimenta e ervas",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1689,32 +1729,32 @@ const receitasData = {
             "emoji": "🍄",
             "ingredients": [
                 {
-                    "name": "Cogumelos fatiados (shimeji, paris)",
+                    "name": "cogumelos fatiados (shimeji, paris)",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Manteiga ou azeite",
+                    "name": "manteiga ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e tomilho",
+                    "name": "sal, pimenta-do-reino e tomilho",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cheiro-verde",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "para finalizar"
                 }
@@ -1738,37 +1778,37 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Feijão preto",
+                    "name": "feijão preto",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Linguiça calabresa fatiada",
+                    "name": "linguiça calabresa fatiada",
                     "qty": 1,
                     "unit": "gomo"
                 },
                 {
-                    "name": "Bacon picadinho",
+                    "name": "bacon picadinho",
                     "qty": 150,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Folhas de louro",
+                    "name": "folhas de louro",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1793,32 +1833,32 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Feijão carioca",
+                    "name": "feijão carioca",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo",
+                    "name": "óleo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Folha de louro",
+                    "name": "folha de louro",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1842,42 +1882,42 @@ const receitasData = {
             "emoji": "🥓",
             "ingredients": [
                 {
-                    "name": "Feijão carioca cozido firme (sem caldo)",
+                    "name": "feijão carioca cozido firme (sem caldo)",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Bacon picadinho",
+                    "name": "bacon picadinho",
                     "qty": 150,
                     "unit": "g"
                 },
                 {
-                    "name": "Linguiça calabresa picada",
+                    "name": "linguiça calabresa picada",
                     "qty": 1,
                     "unit": "gomo"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Couve cortada bem fina",
+                    "name": "couve cortada bem fina",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Farinha de mandioca",
+                    "name": "farinha de mandioca",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Sal e pimenta",
+                    "name": "sal e pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1901,32 +1941,32 @@ const receitasData = {
             "emoji": "🥗",
             "ingredients": [
                 {
-                    "name": "Feijão fradinho",
+                    "name": "feijão fradinho",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Tomate cortado em cubos",
+                    "name": "tomate cortado em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1949,22 +1989,22 @@ const receitasData = {
             "emoji": "🍚",
             "ingredients": [
                 {
-                    "name": "Arroz agulhinha",
+                    "name": "arroz agulhinha",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água quente",
+                    "name": "água quente",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Fio de óleo ou manteiga",
+                    "name": "fio de óleo ou manteiga",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": 0.5,
                     "unit": "colher (chá)"
                 }
@@ -1988,42 +2028,42 @@ const receitasData = {
             "emoji": "🥕",
             "ingredients": [
                 {
-                    "name": "Arroz",
+                    "name": "arroz",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Cebola picadinha",
+                    "name": "cebola picadinha",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura cortada em cubinhos",
+                    "name": "cenoura cortada em cubinhos",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ervilhas",
+                    "name": "ervilhas",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Milho verde",
+                    "name": "milho verde",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Óleo, sal, pimenta e cheiro-verde",
+                    "name": "óleo, sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2047,37 +2087,37 @@ const receitasData = {
             "emoji": "🍛",
             "ingredients": [
                 {
-                    "name": "Arroz",
+                    "name": "arroz",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Cebola e alho picados",
+                    "name": "cebola e alho picados",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Tomate maduro picado",
+                    "name": "tomate maduro picado",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Fio de óleo",
+                    "name": "fio de óleo",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2101,27 +2141,27 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "Arroz",
+                    "name": "arroz",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 2,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Dentes de alho cortados em lâminas finas",
+                    "name": "dentes de alho cortados em lâminas finas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2145,37 +2185,37 @@ const receitasData = {
             "emoji": "🥒",
             "ingredients": [
                 {
-                    "name": "Abobrinha cortada em cubos",
+                    "name": "abobrinha cortada em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura cortada em tiras finas",
+                    "name": "cenoura cortada em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão (colorido)",
+                    "name": "pimentão (colorido)",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola média fatiada",
+                    "name": "cebola média fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2199,42 +2239,42 @@ const receitasData = {
             "emoji": "🥦",
             "ingredients": [
                 {
-                    "name": "Peito de frango em tiras",
+                    "name": "peito de frango em tiras",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola fatiada",
+                    "name": "cebola fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Pimentão colorido",
+                    "name": "pimentão colorido",
                     "qty": 1,
                     "unit": "unidade (opcional)"
                 },
                 {
-                    "name": "Brócolis cortado pequeno",
+                    "name": "brócolis cortado pequeno",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e páprica defumada",
+                    "name": "sal, pimenta e páprica defumada",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cheiro-verde",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2258,52 +2298,52 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Carne em tiras (patinho ou acém)",
+                    "name": "carne em tiras (patinho ou acém)",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola fatiada",
+                    "name": "cebola fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Pimentão fatiado",
+                    "name": "pimentão fatiado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate maduro picado",
+                    "name": "tomate maduro picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Batatas médias cortadas",
+                    "name": "batatas médias cortadas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cenouras médias cortadas",
+                    "name": "cenouras médias cortadas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e cominho",
+                    "name": "sal, pimenta-do-reino e cominho",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cheiro-verde",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2328,37 +2368,37 @@ const receitasData = {
             "emoji": "🍤",
             "ingredients": [
                 {
-                    "name": "Camarão limpo",
+                    "name": "camarão limpo",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho",
+                    "name": "dentes de alho",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Pimentão fatiado em tiras",
+                    "name": "pimentão fatiado em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta e salsinha",
+                    "name": "sal, pimenta e salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2382,37 +2422,37 @@ const receitasData = {
             "emoji": "🥬",
             "ingredients": [
                 {
-                    "name": "Tofu cortado em cubos firmes",
+                    "name": "tofu cortado em cubos firmes",
                     "qty": 200,
                     "unit": "g"
                 },
                 {
-                    "name": "Brócolis pequeno cortado",
+                    "name": "brócolis pequeno cortado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura cortada em tiras finas",
+                    "name": "cenoura cortada em tiras finas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Molho shoyu",
+                    "name": "molho shoyu",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Óleo de gergelim ou azeite",
+                    "name": "óleo de gergelim ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Gergelim e cebolinha",
+                    "name": "gergelim e cebolinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2435,32 +2475,32 @@ const receitasData = {
             "emoji": "🍄",
             "ingredients": [
                 {
-                    "name": "Cogumelos frescos (shimeji ou paris)",
+                    "name": "cogumelos frescos (shimeji ou paris)",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola pequena picadinha",
+                    "name": "cebola pequena picadinha",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Manteiga ou azeite",
+                    "name": "manteiga ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e tomilho",
+                    "name": "sal, pimenta e tomilho",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cheiro-verde para finalizar",
+                    "name": "cheiro-verde para finalizar",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2484,37 +2524,37 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Bifes de qualidade (alcatra, contrafilé)",
+                    "name": "bifes de qualidade (alcatra, contrafilé)",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Óleo ou azeite",
+                    "name": "óleo ou azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Cebola grande fatiada em rodelas",
+                    "name": "cebola grande fatiada em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Cheiro-verde picadinho",
+                    "name": "cheiro-verde picadinho",
                     "qty": null,
                     "unit": "opcional"
                 }
@@ -2539,37 +2579,37 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Bifes",
+                    "name": "bifes",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou manteiga",
+                    "name": "óleo ou manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Mostarda amarela ou escura",
+                    "name": "mostarda amarela ou escura",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 0.25,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Sal, pimenta e salsinha",
+                    "name": "sal, pimenta e salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2594,37 +2634,37 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "Bifes altos",
+                    "name": "bifes altos",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal grosso moído ou refinado",
+                    "name": "sal grosso moído ou refinado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Manteiga com sal",
+                    "name": "manteiga com sal",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Dentes de alho fatiados",
+                    "name": "dentes de alho fatiados",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Ramo de alecrim fresco",
+                    "name": "ramo de alecrim fresco",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ramo de tomilho fresco",
+                    "name": "ramo de tomilho fresco",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimenta-do-reino",
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2649,47 +2689,47 @@ const receitasData = {
             "emoji": "🍷",
             "ingredients": [
                 {
-                    "name": "Bifes altos",
+                    "name": "bifes altos",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Óleo ou manteiga",
+                    "name": "óleo ou manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola bem picadinha",
+                    "name": "cebola bem picadinha",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cogumelos fatiados (champignon)",
+                    "name": "cogumelos fatiados (champignon)",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Vinho madeira seco (ou tinto seco)",
+                    "name": "vinho madeira seco (ou tinto seco)",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "Amido de milho",
+                    "name": "amido de milho",
                     "qty": 1,
                     "unit": "colher (chá, opcional)"
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2714,27 +2754,27 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Peito de frango em filés",
+                    "name": "peito de frango em filés",
                     "qty": 400,
                     "unit": "g"
                 },
                 {
-                    "name": "Dentes de alho",
+                    "name": "dentes de alho",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e orégano",
+                    "name": "sal, pimenta e orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2757,27 +2797,27 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Peito de frango",
+                    "name": "peito de frango",
                     "qty": 400,
                     "unit": "g"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Mostarda amarela",
+                    "name": "mostarda amarela",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Sal, pimenta e salsinha",
+                    "name": "sal, pimenta e salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2800,27 +2840,27 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Peito de frango",
+                    "name": "peito de frango",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola picadinha",
+                    "name": "cebola picadinha",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Pote de requeijão cremoso",
+                    "name": "pote de requeijão cremoso",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2843,27 +2883,27 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "Peito de frango em cubos ou filés",
+                    "name": "peito de frango em cubos ou filés",
                     "qty": 400,
                     "unit": "g"
                 },
                 {
-                    "name": "Molho de tomate caseiro",
+                    "name": "molho de tomate caseiro",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Cebola picadinha",
+                    "name": "cebola picadinha",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta e folhas de manjericão",
+                    "name": "sal, pimenta e folhas de manjericão",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2889,37 +2929,37 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "Ovos frescos",
+                    "name": "ovos frescos",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Leite de sua escolha",
+                    "name": "leite de sua escolha",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Cenoura ralada",
+                    "name": "cenoura ralada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Pimentão picadinho",
+                    "name": "pimentão picadinho",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate cortado em cubos",
+                    "name": "tomate cortado em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Queijo ralado",
+                    "name": "queijo ralado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal, orégano e pimenta-do-reino",
+                    "name": "sal, orégano e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2947,27 +2987,27 @@ const receitasData = {
             "emoji": "🍠",
             "ingredients": [
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Batatas-doces médias em cubos",
+                    "name": "batatas-doces médias em cubos",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola picadinha",
+                    "name": "cebola picadinha",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva, sal, pimenta e cheiro-verde",
+                    "name": "azeite de oliva, sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -2994,37 +3034,37 @@ const receitasData = {
             "emoji": "🍚",
             "ingredients": [
                 {
-                    "name": "Arroz arbóreo",
+                    "name": "arroz arbóreo",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Cebola picadinha",
+                    "name": "cebola picadinha",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura pequena em cubos",
+                    "name": "cenoura pequena em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Abobrinha pequena em cubos",
+                    "name": "abobrinha pequena em cubos",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ervilhas frescas",
+                    "name": "ervilhas frescas",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Caldo de legumes fervente",
+                    "name": "caldo de legumes fervente",
                     "qty": 4,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Azeite de oliva, sal, pimenta e parmesão",
+                    "name": "azeite de oliva, sal, pimenta e parmesão",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3051,27 +3091,27 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe (tilápia ou merluza)",
+                    "name": "filés de peixe (tilápia ou merluza)",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Batata em rodelas",
+                    "name": "batata em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cenoura em rodelas",
+                    "name": "cenoura em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Brócolis cortado em buquês",
+                    "name": "brócolis cortado em buquês",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Alho picado, limão, azeite, sal, pimenta e ervas",
+                    "name": "alho picado, limão, azeite, sal, pimenta e ervas",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3094,37 +3134,37 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Batatas médias",
+                    "name": "batatas médias",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Linguiça calabresa em rodelas",
+                    "name": "linguiça calabresa em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Couve fatiada bem fina",
+                    "name": "couve fatiada bem fina",
                     "qty": 1,
                     "unit": "maço"
                 },
                 {
-                    "name": "Água",
+                    "name": "água",
                     "qty": 1,
                     "unit": "litro"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho",
+                    "name": "dentes de alho",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3148,37 +3188,37 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "Molho de tomate de boa qualidade",
+                    "name": "molho de tomate de boa qualidade",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Creme de leite fresco ou caixinha",
+                    "name": "creme de leite fresco ou caixinha",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Orégano fresco ou desidratado",
+                    "name": "orégano fresco ou desidratado",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3201,32 +3241,32 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "Tomates maduros picados",
+                    "name": "tomates maduros picados",
                     "qty": 1,
                     "unit": "kg"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Folhas frescas de manjericão",
+                    "name": "folhas frescas de manjericão",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3249,27 +3289,27 @@ const receitasData = {
             "emoji": "🥛",
             "ingredients": [
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Farinha de trigo",
+                    "name": "farinha de trigo",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Leite",
+                    "name": "leite",
                     "qty": 500,
                     "unit": "ml"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Sal, noz-moscada e pimenta-do-reino",
+                    "name": "sal, noz-moscada e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3292,32 +3332,32 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Carne moída",
+                    "name": "carne moída",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho amassados",
+                    "name": "dentes de alho amassados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Molho de tomate",
+                    "name": "molho de tomate",
                     "qty": 1,
                     "unit": "lata"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3341,32 +3381,32 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "Manteiga de boa qualidade",
+                    "name": "manteiga de boa qualidade",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Dentes de alho fatiados ou amassados",
+                    "name": "dentes de alho fatiados ou amassados",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Queijo parmesão ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Sal e pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Salsinha fresca picada",
+                    "name": "salsinha fresca picada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3389,27 +3429,27 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Feijão cozido (com caldo)",
+                    "name": "feijão cozido (com caldo)",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Bacon picadinho",
+                    "name": "bacon picadinho",
                     "qty": 100,
                     "unit": "g"
                 },
                 {
-                    "name": "Linguiça calabresa fatiada",
+                    "name": "linguiça calabresa fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho",
+                    "name": "dentes de alho",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3435,37 +3475,37 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "Fubá pré-cozido",
+                    "name": "fubá pré-cozido",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Água morna",
+                    "name": "água morna",
                     "qty": 4,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Carne moída",
+                    "name": "carne moída",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Sachê de molho de tomate",
+                    "name": "sachê de molho de tomate",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal e azeite",
+                    "name": "sal e azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3492,32 +3532,32 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "Batatas descascadas",
+                    "name": "batatas descascadas",
                     "qty": 1,
                     "unit": "kg"
                 },
                 {
-                    "name": "Carne moída refogada",
+                    "name": "carne moída refogada",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola e alho picados",
+                    "name": "cebola e alho picados",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Molho de tomate",
+                    "name": "molho de tomate",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Queijo ralado ou fatiado",
+                    "name": "queijo ralado ou fatiado",
                     "qty": null,
                     "unit": "para gratinar"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3543,27 +3583,27 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "Latas de milho verde (escorridas)",
+                    "name": "latas de milho verde (escorridas)",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Leite integral",
+                    "name": "leite integral",
                     "qty": 500,
                     "unit": "ml"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cebola ralada",
+                    "name": "cebola ralada",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal, pimenta-do-reino e noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3586,27 +3626,27 @@ const receitasData = {
             "emoji": "☕",
             "ingredients": [
                 {
-                    "name": "Leite integral",
+                    "name": "leite integral",
                     "qty": 500,
                     "unit": "ml"
                 },
                 {
-                    "name": "Chocolate em pó de qualidade",
+                    "name": "chocolate em pó de qualidade",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Amido de milho (maizena)",
+                    "name": "amido de milho (maizena)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Açúcar",
+                    "name": "açúcar",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Essência de baunilha",
+                    "name": "essência de baunilha",
                     "qty": 0.5,
                     "unit": "colher (chá, opcional)"
                 }
@@ -3629,27 +3669,27 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Mandioca descascada",
+                    "name": "mandioca descascada",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Linguiça calabresa picada",
+                    "name": "linguiça calabresa picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola fatiada",
+                    "name": "cebola fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3672,32 +3712,32 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Peito de frango cozido e desfiado",
+                    "name": "peito de frango cozido e desfiado",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Arroz agulhinha lavado",
+                    "name": "arroz agulhinha lavado",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Cenoura picada em cubinhos",
+                    "name": "cenoura picada em cubinhos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal, pimenta e cheiro-verde",
+                    "name": "sal, pimenta e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3725,27 +3765,27 @@ const receitasData = {
             "emoji": "🍛",
             "ingredients": [
                 {
-                    "name": "Arroz cozido",
+                    "name": "arroz cozido",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Lata de milho verde (escorrido)",
+                    "name": "lata de milho verde (escorrido)",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Requeijão cremoso",
+                    "name": "requeijão cremoso",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Queijo ralado ou fatiado",
+                    "name": "queijo ralado ou fatiado",
                     "qty": null,
                     "unit": "para cobrir"
                 }
@@ -3771,27 +3811,27 @@ const receitasData = {
             "emoji": "🍛",
             "ingredients": [
                 {
-                    "name": "Peito de frango em tiras",
+                    "name": "peito de frango em tiras",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ketchup",
+                    "name": "ketchup",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Sal, mostarda e batata palha",
+                    "name": "sal, mostarda e batata palha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3818,27 +3858,27 @@ const receitasData = {
             "emoji": "🥓",
             "ingredients": [
                 {
-                    "name": "Feijão cozido (escorrido e firme)",
+                    "name": "feijão cozido (escorrido e firme)",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Carne seca dessalgada e desfiada",
+                    "name": "carne seca dessalgada e desfiada",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Linguiça calabresa fatiada",
+                    "name": "linguiça calabresa fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ovos",
+                    "name": "ovos",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Farinha de mandioca e cheiro-verde",
+                    "name": "farinha de mandioca e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3865,27 +3905,27 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Batatas fatiadas",
+                    "name": "batatas fatiadas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola em rodelas",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal, pimenta e azeite",
+                    "name": "sal, pimenta e azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3912,27 +3952,27 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Filés de peito de frango",
+                    "name": "filés de peito de frango",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Creme de leite",
+                    "name": "creme de leite",
                     "qty": 1,
                     "unit": "caixinha"
                 },
                 {
-                    "name": "Arroz e salada",
+                    "name": "arroz e salada",
                     "qty": null,
                     "unit": "para acompanhar"
                 }
@@ -3955,22 +3995,22 @@ const receitasData = {
             "emoji": "🥪",
             "ingredients": [
                 {
-                    "name": "Pão de forma fatiado",
+                    "name": "pão de forma fatiado",
                     "qty": 2,
                     "unit": "fatias"
                 },
                 {
-                    "name": "Presunto fatiado",
+                    "name": "presunto fatiado",
                     "qty": 2,
                     "unit": "fatias"
                 },
                 {
-                    "name": "Queijo fatiado",
+                    "name": "queijo fatiado",
                     "qty": 2,
                     "unit": "fatias"
                 },
                 {
-                    "name": "Manteiga ou requeijão",
+                    "name": "manteiga ou requeijão",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3993,22 +4033,22 @@ const receitasData = {
             "emoji": "🌮",
             "ingredients": [
                 {
-                    "name": "Goma de tapioca",
+                    "name": "goma de tapioca",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Queijo muçarela",
+                    "name": "queijo muçarela",
                     "qty": 1,
                     "unit": "fatia"
                 },
                 {
-                    "name": "Orégano",
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4031,27 +4071,27 @@ const receitasData = {
             "emoji": "🍞",
             "ingredients": [
                 {
-                    "name": "Fatias de pão (de fôrma ou francês)",
+                    "name": "fatias de pão (de fôrma ou francês)",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Ovo fresco",
+                    "name": "ovo fresco",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Leite",
+                    "name": "leite",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Presunto e queijo fatiados",
+                    "name": "presunto e queijo fatiados",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Sal e orégano",
+                    "name": "sal e orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4074,27 +4114,27 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "Ovo",
+                    "name": "ovo",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Leite",
+                    "name": "leite",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Presunto picado",
+                    "name": "presunto picado",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Queijo ralado",
+                    "name": "queijo ralado",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal e cheiro-verde",
+                    "name": "sal e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4117,32 +4157,32 @@ const receitasData = {
             "emoji": "🥪",
             "ingredients": [
                 {
-                    "name": "Pão integral fatiado",
+                    "name": "pão integral fatiado",
                     "qty": 2,
                     "unit": "fatias"
                 },
                 {
-                    "name": "Frango cozido e desfiado",
+                    "name": "frango cozido e desfiado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Folha de alface lisa",
+                    "name": "folha de alface lisa",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Fatias de tomate fresco",
+                    "name": "fatias de tomate fresco",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cenoura ralada",
+                    "name": "cenoura ralada",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Requeijão light ou maionese light",
+                    "name": "requeijão light ou maionese light",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4164,17 +4204,17 @@ const receitasData = {
             "emoji": "🥯",
             "ingredients": [
                 {
-                    "name": "Pães de queijo prontos",
+                    "name": "pães de queijo prontos",
                     "qty": 6,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Presunto fatiado",
+                    "name": "presunto fatiado",
                     "qty": 3,
                     "unit": "fatias"
                 },
                 {
-                    "name": "Queijo fatiado",
+                    "name": "queijo fatiado",
                     "qty": 3,
                     "unit": "fatias"
                 }
@@ -4196,22 +4236,22 @@ const receitasData = {
             "emoji": "🥞",
             "ingredients": [
                 {
-                    "name": "Ovo",
+                    "name": "ovo",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Goma de tapioca",
+                    "name": "goma de tapioca",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Pitada de sal",
+                    "name": "pitada de sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Recheio (queijo, tomate, presunto, frango)",
+                    "name": "recheio (queijo, tomate, presunto, frango)",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4233,27 +4273,27 @@ const receitasData = {
             "emoji": "🍓",
             "ingredients": [
                 {
-                    "name": "Banana prata fatiada",
+                    "name": "banana prata fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Maçã fatiada sem sementes",
+                    "name": "maçã fatiada sem sementes",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Leite ou iogurte natural desnatado",
+                    "name": "leite ou iogurte natural desnatado",
                     "qty": 1,
                     "unit": "copo"
                 },
                 {
-                    "name": "Aveia em flocos",
+                    "name": "aveia em flocos",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Mel de abelha",
+                    "name": "mel de abelha",
                     "qty": null,
                     "unit": "opcional"
                 }
@@ -4279,27 +4319,27 @@ const receitasData = {
             "emoji": "🌯",
             "ingredients": [
                 {
-                    "name": "Tortilha de trigo (Rap10)",
+                    "name": "tortilha de trigo (rap10)",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Frango cozido desfiado (ou atum em lata)",
+                    "name": "frango cozido desfiado (ou atum em lata)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Folha de alface",
+                    "name": "folha de alface",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate em cubinhos",
+                    "name": "tomate em cubinhos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Requeijão ou maionese",
+                    "name": "requeijão ou maionese",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4321,27 +4361,27 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "Frango (ossos ou carne)",
+                    "name": "frango (ossos ou carne)",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cenoura",
+                    "name": "cenoura",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cebola",
+                    "name": "cebola",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Alho",
+                    "name": "alho",
                     "qty": null,
                     "unit": "dentes"
                 },
                 {
-                    "name": "Ervas e Sal",
+                    "name": "ervas e sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4364,27 +4404,27 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Carne bovina",
+                    "name": "carne bovina",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Aipo (Salsão)",
+                    "name": "aipo (salsão)",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cebola",
+                    "name": "cebola",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Alho",
+                    "name": "alho",
                     "qty": null,
                     "unit": "dentes"
                 },
                 {
-                    "name": "Ervas e Especiarias",
+                    "name": "ervas e especiarias",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4407,27 +4447,27 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Espinhas de peixe ou cabeças limpas",
+                    "name": "espinhas de peixe ou cabeças limpas",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Alho",
+                    "name": "alho",
                     "qty": null,
                     "unit": "dentes"
                 },
                 {
-                    "name": "Cebola",
+                    "name": "cebola",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate",
+                    "name": "tomate",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ervas frescas",
+                    "name": "ervas frescas",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4450,27 +4490,27 @@ const receitasData = {
             "emoji": "🥦",
             "ingredients": [
                 {
-                    "name": "Cenoura",
+                    "name": "cenoura",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Alho",
+                    "name": "alho",
                     "qty": null,
                     "unit": "dentes"
                 },
                 {
-                    "name": "Tomate",
+                    "name": "tomate",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola",
+                    "name": "cebola",
                     "qty": null,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Ervas e Azeite",
+                    "name": "ervas e azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -4496,22 +4536,22 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "Ovos",
+                    "name": "ovos",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Tomate picado",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Queijo ralado",
+                    "name": "queijo ralado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal e Orégano",
+                    "name": "sal e orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4534,22 +4574,22 @@ const receitasData = {
             "emoji": "🍝",
             "ingredients": [
                 {
-                    "name": "Macarrão (espaguete ou outro)",
+                    "name": "macarrão (espaguete ou outro)",
                     "qty": 250,
                     "unit": "g"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4572,22 +4612,22 @@ const receitasData = {
             "emoji": "🥘",
             "ingredients": [
                 {
-                    "name": "Arroz agulhinha",
+                    "name": "arroz agulhinha",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Linguiça calabresa picada",
+                    "name": "linguiça calabresa picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Tomate picado",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Água quente",
+                    "name": "água quente",
                     "qty": 2,
                     "unit": "xícaras"
                 }
@@ -4610,22 +4650,22 @@ const receitasData = {
             "emoji": "🍚",
             "ingredients": [
                 {
-                    "name": "Arroz cozido",
+                    "name": "arroz cozido",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "Ovos",
+                    "name": "ovos",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cenoura ralada",
+                    "name": "cenoura ralada",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Milho verde",
+                    "name": "milho verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4647,17 +4687,17 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "Carne bovina em tiras",
+                    "name": "carne bovina em tiras",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Cebola grande cortada",
+                    "name": "cebola grande cortada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Sal e Pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4679,22 +4719,22 @@ const receitasData = {
             "emoji": "🥗",
             "ingredients": [
                 {
-                    "name": "Tomate, cebola-roxa e salsinha picados",
+                    "name": "tomate, cebola-roxa e salsinha picados",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Vinagre de vinho tinto e Limão",
+                    "name": "vinagre de vinho tinto e limão",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal e Pimenta",
+                    "name": "sal e pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4716,17 +4756,17 @@ const receitasData = {
             "emoji": "🍋",
             "ingredients": [
                 {
-                    "name": "Azeite e Suco de limão",
+                    "name": "azeite e suco de limão",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Orégano, tomilho e alecrim secos",
+                    "name": "orégano, tomilho e alecrim secos",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Sal e Pimenta-do-reino",
+                    "name": "sal e pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4748,27 +4788,27 @@ const receitasData = {
             "emoji": "🌱",
             "ingredients": [
                 {
-                    "name": "Iogurte natural integral",
+                    "name": "iogurte natural integral",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Salsinha, coentro e hortelã picados",
+                    "name": "salsinha, coentro e hortelã picados",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4790,27 +4830,27 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Tahine (pasta de gergelim)",
+                    "name": "tahine (pasta de gergelim)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dente de alho picado",
+                    "name": "dente de alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Água morna",
+                    "name": "água morna",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4832,27 +4872,27 @@ const receitasData = {
             "emoji": "🥝",
             "ingredients": [
                 {
-                    "name": "Polpa de maracujá fresco (com sementes)",
+                    "name": "polpa de maracujá fresco (com sementes)",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Mostarda Dijon ou amarela",
+                    "name": "mostarda dijon ou amarela",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4874,27 +4914,27 @@ const receitasData = {
             "emoji": "🥢",
             "ingredients": [
                 {
-                    "name": "Molho Shoyu",
+                    "name": "molho shoyu",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Vinagre de arroz",
+                    "name": "vinagre de arroz",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Óleo de gergelim",
+                    "name": "óleo de gergelim",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Gengibre fresco ralado",
+                    "name": "gengibre fresco ralado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Suco de laranja e Sal",
+                    "name": "suco de laranja e sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4916,27 +4956,27 @@ const receitasData = {
             "emoji": "🌿",
             "ingredients": [
                 {
-                    "name": "Iogurte natural integral",
+                    "name": "iogurte natural integral",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Folhas de hortelã fresca picadas",
+                    "name": "folhas de hortelã fresca picadas",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4958,22 +4998,22 @@ const receitasData = {
             "emoji": "🍊",
             "ingredients": [
                 {
-                    "name": "Suco de laranja fresca",
+                    "name": "suco de laranja fresca",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Gengibre ralado",
+                    "name": "gengibre ralado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Pimenta-do-reino e Sal",
+                    "name": "pimenta-do-reino e sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4995,37 +5035,37 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de tilápia",
+                    "name": "filés de tilápia",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Batatas em rodelas (cozidas por 10 min)",
+                    "name": "batatas em rodelas (cozidas por 10 min)",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Cebola, tomate e pimentão em tiras/rodelas",
+                    "name": "cebola, tomate e pimentão em tiras/rodelas",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e orégano",
+                    "name": "sal, pimenta-do-reino e orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5048,37 +5088,37 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe (merluza, pescada ou robalo)",
+                    "name": "filés de peixe (merluza, pescada ou robalo)",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limões",
+                    "name": "suco de limões",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Raspas de limão",
+                    "name": "raspas de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Vinho branco seco",
+                    "name": "vinho branco seco",
                     "qty": 0.5,
                     "unit": "xícara (opcional)"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal, pimenta-do-reino e cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5102,37 +5142,37 @@ const receitasData = {
             "emoji": "🥘",
             "ingredients": [
                 {
-                    "name": "Peixe em postas (cação, badejo ou robalo)",
+                    "name": "peixe em postas (cação, badejo ou robalo)",
                     "qty": 600,
                     "unit": "g"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola, tomate e pimentão vermelho/amarelo em rodelas/tiras",
+                    "name": "cebola, tomate e pimentão vermelho/amarelo em rodelas/tiras",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Leite de coco",
+                    "name": "leite de coco",
                     "qty": 1,
                     "unit": "vidro (200 ml)"
                 },
                 {
-                    "name": "Azeite de dendê",
+                    "name": "azeite de dendê",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e coentro",
+                    "name": "sal, pimenta-do-reino e coentro",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5155,37 +5195,37 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "Filés de peixe",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Farinha de trigo",
+                    "name": "farinha de trigo",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Ovo batido",
+                    "name": "ovo batido",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Farinha de rosca",
+                    "name": "farinha de rosca",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "Queijo parmesão ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e azeite",
+                    "name": "sal, pimenta-do-reino e azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -5208,42 +5248,42 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "Peixe em cubos ou espinhas para caldo",
+                    "name": "peixe em cubos ou espinhas para caldo",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Cebola picada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Dentes de alho picados",
+                    "name": "dentes de alho picados",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Tomate e cenoura em cubos",
+                    "name": "tomate e cenoura em cubos",
                     "qty": 1,
                     "unit": "unidade de cada"
                 },
                 {
-                    "name": "Batata em cubos",
+                    "name": "batata em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Água (ou caldo de peixe)",
+                    "name": "água (ou caldo de peixe)",
                     "qty": 1,
                     "unit": "litro"
                 },
                 {
-                    "name": "Sal, pimenta, cheiro-verde e azeite",
+                    "name": "sal, pimenta, cheiro-verde e azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -5268,37 +5308,37 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "Cabeças de alho limpas",
+                    "name": "cabeças de alho limpas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cebola média",
+                    "name": "cebola média",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Suco de limão",
+                    "name": "suco de limão",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "Azeite de oliva",
+                    "name": "azeite de oliva",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Páprica doce e Açafrão",
+                    "name": "páprica doce e açafrão",
                     "qty": 1,
                     "unit": "colher (chá) de cada"
                 },
                 {
-                    "name": "Cheiro-verde",
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5322,27 +5362,27 @@ const receitasData = {
             "emoji": "🌿",
             "ingredients": [
                 {
-                    "name": "Sal grosso",
+                    "name": "sal grosso",
                     "qty": 1,
                     "unit": "copo"
                 },
                 {
-                    "name": "Manjericão, sálvia e alecrim secos",
+                    "name": "manjericão, sálvia e alecrim secos",
                     "qty": 1,
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "Orégano e coentro secos",
+                    "name": "orégano e coentro secos",
                     "qty": 1,
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "Cominho e açafrão em pó",
+                    "name": "cominho e açafrão em pó",
                     "qty": 1,
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "Páprica doce",
+                    "name": "páprica doce",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 }
@@ -5365,37 +5405,37 @@ const receitasData = {
             "emoji": "✨",
             "ingredients": [
                 {
-                    "name": "Sal grosso",
+                    "name": "sal grosso",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "Folhas de louro",
+                    "name": "folhas de louro",
                     "qty": 5,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Ramos de manjericão (com talo)",
+                    "name": "ramos de manjericão (com talo)",
                     "qty": 5,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Cúrcuma (açafrão-da-terra) em pó",
+                    "name": "cúrcuma (açafrão-da-terra) em pó",
                     "qty": 0.5,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Pimenta-do-reino em grãos ou pó",
+                    "name": "pimenta-do-reino em grãos ou pó",
                     "qty": 0.5,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Linhaça dourada",
+                    "name": "linhaça dourada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Alecrim seco",
+                    "name": "alecrim seco",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 }
@@ -5419,42 +5459,42 @@ const receitasData = {
             "image": "132.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Páprica defumada",
+                    "name": "páprica defumada",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Tomate em pó (Segredo Umami)",
+                    "name": "tomate em pó (segredo umami)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cacau 100% em pó (Toque do Chef)",
+                    "name": "cacau 100% em pó (toque do chef)",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Cominho em pó (Toque do Chef)",
+                    "name": "cominho em pó (toque do chef)",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5478,47 +5518,47 @@ const receitasData = {
             "image": "133.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Mix Pega Marido",
+                    "name": "mix pega marido",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "name": "cúrcuma (açafrão-da-terra)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Levedura Nutricional (Segredo Umami)",
+                    "name": "levedura nutricional (segredo umami)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Gengibre em pó (Toque do Chef)",
+                    "name": "gengibre em pó (toque do chef)",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Mostarda em pó (Toque do Chef)",
+                    "name": "mostarda em pó (toque do chef)",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5542,32 +5582,32 @@ const receitasData = {
             "image": "134.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 5,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Chimichurri desidratado",
+                    "name": "chimichurri desidratado",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal refinado de alta qualidade",
+                    "name": "sal refinado de alta qualidade",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Pimenta-do-reino branca moída",
+                    "name": "pimenta-do-reino branca moída",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5590,37 +5630,37 @@ const receitasData = {
             "image": "135.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Lemon Pepper de alta qualidade",
+                    "name": "lemon pepper de alta qualidade",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Raspas de limão siciliano desidratadas e moídas",
+                    "name": "raspas de limão siciliano desidratadas e moídas",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Ácido cítrico em pó (Toque Cítrico Vibrante)",
+                    "name": "ácido cítrico em pó (toque cítrico vibrante)",
                     "qty": 1,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5643,42 +5683,42 @@ const receitasData = {
             "image": "136.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Salsa desidratada bem fina",
+                    "name": "salsa desidratada bem fina",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "name": "cúrcuma (açafrão-da-terra)",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cenoura em pó",
+                    "name": "cenoura em pó",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Levedura Nutricional",
+                    "name": "levedura nutricional",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5702,42 +5742,42 @@ const receitasData = {
             "image": "137.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Manjericão desidratado moído",
+                    "name": "manjericão desidratado moído",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Orégano seco",
+                    "name": "orégano seco",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Ácido cítrico em pó",
+                    "name": "ácido cítrico em pó",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Gergelim tostado",
+                    "name": "gergelim tostado",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5761,42 +5801,42 @@ const receitasData = {
             "image": "138.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Louro moído em pó fino",
+                    "name": "louro moído em pó fino",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Páprica defumada",
+                    "name": "páprica defumada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Fumaça em pó (Pó de fumaça condensada)",
+                    "name": "fumaça em pó (pó de fumaça condensada)",
                     "qty": 1,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Cominho em pó",
+                    "name": "cominho em pó",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5820,47 +5860,47 @@ const receitasData = {
             "image": "139.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Coentro em pó",
+                    "name": "coentro em pó",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Cominho em pó",
+                    "name": "cominho em pó",
                     "qty": 0.5,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Colorau (urucum)",
+                    "name": "colorau (urucum)",
                     "qty": 0.5,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Pimenta-de-cheiro desidratada moída",
+                    "name": "pimenta-de-cheiro desidratada moída",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Pimenta-do-reino branca moída",
+                    "name": "pimenta-do-reino branca moída",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5884,27 +5924,27 @@ const receitasData = {
             "image": "140.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó (Protagonista absoluto)",
+                    "name": "alho em pó (protagonista absoluto)",
                     "qty": 6,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó (Reduzida)",
+                    "name": "cebola em pó (reduzida)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cúrcuma (açafrão-da-terra)",
+                    "name": "cúrcuma (açafrão-da-terra)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5928,47 +5968,47 @@ const receitasData = {
             "image": "141.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Orégano seco",
+                    "name": "orégano seco",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Manjericão desidratado",
+                    "name": "manjericão desidratado",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Páprica defumada",
+                    "name": "páprica defumada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Tomate em pó",
+                    "name": "tomate em pó",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Queijo parmesão ralado microfino",
+                    "name": "queijo parmesão ralado microfino",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -5992,42 +6032,42 @@ const receitasData = {
             "image": "142.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Lemon Pepper",
+                    "name": "lemon pepper",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Páprica defumada",
+                    "name": "páprica defumada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Salsa desidratada",
+                    "name": "salsa desidratada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Semente de coentro moída (Aroma cítrico herbal)",
+                    "name": "semente de coentro moída (aroma cítrico herbal)",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Sal refinado",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6051,42 +6091,42 @@ const receitasData = {
             "image": "143.png",
             "ingredients": [
                 {
-                    "name": "Alho em pó",
+                    "name": "alho em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Cebola em pó",
+                    "name": "cebola em pó",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Páprica defumada",
+                    "name": "páprica defumada",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "Pimenta-do-reino moída de boa qualidade",
+                    "name": "pimenta-do-reino moída de boa qualidade",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Açúcar mascavo (Efeito Dry Rub)",
+                    "name": "açúcar mascavo (efeito dry rub)",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Mostarda em pó (Efeito Dry Rub)",
+                    "name": "mostarda em pó (efeito dry rub)",
                     "qty": 0.5,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "Sal grosso moído",
+                    "name": "sal grosso moído",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "Amido de milho (Anti-empedramento)",
+                    "name": "amido de milho (anti-empedramento)",
                     "qty": 1,
                     "unit": "colher (café)"
                 }
@@ -6113,57 +6153,57 @@ const receitasData = {
             "image": "144.png",
             "ingredients": [
                 {
-                    "name": "Arroz",
+                    "name": "arroz",
                     "qty": 3,
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "Alho",
+                    "name": "alho",
                     "qty": 2,
                     "unit": "dentes"
                 },
                 {
-                    "name": "Cebola",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade pequena"
                 },
                 {
-                    "name": "Manteiga",
+                    "name": "manteiga",
                     "qty": 1,
                     "unit": "colher de sopa"
                 },
                 {
-                    "name": "Óleo",
+                    "name": "óleo",
                     "qty": 1,
                     "unit": "colher de sopa"
                 },
                 {
-                    "name": "Sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Água quente",
+                    "name": "água quente",
                     "qty": null,
                     "unit": "o suficiente para cobrir"
                 },
                 {
-                    "name": "Ovos",
+                    "name": "ovos",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "Bacon picado",
+                    "name": "bacon picado",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "Linguiça calabresa picada",
+                    "name": "linguiça calabresa picada",
                     "qty": 100,
                     "unit": "g"
                 },
                 {
-                    "name": "Batata palha",
+                    "name": "batata palha",
                     "qty": 1,
                     "unit": "pacote"
                 }
