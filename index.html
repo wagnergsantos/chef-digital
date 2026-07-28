@@ -497,6 +497,11 @@
 
         // Document Ready init
         window.onload = function() {
+            // Registro do Service Worker (PWA). Falha silenciosa em file:// ou navegadores sem suporte:
+            // o app continua funcionando de forma idêntica, apenas sem instalação/offline.
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            }
             try {
                 if (typeof receitasData === 'undefined') {
                     throw new Error('Banco de dados receitasData não foi definido.');
