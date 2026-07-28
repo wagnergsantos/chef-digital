@@ -134,7 +134,7 @@ const receitasData = {
                 {
                     "name": "Alho, cebola, sal e azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -261,8 +261,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 3,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta-do-reino e orégano",
@@ -314,8 +314,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e cheiro-verde",
@@ -469,8 +469,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta-do-reino e ervas",
@@ -569,8 +569,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 3,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dentes de alho picados",
@@ -578,12 +578,27 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal, pimenta-do-reino e páprica",
+                    "name": "Sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "Alecrim ou salsinha",
+                    "name": "Pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Páprica",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Alecrim",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -773,8 +788,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite ou manteiga",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dentes de alho picados",
@@ -782,7 +797,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "Sal, pimenta e ervas (salsa, alecrim ou tomilho)",
+                    "name": "Sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "Ervas (salsa, alecrim ou tomilho)",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -821,8 +846,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal",
@@ -889,8 +914,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal e pimenta-do-reino",
@@ -927,8 +952,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Cebola picada",
@@ -1045,8 +1070,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Farinha de rosca",
@@ -1225,8 +1250,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Folhas de manjericão fresco",
@@ -1331,8 +1356,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva extra virgem",
-                    "qty": 0.5,
-                    "unit": "xícara"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Nozes ou castanhas picadas",
@@ -1463,8 +1488,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e ervas",
@@ -1502,8 +1527,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Cebola fatiada",
@@ -1556,8 +1581,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Cebola fatiada",
@@ -1625,8 +1650,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dentes de alho picados",
@@ -1670,8 +1695,8 @@ const receitasData = {
                 },
                 {
                     "name": "Manteiga ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dentes de alho picados",
@@ -1892,8 +1917,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Tomate cortado em cubos",
@@ -2092,8 +2117,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal e cheiro-verde",
@@ -2146,8 +2171,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 1,
-                    "unit": "fio"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e cheiro-verde",
@@ -2200,8 +2225,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 1,
-                    "unit": "fio"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e páprica defumada",
@@ -2269,8 +2294,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 1,
-                    "unit": "fio"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta-do-reino e cominho",
@@ -2324,8 +2349,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "fio"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Suco de limão",
@@ -2378,8 +2403,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo de gergelim ou azeite",
-                    "qty": 1,
-                    "unit": "fio"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dente de alho picado",
@@ -2426,8 +2451,8 @@ const receitasData = {
                 },
                 {
                     "name": "Manteiga ou azeite",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e tomilho",
@@ -2470,8 +2495,8 @@ const receitasData = {
                 },
                 {
                     "name": "Óleo ou azeite",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Cebola grande fatiada em rodelas",
@@ -2705,8 +2730,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e orégano",
@@ -2944,7 +2969,7 @@ const receitasData = {
                 {
                     "name": "Azeite de oliva, sal, pimenta e cheiro-verde",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -3001,7 +3026,7 @@ const receitasData = {
                 {
                     "name": "Azeite de oliva, sal, pimenta e parmesão",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -3048,7 +3073,7 @@ const receitasData = {
                 {
                     "name": "Alho picado, limão, azeite, sal, pimenta e ervas",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -3144,8 +3169,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal e pimenta-do-reino",
@@ -3192,8 +3217,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 3,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal e pimenta-do-reino",
@@ -3288,8 +3313,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta e cheiro-verde",
@@ -3322,8 +3347,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Dentes de alho fatiados ou amassados",
@@ -3442,7 +3467,7 @@ const receitasData = {
                 {
                     "name": "Sal e azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -3862,7 +3887,7 @@ const receitasData = {
                 {
                     "name": "Sal, pimenta e azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -4447,7 +4472,7 @@ const receitasData = {
                 {
                     "name": "Ervas e Azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -4520,8 +4545,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 3,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal",
@@ -4660,8 +4685,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Vinagre de vinho tinto e Limão",
@@ -4692,8 +4717,8 @@ const receitasData = {
             "ingredients": [
                 {
                     "name": "Azeite e Suco de limão",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Orégano, tomilho e alecrim secos",
@@ -4739,8 +4764,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "colher (chá)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal",
@@ -4823,8 +4848,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal",
@@ -4907,8 +4932,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "colher (chá)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal",
@@ -4939,8 +4964,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Gengibre ralado",
@@ -4986,8 +5011,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Batatas em rodelas (cozidas por 10 min)",
@@ -5103,8 +5128,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de dendê",
-                    "qty": 2,
-                    "unit": "colheres (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal, pimenta-do-reino e coentro",
@@ -5162,7 +5187,7 @@ const receitasData = {
                 {
                     "name": "Sal, pimenta-do-reino e azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -5220,7 +5245,7 @@ const receitasData = {
                 {
                     "name": "Sal, pimenta, cheiro-verde e azeite",
                     "qty": null,
-                    "unit": "a gosto"
+                    "unit": "q.b."
                 }
             ],
             "steps": [
@@ -5259,8 +5284,8 @@ const receitasData = {
                 },
                 {
                     "name": "Azeite de oliva",
-                    "qty": 0.5,
-                    "unit": "xícara"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "Sal refinado",
@@ -6199,8 +6224,8 @@ const receitasData = {
                 },
                 {
                     "name": "azeite",
-                    "qty": 1,
-                    "unit": "colher (sopa)"
+                    "qty": null,
+                    "unit": "q.b."
                 },
                 {
                     "name": "água",
