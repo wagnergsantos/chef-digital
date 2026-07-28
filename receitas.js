@@ -117,7 +117,7 @@ const receitasData = {
             "image": "1.png",
             "ingredients": [
                 {
-                    "name": "peito de frango em cubos",
+                    "name": "frango (peito em cubos)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -230,7 +230,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "frango desfiado",
+                    "name": "frango (peito desfiado)",
                     "qty": 400,
                     "unit": "g"
                 },
@@ -328,7 +328,7 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "peito de frango em tiras",
+                    "name": "frango (peito em tiras)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -381,7 +381,7 @@ const receitasData = {
             "emoji": "🫑",
             "ingredients": [
                 {
-                    "name": "peito de frango em cubos",
+                    "name": "frango (peito em cubos)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -493,7 +493,7 @@ const receitasData = {
             "emoji": "🍋",
             "ingredients": [
                 {
-                    "name": "filé de frango",
+                    "name": "frango (filé)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -539,7 +539,7 @@ const receitasData = {
             "emoji": "🥦",
             "ingredients": [
                 {
-                    "name": "frango em cubos",
+                    "name": "frango (peito em cubos)",
                     "qty": 500,
                     "unit": "g"
                 },
