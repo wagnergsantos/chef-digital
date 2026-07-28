@@ -1496,6 +1496,75 @@ input {
     height: 18px;
 }
 
+.modal-shopping-btn {
+    position: absolute;
+    top: 16px;
+    right: 172px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modal-shopping-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.modal-shopping-btn:active {
+    transform: scale(0.95);
+}
+
+.modal-shopping-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.modal-planner-btn {
+    position: absolute;
+    top: 16px;
+    right: 224px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-planner-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.modal-planner-btn:active {
+    transform: scale(0.95);
+}
+
+.modal-planner-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.modal-planner-btn.planned-active {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--success-color);
+}
+
+.modal-planner-btn.planned-active:hover {
+    background-color: var(--text-white);
+}
+
 .modal-badges {
     display: flex;
     align-items: center;
@@ -1671,14 +1740,7 @@ input {
     flex-shrink: 0;
 }
 
-/* Modal action buttons */
-.modal-actions-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 16px;
-}
-
+/* Modal action buttons (used by pantry modal buttons) */
 .btn-modal-action {
     width: 100%;
     padding: 10px 16px;
@@ -1710,14 +1772,9 @@ input {
     background-color: var(--success-light-border);
 }
 
-.btn-modal-action-planner.planned-active {
-    background-color: var(--success-color);
-    color: var(--text-white);
-    border-color: var(--success-color);
-}
-
-.btn-modal-action-planner.planned-active:hover {
-    background-color: var(--success-hover);
+.btn-modal-action svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* Wake Lock indicator (see .modal-wakelock-btn for the toggle button) */
@@ -1730,23 +1787,6 @@ input {
 
 #wake-lock-indicator.visible {
     display: inline-block;
-}
-
-.btn-modal-action-shopping {
-    background-color: var(--bg-light);
-    color: var(--text-main);
-    border: 1px solid var(--border-dark);
-}
-
-.btn-modal-action-shopping:hover {
-    background-color: var(--primary-light);
-    color: var(--primary-hover);
-    border-color: var(--primary-light-border);
-}
-
-.btn-modal-action svg {
-    width: 16px;
-    height: 16px;
 }
 
 /* Cooking Steps Panel */
@@ -2102,7 +2142,8 @@ input {
     html[data-printing] .modal-close-btn,
     html[data-printing] .modal-wakelock-btn,
     html[data-printing] #wake-lock-indicator,
-    html[data-printing] .btn-modal-action,
+    html[data-printing] .modal-shopping-btn,
+    html[data-printing] .modal-planner-btn,
     html[data-printing] .portion-btn,
     html[data-printing] .card-action-btn,
     html[data-printing] .drawer-card-remove,

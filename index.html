@@ -262,6 +262,16 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
                 </button>
+                <button onclick="addCurrentRecipeToShoppingList()" class="modal-shopping-btn" title="Adicionar tudo à lista de compras" aria-label="Adicionar todos os ingredientes à lista de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+                <button id="modal-planner-btn" onclick="addCurrentRecipeToPlanner()" class="modal-planner-btn" title="Planejar essa refeição" aria-label="Planejar essa refeição" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </button>
                 <div class="modal-badges">
                     <span id="modal-category-badge" class="modal-badge-cat">CATEGORIA</span>
                     <span id="modal-source-badge" class="modal-badge-src">Origem</span>
@@ -289,21 +299,7 @@
                         <!-- Filled dynamically -->
                     </ul>
 
-                    <div class="modal-actions-wrapper">
-                        <button id="modal-planner-btn" onclick="addCurrentRecipeToPlanner()" class="btn-modal-action btn-modal-action-planner">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span id="modal-planner-text">Planejar essa refeição</span>
-                        </button>
-                        
-                        <button onclick="addCurrentRecipeToShoppingList()" class="btn-modal-action btn-modal-action-shopping">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>Adicionar tudo à lista de compras</span>
-                        </button>
-                    </div>
+
                 </div>
 
                 <!-- Prep steps Section (Column 2) -->
@@ -1015,8 +1011,20 @@
 
         function addCurrentRecipeToPlanner() {
             togglePlanRecipe(activeRecipeId);
-            closeRecipeModal();
-            showToast('Menu semanal atualizado!');
+            updateModalPlannerButtonState(activeRecipeId);
+            const isPlanned = plannedRecipes.some(p => p.id === activeRecipeId);
+            showToast(isPlanned ? 'Adicionado ao menu semanal!' : 'Removido do menu semanal!');
+        }
+
+        function updateModalPlannerButtonState(id) {
+            const planBtn = document.getElementById('modal-planner-btn');
+            if (!planBtn) return;
+            const isPlanned = plannedRecipes.some(p => p.id === id);
+            const planLabel = isPlanned ? "Remover do Planejamento" : "Planejar essa refeição";
+            planBtn.classList.toggle('planned-active', isPlanned);
+            planBtn.title = planLabel;
+            planBtn.setAttribute('aria-label', planLabel);
+            planBtn.setAttribute('aria-pressed', isPlanned ? 'true' : 'false');
         }
 
         function changePlannerRecipePortions(id, dir) {
@@ -1387,17 +1395,8 @@
                 modalSourceBadge.style.display = 'none';
             }
 
-            // Adjust modal planner button text
-            const isPlanned = plannedRecipes.some(p => p.id === id);
-            const planText = document.getElementById('modal-planner-text');
-            const planBtn = document.getElementById('modal-planner-btn');
-            if (isPlanned) {
-                planText.innerText = "Remover do Planejamento";
-                planBtn.className = "btn-modal-action btn-modal-action-planner planned-active";
-            } else {
-                planText.innerText = "Planejar essa refeição";
-                planBtn.className = "btn-modal-action btn-modal-action-planner";
-            }
+            // Adjust modal planner icon button state
+            updateModalPlannerButtonState(id);
 
             // Build Ingredients
             updateIngredientsList();
