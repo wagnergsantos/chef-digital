@@ -978,6 +978,28 @@ input {
     height: 20px;
 }
 
+.drawer-print-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    color: var(--text-light);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawer-print-btn:hover {
+    background-color: var(--border-dark);
+    color: var(--text-main);
+    transform: scale(1.04);
+}
+
+.drawer-print-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
 /* Scrollable Content inside drawers */
 .drawer-content {
     flex-grow: 1;
@@ -1442,6 +1464,36 @@ input {
 
 .modal-wakelock-btn.wakelock-active:hover {
     background-color: var(--text-white);
+}
+
+.modal-print-btn {
+    position: absolute;
+    top: 16px;
+    right: 120px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modal-print-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.modal-print-btn:active {
+    transform: scale(0.95);
+}
+
+.modal-print-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 .modal-badges {
@@ -1988,5 +2040,86 @@ input {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+/* ========================================================================
+   Print Support (Recipe Modal, Shopping List and Weekly Planner)
+   Controlled by the html[data-printing] attribute, set by printRecipe(),
+   printShoppingList() and printPlanner() in index.html.
+======================================================================== */
+@media print {
+    /* 1. Hide every top-level section of the app. display:none removes it
+       from layout entirely (unlike visibility:hidden), so hidden content
+       (e.g. the full recipe grid) no longer reserves page space and can't
+       cause extra blank printed pages. */
+    body > * {
+        display: none !important;
+    }
+
+    /* 2. Reveal only the active target container, flowing from the top */
+    html[data-printing="recipe"] #recipe-modal,
+    html[data-printing="shopping"] #shopping-list-drawer,
+    html[data-printing="planner"] #planner-drawer {
+        display: block !important;
+    }
+
+    /* 3. Undo the opacity/transform/pointer-events/fixed-position tricks
+       used to hide these containers on screen when closed, so the revealed
+       target flows naturally from the top of the printed page */
+    html[data-printing="recipe"] #recipe-modal,
+    html[data-printing] .drawer {
+        position: static !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        overflow: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+        background: none !important;
+        backdrop-filter: none !important;
+    }
+
+    html[data-printing="recipe"] .modal-container {
+        max-height: none !important;
+        max-width: 100% !important;
+        box-shadow: none !important;
+    }
+
+    /* 4. Force a light color palette, overriding the dark theme variables */
+    html[data-printing] {
+        --bg-main: #ffffff;
+        --bg-card: #ffffff;
+        --bg-light: #ffffff;
+        --text-main: #000000;
+        --text-muted: #333333;
+        --border-color: #cccccc;
+    }
+
+    /* 5. Hide action/navigation elements that make no sense on paper */
+    html[data-printing] .modal-close-btn,
+    html[data-printing] .modal-wakelock-btn,
+    html[data-printing] #wake-lock-indicator,
+    html[data-printing] .btn-modal-action,
+    html[data-printing] .portion-btn,
+    html[data-printing] .card-action-btn,
+    html[data-printing] .drawer-card-remove,
+    html[data-printing] .print-btn,
+    html[data-printing] .drawer-print-btn,
+    html[data-printing] .drawer-clear-btn,
+    html[data-printing] .drawer-close-btn,
+    html[data-printing] .drawer-footer,
+    html[data-printing] #drawer-backdrop {
+        display: none !important;
+    }
+
+    /* 6. Avoid cutting cards/groups in half across a page break */
+    html[data-printing] .shopping-section,
+    html[data-printing] .drawer-card,
+    html[data-printing] .modal-ingredients-li,
+    html[data-printing] .modal-step-li {
+        break-inside: avoid;
     }
 }

@@ -167,6 +167,11 @@
                 <h3 id="planner-drawer-title">Menu da Semana</h3>
             </div>
             <div class="drawer-header-actions">
+                <button onclick="printPlanner()" class="drawer-print-btn print-btn" title="Imprimir" aria-label="Imprimir menu semanal">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                </button>
                 <button onclick="clearPlanner()" class="drawer-clear-btn" aria-label="Limpar menu semanal">Limpar Menu</button>
                 <button onclick="togglePlanner()" class="drawer-close-btn" title="Fechar" aria-label="Fechar menu semanal">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -201,6 +206,11 @@
                 <h3 id="shopping-drawer-title">Lista de Compras</h3>
             </div>
             <div class="drawer-header-actions">
+                <button onclick="printShoppingList()" class="drawer-print-btn print-btn" title="Imprimir" aria-label="Imprimir lista de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                    </svg>
+                </button>
                 <button onclick="clearShoppingList()" class="drawer-clear-btn" aria-label="Limpar lista de compras">Limpar Tudo</button>
                 <button onclick="toggleShoppingList()" class="drawer-close-btn" title="Fechar" aria-label="Fechar lista de compras">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -241,6 +251,11 @@
                 <button id="wake-lock-toggle-btn" onclick="toggleWakeLock()" class="modal-wakelock-btn wakelock-active" aria-pressed="true" title="Manter tela ativa" aria-label="Manter tela ativa durante o preparo">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+                <button onclick="printRecipe()" class="modal-print-btn print-btn" title="Imprimir" aria-label="Imprimir receita">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
                 </button>
                 <div class="modal-badges">
@@ -902,6 +917,12 @@
             }
         });
 
+        // Print support: clears the printing state whether the dialog was
+        // confirmed or cancelled (the browser fires 'afterprint' in both cases).
+        window.addEventListener('afterprint', () => {
+            delete document.documentElement.dataset.printing;
+        });
+
         // Drawer Toggle & Core logic
         function togglePlanner() {
             const drawer = document.getElementById('planner-drawer');
@@ -1486,6 +1507,23 @@
                 acquireWakeLock();
             }
         });
+
+        // Print helpers: mark which container should be revealed by the
+        // @media print rules, then trigger the browser's native print dialog.
+        function printRecipe() {
+            document.documentElement.dataset.printing = 'recipe';
+            window.print();
+        }
+
+        function printShoppingList() {
+            document.documentElement.dataset.printing = 'shopping';
+            window.print();
+        }
+
+        function printPlanner() {
+            document.documentElement.dataset.printing = 'planner';
+            window.print();
+        }
 
         // Adjust serving size multiplier
         function changePortions(dir) {
