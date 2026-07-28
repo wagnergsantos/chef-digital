@@ -6,6 +6,8 @@
 
 /* CSS Variables & Design Tokens */
 :root {
+    color-scheme: light;
+
     /* Color Palette */
     --primary-color: #f59e0b; /* amber-500 */
     --primary-hover: #d97706; /* amber-600 */
@@ -64,6 +66,7 @@
 /* Native Dark Theme Support & Manual Override */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
+        color-scheme: dark;
         --primary-color: #fbbf24; /* amber-400 */
         --primary-hover: #f59e0b; /* amber-500 */
         --primary-active: #d97706; /* amber-600 */
@@ -101,6 +104,7 @@
 }
 
 [data-theme="dark"] {
+    color-scheme: dark;
     --primary-color: #fbbf24; /* amber-400 */
     --primary-hover: #f59e0b; /* amber-500 */
     --primary-active: #d97706; /* amber-600 */
@@ -194,6 +198,17 @@ button {
 
 input {
     font-family: inherit;
+}
+
+/* Touch feedback tuning: evita delay de double-tap-zoom em botões e
+   elementos com role de botão/checkbox, e remove o highlight cinza padrão
+   do WebKit mobile (o app já tem estados :hover/:active/:focus-visible
+   próprios para dar feedback visual). */
+button,
+[role="button"],
+[role="checkbox"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* App Header styling */
@@ -397,7 +412,7 @@ input {
     padding: 10px 40px 10px 40px;
     font-size: 14px;
     outline: none;
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
     color: var(--text-main);
 }
 
@@ -434,7 +449,7 @@ input {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .search-clear-btn:hover {
@@ -475,7 +490,7 @@ input {
     color: var(--text-muted);
     border: 1px solid var(--border-color);
     background-color: var(--bg-card);
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
     width: auto;
     text-align: left;
 }
@@ -681,7 +696,7 @@ input {
     background: rgba(245, 158, 11, 0.03);
     border-radius: var(--radius-full);
     filter: blur(16px);
-    transition: all var(--transition-normal);
+    transition: background var(--transition-normal);
 }
 
 .recipe-card:hover .card-header-graphic::after {
@@ -945,7 +960,7 @@ input {
     font-weight: 600;
     padding: 6px 12px;
     border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast);
 }
 
 .drawer-clear-btn:hover {
@@ -1005,6 +1020,7 @@ input {
     flex-grow: 1;
     padding: 24px;
     overflow-y: auto;
+    overscroll-behavior: contain;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -1071,7 +1087,7 @@ input {
 
 .drawer-card-remove {
     color: var(--text-light);
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
     width: 44px;
     height: 44px;
     display: flex;
@@ -1608,6 +1624,7 @@ input {
 .modal-body {
     flex-grow: 1;
     overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 32px;
     display: grid;
     grid-template-columns: 1fr;
@@ -1950,7 +1967,7 @@ input {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .clear-filters-btn:hover {
@@ -1995,7 +2012,7 @@ input {
     border: 1px solid var(--border-dark);
     border-radius: var(--radius-full);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .pantry-edit-btn svg {
