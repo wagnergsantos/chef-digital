@@ -267,7 +267,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </button>
-                <button id="modal-planner-btn" onclick="addCurrentRecipeToPlanner()" class="modal-planner-btn" title="Planejar essa refeição" aria-label="Planejar essa refeição" aria-pressed="false">
+                <button id="modal-planner-btn" onclick="openDayPickerPopover(activeRecipeId, this)" class="modal-planner-btn" title="Planejar essa refeição" aria-label="Planejar essa refeição" aria-pressed="false">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -374,23 +374,80 @@
         let searchQuery = '';
         let favorites = JSON.parse(localStorage.getItem('chef_digital_favorites')) || [];
         let shoppingList = JSON.parse(localStorage.getItem('chef_digital_shopping')) || {};
-        let plannedRecipes = JSON.parse(localStorage.getItem('chef_digital_planned')) || [];
-        let hasMigrated = false;
-        plannedRecipes = plannedRecipes.map(p => {
-            if (p.portions !== undefined && p.people === undefined) {
-                let servings = 1;
-                if (typeof receitasData !== 'undefined' && receitasData.recipes) {
-                    const recipe = receitasData.recipes.find(r => r.id === p.id);
-                    if (recipe && recipe.servings) servings = recipe.servings;
-                }
-                p.people = p.portions * servings;
-                delete p.portions;
-                hasMigrated = true;
+        const WEEK_DAYS = [
+            { key: 'dom', label: 'Domingo' },
+            { key: 'seg', label: 'Segunda-feira' },
+            { key: 'ter', label: 'Terça-feira' },
+            { key: 'qua', label: 'Quarta-feira' },
+            { key: 'qui', label: 'Quinta-feira' },
+            { key: 'sex', label: 'Sexta-feira' },
+            { key: 'sab', label: 'Sábado' }
+        ];
+
+        function createEmptyPlannedByDay() {
+            const byDay = {};
+            WEEK_DAYS.forEach(d => { byDay[d.key] = []; });
+            return byDay;
+        }
+
+        function migratePlannedData(raw) {
+            if (Array.isArray(raw)) {
+                // Formato antigo: lista plana [{id, people}] ou [{id, portions}].
+                // Sem informação de dia, todas as entradas antigas migram para Domingo.
+                const byDay = createEmptyPlannedByDay();
+                raw.forEach(p => {
+                    let people = p.people;
+                    if (p.portions !== undefined && people === undefined) {
+                        let servings = 1;
+                        if (typeof receitasData !== 'undefined' && receitasData.recipes) {
+                            const recipe = receitasData.recipes.find(r => r.id === p.id);
+                            if (recipe && recipe.servings) servings = recipe.servings;
+                        }
+                        people = p.portions * servings;
+                    }
+                    byDay.dom.push({ recipeId: p.id, people: people !== undefined ? people : 1 });
+                });
+                return { byDay, hasMigrated: true };
             }
-            return p;
-        });
-        if (hasMigrated) {
-            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedRecipes));
+
+            // Formato novo (objeto agrupado por dia): garante que as 7 chaves existem
+            const byDay = createEmptyPlannedByDay();
+            let hasMigrated = false;
+            WEEK_DAYS.forEach(d => {
+                if (raw && Array.isArray(raw[d.key])) {
+                    byDay[d.key] = raw[d.key];
+                } else if (raw && raw[d.key] !== undefined) {
+                    hasMigrated = true; // valor inesperado, normaliza para array vazio
+                }
+            });
+            return { byDay, hasMigrated };
+        }
+
+        const storedPlanned = JSON.parse(localStorage.getItem('chef_digital_planned')) || createEmptyPlannedByDay();
+        const plannedMigration = migratePlannedData(storedPlanned);
+        let plannedByDay = plannedMigration.byDay;
+        if (plannedMigration.hasMigrated) {
+            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+        }
+
+        function getAllPlannedEntries() {
+            const all = [];
+            WEEK_DAYS.forEach(d => {
+                plannedByDay[d.key].forEach(entry => {
+                    all.push({ day: d.key, recipeId: entry.recipeId, people: entry.people });
+                });
+            });
+            return all;
+        }
+
+        function getPlannedDaysForRecipe(recipeId) {
+            return WEEK_DAYS
+                .filter(d => plannedByDay[d.key].some(e => e.recipeId === recipeId))
+                .map(d => d.key);
+        }
+
+        function isRecipePlanned(recipeId) {
+            return getPlannedDaysForRecipe(recipeId).length > 0;
         }
         let activeRecipePortions = 1;
         let activeRecipeId = null;
@@ -769,7 +826,7 @@
                 const fragment = document.createDocumentFragment();
                 filtered.forEach((recipe, index) => {
                     const isFav = favorites.includes(recipe.id);
-                    const isPlanned = plannedRecipes.some(p => p.id === recipe.id);
+                    const isPlanned = isRecipePlanned(recipe.id);
                     const isFullyStocked = pantryFilterActive && recipeIsFullyStocked(recipe);
                     const pantryBadge = isFullyStocked ? '<span class="card-badge pantry-badge">✅ Você tem tudo</span>' : '';
                     const { matchedIngredients } = matchRecipeSearch(recipe, searchQuery);
@@ -829,7 +886,7 @@
                                 </div>
                                 
                                 <div class="card-actions">
-                                    <button onclick="togglePlanRecipe(${recipe.id})" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana" aria-label="Planejar ${recipe.title} para a semana" aria-pressed="${isPlanned}">
+                                    <button onclick="openDayPickerPopover(${recipe.id}, this)" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana" aria-label="Planejar ${recipe.title} para a semana" aria-pressed="${isPlanned}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
@@ -902,7 +959,10 @@
             const shopping = document.getElementById('shopping-list-drawer');
 
             if (e.key === 'Escape' || e.keyCode === 27) {
-                if (modal.classList.contains('open')) {
+                const dayPickerPopover = document.getElementById('day-picker-popover');
+                if (dayPickerPopover) {
+                    closeDayPickerPopover();
+                } else if (modal.classList.contains('open')) {
                     closeRecipeModal();
                 } else if (pantryModal && pantryModal.classList.contains('open')) {
                     closePantryModal();
@@ -995,31 +1055,95 @@
             }
         }
 
-        function togglePlanRecipe(id) {
-            const index = plannedRecipes.findIndex(p => p.id === id);
+        function toggleRecipeOnDay(recipeId, day) {
+            const dayEntries = plannedByDay[day];
+            const index = dayEntries.findIndex(e => e.recipeId === recipeId);
+            let added;
             if (index !== -1) {
-                plannedRecipes.splice(index, 1);
+                dayEntries.splice(index, 1);
+                added = false;
             } else {
-                const recipe = recipes.find(r => r.id === id);
+                const recipe = recipes.find(r => r.id === recipeId);
                 const defaultPeople = (recipe && recipe.servings !== undefined && recipe.servings !== null) ? recipe.servings : 1;
-                plannedRecipes.push({ id: id, people: defaultPeople });
+                dayEntries.push({ recipeId: recipeId, people: defaultPeople });
+                added = true;
             }
             savePlanner();
             updatePlannerBadge();
             renderRecipes();
+            renderPlanner();
+            return added;
         }
 
-        function addCurrentRecipeToPlanner() {
-            togglePlanRecipe(activeRecipeId);
-            updateModalPlannerButtonState(activeRecipeId);
-            const isPlanned = plannedRecipes.some(p => p.id === activeRecipeId);
-            showToast(isPlanned ? 'Adicionado ao menu semanal!' : 'Removido do menu semanal!');
+        let dayPickerRecipeId = null;
+
+        function openDayPickerPopover(recipeId, anchorEl) {
+            closeDayPickerPopover();
+            dayPickerRecipeId = recipeId;
+
+            const plannedDays = getPlannedDaysForRecipe(recipeId);
+            const popover = document.createElement('div');
+            popover.id = 'day-picker-popover';
+            popover.className = 'day-picker-popover';
+            popover.innerHTML = WEEK_DAYS.map(d => `
+                <button type="button" class="day-picker-option ${plannedDays.includes(d.key) ? 'active' : ''}" data-day="${d.key}" onclick="handleDayPickerChoice('${d.key}')">
+                    <span>${d.label}</span>
+                    ${plannedDays.includes(d.key) ? '<span class="day-picker-check">✓</span>' : ''}
+                </button>
+            `).join('');
+
+            document.body.appendChild(popover);
+
+            const rect = anchorEl.getBoundingClientRect();
+            const popoverWidth = 200;
+            popover.style.top = `${rect.bottom + window.scrollY + 6}px`;
+            popover.style.left = `${Math.min(
+                Math.max(8, rect.left + window.scrollX - popoverWidth + rect.width),
+                window.innerWidth - popoverWidth - 8
+            )}px`;
+
+            document.addEventListener('click', handleDayPickerOutsideClick, { capture: true });
+        }
+
+        function handleDayPickerChoice(day) {
+            if (dayPickerRecipeId === null) return;
+            const dayLabel = WEEK_DAYS.find(d => d.key === day).label;
+            const added = toggleRecipeOnDay(dayPickerRecipeId, day);
+            showToast(added ? `Adicionado ao menu de ${dayLabel}!` : `Removido do menu de ${dayLabel}!`);
+            updateModalPlannerButtonState(dayPickerRecipeId);
+
+            const popover = document.getElementById('day-picker-popover');
+            if (!popover) return;
+            const plannedDays = getPlannedDaysForRecipe(dayPickerRecipeId);
+            popover.querySelectorAll('.day-picker-option').forEach(btn => {
+                const isActive = plannedDays.includes(btn.dataset.day);
+                btn.classList.toggle('active', isActive);
+                const existingCheck = btn.querySelector('.day-picker-check');
+                if (existingCheck) existingCheck.remove();
+                if (isActive) {
+                    btn.insertAdjacentHTML('beforeend', '<span class="day-picker-check">✓</span>');
+                }
+            });
+        }
+
+        function handleDayPickerOutsideClick(e) {
+            const popover = document.getElementById('day-picker-popover');
+            if (!popover) return;
+            if (popover.contains(e.target)) return;
+            closeDayPickerPopover();
+        }
+
+        function closeDayPickerPopover() {
+            const popover = document.getElementById('day-picker-popover');
+            if (popover) popover.remove();
+            document.removeEventListener('click', handleDayPickerOutsideClick, { capture: true });
+            dayPickerRecipeId = null;
         }
 
         function updateModalPlannerButtonState(id) {
             const planBtn = document.getElementById('modal-planner-btn');
             if (!planBtn) return;
-            const isPlanned = plannedRecipes.some(p => p.id === id);
+            const isPlanned = isRecipePlanned(id);
             const planLabel = isPlanned ? "Remover do Planejamento" : "Planejar essa refeição";
             planBtn.classList.toggle('planned-active', isPlanned);
             planBtn.title = planLabel;
@@ -1027,16 +1151,16 @@
             planBtn.setAttribute('aria-pressed', isPlanned ? 'true' : 'false');
         }
 
-        function changePlannerRecipePortions(id, dir) {
-            const plan = plannedRecipes.find(p => p.id === id);
-            if (plan) {
-                const recipe = recipes.find(r => r.id === id);
+        function changePlannerRecipePortions(recipeId, day, dir) {
+            const entry = plannedByDay[day].find(e => e.recipeId === recipeId);
+            if (entry) {
+                const recipe = recipes.find(r => r.id === recipeId);
                 const isServingsMode = recipe && recipe.servings !== undefined && recipe.servings !== null;
                 const maxLimit = isServingsMode ? 20 : 10;
-                
-                let next = plan.people + dir;
+
+                let next = entry.people + dir;
                 if (next >= 1 && next <= maxLimit) {
-                    plan.people = next;
+                    entry.people = next;
                     savePlanner();
                     renderPlanner();
                 }
@@ -1044,7 +1168,7 @@
         }
 
         function clearPlanner() {
-            plannedRecipes = [];
+            plannedByDay = createEmptyPlannedByDay();
             savePlanner();
             updatePlannerBadge();
             renderRecipes();
@@ -1052,24 +1176,59 @@
         }
 
         function savePlanner() {
-            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedRecipes));
+            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
         }
 
         function updatePlannerBadge() {
             const badge = document.getElementById('planner-badge');
-            if (plannedRecipes.length > 0) {
-                badge.innerText = plannedRecipes.length;
+            const count = getAllPlannedEntries().length;
+            if (count > 0) {
+                badge.innerText = count;
                 badge.classList.remove('hidden');
             } else {
                 badge.classList.add('hidden');
             }
         }
 
+        function renderPlannerCardHtml(entry, day) {
+            const recipe = recipes.find(r => r.id === entry.recipeId);
+            if (!recipe) return '';
+
+            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+            const displayValue = isServingsMode ? `${entry.people} pessoas` : `${entry.people}x`;
+            const labelText = isServingsMode ? "Pessoas:" : "Porções:";
+
+            return `
+                <div class="drawer-card">
+                    <div class="drawer-card-top">
+                        <div class="drawer-card-info">
+                            <span class="drawer-card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽'}</span>
+                            <div class="drawer-card-meta">
+                                <h4>${recipe.title}</h4>
+                                <span>${recipe.source || ''}</span>
+                            </div>
+                        </div>
+                        <button onclick="toggleRecipeOnDay(${recipe.id}, '${day}')" class="drawer-card-remove" title="Remover do menu" aria-label="Remover ${recipe.title} do planejamento de ${day}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        </button>
+                    </div>
+                    <div class="drawer-card-bottom">
+                        <span>${labelText}</span>
+                        <div class="portion-controls">
+                            <button onclick="changePlannerRecipePortions(${recipe.id}, '${day}', -1)" class="portion-btn" aria-label="Diminuir porções">-</button>
+                            <span class="portion-value">${displayValue}</span>
+                            <button onclick="changePlannerRecipePortions(${recipe.id}, '${day}', 1)" class="portion-btn" aria-label="Aumentar porções">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         function renderPlanner() {
             const container = document.getElementById('planner-items');
             container.innerHTML = '';
 
-            if (plannedRecipes.length === 0) {
+            if (getAllPlannedEntries().length === 0) {
                 container.innerHTML = `
                     <div class="drawer-empty-state">
                         <p>Seu Menu Semanal está vazio!</p>
@@ -1079,45 +1238,33 @@
                 return;
             }
 
-            plannedRecipes.forEach(p => {
-                const recipe = recipes.find(r => r.id === p.id);
-                if (!recipe) return;
+            const fragment = document.createDocumentFragment();
+            WEEK_DAYS.forEach(d => {
+                const dayEntries = plannedByDay[d.key];
+                const section = document.createElement('div');
+                section.className = 'planner-day-section';
 
-                const card = document.createElement('div');
-                card.className = 'drawer-card';
-                
-                const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
-                const displayValue = isServingsMode ? `${p.people} pessoas` : `${p.people}x`;
-                const labelText = isServingsMode ? "Pessoas:" : "Porções:";
+                const cardsHtml = dayEntries.length === 0
+                    ? `<p class="planner-day-empty">Nenhuma receita planejada</p>`
+                    : dayEntries.map(entry => renderPlannerCardHtml(entry, d.key)).join('');
 
-                card.innerHTML = `
-                    <div class="drawer-card-top">
-                        <div class="drawer-card-info">
-                            <span class="drawer-card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽'}</span>
-                            <div class="drawer-card-meta">
-                                <h4>${recipe.title}</h4>
-                                <span>${recipe.source || ''}</span>
-                            </div>
-                        </div>
-                        <button onclick="togglePlanRecipe(${recipe.id}); renderPlanner();" class="drawer-card-remove" title="Remover do menu" aria-label="Remover ${recipe.title} do planejamento">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                        </button>
+                section.innerHTML = `
+                    <div class="planner-day-header">
+                        <h4>${d.label}</h4>
+                        ${dayEntries.length > 0 ? `<span class="planner-day-count">${dayEntries.length}</span>` : ''}
                     </div>
-                    <div class="drawer-card-bottom">
-                        <span>${labelText}</span>
-                        <div class="portion-controls">
-                            <button onclick="changePlannerRecipePortions(${recipe.id}, -1)" class="portion-btn" aria-label="Diminuir porções">-</button>
-                            <span class="portion-value">${displayValue}</span>
-                            <button onclick="changePlannerRecipePortions(${recipe.id}, 1)" class="portion-btn" aria-label="Aumentar porções">+</button>
-                        </div>
+                    <div class="planner-day-body">
+                        ${cardsHtml}
                     </div>
                 `;
-                container.appendChild(card);
+                fragment.appendChild(section);
             });
+            container.appendChild(fragment);
         }
 
         function generateConsolidatedShoppingList() {
-            if (plannedRecipes.length === 0) {
+            const allEntries = getAllPlannedEntries();
+            if (allEntries.length === 0) {
                 showToast('Seu menu semanal está vazio! Planeje receitas primeiro.', 'error');
                 return;
             }
@@ -1137,8 +1284,8 @@
 
             const tempConsolidated = {};
 
-            plannedRecipes.forEach(p => {
-                const recipe = recipes.find(r => r.id === p.id);
+            allEntries.forEach(p => {
+                const recipe = recipes.find(r => r.id === p.recipeId);
                 if (!recipe) return;
 
                 recipe.ingredients.forEach(ing => {
