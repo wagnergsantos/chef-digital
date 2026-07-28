@@ -959,7 +959,10 @@
             const shopping = document.getElementById('shopping-list-drawer');
 
             if (e.key === 'Escape' || e.keyCode === 27) {
-                if (modal.classList.contains('open')) {
+                const dayPickerPopover = document.getElementById('day-picker-popover');
+                if (dayPickerPopover) {
+                    closeDayPickerPopover();
+                } else if (modal.classList.contains('open')) {
                     closeRecipeModal();
                 } else if (pantryModal && pantryModal.classList.contains('open')) {
                     closePantryModal();
