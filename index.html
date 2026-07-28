@@ -11,16 +11,23 @@
     <!-- PWA: Manifest, Ícone e Theme Color -->
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
-    <meta name="theme-color" content="#f59e0b">
+    <meta name="theme-color" id="theme-color-meta" content="#fafaf9">
     <!-- Inline Script to prevent Theme Flash on load -->
     <script>
         (function() {
+            const THEME_COLORS = { light: '#fafaf9', dark: '#0c0a09' };
             const savedTheme = localStorage.getItem('chef_digital_theme');
+            let theme;
             if (savedTheme) {
-                document.documentElement.setAttribute('data-theme', savedTheme);
+                theme = savedTheme;
             } else {
                 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                document.documentElement.setAttribute('data-theme', systemPrefersDark ? 'dark' : 'light');
+                theme = systemPrefersDark ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeColorMeta = document.getElementById('theme-color-meta');
+            if (themeColorMeta) {
+                themeColorMeta.setAttribute('content', THEME_COLORS[theme]);
             }
         })();
     </script>
@@ -100,7 +107,7 @@
                 <div>
                     <span class="sidebar-title">Buscar</span>
                     <div class="search-box">
-                        <input type="text" id="search-input" onkeyup="filterRecipes()" placeholder="Buscar por título ou ingrediente..." class="search-input" aria-label="Buscar receitas por título ou ingrediente">
+                        <input type="text" id="search-input" name="busca" autocomplete="off" onkeyup="filterRecipes()" placeholder="Buscar por título ou ingrediente…" class="search-input" aria-label="Buscar receitas por título ou ingrediente">
                         <span class="search-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -136,7 +143,7 @@
         <section class="recipes-content">
             <!-- Top status bar -->
             <div class="results-header">
-                <h2 id="results-count">Carregando Receitas...</h2>
+                <h2 id="results-count">Carregando Receitas…</h2>
                 <span class="results-indicator" id="active-category-indicator"></span>
             </div>
 
@@ -320,7 +327,7 @@
                         </div>
                         <div class="tip-content">
                             <span class="tip-title">Dica de Preparo</span>
-                            <p id="modal-tips-text" class="tip-text">Dica de ouro aqui...</p>
+                            <p id="modal-tips-text" class="tip-text">Dica de ouro aqui…</p>
                         </div>
                     </div>
                 </div>
@@ -345,7 +352,7 @@
             
             <div class="modal-body pantry-modal-body">
                 <p class="pantry-modal-help">Insira os ingredientes que você tem em casa (um por linha ou separados por vírgula). O app destacará as receitas que você tem todos os ingredientes.</p>
-                <textarea id="pantry-textarea" placeholder="Ex: frango, cebola, arroz, alho..." aria-label="Ingredientes da despensa"></textarea>
+                <textarea id="pantry-textarea" name="despensa" autocomplete="off" placeholder="Ex: frango, cebola, arroz, alho…" aria-label="Ingredientes da despensa"></textarea>
                 
                 <div class="pantry-actions">
                     <button onclick="clearPantry()" class="btn-modal-action btn-modal-clear" title="Limpar todos os ingredientes">
@@ -468,6 +475,13 @@
 
         function updateThemeToggleIcon() {
             const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            const themeColorMeta = document.getElementById('theme-color-meta');
+            if (themeColorMeta) {
+                const THEME_COLORS = { light: '#fafaf9', dark: '#0c0a09' };
+                themeColorMeta.setAttribute('content', THEME_COLORS[current]);
+            }
+
             const themeBtn = document.getElementById('theme-toggle');
             if (!themeBtn) return;
             
@@ -833,10 +847,21 @@
                     const card = document.createElement('div');
                     card.className = `recipe-card ${isPlanned ? 'planned' : ''}`;
                     card.style.setProperty('--i', index);
+                    card.setAttribute('role', 'button');
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('aria-label', `Ver receita de ${recipe.title}`);
                     card.onclick = (e) => {
                         // Avoid triggering modal if clicking actions directly
                         if (e.target.closest('.card-action-btn')) return;
                         openRecipeModal(recipe.id);
+                    };
+                    card.onkeydown = (e) => {
+                        // Avoid triggering modal if the key event originated in an action button
+                        if (e.target.closest('.card-action-btn')) return;
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openRecipeModal(recipe.id);
+                        }
                     };
 
                     // Render all categories for this recipe as badges
@@ -854,7 +879,7 @@
 
                     card.innerHTML = `
                         <div class="${headerClass}">
-                            ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${recipe.title}" loading="lazy" />` : ''}
+                            ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${recipe.title}" loading="lazy" width="400" height="112" />` : ''}
                             <span class="card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽️'}</span>
                             <div class="card-badges-wrapper">
                                 ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
@@ -1554,7 +1579,21 @@
             recipe.steps.forEach((step, idx) => {
                 const li = document.createElement('li');
                 li.className = "modal-step-li";
-                li.onclick = () => li.classList.toggle('completed');
+                li.setAttribute('role', 'checkbox');
+                li.setAttribute('tabindex', '0');
+                li.setAttribute('aria-checked', 'false');
+                li.setAttribute('aria-label', `Passo ${idx + 1}`);
+                const toggleStepDone = () => {
+                    li.classList.toggle('completed');
+                    li.setAttribute('aria-checked', li.classList.contains('completed') ? 'true' : 'false');
+                };
+                li.onclick = toggleStepDone;
+                li.onkeydown = (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleStepDone();
+                    }
+                };
                 li.innerHTML = `
                     <span class="step-number">${idx+1}</span>
                     <p class="step-text">${step}</p>
