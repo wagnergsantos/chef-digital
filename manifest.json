@@ -2,13 +2,13 @@
     "name": "Chef Digital - Meu Livro de Receitas",
     "short_name": "Chef Digital",
     "description": "Livro de receitas pessoal com planejamento semanal e lista de compras",
+    "id": "/index.html",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#fafaf9",
     "theme_color": "#f59e0b",
     "lang": "pt-BR",
     "icons": [
-        { "src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" },
-        { "src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "maskable" }
+        { "src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
     ]
 }
