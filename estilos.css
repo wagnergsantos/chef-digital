@@ -1405,6 +1405,45 @@ input {
     height: 18px;
 }
 
+.modal-wakelock-btn {
+    position: absolute;
+    top: 16px;
+    right: 68px;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-wakelock-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.modal-wakelock-btn:active {
+    transform: scale(0.95);
+}
+
+.modal-wakelock-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.modal-wakelock-btn.wakelock-active {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+}
+
+.modal-wakelock-btn.wakelock-active:hover {
+    background-color: var(--text-white);
+}
+
 .modal-badges {
     display: flex;
     align-items: center;
@@ -1627,6 +1666,18 @@ input {
 
 .btn-modal-action-planner.planned-active:hover {
     background-color: var(--success-hover);
+}
+
+/* Wake Lock indicator (see .modal-wakelock-btn for the toggle button) */
+#wake-lock-indicator {
+    display: none;
+    font-size: 1rem;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+}
+
+#wake-lock-indicator.visible {
+    display: inline-block;
 }
 
 .btn-modal-action-shopping {
