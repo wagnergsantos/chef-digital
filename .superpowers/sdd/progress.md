@@ -1,10 +1,10 @@
-# Progress Ledger: Recipe Prompt Improvements
+# Subagent-Driven Development Progress Ledger
 
-This ledger tracks the completion of tasks under Subagent-Driven Development.
-
-- **Task 1: Create Schema Documentation**
-  - Status: Complete (commit d1fa1f38, review clean)
-- **Task 2: Create a Prompt Validation Script**
-  - Status: Complete (review clean)
-- **Task 3: Refactor the Chef Parser Prompt**
-  - Status: Complete (commit 6db4273, review clean)
+- [x] Task 1: Scaffolding e Infraestrutura Vite (commits 8d5a6f2..965f62d, review clean)
+  * Note: Minor code-review findings: PWA icon setup should eventually add 512x512 size and maskable purpose.
+- [x] Task 2: Cliente Supabase e Modelagem no Banco (commits 965f62d..005c035, review clean)
+- [x] Task 3: Script de Migração (Node.js) (commits 005c035..3df9f0d, review clean)
+- [x] Task 4: Camada de Cache Offline (IndexedDB) (commits 3df9f0d..d45ad01, review clean)
+- [x] Task 5: Modularização do Livro de Receitas (HTML/JS) (commits d45ad01..310ce16, review clean)
+- [x] Task 6: Painel do Administrador (HTML/JS) (commits 310ce16..fadab89, review clean)
+- [x] Task 7: Setup da Action de Deploy (GitHub Actions) (commits fadab89..248f3e1, review clean)
