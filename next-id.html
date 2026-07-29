@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximo ID - Chef Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css?v=1.0.1">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <meta name="theme-color" id="theme-color-meta" content="#fafaf9">
+    <!-- Inline Script to prevent Theme Flash on load -->
+    <script>
+        (function() {
+            const THEME_COLORS = { light: '#fafaf9', dark: '#0c0a09' };
+            const savedTheme = localStorage.getItem('chef_digital_theme');
+            let theme;
+            if (savedTheme) {
+                theme = savedTheme;
+            } else {
+                const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                theme = systemPrefersDark ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            const themeColorMeta = document.getElementById('theme-color-meta');
+            if (themeColorMeta) {
+                themeColorMeta.setAttribute('content', THEME_COLORS[theme]);
+            }
+        })();
+    </script>
+    <!-- Local Custom Database -->
+    <script src="receitas.js"></script>
+    <style>
+        .next-id-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .next-id-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .next-id-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--primary-hover);
+            line-height: 1;
+        }
+        .next-id-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .next-id-back {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--primary-hover);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <main class="next-id-page">
+        <span class="next-id-label">Próximo ID de receita</span>
+        <span class="next-id-value" id="next-id-value">--</span>
+        <span class="next-id-meta" id="next-id-meta"></span>
+        <a href="index.html" class="next-id-back">&larr; Voltar para as receitas</a>
+    </main>
+
+    <script>
+        (function() {
+            const recipes = (typeof receitasData !== 'undefined' && receitasData.recipes) || [];
+            const ids = recipes
+                .map(function(r) { return r.id; })
+                .filter(function(id) { return typeof id === 'number'; });
+
+            const valueEl = document.getElementById('next-id-value');
+            const metaEl = document.getElementById('next-id-meta');
+
+            if (ids.length === 0) {
+                valueEl.textContent = '1';
+                metaEl.textContent = 'Nenhuma receita cadastrada ainda.';
+                return;
+            }
+
+            const maiorId = Math.max.apply(null, ids);
+            valueEl.textContent = String(maiorId + 1);
+            metaEl.textContent = 'Total de receitas: ' + recipes.length + ' | Maior id atual: ' + maiorId;
+        })();
+    </script>
+</body>
+</html>
