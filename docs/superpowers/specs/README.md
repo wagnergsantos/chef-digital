@@ -17,6 +17,21 @@ cada vez, imediatamente antes de implementar aquela feature específica.
 Spec pré-existente, fora desta leva (escopo maior, ainda não decidido quando entrar):
 - [Modo Cozinha com Temporizadores](2026-07-15-modo-cozinha-design.md) — cobre um Wake Lock mais amplo dentro de um modo passo-a-passo em tela cheia; a versão enxuta de Wake Lock acima (#4) é independente dela.
 
+## Backlog de melhorias sugeridas (ainda sem spec)
+Ideias recebidas para evolução do app. Nenhuma tem spec ainda — criar um arquivo
+`YYYY-MM-DD-<slug>-design.md` nesta pasta antes de implementar.
+
+| Melhoria | Descrição | Spec |
+|---|---|---|
+| Internacionalização (i18n) | Suporte a múltiplos idiomas (PT/EN/ES) | — |
+| Testes Automatizados | Suite de testes unitários e de integração | — |
+| Gerenciamento de Estado Mais Robusto | Evoluir o estado atual (variáveis globais `let`) para algo mais estruturado | — |
+| Exportação/Importação de Receitas | Backup e compartilhamento de receitas (arquivo JSON) | — |
+| Modo Escuro Automático | Detecção automática do tema do sistema (`prefers-color-scheme`) sem exigir toggle manual | — |
+| Compartilhamento de Receitas via URL | Gerar links compartilháveis para uma receita específica | — |
+| Histórico de Uso | Registrar receitas visualizadas recentemente | — |
+| Sugestões Inteligentes | Recomendar receitas baseado no histórico e na despensa | — |
+
 ## Como atualizar
 Ao concluir a implementação de uma feature (plano executado e validado), marque o
 status como `✅ Implementado` nesta tabela.
