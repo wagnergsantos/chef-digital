@@ -183,7 +183,7 @@ const receitasData = {
             "emoji": "🥔",
             "ingredients": [
                 {
-                    "name": "carne moída (patinho ou acém)",
+                    "name": "carne moída",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -343,7 +343,7 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -358,7 +358,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -396,7 +406,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -416,7 +426,17 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "sal, pimenta e cebolinha",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cebolinha picada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -449,7 +469,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -469,7 +489,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -513,7 +543,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta-do-reino e ervas",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "ervas frescas",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -559,7 +599,7 @@ const receitasData = {
                     "unit": "maço"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -579,7 +619,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -675,7 +725,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -723,7 +783,17 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -799,7 +869,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -900,7 +980,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "salsinha picada",
+                    "name": "salsinha",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -938,7 +1018,7 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "filés de peixe de sua escolha",
+                    "name": "filés de peixe",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -958,7 +1038,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -996,7 +1081,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1021,7 +1106,17 @@ const receitasData = {
                     "unit": "opcional"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1076,7 +1171,12 @@ const receitasData = {
                     "unit": "o suficiente"
                 },
                 {
-                    "name": "sal e pimenta",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1124,7 +1224,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "salsinha picada",
+                    "name": "salsinha",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -1134,7 +1234,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal e pimenta",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1182,7 +1287,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "coentro e sal",
+                    "name": "coentro",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1215,7 +1325,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -1225,7 +1335,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "salsinha picada",
+                    "name": "salsinha",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -1245,7 +1355,17 @@ const receitasData = {
                     "unit": "o suficiente"
                 },
                 {
-                    "name": "sal, pimenta e cominho",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cominho em pó",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1284,7 +1404,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -1304,7 +1424,12 @@ const receitasData = {
                     "unit": "opcional"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1327,7 +1452,7 @@ const receitasData = {
             "emoji": "🥛",
             "ingredients": [
                 {
-                    "name": "penne",
+                    "name": "macarrão (penne)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -1347,7 +1472,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "leite integral",
+                    "name": "leite",
                     "qty": 500,
                     "unit": "ml"
                 },
@@ -1362,7 +1487,22 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "sal, noz-moscada, pimenta e salsa",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1468,12 +1608,22 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "salsinha picada",
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "para finalizar"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1532,7 +1682,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e ervas",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "ervas frescas",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -1591,7 +1751,17 @@ const receitasData = {
                     "unit": "unidade (opcional)"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1645,7 +1815,22 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta, orégano e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1704,7 +1889,17 @@ const receitasData = {
                     "unit": "opcional"
                 },
                 {
-                    "name": "sal, pimenta e ervas",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "ervas frescas",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1744,12 +1939,22 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e tomilho",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "ramo de tomilho fresco",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -1793,7 +1998,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1808,7 +2013,12 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1838,7 +2048,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1858,7 +2068,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1897,7 +2112,7 @@ const receitasData = {
                     "unit": "gomo"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1907,7 +2122,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "couve cortada bem fina",
+                    "name": "couve fatiada bem fina",
                     "qty": 2,
                     "unit": "xícaras"
                 },
@@ -1917,7 +2132,12 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "sal e pimenta",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -1946,7 +2166,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1966,7 +2186,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2038,7 +2263,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2063,7 +2288,22 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "óleo, sal, pimenta e cheiro-verde",
+                    "name": "óleo",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2102,7 +2342,12 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "cebola e alho picado",
+                    "name": "cebola",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "alho picado",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2117,7 +2362,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2161,7 +2416,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2215,7 +2475,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2269,7 +2539,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e páprica defumada",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "páprica defumada",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2298,7 +2578,7 @@ const receitasData = {
             "emoji": "🥩",
             "ingredients": [
                 {
-                    "name": "carne em tiras (patinho ou acém)",
+                    "name": "carne em tiras (patinho, alcatra)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -2323,7 +2603,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "batatas médias picadas",
+                    "name": "batatas médias",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -2338,7 +2618,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta-do-reino e cominho",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cominho em pó",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2373,7 +2663,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2398,7 +2688,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta e salsinha",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2452,7 +2752,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "gergelim e cebolinha",
+                    "name": "gergelim",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cebolinha picada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2480,7 +2785,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2495,7 +2800,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e tomilho",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "ramo de tomilho fresco",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2529,7 +2844,12 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -2609,7 +2929,17 @@ const receitasData = {
                     "unit": "xícara (chá)"
                 },
                 {
-                    "name": "sal, pimenta e salsinha",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2699,7 +3029,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2729,7 +3059,12 @@ const receitasData = {
                     "unit": "colher (chá, opcional)"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2754,7 +3089,7 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "peito de frango em filés",
+                    "name": "frango (filé)",
                     "qty": 400,
                     "unit": "g"
                 },
@@ -2774,7 +3109,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e orégano",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2817,7 +3162,17 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "sal, pimenta e salsinha",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2845,7 +3200,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2860,7 +3215,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2893,7 +3258,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2903,7 +3268,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta e folhas de manjericão",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "folhas de manjericão fresco",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2929,7 +3304,7 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "ovos",
+                    "name": "ovo",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -2959,7 +3334,17 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "sal, orégano e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -2997,7 +3382,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3007,7 +3392,22 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "azeite, sal, pimenta e cheiro-verde",
+                    "name": "azeite",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3039,7 +3439,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -3054,7 +3454,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "ervilhas frescas",
+                    "name": "ervilhas",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
@@ -3064,7 +3464,22 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "azeite, sal, pimenta e parmesão",
+                    "name": "azeite",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "queijo parmesão ralado",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3111,7 +3526,32 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "alho picado, limão, azeite, sal, pimenta e ervas",
+                    "name": "alho picado",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "suco de limão",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "ervas frescas",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3154,7 +3594,7 @@ const receitasData = {
                     "unit": "litro"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3164,7 +3604,12 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3198,7 +3643,7 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3213,7 +3658,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -3246,7 +3696,7 @@ const receitasData = {
                     "unit": "kg"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3261,7 +3711,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -3309,7 +3764,17 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "sal, noz-moscada e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3337,7 +3802,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3357,7 +3822,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3401,12 +3876,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "salsinha picada",
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "salsinha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3449,7 +3929,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3495,7 +3985,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3505,7 +3995,12 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal e azeite",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3537,12 +4032,17 @@ const receitasData = {
                     "unit": "kg"
                 },
                 {
-                    "name": "carne moída refogada",
+                    "name": "carne moída",
                     "qty": 300,
                     "unit": "g"
                 },
                 {
-                    "name": "cebola e alho picado",
+                    "name": "cebola",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "alho picado",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -3557,7 +4057,17 @@ const receitasData = {
                     "unit": "para gratinar"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3583,12 +4093,12 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "milho verde em lata (escorrido)",
+                    "name": "milho verde em lata",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "leite integral",
+                    "name": "leite",
                     "qty": 500,
                     "unit": "ml"
                 },
@@ -3603,7 +4113,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e noz-moscada",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "noz-moscada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3626,7 +4146,7 @@ const receitasData = {
             "emoji": "☕",
             "ingredients": [
                 {
-                    "name": "leite integral",
+                    "name": "leite",
                     "qty": 500,
                     "unit": "ml"
                 },
@@ -3689,7 +4209,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3727,7 +4257,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3737,7 +4267,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "sal, pimenta e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3775,7 +4315,7 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "milho verde em lata (escorrido)",
+                    "name": "milho verde em lata",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3816,7 +4356,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3831,7 +4371,17 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "sal, mostarda e batata palha",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "mostarda",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "batata palha",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3873,12 +4423,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "ovos",
+                    "name": "ovo",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "farinha de mandioca e cheiro-verde",
+                    "name": "farinha de mandioca",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3925,7 +4480,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal, pimenta e azeite",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -3952,12 +4517,12 @@ const receitasData = {
             "emoji": "🍗",
             "ingredients": [
                 {
-                    "name": "filés de peito de frango",
+                    "name": "frango (filé)",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -4086,12 +4651,22 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "presunto e queijo fatiados",
+                    "name": "presunto fatiado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "sal e orégano",
+                    "name": "queijo fatiado",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4134,7 +4709,12 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "sal e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4381,7 +4961,12 @@ const receitasData = {
                     "unit": "dentes"
                 },
                 {
-                    "name": "ervas e sal",
+                    "name": "ervas frescas",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4510,7 +5095,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "ervas e azeite",
+                    "name": "ervas frescas",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -4536,7 +5126,7 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "ovos",
+                    "name": "ovo",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -4551,7 +5141,12 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "sal e orégano",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4574,7 +5169,7 @@ const receitasData = {
             "emoji": "🍝",
             "ingredients": [
                 {
-                    "name": "macarrão (espaguete ou outro)",
+                    "name": "macarrão espaguete",
                     "qty": 250,
                     "unit": "g"
                 },
@@ -4655,7 +5250,7 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "ovos",
+                    "name": "ovo",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -4692,12 +5287,17 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4719,7 +5319,17 @@ const receitasData = {
             "emoji": "🥗",
             "ingredients": [
                 {
-                    "name": "tomate, cebola-roxa e salsinha picados",
+                    "name": "tomate picado",
+                    "qty": 3,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "cebola-roxa picada",
+                    "qty": 3,
+                    "unit": "colheres (sopa)"
+                },
+                {
+                    "name": "salsinha",
                     "qty": 3,
                     "unit": "colheres (sopa)"
                 },
@@ -4729,12 +5339,22 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "vinagre de vinho tinto e limão",
+                    "name": "vinagre de vinho tinto",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "sal e pimenta",
+                    "name": "limão",
+                    "qty": 1,
+                    "unit": "colher (sopa)"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4756,17 +5376,37 @@ const receitasData = {
             "emoji": "🍋",
             "ingredients": [
                 {
-                    "name": "azeite e suco de limão",
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 },
                 {
-                    "name": "orégano, tomilho e alecrim secos",
+                    "name": "suco de limão",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "sal e pimenta-do-reino",
+                    "name": "tomilho seco",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "alecrim seco",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -4793,7 +5433,17 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "salsinha, coentro e hortelã picados",
+                    "name": "salsinha",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "coentro",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "hortelã picada",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -4929,12 +5579,17 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "gengibre fresco ralado",
+                    "name": "gengibre ralado",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "suco de laranja e sal",
+                    "name": "suco de laranja",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5013,7 +5668,12 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "pimenta-do-reino e sal",
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5035,7 +5695,7 @@ const receitasData = {
             "emoji": "🐟",
             "ingredients": [
                 {
-                    "name": "filés de tilápia",
+                    "name": "filés de peixe (tilápia ou merluza)",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -5060,12 +5720,32 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "cebola, tomate e pimentão em tiras/rodelas",
+                    "name": "cebola",
                     "qty": null,
                     "unit": "a gosto"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e orégano",
+                    "name": "tomate",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimentão em tiras/rodelas",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "orégano",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5118,7 +5798,17 @@ const receitasData = {
                     "unit": "xícara (opcional)"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e cheiro-verde",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "cheiro-verde",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5157,7 +5847,17 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola, tomate e pimentão vermelho/amarelo em rodelas/tiras",
+                    "name": "cebola",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "tomate",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimentão vermelho/amarelo em rodelas/tiras",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -5172,7 +5872,17 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "sal, pimenta-do-reino e coentro",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "a gosto"
+                },
+                {
+                    "name": "coentro",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -5225,7 +5935,17 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "sal, pimenta-do-reino e azeite",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta-do-reino",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -5258,7 +5978,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola picada",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -5268,7 +5988,12 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "tomate e cenoura em cubos",
+                    "name": "tomate em cubos",
+                    "qty": 1,
+                    "unit": "unidade de cada"
+                },
+                {
+                    "name": "cenoura em cubos",
                     "qty": 1,
                     "unit": "unidade de cada"
                 },
@@ -5283,7 +6008,22 @@ const receitasData = {
                     "unit": "litro"
                 },
                 {
-                    "name": "sal, pimenta, cheiro-verde e azeite",
+                    "name": "sal",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "pimenta",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "cheiro-verde",
+                    "qty": null,
+                    "unit": "q.b."
+                },
+                {
+                    "name": "azeite",
                     "qty": null,
                     "unit": "q.b."
                 }
@@ -5333,7 +6073,12 @@ const receitasData = {
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "páprica doce e açafrão",
+                    "name": "páprica",
+                    "qty": 1,
+                    "unit": "colher (chá) de cada"
+                },
+                {
+                    "name": "açafrão",
                     "qty": 1,
                     "unit": "colher (chá) de cada"
                 },
@@ -5372,17 +6117,27 @@ const receitasData = {
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "orégano e coentro secos",
+                    "name": "orégano",
                     "qty": 1,
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "cominho e açafrão em pó",
+                    "name": "coentro seco",
                     "qty": 1,
                     "unit": "colher (sopa) de cada"
                 },
                 {
-                    "name": "páprica doce",
+                    "name": "cominho em pó",
+                    "qty": 1,
+                    "unit": "colher (sopa) de cada"
+                },
+                {
+                    "name": "cúrcuma (açafrão-da-terra)",
+                    "qty": 1,
+                    "unit": "colher (sopa) de cada"
+                },
+                {
+                    "name": "páprica",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 }
@@ -5420,7 +6175,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "cúrcuma (açafrão-da-terra) em pó",
+                    "name": "cúrcuma (açafrão-da-terra)",
                     "qty": 0.5,
                     "unit": "colher (sopa)"
                 },
@@ -5757,7 +6512,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "orégano seco",
+                    "name": "orégano",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -5821,7 +6576,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "fumaça em pó (pó de fumaça condensada)",
+                    "name": "fumaça em pó",
                     "qty": 1,
                     "unit": "colher (café)"
                 },
@@ -5978,7 +6733,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "orégano seco",
+                    "name": "orégano",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -6188,7 +6943,7 @@ const receitasData = {
                     "unit": "o suficiente para cobrir"
                 },
                 {
-                    "name": "ovos",
+                    "name": "ovo",
                     "qty": 3,
                     "unit": "unidades"
                 },
