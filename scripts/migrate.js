@@ -17,17 +17,17 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
 async function migrate() {
   console.log('Iniciando migração...');
   
-  // Importa dados do receitas.js atual removendo a declaração Javascript para obter JSON puro
   const receitasJsPath = path.resolve('receitas.js');
-  let content = fs.readFileSync(receitasJsPath, 'utf8');
-  const startIdx = content.indexOf('const receitasData =');
-  const startBrace = content.indexOf('{', startIdx);
-  const endBrace = content.lastIndexOf('}');
-  const jsonStr = content.slice(startBrace, endBrace + 1);
+  const tempJsPath = path.resolve('scripts/temp_receitas.js');
   
-  const data = JSON.parse(jsonStr);
-  const categories = data.categories;
-  const recipes = data.recipes;
+  const jsContent = fs.readFileSync(receitasJsPath, 'utf8');
+  fs.writeFileSync(tempJsPath, jsContent + '\nexport { receitasData };');
+  
+  const { receitasData } = await import('./temp_receitas.js');
+  fs.unlinkSync(tempJsPath);
+  
+  const categories = receitasData.categories;
+  const recipes = receitasData.recipes;
 
   // 1. Migrar Categorias
   let sortOrder = 0;
@@ -50,7 +50,7 @@ async function migrate() {
       image: r.image || null,
       source: r.source || null,
       tips: r.tips || null,
-      category: Array.isArray(r.category) ? r.category : [r.category]
+      category: r.category ? (Array.isArray(r.category) ? r.category : [r.category]) : []
     }, { onConflict: 'id' });
 
     if (rError) {
@@ -86,12 +86,19 @@ async function migrate() {
   }
 
   // Ajusta a sequence das receitas
-  await supabase.rpc('setval', {
+  const { error: seqError } = await supabase.rpc('setval', {
     seq: 'receitas_id_seq',
     val: Math.max(...recipes.map(r => r.id))
   });
+  if (seqError) {
+    console.warn('Aviso: Não foi possível atualizar a sequence pelo RPC (certifique-se de que a função setval(seq, val) foi criada no Supabase). Detalhe:', seqError.message);
+    console.info('Você pode atualizar manualmente executando este SQL no Supabase: SELECT setval(\'receitas_id_seq\', (SELECT MAX(id) FROM receitas));');
+  }
 
   console.log('Migração concluída com sucesso!');
 }
 
-migrate();
+migrate()
+  .catch(console.error)
+  .finally(() => process.exit(0));
+
