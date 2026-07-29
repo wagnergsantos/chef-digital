@@ -2,3 +2,6 @@ scripts/receitas.csv
 scripts/id_receitas.txt
 .superpowers/
 node_modules/
+dist/
+.env
+.env.local
