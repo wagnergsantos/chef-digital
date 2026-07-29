@@ -27,7 +27,7 @@ Claude),
  * -"refogados"(Refogados)
  * -"feijao"(Feijão)
  * -"arroz"(Arroz)
- * -"batata"(Batatas)
+ * -"batatas"(Batatas)
  * -"temperos"(Temperos)
  * 
  * ### ESTRUTURA DO JSON:*{
@@ -101,7 +101,7 @@ const receitasData = {
         "refogados": "Refogados",
         "feijao": "Feijão",
         "arroz": "Arroz",
-        "batata": "Batatas",
+        "batatas": "Batatas",
         "temperos": "Temperos"
     },
     "recipes": [
@@ -117,7 +117,7 @@ const receitasData = {
             "image": "1.png",
             "ingredients": [
                 {
-                    "name": "frango (peito em cubos)",
+                    "name": "peito de frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -177,7 +177,7 @@ const receitasData = {
             "category": [
                 "marmitas",
                 "carne",
-                "batata"
+                "batatas"
             ],
             "source": "Marmitas da Semana (Terça)",
             "emoji": "🥔",
@@ -230,7 +230,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "frango (peito desfiado)",
+                    "name": "frango desfiado (peito)",
                     "qty": 400,
                     "unit": "g"
                 },
@@ -252,7 +252,7 @@ const receitasData = {
             ],
             "steps": [
                 "Cozinhe o macarrão até ficar al dente.",
-                "Refogue o frango cozido e desfiado.",
+                "Refogue o frango (peito desfiado).",
                 "Misture o creme de leite e finalize com queijo."
             ],
             "tips": "Adicione uma pitada de noz-moscada ao molho branco para elevar o sabor.",
@@ -264,7 +264,7 @@ const receitasData = {
             "title": "Frango Assado com Batatas",
             "category": [
                 "frango",
-                "batata"
+                "batatas"
             ],
             "source": "6 Receitas de Frango (Opção 1)",
             "emoji": "🍗",
@@ -328,12 +328,12 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "frango (peito em tiras)",
+                    "name": "peito de frango em tiras",
                     "qty": 500,
                     "unit": "g"
                 },
                 {
-                    "name": "lata de milho verde",
+                    "name": "milho verde em lata",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -381,7 +381,7 @@ const receitasData = {
             "emoji": "🫑",
             "ingredients": [
                 {
-                    "name": "frango (peito em cubos)",
+                    "name": "peito de frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -539,7 +539,7 @@ const receitasData = {
             "emoji": "🥦",
             "ingredients": [
                 {
-                    "name": "frango (peito em cubos)",
+                    "name": "peito de frango em cubos",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -564,7 +564,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -598,7 +598,7 @@ const receitasData = {
         {
             "id": 14,
             "title": "Batata Rústica Assada",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 1)",
             "emoji": "🥔",
             "ingredients": [
@@ -613,7 +613,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -655,12 +655,12 @@ const receitasData = {
         {
             "id": 15,
             "title": "Purê de Batata Cremoso",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 2)",
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "batata",
+                    "name": "batatas",
                     "qty": 1,
                     "unit": "kg"
                 },
@@ -693,12 +693,12 @@ const receitasData = {
         {
             "id": 16,
             "title": "Batata Gratinada com Queijo",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 3)",
             "emoji": "🧀",
             "ingredients": [
                 {
-                    "name": "batatas fatiadas em rodelas finas",
+                    "name": "batatas em rodelas",
                     "qty": 5,
                     "unit": "unidades"
                 },
@@ -713,7 +713,7 @@ const receitasData = {
                     "unit": "caixinha"
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -741,7 +741,7 @@ const receitasData = {
         {
             "id": 17,
             "title": "Batata Frita Sequinha",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 4)",
             "emoji": "🍟",
             "ingredients": [
@@ -774,7 +774,7 @@ const receitasData = {
         {
             "id": 18,
             "title": "Batata Recheada ao Forno",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 5)",
             "emoji": "🥔",
             "ingredients": [
@@ -817,7 +817,7 @@ const receitasData = {
         {
             "id": 19,
             "title": "Batata Salteada com Ervas",
-            "category": "batata",
+            "category": "batatas",
             "source": "Receitas de Batata (Opção 6)",
             "emoji": "🌿",
             "ingredients": [
@@ -832,7 +832,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -880,7 +880,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -948,7 +948,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho amassados",
+                    "name": "alho amassado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1001,12 +1001,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "tomates picados",
+                    "name": "tomate picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1129,7 +1129,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1220,7 +1220,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1274,12 +1274,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "tomates maduros picados",
+                    "name": "tomate picado",
                     "qty": 4,
                     "unit": "unidades"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1332,7 +1332,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 2,
                     "unit": "xícaras"
                 },
@@ -1370,7 +1370,7 @@ const receitasData = {
             "steps": [
                 "Cozinhe o penne em água salgada e escorra.",
                 "Em outra panela, derreta a manteiga, adicione a farinha e mexa sem parar por 1 minuto. Vá acrescentando o leite aos poucos, mexendo para dissolver tudo e engrossar.",
-                "Tempere o creme com sal, noz-moscada e pimenta. Junte o creme de leite e o frango desfiado.",
+                "Tempere o creme com sal, noz-moscada e pimenta. Junte o creme de leite e o frango (peito desfiado).",
                 "Misture o penne ao molho, coloque em uma travessa, polvilhe a muçarela e leve ao forno rápido para gratinar."
             ],
             "tips": "Um prato reconfortante para jantares de inverno.",
@@ -1405,7 +1405,7 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "dente de alho",
+                    "name": "dentes de alho",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1448,12 +1448,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "manteiga de qualidade",
+                    "name": "manteiga",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1463,12 +1463,12 @@ const receitasData = {
                     "unit": "xícara"
                 },
                 {
-                    "name": "queijo parmesão de boa qualidade ralado",
+                    "name": "queijo parmesão ralado",
                     "qty": 0.5,
                     "unit": "xícara"
                 },
                 {
-                    "name": "salsa picada",
+                    "name": "salsinha picada",
                     "qty": null,
                     "unit": "para finalizar"
                 },
@@ -1502,7 +1502,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "abobrinha em cubos pequenos",
+                    "name": "abobrinha em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1517,12 +1517,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "brócolis cortado em buquês",
+                    "name": "brócolis em buquês",
                     "qty": 1,
                     "unit": "xícara"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1571,12 +1571,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "cebola fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1625,12 +1625,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "cebola fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1669,12 +1669,12 @@ const receitasData = {
             "emoji": "🥕",
             "ingredients": [
                 {
-                    "name": "cenoura em rodelas finas",
+                    "name": "cenoura em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "abobrinha fatiada em meia-lua",
+                    "name": "abobrinha em meia-lua",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1684,7 +1684,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "brócolis cortado em buquês",
+                    "name": "brócolis em buquês",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
@@ -1694,7 +1694,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1739,7 +1739,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1798,7 +1798,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -1843,7 +1843,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1853,7 +1853,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "folha de louro",
+                    "name": "folhas de louro",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -1866,7 +1866,7 @@ const receitasData = {
             "steps": [
                 "Deixe o feijão de molho de 4 a 6 horas. Escorra e reserve.",
                 "Na panela de pressão, aqueça o óleo e doure o alho e a cebola.",
-                "Adicione o feijão carioca, coloque água até cobrir totalmente, adicione a folha de louro e tampe.",
+                "Adicione o feijão carioca, coloque água até cobrir totalmente, adicione a folhas de louro e tampe.",
                 "Cozinhe na pressão por 20 a 25 minutos.",
                 "Tempere com sal a gosto e amasse algumas conchas de grãos nas paredes da panela para engrossar o caldo."
             ],
@@ -1902,7 +1902,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1951,7 +1951,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -1961,7 +1961,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "tomate cortado em cubos",
+                    "name": "tomate em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2043,12 +2043,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "cenoura em cubinhos",
+                    "name": "cenoura em cubos",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2097,7 +2097,7 @@ const receitasData = {
                     "unit": "xícaras (chá)"
                 },
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 1,
                     "unit": "xícara (chá)"
                 },
@@ -2107,7 +2107,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "tomate maduro picado",
+                    "name": "tomate picado",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -2126,7 +2126,7 @@ const receitasData = {
                 "Em uma panela, doure o alho e a cebola no óleo.",
                 "Adicione o arroz e refogue por 1 minuto.",
                 "Adicione o tomate picado e misture bem até amolecer.",
-                "Agregue o frango desfiado, os temperos de sua preferência e a água fervente.",
+                "Agregue o frango (peito desfiado), os temperos de sua preferência e a água fervente.",
                 "Cozinhe em fogo baixo até que seque e finalize salpicando cheiro-verde."
             ],
             "tips": "Um prato prático e muito rico em proteínas para o dia a dia!",
@@ -2185,7 +2185,7 @@ const receitasData = {
             "emoji": "🥒",
             "ingredients": [
                 {
-                    "name": "abobrinha cortada em cubos",
+                    "name": "abobrinha em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2195,17 +2195,17 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "pimentão (colorido)",
+                    "name": "pimentão colorido",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola média fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2244,12 +2244,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2259,7 +2259,7 @@ const receitasData = {
                     "unit": "unidade (opcional)"
                 },
                 {
-                    "name": "brócolis cortado pequeno",
+                    "name": "brócolis picado",
                     "qty": 0.5,
                     "unit": "xícara (chá)"
                 },
@@ -2303,32 +2303,32 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
                 {
-                    "name": "pimentão fatiado",
+                    "name": "pimentão em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "tomate maduro picado",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "batatas médias cortadas",
+                    "name": "batatas médias picadas",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "cenouras médias cortadas",
+                    "name": "cenoura picada",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -2383,7 +2383,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "pimentão fatiado em tiras",
+                    "name": "pimentão em tiras",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2427,7 +2427,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "brócolis pequeno cortado",
+                    "name": "brócolis picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2447,7 +2447,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2480,12 +2480,12 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola pequena picadinha",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2539,12 +2539,12 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "cebola grande fatiada em rodelas",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2589,7 +2589,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2654,7 +2654,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "ramo de alecrim fresco",
+                    "name": "ramo de alecrim",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2699,12 +2699,12 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "cebola bem picadinha",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2850,7 +2850,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -2868,7 +2868,7 @@ const receitasData = {
             "steps": [
                 "Cozinhe o peito de frango em água salgada e desfie.",
                 "Refogue a cebola e alho picadinhos em um fio de azeite.",
-                "Adicione o frango desfiado e tempere a gosto.",
+                "Adicione o frango (peito desfiado) e tempere a gosto.",
                 "Misture o pote inteiro de requeijão cremoso até homogeneizar e finalize com cheiro-verde."
             ],
             "tips": "Dica: Essa receita é um recheio perfeito para panquecas, tortas ou recheio de tapiocas.",
@@ -2898,7 +2898,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2929,7 +2929,7 @@ const receitasData = {
             "emoji": "🍳",
             "ingredients": [
                 {
-                    "name": "ovos frescos",
+                    "name": "ovos",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -2944,12 +2944,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "pimentão picadinho",
+                    "name": "pimentão picado",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
                 {
-                    "name": "tomate cortado em cubos",
+                    "name": "tomate em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -2981,13 +2981,13 @@ const receitasData = {
             "category": [
                 "janta",
                 "frango",
-                "batata"
+                "batatas"
             ],
             "source": "Receitas de Janta Leve (Opção 3)",
             "emoji": "🍠",
             "ingredients": [
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 2,
                     "unit": "xícaras"
                 },
@@ -3002,7 +3002,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3015,7 +3015,7 @@ const receitasData = {
             "steps": [
                 "Cozinhe os cubos de batata-doce em água fervente com uma pitada de sal até ficarem macios.",
                 "Em uma frigideira grande, doure a cebola e alho no azeite.",
-                "Adicione o frango desfiado e tempere com sal e pimenta.",
+                "Adicione o frango (peito desfiado) e tempere com sal e pimenta.",
                 "Adicione a batata-doce cozida e escorrida à frigideira e salteie delicadamente para misturar os sabores.",
                 "Finalize salpicando cheiro-verde e sirva."
             ],
@@ -3049,7 +3049,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "abobrinha pequena em cubos",
+                    "name": "abobrinha em cubos",
                     "qty": 0.5,
                     "unit": "unidade"
                 },
@@ -3096,7 +3096,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "batata em rodelas",
+                    "name": "batatas em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3106,7 +3106,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "brócolis cortado em buquês",
+                    "name": "brócolis em buquês",
                     "qty": 1,
                     "unit": "xícara"
                 },
@@ -3139,7 +3139,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "linguiça calabresa em rodelas",
+                    "name": "linguiça calabresa fatiada",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3188,7 +3188,7 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "molho de tomate de boa qualidade",
+                    "name": "molho de tomate",
                     "qty": 1,
                     "unit": "xícara"
                 },
@@ -3203,7 +3203,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3241,7 +3241,7 @@ const receitasData = {
             "emoji": "🍅",
             "ingredients": [
                 {
-                    "name": "tomates maduros picados",
+                    "name": "tomate picado",
                     "qty": 1,
                     "unit": "kg"
                 },
@@ -3251,7 +3251,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3266,7 +3266,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "folhas frescas de manjericão",
+                    "name": "folhas de manjericão fresco",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3320,7 +3320,7 @@ const receitasData = {
                 "Cozinhe em fogo baixo até obter um molho encorpado e liso.",
                 "Desligue o fogo, misture a caixinha de creme de leite e tempere a gosto com sal, pimenta-do-reino e noz-moscada."
             ],
-            "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folha de louro antes de montar o molho!",
+            "tips": "Dica clássica: Para um toque profissional de sabor, cozinhe o leite com meia cebola cravejada com uma folhas de louro antes de montar o molho!",
             "image": "75.png",
             "servings": 4
         },
@@ -3342,7 +3342,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho amassados",
+                    "name": "alho amassado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3381,7 +3381,7 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "manteiga de boa qualidade",
+                    "name": "manteiga",
                     "qty": 4,
                     "unit": "colheres (sopa)"
                 },
@@ -3406,7 +3406,7 @@ const receitasData = {
                     "unit": "a gosto"
                 },
                 {
-                    "name": "salsinha fresca picada",
+                    "name": "salsinha picada",
                     "qty": null,
                     "unit": "a gosto"
                 }
@@ -3500,7 +3500,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3526,7 +3526,7 @@ const receitasData = {
             "category": [
                 "janta",
                 "bife",
-                "batata"
+                "batatas"
             ],
             "source": "Receitas para Dias Frios (Opção 4)",
             "emoji": "🥔",
@@ -3583,7 +3583,7 @@ const receitasData = {
             "emoji": "🌽",
             "ingredients": [
                 {
-                    "name": "latas de milho verde (escorridas)",
+                    "name": "milho verde em lata (escorrido)",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3679,12 +3679,12 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola fatiada",
+                    "name": "cebola em rodelas",
                     "qty": 1,
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3712,7 +3712,7 @@ const receitasData = {
             "emoji": "🥣",
             "ingredients": [
                 {
-                    "name": "peito de frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 500,
                     "unit": "g"
                 },
@@ -3732,7 +3732,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -3770,12 +3770,12 @@ const receitasData = {
                     "unit": "xícaras"
                 },
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 2,
                     "unit": "xícaras"
                 },
                 {
-                    "name": "lata de milho verde (escorrido)",
+                    "name": "milho verde em lata (escorrido)",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -3791,7 +3791,7 @@ const receitasData = {
                 }
             ],
             "steps": [
-                "Misture o arroz cozido, o frango desfiado, o milho e o requeijão em uma travessa.",
+                "Misture o arroz cozido, o frango (peito desfiado), o milho e o requeijão em uma travessa.",
                 "Transfira a mistura para um refratário levemente untado.",
                 "Cubra totalmente com queijo ralado ou muçarela fatiada.",
                 "Leve ao forno a 200°C por 15 minutos até dourar e gratinar."
@@ -3899,7 +3899,7 @@ const receitasData = {
             "category": [
                 "almoco",
                 "peixe",
-                "batata"
+                "batatas"
             ],
             "source": "Receitas de Almoço (Card 7)",
             "emoji": "🐟",
@@ -3910,7 +3910,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "batatas fatiadas",
+                    "name": "batatas em rodelas",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -3962,7 +3962,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -4038,7 +4038,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -4056,7 +4056,7 @@ const receitasData = {
             "steps": [
                 "Espalhe a goma de tapioca peneirada cobrindo o fundo de uma frigideira média fria.",
                 "Leve ao fogo baixo até que se unam os grânulos e vire.",
-                "Recheie com o frango cozido e desfiado temperado, a fatia de queijo e orégano.",
+                "Recheie com o frango (peito desfiado) temperado, a fatia de queijo e orégano.",
                 "Dobre ao meio e espere derreter."
             ],
             "tips": "Substituto leve e sem glúten para o jantar ou lanche pós-treino rápido.",
@@ -4076,7 +4076,7 @@ const receitasData = {
                     "unit": "unidades"
                 },
                 {
-                    "name": "ovo fresco",
+                    "name": "ovo",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -4162,7 +4162,7 @@ const receitasData = {
                     "unit": "fatias"
                 },
                 {
-                    "name": "frango cozido e desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -4189,7 +4189,7 @@ const receitasData = {
             ],
             "steps": [
                 "Passe o requeijão light nas fatias de pão integral.",
-                "Monte adicionando o frango desfiado, as rodelas de tomate, alface e a cenoura ralada.",
+                "Monte adicionando o frango (peito desfiado), as rodelas de tomate, alface e a cenoura ralada.",
                 "Feche o sanduíche e sirva geladinho."
             ],
             "tips": "Lanche fresco excelente para transportar para o trabalho.",
@@ -4246,7 +4246,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "pitada de sal",
+                    "name": "sal",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -4324,7 +4324,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "frango cozido desfiado (ou atum em lata)",
+                    "name": "frango (peito desfiado) (ou atum em lata)",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -4334,7 +4334,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "tomate em cubinhos",
+                    "name": "tomate em cubos",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -4579,7 +4579,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 4,
                     "unit": "unidades"
                 },
@@ -4692,7 +4692,7 @@ const receitasData = {
                     "unit": "g"
                 },
                 {
-                    "name": "cebola grande cortada",
+                    "name": "cebola picada",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -4840,7 +4840,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dente de alho picado",
+                    "name": "alho picado",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -5023,7 +5023,7 @@ const receitasData = {
                 "Adicione o azeite e o gengibre fresco ralado fininho.",
                 "Tempere com sal e pimenta-do-reino, feche o pote e agite bem para homogeneizar."
             ],
-            "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango desfiado ou cenoura.",
+            "tips": "O adocicado cítrico da laranja harmoniza lindamente com saladas que levam frango (peito desfiado) ou cenoura.",
             "image": "123.png",
             "servings": 4
         },
@@ -5045,7 +5045,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 3,
                     "unit": "unidades"
                 },
@@ -5055,7 +5055,7 @@ const receitasData = {
                     "unit": "q.b."
                 },
                 {
-                    "name": "batatas em rodelas (cozidas por 10 min)",
+                    "name": "batatas em rodelas cozidas",
                     "qty": null,
                     "unit": "a gosto"
                 },
@@ -5103,7 +5103,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5152,7 +5152,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5263,7 +5263,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "dentes de alho picado",
+                    "name": "alho picado",
                     "qty": 2,
                     "unit": "unidades"
                 },
@@ -5308,12 +5308,12 @@ const receitasData = {
             "emoji": "🧄",
             "ingredients": [
                 {
-                    "name": "cabeças de alho limpas",
+                    "name": "cabeças de alho",
                     "qty": 3,
                     "unit": "unidades"
                 },
                 {
-                    "name": "cebola média",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -5474,17 +5474,17 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "tomate em pó (segredo umami)",
+                    "name": "tomate em pó",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "cacau 100% em pó (toque do chef)",
+                    "name": "cacau em pó 100%",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "cominho em pó (toque do chef)",
+                    "name": "cominho em pó",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
@@ -5538,17 +5538,17 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "levedura nutricional (segredo umami)",
+                    "name": "levedura nutricional",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "gengibre em pó (toque do chef)",
+                    "name": "gengibre em pó",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
                 {
-                    "name": "mostarda em pó (toque do chef)",
+                    "name": "mostarda em pó",
                     "qty": 0.5,
                     "unit": "colher (café)"
                 },
@@ -5597,7 +5597,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "sal refinado de alta qualidade",
+                    "name": "sal refinado",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
@@ -5640,7 +5640,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "lemon pepper de alta qualidade",
+                    "name": "lemon pepper",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -5650,7 +5650,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "ácido cítrico em pó (toque cítrico vibrante)",
+                    "name": "ácido cítrico em pó",
                     "qty": 1,
                     "unit": "colher (café)"
                 },
@@ -5693,7 +5693,7 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "salsa desidratada bem fina",
+                    "name": "salsa desidratada",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -5924,12 +5924,12 @@ const receitasData = {
             "image": "140.png",
             "ingredients": [
                 {
-                    "name": "alho em pó (protagonista absoluto)",
+                    "name": "alho em pó",
                     "qty": 6,
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "cebola em pó (reduzida)",
+                    "name": "cebola em pó",
                     "qty": 2,
                     "unit": "colheres (sopa)"
                 },
@@ -5998,7 +5998,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "queijo parmesão ralado microfino",
+                    "name": "queijo parmesão ralado",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
@@ -6057,7 +6057,7 @@ const receitasData = {
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "semente de coentro moída (aroma cítrico herbal)",
+                    "name": "semente de coentro moída",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
@@ -6106,17 +6106,17 @@ const receitasData = {
                     "unit": "colheres (sopa)"
                 },
                 {
-                    "name": "pimenta-do-reino moída de boa qualidade",
+                    "name": "pimenta-do-reino moída",
                     "qty": 1,
                     "unit": "colher (sopa)"
                 },
                 {
-                    "name": "açúcar mascavo (efeito dry rub)",
+                    "name": "açúcar mascavo",
                     "qty": 1,
                     "unit": "colher (chá)"
                 },
                 {
-                    "name": "mostarda em pó (efeito dry rub)",
+                    "name": "mostarda em pó",
                     "qty": 0.5,
                     "unit": "colher (chá)"
                 },
@@ -6233,7 +6233,7 @@ const receitasData = {
             "image": "145.png",
             "ingredients": [
                 {
-                    "name": "peito de frango desfiado",
+                    "name": "frango desfiado (peito)",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -6253,7 +6253,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola pequena",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
@@ -6323,7 +6323,7 @@ const receitasData = {
                     "unit": "unidade"
                 },
                 {
-                    "name": "cebola pequena",
+                    "name": "cebola",
                     "qty": 1,
                     "unit": "unidade"
                 },
