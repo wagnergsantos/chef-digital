@@ -89,7 +89,7 @@ async function loadCategories() {
     const { data: categorias, error } = await supabase
         .from('categorias')
         .select('key, label')
-        .order('order', { ascending: true });
+        .order('sort_order', { ascending: true });
 
     if (error) {
         console.error('Erro ao carregar categorias:', error);
@@ -142,21 +142,21 @@ function renderIngredients() {
 
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
-        nameInput.className = 'form-input';
+        nameInput.className = 'form-input ingredient-name';
         nameInput.placeholder = 'Nome (ex: Arroz)';
         nameInput.value = ing.name;
         nameInput.oninput = (e) => ingredients[index].name = e.target.value;
 
         const qtyInput = document.createElement('input');
         qtyInput.type = 'text';
-        qtyInput.className = 'form-input';
+        qtyInput.className = 'form-input ingredient-qty';
         qtyInput.placeholder = 'Qtd (ex: 1)';
         qtyInput.value = ing.qty;
         qtyInput.oninput = (e) => ingredients[index].qty = e.target.value;
 
         const unitInput = document.createElement('input');
         unitInput.type = 'text';
-        unitInput.className = 'form-input';
+        unitInput.className = 'form-input ingredient-unit';
         unitInput.placeholder = 'Unid (ex: xícara)';
         unitInput.value = ing.unit;
         unitInput.oninput = (e) => ingredients[index].unit = e.target.value;
@@ -187,7 +187,7 @@ function renderSteps() {
         row.style.marginBottom = '8px';
 
         const textInput = document.createElement('textarea');
-        textInput.className = 'form-input';
+        textInput.className = 'form-input step-text';
         textInput.placeholder = `Passo ${index + 1}...`;
         textInput.value = step.step_text;
         textInput.style.resize = 'vertical';
@@ -227,9 +227,22 @@ async function saveRecipe() {
     }
 
     // Prepara ingredientes validos e com ordem
-    const validIngredients = ingredients
-        .filter(i => i.name.trim())
-        .map((i, idx) => ({ ...i, ordem: idx + 1 }));
+    const ingredientRows = ingredientsList.children;
+    const validIngredients = Array.from(ingredientRows).map((row, index) => {
+        const nameInput = row.querySelector('.ingredient-name');
+        const qtyInput = row.querySelector('.ingredient-qty');
+        const unitSelect = row.querySelector('.ingredient-unit');
+        
+        const rawQty = qtyInput.value.trim();
+        const parsedQty = rawQty ? parseFloat(rawQty.replace(',', '.')) : null;
+        
+        return {
+            name: nameInput.value.trim(),
+            qty: isNaN(parsedQty) ? null : parsedQty,
+            unit: unitSelect.value.trim() || null,
+            ordem: index
+        };
+    }).filter(ing => ing.name);
 
     if (validIngredients.length === 0) {
         alert('Adicione pelo menos um ingrediente.');
@@ -237,9 +250,14 @@ async function saveRecipe() {
     }
 
     // Prepara passos validos e com ordem
-    const validSteps = steps
-        .filter(s => s.step_text.trim())
-        .map((s, idx) => ({ ...s, ordem: idx + 1 }));
+    const stepRows = stepsList.children;
+    const validSteps = Array.from(stepRows).map((row, index) => {
+        const textInput = row.querySelector('.step-text');
+        return {
+            step_text: textInput.value.trim(),
+            ordem: index
+        };
+    }).filter(s => s.step_text);
 
     if (validSteps.length === 0) {
         alert('Adicione pelo menos um passo de preparo.');
