@@ -28,6 +28,7 @@ Chaves de categorias válidas (sempre em minúsculas):
 - "arroz" (Pratos com arroz ou risotos)
 - "batatas" (Receitas com batata ou purês)
 - "temperos" (Sais funcionais, pós tipo sazon, cubos de caldo concentrados)
+- "lancheira" (Lanches para as crianças)
 
 ### ESTRUTURA EXIGIDA DO JSON:
 
