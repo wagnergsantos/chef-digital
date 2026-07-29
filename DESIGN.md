@@ -79,7 +79,7 @@ O Chef Digital combina a sensação clássica e o calor editorial de um livro de
 
 **Key Characteristics:**
 - Estilo editorial refinado com tipografia serifada clássica nos títulos principais.
-- Usabilidade rápida por meio de gavetas deslizantes (drawers) e modais para tarefas rápidas.
+- Usabilidade rápida por meio de gavetas deslizantes (drawers) e modais para tarefas rápidas (planejamento, despensa e lista de compras).
 - Densidade visual confortável, adequada para visualização a distância na cozinha.
 - Controles interativos amplos com cantos confortavelmente arredondados.
 
@@ -142,9 +142,14 @@ O Chef Digital utiliza uma elevação plana por padrão, dependendo de contornos
 - **Background:** Branco (#ffffff) com borda fina de 1px (#f1f5f9).
 - **Behavior:** Ao passar o mouse, desloca-se ligeiramente 2px para cima (transform: translateY(-2px)) e ganha sombra média (`var(--shadow-md)`).
 
-### Inputs
-- **Style:** Fundo neutro suave com borda fina, cantos arredondados de 12px (var(--radius-md)).
+### Inputs & Textareas
+- **Style:** Fundo neutro suave com borda fina, cantos arredondados de 12px (var(--radius-md)). Para a despensa, a área de texto permite múltiplas linhas para colar listas de ingredientes.
 - **Focus:** Contorno destacado na cor âmbar primária e suave transição de fundo.
+
+### Modals & Drawers
+- **Overlays:** Fundo escurecido semi-transparente que isola a tarefa (ex: edição da despensa ou receita completa).
+- **Behavior:** Entram em cena usando transições rápidas (cubic-bezier) e exibem sombras acentuadas (`var(--shadow-xl)`) para sinalizar elevação máxima.
+- **Header:** Inclui título, botões de ação rápidos (imprimir, fechar) e badges semânticos para identificação de categoria ou origem.
 
 ## 6. Do's and Don'ts
 
