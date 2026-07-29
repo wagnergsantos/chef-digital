@@ -1,7 +1,10 @@
-# Progress Ledger - Despensa Feature Implementation
+# Progress Ledger: Recipe Prompt Improvements
 
-- Task 1: complete (commits e73ecc1..4432810, review clean)
-- Task 2: pending
-- Task 3: pending
-- Task 4: pending
-- Task 5: pending
+This ledger tracks the completion of tasks under Subagent-Driven Development.
+
+- **Task 1: Create Schema Documentation**
+  - Status: Complete (commit d1fa1f38, review clean)
+- **Task 2: Create a Prompt Validation Script**
+  - Status: Complete (review clean)
+- **Task 3: Refactor the Chef Parser Prompt**
+  - Status: Pending
