@@ -1,7 +1,9 @@
-﻿import { supabase } from './supabase.js';
+import { supabase } from './supabase.js';
 
 const DB_NAME = 'ChefDigitalDB';
 const DB_VERSION = 1;
+let isProcessingQueue = false;
+const MAX_TENTATIVAS = 5;
 
 function openDB() {
   return new Promise((resolve, reject) => {
@@ -26,6 +28,7 @@ function openDB() {
 }
 
 export async function salvarCacheLocal(storeName, data) {
+  if (!Array.isArray(data)) return;
   const db = await openDB();
   return new Promise((resolve, reject) => {
     const tx = db.transaction(storeName, 'readwrite');
@@ -98,24 +101,34 @@ export async function atualizarItemFila(item) {
 }
 
 export async function processarFilaOnline() {
-  if (!navigator.onLine) return;
+  if (!navigator.onLine || isProcessingQueue) return;
+  isProcessingQueue = true;
   
-  const queue = await lerFilaSincronizacao();
-  for (const item of queue) {
-    if (item.tentativas >= 5) continue; // Pula se falhou muitas vezes (necessita intervenção manual)
-    
-    try {
-      const { data, error } = await supabase.rpc('salvar_receita', item.payload);
-      if (error) throw error;
+  try {
+    const queue = await lerFilaSincronizacao();
+    for (const item of queue) {
+      if (item.tentativas >= MAX_TENTATIVAS) continue;
       
-      // Sucesso! Remove da fila
-      await removerDaFila(item.id);
-      console.log(`Receita sincronizada com sucesso. ID gerado: ${data}`);
-    } catch (err) {
-      item.tentativas++;
-      item.ultimo_erro = err.message || err;
-      await atualizarItemFila(item);
-      console.error(`Falha ao sincronizar item ${item.id}:`, err);
+      try {
+        const { data, error } = await supabase.rpc('salvar_receita', item.payload);
+        if (error) throw error;
+        
+        await removerDaFila(item.id);
+        console.log(`Receita sincronizada com sucesso. ID gerado: ${data}`);
+      } catch (err) {
+        const errMessage = (err.message || '').toLowerCase();
+        if (errMessage.includes('fetch') || errMessage.includes('network') || errMessage.includes('failed to fetch')) {
+          console.warn('Sincronização interrompida devido a falha de conexão:', err);
+          break; // Aborda para não consumir tentativas dos outros itens da fila
+        }
+        
+        item.tentativas++;
+        item.ultimo_erro = err.message || err;
+        await atualizarItemFila(item);
+        console.error(`Falha ao sincronizar item ${item.id}:`, err);
+      }
     }
+  } finally {
+    isProcessingQueue = false;
   }
 }
