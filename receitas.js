@@ -16,6 +16,7 @@ const receitasData = {
         "arroz": "Arroz",
         "batatas": "Batatas",
         "temperos": "Temperos"
+		"lancheira": "Lancheira"
     },
     "recipes": [
         {
