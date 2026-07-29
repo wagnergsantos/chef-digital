@@ -1560,4 +1560,39 @@ window.onload = function() {
 };
 
 // Export to global scope for HTML inline handlers
+window.toggleTheme = toggleTheme;
+window.togglePlanner = togglePlanner;
+window.toggleShoppingList = toggleShoppingList;
+window.toggleFavoritesOnly = toggleFavoritesOnly;
+window.togglePantryFilterOrOpenModal = togglePantryFilterOrOpenModal;
+window.openPantryModal = openPantryModal;
+window.filterRecipes = filterRecipes;
+window.clearSearch = clearSearch;
+window.clearAllFilters = clearAllFilters;
+window.closeAllDrawers = closeAllDrawers;
+window.printPlanner = printPlanner;
+window.clearPlanner = clearPlanner;
+window.generateConsolidatedShoppingList = generateConsolidatedShoppingList;
+window.printShoppingList = printShoppingList;
+window.clearShoppingList = clearShoppingList;
+window.copyShoppingList = copyShoppingList;
+window.closeRecipeModalOnBackdrop = closeRecipeModalOnBackdrop;
+window.closeRecipeModal = closeRecipeModal;
+window.toggleWakeLock = toggleWakeLock;
+window.printRecipe = printRecipe;
+window.addCurrentRecipeToShoppingList = addCurrentRecipeToShoppingList;
+window.openDayPickerPopover = openDayPickerPopover;
+window.changePortions = changePortions;
+window.closePantryModalOnBackdrop = closePantryModalOnBackdrop;
+window.closePantryModal = closePantryModal;
+window.clearPantry = clearPantry;
+window.saveAndFilterPantry = saveAndFilterPantry;
+window.selectCategory = selectCategory;
+window.toggleFavorite = toggleFavorite;
+window.handleDayPickerChoice = handleDayPickerChoice;
+window.openRecipeModal = openRecipeModal;
+window.changePlannerRecipePortions = changePlannerRecipePortions;
+window.removeRecipeFromShoppingList = removeRecipeFromShoppingList;
+window.toggleShoppingItemCheck = toggleShoppingItemCheck;
+window.toggleRecipeOnDay = toggleRecipeOnDay;
 

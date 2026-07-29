@@ -12,7 +12,11 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.svg" type="image/svg+xml">
     <meta name="theme-color" id="theme-color-meta" content="#fafaf9">
-    <!-- Inline Script to prevent Theme Flash on load -->
+    <!-- Inline Script to prevent Theme Flash on load
+         Note: This script is deliberately kept inline in the <head> rather than moved to a module
+         to ensure it runs synchronously before the DOM renders. This prevents the page from flashing
+         white/wrong color before the CSS and theme settings are fully applied.
+    -->
     <script>
         (function() {
             const THEME_COLORS = { light: '#fafaf9', dark: '#0c0a09' };
