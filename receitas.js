@@ -89,7 +89,7 @@ const receitasData = {
             "title": "Carne Moída Cremosa com Purê",
             "category": [
                 "marmitas",
-                "carne",
+                "bife",
                 "batatas"
             ],
             "source": "Marmitas da Semana (Terça)",

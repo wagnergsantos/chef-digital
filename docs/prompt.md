@@ -26,7 +26,7 @@ Chaves de categorias válidas (sempre em minúsculas):
 - "refogados" (Legumes ou carnes refogadas de frigideira)
 - "feijao" (Pratos com feijão ou tropeiros)
 - "arroz" (Pratos com arroz ou risotos)
-- "batata" (Receitas com batata ou purês)
+- "batatas" (Receitas com batata ou purês)
 - "temperos" (Sais funcionais, pós tipo sazon, cubos de caldo concentrados)
 
 ### ESTRUTURA EXIGIDA DO JSON:
