@@ -1183,6 +1183,14 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
                 modalSourceBadge.innerText = '';
                 modalSourceBadge.style.display = 'none';
             }
+            const modalServingsBadge = document.getElementById('modal-servings-badge');
+            if (recipe.servings) {
+                modalServingsBadge.innerText = `🍽️ Rende: ${recipe.servings}`;
+                modalServingsBadge.style.display = 'inline-block';
+            } else {
+                modalServingsBadge.innerText = '';
+                modalServingsBadge.style.display = 'none';
+            }
 
             // Adjust modal planner icon button state
             updateModalPlannerButtonState(id);

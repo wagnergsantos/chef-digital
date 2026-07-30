@@ -271,6 +271,7 @@ async function saveRecipe() {
         p_image: document.getElementById('recipe-image').value.trim() || null,
         p_source: document.getElementById('recipe-source').value.trim() || null,
         p_tips: document.getElementById('recipe-tips').value.trim() || null,
+        p_servings: document.getElementById('recipe-servings').value.trim() || null,
         p_category: selectedCategories,
         p_ingredientes: validIngredients,
         p_passos: validSteps
@@ -310,6 +311,7 @@ function resetForm() {
     document.getElementById('recipe-emoji').value = '🍲';
     document.getElementById('recipe-image').value = '';
     document.getElementById('recipe-source').value = '';
+    document.getElementById('recipe-servings').value = '';
     document.getElementById('recipe-tips').value = '';
     
     const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
@@ -335,6 +337,7 @@ function importFromGemini() {
         if (data.emoji) document.getElementById('recipe-emoji').value = data.emoji;
         if (data.image) document.getElementById('recipe-image').value = data.image;
         if (data.source) document.getElementById('recipe-source').value = data.source;
+        if (data.servings) document.getElementById('recipe-servings').value = data.servings;
         if (data.tips) document.getElementById('recipe-tips').value = data.tips;
 
         const categoriesList = data.category || data.categories || [];
