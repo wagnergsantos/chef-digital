@@ -84,9 +84,9 @@
             margin-top: 24px;
         }
     </style>
-  <script type="module" crossorigin src="/receitas/assets/admin-CONU_hWs.js"></script>
+  <script type="module" crossorigin src="/receitas/assets/admin-xJx6d0Q1.js"></script>
   <link rel="modulepreload" crossorigin href="/receitas/assets/cache-DLWodOhB.js">
-  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-BRllFmYl.css">
+  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-BTaTBLFj.css">
 <link rel="manifest" href="/receitas/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/receitas/registerSW.js"></script></head>
 <body class="bg-neutral-bg" style="background-color: var(--bg-main);">
     <!-- Botão para voltar ao livro de receitas -->
@@ -118,7 +118,7 @@
         <!-- Gemini Import Box -->
         <div class="form-group" style="background: var(--bg-light); border: 1px dashed var(--primary-color); border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;">
             <label class="form-label" style="color: var(--primary-hover); font-weight: bold; display: flex; align-items: center; gap: 6px;">🪄 Importar JSON do Gemini</label>
-            <textarea id="gemini-json-input" class="form-input" placeholder="Cole o JSON de receita gerado pelo seu Gemini Gem aqui..." rows="3" style="font-family: monospace; font-size: 13px; resize: vertical; margin-bottom: 8px;"></textarea>
+            <textarea id="gemini-json-input" class="form-input" placeholder="Cole o JSON de receita gerado pelo seu Gemini Gem aqui..." rows="3" style="font-family: monospace; font-size: var(--text-sm); resize: vertical; margin-bottom: 8px;"></textarea>
             <button id="btn-import-gemini" class="admin-btn admin-btn-secondary" style="width: 100%; border-color: var(--primary-color); color: var(--primary-hover); background: var(--bg-card); padding: 10px;">Preencher Formulário Automaticamente</button>
         </div>
 
@@ -144,9 +144,14 @@
                 <input type="text" id="recipe-source" class="form-input" placeholder="Ex: Internet / Livro Vó">
             </div>
             <div class="form-group">
-                <label class="form-label" for="recipe-tips">Dica rápida (opcional)</label>
-                <input type="text" id="recipe-tips" class="form-input" placeholder="Ex: Sirva bem quente com parmesão">
+                <label class="form-label" for="recipe-servings">Rendimento (opcional)</label>
+                <input type="text" id="recipe-servings" class="form-input" placeholder="Ex: 4 porções">
             </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="recipe-tips">Dica rápida (opcional)</label>
+            <input type="text" id="recipe-tips" class="form-input" placeholder="Ex: Sirva bem quente com parmesão">
         </div>
 
         <div class="form-group">
