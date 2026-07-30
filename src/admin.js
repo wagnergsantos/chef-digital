@@ -337,15 +337,14 @@ function importFromGemini() {
         if (data.source) document.getElementById('recipe-source').value = data.source;
         if (data.tips) document.getElementById('recipe-tips').value = data.tips;
 
-        if (Array.isArray(data.category)) {
+        const categoriesList = data.category || data.categories || [];
+        const targetCategories = (Array.isArray(categoriesList) ? categoriesList : [categoriesList])
+            .map(c => String(c).trim().toLowerCase());
+
+        if (targetCategories.length > 0) {
             const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(cb => {
-                cb.checked = data.category.includes(cb.value);
-            });
-        } else if (typeof data.category === 'string') {
-            const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => {
-                cb.checked = cb.value === data.category;
+                cb.checked = targetCategories.includes(cb.value.toLowerCase());
             });
         }
 
