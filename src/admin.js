@@ -60,11 +60,17 @@ function updateUI() {
     }
 }
 
-async function handleLogin() {
+async function handleLogin(e) {
+    if (e) e.preventDefault();
+    const errorContainer = document.getElementById('login-error');
+    errorContainer.style.display = 'none';
+    
     const email = emailInput.value.trim();
     const password = passwordInput.value;
+    
     if (!email || !password) {
-        alert('Por favor, preencha e-mail e senha.');
+        errorContainer.textContent = 'Por favor, preencha e-mail e senha.';
+        errorContainer.style.display = 'block';
         return;
     }
     btnLogin.textContent = 'Entrando...';
@@ -76,7 +82,8 @@ async function handleLogin() {
     btnLogin.disabled = false;
 
     if (error) {
-        alert('Erro ao fazer login: ' + error.message);
+        errorContainer.textContent = 'E-mail ou senha incorretos.';
+        errorContainer.style.display = 'block';
     }
 }
 
@@ -99,9 +106,7 @@ async function loadCategories() {
     categoriesContainer.innerHTML = '';
     categorias.forEach(cat => {
         const div = document.createElement('div');
-        div.style.display = 'flex';
-        div.style.alignItems = 'center';
-        div.style.gap = '4px';
+        div.className = 'admin-category-item';
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -111,9 +116,7 @@ async function loadCategories() {
         const label = document.createElement('label');
         label.htmlFor = `cat-${cat.key}`;
         label.textContent = cat.label;
-        label.style.fontFamily = "'Inter', sans-serif";
-        label.style.fontSize = '14px';
-        label.style.color = 'var(--text-main)';
+        label.className = 'admin-category-label';
 
         div.appendChild(checkbox);
         div.appendChild(label);
@@ -127,6 +130,13 @@ function createDeleteButton(onClick) {
     btn.textContent = 'X';
     btn.className = 'admin-btn admin-btn-danger';
     btn.type = 'button';
+    if (onClick.name === 'deleteIngredient') {
+        btn.setAttribute('aria-label', 'Remover ingrediente');
+    } else if (onClick.name === 'deleteStep') {
+        btn.setAttribute('aria-label', 'Remover passo');
+    } else {
+        btn.setAttribute('aria-label', 'Remover');
+    }
     btn.onclick = onClick;
     return btn;
 }
@@ -135,16 +145,15 @@ function renderIngredients() {
     ingredientsList.innerHTML = '';
     ingredients.forEach((ing, index) => {
         const row = document.createElement('div');
-        row.style.display = 'grid';
-        row.style.gridTemplateColumns = '2fr 1fr 1fr auto';
-        row.style.gap = '8px';
-        row.style.marginBottom = '8px';
+        row.className = 'admin-ingredient-row';
 
         const nameInput = document.createElement('input');
         nameInput.type = 'text';
         nameInput.className = 'form-input ingredient-name';
         nameInput.placeholder = 'Nome (ex: Arroz)';
+        nameInput.required = true;
         nameInput.value = ing.name;
+        nameInput.setAttribute('aria-label', `Nome do ingrediente ${index + 1}`);
         nameInput.oninput = (e) => ingredients[index].name = e.target.value;
 
         const qtyInput = document.createElement('input');
@@ -152,6 +161,7 @@ function renderIngredients() {
         qtyInput.className = 'form-input ingredient-qty';
         qtyInput.placeholder = 'Qtd (ex: 1)';
         qtyInput.value = ing.qty;
+        qtyInput.setAttribute('aria-label', `Quantidade do ingrediente ${index + 1}`);
         qtyInput.oninput = (e) => ingredients[index].qty = e.target.value;
 
         const unitInput = document.createElement('input');
@@ -159,15 +169,18 @@ function renderIngredients() {
         unitInput.className = 'form-input ingredient-unit';
         unitInput.placeholder = 'Unid (ex: xícara)';
         unitInput.value = ing.unit;
+        unitInput.setAttribute('aria-label', `Unidade do ingrediente ${index + 1}`);
         unitInput.oninput = (e) => ingredients[index].unit = e.target.value;
 
         row.appendChild(nameInput);
         row.appendChild(qtyInput);
         row.appendChild(unitInput);
-        row.appendChild(createDeleteButton(() => {
+        
+        const deleteIngredient = () => {
             ingredients.splice(index, 1);
             renderIngredients();
-        }));
+        };
+        row.appendChild(createDeleteButton(deleteIngredient));
 
         ingredientsList.appendChild(row);
     });
@@ -182,23 +195,24 @@ function renderSteps() {
     stepsList.innerHTML = '';
     steps.forEach((step, index) => {
         const row = document.createElement('div');
-        row.style.display = 'flex';
-        row.style.gap = '8px';
-        row.style.marginBottom = '8px';
+        row.className = 'admin-step-row';
 
         const textInput = document.createElement('textarea');
-        textInput.className = 'form-input step-text';
+        textInput.className = 'form-input step-text admin-textarea';
         textInput.placeholder = `Passo ${index + 1}...`;
+        textInput.required = true;
         textInput.value = step.step_text;
-        textInput.style.resize = 'vertical';
         textInput.rows = 2;
+        textInput.setAttribute('aria-label', `Texto do passo ${index + 1}`);
         textInput.oninput = (e) => steps[index].step_text = e.target.value;
 
         row.appendChild(textInput);
-        row.appendChild(createDeleteButton(() => {
+
+        const deleteStep = () => {
             steps.splice(index, 1);
             renderSteps();
-        }));
+        };
+        row.appendChild(createDeleteButton(deleteStep));
 
         stepsList.appendChild(row);
     });
@@ -210,10 +224,15 @@ function addStep() {
 }
 
 // Save Recipe
-async function saveRecipe() {
+async function saveRecipe(e) {
+    if (e) e.preventDefault();
+    const errorContainer = document.getElementById('recipe-error');
+    errorContainer.style.display = 'none';
+    
     const title = document.getElementById('recipe-title').value.trim();
     if (!title) {
-        alert('O título da receita é obrigatório.');
+        errorContainer.textContent = 'O título da receita é obrigatório.';
+        errorContainer.style.display = 'block';
         return;
     }
 
@@ -222,7 +241,8 @@ async function saveRecipe() {
     const selectedCategories = Array.from(checkboxes).map(cb => cb.value);
 
     if (selectedCategories.length === 0) {
-        alert('Selecione pelo menos uma categoria.');
+        errorContainer.textContent = 'Selecione pelo menos uma categoria.';
+        errorContainer.style.display = 'block';
         return;
     }
 
@@ -245,7 +265,8 @@ async function saveRecipe() {
     }).filter(ing => ing.name);
 
     if (validIngredients.length === 0) {
-        alert('Adicione pelo menos um ingrediente.');
+        errorContainer.textContent = 'Adicione pelo menos um ingrediente.';
+        errorContainer.style.display = 'block';
         return;
     }
 
@@ -260,7 +281,8 @@ async function saveRecipe() {
     }).filter(s => s.step_text);
 
     if (validSteps.length === 0) {
-        alert('Adicione pelo menos um passo de preparo.');
+        errorContainer.textContent = 'Adicione pelo menos um passo de preparo.';
+        errorContainer.style.display = 'block';
         return;
     }
 
@@ -287,23 +309,25 @@ async function saveRecipe() {
             resetForm();
         } catch (error) {
             console.error('Erro ao salvar no cache:', error);
-            alert('Erro ao salvar localmente: ' + error.message);
+            errorContainer.textContent = 'Erro ao salvar localmente: ' + error.message;
+            errorContainer.style.display = 'block';
         }
     } else {
         try {
             const { data, error } = await supabase.rpc('salvar_receita', payload);
             if (error) throw error;
             
-            alert('Receita salva com sucesso! ID: ' + data);
+            alert('Receita salva com sucesso!');
             resetForm();
         } catch (error) {
             console.error('Erro ao salvar no Supabase:', error);
-            alert('Erro ao salvar receita: ' + error.message);
+            errorContainer.textContent = 'Erro ao salvar receita: ' + error.message;
+            errorContainer.style.display = 'block';
         }
     }
 
     btnSave.disabled = false;
-    btnSave.textContent = 'Salvar Receita no Supabase';
+    btnSave.textContent = 'Publicar Receita';
 }
 
 function resetForm() {
@@ -376,21 +400,16 @@ function importFromGemini() {
 }
 
 function setupEventListeners() {
-    btnLogin.addEventListener('click', handleLogin);
+    document.getElementById('login-container').addEventListener('submit', handleLogin);
     btnLogout.addEventListener('click', handleLogout);
     btnAddIngredient.addEventListener('click', addIngredient);
     btnAddStep.addEventListener('click', addStep);
-    btnSave.addEventListener('click', saveRecipe);
+    document.getElementById('admin-panel').addEventListener('submit', saveRecipe);
     
     const btnImportGemini = document.getElementById('btn-import-gemini');
     if (btnImportGemini) {
         btnImportGemini.addEventListener('click', importFromGemini);
     }
-    
-    // Login on Enter key
-    passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleLogin();
-    });
 }
 
 init();
