@@ -71,6 +71,27 @@ SUPABASE_URL="https://wwggutgdluiaaquzvmau.supabase.co" SUPABASE_SERVICE_ROLE_KE
 
 ---
 
+## 🔑 Criando seu Usuário Administrador
+
+Para acessar o painel administrativo (`admin.html`) e salvar novas receitas, você precisa criar um login de acesso e dar a permissão de administrador no banco de dados.
+
+### 1. Criar o Usuário no Supabase Auth:
+1. No painel do seu projeto no Supabase, vá em **Authentication** (ícone de chave 🔑).
+2. Clique em **Add user** -> **Create user**.
+3. Insira o E-mail e Senha que deseja usar para o acesso do painel.
+4. Desmarque a opção **"Send email confirmation"** (para o acesso ser ativado imediatamente).
+5. Clique em **Create user** e copie o **User ID (UUID)** gerado para esse usuário na lista (ex: `abc123de-45f6-...`).
+
+### 2. Habilitar a permissão de Admin:
+1. No menu lateral do Supabase, vá em **Table Editor** (editor de tabelas) e abra a tabela **`admins`**.
+2. Clique em **Insert row** (Inserir linha).
+3. No campo **`user_id`**, cole o **User ID (UUID)** que você copiou no passo anterior.
+4. Clique em **Save**.
+
+Pronto! Agora você já pode fazer login na tela de administração (`admin.html`) usando as credenciais criadas.
+
+---
+
 ## 🗄️ Conectando com Ferramentas Desktop (DBeaver / TablePlus)
 
 Como o Supabase utiliza o banco de dados relacional **PostgreSQL**, você pode gerenciar sua estrutura e visualizar seus dados diretamente do seu computador utilizando qualquer programa de administração SQL tradicional.
