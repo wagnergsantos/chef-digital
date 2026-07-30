@@ -3,131 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Chef Digital</title>
-    <style>
-        /* Estilos específicos para o painel administrativo usando as variáveis de estilos.css */
-        .admin-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 24px;
-            margin-top: 40px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-label {
-            display: block;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 8px;
-        }
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-dark);
-            border-radius: var(--radius-md);
-            background: var(--bg-card);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            transition: var(--transition-fast);
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px var(--primary-light-border);
-        }
-        .admin-btn {
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            transition: var(--transition-fast);
-        }
-        .admin-btn-primary {
-            background: var(--primary-color);
-            color: var(--text-white);
-            border: none;
-            border-radius: var(--radius-md);
-            padding: 12px 24px;
-        }
-        .admin-btn-primary:hover {
-            background: var(--primary-hover);
-        }
-        .admin-btn-secondary {
-            background: var(--bg-light);
-            color: var(--text-main);
-            border: 1px solid var(--border-dark);
-            border-radius: var(--radius-md);
-            padding: 8px 16px;
-        }
-        .admin-btn-secondary:hover {
-            background: var(--border-color);
-        }
-        .admin-btn-danger {
-            background: var(--danger-color);
-            color: var(--text-white);
-            border: none;
-            border-radius: var(--radius-md);
-            padding: 8px 12px;
-        }
-        .admin-btn-danger:hover {
-            background: var(--danger-hover);
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-main);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-            margin-top: 24px;
-        }
-    </style>
-  <script type="module" crossorigin src="/receitas/assets/admin-xJx6d0Q1.js"></script>
+    <title>Painel Admin - Chef Digital</title>
+  <script type="module" crossorigin src="/receitas/assets/admin-ChRmTw2Y.js"></script>
   <link rel="modulepreload" crossorigin href="/receitas/assets/cache-DLWodOhB.js">
-  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-BTaTBLFj.css">
+  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-VAktU4pk.css">
 <link rel="manifest" href="/receitas/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/receitas/registerSW.js"></script></head>
-<body class="bg-neutral-bg" style="background-color: var(--bg-main);">
+<body class="bg-neutral-bg">
     <!-- Botão para voltar ao livro de receitas -->
     <div class="max-w-2xl mx-auto mt-6 px-4">
-        <a href="index.html" class="admin-btn admin-btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+        <a href="index.html" class="admin-btn admin-btn-secondary admin-btn-link">
             ← Voltar ao Livro de Receitas
         </a>
     </div>
 
-    <div id="login-container" class="max-w-md mx-auto admin-card" style="margin-top: 100px;">
+    <form id="login-container" class="max-w-md mx-auto admin-card admin-login-container">
         <h2 class="section-title" style="margin-top: 0;">Acesso Administrativo</h2>
         <div class="form-group">
             <label class="form-label" for="email">E-mail</label>
-            <input type="email" id="email" class="form-input" placeholder="seu-email@exemplo.com">
+            <input type="email" id="email" class="form-input" placeholder="seu-email@exemplo.com" required>
         </div>
         <div class="form-group">
             <label class="form-label" for="password">Senha</label>
-            <input type="password" id="password" class="form-input" placeholder="••••••••">
+            <input type="password" id="password" class="form-input" placeholder="••••••••" required>
         </div>
-        <button id="btn-login" class="admin-btn admin-btn-primary w-full" style="width: 100%; padding: 14px;">Entrar</button>
-    </div>
+        <div id="login-error" class="admin-error-box"></div>
+        <button type="submit" id="btn-login" class="admin-btn admin-btn-primary admin-btn-full">Entrar</button>
+    </form>
 
-    <div id="admin-panel" class="hidden max-w-2xl mx-auto admin-card mb-20">
-        <div class="flex justify-between items-center mb-6" style="display: flex; justify-content: space-between; align-items: center;">
+    <form id="admin-panel" class="hidden max-w-2xl mx-auto admin-card mb-20">
+        <div class="admin-header-flex mb-6">
             <h2 class="section-title" style="margin: 0; border: none; padding: 0;">Painel de Receitas</h2>
-            <button id="btn-logout" class="admin-btn admin-btn-secondary">Sair</button>
+            <button type="button" id="btn-logout" class="admin-btn admin-btn-secondary">Sair</button>
         </div>
 
         <!-- Gemini Import Box -->
-        <div class="form-group" style="background: var(--bg-light); border: 1px dashed var(--primary-color); border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;">
-            <label class="form-label" style="color: var(--primary-hover); font-weight: bold; display: flex; align-items: center; gap: 6px;">🪄 Importar JSON do Gemini</label>
-            <textarea id="gemini-json-input" class="form-input" placeholder="Cole o JSON de receita gerado pelo seu Gemini Gem aqui..." rows="3" style="font-family: monospace; font-size: var(--text-sm); resize: vertical; margin-bottom: 8px;"></textarea>
-            <button id="btn-import-gemini" class="admin-btn admin-btn-secondary" style="width: 100%; border-color: var(--primary-color); color: var(--primary-hover); background: var(--bg-card); padding: 10px;">Preencher Formulário Automaticamente</button>
+        <div class="form-group admin-gemini-box">
+            <label class="form-label admin-gemini-label" for="gemini-json-input">🪄 Importação Inteligente (via IA)</label>
+            <textarea id="gemini-json-input" class="form-input admin-gemini-textarea" placeholder="Cole aqui o código JSON gerado pelo seu assistente..." rows="3"></textarea>
+            <button type="button" id="btn-import-gemini" class="admin-btn admin-btn-secondary admin-gemini-btn">Preencher Formulário Automaticamente</button>
         </div>
 
         <div class="form-group">
             <label class="form-label" for="recipe-title">Título da Receita</label>
-            <input type="text" id="recipe-title" class="form-input" placeholder="Ex: Risoto de Alho Poró">
+            <input type="text" id="recipe-title" class="form-input" placeholder="Ex: Risoto de Alho Poró" required>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="admin-form-grid-2">
             <div class="form-group">
                 <label class="form-label" for="recipe-emoji">Emoji</label>
                 <input type="text" id="recipe-emoji" class="form-input" placeholder="🍲">
@@ -138,7 +59,7 @@
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="admin-form-grid-2">
             <div class="form-group">
                 <label class="form-label" for="recipe-source">Fonte / Origem (opcional)</label>
                 <input type="text" id="recipe-source" class="form-input" placeholder="Ex: Internet / Livro Vó">
@@ -156,23 +77,24 @@
 
         <div class="form-group">
             <label class="form-label">Categorias</label>
-            <div id="categories-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-top: 8px;">
+            <div id="categories-container" class="admin-categories-grid">
                 <!-- Carregado via JS -->
             </div>
         </div>
         
         <h3 class="section-title">Ingredientes</h3>
         <div id="ingredients-list" class="mb-4"></div>
-        <button id="btn-add-ingredient" class="admin-btn admin-btn-secondary">+ Adicionar Ingrediente</button>
+        <button type="button" id="btn-add-ingredient" class="admin-btn admin-btn-secondary">+ Adicionar Ingrediente</button>
 
         <h3 class="section-title">Modo de Preparo</h3>
         <div id="steps-list" class="mb-4"></div>
-        <button id="btn-add-step" class="admin-btn admin-btn-secondary">+ Adicionar Passo</button>
+        <button type="button" id="btn-add-step" class="admin-btn admin-btn-secondary">+ Adicionar Passo</button>
 
-        <div style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <button id="btn-save" class="admin-btn admin-btn-primary" style="width: 100%; padding: 14px; background: var(--success-color);">Salvar Receita no Supabase</button>
+        <div class="form-group" style="margin-top: 32px;">
+            <div id="recipe-error" class="admin-error-box"></div>
+            <button type="submit" id="btn-save" class="admin-btn admin-btn-primary admin-btn-full admin-btn-success">Publicar Receita</button>
         </div>
-    </div>
-
+    </form>
+
 </body>
 </html>

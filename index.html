@@ -35,9 +35,9 @@
         })();
     </script>
 
-  <script type="module" crossorigin src="/receitas/assets/main-GCN71Rxk.js"></script>
+  <script type="module" crossorigin src="/receitas/assets/main-CBbxuAn9.js"></script>
   <link rel="modulepreload" crossorigin href="/receitas/assets/cache-DLWodOhB.js">
-  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-BTaTBLFj.css">
+  <link rel="stylesheet" crossorigin href="/receitas/assets/admin-VAktU4pk.css">
 <link rel="manifest" href="/receitas/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/receitas/registerSW.js"></script></head>
 <body>
 
@@ -59,34 +59,7 @@
 
             <!-- Header Controls -->
             <div class="header-controls">
-                <!-- Theme Toggle Button -->
-                <button id="theme-toggle" onclick="toggleTheme()" class="control-btn btn-theme" title="Alternar Tema" aria-label="Alternar tema de cores">
-                </button>
-
-                <!-- Planner Trigger Button -->
-                <button onclick="togglePlanner()" class="control-btn btn-planner" title="Menu Semanal" aria-label="Planejador de menu semanal">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span id="planner-badge" class="btn-badge hidden">0</span>
-                </button>
-
-                <!-- Shopping List Trigger Button -->
-                <button onclick="toggleShoppingList()" class="control-btn btn-shopping" title="Lista de Compras" aria-label="Lista de compras">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    <span id="shopping-list-badge" class="btn-badge hidden">0</span>
-                </button>
-
-                <!-- Favorites Only Toggle -->
-                <button id="favs-toggle" onclick="toggleFavoritesOnly()" class="control-btn btn-favorites" title="Visualizar Favoritos" aria-label="Filtrar por receitas favoritas">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                </button>
-
-                <!-- Pantry Toggle Button -->
+                <!-- Pantry Toggle Button (Grid Filter) -->
                 <div class="pantry-toggle-wrapper">
                     <button id="pantry-toggle" onclick="togglePantryFilterOrOpenModal(event)" class="control-btn btn-pantry" title="Filtrar por Despensa" aria-label="Filtrar por ingredientes da despensa">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -99,6 +72,33 @@
                         </svg>
                     </button>
                 </div>
+
+                <!-- Favorites Only Toggle (Grid Filter) -->
+                <button id="favs-toggle" onclick="toggleFavoritesOnly()" class="control-btn btn-favorites" title="Visualizar Favoritos" aria-label="Filtrar por receitas favoritas">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                </button>
+
+                <!-- Planner Trigger Button (App Module) -->
+                <button onclick="togglePlanner()" class="control-btn btn-planner" title="Menu Semanal" aria-label="Planejador de menu semanal">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span id="planner-badge" class="btn-badge hidden">0</span>
+                </button>
+
+                <!-- Shopping List Trigger Button (App Module) -->
+                <button onclick="toggleShoppingList()" class="control-btn btn-shopping" title="Lista de Compras" aria-label="Lista de compras">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span id="shopping-list-badge" class="btn-badge hidden">0</span>
+                </button>
+
+                <!-- Theme Toggle Button (System Setting) -->
+                <button id="theme-toggle" onclick="toggleTheme()" class="control-btn btn-theme" title="Alternar Tema" aria-label="Alternar tema de cores">
+                </button>
             </div>
         </div>
 
