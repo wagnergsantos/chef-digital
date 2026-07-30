@@ -1,5 +1,9 @@
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import { resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   base: '/receitas/',
@@ -28,5 +32,13 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,png,svg,ico}']
       }
     })
-  ]
+  ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        admin: resolve(__dirname, 'admin.html')
+      }
+    }
+  }
 });
