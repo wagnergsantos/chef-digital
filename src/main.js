@@ -1530,6 +1530,7 @@ async function inicializarApp() {
         emoji: r.emoji,
         image: r.image,
         tips: r.tips,
+        servings: r.servings,
         ingredients: (r.ingredientes || []).sort((a, b) => a.ordem - b.ordem).map(ing => ({
           name: ing.name,
           qty: ing.qty !== null ? parseFloat(ing.qty) : null,
