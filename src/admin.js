@@ -321,12 +321,69 @@ function resetForm() {
     addStep();
 }
 
+function importFromGemini() {
+    const rawJson = document.getElementById('gemini-json-input').value.trim();
+    if (!rawJson) {
+        alert('Por favor, cole o JSON gerado pelo Gemini.');
+        return;
+    }
+
+    try {
+        const data = JSON.parse(rawJson);
+
+        if (data.title) document.getElementById('recipe-title').value = data.title;
+        if (data.emoji) document.getElementById('recipe-emoji').value = data.emoji;
+        if (data.image) document.getElementById('recipe-image').value = data.image;
+        if (data.source) document.getElementById('recipe-source').value = data.source;
+        if (data.tips) document.getElementById('recipe-tips').value = data.tips;
+
+        if (Array.isArray(data.category)) {
+            const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = data.category.includes(cb.value);
+            });
+        } else if (typeof data.category === 'string') {
+            const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.checked = cb.value === data.category;
+            });
+        }
+
+        if (Array.isArray(data.ingredients)) {
+            ingredients = data.ingredients.map(ing => ({
+                name: ing.name || '',
+                qty: ing.qty !== undefined && ing.qty !== null ? String(ing.qty) : '',
+                unit: ing.unit || ''
+            }));
+            renderIngredients();
+        }
+
+        if (Array.isArray(data.steps)) {
+            steps = data.steps.map(step => ({
+                step_text: typeof step === 'string' ? step : (step.step_text || '')
+            }));
+            renderSteps();
+        }
+
+        // Limpa a caixa de entrada após importar com sucesso
+        document.getElementById('gemini-json-input').value = '';
+        alert('Dados da receita importados com sucesso! Revise e clique em Salvar.');
+    } catch (err) {
+        alert('Erro ao processar JSON do Gemini: ' + err.message);
+    }
+}
+
 function setupEventListeners() {
     btnLogin.addEventListener('click', handleLogin);
     btnLogout.addEventListener('click', handleLogout);
     btnAddIngredient.addEventListener('click', addIngredient);
     btnAddStep.addEventListener('click', addStep);
     btnSave.addEventListener('click', saveRecipe);
+    
+    const btnImportGemini = document.getElementById('btn-import-gemini');
+    if (btnImportGemini) {
+        btnImportGemini.addEventListener('click', importFromGemini);
+    }
     
     // Login on Enter key
     passwordInput.addEventListener('keypress', (e) => {
