@@ -1,7 +1,9 @@
-function safeJsonParse(key, fallback) {
+export function safeJsonParse(key, fallback) {
     try {
         const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : fallback;
+        if (!item) return fallback;
+        const parsed = JSON.parse(item);
+        return parsed ?? fallback;
     } catch {
         return fallback;
     }

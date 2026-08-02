@@ -1564,11 +1564,6 @@ async function inicializarApp() {
 }
 
 window.onload = function() {
-    try {
-        state.pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
-    } catch (e) {
-        state.pantryItems = [];
-    }
     updatePantryEditBtnVisibility();
     initTheme();
     inicializarApp();
