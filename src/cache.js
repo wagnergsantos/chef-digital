@@ -110,9 +110,10 @@ export async function processarFilaOnline() {
       if (item.tentativas >= MAX_TENTATIVAS) continue;
       
       try {
+        let syncedId = null;
         const { data, error } = await supabase.rpc('salvar_receita', item.payload);
         if (error) {
-          // Se a RPC não existir no Supabase, tenta upsert direto
+          // Se a RPC não existir no Supabase, tenta upsert direto nas tabelas
           if (error.code === 'PGRST202' || (error.message && (error.message.includes('function') || error.message.includes('not found')))) {
             const p = item.payload;
             const recipeData = {
@@ -128,39 +129,50 @@ export async function processarFilaOnline() {
 
             const { data: recData, error: recErr } = await supabase.from('receitas').upsert(recipeData).select().single();
             if (recErr) throw recErr;
+            if (!recData) throw new Error('Falha ao obter dados da receita salva no Supabase.');
 
-            const recId = recData.id;
+            syncedId = recData.id;
 
-            if (Array.isArray(p.p_ingredientes) && p.p_ingredientes.length > 0) {
-              await supabase.from('ingredientes').delete().eq('receita_id', recId);
-              const ingRows = p.p_ingredientes.map(ing => ({
-                receita_id: recId,
-                name: ing.name,
-                qty: ing.qty,
-                unit: ing.unit,
-                ordem: ing.ordem
-              }));
-              const { error: ingErr } = await supabase.from('ingredientes').insert(ingRows);
-              if (ingErr) throw ingErr;
+            if (Array.isArray(p.p_ingredientes)) {
+              const { error: delIngErr } = await supabase.from('ingredientes').delete().eq('receita_id', syncedId);
+              if (delIngErr) throw delIngErr;
+
+              if (p.p_ingredientes.length > 0) {
+                const ingRows = p.p_ingredientes.map(ing => ({
+                  receita_id: syncedId,
+                  name: ing.name,
+                  qty: ing.qty,
+                  unit: ing.unit,
+                  ordem: ing.ordem
+                }));
+                const { error: ingErr } = await supabase.from('ingredientes').insert(ingRows);
+                if (ingErr) throw ingErr;
+              }
             }
 
-            if (Array.isArray(p.p_passos) && p.p_passos.length > 0) {
-              await supabase.from('passos').delete().eq('receita_id', recId);
-              const passoRows = p.p_passos.map(passo => ({
-                receita_id: recId,
-                step_text: passo.step_text,
-                ordem: passo.ordem
-              }));
-              const { error: passoErr } = await supabase.from('passos').insert(passoRows);
-              if (passoErr) throw passoErr;
+            if (Array.isArray(p.p_passos)) {
+              const { error: delPassoErr } = await supabase.from('passos').delete().eq('receita_id', syncedId);
+              if (delPassoErr) throw delPassoErr;
+
+              if (p.p_passos.length > 0) {
+                const passoRows = p.p_passos.map(passo => ({
+                  receita_id: syncedId,
+                  step_text: passo.step_text,
+                  ordem: passo.ordem
+                }));
+                const { error: passoErr } = await supabase.from('passos').insert(passoRows);
+                if (passoErr) throw passoErr;
+              }
             }
           } else {
             throw error;
           }
+        } else {
+          syncedId = data;
         }
-        
+
         await removerDaFila(item.id);
-        console.log(`Receita sincronizada com sucesso. ID gerado: ${data}`);
+        console.log(`Receita sincronizada com sucesso. ID: ${syncedId}`);
       } catch (err) {
         const errMessage = (err.message || '').toLowerCase();
         if (errMessage.includes('fetch') || errMessage.includes('network') || errMessage.includes('failed to fetch')) {
