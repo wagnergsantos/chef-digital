@@ -111,7 +111,19 @@ export async function processarFilaOnline() {
       
       try {
         const { data, error } = await supabase.rpc('salvar_receita', item.payload);
-        if (error) throw error;
+        if (error) {
+          // Se a RPC não existir no Supabase, tenta upsert direto
+          if (error.code === 'PGRST202' || (error.message && (error.message.includes('function') || error.message.includes('not found')))) {
+            const { id, title, description, category, servings, prep_time, cook_time, tips, image_url } = item.payload;
+            const { data: recData, error: recErr } = await supabase.from('receitas').upsert({
+              id, title, description, category, servings, prep_time, cook_time, tips, image_url
+            }).select().single();
+            
+            if (recErr) throw recErr;
+          } else {
+            throw error;
+          }
+        }
         
         await removerDaFila(item.id);
         console.log(`Receita sincronizada com sucesso. ID gerado: ${data}`);
