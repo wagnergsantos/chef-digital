@@ -1003,7 +1003,7 @@ registerSW({ immediate: true });
             const badge = document.getElementById('shopping-list-badge');
             let count = 0;
             Object.keys(state.shoppingList).forEach(key => {
-                count += shoppingList[key].length;
+                count += state.shoppingList[key].length;
             });
 
             if (count > 0) {
