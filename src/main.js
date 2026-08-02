@@ -1,26 +1,13 @@
 import { supabase } from './supabase.js';
 import { salvarCacheLocal, lerCacheLocal } from './cache.js';
 import { registerSW } from 'virtual:pwa-register';
+import { state, WEEK_DAYS } from './modules/state.js';
+import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.js';
 
 registerSW({ immediate: true });
 
 
-        // App States
-        let categories = {};
-        let recipes = [];
-        let activeCategory = 'todos';
-        let searchQuery = '';
-        let favorites = JSON.parse(localStorage.getItem('chef_digital_favorites')) || [];
-        let shoppingList = JSON.parse(localStorage.getItem('chef_digital_shopping')) || {};
-        const WEEK_DAYS = [
-            { key: 'dom', label: 'Domingo' },
-            { key: 'seg', label: 'Segunda-feira' },
-            { key: 'ter', label: 'Terça-feira' },
-            { key: 'qua', label: 'Quarta-feira' },
-            { key: 'qui', label: 'Quinta-feira' },
-            { key: 'sex', label: 'Sexta-feira' },
-            { key: 'sab', label: 'Sábado' }
-        ];
+        // App States imported from ./modules/state.js
 
         function createEmptyPlannedByDay() {
             const byDay = {};
@@ -62,9 +49,9 @@ registerSW({ immediate: true });
             return { byDay, hasMigrated };
         }
 
-        let plannedByDay = createEmptyPlannedByDay();
+        state.state.plannedByDay = createEmptyPlannedByDay();
 
-        function carregarPlannerData(recipesList = recipes) {
+        function carregarPlannerData(recipesList = state.recipes) {
             let storedPlanned = null;
             try {
                 const item = localStorage.getItem('chef_digital_planned');
@@ -74,11 +61,11 @@ registerSW({ immediate: true });
                 storedPlanned = null;
             }
             const plannedMigration = migratePlannedData(storedPlanned, recipesList);
-            plannedByDay = plannedMigration.byDay;
+            state.plannedByDay = plannedMigration.byDay;
             if (plannedMigration.hasMigrated) {
                 if (!Array.isArray(storedPlanned) || (Array.isArray(recipesList) && recipesList.length > 0)) {
                     try {
-                        localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+                        localStorage.setItem('chef_digital_planned', JSON.stringify(state.plannedByDay));
                     } catch (e) {
                         console.warn('Erro ao salvar chef_digital_planned no localStorage:', e);
                     }
@@ -86,12 +73,12 @@ registerSW({ immediate: true });
             }
         }
 
-        carregarPlannerData(recipes);
+        carregarPlannerData(state.recipes);
 
         function getAllPlannedEntries() {
             const all = [];
             WEEK_DAYS.forEach(d => {
-                plannedByDay[d.key].forEach(entry => {
+                state.plannedByDay[d.key].forEach(entry => {
                     all.push({ day: d.key, recipeId: entry.recipeId, people: entry.people });
                 });
             });
@@ -100,7 +87,7 @@ registerSW({ immediate: true });
 
         function getPlannedDaysForRecipe(recipeId) {
             return WEEK_DAYS
-                .filter(d => plannedByDay[d.key].some(e => e.recipeId === recipeId))
+                .filter(d => state.plannedByDay[d.key].some(e => e.recipeId === recipeId))
                 .map(d => d.key);
         }
 
@@ -109,51 +96,10 @@ registerSW({ immediate: true });
         }
         let activeRecipePortions = 1;
         let activeRecipeId = null;
-        let showFavoritesOnly = false;
-        let wakeLockSentinel = null;
+                let wakeLockSentinel = null;
         let wakeLockUserDisabled = false; // intenção do usuário nesta sessão de visualização (não persiste)
-        let pantryItems = [];
-        let pantryFilterActive = false;
+                
 
-        function toggleTheme() {
-            const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('chef_digital_theme', next);
-            updateThemeToggleIcon();
-            showToast(`Tema alterado para Modo ${next === 'dark' ? 'Escuro' : 'Claro'}`);
-        }
-
-        function updateThemeToggleIcon() {
-            const current = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-            const themeColorMeta = document.getElementById('theme-color-meta');
-            if (themeColorMeta) {
-                const THEME_COLORS = { light: '#fafaf9', dark: '#0c0a09' };
-                themeColorMeta.setAttribute('content', THEME_COLORS[current]);
-            }
-
-            const themeBtn = document.getElementById('theme-toggle');
-            if (!themeBtn) return;
-            
-            if (current === 'dark') {
-                themeBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
-                    </svg>
-                `;
-                themeBtn.title = "Alternar para Modo Claro";
-                themeBtn.setAttribute('aria-label', "Alternar para Modo Claro");
-            } else {
-                themeBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                `;
-                themeBtn.title = "Alternar para Modo Escuro";
-                themeBtn.setAttribute('aria-label', "Alternar para Modo Escuro");
-            }
-        }
 
         function escapeHtml(str) {
             if (!str) return '';
@@ -184,8 +130,8 @@ registerSW({ immediate: true });
         }
 
         function recipeIsFullyStocked(recipe) {
-            if (!pantryItems || pantryItems.length === 0) return false;
-            const normPantry = pantryItems.map(normalizeSearchText);
+            if (!state.pantryItems || state.pantryItems.length === 0) return false;
+            const normPantry = state.pantryItems.map(normalizeSearchText);
             return recipe.ingredients.every(ing => {
                 const unit = (ing.unit || '').toLowerCase();
                 if (
@@ -204,8 +150,8 @@ registerSW({ immediate: true });
         }
 
         function recipeHasAnyPantryIngredient(recipe) {
-            if (!pantryItems || pantryItems.length === 0) return false;
-            const normPantry = pantryItems.map(normalizeSearchText);
+            if (!state.pantryItems || state.pantryItems.length === 0) return false;
+            const normPantry = state.pantryItems.map(normalizeSearchText);
             return recipe.ingredients.some(ing => {
                 const normIng = normalizeSearchText(ing.name);
                 return normPantry.some(p => normIng.includes(p) || p.includes(normIng));
@@ -241,6 +187,7 @@ registerSW({ immediate: true });
 
         // Toast feedback notification system
         function showToast(message, type = 'success') {
+    window.showToast = showToast;
             const existing = document.querySelector('.toast-message');
             if (existing) {
                 existing.remove();
@@ -276,13 +223,13 @@ registerSW({ immediate: true });
             const fragment = document.createDocumentFragment();
 
             // Get all category keys
-            const keys = Object.keys(categories);
+            const keys = Object.keys(state.categories);
             
             // Sort keys: keep 'todos' at the beginning, and sort others alphabetically by description
             const sortedKeys = keys.filter(k => k === 'todos').concat(
                 keys.filter(k => k !== 'todos').sort((a, b) => {
-                    const descA = categories[a] || '';
-                    const descB = categories[b] || '';
+                    const descA = state.categories[a] || '';
+                    const descB = state.categories[b] || '';
                     return descA.localeCompare(descB, 'pt-BR');
                 })
             );
@@ -290,23 +237,23 @@ registerSW({ immediate: true });
             sortedKeys.forEach(key => {
                 // Get counts for category supporting multitag and current active filters (except activeCategory itself)
                 let count = 0;
-                const pantryMatch = (r) => !pantryFilterActive || recipeHasAnyPantryIngredient(r);
+                const pantryMatch = (r) => !state.showPantryOnly || recipeHasAnyPantryIngredient(r);
                 if (key === 'todos') {
-                    count = recipes.filter(r => {
-                        const searchMatch = matchRecipeSearch(r, searchQuery).matches;
-                        const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
+                    count = state.recipes.filter(r => {
+                        const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
+                        const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
                         return searchMatch && favoriteMatch && pantryMatch(r);
                     }).length;
                 } else {
-                    count = recipes.filter(r => {
+                    count = state.recipes.filter(r => {
                         let categoryMatch = false;
                         if (Array.isArray(r.category)) {
                             categoryMatch = r.category.includes(key);
                         } else {
                             categoryMatch = r.category === key;
                         }
-                        const searchMatch = matchRecipeSearch(r, searchQuery).matches;
-                        const favoriteMatch = !showFavoritesOnly || favorites.includes(r.id);
+                        const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
+                        const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
                         return categoryMatch && searchMatch && favoriteMatch && pantryMatch(r);
                     }).length;
                 }
@@ -317,10 +264,10 @@ registerSW({ immediate: true });
                 }
 
                 const button = document.createElement('button');
-                button.className = `category-filter-btn ${activeCategory === key ? 'active' : ''}`;
+                button.className = `category-filter-btn ${state.activeCategory === key ? 'active' : ''}`;
                 button.onclick = () => selectCategory(key);
                 button.innerHTML = `
-                    <span>${categories[key]}</span>
+                    <span>${state.categories[key]}</span>
                     <span class="category-filter-badge">${count}</span>
                 `;
 
@@ -330,19 +277,19 @@ registerSW({ immediate: true });
         }
 
         function selectCategory(categoryKey) {
-            activeCategory = categoryKey;
-            showFavoritesOnly = false; // Reset favorites-only filter when clicking category
+            state.activeCategory = categoryKey;
+            state.state.showFavoritesOnly = false; // Reset favorites-only filter when clicking category
             document.getElementById('favs-toggle').classList.remove('active');
             renderRecipes();
         }
 
         // Toggle Favorite recipes only
         function toggleFavoritesOnly() {
-            showFavoritesOnly = !showFavoritesOnly;
+            state.state.showFavoritesOnly = !state.state.showFavoritesOnly;
             const btn = document.getElementById('favs-toggle');
-            if (showFavoritesOnly) {
+            if (state.showFavoritesOnly) {
                 btn.classList.add('active');
-                activeCategory = 'todos';
+                state.activeCategory = 'todos';
             } else {
                 btn.classList.remove('active');
             }
@@ -365,10 +312,10 @@ registerSW({ immediate: true });
 
         // Search action
         function filterRecipes() {
-            searchQuery = document.getElementById('search-input').value.toLowerCase();
+            state.state.searchQuery = document.getElementById('search-input').value.toLowerCase();
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
-                if (searchQuery.length > 0) {
+                if (state.state.searchQuery.length > 0) {
                     clearBtn.classList.remove('hidden');
                 } else {
                     clearBtn.classList.add('hidden');
@@ -380,7 +327,7 @@ registerSW({ immediate: true });
         function clearSearch() {
             const input = document.getElementById('search-input');
             input.value = '';
-            searchQuery = '';
+            state.state.searchQuery = '';
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
                 clearBtn.classList.add('hidden');
@@ -393,10 +340,10 @@ registerSW({ immediate: true });
             const clearFiltersBtn = document.getElementById('clear-filters-btn');
             if (!clearFiltersBtn) return;
             
-            const hasActiveFilters = (searchQuery.length > 0) || 
-                                     (activeCategory !== 'todos') || 
-                                     showFavoritesOnly ||
-                                     pantryFilterActive;
+            const hasActiveFilters = (state.state.searchQuery.length > 0) || 
+                                     (state.activeCategory !== 'todos') || 
+                                     state.showFavoritesOnly ||
+                                     state.showPantryOnly;
                                      
             if (hasActiveFilters) {
                 clearFiltersBtn.classList.remove('hidden');
@@ -410,24 +357,24 @@ registerSW({ immediate: true });
             // Clear search
             const input = document.getElementById('search-input');
             if (input) input.value = '';
-            searchQuery = '';
+            state.state.searchQuery = '';
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
                 clearBtn.classList.add('hidden');
             }
 
             // Clear active category
-            activeCategory = 'todos';
+            state.activeCategory = 'todos';
 
             // Clear favorites filter
-            showFavoritesOnly = false;
+            state.state.showFavoritesOnly = false;
             const favsBtn = document.getElementById('favs-toggle');
             if (favsBtn) {
                 favsBtn.classList.remove('active');
             }
 
             // Clear pantry filter
-            pantryFilterActive = false;
+            state.showPantryOnly = false;
             const pantryBtn = document.getElementById('pantry-toggle');
             if (pantryBtn) {
                 pantryBtn.classList.remove('active');
@@ -443,7 +390,7 @@ registerSW({ immediate: true });
             const emptyState = document.getElementById('empty-state');
             grid.innerHTML = '';
 
-            let filtered = recipes.filter(recipe => {
+            let filtered = state.recipes.filter(recipe => {
                 // Category Filter supporting both string and array multitags
                 let categoryMatch = false;
                 if (activeCategory === 'todos') {
@@ -457,24 +404,24 @@ registerSW({ immediate: true });
                 }
                 
                 // Search Match (Check Title only)
-                const searchMatch = matchRecipeSearch(recipe, searchQuery).matches;
+                const searchMatch = matchRecipeSearch(recipe, state.searchQuery).matches;
 
                 // Favorites Filter
-                const favoriteMatch = !showFavoritesOnly || favorites.includes(recipe.id);
+                const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(recipe.id);
 
                 // Pantry Filter
-                const pantryMatch = !pantryFilterActive || recipeHasAnyPantryIngredient(recipe);
+                const pantryMatch = !state.showPantryOnly || recipeHasAnyPantryIngredient(recipe);
 
                 return categoryMatch && searchMatch && favoriteMatch && pantryMatch;
             });
 
             // Update title results count
             const resultsTitle = document.getElementById('results-count');
-            if (showFavoritesOnly) {
+            if (state.showFavoritesOnly) {
                 resultsTitle.innerText = `Receitas Favoritas (${filtered.length})`;
-            } else if (activeCategory !== 'todos') {
-                resultsTitle.innerText = `${categories[activeCategory]} (${filtered.length})`;
-            } else if (searchQuery) {
+            } else if (state.activeCategory !== 'todos') {
+                resultsTitle.innerText = `${state.categories[state.activeCategory]} (${filtered.length})`;
+            } else if (state.searchQuery) {
                 resultsTitle.innerText = `Resultados da busca (${filtered.length})`;
             } else {
                 resultsTitle.innerText = `Todas as Receitas (${filtered.length})`;
@@ -483,10 +430,10 @@ registerSW({ immediate: true });
             // Update category indicator on the right
             const indicator = document.getElementById('active-category-indicator');
             if (indicator) {
-                if (showFavoritesOnly) {
+                if (state.showFavoritesOnly) {
                     indicator.innerText = 'Apenas Favoritas';
-                } else if (activeCategory !== 'todos') {
-                    indicator.innerText = categories[activeCategory];
+                } else if (state.activeCategory !== 'todos') {
+                    indicator.innerText = state.categories[state.activeCategory];
                 } else {
                     indicator.innerText = 'Todas as Categorias';
                 }
@@ -498,11 +445,11 @@ registerSW({ immediate: true });
                 emptyState.classList.add('hidden');
                 const fragment = document.createDocumentFragment();
                 filtered.forEach((recipe, index) => {
-                    const isFav = favorites.includes(recipe.id);
+                    const isFav = state.favorites.includes(recipe.id);
                     const isPlanned = isRecipePlanned(recipe.id);
-                    const isFullyStocked = pantryFilterActive && recipeIsFullyStocked(recipe);
+                    const isFullyStocked = state.showPantryOnly && recipeIsFullyStocked(recipe);
                     const pantryBadge = isFullyStocked ? '<span class="card-badge pantry-badge">✅ Você tem tudo</span>' : '';
-                    const { matchedIngredients } = matchRecipeSearch(recipe, searchQuery);
+                    const { matchedIngredients } = matchRecipeSearch(recipe, state.searchQuery);
                     const card = document.createElement('div');
                     card.className = `recipe-card ${isPlanned ? 'planned' : ''}`;
                     card.style.setProperty('--i', index);
@@ -527,10 +474,10 @@ registerSW({ immediate: true });
                     let categoryBadges = '';
                     if (Array.isArray(recipe.category)) {
                         categoryBadges = recipe.category.map(cat => 
-                            `<span class="card-badge">${categories[cat] || cat}</span>`
+                            `<span class="card-badge">${state.categories[cat] || cat}</span>`
                         ).join(' ');
                     } else {
-                        categoryBadges = `<span class="card-badge">${categories[recipe.category] || recipe.category}</span>`;
+                        categoryBadges = `<span class="card-badge">${state.categories[recipe.category] || recipe.category}</span>`;
                     }
 
                     const hasImg = recipe.image && recipe.image.trim() !== "";
@@ -597,12 +544,12 @@ registerSW({ immediate: true });
 
         // Favorite Toggle functionality
         function toggleFavorite(id) {
-            if (favorites.includes(id)) {
-                favorites = favorites.filter(favId => favId !== id);
+            if (state.favorites.includes(id)) {
+                state.favorites = state.favorites.filter(favId => favId !== id);
             } else {
-                favorites.push(id);
+                state.favorites.push(id);
             }
-            localStorage.setItem('chef_digital_favorites', JSON.stringify(favorites));
+            localStorage.setItem('chef_digital_favorites', JSON.stringify(state.favorites));
             renderRecipes();
         }
 
@@ -740,14 +687,14 @@ registerSW({ immediate: true });
         }
 
         function toggleRecipeOnDay(recipeId, day) {
-            const dayEntries = plannedByDay[day];
+            const dayEntries = state.state.plannedByDay[day];
             const index = dayEntries.findIndex(e => e.recipeId === recipeId);
             let added;
             if (index !== -1) {
                 dayEntries.splice(index, 1);
                 added = false;
             } else {
-                const recipe = recipes.find(r => r.id === recipeId);
+                const recipe = state.recipes.find(r => r.id === recipeId);
                 const parsedServings = (recipe && recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
                 const defaultPeople = !isNaN(parsedServings) && parsedServings > 0 ? parsedServings : 1;
                 dayEntries.push({ recipeId: recipeId, people: defaultPeople });
@@ -837,9 +784,9 @@ registerSW({ immediate: true });
         }
 
         function changePlannerRecipePortions(recipeId, day, dir) {
-            const entry = plannedByDay[day].find(e => e.recipeId === recipeId);
+            const entry = state.state.plannedByDay[day].find(e => e.recipeId === recipeId);
             if (entry) {
-                const recipe = recipes.find(r => r.id === recipeId);
+                const recipe = state.recipes.find(r => r.id === recipeId);
                 const parsedServings = (recipe && recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
                 const isServingsMode = !isNaN(parsedServings) && parsedServings > 0;
                 const maxLimit = isServingsMode ? 20 : 10;
@@ -859,7 +806,7 @@ registerSW({ immediate: true });
         }
 
         function clearPlanner() {
-            plannedByDay = createEmptyPlannedByDay();
+            state.plannedByDay = createEmptyPlannedByDay();
             savePlanner();
             updatePlannerBadge();
             renderRecipes();
@@ -867,7 +814,7 @@ registerSW({ immediate: true });
         }
 
         function savePlanner() {
-            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+            localStorage.setItem('chef_digital_planned', JSON.stringify(state.plannedByDay));
         }
 
         function updatePlannerBadge() {
@@ -882,7 +829,7 @@ registerSW({ immediate: true });
         }
 
         function renderPlannerCardHtml(entry, day) {
-            const recipe = recipes.find(r => r.id === entry.recipeId);
+            const recipe = state.recipes.find(r => r.id === entry.recipeId);
             if (!recipe) return '';
 
             const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
@@ -933,7 +880,7 @@ registerSW({ immediate: true });
 
             const fragment = document.createDocumentFragment();
             WEEK_DAYS.forEach(d => {
-                const dayEntries = plannedByDay[d.key];
+                const dayEntries = state.plannedByDay[d.key];
                 const section = document.createElement('div');
                 section.className = 'planner-day-section';
 
@@ -964,8 +911,8 @@ registerSW({ immediate: true });
 
             // 1. Mapear itens que já estavam marcados como comprados para manter o estado (checked)
             const checkedItemsMap = new Set();
-            if (shoppingList["Menu Semanal Consolidado"]) {
-                shoppingList["Menu Semanal Consolidado"].forEach(item => {
+            if (state.shoppingList["Menu Semanal Consolidado"]) {
+                state.shoppingList["Menu Semanal Consolidado"].forEach(item => {
                     if (item.checked) {
                         checkedItemsMap.add(item.name.trim().toLowerCase());
                     }
@@ -973,12 +920,12 @@ registerSW({ immediate: true });
             }
 
             // 2. Limpar apenas o grupo do menu semanal consolidado para recriação
-            shoppingList["Menu Semanal Consolidado"] = [];
+            state.shoppingList["Menu Semanal Consolidado"] = [];
 
             const tempConsolidated = {};
 
             allEntries.forEach(p => {
-                const recipe = recipes.find(r => r.id === p.recipeId);
+                const recipe = state.recipes.find(r => r.id === p.recipeId);
                 if (!recipe) return;
 
                 recipe.ingredients.forEach(ing => {
@@ -1007,7 +954,7 @@ registerSW({ immediate: true });
 
             // 3. Converter de mapa para array no grupo correspondente da lista de compras
             Object.keys(tempConsolidated).forEach(k => {
-                shoppingList["Menu Semanal Consolidado"].push(tempConsolidated[k]);
+                state.shoppingList["Menu Semanal Consolidado"].push(tempConsolidated[k]);
             });
 
             saveShoppingList();
@@ -1022,19 +969,19 @@ registerSW({ immediate: true });
 
         // Add ingredients to local list
         function addCurrentRecipeToShoppingList() {
-            const recipe = recipes.find(r => r.id === activeRecipeId);
+            const recipe = state.recipes.find(r => r.id === activeRecipeId);
             if (!recipe) return;
 
-            if (!shoppingList[recipe.title]) {
-                shoppingList[recipe.title] = [];
+            if (!state.shoppingList[recipe.title]) {
+                state.shoppingList[recipe.title] = [];
             }
 
             recipe.ingredients.forEach(ing => {
                 // Check if already in list to avoid duplicates
-                const exists = shoppingList[recipe.title].some(item => item.name === ing.name);
+                const exists = state.shoppingList[recipe.title].some(item => item.name === ing.name);
                 if (!exists) {
                     let qtyVal = scaleIngredientQty(ing.qty, activeRecipePortions, recipe.servings);
-                    shoppingList[recipe.title].push({
+                    state.shoppingList[recipe.title].push({
                         name: ing.name,
                         qty: qtyVal,
                         unit: ing.unit,
@@ -1049,13 +996,13 @@ registerSW({ immediate: true });
         }
 
         function saveShoppingList() {
-            localStorage.setItem('chef_digital_shopping', JSON.stringify(shoppingList));
+            localStorage.setItem('chef_digital_shopping', JSON.stringify(state.shoppingList));
         }
 
         function updateShoppingListBadge() {
             const badge = document.getElementById('shopping-list-badge');
             let count = 0;
-            Object.keys(shoppingList).forEach(key => {
+            Object.keys(state.shoppingList).forEach(key => {
                 count += shoppingList[key].length;
             });
 
@@ -1072,7 +1019,7 @@ registerSW({ immediate: true });
             const container = document.getElementById('shopping-list-items');
             container.innerHTML = '';
 
-            const keys = Object.keys(shoppingList);
+            const keys = Object.keys(state.shoppingList);
             if (keys.length === 0) {
                 container.innerHTML = `
                     <div class="drawer-empty-state">
@@ -1084,7 +1031,7 @@ registerSW({ immediate: true });
             }
 
             keys.forEach(recipeTitle => {
-                const items = shoppingList[recipeTitle];
+                const items = state.shoppingList[recipeTitle];
                 if (items.length === 0) return;
 
                 const section = document.createElement('div');
@@ -1132,20 +1079,20 @@ registerSW({ immediate: true });
         }
 
         function toggleShoppingItemCheck(recipeTitle, index) {
-            shoppingList[recipeTitle][index].checked = !shoppingList[recipeTitle][index].checked;
+            state.shoppingList[recipeTitle][index].checked = !state.shoppingList[recipeTitle][index].checked;
             saveShoppingList();
             renderShoppingList();
         }
 
         function removeRecipeFromShoppingList(recipeTitle) {
-            delete shoppingList[recipeTitle];
+            delete state.shoppingList[recipeTitle];
             saveShoppingList();
             updateShoppingListBadge();
             renderShoppingList();
         }
 
         function clearShoppingList() {
-            shoppingList = {};
+            state.shoppingList = {};
             saveShoppingList();
             updateShoppingListBadge();
             renderShoppingList();
@@ -1156,8 +1103,8 @@ registerSW({ immediate: true });
             let text = "🛒 MINHA LISTA DE COMPRAS - CHEF DIGITAL\n\n";
             let empty = true;
 
-            Object.keys(shoppingList).forEach(recipeTitle => {
-                const items = shoppingList[recipeTitle];
+            Object.keys(state.shoppingList).forEach(recipeTitle => {
+                const items = state.shoppingList[recipeTitle];
                 if (items.length > 0) {
                     empty = false;
                     text += `■ ${recipeTitle.toUpperCase()}\n`;
@@ -1191,7 +1138,7 @@ registerSW({ immediate: true });
         // Recipe View Modal details logic
         function openRecipeModal(id) {
             activeRecipeId = id;
-            const recipe = recipes.find(r => r.id === id);
+            const recipe = state.recipes.find(r => r.id === id);
             if (!recipe) return;
 
             const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
@@ -1222,9 +1169,9 @@ registerSW({ immediate: true });
             // Represent multi-categories on the modal header
             let catText = '';
             if (Array.isArray(recipe.category)) {
-                catText = recipe.category.map(cat => categories[cat] || cat).join(' | ');
+                catText = recipe.category.map(cat => state.categories[cat] || cat).join(' | ');
             } else {
-                catText = categories[recipe.category] || recipe.category;
+                catText = state.categories[recipe.category] || recipe.category;
             }
             document.getElementById('modal-category-badge').innerText = catText;
             const modalSourceBadge = document.getElementById('modal-source-badge');
@@ -1398,7 +1345,7 @@ registerSW({ immediate: true });
 
         // Adjust serving size multiplier
         function changePortions(dir) {
-            const recipe = recipes.find(r => r.id === activeRecipeId);
+            const recipe = state.recipes.find(r => r.id === activeRecipeId);
             if (!recipe) return;
 
             const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
@@ -1425,7 +1372,7 @@ registerSW({ immediate: true });
 
         // Render ingredients based on multiplication portion factor
         function updateIngredientsList() {
-            const recipe = recipes.find(r => r.id === activeRecipeId);
+            const recipe = state.recipes.find(r => r.id === activeRecipeId);
             if (!recipe) return;
 
             const list = document.getElementById('modal-ingredients-list');
@@ -1462,7 +1409,7 @@ registerSW({ immediate: true });
             const textarea = document.getElementById('pantry-textarea');
             if (modal) {
                 if (textarea) {
-                    textarea.value = pantryItems.join('\n');
+                    textarea.value = state.pantryItems.join('\n');
                 }
                 previouslyFocusedElement = document.activeElement;
                 modal.classList.add('open');
@@ -1492,20 +1439,20 @@ registerSW({ immediate: true });
         function saveAndFilterPantry() {
             const textarea = document.getElementById('pantry-textarea');
             if (textarea) {
-                pantryItems = textarea.value.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
-                localStorage.setItem('chef_digital_pantry', JSON.stringify(pantryItems));
+                state.pantryItems = textarea.value.split(/[\n,]/).map(s => s.trim()).filter(Boolean);
+                localStorage.setItem('chef_digital_pantry', JSON.stringify(state.pantryItems));
             }
-            pantryFilterActive = pantryItems.length > 0;
+            state.showPantryOnly = state.pantryItems.length > 0;
             
             const btn = document.getElementById('pantry-toggle');
             if (btn) {
-                btn.classList.toggle('active', pantryFilterActive);
+                btn.classList.toggle('active', state.showPantryOnly);
             }
             updatePantryEditBtnVisibility();
             
             closePantryModal();
             renderRecipes();
-            showToast(pantryFilterActive ? 'Ingredientes salvos e filtro aplicado!' : 'Ingredientes salvos.');
+            showToast(state.showPantryOnly ? 'Ingredientes salvos e filtro aplicado!' : 'Ingredientes salvos.');
         }
 
         function clearPantry() {
@@ -1513,9 +1460,9 @@ registerSW({ immediate: true });
             if (textarea) {
                 textarea.value = '';
             }
-            pantryItems = [];
+            state.state.pantryItems = [];
             localStorage.setItem('chef_digital_pantry', JSON.stringify([]));
-            pantryFilterActive = false;
+            state.showPantryOnly = false;
             const btn = document.getElementById('pantry-toggle');
             if (btn) {
                 btn.classList.remove('active');
@@ -1528,17 +1475,17 @@ registerSW({ immediate: true });
         function updatePantryEditBtnVisibility() {
             const editBtn = document.getElementById('pantry-edit-btn');
             if (!editBtn) return;
-            editBtn.classList.toggle('hidden', pantryItems.length === 0);
+            editBtn.classList.toggle('hidden', state.pantryItems.length === 0);
         }
 
         function togglePantryFilterOrOpenModal(event) {
-            if (pantryItems.length === 0) {
+            if (state.pantryItems.length === 0) {
                 openPantryModal();
             } else {
-                pantryFilterActive = !pantryFilterActive;
+                state.showPantryOnly = !state.showPantryOnly;
                 const btn = document.getElementById('pantry-toggle');
                 if (btn) {
-                    if (pantryFilterActive) {
+                    if (state.showPantryOnly) {
                         btn.classList.add('active');
                     } else {
                         btn.classList.remove('active');
@@ -1556,9 +1503,9 @@ async function inicializarApp() {
     const cachedRecipes = await lerCacheLocal('receitas');
 
     if (cachedCategories && cachedCategories.length > 0 && cachedRecipes && cachedRecipes.length > 0) {
-      categories = cachedCategories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
-      recipes = cachedRecipes;
-      carregarPlannerData(recipes);
+      state.categories = cachedCategories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
+      state.recipes = cachedRecipes;
+      carregarPlannerData(state.recipes);
       
       // Inicializa a interface com o cache
       updateThemeToggleIcon();
@@ -1581,8 +1528,8 @@ async function inicializarApp() {
 
     if (!catError && !recError) {
       // Atualiza variáveis em memória
-      categories = catData.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
-      recipes = recData.map(r => ({
+      state.categories = catData.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
+      state.recipes = recData.map(r => ({
         id: r.id,
         title: r.title,
         category: r.category,
@@ -1601,8 +1548,8 @@ async function inicializarApp() {
 
       // Atualiza cache local IndexedDB
       await salvarCacheLocal('categorias', catData);
-      await salvarCacheLocal('receitas', recipes);
-      carregarPlannerData(recipes);
+      await salvarCacheLocal('receitas', state.recipes);
+      carregarPlannerData(state.recipes);
 
       // Re-renderiza com os dados atualizados
       updateThemeToggleIcon();
@@ -1618,16 +1565,18 @@ async function inicializarApp() {
 
 window.onload = function() {
     try {
-        pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
+        state.state.pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
     } catch (e) {
-        pantryItems = [];
+        state.state.pantryItems = [];
     }
     updatePantryEditBtnVisibility();
+    initTheme();
     inicializarApp();
 };
 
 // Export to global scope for HTML inline handlers
 window.toggleTheme = toggleTheme;
+window.initTheme = initTheme;
 window.togglePlanner = togglePlanner;
 window.toggleShoppingList = toggleShoppingList;
 window.toggleFavoritesOnly = toggleFavoritesOnly;
