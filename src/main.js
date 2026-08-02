@@ -34,8 +34,8 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
                     let people = p.people;
                     if (p.portions !== undefined && people === undefined) {
                         let servings = 1;
-                        if (typeof receitasData !== 'undefined' && receitasData.recipes) {
-                            const recipe = receitasData.recipes.find(r => r.id === p.id);
+                        if (Array.isArray(recipes) && recipes.length > 0) {
+                            const recipe = recipes.find(r => r.id === p.id);
                             if (recipe && recipe.servings) servings = recipe.servings;
                         }
                         people = p.portions * servings;
