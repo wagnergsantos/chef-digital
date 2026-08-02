@@ -1,5 +1,8 @@
 import { supabase } from './supabase.js';
 import { salvarCacheLocal, lerCacheLocal } from './cache.js';
+import { registerSW } from 'virtual:pwa-register';
+
+registerSW({ immediate: true });
 
 
         // App States
@@ -1600,9 +1603,6 @@ async function inicializarApp() {
 }
 
 window.onload = function() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
-    }
     try {
         pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
     } catch (e) {
