@@ -1,9 +1,18 @@
+function safeJsonParse(key, fallback) {
+    try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : fallback;
+    } catch {
+        return fallback;
+    }
+}
+
 export const state = {
     recipes: [],
     categories: {},
-    favorites: JSON.parse(localStorage.getItem('chef_digital_favorites')) || [],
-    shoppingList: JSON.parse(localStorage.getItem('chef_digital_shopping')) || {},
-    pantryItems: JSON.parse(localStorage.getItem('chef_digital_pantry')) || [],
+    favorites: safeJsonParse('chef_digital_favorites', []),
+    shoppingList: safeJsonParse('chef_digital_shopping', {}),
+    pantryItems: safeJsonParse('chef_digital_pantry', []),
     activeCategory: 'todos',
     searchQuery: '',
     showFavoritesOnly: false,
@@ -20,4 +29,3 @@ export const WEEK_DAYS = [
     { key: 'sex', label: 'Sexta-feira' },
     { key: 'sab', label: 'Sábado' }
 ];
-
