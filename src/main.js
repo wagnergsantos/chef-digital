@@ -349,6 +349,20 @@ registerSW({ immediate: true });
             renderRecipes();
         }
 
+        function debounce(func, wait = 250) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        const debouncedRenderRecipes = debounce(() => renderRecipes(), 250);
+
         // Search action
         function filterRecipes() {
             searchQuery = document.getElementById('search-input').value.toLowerCase();
@@ -360,7 +374,7 @@ registerSW({ immediate: true });
                     clearBtn.classList.add('hidden');
                 }
             }
-            renderRecipes();
+            debouncedRenderRecipes();
         }
 
         function clearSearch() {
