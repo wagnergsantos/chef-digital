@@ -49,7 +49,7 @@ registerSW({ immediate: true });
             return { byDay, hasMigrated };
         }
 
-        state.state.plannedByDay = createEmptyPlannedByDay();
+        state.plannedByDay = createEmptyPlannedByDay();
 
         function carregarPlannerData(recipesList = state.recipes) {
             let storedPlanned = null;
@@ -235,7 +235,7 @@ registerSW({ immediate: true });
             );
 
             sortedKeys.forEach(key => {
-                // Get counts for category supporting multitag and current active filters (except activeCategory itself)
+                // Get counts for category supporting multitag and current active filters (except state.activeCategory itself)
                 let count = 0;
                 const pantryMatch = (r) => !state.showPantryOnly || recipeHasAnyPantryIngredient(r);
                 if (key === 'todos') {
@@ -259,7 +259,7 @@ registerSW({ immediate: true });
                 }
 
                 // Skip rendering if the category is empty, unless it's 'todos' or the currently active category
-                if (count === 0 && key !== 'todos' && key !== activeCategory) {
+                if (count === 0 && key !== 'todos' && key !== state.activeCategory) {
                     return;
                 }
 
@@ -278,14 +278,14 @@ registerSW({ immediate: true });
 
         function selectCategory(categoryKey) {
             state.activeCategory = categoryKey;
-            state.state.showFavoritesOnly = false; // Reset favorites-only filter when clicking category
+            state.showFavoritesOnly = false; // Reset favorites-only filter when clicking category
             document.getElementById('favs-toggle').classList.remove('active');
             renderRecipes();
         }
 
         // Toggle Favorite recipes only
         function toggleFavoritesOnly() {
-            state.state.showFavoritesOnly = !state.state.showFavoritesOnly;
+            state.showFavoritesOnly = !state.showFavoritesOnly;
             const btn = document.getElementById('favs-toggle');
             if (state.showFavoritesOnly) {
                 btn.classList.add('active');
@@ -312,10 +312,10 @@ registerSW({ immediate: true });
 
         // Search action
         function filterRecipes() {
-            state.state.searchQuery = document.getElementById('search-input').value.toLowerCase();
+            state.searchQuery = document.getElementById('search-input').value.toLowerCase();
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
-                if (state.state.searchQuery.length > 0) {
+                if (state.searchQuery.length > 0) {
                     clearBtn.classList.remove('hidden');
                 } else {
                     clearBtn.classList.add('hidden');
@@ -327,7 +327,7 @@ registerSW({ immediate: true });
         function clearSearch() {
             const input = document.getElementById('search-input');
             input.value = '';
-            state.state.searchQuery = '';
+            state.searchQuery = '';
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
                 clearBtn.classList.add('hidden');
@@ -340,7 +340,7 @@ registerSW({ immediate: true });
             const clearFiltersBtn = document.getElementById('clear-filters-btn');
             if (!clearFiltersBtn) return;
             
-            const hasActiveFilters = (state.state.searchQuery.length > 0) || 
+            const hasActiveFilters = (state.searchQuery.length > 0) || 
                                      (state.activeCategory !== 'todos') || 
                                      state.showFavoritesOnly ||
                                      state.showPantryOnly;
@@ -357,7 +357,7 @@ registerSW({ immediate: true });
             // Clear search
             const input = document.getElementById('search-input');
             if (input) input.value = '';
-            state.state.searchQuery = '';
+            state.searchQuery = '';
             const clearBtn = document.getElementById('search-clear-btn');
             if (clearBtn) {
                 clearBtn.classList.add('hidden');
@@ -367,7 +367,7 @@ registerSW({ immediate: true });
             state.activeCategory = 'todos';
 
             // Clear favorites filter
-            state.state.showFavoritesOnly = false;
+            state.showFavoritesOnly = false;
             const favsBtn = document.getElementById('favs-toggle');
             if (favsBtn) {
                 favsBtn.classList.remove('active');
@@ -393,13 +393,13 @@ registerSW({ immediate: true });
             let filtered = state.recipes.filter(recipe => {
                 // Category Filter supporting both string and array multitags
                 let categoryMatch = false;
-                if (activeCategory === 'todos') {
+                if (state.activeCategory === 'todos') {
                     categoryMatch = true;
                 } else {
                     if (Array.isArray(recipe.category)) {
-                        categoryMatch = recipe.category.includes(activeCategory);
+                        categoryMatch = recipe.category.includes(state.activeCategory);
                     } else {
-                        categoryMatch = recipe.category === activeCategory;
+                        categoryMatch = recipe.category === state.activeCategory;
                     }
                 }
                 
@@ -687,7 +687,7 @@ registerSW({ immediate: true });
         }
 
         function toggleRecipeOnDay(recipeId, day) {
-            const dayEntries = state.state.plannedByDay[day];
+            const dayEntries = state.plannedByDay[day];
             const index = dayEntries.findIndex(e => e.recipeId === recipeId);
             let added;
             if (index !== -1) {
@@ -784,7 +784,7 @@ registerSW({ immediate: true });
         }
 
         function changePlannerRecipePortions(recipeId, day, dir) {
-            const entry = state.state.plannedByDay[day].find(e => e.recipeId === recipeId);
+            const entry = state.plannedByDay[day].find(e => e.recipeId === recipeId);
             if (entry) {
                 const recipe = state.recipes.find(r => r.id === recipeId);
                 const parsedServings = (recipe && recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
@@ -1460,7 +1460,7 @@ registerSW({ immediate: true });
             if (textarea) {
                 textarea.value = '';
             }
-            state.state.pantryItems = [];
+            state.pantryItems = [];
             localStorage.setItem('chef_digital_pantry', JSON.stringify([]));
             state.showPantryOnly = false;
             const btn = document.getElementById('pantry-toggle');
@@ -1565,9 +1565,9 @@ async function inicializarApp() {
 
 window.onload = function() {
     try {
-        state.state.pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
+        state.pantryItems = JSON.parse(localStorage.getItem('chef_digital_pantry')) || [];
     } catch (e) {
-        state.state.pantryItems = [];
+        state.pantryItems = [];
     }
     updatePantryEditBtnVisibility();
     initTheme();
