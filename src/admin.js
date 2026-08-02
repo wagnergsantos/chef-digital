@@ -293,7 +293,11 @@ async function saveRecipe(e) {
         p_image: document.getElementById('recipe-image').value.trim() || null,
         p_source: document.getElementById('recipe-source').value.trim() || null,
         p_tips: document.getElementById('recipe-tips').value.trim() || null,
-        p_servings: document.getElementById('recipe-servings').value.trim() || null,
+        p_servings: (() => {
+            const val = document.getElementById('recipe-servings').value.trim();
+            const num = val ? parseInt(val, 10) : null;
+            return (!isNaN(num) && num > 0) ? num : null;
+        })(),
         p_category: selectedCategories,
         p_ingredientes: validIngredients,
         p_passos: validSteps

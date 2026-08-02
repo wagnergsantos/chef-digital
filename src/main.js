@@ -143,11 +143,16 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
         }
 
         function scaleIngredientQty(qty, activePortions, servings) {
-            if (qty === null) return null;
-            if (servings !== undefined && servings !== null) {
-                return qty * (activePortions / servings);
+            if (qty === null || qty === undefined) return null;
+            const numPortions = parseFloat(activePortions);
+            if (isNaN(numPortions)) return qty;
+            if (servings !== undefined && servings !== null && servings !== '') {
+                const numServings = parseFloat(servings);
+                if (!isNaN(numServings) && numServings > 0) {
+                    return qty * (numPortions / numServings);
+                }
             }
-            return qty * activePortions;
+            return qty * numPortions;
         }
 
         function normalizeSearchText(str) {
@@ -706,7 +711,8 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
                 added = false;
             } else {
                 const recipe = recipes.find(r => r.id === recipeId);
-                const defaultPeople = (recipe && recipe.servings !== undefined && recipe.servings !== null) ? recipe.servings : 1;
+                const parsedServings = (recipe && recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
+                const defaultPeople = !isNaN(parsedServings) && parsedServings > 0 ? parsedServings : 1;
                 dayEntries.push({ recipeId: recipeId, people: defaultPeople });
                 added = true;
             }
@@ -797,10 +803,16 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             const entry = plannedByDay[day].find(e => e.recipeId === recipeId);
             if (entry) {
                 const recipe = recipes.find(r => r.id === recipeId);
-                const isServingsMode = recipe && recipe.servings !== undefined && recipe.servings !== null;
+                const parsedServings = (recipe && recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
+                const isServingsMode = !isNaN(parsedServings) && parsedServings > 0;
                 const maxLimit = isServingsMode ? 20 : 10;
 
-                let next = entry.people + dir;
+                let current = parseInt(entry.people, 10);
+                if (isNaN(current)) {
+                    current = isServingsMode ? parsedServings : 1;
+                }
+
+                let next = current + parseInt(dir, 10);
                 if (next >= 1 && next <= maxLimit) {
                     entry.people = next;
                     savePlanner();
@@ -836,8 +848,10 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             const recipe = recipes.find(r => r.id === entry.recipeId);
             if (!recipe) return '';
 
-            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
-            const displayValue = isServingsMode ? `${entry.people} pessoas` : `${entry.people}x`;
+            const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
+            const isServingsMode = !isNaN(parsedServings) && parsedServings > 0;
+            const currentPeople = parseInt(entry.people, 10) || 1;
+            const displayValue = isServingsMode ? `${currentPeople} pessoas` : `${currentPeople}x`;
             const labelText = isServingsMode ? "Pessoas:" : "Porções:";
 
             return `
@@ -1143,9 +1157,10 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             const recipe = recipes.find(r => r.id === id);
             if (!recipe) return;
 
-            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+            const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
+            const isServingsMode = !isNaN(parsedServings) && parsedServings > 0;
             if (isServingsMode) {
-                activeRecipePortions = recipe.servings;
+                activeRecipePortions = parsedServings;
                 document.getElementById('portions-multiplier').innerText = `${activeRecipePortions} pessoas`;
             } else {
                 activeRecipePortions = 1;
@@ -1349,9 +1364,16 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             const recipe = recipes.find(r => r.id === activeRecipeId);
             if (!recipe) return;
 
-            let next = activeRecipePortions + dir;
-            const isServingsMode = recipe.servings !== undefined && recipe.servings !== null;
+            const parsedServings = (recipe.servings !== undefined && recipe.servings !== null && recipe.servings !== '') ? parseInt(recipe.servings, 10) : NaN;
+            const isServingsMode = !isNaN(parsedServings) && parsedServings > 0;
             const maxLimit = isServingsMode ? 20 : 10;
+
+            let current = parseInt(activeRecipePortions, 10);
+            if (isNaN(current)) {
+                current = isServingsMode ? parsedServings : 1;
+            }
+
+            let next = current + parseInt(dir, 10);
 
             if (next >= 1 && next <= maxLimit) {
                 activeRecipePortions = next;
@@ -1530,7 +1552,7 @@ async function inicializarApp() {
         emoji: r.emoji,
         image: r.image,
         tips: r.tips,
-        servings: r.servings,
+        servings: (r.servings !== null && r.servings !== undefined && r.servings !== '' && !isNaN(parseInt(r.servings, 10))) ? parseInt(r.servings, 10) : null,
         ingredients: (r.ingredientes || []).sort((a, b) => a.ordem - b.ordem).map(ing => ({
           name: ing.name,
           qty: ing.qty !== null ? parseFloat(ing.qty) : null,
