@@ -25,7 +25,7 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             return byDay;
         }
 
-        function migratePlannedData(raw) {
+        function migratePlannedData(raw, recipesList = []) {
             if (Array.isArray(raw)) {
                 // Formato antigo: lista plana [{id, people}] ou [{id, portions}].
                 // Sem informação de dia, todas as entradas antigas migram para Domingo.
@@ -34,8 +34,8 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
                     let people = p.people;
                     if (p.portions !== undefined && people === undefined) {
                         let servings = 1;
-                        if (Array.isArray(recipes) && recipes.length > 0) {
-                            const recipe = recipes.find(r => r.id === p.id);
+                        if (Array.isArray(recipesList) && recipesList.length > 0) {
+                            const recipe = recipesList.find(r => r.id === p.id);
                             if (recipe && recipe.servings) servings = recipe.servings;
                         }
                         people = p.portions * servings;
@@ -58,12 +58,20 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
             return { byDay, hasMigrated };
         }
 
-        const storedPlanned = JSON.parse(localStorage.getItem('chef_digital_planned')) || createEmptyPlannedByDay();
-        const plannedMigration = migratePlannedData(storedPlanned);
-        let plannedByDay = plannedMigration.byDay;
-        if (plannedMigration.hasMigrated) {
-            localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+        let plannedByDay = createEmptyPlannedByDay();
+
+        function carregarPlannerData(recipesList = recipes) {
+            const storedPlanned = JSON.parse(localStorage.getItem('chef_digital_planned'));
+            const plannedMigration = migratePlannedData(storedPlanned, recipesList);
+            plannedByDay = plannedMigration.byDay;
+            if (plannedMigration.hasMigrated) {
+                if (!Array.isArray(storedPlanned) || (Array.isArray(recipesList) && recipesList.length > 0)) {
+                    localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+                }
+            }
         }
+
+        carregarPlannerData(recipes);
 
         function getAllPlannedEntries() {
             const all = [];
@@ -1521,6 +1529,7 @@ async function inicializarApp() {
     if (cachedCategories && cachedCategories.length > 0 && cachedRecipes && cachedRecipes.length > 0) {
       categories = cachedCategories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
       recipes = cachedRecipes;
+      carregarPlannerData(recipes);
       
       // Inicializa a interface com o cache
       updateThemeToggleIcon();
@@ -1564,6 +1573,7 @@ async function inicializarApp() {
       // Atualiza cache local IndexedDB
       await salvarCacheLocal('categorias', catData);
       await salvarCacheLocal('receitas', recipes);
+      carregarPlannerData(recipes);
 
       // Re-renderiza com os dados atualizados
       updateThemeToggleIcon();
