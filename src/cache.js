@@ -114,12 +114,46 @@ export async function processarFilaOnline() {
         if (error) {
           // Se a RPC não existir no Supabase, tenta upsert direto
           if (error.code === 'PGRST202' || (error.message && (error.message.includes('function') || error.message.includes('not found')))) {
-            const { id, title, description, category, servings, prep_time, cook_time, tips, image_url } = item.payload;
-            const { data: recData, error: recErr } = await supabase.from('receitas').upsert({
-              id, title, description, category, servings, prep_time, cook_time, tips, image_url
-            }).select().single();
-            
+            const p = item.payload;
+            const recipeData = {
+              title: p.p_title,
+              emoji: p.p_emoji,
+              image: p.p_image,
+              source: p.p_source,
+              tips: p.p_tips,
+              servings: p.p_servings,
+              category: p.p_category
+            };
+            if (p.p_id) recipeData.id = p.p_id;
+
+            const { data: recData, error: recErr } = await supabase.from('receitas').upsert(recipeData).select().single();
             if (recErr) throw recErr;
+
+            const recId = recData.id;
+
+            if (Array.isArray(p.p_ingredientes) && p.p_ingredientes.length > 0) {
+              await supabase.from('ingredientes').delete().eq('receita_id', recId);
+              const ingRows = p.p_ingredientes.map(ing => ({
+                receita_id: recId,
+                name: ing.name,
+                qty: ing.qty,
+                unit: ing.unit,
+                ordem: ing.ordem
+              }));
+              const { error: ingErr } = await supabase.from('ingredientes').insert(ingRows);
+              if (ingErr) throw ingErr;
+            }
+
+            if (Array.isArray(p.p_passos) && p.p_passos.length > 0) {
+              await supabase.from('passos').delete().eq('receita_id', recId);
+              const passoRows = p.p_passos.map(passo => ({
+                receita_id: recId,
+                step_text: passo.step_text,
+                ordem: passo.ordem
+              }));
+              const { error: passoErr } = await supabase.from('passos').insert(passoRows);
+              if (passoErr) throw passoErr;
+            }
           } else {
             throw error;
           }
