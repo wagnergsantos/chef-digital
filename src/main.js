@@ -31,16 +31,17 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
                 // Sem informação de dia, todas as entradas antigas migram para Domingo.
                 const byDay = createEmptyPlannedByDay();
                 raw.forEach(p => {
+                    const targetId = p.id !== undefined ? p.id : p.recipeId;
                     let people = p.people;
                     if (p.portions !== undefined && people === undefined) {
                         let servings = 1;
                         if (Array.isArray(recipesList) && recipesList.length > 0) {
-                            const recipe = recipesList.find(r => r.id === p.id);
+                            const recipe = recipesList.find(r => String(r.id) === String(targetId));
                             if (recipe && recipe.servings) servings = recipe.servings;
                         }
                         people = p.portions * servings;
                     }
-                    byDay.dom.push({ recipeId: p.id, people: people !== undefined ? people : 1 });
+                    byDay.dom.push({ recipeId: targetId, people: people !== undefined ? people : 1 });
                 });
                 return { byDay, hasMigrated: true };
             }
@@ -61,12 +62,23 @@ import { salvarCacheLocal, lerCacheLocal } from './cache.js';
         let plannedByDay = createEmptyPlannedByDay();
 
         function carregarPlannerData(recipesList = recipes) {
-            const storedPlanned = JSON.parse(localStorage.getItem('chef_digital_planned'));
+            let storedPlanned = null;
+            try {
+                const item = localStorage.getItem('chef_digital_planned');
+                if (item) storedPlanned = JSON.parse(item);
+            } catch (e) {
+                console.warn('Erro ao ler chef_digital_planned do localStorage:', e);
+                storedPlanned = null;
+            }
             const plannedMigration = migratePlannedData(storedPlanned, recipesList);
             plannedByDay = plannedMigration.byDay;
             if (plannedMigration.hasMigrated) {
                 if (!Array.isArray(storedPlanned) || (Array.isArray(recipesList) && recipesList.length > 0)) {
-                    localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+                    try {
+                        localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+                    } catch (e) {
+                        console.warn('Erro ao salvar chef_digital_planned no localStorage:', e);
+                    }
                 }
             }
         }
