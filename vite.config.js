@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
-  base: '/receitas/',
+  base: '/chef-digital/',
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -18,8 +18,8 @@ export default defineConfig({
         background_color: '#fafaf9',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/receitas/',
-        scope: '/receitas/',
+        start_url: '/chef-digital/',
+        scope: '/chef-digital/',
         icons: [
           {
             src: '1.png',
