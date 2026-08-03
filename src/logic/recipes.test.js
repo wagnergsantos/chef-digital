@@ -29,7 +29,7 @@ describe('Logic: Recipes', () => {
         expect(matchRecipeSearch(recipe, 'chocolate').matches).toBe(false);
     });
 
-    it('recipeIsFullyStocked should return true only if all non-optional ingredients are in pantry', () => {
+    it('recipeIsFullyStocked and recipeHasAnyPantryIngredient should calculate pantry matches', () => {
         const recipe = {
             ingredients: [
                 { name: 'Ovos', unit: 'unidades' },
@@ -39,6 +39,8 @@ describe('Logic: Recipes', () => {
 
         expect(recipeIsFullyStocked(recipe, ['ovos'])).toBe(true);
         expect(recipeIsFullyStocked(recipe, [])).toBe(false);
+        expect(recipeHasAnyPantryIngredient(recipe, ['ovos'])).toBe(true);
+        expect(recipeHasAnyPantryIngredient(recipe, ['leite'])).toBe(false);
     });
 
     it('scaleIngredientQty should scale quantity based on active portions and base servings', () => {

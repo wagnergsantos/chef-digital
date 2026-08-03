@@ -1,6 +1,6 @@
 import { state } from './state.js';
 import { scaleIngredientQty } from '../logic/recipes.js';
-import { getAllPlannedEntries, togglePlanner } from './planner-drawer.js';
+import { getAllPlannedEntries } from './planner-drawer.js';
 
 let _showToast = () => {};
 let _previouslyFocusedElementRef = { current: null };

@@ -1,4 +1,4 @@
-import { state, WEEK_DAYS } from './state.js';
+import { state } from './state.js';
 
 // --- Utility helpers ---
 

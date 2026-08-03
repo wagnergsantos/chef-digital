@@ -1,5 +1,4 @@
 import { state, WEEK_DAYS } from './state.js';
-import { scaleIngredientQty } from '../logic/recipes.js';
 
 let _renderRecipes = () => {};
 let _showToast = () => {};

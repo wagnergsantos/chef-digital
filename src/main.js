@@ -1,8 +1,8 @@
-import { supabase } from './supabase.js';
-import { salvarCacheLocal, lerCacheLocal } from './cache.js';
+import { supabase } from './api/supabase.js';
+import { salvarCacheLocal, lerCacheLocal } from './cache/db.js';
 import { registerSW } from 'virtual:pwa-register';
 
-import { state, WEEK_DAYS } from './modules/state.js';
+import { state } from './modules/state.js';
 import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.js';
 
 import {
@@ -14,29 +14,23 @@ import {
 
 import {
     carregarPlannerData,
-    getAllPlannedEntries,
-    getPlannedDaysForRecipe,
     isRecipePlanned,
     togglePlanner,
     toggleRecipeOnDay,
     openDayPickerPopover,
     handleDayPickerChoice,
-    handleDayPickerOutsideClick,
     closeDayPickerPopover,
     changePlannerRecipePortions,
     clearPlanner,
-    renderPlanner,
     updatePlannerBadge,
     setPlannerDependencies
 } from './modules/planner-drawer.js';
 
 import {
-    saveShoppingList,
     updateShoppingListBadge,
     toggleShoppingList,
     generateConsolidatedShoppingList,
     addCurrentRecipeToShoppingList,
-    renderShoppingList,
     toggleShoppingItemCheck,
     removeRecipeFromShoppingList,
     clearShoppingList,
@@ -50,7 +44,6 @@ import {
     closeRecipeModal,
     closeRecipeModalOnBackdrop,
     changePortions,
-    updateIngredientsList,
     toggleWakeLock,
     printRecipe,
     getActiveRecipeId,
