@@ -1,10 +1,7 @@
-# Subagent-Driven Development Progress Ledger
+# Progress Ledger - Subagent-Driven Development (Fase 2)
 
-- [x] Task 1: Scaffolding e Infraestrutura Vite (commits 8d5a6f2..965f62d, review clean)
-  * Note: Minor code-review findings: PWA icon setup should eventually add 512x512 size and maskable purpose.
-- [x] Task 2: Cliente Supabase e Modelagem no Banco (commits 965f62d..005c035, review clean)
-- [x] Task 3: Script de Migração (Node.js) (commits 005c035..3df9f0d, review clean)
-- [x] Task 4: Camada de Cache Offline (IndexedDB) (commits 3df9f0d..d45ad01, review clean)
-- [x] Task 5: Modularização do Livro de Receitas (HTML/JS) (commits d45ad01..310ce16, review clean)
-- [x] Task 6: Painel do Administrador (HTML/JS) (commits 310ce16..fadab89, review clean)
-- [x] Task 7: Setup da Action de Deploy (GitHub Actions) (commits fadab89..248f3e1, review clean)
+Plan: `docs/superpowers/plans/2026-08-02-fase-2-refatoracao.md`
+
+- [x] Task 1: Criar Módulos de Estado (`state.js`) e Tema (`theme.js`) (complete: commits ee881f9..10d7dc2, review clean)
+- [x] Task 2: Extrair Renderização de Receitas e Implementar Event Delegation (complete: commit e434588, build pass)
+- [ ] Task 3: Extrair Módulos de Componentes (Modal, Drawers e Despensa)
