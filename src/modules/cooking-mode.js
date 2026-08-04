@@ -1,4 +1,4 @@
-import { scaleIngredientQty } from '../logic/recipes.js';
+import { escapeHtml } from '../logic/recipes.js';
 
 let currentRecipe = null;
 let currentStepIndex = 0;
@@ -182,13 +182,13 @@ function renderIngredientsDrawer() {
         let qtyDisplay = '';
         if (ing.qty !== null && ing.qty !== undefined) {
             const formattedQty = Number(ing.qty.toFixed(2)).toString();
-            qtyDisplay = `<strong class="cooking-ing-qty">${formattedQty} ${ing.unit || ''}</strong>`;
+            qtyDisplay = `<strong class="cooking-ing-qty">${formattedQty} ${escapeHtml(ing.unit || '')}</strong>`;
         } else if (ing.unit) {
-            qtyDisplay = `<strong class="cooking-ing-qty">${ing.unit}</strong>`;
+            qtyDisplay = `<strong class="cooking-ing-qty">${escapeHtml(ing.unit)}</strong>`;
         }
 
         li.innerHTML = `
-            <span class="cooking-ing-name">${ing.name}</span>
+            <span class="cooking-ing-name">${escapeHtml(ing.name)}</span>
             ${qtyDisplay}
         `;
         listEl.appendChild(li);
