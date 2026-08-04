@@ -68,6 +68,9 @@ import {
     prevStep,
     toggleIngredientsDrawer,
     exitCookingMode,
+    startTimer,
+    pauseTimer,
+    resetTimer,
     setCookingModeDependencies
 } from './modules/cooking-mode.js';
 
@@ -327,3 +330,6 @@ window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.toggleIngredientsDrawer = toggleIngredientsDrawer;
 window.exitCookingMode = exitCookingMode;
+window.startTimer = startTimer;
+window.pauseTimer = pauseTimer;
+window.resetTimer = resetTimer;
