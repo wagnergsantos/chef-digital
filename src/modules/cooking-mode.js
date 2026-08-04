@@ -42,6 +42,16 @@ export function releaseCookingWakeLock() {
     }
 }
 
+if (typeof document !== 'undefined') {
+    document.addEventListener('visibilitychange', async () => {
+        const overlay = document.getElementById('cooking-mode-overlay');
+        if (overlay && overlay.classList.contains('open') && document.visibilityState === 'visible') {
+            await acquireCookingWakeLock();
+        }
+    });
+}
+
+
 function clearAllTimers() {
     Object.values(stepTimers).forEach(timer => {
         if (timer.intervalId) {
@@ -155,9 +165,12 @@ function formatTimerDisplay(seconds) {
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-function playTimerSound() {
+async function playTimerSound() {
     try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') {
+            await audioCtx.resume();
+        }
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = 'sine';
@@ -182,7 +195,6 @@ export function startTimer(stepIdx) {
     timer.intervalId = setInterval(() => {
         if (timer.remainingSeconds > 0) {
             timer.remainingSeconds--;
-            renderTimerContainer(stepIdx);
         }
 
         if (timer.remainingSeconds <= 0) {
@@ -194,6 +206,8 @@ export function startTimer(stepIdx) {
             if (typeof window.showToast === 'function') {
                 window.showToast('⏱️ O tempo do timer acabou!', 'success');
             }
+        } else {
+            renderTimerContainer(stepIdx);
         }
     }, 1000);
 

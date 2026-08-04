@@ -13,6 +13,10 @@ export function setRecipeModalDependencies({ previouslyFocusedElementRef }) {
     if (previouslyFocusedElementRef) _previouslyFocusedElementRef = previouslyFocusedElementRef;
 }
 
+export function getActiveRecipe() {
+    return state.recipes.find(r => r.id === activeRecipeId) || null;
+}
+
 export function getActiveRecipeId() {
     return activeRecipeId;
 }
