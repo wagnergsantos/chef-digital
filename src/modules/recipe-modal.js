@@ -1,6 +1,7 @@
 import { state } from './state.js';
 import { scaleIngredientQty } from '../logic/recipes.js';
 import { isRecipePlanned } from './planner-drawer.js';
+import { startCookingMode } from './cooking-mode.js';
 
 let activeRecipeId = null;
 let activeRecipePortions = 1;
@@ -256,6 +257,14 @@ export function openRecipeModal(id) {
         } else {
             tipContainer.classList.add('hidden');
         }
+    }
+
+    const cookingBtn = document.getElementById('modal-start-cooking-btn');
+    if (cookingBtn) {
+        cookingBtn.onclick = () => {
+            closeRecipeModal();
+            startCookingMode(recipe);
+        };
     }
 
     const modal = document.getElementById('recipe-modal');

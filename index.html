@@ -319,6 +319,13 @@
                 <div class="modal-col-right">
                     <div class="modal-section-title-wrapper">
                         <h4>Modo de Preparo</h4>
+                        <button id="modal-start-cooking-btn" onclick="startCookingMode(state.recipes.find(r => r.id === activeRecipeId))" class="modal-cooking-mode-btn" title="Iniciar Modo Preparo passo a passo" aria-label="Iniciar Modo Preparo">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true" width="18" height="18">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Iniciar Modo Preparo</span>
+                        </button>
                     </div>
                     <ol id="modal-steps-list" class="modal-steps-ol">
                         <!-- Filled dynamically -->

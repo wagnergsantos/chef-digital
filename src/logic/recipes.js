@@ -78,3 +78,30 @@ export function scaleIngredientQty(qty, activePortions, servings) {
     }
     return qty * numPortions;
 }
+
+export function parseStepTimer(text) {
+    if (!text) return null;
+    const regex = /(\d+)\s*(min|minuto|minutos|h|hora|horas)/i;
+    const match = text.match(regex);
+    if (!match) return null;
+
+    const value = parseInt(match[1], 10);
+    const unit = match[2].toLowerCase();
+
+    let totalSeconds = 0;
+    let displayMinutes = 0;
+
+    if (unit.startsWith('h')) {
+        totalSeconds = value * 3600;
+        displayMinutes = value * 60;
+    } else {
+        totalSeconds = value * 60;
+        displayMinutes = value;
+    }
+
+    return {
+        totalSeconds,
+        displayMinutes
+    };
+}
+

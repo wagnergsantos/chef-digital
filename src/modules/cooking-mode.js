@@ -1,9 +1,15 @@
-import { escapeHtml } from '../logic/recipes.js';
+import { escapeHtml, parseStepTimer } from '../logic/recipes.js';
 
 let currentRecipe = null;
 let currentStepIndex = 0;
 let isDrawerOpen = false;
 let _previouslyFocusedElementRef = { current: null };
+
+// Cooking mode Wake Lock sentinel
+let cookingWakeLockSentinel = null;
+
+// Timer state per step index: { [stepIndex]: { totalSeconds, remainingSeconds, isRunning, intervalId } }
+let stepTimers = {};
 
 export function setCookingModeDependencies({ previouslyFocusedElementRef }) {
     if (previouslyFocusedElementRef) _previouslyFocusedElementRef = previouslyFocusedElementRef;
@@ -17,9 +23,38 @@ export function getCurrentRecipe() {
     return currentRecipe;
 }
 
+export async function acquireCookingWakeLock() {
+    if (!('wakeLock' in navigator)) return;
+    try {
+        cookingWakeLockSentinel = await navigator.wakeLock.request('screen');
+        cookingWakeLockSentinel.addEventListener('release', () => {
+            cookingWakeLockSentinel = null;
+        });
+    } catch (e) {
+        cookingWakeLockSentinel = null;
+    }
+}
+
+export function releaseCookingWakeLock() {
+    if (cookingWakeLockSentinel) {
+        cookingWakeLockSentinel.release();
+        cookingWakeLockSentinel = null;
+    }
+}
+
+function clearAllTimers() {
+    Object.values(stepTimers).forEach(timer => {
+        if (timer.intervalId) {
+            clearInterval(timer.intervalId);
+        }
+    });
+    stepTimers = {};
+}
+
 export function startCookingMode(recipe) {
     if (!recipe || !recipe.steps || recipe.steps.length === 0) return;
 
+    clearAllTimers();
     currentRecipe = recipe;
     currentStepIndex = 0;
     isDrawerOpen = false;
@@ -28,6 +63,9 @@ export function startCookingMode(recipe) {
     if (!overlay) return;
 
     _previouslyFocusedElementRef.current = document.activeElement;
+
+    // Acquire Wake Lock for screen lock in cooking mode
+    acquireCookingWakeLock();
 
     // Set title
     const titleEl = document.getElementById('cooking-title');
@@ -91,6 +129,9 @@ export function toggleIngredientsDrawer() {
 }
 
 export function exitCookingMode() {
+    releaseCookingWakeLock();
+    clearAllTimers();
+
     const overlay = document.getElementById('cooking-mode-overlay');
     if (overlay) {
         overlay.classList.remove('open');
@@ -105,6 +146,123 @@ export function exitCookingMode() {
     if (_previouslyFocusedElementRef.current) {
         _previouslyFocusedElementRef.current.focus();
         _previouslyFocusedElementRef.current = null;
+    }
+}
+
+function formatTimerDisplay(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+function playTimerSound() {
+    try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5 note
+        gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.2);
+    } catch (e) {
+        // AudioContext might be blocked or unsupported
+    }
+}
+
+export function startTimer(stepIdx) {
+    let timer = stepTimers[stepIdx];
+    if (!timer) return;
+
+    if (timer.isRunning) return;
+
+    timer.isRunning = true;
+    timer.intervalId = setInterval(() => {
+        if (timer.remainingSeconds > 0) {
+            timer.remainingSeconds--;
+            renderTimerContainer(stepIdx);
+        }
+
+        if (timer.remainingSeconds <= 0) {
+            clearInterval(timer.intervalId);
+            timer.intervalId = null;
+            timer.isRunning = false;
+            renderTimerContainer(stepIdx);
+            playTimerSound();
+            if (typeof window.showToast === 'function') {
+                window.showToast('⏱️ O tempo do timer acabou!', 'success');
+            }
+        }
+    }, 1000);
+
+    renderTimerContainer(stepIdx);
+}
+
+export function pauseTimer(stepIdx) {
+    let timer = stepTimers[stepIdx];
+    if (!timer || !timer.isRunning) return;
+
+    if (timer.intervalId) {
+        clearInterval(timer.intervalId);
+        timer.intervalId = null;
+    }
+    timer.isRunning = false;
+    renderTimerContainer(stepIdx);
+}
+
+export function resetTimer(stepIdx) {
+    let timer = stepTimers[stepIdx];
+    if (!timer) return;
+
+    if (timer.intervalId) {
+        clearInterval(timer.intervalId);
+        timer.intervalId = null;
+    }
+    timer.isRunning = false;
+    timer.remainingSeconds = timer.totalSeconds;
+    renderTimerContainer(stepIdx);
+}
+
+function renderTimerContainer(stepIdx) {
+    // Only render if it's currently the active step rendered
+    if (stepIdx !== currentStepIndex) return;
+
+    const timerContainer = document.getElementById('cooking-step-timer-container');
+    if (!timerContainer) return;
+
+    const timer = stepTimers[stepIdx];
+    if (!timer) {
+        timerContainer.innerHTML = '';
+        return;
+    }
+
+    const timeDisplayStr = formatTimerDisplay(timer.remainingSeconds);
+    const isFinished = timer.remainingSeconds === 0;
+
+    if (!timer.isRunning && timer.remainingSeconds === timer.totalSeconds) {
+        // Initial state before starting
+        timerContainer.innerHTML = `
+            <button class="cooking-timer-btn" onclick="startTimer(${stepIdx})">
+                ⏱️ Iniciar Timer (${timer.displayMinutes} min)
+            </button>
+        `;
+    } else {
+        // Running, paused or finished state
+        timerContainer.innerHTML = `
+            <div class="cooking-timer-card ${isFinished ? 'timer-finished' : ''}">
+                <div class="timer-display-time">${timeDisplayStr}</div>
+                <div class="timer-card-actions">
+                    ${timer.isRunning ? `
+                        <button class="timer-action-btn btn-pause" onclick="pauseTimer(${stepIdx})" title="Pausar">Pausar</button>
+                    ` : `
+                        ${!isFinished ? `<button class="timer-action-btn btn-start" onclick="startTimer(${stepIdx})" title="Retomar">Retomar</button>` : ''}
+                    `}
+                    <button class="timer-action-btn btn-reset" onclick="resetTimer(${stepIdx})" title="Reiniciar">Reiniciar</button>
+                </div>
+            </div>
+        `;
     }
 }
 
@@ -135,6 +293,24 @@ export function renderStep() {
     }
     if (stepTextEl) {
         stepTextEl.textContent = stepText;
+    }
+
+    // Timer check for step text
+    const parsedTimer = parseStepTimer(stepText);
+    if (parsedTimer) {
+        if (!stepTimers[currentStepIndex]) {
+            stepTimers[currentStepIndex] = {
+                totalSeconds: parsedTimer.totalSeconds,
+                remainingSeconds: parsedTimer.totalSeconds,
+                displayMinutes: parsedTimer.displayMinutes,
+                isRunning: false,
+                intervalId: null
+            };
+        }
+        renderTimerContainer(currentStepIndex);
+    } else {
+        const timerContainer = document.getElementById('cooking-step-timer-container');
+        if (timerContainer) timerContainer.innerHTML = '';
     }
 
     // Prev / Next button states
@@ -194,3 +370,4 @@ function renderIngredientsDrawer() {
         listEl.appendChild(li);
     });
 }
+

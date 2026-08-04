@@ -161,6 +161,23 @@ function printPlanner() {
 
 // Esc and Global Keydown handler
 document.addEventListener('keydown', function(e) {
+    const cookingOverlay = document.getElementById('cooking-mode-overlay');
+    if (cookingOverlay && cookingOverlay.classList.contains('open')) {
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nextStep();
+            return;
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prevStep();
+            return;
+        } else if (e.key === 'Escape' || e.keyCode === 27) {
+            e.preventDefault();
+            exitCookingMode();
+            return;
+        }
+    }
+
     const modal = document.getElementById('recipe-modal');
     const pantryModal = document.getElementById('pantry-modal');
     const planner = document.getElementById('planner-drawer');
