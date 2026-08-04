@@ -62,6 +62,15 @@ import {
     togglePantryFilterOrOpenModal
 } from './modules/pantry-modal.js';
 
+import {
+    startCookingMode,
+    nextStep,
+    prevStep,
+    toggleIngredientsDrawer,
+    exitCookingMode,
+    setCookingModeDependencies
+} from './modules/cooking-mode.js';
+
 registerSW({ immediate: true });
 
 // Ref para gerenciar o elemento anteriormente focado (trap focus / acessibilidade)
@@ -88,6 +97,10 @@ setShoppingDependencies({
 });
 
 setRecipeModalDependencies({
+    previouslyFocusedElementRef
+});
+
+setCookingModeDependencies({
     previouslyFocusedElementRef
 });
 
@@ -292,3 +305,8 @@ window.changePlannerRecipePortions = changePlannerRecipePortions;
 window.removeRecipeFromShoppingList = removeRecipeFromShoppingList;
 window.toggleShoppingItemCheck = toggleShoppingItemCheck;
 window.toggleRecipeOnDay = toggleRecipeOnDay;
+window.startCookingMode = startCookingMode;
+window.nextStep = nextStep;
+window.prevStep = prevStep;
+window.toggleIngredientsDrawer = toggleIngredientsDrawer;
+window.exitCookingMode = exitCookingMode;
