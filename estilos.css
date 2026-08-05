@@ -391,15 +391,17 @@ button,
 
 .sidebar-sticky {
     background-color: var(--bg-card);
-    padding: 24px;
+    padding: 16px;
     border-radius: var(--radius-xl);
     border: 1px solid var(--primary-light-border);
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 14px;
     position: sticky;
-    top: 112px;
+    top: 80px;
+    max-height: calc(100vh - 95px);
+    overflow: hidden;
 }
 
 .sidebar-title {
@@ -481,9 +483,12 @@ button,
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    max-height: 400px;
+    max-height: calc(100vh - 280px);
+    min-height: 120px;
     overflow-y: auto;
     padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-dark) transparent;
 }
 
 @media (min-width: 768px) {
@@ -916,7 +921,7 @@ button,
     top: 0;
     bottom: 0;
     right: 0;
-    width: 100%;
+    width: 100vw;
     max-width: 420px;
     background-color: var(--bg-card);
     box-shadow: var(--shadow-xl);
@@ -926,6 +931,79 @@ button,
     border-left: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 480px) {
+    .drawer {
+        width: 100vw;
+        max-width: 100vw;
+        border-left: none;
+    }
+
+    .drawer-header {
+        padding: 14px 12px;
+    }
+
+    .drawer-header-title h3 {
+        font-size: var(--text-base);
+    }
+
+    .drawer-header-actions {
+        gap: 4px;
+    }
+
+    .drawer-content {
+        padding: 12px;
+    }
+
+    .drawer-footer {
+        padding: 12px;
+    }
+
+    .modal-container {
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .modal-header-banner {
+        padding: 60px 14px 16px 14px;
+        min-height: 130px;
+    }
+
+    .modal-header-banner h3 {
+        font-size: var(--text-xl);
+    }
+
+    .modal-header-tools {
+        gap: 4px;
+    }
+
+    .modal-close-btn,
+    .modal-wakelock-btn,
+    .modal-print-btn,
+    .modal-shopping-btn,
+    .modal-planner-btn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .modal-start-cooking-btn {
+        height: 34px;
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
+    .modal-body {
+        padding: 14px 12px;
+        gap: 16px;
+    }
+
+    .modal-section-title-wrapper h4 {
+        font-size: var(--text-base);
+    }
 }
 
 .drawer.open {
@@ -1429,166 +1507,76 @@ button,
     z-index: 2;
 }
 
-.modal-close-btn {
-    z-index: 10;
-}
-
-.modal-close-btn {
+.modal-top-actions {
     position: absolute;
     top: 16px;
+    left: 16px;
     right: 16px;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--text-white);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
-}
-
-.modal-close-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-.modal-close-btn:active {
-    transform: scale(0.95);
-}
-
-.modal-close-btn svg {
-    width: 18px;
-    height: 18px;
-}
-
-.modal-wakelock-btn {
-    position: absolute;
-    top: 16px;
-    right: 68px;
+    justify-content: space-between;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--text-white);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
+}
+
+.modal-header-tools {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+    gap: 6px;
 }
 
-.modal-wakelock-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-.modal-wakelock-btn:active {
-    transform: scale(0.95);
-}
-
-.modal-wakelock-btn svg {
-    width: 18px;
-    height: 18px;
-}
-
-.modal-wakelock-btn.wakelock-active {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--primary-color);
-}
-
-.modal-wakelock-btn.wakelock-active:hover {
-    background-color: var(--text-white);
-}
-
-.modal-print-btn {
-    position: absolute;
-    top: 16px;
-    right: 120px;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--text-white);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
-}
-
-.modal-print-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-.modal-print-btn:active {
-    transform: scale(0.95);
-}
-
-.modal-print-btn svg {
-    width: 18px;
-    height: 18px;
-}
-
-.modal-shopping-btn {
-    position: absolute;
-    top: 16px;
-    right: 172px;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.15);
-    color: var(--text-white);
-    border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
-}
-
-.modal-shopping-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-.modal-shopping-btn:active {
-    transform: scale(0.95);
-}
-
-.modal-shopping-btn svg {
-    width: 18px;
-    height: 18px;
-}
-
+.modal-close-btn,
+.modal-wakelock-btn,
+.modal-print-btn,
+.modal-shopping-btn,
 .modal-planner-btn {
-    position: absolute;
-    top: 16px;
-    right: 224px;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.15);
+    position: static;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
     color: var(--text-white);
     border-radius: var(--radius-full);
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.modal-planner-btn:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-.modal-planner-btn:active {
-    transform: scale(0.95);
-}
-
+.modal-close-btn svg,
+.modal-wakelock-btn svg,
+.modal-print-btn svg,
+.modal-shopping-btn svg,
 .modal-planner-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+}
+
+.modal-start-cooking-btn {
+    position: static;
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    padding: 0 12px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modal-close-btn:hover,
+.modal-wakelock-btn:hover,
+.modal-print-btn:hover,
+.modal-shopping-btn:hover,
+.modal-planner-btn:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    transform: scale(1.05);
 }
 
 .modal-planner-btn.planned-active {
@@ -2987,6 +2975,77 @@ button,
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+}
+
+.portion-controls {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+    white-space: nowrap;
+    width: max-content;
+}
+
+.modal-ingredients-li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--text-sm);
+    color: var(--text-main);
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.modal-ingredients-li:last-child {
+    border-bottom: none;
+}
+
+.ing-bullet {
+    color: var(--primary-color);
+    font-size: var(--text-base);
+    font-weight: bold;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.portion-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.portion-btn:hover {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    transform: scale(1.05);
+}
+
+.portion-btn:active {
+    transform: scale(0.95);
+}
+
+.portion-value {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0 8px;
+    color: var(--text-main);
+    white-space: nowrap;
+    word-break: keep-all;
+    display: inline-block;
+    flex-shrink: 0;
+    width: max-content;
 }
 
 .cooking-drawer-close:hover {

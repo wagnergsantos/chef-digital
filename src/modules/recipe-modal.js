@@ -58,9 +58,7 @@ export function updateIngredientsList() {
         }
 
         li.innerHTML = `
-            <div class="ing-checkbox" role="checkbox" aria-checked="false" tabindex="0" onkeydown="if(event.key === ' ' || event.key === 'Enter') { this.classList.toggle('checked'); this.setAttribute('aria-checked', this.classList.contains('checked')); this.nextElementSibling.querySelector('.ing-name').style.textDecoration = this.classList.contains('checked') ? 'line-through' : 'none'; this.nextElementSibling.querySelector('.ing-name').style.opacity = this.classList.contains('checked') ? '0.5' : '1'; event.preventDefault(); }" onclick="this.classList.toggle('checked'); this.setAttribute('aria-checked', this.classList.contains('checked')); this.nextElementSibling.querySelector('.ing-name').style.textDecoration = this.classList.contains('checked') ? 'line-through' : 'none'; this.nextElementSibling.querySelector('.ing-name').style.opacity = this.classList.contains('checked') ? '0.5' : '1';" aria-label="${ing.name}">
-                <svg xmlns="http://www.w3.org/2000/svg" class="check-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-            </div>
+            <span class="ing-bullet" aria-hidden="true">•</span>
             <div class="ing-details-row">
                 <span class="ing-name">${ing.name}</span>
                 ${qtyDisplay}
