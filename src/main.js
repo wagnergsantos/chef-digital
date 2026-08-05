@@ -224,11 +224,21 @@ async function inicializarApp() {
 
     try {
         const { data: catData, error: catErr } = await supabase.from('categorias').select('*');
+        
+        // Fetch receitas base (without joins to avoid long URL issues)
         const { data: recData, error: recErr } = await supabase.from('receitas').select(`
-            id, title, category, source, emoji, image, servings, tips,
-            ingredients:ingredientes(name, qty, unit),
-            steps:passos(description)
+            id, title, category, source, emoji, image, servings, tips
         `);
+
+        // Fetch all ingredients and steps in parallel
+        const { data: ingredientsData, error: ingredientsErr } = await supabase
+            .from('ingredientes')
+            .select('id, recipe_id, name, qty, unit');
+        
+        const { data: stepsData, error: stepsErr } = await supabase
+            .from('passos')
+            .select('id, recipe_id, description')
+            .order('id');
 
         if (!catErr && catData && catData.length > 0) {
             state.categories = catData.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
@@ -236,6 +246,32 @@ async function inicializarApp() {
         }
 
         if (!recErr && recData && recData.length > 0) {
+            // Build index maps for quick lookup
+            const ingredientsByRecipe = {};
+            const stepsByRecipe = {};
+            
+            if (!ingredientsErr && ingredientsData) {
+                ingredientsData.forEach(ing => {
+                    if (!ingredientsByRecipe[ing.recipe_id]) {
+                        ingredientsByRecipe[ing.recipe_id] = [];
+                    }
+                    ingredientsByRecipe[ing.recipe_id].push({
+                        name: ing.name,
+                        qty: ing.qty,
+                        unit: ing.unit
+                    });
+                });
+            }
+            
+            if (!stepsErr && stepsData) {
+                stepsData.forEach(step => {
+                    if (!stepsByRecipe[step.recipe_id]) {
+                        stepsByRecipe[step.recipe_id] = [];
+                    }
+                    stepsByRecipe[step.recipe_id].push(step.description);
+                });
+            }
+
             const formattedRecipes = recData.map(r => ({
                 id: r.id,
                 title: r.title,
@@ -245,8 +281,8 @@ async function inicializarApp() {
                 image: r.image,
                 servings: r.servings,
                 tips: r.tips,
-                ingredients: r.ingredients || [],
-                steps: (r.steps || []).map(s => s.description)
+                ingredients: ingredientsByRecipe[r.id] || [],
+                steps: stepsByRecipe[r.id] || []
             }));
             state.recipes = formattedRecipes;
             carregarPlannerData(state.recipes);
