@@ -1,7 +1,7 @@
 import { supabase } from '../api/supabase.js';
 
 const DB_NAME = 'ChefDigitalDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 let isProcessingQueue = false;
 const MAX_TENTATIVAS = 5;
 
@@ -16,6 +16,12 @@ function openDB() {
       }
       if (!db.objectStoreNames.contains('categorias')) {
         db.createObjectStore('categorias', { keyPath: 'key' });
+      }
+      if (!db.objectStoreNames.contains('tags')) {
+        db.createObjectStore('tags', { keyPath: 'key' });
+      }
+      if (!db.objectStoreNames.contains('recipeTags')) {
+        db.createObjectStore('recipeTags');
       }
       if (!db.objectStoreNames.contains('sync_queue')) {
         db.createObjectStore('sync_queue', { keyPath: 'id', autoIncrement: true });
@@ -122,7 +128,8 @@ export async function processarFilaOnline() {
               source: p.p_source,
               tips: p.p_tips,
               servings: p.p_servings,
-              category: p.p_category
+              category_id: p.p_category_id,
+              category: p.p_category_key || null
             };
             if (p.p_id) recipeData.id = p.p_id;
 

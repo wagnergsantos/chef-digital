@@ -1,10 +1,10 @@
-export function validateRecipePayloadData({ title, selectedCategories, ingredients, steps }) {
+export function validateRecipePayloadData({ title, selectedCategoryId, ingredients, steps }) {
     if (!title || !title.trim()) {
         return { isValid: false, error: 'O título da receita é obrigatório.' };
     }
 
-    if (!selectedCategories || selectedCategories.length === 0) {
-        return { isValid: false, error: 'Selecione pelo menos uma categoria.' };
+    if (!selectedCategoryId || !String(selectedCategoryId).trim()) {
+        return { isValid: false, error: 'Selecione uma categoria.' };
     }
 
     const validIngredients = (ingredients || []).map((ing, index) => {
@@ -49,12 +49,14 @@ export function buildRecipePayload({
     source,
     tips,
     servings,
-    selectedCategories,
+    selectedCategoryId,
+    selectedCategoryKey,
     validIngredients,
     validSteps
 }) {
     const numServings = servings ? parseInt(String(servings).trim(), 10) : null;
     const parsedServings = (!isNaN(numServings) && numServings > 0) ? numServings : null;
+    const parsedCategoryId = Number.parseInt(String(selectedCategoryId).trim(), 10);
 
     return {
         p_id: id,
@@ -64,7 +66,8 @@ export function buildRecipePayload({
         p_source: (source || '').trim() || null,
         p_tips: (tips || '').trim() || null,
         p_servings: parsedServings,
-        p_category: selectedCategories,
+        p_category_id: Number.isNaN(parsedCategoryId) ? null : parsedCategoryId,
+        p_category_key: (selectedCategoryKey || '').trim() || null,
         p_ingredientes: validIngredients,
         p_passos: validSteps
     };

@@ -187,25 +187,10 @@ export function openRecipeModal(id) {
     const titleEl = document.getElementById('modal-title');
     if (titleEl) titleEl.innerText = recipe.title;
     
-    let catText = '';
-    if (Array.isArray(recipe.category)) {
-        catText = recipe.category.map(cat => state.categories[cat] || cat).join(' | ');
-    } else {
-        catText = state.categories[recipe.category] || recipe.category;
-    }
+    const catKey = recipe.category || state.categoriesById[String(recipe.category_id)] || recipe.category;
+    const catText = state.categories[catKey] || catKey;
     const catBadge = document.getElementById('modal-category-badge');
     if (catBadge) catBadge.innerText = catText;
-
-    const modalSourceBadge = document.getElementById('modal-source-badge');
-    if (modalSourceBadge) {
-        if (recipe.source) {
-            modalSourceBadge.innerText = recipe.source;
-            modalSourceBadge.style.display = 'inline-block';
-        } else {
-            modalSourceBadge.innerText = '';
-            modalSourceBadge.style.display = 'none';
-        }
-    }
 
     const modalServingsBadge = document.getElementById('modal-servings-badge');
     if (modalServingsBadge) {

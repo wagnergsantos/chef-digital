@@ -7,6 +7,7 @@ import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.j
 
 import {
     renderCategoryFilters,
+    renderTagFilters,
     renderRecipes,
     setRenderDependencies,
     initRecipesGridDelegation
@@ -163,6 +164,64 @@ function printPlanner() {
     window.print();
 }
 
+const LEGACY_TAG_CATEGORY_KEYS = new Set(['almoco', 'janta', 'refogados', 'marmitas', 'lancheira']);
+const LEGACY_CATEGORY_MAP = new Map([
+    ['bife', 'carnes'],
+    ['carne', 'carnes'],
+    ['peixe', 'peixes'],
+    ['macarrao', 'massas'],
+    ['massa', 'massas'],
+    ['arroz', 'acompanhamento'],
+    ['batatas', 'acompanhamento'],
+    ['legumes', 'acompanhamento'],
+    ['feijao', 'acompanhamento'],
+    ['lancheira', 'lanches']
+]);
+
+function normalizeRecipeCategory(category) {
+    if (Array.isArray(category)) {
+        const chosen = category.find(cat => !LEGACY_TAG_CATEGORY_KEYS.has(cat));
+        const fallback = chosen || category[0];
+        if (!fallback || LEGACY_TAG_CATEGORY_KEYS.has(fallback)) {
+            return 'lanches';
+        }
+        return LEGACY_CATEGORY_MAP.get(fallback) || fallback;
+    }
+
+    if (!category) {
+        return 'lanches';
+    }
+
+    if (category === 'todos' || LEGACY_TAG_CATEGORY_KEYS.has(category)) {
+        return 'lanches';
+    }
+
+    return LEGACY_CATEGORY_MAP.get(category) || category;
+}
+
+function buildCategoryMaps(categories) {
+    state.categories = categories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
+    state.categoriesById = categories.reduce((acc, cat) => ({ ...acc, [String(cat.id)]: cat.key }), {});
+    state.categoryIdsByKey = categories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.id }), {});
+}
+
+function normalizeRecipeFromRow(recipe) {
+    const categoryKeyFromId = recipe.category_id !== undefined && recipe.category_id !== null
+        ? state.categoriesById[String(recipe.category_id)]
+        : null;
+
+    const categoryKey = categoryKeyFromId || normalizeRecipeCategory(recipe.category);
+    const categoryId = recipe.category_id !== undefined && recipe.category_id !== null
+        ? recipe.category_id
+        : (state.categoryIdsByKey[categoryKey] || null);
+
+    return {
+        ...recipe,
+        category: categoryKey,
+        category_id: categoryId
+    };
+}
+
 // Esc and Global Keydown handler
 document.addEventListener('keydown', function(e) {
     const cookingOverlay = document.getElementById('cooking-mode-overlay');
@@ -206,14 +265,23 @@ async function inicializarApp() {
     try {
         const cachedCategories = await lerCacheLocal('categorias');
         const cachedRecipes = await lerCacheLocal('receitas');
+        const cachedTags = await lerCacheLocal('tags');
+        const cachedRecipeTags = await lerCacheLocal('recipeTags');
 
         if (cachedCategories && cachedCategories.length > 0 && cachedRecipes && cachedRecipes.length > 0) {
-            state.categories = cachedCategories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
-            state.recipes = cachedRecipes;
+            buildCategoryMaps(cachedCategories);
+            if (cachedTags && cachedTags.length > 0) {
+                state.tags = cachedTags.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {});
+            }
+            if (cachedRecipeTags) {
+                state.recipeTags = cachedRecipeTags;
+            }
+            state.recipes = cachedRecipes.map(normalizeRecipeFromRow);
             carregarPlannerData(state.recipes);
             
             updateThemeToggleIcon();
             renderCategoryFilters();
+            renderTagFilters();
             renderRecipes();
             updateShoppingListBadge();
             updatePlannerBadge();
@@ -223,26 +291,48 @@ async function inicializarApp() {
     }
 
     try {
-        const { data: catData, error: catErr } = await supabase.from('categorias').select('*');
+        const { data: catData, error: catErr } = await supabase.from('categorias').select('*').order('sort_order');
+        const { data: tagData, error: tagErr } = await supabase.from('tags').select('*').order('sort_order');
         
         // Fetch receitas base (without joins to avoid long URL issues)
         const { data: recData, error: recErr } = await supabase.from('receitas').select(`
-            id, title, category, source, emoji, image, servings, tips
+            id, title, category_id, category, source, emoji, image, servings, tips
         `);
 
         // Fetch all ingredients and steps in parallel
         const { data: ingredientsData, error: ingredientsErr } = await supabase
             .from('ingredientes')
-            .select('id, recipe_id, name, qty, unit');
+            .select('id, receita_id, name, qty, unit');
         
         const { data: stepsData, error: stepsErr } = await supabase
             .from('passos')
-            .select('id, recipe_id, description')
-            .order('id');
+            .select('id, receita_id, step_text')
+            .order('ordem');
+
+        // Fetch recipe tags
+        const { data: recipeTagsData, error: recipeTagsErr } = await supabase
+            .from('receita_tags')
+            .select('receita_id, tags(key)');
 
         if (!catErr && catData && catData.length > 0) {
-            state.categories = catData.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.label }), {});
+            buildCategoryMaps(catData);
             await salvarCacheLocal('categorias', catData);
+        }
+
+        if (!tagErr && tagData && tagData.length > 0) {
+            state.tags = tagData.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {});
+            await salvarCacheLocal('tags', tagData);
+        }
+
+        if (!recipeTagsErr && recipeTagsData && recipeTagsData.length > 0) {
+            state.recipeTags = {};
+            recipeTagsData.forEach(rt => {
+                if (!state.recipeTags[rt.receita_id]) {
+                    state.recipeTags[rt.receita_id] = [];
+                }
+                state.recipeTags[rt.receita_id].push(rt.tags.key);
+            });
+            await salvarCacheLocal('recipeTags', state.recipeTags);
         }
 
         if (!recErr && recData && recData.length > 0) {
@@ -252,10 +342,10 @@ async function inicializarApp() {
             
             if (!ingredientsErr && ingredientsData) {
                 ingredientsData.forEach(ing => {
-                    if (!ingredientsByRecipe[ing.recipe_id]) {
-                        ingredientsByRecipe[ing.recipe_id] = [];
+                    if (!ingredientsByRecipe[ing.receita_id]) {
+                        ingredientsByRecipe[ing.receita_id] = [];
                     }
-                    ingredientsByRecipe[ing.recipe_id].push({
+                    ingredientsByRecipe[ing.receita_id].push({
                         name: ing.name,
                         qty: ing.qty,
                         unit: ing.unit
@@ -265,22 +355,15 @@ async function inicializarApp() {
             
             if (!stepsErr && stepsData) {
                 stepsData.forEach(step => {
-                    if (!stepsByRecipe[step.recipe_id]) {
-                        stepsByRecipe[step.recipe_id] = [];
+                    if (!stepsByRecipe[step.receita_id]) {
+                        stepsByRecipe[step.receita_id] = [];
                     }
-                    stepsByRecipe[step.recipe_id].push(step.description);
+                    stepsByRecipe[step.receita_id].push(step.step_text);
                 });
             }
 
-            const formattedRecipes = recData.map(r => ({
-                id: r.id,
-                title: r.title,
-                category: r.category,
-                source: r.source,
-                emoji: r.emoji,
-                image: r.image,
-                servings: r.servings,
-                tips: r.tips,
+            const formattedRecipes = recData.map(r => normalizeRecipeFromRow({
+                ...r,
                 ingredients: ingredientsByRecipe[r.id] || [],
                 steps: stepsByRecipe[r.id] || []
             }));
@@ -290,6 +373,7 @@ async function inicializarApp() {
         }
 
         renderCategoryFilters();
+        renderTagFilters();
         renderRecipes();
         updateShoppingListBadge();
         updatePlannerBadge();

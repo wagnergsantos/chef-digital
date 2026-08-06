@@ -48,6 +48,23 @@ export function recipeHasAnyPantryIngredient(recipe) {
     });
 }
 
+// --- Tag helpers ---
+
+export function recipeHasTag(recipeId, tagKey) {
+    if (!state.recipeTags || !state.recipeTags[recipeId]) return false;
+    return state.recipeTags[recipeId].includes(tagKey);
+}
+
+export function recipeHasAnyTag(recipeId, tagKeys) {
+    if (!state.recipeTags || !state.recipeTags[recipeId]) return false;
+    return tagKeys.some(tagKey => state.recipeTags[recipeId].includes(tagKey));
+}
+
+export function recipeHasAllTags(recipeId, tagKeys) {
+    if (!state.recipeTags || !state.recipeTags[recipeId]) return false;
+    return tagKeys.every(tagKey => state.recipeTags[recipeId].includes(tagKey));
+}
+
 // --- Search helpers ---
 
 export function matchRecipeSearch(recipe, rawQuery) {
@@ -119,12 +136,7 @@ export function renderCategoryFilters() {
             }).length;
         } else {
             count = state.recipes.filter(r => {
-                let categoryMatch = false;
-                if (Array.isArray(r.category)) {
-                    categoryMatch = r.category.includes(key);
-                } else {
-                    categoryMatch = r.category === key;
-                }
+                const categoryMatch = r.category === key;
                 const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
                 const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
                 return categoryMatch && searchMatch && favoriteMatch && pantryMatch(r);
@@ -149,13 +161,67 @@ export function renderCategoryFilters() {
     container.appendChild(fragment);
 }
 
+// --- Tag Filters ---
+
+export function renderTagFilters() {
+    const container = document.getElementById('tag-filters');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+
+    const keys = Object.keys(state.tags).sort((a, b) => {
+        const tagA = Object.entries(state.tags).find(e => e[0] === a);
+        const tagB = Object.entries(state.tags).find(e => e[0] === b);
+        return (tagA ? tagA[0] : '').localeCompare((tagB ? tagB[0] : ''), 'pt-BR');
+    });
+
+    keys.forEach(key => {
+        const count = state.recipes.filter(r => {
+            const hasTag = recipeHasTag(r.id, key);
+            const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
+            const categoryMatch = state.activeCategory === 'todos' || r.category === state.activeCategory;
+            const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
+            const pantryMatch = !state.showPantryOnly || recipeHasAnyPantryIngredient(r);
+            return hasTag && searchMatch && categoryMatch && favoriteMatch && pantryMatch;
+        }).length;
+
+        if (count === 0 && !state.activeTags.includes(key)) return;
+
+        const button = document.createElement('button');
+        const isActive = state.activeTags.includes(key);
+        button.className = `tag-filter-btn ${isActive ? 'active' : ''}`;
+        button.onclick = () => toggleTag(key);
+        button.innerHTML = `
+            <span>${state.tags[key]}</span>
+            <span class="tag-filter-badge">${count}</span>
+        `;
+
+        fragment.appendChild(button);
+    });
+    container.appendChild(fragment);
+}
+
+export function toggleTag(tagKey) {
+    if (state.activeTags.includes(tagKey)) {
+        state.activeTags = state.activeTags.filter(t => t !== tagKey);
+    } else {
+        state.activeTags.push(tagKey);
+    }
+    localStorage.setItem('chef_digital_active_tags', JSON.stringify(state.activeTags));
+    renderRecipes();
+    renderTagFilters();
+}
+
 // --- Select Category ---
 
 export function selectCategory(categoryKey) {
     state.activeCategory = categoryKey;
     state.showFavoritesOnly = false; // Reset favorites-only filter when clicking category
+    state.activeTags = []; // Reset tags when selecting category
     document.getElementById('favs-toggle').classList.remove('active');
     renderRecipes();
+    renderTagFilters();
 }
 
 // --- Toggle Favorites Only ---
@@ -211,7 +277,8 @@ export function updateClearFiltersBtnVisibility() {
     const hasActiveFilters = (state.searchQuery.length > 0) || 
                              (state.activeCategory !== 'todos') || 
                              state.showFavoritesOnly ||
-                             state.showPantryOnly;
+                             state.showPantryOnly ||
+                             state.activeTags.length > 0;
                              
     if (hasActiveFilters) {
         clearFiltersBtn.classList.remove('hidden');
@@ -249,8 +316,13 @@ export function clearAllFilters() {
         pantryBtn.classList.remove('active');
     }
 
+    // Clear tags filter
+    state.activeTags = [];
+    localStorage.setItem('chef_digital_active_tags', JSON.stringify(state.activeTags));
+
     // Re-render
     renderRecipes();
+    renderTagFilters();
 }
 
 // --- Main Render ---
@@ -274,17 +346,7 @@ export function renderRecipes() {
     grid.innerHTML = '';
 
     let filtered = state.recipes.filter(recipe => {
-        // Category Filter supporting both string and array multitags
-        let categoryMatch = false;
-        if (state.activeCategory === 'todos') {
-            categoryMatch = true;
-        } else {
-            if (Array.isArray(recipe.category)) {
-                categoryMatch = recipe.category.includes(state.activeCategory);
-            } else {
-                categoryMatch = recipe.category === state.activeCategory;
-            }
-        }
+        const categoryMatch = state.activeCategory === 'todos' || recipe.category === state.activeCategory;
         
         // Search Match (Check Title only)
         const searchMatch = matchRecipeSearch(recipe, state.searchQuery).matches;
@@ -295,7 +357,10 @@ export function renderRecipes() {
         // Pantry Filter
         const pantryMatch = !state.showPantryOnly || recipeHasAnyPantryIngredient(recipe);
 
-        return categoryMatch && searchMatch && favoriteMatch && pantryMatch;
+        // Tags Filter: if activeTags is not empty, recipe must have ALL selected tags
+        const tagsMatch = state.activeTags.length === 0 || recipeHasAllTags(recipe.id, state.activeTags);
+
+        return categoryMatch && searchMatch && favoriteMatch && pantryMatch && tagsMatch;
     });
 
     // Update title results count
@@ -349,15 +414,11 @@ export function renderRecipes() {
                 }
             };
 
-            // Render all categories for this recipe as badges
-            let categoryBadges = '';
-            if (Array.isArray(recipe.category)) {
-                categoryBadges = recipe.category.map(cat => 
-                    `<span class="card-badge">${state.categories[cat] || cat}</span>`
-                ).join(' ');
-            } else {
-                categoryBadges = `<span class="card-badge">${state.categories[recipe.category] || recipe.category}</span>`;
-            }
+            const categoryBadges = `<span class="card-badge">${state.categories[recipe.category] || recipe.category}</span>`;
+            const recipeTagKeys = state.recipeTags[recipe.id] || [];
+            const cardTags = recipeTagKeys
+                .map(tagKey => `<span class="card-tag-badge">${escapeHtml(state.tags[tagKey] || tagKey)}</span>`)
+                .join('');
 
             const hasImg = recipe.image && recipe.image.trim() !== "";
             const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
@@ -375,8 +436,8 @@ export function renderRecipes() {
                 
                 <div class="card-body">
                     <div class="card-info">
-                        <span class="card-source">${escapeHtml(recipe.source || '')}</span>
                         <h4 class="card-title">${escapeHtml(recipe.title)}</h4>
+                        ${cardTags ? `<div class="card-tags">${cardTags}</div>` : ''}
                         ${matchedIngredients && matchedIngredients.length > 0 ? `<p class="card-search-match">🔍 Contém: ${escapeHtml(matchedIngredients.join(', '))}</p>` : ''}
                     </div>
                     

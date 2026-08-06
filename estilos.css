@@ -548,6 +548,80 @@ button,
     color: #451a03;
 }
 
+/* Tag Filters */
+
+.tags-filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tag-filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    width: 100%;
+    text-align: left;
+}
+
+.tag-filter-btn:hover {
+    color: var(--success-color);
+    border-color: var(--success-light-border);
+    background-color: var(--success-light);
+}
+
+.tag-filter-btn.active {
+    background-color: var(--success-color);
+    color: #f0fdf4;
+    border-color: var(--success-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.tag-filter-badge {
+    font-size: var(--text-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+    margin-left: 8px;
+}
+
+.tag-filter-btn.active .tag-filter-badge {
+    background-color: rgba(15, 93, 47, 0.12);
+    color: #f0fdf4;
+}
+
+/* Card Tag Badges */
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 5px;
+    margin-top: 6px;
+}
+
+.card-tag-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--success-light);
+    color: #14532d;
+    border: 1px solid #86efac;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
 /* Recipe Content Grid Section */
 .recipes-content {
     flex-grow: 1;
@@ -741,12 +815,6 @@ button,
     display: flex;
     flex-direction: column;
     gap: 4px;
-}
-
-.card-source {
-    font-size: var(--text-xs);
-    font-weight: 500;
-    color: var(--text-light);
 }
 
 .card-title {\n    font-family: 'Playfair Display', Georgia, Cambria, serif;
@@ -3110,4 +3178,3 @@ button,
         bottom: 80px;
     }
 }
-

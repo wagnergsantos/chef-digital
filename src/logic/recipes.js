@@ -13,6 +13,21 @@ export function normalizeSearchText(str) {
         .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
+export function recipeHasTag(recipeId, tagKey, recipeTags) {
+    if (!recipeTags || !recipeTags[recipeId]) return false;
+    return recipeTags[recipeId].includes(tagKey);
+}
+
+export function recipeHasAnyTag(recipeId, tagKeys, recipeTags) {
+    if (!recipeTags || !recipeTags[recipeId]) return false;
+    return tagKeys.some(tagKey => recipeTags[recipeId].includes(tagKey));
+}
+
+export function recipeHasAllTags(recipeId, tagKeys, recipeTags) {
+    if (!recipeTags || !recipeTags[recipeId]) return false;
+    return tagKeys.every(tagKey => recipeTags[recipeId].includes(tagKey));
+}
+
 export function recipeIsFullyStocked(recipe, pantryItems = []) {
     if (!pantryItems || pantryItems.length === 0) return false;
     const normPantry = pantryItems.map(normalizeSearchText);

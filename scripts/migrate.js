@@ -13,6 +13,26 @@ if (!supabaseUrl || !serviceRoleKey) {
 const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false }
 });
+const LEGACY_TAG_CATEGORY_KEYS = new Set(['almoco', 'janta', 'refogados', 'marmitas', 'lancheira']);
+const LEGACY_CATEGORY_MAP = new Map([
+  ['bife', 'carnes'],
+  ['carne', 'carnes'],
+  ['peixe', 'peixes'],
+  ['macarrao', 'massas'],
+  ['massa', 'massas'],
+  ['arroz', 'acompanhamento'],
+  ['batatas', 'acompanhamento'],
+  ['legumes', 'acompanhamento'],
+  ['feijao', 'acompanhamento'],
+  ['lancheira', 'lanches']
+]);
+
+function normalizeCategory(category) {
+  if (category === 'todos' || LEGACY_TAG_CATEGORY_KEYS.has(category)) {
+    return 'lanches';
+  }
+  return LEGACY_CATEGORY_MAP.get(category) || category;
+}
 
 async function migrate() {
   console.log('Iniciando migração...');
@@ -37,6 +57,13 @@ async function migrate() {
     }, { onConflict: 'key' });
     if (error) console.error(`Erro na categoria ${key}:`, error);
   }
+  const { data: categoryRows, error: categoryRowsError } = await supabase
+    .from('categorias')
+    .select('id,key');
+  if (categoryRowsError) {
+    console.error('Erro ao carregar IDs das categorias:', categoryRowsError);
+  }
+  const categoryIdByKey = Object.fromEntries((categoryRows || []).map(cat => [cat.key, cat.id]));
   console.log('Categorias migradas com sucesso.');
 
   // 2. Migrar Receitas
@@ -50,7 +77,14 @@ async function migrate() {
       image: r.image || null,
       source: r.source || null,
       tips: r.tips || null,
-      category: r.category ? (Array.isArray(r.category) ? r.category : [r.category]) : []
+      category_id: categoryIdByKey[normalizeCategory(Array.isArray(r.category)
+        ? (r.category.find(c => !LEGACY_TAG_CATEGORY_KEYS.has(c)) || r.category[0] || 'lanches')
+        : r.category)] || null,
+      category: r.category
+        ? (Array.isArray(r.category)
+          ? normalizeCategory(r.category.find(c => !LEGACY_TAG_CATEGORY_KEYS.has(c)) || r.category[0] || 'lanches')
+          : normalizeCategory(r.category))
+        : null
     }, { onConflict: 'id' });
 
     if (rError) {
@@ -101,4 +135,3 @@ async function migrate() {
 migrate()
   .catch(console.error)
   .finally(() => process.exit(0));
-

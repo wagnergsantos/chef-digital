@@ -92,7 +92,7 @@ async function logout() {
 
 // Load Categories
 async function loadCategories() {
-    const { data, error } = await supabase.from('categorias').select('*').order('label');
+    const { data, error } = await supabase.from('categorias').select('*').order('sort_order');
     if (error) {
         console.error('Erro ao carregar categorias:', error);
         return;
@@ -103,12 +103,14 @@ async function loadCategories() {
         const label = document.createElement('label');
         label.className = 'category-checkbox-label';
         
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = cat.key;
-        checkbox.className = 'category-checkbox';
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'recipe-category';
+        radio.value = cat.id;
+        radio.dataset.key = cat.key;
+        radio.className = 'category-checkbox';
 
-        label.appendChild(checkbox);
+        label.appendChild(radio);
         label.appendChild(document.createTextNode(' ' + cat.label));
         categoriesContainer.appendChild(label);
     });
@@ -236,12 +238,13 @@ async function saveRecipe(e) {
     errorContainer.style.display = 'none';
     
     const title = document.getElementById('recipe-title').value.trim();
-    const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]:checked');
-    const selectedCategories = Array.from(checkboxes).map(cb => cb.value);
+    const selectedCategoryInput = categoriesContainer.querySelector('input[type="radio"]:checked');
+    const selectedCategoryId = selectedCategoryInput ? selectedCategoryInput.value : '';
+    const selectedCategoryKey = selectedCategoryInput ? selectedCategoryInput.dataset.key : '';
 
     const validation = validateRecipePayloadData({
         title,
-        selectedCategories,
+        selectedCategoryId,
         ingredients,
         steps
     });
@@ -259,7 +262,8 @@ async function saveRecipe(e) {
         source: document.getElementById('recipe-source').value,
         tips: document.getElementById('recipe-tips').value,
         servings: document.getElementById('recipe-servings').value,
-        selectedCategories,
+        selectedCategoryId,
+        selectedCategoryKey,
         validIngredients: validation.validIngredients,
         validSteps: validation.validSteps
     });
@@ -303,8 +307,8 @@ function resetForm() {
     document.getElementById('recipe-tips').value = '';
     document.getElementById('recipe-servings').value = '';
     
-    const checkboxes = categoriesContainer.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(cb => cb.checked = false);
+    const radios = categoriesContainer.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => radio.checked = false);
 
     ingredients = [];
     steps = [];
