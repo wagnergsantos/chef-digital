@@ -35,9 +35,9 @@
         })();
     </script>
 
-  <script type="module" crossorigin src="/chef-digital/assets/main-FBdKezSS.js"></script>
-  <link rel="modulepreload" crossorigin href="/chef-digital/assets/db-DLWodOhB.js">
-  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-B5dv693B.css">
+  <script type="module" crossorigin src="/chef-digital/assets/main-DgH2O6TX.js"></script>
+  <link rel="modulepreload" crossorigin href="/chef-digital/assets/db-DGwTK0WB.js">
+  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-sQwbjjlo.css">
 <link rel="manifest" href="/chef-digital/manifest.webmanifest"></head>
 <body>
 
@@ -132,6 +132,14 @@
                 <div>
                     <span class="sidebar-title">Categorias</span>
                     <div class="categories-filter-list" id="category-filters">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tags -->
+                <div>
+                    <span class="sidebar-title">Tags</span>
+                    <div class="tags-filter-list" id="tag-filters">
                         <!-- Filled dynamically -->
                     </div>
                 </div>
@@ -275,7 +283,7 @@
                             </svg>
                             <span>Preparo</span>
                         </button>
-                        <button id="modal-planner-btn" onclick="openDayPickerPopover(activeRecipeId, this)" class="modal-planner-btn" title="Planejar essa refeição" aria-label="Planejar essa refeição" aria-pressed="false">
+                        <button id="modal-planner-btn" onclick="openDayPickerPopover(getActiveRecipeId(), this)" class="modal-planner-btn" title="Planejar essa refeição" aria-label="Planejar essa refeição" aria-pressed="false">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -299,7 +307,6 @@
                 </div>
                 <div class="modal-badges">
                     <span id="modal-category-badge" class="modal-badge-cat">CATEGORIA</span>
-                    <span id="modal-source-badge" class="modal-badge-src">Origem</span>
                     <span id="modal-servings-badge" class="modal-badge-src" style="display:none;">🍽️ 1 porção</span>
                     <span id="wake-lock-indicator" aria-label="Tela ativa durante o preparo" title="Tela ativa durante o preparo">🔆</span>
                 </div>
