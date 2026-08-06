@@ -1,0 +1,179 @@
+/* ========================================================================
+   Admin Panel Styles
+======================================================================== */
+.admin-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    margin-top: 40px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-fast);
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light-border);
+}
+.admin-btn {
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+.admin-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-light-border);
+}
+.admin-btn-primary {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+}
+.admin-btn-primary:hover {
+    background: var(--primary-hover);
+}
+.admin-btn-secondary {
+    background: var(--bg-light);
+    color: var(--text-main);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+}
+.admin-btn-secondary:hover {
+    background: var(--border-color);
+}
+.admin-btn-danger {
+    background: var(--danger-color);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+}
+.admin-btn-danger:hover {
+    background: var(--danger-hover);
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    margin-top: 24px;
+}
+
+/* Custom Admin Layout Classes */
+.admin-btn-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.admin-login-container {
+    margin-top: 100px;
+}
+.admin-form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.admin-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+.admin-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-gemini-box {
+    background: var(--bg-light);
+    border: 1px dashed var(--primary-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 24px;
+}
+.admin-gemini-label {
+    color: var(--primary-hover);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.admin-gemini-textarea {
+    font-family: monospace;
+    font-size: var(--text-sm);
+    resize: vertical;
+    margin-bottom: 8px;
+}
+.admin-gemini-btn {
+    width: 100%;
+    border-color: var(--primary-color);
+    color: var(--primary-hover);
+    background: var(--bg-card);
+    padding: 10px;
+}
+.admin-btn-full {
+    width: 100%;
+    padding: 14px;
+}
+.admin-btn-success {
+    background: var(--success-color);
+}
+.admin-error-box {
+    color: var(--danger-color);
+    font-size: var(--text-sm);
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--danger-light);
+    border: 1px solid var(--danger-color);
+    border-radius: var(--radius-sm);
+    display: none;
+}
+.admin-category-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.admin-category-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-main);
+}
+.admin-ingredient-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.admin-step-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.admin-textarea {
+    resize: vertical;
+}

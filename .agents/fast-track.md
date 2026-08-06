@@ -24,3 +24,9 @@ Antes de planejar ou executar qualquer tarefa, avalie a complexidade:
 ## 2. Comunicação e Eficiência
 - Priorize agilidade e edições diretas em tarefas do dia a dia.
 - Evite loops excessivos de perguntas/confirmações quando a instrução do usuário já for clara.
+
+## 3. Garantia de Performance e Acessibilidade (Lighthouse 100/100)
+- Toda alteração deve seguir estritamente os critérios definidos em `file://.agents/performance-a11y.md`.
+- Mantenha `aria-label` em todos os botões/elementos interativos novos.
+- Evite reflows e layout thrashing na thread principal para preservar FCP/LCP ≤ 1.5s e CLS ≤ 0.05.
+

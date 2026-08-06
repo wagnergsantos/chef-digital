@@ -1,4 +1,5 @@
 import { state } from './state.js';
+import { getCardImageLoadingAttrs, buildRecipeCardAccessibleName } from '../logic/performance-guards.js';
 
 // --- Utility helpers ---
 
@@ -107,8 +108,27 @@ export function debounce(func, wait = 250) {
 
 // --- Category Filters ---
 
+let categoryFiltersRenderScheduled = false;
+
+function scheduleCategoryFiltersRender() {
+    if (categoryFiltersRenderScheduled) return;
+    categoryFiltersRenderScheduled = true;
+
+    const run = () => {
+        categoryFiltersRenderScheduled = false;
+        renderCategoryFilters();
+    };
+
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(run, { timeout: 200 });
+    } else {
+        setTimeout(run, 0);
+    }
+}
+
 export function renderCategoryFilters() {
     const container = document.getElementById('category-filters');
+    if (!container) return;
     container.innerHTML = '';
     const fragment = document.createDocumentFragment();
 
@@ -124,24 +144,25 @@ export function renderCategoryFilters() {
         })
     );
 
-    sortedKeys.forEach(key => {
-        // Get counts for category supporting multitag and current active filters (except state.activeCategory itself)
-        let count = 0;
-        const pantryMatch = (r) => !state.showPantryOnly || recipeHasAnyPantryIngredient(r);
-        if (key === 'todos') {
-            count = state.recipes.filter(r => {
-                const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
-                const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
-                return searchMatch && favoriteMatch && pantryMatch(r);
-            }).length;
-        } else {
-            count = state.recipes.filter(r => {
-                const categoryMatch = r.category === key;
-                const searchMatch = matchRecipeSearch(r, state.searchQuery).matches;
-                const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(r.id);
-                return categoryMatch && searchMatch && favoriteMatch && pantryMatch(r);
-            }).length;
+    const counts = { todos: 0 };
+    sortedKeys.forEach((key) => {
+        counts[key] = 0;
+    });
+
+    state.recipes.forEach((recipe) => {
+        const searchMatch = matchRecipeSearch(recipe, state.searchQuery).matches;
+        const favoriteMatch = !state.showFavoritesOnly || state.favorites.includes(recipe.id);
+        const pantryMatch = !state.showPantryOnly || recipeHasAnyPantryIngredient(recipe);
+        if (!searchMatch || !favoriteMatch || !pantryMatch) return;
+
+        counts.todos++;
+        if (recipe.category && counts[recipe.category] !== undefined) {
+            counts[recipe.category]++;
         }
+    });
+
+    sortedKeys.forEach(key => {
+        const count = counts[key] || 0;
 
         // Skip rendering if the category is empty, unless it's 'todos' or the currently active category
         if (count === 0 && key !== 'todos' && key !== state.activeCategory) {
@@ -411,7 +432,7 @@ export function renderRecipes() {
             }
             card.setAttribute('role', 'button');
             card.setAttribute('tabindex', '0');
-            card.setAttribute('aria-label', `Ver receita de ${recipe.title}`);
+            card.setAttribute('aria-label', buildRecipeCardAccessibleName(recipe.title));
             card.dataset.recipeId = recipe.id;
 
             const categoryBadges = `<span class="card-badge">${safeCategoryLabel}</span>`;
@@ -422,12 +443,11 @@ export function renderRecipes() {
 
             const hasImg = recipe.image && recipe.image.trim() !== "";
             const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
-            const imageLoading = index < 2 ? 'eager' : 'lazy';
-            const imageFetchPriority = index < 2 ? 'high' : 'auto';
+            const imageAttrs = getCardImageLoadingAttrs(index);
 
             card.innerHTML = `
                 <div class="${headerClass}">
-                    ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${safeTitle}" loading="${imageLoading}" fetchpriority="${imageFetchPriority}" width="400" height="112" />` : ''}
+                    ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${safeTitle}" loading="${imageAttrs.loading}" fetchpriority="${imageAttrs.fetchpriority}" width="400" height="112" />` : ''}
                     <span class="card-emoji" role="img" aria-label="Emoji representativo de ${safeTitle}">${safeEmoji}</span>
                     <div class="card-badges-wrapper">
                         ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
@@ -480,7 +500,7 @@ export function renderRecipes() {
     }
 
     // Dynamically refresh category filters' count and update clear button visibility
-    renderCategoryFilters();
+    scheduleCategoryFiltersRender();
     updateClearFiltersBtnVisibility();
 }
 

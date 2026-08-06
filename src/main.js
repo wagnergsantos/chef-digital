@@ -1,5 +1,6 @@
 import { salvarCacheLocal, lerCacheLocal } from './cache/local-cache.js';
 import { registerSW } from 'virtual:pwa-register';
+import { mapSummaryRecipes, buildRecipeDetailsIndex } from './api/recipes-loader.js';
 
 import { state } from './modules/state.js';
 import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.js';
@@ -88,7 +89,7 @@ const previouslyFocusedElementRef = { current: null };
 // Injeção de dependências cruzadas entre os módulos
 setRenderDependencies({
     isRecipePlanned,
-    openRecipeModal,
+    openRecipeModal: openRecipeModalWithDetails,
     openDayPickerPopover,
     toggleFavorite
 });
@@ -240,6 +241,43 @@ function normalizeRecipeFromRow(recipe) {
     };
 }
 
+async function loadRecipeDetailsById(recipeId) {
+    const recipe = state.recipes.find((item) => item.id === recipeId);
+    if (!recipe) return null;
+
+    if (Array.isArray(recipe.ingredients) && recipe.ingredients.length > 0 && Array.isArray(recipe.steps) && recipe.steps.length > 0) {
+        return recipe;
+    }
+
+    const supabase = await getSupabaseClient();
+    const [{ data: ingredientsData, error: ingredientsErr }, { data: stepsData, error: stepsErr }] = await Promise.all([
+        supabase.from('ingredientes').select('receita_id, name, qty, unit').eq('receita_id', recipeId),
+        supabase.from('passos').select('receita_id, step_text').eq('receita_id', recipeId).order('ordem')
+    ]);
+
+    if (ingredientsErr || stepsErr) {
+        const detailsError = ingredientsErr || stepsErr;
+        throw detailsError;
+    }
+
+    const detailsByRecipe = buildRecipeDetailsIndex(ingredientsData || [], stepsData || []);
+    const details = detailsByRecipe[recipeId] || { ingredients: [], steps: [] };
+    recipe.ingredients = details.ingredients;
+    recipe.steps = details.steps;
+
+    return recipe;
+}
+
+async function openRecipeModalWithDetails(recipeId) {
+    try {
+        await loadRecipeDetailsById(recipeId);
+        openRecipeModal(recipeId);
+    } catch (err) {
+        console.warn('Falha ao carregar detalhes da receita:', err);
+        showToast('Nao foi possivel carregar os detalhes da receita. Tente novamente.', 'error');
+    }
+}
+
 // Esc and Global Keydown handler
 document.addEventListener('keydown', function(e) {
     const cookingOverlay = document.getElementById('cooking-mode-overlay');
@@ -317,8 +355,6 @@ async function inicializarApp() {
             { data: catData, error: catErr },
             { data: tagData, error: tagErr },
             { data: recData, error: recErr },
-            { data: ingredientsData, error: ingredientsErr },
-            { data: stepsData, error: stepsErr },
             { data: recipeTagsData, error: recipeTagsErr }
         ] = await Promise.all([
             supabase.from('categorias').select('*').order('sort_order'),
@@ -326,8 +362,6 @@ async function inicializarApp() {
             supabase.from('receitas').select(`
                 id, title, category_id, category, emoji, image, servings, tips
             `),
-            supabase.from('ingredientes').select('id, receita_id, name, qty, unit'),
-            supabase.from('passos').select('id, receita_id, step_text').order('ordem'),
             supabase.from('receita_tags').select('receita_id, tags(key)')
         ]);
 
@@ -353,36 +387,11 @@ async function inicializarApp() {
         }
 
         if (!recErr && recData && recData.length > 0) {
-            // Build index maps for quick lookup
-            const ingredientsByRecipe = {};
-            const stepsByRecipe = {};
-            
-            if (!ingredientsErr && ingredientsData) {
-                ingredientsData.forEach(ing => {
-                    if (!ingredientsByRecipe[ing.receita_id]) {
-                        ingredientsByRecipe[ing.receita_id] = [];
-                    }
-                    ingredientsByRecipe[ing.receita_id].push({
-                        name: ing.name,
-                        qty: ing.qty,
-                        unit: ing.unit
-                    });
-                });
-            }
-            
-            if (!stepsErr && stepsData) {
-                stepsData.forEach(step => {
-                    if (!stepsByRecipe[step.receita_id]) {
-                        stepsByRecipe[step.receita_id] = [];
-                    }
-                    stepsByRecipe[step.receita_id].push(step.step_text);
-                });
-            }
-
-            const formattedRecipes = recData.map(r => normalizeRecipeFromRow({
+            const summaryRecipes = mapSummaryRecipes(recData);
+            const formattedRecipes = summaryRecipes.map((r) => normalizeRecipeFromRow({
                 ...r,
-                ingredients: ingredientsByRecipe[r.id] || [],
-                steps: stepsByRecipe[r.id] || []
+                ingredients: [],
+                steps: []
             }));
             state.recipes = formattedRecipes;
             carregarPlannerData(state.recipes);
@@ -461,7 +470,7 @@ window.selectCategory = (key) => {
 };
 window.toggleFavorite = toggleFavorite;
 window.handleDayPickerChoice = handleDayPickerChoice;
-window.openRecipeModal = openRecipeModal;
+window.openRecipeModal = openRecipeModalWithDetails;
 window.changePlannerRecipePortions = changePlannerRecipePortions;
 window.removeRecipeFromShoppingList = removeRecipeFromShoppingList;
 window.toggleShoppingItemCheck = toggleShoppingItemCheck;

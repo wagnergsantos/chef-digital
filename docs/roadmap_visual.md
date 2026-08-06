@@ -6,7 +6,7 @@
 
 - **Audit Health Score (último `impeccable audit`):** **16/20** (Good)
 - **Lighthouse (mobile):**
-  - Performance: **84**
+  - Performance: **83**
   - Accessibility: **100**
   - Best Practices: **96**
   - SEO: **91**
@@ -23,13 +23,13 @@
 
 ### 1) Performance inicial (LCP/TTI/JS não utilizado)
 - [ ] **Otimizar caminho crítico de carregamento**
-  - **Problema:** houve regressão no último run (LCP **3.2s**, FCP **3.2s**), apesar de TTI **3.2s** e TBT **10ms**; ainda há JS não utilizado (~46 KiB no bundle `supabase-*.js`).
+  - **Problema:** LCP/FCP seguem em **3.2s** e TTI em **3.4s** no último run; ainda há JS não utilizado (~40 KiB no bundle `supabase-*.js`).
   - **Ação sugerida:** `$impeccable optimize`
   - **Critério de pronto:** LCP < 2.5s (ou redução substancial validada), queda do JS não utilizado e melhora perceptível no render inicial.
 
 ### 2) Instabilidade visual (CLS)
 - [ ] **Reduzir deslocamento de layout**
-  - **Problema:** CLS melhorou para **0.108**, mas ainda acima da meta (**<= 0.10**).
+  - **Problema:** CLS oscilou para **0.122** (ainda acima da meta **<= 0.10**).
   - **Ação sugerida:** `$impeccable adapt`
   - **Critério de pronto:** CLS <= 0.10 e ausência de saltos perceptíveis em mobile.
 
@@ -93,6 +93,7 @@
 | 2026-08-06 | 87 | 100 | 96 | 91 | — | Reexecução Lighthouse após optimize/harden/adapt |
 | 2026-08-06 | 84 | 100 | 96 | 91 | — | Reexecução após deploy + adapt (2a passada) |
 | 2026-08-06 | 84 | 100 | 96 | 91 | — | Reexecução após deploy validado no Actions (sem variação) |
+| 2026-08-06 | 83 | 100 | 96 | 91 | — | Reexecução após ajuste LCP-first paint + deploy validado |
 
 ## Registro de execução
 
@@ -146,3 +147,9 @@
   - **Theming:** 3/4 (tokens e dark mode consistentes; sem falhas críticas abertas).
   - **Anti-patterns:** 3/4 (sem sinais críticos; manter atenção ao uso de scrollbar customizada).
   - **Prioridades abertas:** reduzir LCP/FCP e fechar CLS para <= 0.10.
+
+- **2026-08-06 — Otimização LCP-first paint + deploy + Lighthouse**
+  - Deploy publicado e workflow `pages-build-deployment` confirmado como **success** antes da medição.
+  - Resultado Lighthouse: **Performance 83**, **Accessibility 100**, **Best Practices 96**, **SEO 91**.
+  - Vitals: **LCP 3.2s**, **FCP 3.2s**, **TTI 3.4s**, **TBT 10ms**, **CLS 0.122**.
+  - Leitura: `mainthread-work-breakdown` segue controlado (1.8s), `unused-javascript` reduziu para ~40 KiB, mas LCP/FCP e CLS continuam acima do alvo.
