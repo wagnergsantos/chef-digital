@@ -368,6 +368,13 @@ button,
     background-color: var(--success-color);
 }
 
+/* Keep badge layer space stable when hidden to avoid micro-shifts on first paint */
+.btn-badge.hidden {
+    display: flex !important;
+    opacity: 0;
+    visibility: hidden;
+}
+
 /* Layout Grid Main */
 .main-layout {
     flex-grow: 1;
@@ -643,6 +650,8 @@ button,
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
+    min-height: 52px;
 }
 
 .results-header h2 {
@@ -650,12 +659,16 @@ button,
     font-size: var(--text-xl);
     font-weight: 700;
     color: var(--text-main);
+    min-height: 1.6em;
 }
 
 .results-indicator {
     font-size: var(--text-xs);
     font-weight: 500;
     color: var(--text-light);
+    min-height: 1.2em;
+    display: inline-flex;
+    align-items: center;
 }
 
 .recipes-grid {
@@ -664,9 +677,86 @@ button,
     gap: 24px;
 }
 
+/* Reserve above-the-fold area during initial boot to reduce CLS */
+body[data-app-loading="true"] .recipes-grid {
+    min-height: min(74vh, 920px);
+    position: relative;
+}
+
+body[data-app-loading="true"] .recipes-grid:empty::before {
+    content: '';
+    display: block;
+    height: min(74vh, 920px);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    background:
+        linear-gradient(90deg, transparent 0%, rgb(from var(--primary-color) r g b / 6%) 50%, transparent 100%),
+        var(--bg-card);
+    background-size: 200% 100%, auto;
+    animation: loading-shimmer 1.6s var(--ease-out-quart) infinite;
+}
+
+@keyframes loading-shimmer {
+    0% { background-position: 200% 0, 0 0; }
+    100% { background-position: -200% 0, 0 0; }
+}
+
 @media (min-width: 600px) {
     .recipes-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 900px) {
+        .header-container {
+            height: 72px;
+            padding: 0 14px;
+        }
+
+        .brand-icon {
+            padding: 8px;
+        }
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .brand-text h1 {
+            font-size: var(--text-lg);
+        }
+
+        .brand-text p {
+            display: none;
+        }
+
+        .header-controls {
+            gap: 6px;
+        }
+
+        .control-btn {
+            padding: 8px;
+        }
+
+        .control-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .main-layout {
+            padding: 20px 14px;
+            gap: 20px;
+        }
+
+        .sidebar-sticky {
+            position: static;
+            top: auto;
+            max-height: none;
+        }
+
+        .results-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
     }
 }
 
@@ -705,6 +795,7 @@ button,
        evita que a rolagem pule quando um card sai/entra desse estado. */
     content-visibility: auto;
     contain-intrinsic-block-size: 380px;
+    contain: layout paint style;
 }
 
 .recipe-card:hover {
@@ -826,7 +917,8 @@ button,
     gap: 4px;
 }
 
-.card-title {\n    font-family: 'Playfair Display', Georgia, Cambria, serif;
+.card-title {
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
     font-size: var(--text-base);
     font-weight: 700;
     color: var(--text-main);
@@ -1754,7 +1846,8 @@ button,
 }
 
 /* Modal ingredients rendering list */
-.modal-ingredients-ul {\n    max-width: 65ch;
+.modal-ingredients-ul {
+    max-width: 65ch;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -1897,7 +1990,8 @@ button,
     gap: 24px;
 }
 
-.modal-steps-ol {\n    max-width: 65ch;
+.modal-steps-ol {
+    max-width: 65ch;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -3161,8 +3255,30 @@ button,
 }
 
 @media (max-width: 640px) {
+    .recipes-grid {
+        gap: 16px;
+    }
+
+    body[data-app-loading="true"] .recipes-grid {
+        min-height: min(68vh, 760px);
+    }
+
+    body[data-app-loading="true"] .recipes-grid:empty::before {
+        height: min(68vh, 760px);
+    }
+
+    /* Reduce first-paint layout work before initial data hydration completes */
+    body[data-app-loading="true"] .recipe-card {
+        animation: none;
+    }
+
     .cooking-header {
         padding: 16px 16px 10px;
+    }
+
+    /* Reserve sidebar area while data boots to avoid pushing the content section down */
+    body[data-app-loading="true"] .sidebar-sticky {
+        min-height: min(46vh, 520px);
     }
     .cooking-main {
         padding: 16px;
@@ -3185,5 +3301,11 @@ button,
     .cooking-ingredients-drawer {
         width: calc(100% - 32px);
         bottom: 80px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body[data-app-loading="true"] .recipes-grid:empty::before {
+        animation: none;
     }
 }

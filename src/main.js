@@ -1,12 +1,10 @@
-import { supabase } from './api/supabase.js';
-import { salvarCacheLocal, lerCacheLocal } from './cache/db.js';
+import { salvarCacheLocal, lerCacheLocal } from './cache/local-cache.js';
 import { registerSW } from 'virtual:pwa-register';
 
 import { state } from './modules/state.js';
 import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.js';
 
 import {
-    renderCategoryFilters,
     renderTagFilters,
     renderRecipes,
     setRenderDependencies,
@@ -77,6 +75,12 @@ import {
 } from './modules/cooking-mode.js';
 
 registerSW({ immediate: true });
+
+function markInitialLoadComplete() {
+    if (document.body) {
+        document.body.removeAttribute('data-app-loading');
+    }
+}
 
 // Ref para gerenciar o elemento anteriormente focado (trap focus / acessibilidade)
 const previouslyFocusedElementRef = { current: null };
@@ -205,6 +209,20 @@ function buildCategoryMaps(categories) {
     state.categoryIdsByKey = categories.reduce((acc, cat) => ({ ...acc, [cat.key]: cat.id }), {});
 }
 
+function safeCacheWrite(storeName, data) {
+    salvarCacheLocal(storeName, data).catch((err) => {
+        console.warn(`Falha ao salvar cache local (${storeName}):`, err);
+    });
+}
+
+let supabaseClientPromise = null;
+async function getSupabaseClient() {
+    if (!supabaseClientPromise) {
+        supabaseClientPromise = import('./api/supabase.js').then((module) => module.supabase);
+    }
+    return supabaseClientPromise;
+}
+
 function normalizeRecipeFromRow(recipe) {
     const categoryKeyFromId = recipe.category_id !== undefined && recipe.category_id !== null
         ? state.categoriesById[String(recipe.category_id)]
@@ -263,10 +281,12 @@ document.addEventListener('keydown', function(e) {
 // App Initialization
 async function inicializarApp() {
     try {
-        const cachedCategories = await lerCacheLocal('categorias');
-        const cachedRecipes = await lerCacheLocal('receitas');
-        const cachedTags = await lerCacheLocal('tags');
-        const cachedRecipeTags = await lerCacheLocal('recipeTags');
+        const [cachedCategories, cachedRecipes, cachedTags, cachedRecipeTags] = await Promise.all([
+            lerCacheLocal('categorias'),
+            lerCacheLocal('receitas'),
+            lerCacheLocal('tags'),
+            lerCacheLocal('recipeTags')
+        ]);
 
         if (cachedCategories && cachedCategories.length > 0 && cachedRecipes && cachedRecipes.length > 0) {
             buildCategoryMaps(cachedCategories);
@@ -280,48 +300,45 @@ async function inicializarApp() {
             carregarPlannerData(state.recipes);
             
             updateThemeToggleIcon();
-            renderCategoryFilters();
             renderTagFilters();
             renderRecipes();
             updateShoppingListBadge();
             updatePlannerBadge();
+            markInitialLoadComplete();
         }
     } catch (err) {
         console.warn('Erro ao carregar dados do IndexedDB local:', err);
     }
 
     try {
-        const { data: catData, error: catErr } = await supabase.from('categorias').select('*').order('sort_order');
-        const { data: tagData, error: tagErr } = await supabase.from('tags').select('*').order('sort_order');
-        
-        // Fetch receitas base (without joins to avoid long URL issues)
-        const { data: recData, error: recErr } = await supabase.from('receitas').select(`
-            id, title, category_id, category, emoji, image, servings, tips
-        `);
+        const supabase = await getSupabaseClient();
 
-        // Fetch all ingredients and steps in parallel
-        const { data: ingredientsData, error: ingredientsErr } = await supabase
-            .from('ingredientes')
-            .select('id, receita_id, name, qty, unit');
-        
-        const { data: stepsData, error: stepsErr } = await supabase
-            .from('passos')
-            .select('id, receita_id, step_text')
-            .order('ordem');
-
-        // Fetch recipe tags
-        const { data: recipeTagsData, error: recipeTagsErr } = await supabase
-            .from('receita_tags')
-            .select('receita_id, tags(key)');
+        const [
+            { data: catData, error: catErr },
+            { data: tagData, error: tagErr },
+            { data: recData, error: recErr },
+            { data: ingredientsData, error: ingredientsErr },
+            { data: stepsData, error: stepsErr },
+            { data: recipeTagsData, error: recipeTagsErr }
+        ] = await Promise.all([
+            supabase.from('categorias').select('*').order('sort_order'),
+            supabase.from('tags').select('*').order('sort_order'),
+            supabase.from('receitas').select(`
+                id, title, category_id, category, emoji, image, servings, tips
+            `),
+            supabase.from('ingredientes').select('id, receita_id, name, qty, unit'),
+            supabase.from('passos').select('id, receita_id, step_text').order('ordem'),
+            supabase.from('receita_tags').select('receita_id, tags(key)')
+        ]);
 
         if (!catErr && catData && catData.length > 0) {
             buildCategoryMaps(catData);
-            await salvarCacheLocal('categorias', catData);
+            safeCacheWrite('categorias', catData);
         }
 
         if (!tagErr && tagData && tagData.length > 0) {
             state.tags = tagData.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {});
-            await salvarCacheLocal('tags', tagData);
+            safeCacheWrite('tags', tagData);
         }
 
         if (!recipeTagsErr && recipeTagsData && recipeTagsData.length > 0) {
@@ -332,7 +349,7 @@ async function inicializarApp() {
                 }
                 state.recipeTags[rt.receita_id].push(rt.tags.key);
             });
-            await salvarCacheLocal('recipeTags', state.recipeTags);
+            safeCacheWrite('recipeTags', state.recipeTags);
         }
 
         if (!recErr && recData && recData.length > 0) {
@@ -369,25 +386,26 @@ async function inicializarApp() {
             }));
             state.recipes = formattedRecipes;
             carregarPlannerData(state.recipes);
-            await salvarCacheLocal('receitas', formattedRecipes);
+            safeCacheWrite('receitas', formattedRecipes);
         }
 
-        renderCategoryFilters();
         renderTagFilters();
         renderRecipes();
         updateShoppingListBadge();
         updatePlannerBadge();
+        markInitialLoadComplete();
     } catch (err) {
         console.warn('Supabase offline ou indisponível:', err);
+        markInitialLoadComplete();
     }
 }
 
-window.onload = function() {
+window.addEventListener('DOMContentLoaded', () => {
     initRecipesGridDelegation();
     updatePantryEditBtnVisibility();
     initTheme();
     inicializarApp();
-};
+});
 
 // Window Global Exports para handlers inline do HTML
 window.showToast = showToast;

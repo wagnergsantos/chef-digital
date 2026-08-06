@@ -343,6 +343,7 @@ export function setRenderDependencies({ isRecipePlanned, openRecipeModal, openDa
 export function renderRecipes() {
     const grid = document.getElementById('recipes-grid');
     const emptyState = document.getElementById('empty-state');
+    const isInitialLoading = document.body?.hasAttribute('data-app-loading');
     grid.innerHTML = '';
 
     let filtered = state.recipes.filter(recipe => {
@@ -393,6 +394,11 @@ export function renderRecipes() {
         emptyState.classList.add('hidden');
         const fragment = document.createDocumentFragment();
         filtered.forEach((recipe, index) => {
+            const safeTitle = escapeHtml(recipe.title || 'Receita');
+            const safeEmoji = escapeHtml(recipe.emoji || '🍽️');
+            const safeCategoryLabel = escapeHtml(state.categories[recipe.category] || recipe.category || 'Sem categoria');
+            const safeIngredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
+            const safeServings = recipe.servings !== undefined && recipe.servings !== null ? escapeHtml(String(recipe.servings)) : null;
             const isFav = state.favorites.includes(recipe.id);
             const isPlanned = _isRecipePlanned(recipe.id);
             const isFullyStocked = state.showPantryOnly && recipeIsFullyStocked(recipe);
@@ -400,21 +406,15 @@ export function renderRecipes() {
             const { matchedIngredients } = matchRecipeSearch(recipe, state.searchQuery);
             const card = document.createElement('div');
             card.className = `recipe-card ${isPlanned ? 'planned' : ''}`;
-            card.style.setProperty('--i', index);
+            if (!isInitialLoading) {
+                card.style.setProperty('--i', index);
+            }
             card.setAttribute('role', 'button');
             card.setAttribute('tabindex', '0');
             card.setAttribute('aria-label', `Ver receita de ${recipe.title}`);
             card.dataset.recipeId = recipe.id;
-            card.onkeydown = (e) => {
-                // Avoid triggering modal if the key event originated in an action button
-                if (e.target.closest('.card-action-btn')) return;
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    _openRecipeModal(recipe.id);
-                }
-            };
 
-            const categoryBadges = `<span class="card-badge">${state.categories[recipe.category] || recipe.category}</span>`;
+            const categoryBadges = `<span class="card-badge">${safeCategoryLabel}</span>`;
             const recipeTagKeys = state.recipeTags[recipe.id] || [];
             const cardTags = recipeTagKeys
                 .map(tagKey => `<span class="card-tag-badge">${escapeHtml(state.tags[tagKey] || tagKey)}</span>`)
@@ -422,11 +422,13 @@ export function renderRecipes() {
 
             const hasImg = recipe.image && recipe.image.trim() !== "";
             const headerClass = `card-header-graphic ${hasImg ? 'has-image' : ''}`;
+            const imageLoading = index < 2 ? 'eager' : 'lazy';
+            const imageFetchPriority = index < 2 ? 'high' : 'auto';
 
             card.innerHTML = `
                 <div class="${headerClass}">
-                    ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${recipe.title}" loading="lazy" width="400" height="112" />` : ''}
-                    <span class="card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽️'}</span>
+                    ${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${safeTitle}" loading="${imageLoading}" fetchpriority="${imageFetchPriority}" width="400" height="112" />` : ''}
+                    <span class="card-emoji" role="img" aria-label="Emoji representativo de ${safeTitle}">${safeEmoji}</span>
                     <div class="card-badges-wrapper">
                         ${isPlanned ? '<span class="card-badge planned-badge">Planejado</span>' : ''}
                         ${pantryBadge}
@@ -436,7 +438,7 @@ export function renderRecipes() {
                 
                 <div class="card-body">
                     <div class="card-info">
-                        <h4 class="card-title">${escapeHtml(recipe.title)}</h4>
+                        <p class="card-title">${safeTitle}</p>
                         ${cardTags ? `<div class="card-tags">${cardTags}</div>` : ''}
                         ${matchedIngredients && matchedIngredients.length > 0 ? `<p class="card-search-match">🔍 Contém: ${escapeHtml(matchedIngredients.join(', '))}</p>` : ''}
                     </div>
@@ -447,23 +449,23 @@ export function renderRecipes() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                 </svg>
-                                ${recipe.ingredients.length} ing.
+                                ${safeIngredients.length} ing.
                             </span>
-                            ${recipe.servings !== undefined && recipe.servings !== null ? `
+                            ${safeServings !== null ? `
                             <span class="card-servings-count" title="Rendimento da receita">
-                                👥 ${recipe.servings} pessoas
+                                👥 ${safeServings} pessoas
                             </span>
                             ` : ''}
                         </div>
                         
                         <div class="card-actions">
-                            <button data-action="open-day-picker" data-id="${recipe.id}" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana" aria-label="Planejar ${recipe.title} para a semana" aria-pressed="${isPlanned}">
+                            <button data-action="open-day-picker" data-id="${recipe.id}" class="card-action-btn plan-btn ${isPlanned ? 'active' : ''}" title="Planejar para a semana" aria-label="Planejar ${safeTitle} para a semana" aria-pressed="${isPlanned}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
                             </button>
 
-                            <button data-action="toggle-favorite" data-id="${recipe.id}" class="card-action-btn fav-btn ${isFav ? 'active' : ''}" title="Adicionar aos favoritos" aria-label="Adicionar ${recipe.title} aos favoritos" aria-pressed="${isFav}">
+                            <button data-action="toggle-favorite" data-id="${recipe.id}" class="card-action-btn fav-btn ${isFav ? 'active' : ''}" title="Adicionar aos favoritos" aria-label="Adicionar ${safeTitle} aos favoritos" aria-pressed="${isFav}">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="${isFav ? 'currentColor' : 'none'}" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
@@ -505,6 +507,18 @@ export function initRecipesGridDelegation() {
         // Click on card itself -> open modal
         const card = e.target.closest('.recipe-card');
         if (card && card.dataset.recipeId) {
+            const recipeId = parseInt(card.dataset.recipeId, 10) || card.dataset.recipeId;
+            _openRecipeModal(recipeId);
+        }
+    });
+
+    grid.addEventListener('keydown', (e) => {
+        const card = e.target.closest('.recipe-card');
+        if (!card) return;
+        if (e.target.closest('.card-action-btn')) return;
+
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
             const recipeId = parseInt(card.dataset.recipeId, 10) || card.dataset.recipeId;
             _openRecipeModal(recipeId);
         }
