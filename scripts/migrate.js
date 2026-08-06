@@ -75,7 +75,6 @@ async function migrate() {
       title: r.title,
       emoji: r.emoji,
       image: r.image || null,
-      source: r.source || null,
       tips: r.tips || null,
       category_id: categoryIdByKey[normalizeCategory(Array.isArray(r.category)
         ? (r.category.find(c => !LEGACY_TAG_CATEGORY_KEYS.has(c)) || r.category[0] || 'lanches')

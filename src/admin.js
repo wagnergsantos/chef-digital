@@ -259,7 +259,6 @@ async function saveRecipe(e) {
         title,
         emoji: document.getElementById('recipe-emoji').value,
         image: document.getElementById('recipe-image').value,
-        source: document.getElementById('recipe-source').value,
         tips: document.getElementById('recipe-tips').value,
         servings: document.getElementById('recipe-servings').value,
         selectedCategoryId,
@@ -303,7 +302,6 @@ function resetForm() {
     document.getElementById('recipe-title').value = '';
     document.getElementById('recipe-emoji').value = '🍲';
     document.getElementById('recipe-image').value = '';
-    document.getElementById('recipe-source').value = '';
     document.getElementById('recipe-tips').value = '';
     document.getElementById('recipe-servings').value = '';
     

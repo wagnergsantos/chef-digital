@@ -296,7 +296,7 @@ async function inicializarApp() {
         
         // Fetch receitas base (without joins to avoid long URL issues)
         const { data: recData, error: recErr } = await supabase.from('receitas').select(`
-            id, title, category_id, category, source, emoji, image, servings, tips
+            id, title, category_id, category, emoji, image, servings, tips
         `);
 
         // Fetch all ingredients and steps in parallel

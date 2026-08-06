@@ -93,7 +93,6 @@ CREATE OR REPLACE FUNCTION salvar_receita(
   p_title TEXT DEFAULT NULL,
   p_emoji TEXT DEFAULT '🍲',
   p_image TEXT DEFAULT NULL,
-  p_source TEXT DEFAULT NULL,
   p_tips TEXT DEFAULT NULL,
   p_servings INT DEFAULT NULL,
   p_category_id BIGINT DEFAULT NULL,
@@ -124,17 +123,16 @@ BEGIN
   END IF;
 
   IF p_id IS NULL THEN
-    INSERT INTO receitas (title, emoji, image, source, tips, servings, category_id)
-    VALUES (p_title, p_emoji, p_image, p_source, p_tips, p_servings, v_category_id)
+    INSERT INTO receitas (title, emoji, image, tips, servings, category_id)
+    VALUES (p_title, p_emoji, p_image, p_tips, p_servings, v_category_id)
     RETURNING id INTO v_id;
   ELSE
-    INSERT INTO receitas (id, title, emoji, image, source, tips, servings, category_id)
-    VALUES (p_id, p_title, p_emoji, p_image, p_source, p_tips, p_servings, v_category_id)
+    INSERT INTO receitas (id, title, emoji, image, tips, servings, category_id)
+    VALUES (p_id, p_title, p_emoji, p_image, p_tips, p_servings, v_category_id)
     ON CONFLICT (id) DO UPDATE SET
       title = EXCLUDED.title,
       emoji = EXCLUDED.emoji,
       image = EXCLUDED.image,
-      source = EXCLUDED.source,
       tips = EXCLUDED.tips,
       servings = EXCLUDED.servings,
       category_id = EXCLUDED.category_id,

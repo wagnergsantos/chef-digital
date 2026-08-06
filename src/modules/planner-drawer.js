@@ -273,7 +273,7 @@ export function renderPlannerCardHtml(entry, day) {
                     <span class="drawer-card-emoji" role="img" aria-label="Emoji representativo de ${recipe.title}">${recipe.emoji || '🍽'}</span>
                     <div class="drawer-card-meta">
                         <h4>${recipe.title}</h4>
-                        <span>${recipe.source || ''}</span>
+
                     </div>
                 </div>
                 <button onclick="toggleRecipeOnDay(${recipe.id}, '${day}')" class="drawer-card-remove" title="Remover do menu" aria-label="Remover ${recipe.title} do planejamento de ${day}">

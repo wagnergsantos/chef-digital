@@ -125,7 +125,6 @@ export async function processarFilaOnline() {
               title: p.p_title,
               emoji: p.p_emoji,
               image: p.p_image,
-              source: p.p_source,
               tips: p.p_tips,
               servings: p.p_servings,
               category_id: p.p_category_id,

@@ -26,7 +26,6 @@ const receitasData = {
                 "marmitas",
                 "arroz"
             ],
-            "source": "Marmitas da Semana (Segunda)",
             "emoji": "🍱",
             "image": "1.png",
             "ingredients": [
@@ -93,7 +92,6 @@ const receitasData = {
                 "bife",
                 "batatas"
             ],
-            "source": "Marmitas da Semana (Terça)",
             "emoji": "🥔",
             "ingredients": [
                 {
@@ -135,7 +133,6 @@ const receitasData = {
                 "macarrao",
                 "frango"
             ],
-            "source": "Marmitas da Semana (Quarta)",
             "emoji": "🍝",
             "ingredients": [
                 {
@@ -180,7 +177,6 @@ const receitasData = {
                 "frango",
                 "batatas"
             ],
-            "source": "6 Receitas de Frango (Opção 1)",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -238,7 +234,6 @@ const receitasData = {
             "id": 9,
             "title": "Frango Cremoso com Milho",
             "category": "frango",
-            "source": "6 Receitas de Frango (Opção 2)",
             "emoji": "🌽",
             "ingredients": [
                 {
@@ -301,7 +296,6 @@ const receitasData = {
             "id": 10,
             "title": "Frango Xadrez",
             "category": "frango",
-            "source": "6 Receitas de Frango (Opção 3)",
             "emoji": "🫑",
             "ingredients": [
                 {
@@ -369,7 +363,6 @@ const receitasData = {
             "id": 11,
             "title": "Frango ao Molho de Tomate",
             "category": "frango",
-            "source": "6 Receitas de Frango (Opção 4)",
             "emoji": "🍅",
             "ingredients": [
                 {
@@ -433,7 +426,6 @@ const receitasData = {
             "id": 12,
             "title": "Filé de Frango ao Limão",
             "category": "frango",
-            "source": "6 Receitas de Frango (Opção 5)",
             "emoji": "🍋",
             "ingredients": [
                 {
@@ -489,7 +481,6 @@ const receitasData = {
                 "frango",
                 "refogados"
             ],
-            "source": "6 Receitas de Frango (Opção 6)",
             "emoji": "🥦",
             "ingredients": [
                 {
@@ -563,7 +554,6 @@ const receitasData = {
             "id": 14,
             "title": "Batata Rústica Assada",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 1)",
             "emoji": "🥔",
             "ingredients": [
                 {
@@ -620,7 +610,6 @@ const receitasData = {
             "id": 15,
             "title": "Purê de Batata Cremoso",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 2)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -668,7 +657,6 @@ const receitasData = {
             "id": 16,
             "title": "Batata Gratinada com Queijo",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 3)",
             "emoji": "🧀",
             "ingredients": [
                 {
@@ -726,7 +714,6 @@ const receitasData = {
             "id": 17,
             "title": "Batata Frita Sequinha",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 4)",
             "emoji": "🍟",
             "ingredients": [
                 {
@@ -759,7 +746,6 @@ const receitasData = {
             "id": 18,
             "title": "Batata Recheada ao Forno",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 5)",
             "emoji": "🥔",
             "ingredients": [
                 {
@@ -812,7 +798,6 @@ const receitasData = {
             "id": 19,
             "title": "Batata Salteada com Ervas",
             "category": "batatas",
-            "source": "Receitas de Batata (Opção 6)",
             "emoji": "🌿",
             "ingredients": [
                 {
@@ -860,7 +845,6 @@ const receitasData = {
             "id": 20,
             "title": "Peixe Assado com Ervas",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 1)",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -928,7 +912,6 @@ const receitasData = {
             "id": 21,
             "title": "Peixe Grelhado Simples",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 2)",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -976,7 +959,6 @@ const receitasData = {
             "id": 22,
             "title": "Peixe ao Molho de Tomate",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 3)",
             "emoji": "🍅",
             "ingredients": [
                 {
@@ -1051,7 +1033,6 @@ const receitasData = {
             "id": 24,
             "title": "Fish and Chips (Peixe Empanado)",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 5)",
             "emoji": "🍟",
             "ingredients": [
                 {
@@ -1109,7 +1090,6 @@ const receitasData = {
             "id": 25,
             "title": "Peixe com Crosta de Ervas",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 6)",
             "emoji": "🌿",
             "ingredients": [
                 {
@@ -1172,7 +1152,6 @@ const receitasData = {
             "id": 26,
             "title": "Ceviche de Peixe",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 7)",
             "emoji": "🥗",
             "ingredients": [
                 {
@@ -1225,7 +1204,6 @@ const receitasData = {
             "id": 27,
             "title": "Bolinho de Peixe",
             "category": "peixe",
-            "source": "Receitas de Peixe (Opção 8)",
             "emoji": "🧆",
             "ingredients": [
                 {
@@ -1299,7 +1277,6 @@ const receitasData = {
             "id": 28,
             "title": "Espaguete ao Molho de Tomate Caseiro",
             "category": "macarrao",
-            "source": "Receitas de Macarrão (Opção 1)",
             "emoji": "🍝",
             "ingredients": [
                 {
@@ -1362,7 +1339,6 @@ const receitasData = {
             "id": 29,
             "title": "Penne ao Molho Branco com Frango",
             "category": "macarrao",
-            "source": "Receitas de Macarrão (Opção 2)",
             "emoji": "🥛",
             "ingredients": [
                 {
@@ -1435,7 +1411,6 @@ const receitasData = {
             "id": 30,
             "title": "Parafuso ao Molho de Pesto",
             "category": "macarrao",
-            "source": "Receitas de Macarrão (Opção 3)",
             "emoji": "🌱",
             "ingredients": [
                 {
@@ -1493,7 +1468,6 @@ const receitasData = {
             "id": 32,
             "title": "Fettuccine ao Molho Alfredo",
             "category": "macarrao",
-            "source": "Receitas de Macarrão (Opção 5)",
             "emoji": "🧈",
             "ingredients": [
                 {
@@ -1557,7 +1531,6 @@ const receitasData = {
             "id": 33,
             "title": "Macarrão com Legumes Salteados",
             "category": "macarrao",
-            "source": "Receitas de Macarrão (Opção 6)",
             "emoji": "🥕",
             "ingredients": [
                 {
@@ -1631,7 +1604,6 @@ const receitasData = {
             "id": 34,
             "title": "Refogado de Carne Tradicional",
             "category": "refogados",
-            "source": "Receitas de Refogados (Opção 1)",
             "emoji": "🍳",
             "ingredients": [
                 {
@@ -1695,7 +1667,6 @@ const receitasData = {
             "id": 35,
             "title": "Refogado de Frango da Roça",
             "category": "refogados",
-            "source": "Receitas de Refogados (Opção 2)",
             "emoji": "🐔",
             "ingredients": [
                 {
@@ -1764,7 +1735,6 @@ const receitasData = {
             "id": 36,
             "title": "Refogado de Legumes Especial",
             "category": "refogados",
-            "source": "Receitas de Refogados (Opção 3)",
             "emoji": "🥕",
             "ingredients": [
                 {
@@ -1834,7 +1804,6 @@ const receitasData = {
             "id": 37,
             "title": "Refogado de Cogumelos na Manteiga",
             "category": "refogados",
-            "source": "Receitas de Refogados (Opção 4)",
             "emoji": "🍄",
             "ingredients": [
                 {
@@ -1893,7 +1862,6 @@ const receitasData = {
             "id": 38,
             "title": "Feijão Preto Tradicional",
             "category": "feijao",
-            "source": "Receitas de Feijão (Opção 1)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -1953,7 +1921,6 @@ const receitasData = {
             "id": 39,
             "title": "Feijão Carioca Simples",
             "category": "feijao",
-            "source": "Receitas de Feijão (Opção 2)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -2007,7 +1974,6 @@ const receitasData = {
             "id": 40,
             "title": "Feijão Tropeiro Tradicional",
             "category": "feijao",
-            "source": "Receitas de Feijão (Opção 3)",
             "emoji": "🥓",
             "ingredients": [
                 {
@@ -2071,7 +2037,6 @@ const receitasData = {
             "id": 41,
             "title": "Feijão Fradinho",
             "category": "feijao",
-            "source": "Receitas de Feijão (Opção 4)",
             "emoji": "🥗",
             "ingredients": [
                 {
@@ -2124,7 +2089,6 @@ const receitasData = {
             "id": 42,
             "title": "Arroz Branco Soltinho",
             "category": "arroz",
-            "source": "Receitas de Arroz (Opção 1)",
             "emoji": "🍚",
             "ingredients": [
                 {
@@ -2163,7 +2127,6 @@ const receitasData = {
             "id": 43,
             "title": "Arroz Rico com Legumes",
             "category": "arroz",
-            "source": "Receitas de Arroz (Opção 2)",
             "emoji": "🥕",
             "ingredients": [
                 {
@@ -2237,7 +2200,6 @@ const receitasData = {
             "id": 44,
             "title": "Arroz Cremoso com Frango",
             "category": "arroz",
-            "source": "Receitas de Arroz (Opção 3)",
             "emoji": "🍛",
             "ingredients": [
                 {
@@ -2306,7 +2268,6 @@ const receitasData = {
             "id": 45,
             "title": "Arroz ao Alho Dourado",
             "category": "arroz",
-            "source": "Receitas de Arroz (Opção 4)",
             "emoji": "🧄",
             "ingredients": [
                 {
@@ -2355,7 +2316,6 @@ const receitasData = {
             "id": 46,
             "title": "Refogado de Legumes Express",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 1)",
             "emoji": "🥒",
             "ingredients": [
                 {
@@ -2419,7 +2379,6 @@ const receitasData = {
             "id": 47,
             "title": "Refogado de Frango e Brócolis",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 2)",
             "emoji": "🥦",
             "ingredients": [
                 {
@@ -2488,7 +2447,6 @@ const receitasData = {
             "id": 48,
             "title": "Refogado de Carne de Panela",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 3)",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -2568,7 +2526,6 @@ const receitasData = {
             "id": 49,
             "title": "Refogado de Camarão com Pimentão",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 4)",
             "emoji": "🍤",
             "ingredients": [
                 {
@@ -2632,7 +2589,6 @@ const receitasData = {
             "id": 50,
             "title": "Refogado de Tofu com Vegetais",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 5)",
             "emoji": "🥬",
             "ingredients": [
                 {
@@ -2690,7 +2646,6 @@ const receitasData = {
             "id": 51,
             "title": "Refogado Expresso de Cogumelos",
             "category": "refogados",
-            "source": "Receitas de Refogados Rápidos (Opção 6)",
             "emoji": "🍄",
             "ingredients": [
                 {
@@ -2749,7 +2704,6 @@ const receitasData = {
             "id": 52,
             "title": "Bife Acebolado Clássico",
             "category": "bife",
-            "source": "Receitas de Bifes (Opção 1)",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -2809,7 +2763,6 @@ const receitasData = {
             "id": 53,
             "title": "Bife ao Molho de Mostarda",
             "category": "bife",
-            "source": "Receitas de Bifes (Opção 2)",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -2874,7 +2827,6 @@ const receitasData = {
             "id": 54,
             "title": "Bife ao Alho e Ervas Finas",
             "category": "bife",
-            "source": "Receitas de Bifes (Opção 3)",
             "emoji": "🧄",
             "ingredients": [
                 {
@@ -2929,7 +2881,6 @@ const receitasData = {
             "id": 55,
             "title": "Bife ao Molho Madeira com Cogumelos",
             "category": "bife",
-            "source": "Receitas de Bifes (Opção 4)",
             "emoji": "🍷",
             "ingredients": [
                 {
@@ -2999,7 +2950,6 @@ const receitasData = {
             "id": 56,
             "title": "Frango Grelhado Clássico",
             "category": "frango",
-            "source": "Receitas de Frango Rápido (Opção 1)",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -3052,7 +3002,6 @@ const receitasData = {
             "id": 57,
             "title": "Frango Cremoso com Mostarda",
             "category": "frango",
-            "source": "Receitas de Frango Rápido (Opção 2)",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -3105,7 +3054,6 @@ const receitasData = {
             "id": 58,
             "title": "Frango Desfiado com Requeijão",
             "category": "frango",
-            "source": "Receitas de Frango Rápido (Opção 3)",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -3158,7 +3106,6 @@ const receitasData = {
             "id": 59,
             "title": "Frango ao Molho de Tomate Fit",
             "category": "frango",
-            "source": "Receitas de Frango Rápido (Opção 4)",
             "emoji": "🍅",
             "ingredients": [
                 {
@@ -3214,7 +3161,6 @@ const receitasData = {
                 "janta",
                 "lanches"
             ],
-            "source": "Receitas de Janta Leve (Opção 2)",
             "emoji": "🍳",
             "ingredients": [
                 {
@@ -3282,7 +3228,6 @@ const receitasData = {
                 "frango",
                 "batatas"
             ],
-            "source": "Receitas de Janta Leve (Opção 3)",
             "emoji": "🍠",
             "ingredients": [
                 {
@@ -3344,7 +3289,6 @@ const receitasData = {
                 "janta",
                 "arroz"
             ],
-            "source": "Receitas de Janta Leve (Opção 8)",
             "emoji": "🍚",
             "ingredients": [
                 {
@@ -3416,7 +3360,6 @@ const receitasData = {
                 "janta",
                 "peixe"
             ],
-            "source": "Receitas de Janta Leve (Opção 9)",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -3484,7 +3427,6 @@ const receitasData = {
             "id": 69,
             "title": "Caldo Verde Tradicional",
             "category": "sopas",
-            "source": "Caldo Verde Especial",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -3543,7 +3485,6 @@ const receitasData = {
             "id": 72,
             "title": "Molho Rosé de Tomate",
             "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 1)",
             "emoji": "🍅",
             "ingredients": [
                 {
@@ -3601,7 +3542,6 @@ const receitasData = {
             "id": 73,
             "title": "Molho de Tomate Rústico Caseiro",
             "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 2)",
             "emoji": "🍅",
             "ingredients": [
                 {
@@ -3654,7 +3594,6 @@ const receitasData = {
             "id": 75,
             "title": "Molho Branco Cremoso (Béchamel)",
             "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 4)",
             "emoji": "🥛",
             "ingredients": [
                 {
@@ -3707,7 +3646,6 @@ const receitasData = {
             "id": 76,
             "title": "Molho Clássico à Bolonhesa",
             "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 5)",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -3766,7 +3704,6 @@ const receitasData = {
             "id": 77,
             "title": "Molho de Queijo Aveludado",
             "category": "molhos",
-            "source": "6 Molhos para Macarrão (Card 6)",
             "emoji": "🧄",
             "ingredients": [
                 {
@@ -3819,7 +3756,6 @@ const receitasData = {
             "id": 78,
             "title": "Caldo de Feijão Reconfortante",
             "category": "sopas",
-            "source": "Receitas para Dias Frios (Opção 1)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -3875,7 +3811,6 @@ const receitasData = {
                 "janta",
                 "almoco"
             ],
-            "source": "Receitas para Dias Frios (Opção 3)",
             "emoji": "🌽",
             "ingredients": [
                 {
@@ -3937,7 +3872,6 @@ const receitasData = {
                 "bife",
                 "batatas"
             ],
-            "source": "Receitas para Dias Frios (Opção 4)",
             "emoji": "🥔",
             "ingredients": [
                 {
@@ -4003,7 +3937,6 @@ const receitasData = {
                 "refogados",
                 "janta"
             ],
-            "source": "Receitas para Dias Frios (Opção 5)",
             "emoji": "🌽",
             "ingredients": [
                 {
@@ -4056,7 +3989,6 @@ const receitasData = {
             "id": 83,
             "title": "Chocolate Quente Cremoso",
             "category": "lanches",
-            "source": "Receitas para Dias Frios (Opção 6)",
             "emoji": "☕",
             "ingredients": [
                 {
@@ -4099,7 +4031,6 @@ const receitasData = {
             "id": 84,
             "title": "Caldo de Mandioca com Calabresa",
             "category": "sopas",
-            "source": "Receitas para Dias Frios (Opção 7)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -4152,7 +4083,6 @@ const receitasData = {
             "id": 85,
             "title": "Canja de Galinha Tradicional",
             "category": "sopas",
-            "source": "Receitas para Dias Frios (Opção 8)",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -4215,7 +4145,6 @@ const receitasData = {
                 "arroz",
                 "frango"
             ],
-            "source": "Receitas de Almoço (Card 3)",
             "emoji": "🍛",
             "ingredients": [
                 {
@@ -4261,7 +4190,6 @@ const receitasData = {
                 "almoco",
                 "frango"
             ],
-            "source": "Receitas de Almoço (Card 4)",
             "emoji": "🍛",
             "ingredients": [
                 {
@@ -4318,7 +4246,6 @@ const receitasData = {
                 "almoco",
                 "feijao"
             ],
-            "source": "Receitas de Almoço (Card 5)",
             "emoji": "🥓",
             "ingredients": [
                 {
@@ -4370,7 +4297,6 @@ const receitasData = {
                 "peixe",
                 "batatas"
             ],
-            "source": "Receitas de Almoço (Card 7)",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -4427,7 +4353,6 @@ const receitasData = {
                 "frango",
                 "arroz"
             ],
-            "source": "Receitas de Almoço (Card 9)",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -4470,7 +4395,6 @@ const receitasData = {
             "id": 95,
             "title": "Misto Quente Tradicional",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 1)",
             "emoji": "🥪",
             "ingredients": [
                 {
@@ -4508,7 +4432,6 @@ const receitasData = {
             "id": 96,
             "title": "Tapioca de Frango com Queijo",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 2)",
             "emoji": "🌮",
             "ingredients": [
                 {
@@ -4546,7 +4469,6 @@ const receitasData = {
             "id": 97,
             "title": "Pão na Frigideira com Ovo",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 3)",
             "emoji": "🍞",
             "ingredients": [
                 {
@@ -4599,7 +4521,6 @@ const receitasData = {
             "id": 98,
             "title": "Omelete de Caneca de Micro-ondas",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 4)",
             "emoji": "🍳",
             "ingredients": [
                 {
@@ -4647,7 +4568,6 @@ const receitasData = {
             "id": 99,
             "title": "Sanduíche Natural de Frango",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 5)",
             "emoji": "🥪",
             "ingredients": [
                 {
@@ -4694,7 +4614,6 @@ const receitasData = {
             "id": 100,
             "title": "Pão de Queijo Recheado",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 6)",
             "emoji": "🥯",
             "ingredients": [
                 {
@@ -4726,7 +4645,6 @@ const receitasData = {
             "id": 101,
             "title": "Crepioca Proteica",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 7)",
             "emoji": "🥞",
             "ingredients": [
                 {
@@ -4763,7 +4681,6 @@ const receitasData = {
             "id": 102,
             "title": "Vitamina de Frutas Energética",
             "category": "lanches",
-            "source": "Receitas de Lanches Práticos (Card 8)",
             "emoji": "🍓",
             "ingredients": [
                 {
@@ -4809,7 +4726,6 @@ const receitasData = {
                 "frango",
                 "peixe"
             ],
-            "source": "Receitas de Lanches Práticos (Card 9)",
             "emoji": "🌯",
             "ingredients": [
                 {
@@ -4851,7 +4767,6 @@ const receitasData = {
             "id": 104,
             "title": "Cubo de Caldo de Frango Caseiro",
             "category": "temperos",
-            "source": "Cubos de Caldo Caseiros",
             "emoji": "🍗",
             "ingredients": [
                 {
@@ -4899,7 +4814,6 @@ const receitasData = {
             "id": 105,
             "title": "Cubo de Caldo de Carne Caseiro",
             "category": "temperos",
-            "source": "Cubos de Caldo Caseiros",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -4942,7 +4856,6 @@ const receitasData = {
             "id": 106,
             "title": "Cubo de Caldo de Peixe Caseiro",
             "category": "temperos",
-            "source": "Cubos de Caldo Caseiros",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -4985,7 +4898,6 @@ const receitasData = {
             "id": 107,
             "title": "Cubo de Caldo de Legumes Caseiro",
             "category": "temperos",
-            "source": "Cubos de Caldo Caseiros",
             "emoji": "🥦",
             "ingredients": [
                 {
@@ -5036,7 +4948,6 @@ const receitasData = {
                 "lanches",
                 "janta"
             ],
-            "source": "Receitas de Pratos Rápidos (Opção 1)",
             "emoji": "🍳",
             "ingredients": [
                 {
@@ -5079,7 +4990,6 @@ const receitasData = {
             "id": 109,
             "title": "Macarrão Alho e Óleo Expresso",
             "category": "macarrao",
-            "source": "Receitas de Pratos Rápidos (Opção 2)",
             "emoji": "🍝",
             "ingredients": [
                 {
@@ -5117,7 +5027,6 @@ const receitasData = {
             "id": 111,
             "title": "Arroz de Panela Única com Calabresa",
             "category": "arroz",
-            "source": "Receitas de Pratos Rápidos (Opção 4)",
             "emoji": "🥘",
             "ingredients": [
                 {
@@ -5155,7 +5064,6 @@ const receitasData = {
             "id": 114,
             "title": "Arroz com Ovo e Legumes Salteados",
             "category": "arroz",
-            "source": "Receitas de Pratos Rápidos (Opção 7)",
             "emoji": "🍚",
             "ingredients": [
                 {
@@ -5192,7 +5100,6 @@ const receitasData = {
             "id": 115,
             "title": "Carne Acebolada de Frigideira",
             "category": "bife",
-            "source": "Receitas de Pratos Rápidos (Opção 8)",
             "emoji": "🥩",
             "ingredients": [
                 {
@@ -5229,7 +5136,6 @@ const receitasData = {
             "id": 116,
             "title": "Molho Vinagrete Clássico",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🥗",
             "ingredients": [
                 {
@@ -5286,7 +5192,6 @@ const receitasData = {
             "id": 117,
             "title": "Molho de Limão com Ervas Finas",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🍋",
             "ingredients": [
                 {
@@ -5338,7 +5243,6 @@ const receitasData = {
             "id": 118,
             "title": "Molho Deusa Verde (Green Goddess)",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🌱",
             "ingredients": [
                 {
@@ -5390,7 +5294,6 @@ const receitasData = {
             "id": 119,
             "title": "Molho de Tahine e Aloo",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -5432,7 +5335,6 @@ const receitasData = {
             "id": 120,
             "title": "Molho de Maracujá e Mostarda",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🥝",
             "ingredients": [
                 {
@@ -5474,7 +5376,6 @@ const receitasData = {
             "id": 121,
             "title": "Molho de Gergelim e Gengibre Asiático",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🥢",
             "ingredients": [
                 {
@@ -5521,7 +5422,6 @@ const receitasData = {
             "id": 122,
             "title": "Molho Cremoso de Iogurte e Hortelã",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🌿",
             "ingredients": [
                 {
@@ -5563,7 +5463,6 @@ const receitasData = {
             "id": 123,
             "title": "Molho Citrus de Laranja e Gengibre",
             "category": "molhos",
-            "source": "Molhos para Salada",
             "emoji": "🍊",
             "ingredients": [
                 {
@@ -5605,7 +5504,6 @@ const receitasData = {
             "id": 124,
             "title": "Tilápia Assada com Legumes",
             "category": "peixe",
-            "source": "Receitas de Peixes Saudáveis",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -5678,7 +5576,6 @@ const receitasData = {
             "id": 125,
             "title": "Peixe ao Molho de Limão Gourmet",
             "category": "peixe",
-            "source": "Receitas de Peixes Saudáveis",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -5742,7 +5639,6 @@ const receitasData = {
             "id": 126,
             "title": "Moqueca de Peixe com Leite de Coco",
             "category": "peixe",
-            "source": "Receitas de Peixes Saudáveis",
             "emoji": "🥘",
             "ingredients": [
                 {
@@ -5815,7 +5711,6 @@ const receitasData = {
             "id": 127,
             "title": "Peixe Empanado Assado Crocante",
             "category": "peixe",
-            "source": "Receitas de Peixes Saudáveis",
             "emoji": "🐟",
             "ingredients": [
                 {
@@ -5878,7 +5773,6 @@ const receitasData = {
             "id": 128,
             "title": "Caldinho de Peixe Cremoso",
             "category": "sopas",
-            "source": "Receitas de Peixes Saudáveis",
             "emoji": "🥣",
             "ingredients": [
                 {
@@ -5958,7 +5852,6 @@ const receitasData = {
             "id": 129,
             "title": "Tempero Caseiro Completo",
             "category": "temperos",
-            "source": "Temperos Práticos de Semana",
             "emoji": "🧄",
             "ingredients": [
                 {
@@ -6017,7 +5910,6 @@ const receitasData = {
             "id": 130,
             "title": "Sal de Ervas Secas Funcional",
             "category": "temperos",
-            "source": "Temperos Práticos de Semana",
             "emoji": "🌿",
             "ingredients": [
                 {
@@ -6070,7 +5962,6 @@ const receitasData = {
             "id": 131,
             "title": "O Verdadeiro Sal de Ouro Aromático",
             "category": "temperos",
-            "source": "Temperos Saudáveis e Funcionais",
             "emoji": "✨",
             "ingredients": [
                 {
@@ -6123,7 +6014,6 @@ const receitasData = {
             "id": 132,
             "title": "Sazón Carne Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🥩",
             "image": "132.png",
             "ingredients": [
@@ -6182,7 +6072,6 @@ const receitasData = {
             "id": 133,
             "title": "Sazón Frango Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🍗",
             "image": "133.png",
             "ingredients": [
@@ -6246,7 +6135,6 @@ const receitasData = {
             "id": 134,
             "title": "Sazón Alho Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🧄",
             "image": "134.png",
             "ingredients": [
@@ -6294,7 +6182,6 @@ const receitasData = {
             "id": 135,
             "title": "Sazón Limão Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🍋",
             "image": "135.png",
             "ingredients": [
@@ -6347,7 +6234,6 @@ const receitasData = {
             "id": 136,
             "title": "Sazón Legumes Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🌽",
             "image": "136.png",
             "ingredients": [
@@ -6406,7 +6292,6 @@ const receitasData = {
             "id": 137,
             "title": "Sazón Saladas Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🥗",
             "image": "137.png",
             "ingredients": [
@@ -6465,7 +6350,6 @@ const receitasData = {
             "id": 138,
             "title": "Sazón Feijão Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🫘",
             "image": "138.png",
             "ingredients": [
@@ -6524,7 +6408,6 @@ const receitasData = {
             "id": 139,
             "title": "Sazón Nordeste Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🌵",
             "image": "139.png",
             "ingredients": [
@@ -6588,7 +6471,6 @@ const receitasData = {
             "id": 140,
             "title": "Sazón Arroz Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🍚",
             "image": "140.png",
             "ingredients": [
@@ -6632,7 +6514,6 @@ const receitasData = {
             "id": 141,
             "title": "Sazón Massas Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🍝",
             "image": "141.png",
             "ingredients": [
@@ -6696,7 +6577,6 @@ const receitasData = {
             "id": 142,
             "title": "Sazón Peixes Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🐟",
             "image": "142.png",
             "ingredients": [
@@ -6755,7 +6635,6 @@ const receitasData = {
             "id": 143,
             "title": "Sazón Churrasco Caseiro",
             "category": "temperos",
-            "source": "Sazons Funcionais Otimizados",
             "emoji": "🍖",
             "image": "143.png",
             "ingredients": [
@@ -6817,7 +6696,6 @@ const receitasData = {
                 "almoco",
                 "arroz"
             ],
-            "source": "Tudo Gostoso",
             "emoji": "🍚",
             "image": "144.png",
             "ingredients": [
@@ -6897,7 +6775,6 @@ const receitasData = {
                 "janta",
                 "frango"
             ],
-            "source": null,
             "emoji": "🍲",
             "image": "145.png",
             "ingredients": [
@@ -6972,7 +6849,6 @@ const receitasData = {
                 "feijao",
                 "macarrao"
             ],
-            "source": null,
             "emoji": "🍜",
             "image": "146.png",
             "ingredients": [
@@ -7035,7 +6911,6 @@ const receitasData = {
                 "sopas",
                 "janta"
             ],
-            "source": null,
             "emoji": "🥣",
             "image": "147.png",
             "ingredients": [
