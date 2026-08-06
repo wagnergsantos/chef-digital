@@ -679,26 +679,17 @@ button,
 
 /* Reserve above-the-fold area during initial boot to reduce CLS */
 body[data-app-loading="true"] .recipes-grid {
-    min-height: min(74vh, 920px);
+    min-height: min(62vh, 760px);
     position: relative;
 }
 
 body[data-app-loading="true"] .recipes-grid:empty::before {
     content: '';
     display: block;
-    height: min(74vh, 920px);
+    height: min(62vh, 760px);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
-    background:
-        linear-gradient(90deg, transparent 0%, rgb(from var(--primary-color) r g b / 6%) 50%, transparent 100%),
-        var(--bg-card);
-    background-size: 200% 100%, auto;
-    animation: loading-shimmer 1.6s var(--ease-out-quart) infinite;
-}
-
-@keyframes loading-shimmer {
-    0% { background-position: 200% 0, 0 0; }
-    100% { background-position: -200% 0, 0 0; }
+    background: var(--bg-card);
 }
 
 @media (min-width: 600px) {
@@ -3260,11 +3251,11 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     }
 
     body[data-app-loading="true"] .recipes-grid {
-        min-height: min(68vh, 760px);
+        min-height: min(54vh, 540px);
     }
 
     body[data-app-loading="true"] .recipes-grid:empty::before {
-        height: min(68vh, 760px);
+        height: min(54vh, 540px);
     }
 
     /* Reduce first-paint layout work before initial data hydration completes */
@@ -3301,11 +3292,5 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     .cooking-ingredients-drawer {
         width: calc(100% - 32px);
         bottom: 80px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    body[data-app-loading="true"] .recipes-grid:empty::before {
-        animation: none;
     }
 }

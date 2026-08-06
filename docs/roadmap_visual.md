@@ -4,7 +4,7 @@
 
 ## Linha de base (snapshot atual)
 
-- **Audit Health Score (último `impeccable audit`):** **14/20** (Good)
+- **Audit Health Score (último `impeccable audit`):** **16/20** (Good)
 - **Lighthouse (mobile):**
   - Performance: **84**
   - Accessibility: **100**
@@ -92,6 +92,7 @@
 | 2026-08-05 | 75 | 95 | 96 | 91 | 14/20 | Baseline inicial |
 | 2026-08-06 | 87 | 100 | 96 | 91 | — | Reexecução Lighthouse após optimize/harden/adapt |
 | 2026-08-06 | 84 | 100 | 96 | 91 | — | Reexecução após deploy + adapt (2a passada) |
+| 2026-08-06 | 84 | 100 | 96 | 91 | — | Reexecução após deploy validado no Actions (sem variação) |
 
 ## Registro de execução
 
@@ -130,3 +131,18 @@
   - Resultado: **Performance 84**, **Accessibility 100**, **Best Practices 96**, **SEO 91**.
   - Vitals: **LCP 3.2s**, **FCP 3.2s**, **TTI 3.2s**, **TBT 10ms**, **CLS 0.108**.
   - Leitura: CLS melhorou significativamente (**0.173 -> 0.108**), mas ainda fora da meta; houve regressão de LCP/FCP em relação ao run anterior.
+
+- **2026-08-06 — Ciclo completo com deploy aguardando Actions (fetchTime 03:48:35Z)**
+  - Deploy confirmado no workflow `pages-build-deployment` com status **success** antes do Lighthouse.
+  - Resultado repetiu: **Performance 84**, **Accessibility 100**, **Best Practices 96**, **SEO 91**.
+  - Vitals estáveis: **LCP/FCP 3.2s**, **CLS 0.108**, **TBT 10ms**.
+  - Conclusão: ganhos de acessibilidade e CLS sustentados; gargalo restante concentrado em LCP/FCP e JS não utilizado (~45 KiB).
+
+- **2026-08-06 — `$impeccable audit` (revisão técnica pós ciclo)**
+  - **Audit Health Score estimado:** **16/20 (Good)**.
+  - **Accessibility:** 4/4 (100 no Lighthouse; contraste e heading-order ok).
+  - **Performance:** 3/4 (bom TBT e TTI, porém LCP/FCP em 3.2s e JS não utilizado ~45 KiB).
+  - **Responsive:** 3/4 (estrutura responsiva sólida; CLS quase na meta com 0.108).
+  - **Theming:** 3/4 (tokens e dark mode consistentes; sem falhas críticas abertas).
+  - **Anti-patterns:** 3/4 (sem sinais críticos; manter atenção ao uso de scrollbar customizada).
+  - **Prioridades abertas:** reduzir LCP/FCP e fechar CLS para <= 0.10.
