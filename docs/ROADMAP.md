@@ -48,6 +48,7 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ### Fase 3 (Funcionalidades de Experiência) — 🟡 33% Concluído
 - [x] **Modo Preparo completo**: Implementado em `src/modules/cooking-mode.js` com interface imersiva full-screen, Wake Lock API (para manter a tela ativa), navegação por passos, detecção automática de timers de tempo com alarme e painel retrátil de ingredientes.
+- [ ] **Leitura assistida do modo de preparo (Acessibilidade)**: Leitura em voz dos passos da receita (TTS) com controles de reproduzir/pausar/retomar e destaque do passo atual para pessoas cegas ou com baixa visão.
 - [ ] **Compartilhamento de receitas**: Compartilhamento via Web Share API, exportação PDF ou links públicos.
 - [ ] **Histórico de preparo**: Registro de datas e estatísticas de preparo de receitas.
 

@@ -114,7 +114,9 @@ export function nextStep() {
     if (currentStepIndex < currentRecipe.steps.length - 1) {
         currentStepIndex++;
         renderStep();
+        return;
     }
+    exitCookingMode();
 }
 
 export function prevStep() {
@@ -337,6 +339,7 @@ export function renderStep() {
     if (nextBtn) {
         if (currentStepIndex === totalSteps - 1) {
             nextBtn.classList.add('cooking-btn-finish');
+            nextBtn.setAttribute('aria-label', 'Concluir preparo');
             nextBtn.innerHTML = `
                 <span>Concluir</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true" width="20" height="20">
@@ -345,6 +348,7 @@ export function renderStep() {
             `;
         } else {
             nextBtn.classList.remove('cooking-btn-finish');
+            nextBtn.setAttribute('aria-label', 'Próximo Passo');
             nextBtn.innerHTML = `
                 <span>Próximo</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true" width="20" height="20">
@@ -384,4 +388,3 @@ function renderIngredientsDrawer() {
         listEl.appendChild(li);
     });
 }
-

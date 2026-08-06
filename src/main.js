@@ -429,6 +429,7 @@ window.closeRecipeModal = closeRecipeModal;
 window.toggleWakeLock = toggleWakeLock;
 window.printRecipe = printRecipe;
 window.getActiveRecipe = getActiveRecipe;
+window.getActiveRecipeId = getActiveRecipeId;
 window.addCurrentRecipeToShoppingList = () => addCurrentRecipeToShoppingList(getActiveRecipeId(), getActiveRecipePortions());
 window.openDayPickerPopover = openDayPickerPopover;
 window.changePortions = changePortions;
