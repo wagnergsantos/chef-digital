@@ -184,3 +184,42 @@
 .admin-textarea {
     resize: vertical;
 }
+
+.admin-tags-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 38px;
+    align-items: center;
+    padding: 6px;
+    background: var(--bg-light);
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-md);
+}
+.admin-tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--primary-light);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+.admin-tag-chip-remove {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+.admin-tag-chip-remove:hover {
+    color: var(--danger-color);
+}
+.admin-tag-input-flex {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}

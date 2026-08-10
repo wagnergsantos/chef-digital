@@ -25,6 +25,7 @@ O campo "category" deve conter obrigatoriamente a chave exata da categoria princ
 {
   "title": "<Título corrigido>",
   "category": "carnes",
+  "tags": ["Natal", "Fit", "Almoço em Família"],
   "emoji": "🥩",
   "image": null,
   "ingredients": [
@@ -42,6 +43,7 @@ O campo "category" deve conter obrigatoriamente a chave exata da categoria princ
 }
 
 Regras adicionais:
+- No campo "tags", extraia termos relevantes de contexto, datas comemorativas ou ocasiões (ex: "Natal", "Dia das Mães", "Páscoa", "Airfryer", "Fit", "Almoço de Domingo") vindos de keywords, título ou texto. Retorne como array de strings limpas.
 - Retorne estritamente o JSON sem marcações markdown adicionais ou texto extra.
 - Desmembre ingredientes combinados.`;
 

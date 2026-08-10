@@ -59,6 +59,7 @@ export function buildRecipePayload({
     author,
     selectedCategoryId,
     selectedCategoryKey,
+    tags = [],
     validIngredients,
     validSteps
 }) {
@@ -73,6 +74,8 @@ export function buildRecipePayload({
 
     const parsedCategoryId = Number.parseInt(String(selectedCategoryId).trim(), 10);
 
+    const validTags = Array.isArray(tags) ? tags.map(t => String(t).trim()).filter(Boolean) : [];
+
     return {
         p_id: id,
         p_title: (title || '').trim(),
@@ -86,6 +89,7 @@ export function buildRecipePayload({
         p_author: (author || '').trim() || null,
         p_category_id: Number.isNaN(parsedCategoryId) ? null : parsedCategoryId,
         p_category_key: (selectedCategoryKey || '').trim() || null,
+        p_tags: validTags,
         p_ingredientes: validIngredients,
         p_passos: validSteps
     };

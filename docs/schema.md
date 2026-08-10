@@ -18,6 +18,7 @@ Documentação oficial da estrutura JSON de receitas, ingredientes e equivalênc
  * @property {string} title - Título da receita (equivalente ao `name` no Schema.org)
  * @property {string} category - Chave da categoria principal (ex: "carnes", "aves", "peixes", "massas", "lanches", "doces", "sopas", "acompanhamento")
  * @property {number|null} [category_id] - ID numérico da categoria cadastrada no banco
+ * @property {string[]} [tags] - Tags contextuais ou comemorativas (ex: ["Natal", "Fit", "Airfryer", "Dia das Mães"])
  * @property {string} emoji - Emoji representativo da receita (ex: "🍲", "🥩", "🍝")
  * @property {string|null} [image] - URL pública da imagem da receita (equivalente ao `image` no Schema.org)
  * @property {Ingredient[]} ingredients - Lista de ingredientes individuais e normalizados (equivalente ao `recipeIngredient`)
@@ -36,6 +37,7 @@ Documentação oficial da estrutura JSON de receitas, ingredientes e equivalênc
 | `title` | `name` | Nome oficial do prato. |
 | `image` | `image` | URL pública da foto do prato. |
 | `servings` | `recipeYield` | Porções produzidas (ex: `4` ou `"4 porções"`). |
+| `tags` | `keywords` | Tags contextuais ou temas comemorativos (ex: `["Natal", "Fit"]`). |
 | `ingredients` | `recipeIngredient` | Array de strings brutas no Schema.org `["500g de frango"]` desmembrado para objetos `{ name, qty, unit }`. |
 | `steps` | `recipeInstructions` | Array de instruções `["Passo 1...", "Passo 2..."]` ou lista de objetos `HowToStep.text`. |
 | `tips` | `description` / `comment` | Dica complementar ou descrição sucinta da receita. |
@@ -55,6 +57,10 @@ Documentação oficial da estrutura JSON de receitas, ingredientes e equivalênc
     "title": { "type": "string" },
     "category": { "type": "string" },
     "category_id": { "type": ["integer", "null"] },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
     "emoji": { "type": "string" },
     "image": { "type": ["string", "null"] },
     "ingredients": {

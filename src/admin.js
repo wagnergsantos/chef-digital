@@ -116,6 +116,56 @@ async function loadCategories() {
     });
 }
 
+// State
+let ingredients = [];
+let steps = [];
+let recipeTags = [];
+
+// Dynamic Tags UI
+function renderTagChips() {
+    const container = document.getElementById('tags-chips-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (recipeTags.length === 0) {
+        const emptyHint = document.createElement('span');
+        emptyHint.className = 'text-sm text-muted';
+        emptyHint.style.color = 'var(--text-muted)';
+        emptyHint.textContent = 'Nenhuma tag adicionada ainda.';
+        container.appendChild(emptyHint);
+        return;
+    }
+
+    recipeTags.forEach((tag, index) => {
+        const chip = document.createElement('span');
+        chip.className = 'admin-tag-chip';
+        chip.textContent = tag;
+
+        const removeBtn = document.createElement('span');
+        removeBtn.className = 'admin-tag-chip-remove';
+        removeBtn.innerHTML = '&times;';
+        removeBtn.title = 'Remover tag';
+        removeBtn.onclick = () => {
+            recipeTags.splice(index, 1);
+            renderTagChips();
+        };
+
+        chip.appendChild(removeBtn);
+        container.appendChild(chip);
+    });
+}
+
+function addTagFromInput() {
+    const input = document.getElementById('tag-input');
+    if (!input) return;
+    const value = input.value.trim();
+    if (value && !recipeTags.includes(value)) {
+        recipeTags.push(value);
+        input.value = '';
+        renderTagChips();
+    }
+}
+
 // Event Listeners
 function setupEventListeners() {
     btnLogin.addEventListener('click', login);
@@ -128,6 +178,20 @@ function setupEventListeners() {
     btnAddIngredient.addEventListener('click', () => addIngredient());
     btnAddStep.addEventListener('click', () => addStep());
     btnSave.addEventListener('click', saveRecipe);
+
+    const btnAddTag = document.getElementById('btn-add-tag');
+    const tagInput = document.getElementById('tag-input');
+    if (btnAddTag) {
+        btnAddTag.addEventListener('click', addTagFromInput);
+    }
+    if (tagInput) {
+        tagInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addTagFromInput();
+            }
+        });
+    }
 
     const btnImport = document.getElementById('btn-import-gemini');
     if (btnImport) {
@@ -211,6 +275,14 @@ function populateFormWithRecipe(recipe) {
     if (recipe.cook_time) document.getElementById('recipe-cook-time').value = recipe.cook_time;
     if (recipe.source_url) document.getElementById('recipe-source-url').value = recipe.source_url;
     if (recipe.author) document.getElementById('recipe-author').value = recipe.author;
+
+    // Preencher tags sugeridas pela IA ou receita
+    if (Array.isArray(recipe.tags) && recipe.tags.length > 0) {
+        recipeTags = [...recipe.tags];
+    } else {
+        recipeTags = [];
+    }
+    renderTagChips();
 
     // Selecionar categoria se informada (com fallback de correspondência inteligente)
     if (recipe.category) {
@@ -445,6 +517,7 @@ async function saveRecipe(e) {
         author: authorInput ? authorInput.value : null,
         selectedCategoryId,
         selectedCategoryKey,
+        tags: recipeTags,
         validIngredients: validation.validIngredients,
         validSteps: validation.validSteps
     });
@@ -494,6 +567,8 @@ function resetForm() {
 
     ingredients = [];
     steps = [];
+    recipeTags = [];
+    renderTagChips();
     addIngredient();
     addStep();
 }

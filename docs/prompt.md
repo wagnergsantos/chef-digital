@@ -25,6 +25,7 @@ O campo "category" deve conter obrigatoriamente a chave exata da categoria princ
 {
   "title": "<Título corrigido e amigável da receita>",
   "category": "carnes",
+  "tags": ["Natal", "Fit", "Almoço em Família"],
   "emoji": "🥩",
   "image": null,
   "ingredients": [
