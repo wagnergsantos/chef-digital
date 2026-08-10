@@ -464,7 +464,9 @@ async function saveRecipe(e) {
         }
     } else {
         try {
-            const { error } = await supabase.rpc('salvar_receita', payload);
+            console.log('Enviando payload para salvar_receita:', payload);
+            const { data, error } = await supabase.rpc('salvar_receita', payload);
+            console.log('Resposta do Supabase RPC:', { data, error });
             if (error) throw error;
             
             alert('Receita salva com sucesso!');
