@@ -212,15 +212,36 @@ function populateFormWithRecipe(recipe) {
     if (recipe.source_url) document.getElementById('recipe-source-url').value = recipe.source_url;
     if (recipe.author) document.getElementById('recipe-author').value = recipe.author;
 
-    // Selecionar categoria se informada
+    // Selecionar categoria se informada (com fallback de correspondência inteligente)
     if (recipe.category) {
         const catKey = String(recipe.category).toLowerCase().trim();
         const radios = categoriesContainer.querySelectorAll('input[type="radio"]');
+        let matched = false;
+
+        // 1. Tentar por chave exata (ex: 'carnes')
         radios.forEach(radio => {
-            if (radio.dataset.key === catKey) {
+            if (radio.dataset.key && radio.dataset.key.toLowerCase().trim() === catKey) {
                 radio.checked = true;
+                matched = true;
             }
         });
+
+        // 2. Se não casou por chave exata, tentar por rótulo ou inclusão de texto (ex: 'Carnes' ou 'carnes e assados')
+        if (!matched) {
+            radios.forEach(radio => {
+                const parentLabel = radio.parentElement ? radio.parentElement.textContent.toLowerCase() : '';
+                const rKey = (radio.dataset.key || '').toLowerCase();
+                if (parentLabel.includes(catKey) || catKey.includes(rKey)) {
+                    radio.checked = true;
+                    matched = true;
+                }
+            });
+        }
+
+        // 3. Fallback padrão: se ainda não casar nenhuma, selecionar a primeira categoria disponível para não barrar a validação
+        if (!matched && radios.length > 0) {
+            radios[0].checked = true;
+        }
     }
 
     // Preencher ingredientes
