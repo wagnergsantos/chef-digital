@@ -55,8 +55,8 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ---
 
-### Fase 4 (Avançado & Inteligência Artificial) — 🔴 0% Concluído
-- [ ] **Integração com IA para Importação de Receitas**: Parser inteligente com LLM/Gemini para extrair dados estruturados (título, porções, tempos, lista de ingredientes e modo de preparo) a partir de texto livre ou imagens de receitas.
+### Fase 4 (Avançado & Inteligência Artificial) — 🟡 25% Concluído
+- [x] **Integração com IA para Importação de Receitas**: Parser inteligente via Edge Function Supabase + Gemini 1.5 Flash com suporte a rotação de múltiplas chaves de API (`GEMINI_KEY_1..N`) e fallback automático para limite diário. Extração estruturada a partir de texto livre.
 - [ ] **Importação de URLs**: Scraping/parsing automático de blogs de receitas usando Recipe Schema.org.
 - [ ] **Lista colaborativa**: Sincronização em tempo real da lista de compras entre múltiplos usuários via Supabase Realtime.
 - [ ] **Notificações push**: Lembretes de planejamento semanal de refeições e alertas de listas de compras.

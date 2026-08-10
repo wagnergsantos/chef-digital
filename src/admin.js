@@ -128,6 +128,111 @@ function setupEventListeners() {
     btnAddIngredient.addEventListener('click', () => addIngredient());
     btnAddStep.addEventListener('click', () => addStep());
     btnSave.addEventListener('click', saveRecipe);
+
+    const btnImport = document.getElementById('btn-import-gemini');
+    if (btnImport) {
+        btnImport.addEventListener('click', handleAIImport);
+    }
+}
+
+async function handleAIImport() {
+    const textarea = document.getElementById('gemini-json-input');
+    const statusBox = document.getElementById('import-status');
+    const btnImport = document.getElementById('btn-import-gemini');
+    const rawText = textarea ? textarea.value.trim() : '';
+
+    if (!rawText) {
+        if (statusBox) {
+            statusBox.textContent = 'Por favor, insira o texto ou receita a ser processada.';
+            statusBox.style.display = 'block';
+        }
+        return;
+    }
+
+    if (statusBox) statusBox.style.display = 'none';
+    btnImport.disabled = true;
+    btnImport.textContent = '⏳ Processando com IA...';
+
+    try {
+        // Se o usuário colou diretamente um JSON pré-gerado, faz o parse local instantâneo
+        if (rawText.startsWith('{') && rawText.endsWith('}')) {
+            const parsed = JSON.parse(rawText);
+            populateFormWithRecipe(parsed);
+            textarea.value = '';
+            btnImport.disabled = false;
+            btnImport.textContent = '🪄 Processar e Preencher com IA';
+            return;
+        }
+
+        // Caso contrário, invoca a Edge Function via Supabase
+        const { data, error } = await supabase.functions.invoke('parse-recipe', {
+            body: { text: rawText }
+        });
+
+        if (error) {
+            throw new Error(error.message || 'Erro ao comunicar com a função de IA.');
+        }
+
+        if (!data || !data.ok) {
+            if (data?.error === 'quota_exceeded') {
+                throw new Error(data.message || 'Limite diário de IA exaurido.');
+            }
+            throw new Error(data?.error || 'Não foi possível extrair os dados da receita.');
+        }
+
+        populateFormWithRecipe(data.recipe);
+        textarea.value = '';
+    } catch (err) {
+        console.error('Erro na importação IA:', err);
+        if (statusBox) {
+            statusBox.textContent = 'Erro ao importação: ' + err.message;
+            statusBox.style.display = 'block';
+        }
+    } finally {
+        btnImport.disabled = false;
+        btnImport.textContent = '🪄 Processar e Preencher com IA';
+    }
+}
+
+function populateFormWithRecipe(recipe) {
+    if (recipe.title) document.getElementById('recipe-title').value = recipe.title;
+    if (recipe.emoji) document.getElementById('recipe-emoji').value = recipe.emoji;
+    if (recipe.image) document.getElementById('recipe-image').value = recipe.image;
+    if (recipe.tips) document.getElementById('recipe-tips').value = recipe.tips;
+    if (recipe.servings) document.getElementById('recipe-servings').value = recipe.servings;
+    if (recipe.prep_time) document.getElementById('recipe-prep-time').value = recipe.prep_time;
+    if (recipe.cook_time) document.getElementById('recipe-cook-time').value = recipe.cook_time;
+    if (recipe.source_url) document.getElementById('recipe-source-url').value = recipe.source_url;
+    if (recipe.author) document.getElementById('recipe-author').value = recipe.author;
+
+    // Selecionar categoria se informada
+    if (recipe.category) {
+        const catKey = String(recipe.category).toLowerCase().trim();
+        const radios = categoriesContainer.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            if (radio.dataset.key === catKey) {
+                radio.checked = true;
+            }
+        });
+    }
+
+    // Preencher ingredientes
+    if (Array.isArray(recipe.ingredients) && recipe.ingredients.length > 0) {
+        ingredients = recipe.ingredients.map(ing => ({
+            name: ing.name || '',
+            qty: ing.qty !== undefined && ing.qty !== null ? ing.qty : '',
+            unit: ing.unit || ''
+        }));
+        renderIngredients();
+    }
+
+    // Preencher passos
+    if (Array.isArray(recipe.steps) && recipe.steps.length > 0) {
+        steps = recipe.steps.map(s => ({
+            step_text: typeof s === 'string' ? s : s.step_text || ''
+        }));
+        renderSteps();
+    }
 }
 
 // Helper Delete Button
