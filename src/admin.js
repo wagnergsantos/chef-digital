@@ -374,6 +374,11 @@ function collectStepsFromDOM() {
     }
 }
 
+function addStep() {
+    steps.push({ step_text: '' });
+    renderSteps();
+}
+
 // Save Recipe
 async function saveRecipe(e) {
     if (e) e.preventDefault();
