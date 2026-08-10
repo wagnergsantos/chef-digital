@@ -245,17 +245,23 @@ function normalizeRecipeFromRow(recipe) {
 
 async function loadRecipeDetailsById(recipeId) {
     const recipe = state.recipes.find((item) => item.id === recipeId);
+    console.log('[DEBUG Modal] Receita encontrada no state:', recipe);
     if (!recipe) return null;
 
     if (Array.isArray(recipe.ingredients) && recipe.ingredients.length > 0 && Array.isArray(recipe.steps) && recipe.steps.length > 0) {
+        console.log('[DEBUG Modal] Receita já possui ingredientes e passos no state:', { ingredients: recipe.ingredients, steps: recipe.steps });
         return recipe;
     }
 
     const supabase = await getSupabaseClient();
+    console.log('[DEBUG Modal] Buscando ingredientes/passos no Supabase para id:', recipeId);
     const [{ data: ingredientsData, error: ingredientsErr }, { data: stepsData, error: stepsErr }] = await Promise.all([
         supabase.from('ingredientes').select('receita_id, name, qty, unit').eq('receita_id', recipeId),
         supabase.from('passos').select('receita_id, step_text').eq('receita_id', recipeId).order('ordem')
     ]);
+
+    console.log('[DEBUG Modal] Retorno Supabase ingredientes:', { ingredientsData, ingredientsErr });
+    console.log('[DEBUG Modal] Retorno Supabase passos:', { stepsData, stepsErr });
 
     if (ingredientsErr || stepsErr) {
         const detailsError = ingredientsErr || stepsErr;
@@ -267,15 +273,17 @@ async function loadRecipeDetailsById(recipeId) {
     recipe.ingredients = details.ingredients;
     recipe.steps = details.steps;
 
+    console.log('[DEBUG Modal] Receita montada final:', recipe);
     return recipe;
 }
 
 async function openRecipeModalWithDetails(recipeId) {
+    console.log('[DEBUG Modal] Clique para abrir receita ID:', recipeId);
     try {
         await loadRecipeDetailsById(recipeId);
         openRecipeModal(recipeId);
     } catch (err) {
-        console.warn('Falha ao carregar detalhes da receita:', err);
+        console.error('[DEBUG Modal] Erro ao carregar detalhes da receita:', err);
         showToast('Nao foi possivel carregar os detalhes da receita. Tente novamente.', 'error');
     }
 }
