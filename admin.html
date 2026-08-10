@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Chef Digital</title>
-  <script type="module" crossorigin src="/chef-digital/assets/admin-Bd8E3fse.js"></script>
+    <title>Painel Admin - Chef Digital</title>
+  <script type="module" crossorigin src="/chef-digital/assets/admin-B2Ajh6W3.js"></script>
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/supabase-BxJ6yzbu.js">
-  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-BU2YmvOw.css">
+  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-CMgGMQt-.css">
 <link rel="manifest" href="/chef-digital/manifest.webmanifest"></head>
 <body class="bg-neutral-bg">
     <!-- Botão para voltar ao livro de receitas -->
@@ -99,6 +99,15 @@
                 <!-- Carregado via JS -->
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="form-label" for="tag-input">Tags da receita (contexto, ocasiões, temas)</label>
+            <div id="tags-chips-container" class="admin-tags-chips-container mb-2"></div>
+            <div class="admin-tag-input-flex">
+                <input type="text" id="tag-input" class="form-input" placeholder="Digite uma tag (ex: Natal, Fit, Airfryer) e pressione Enter...">
+                <button type="button" id="btn-add-tag" class="admin-btn admin-btn-secondary">+ Tag</button>
+            </div>
+        </div>
         
         <h3 class="section-title">Ingredientes</h3>
         <div id="ingredients-list" class="mb-4"></div>
@@ -113,6 +122,6 @@
             <button type="submit" id="btn-save" class="admin-btn admin-btn-primary admin-btn-full admin-btn-success">Publicar Receita</button>
         </div>
     </form>
-
+
 </body>
 </html>
