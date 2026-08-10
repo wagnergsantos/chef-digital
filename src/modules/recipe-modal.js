@@ -44,7 +44,8 @@ export function updateIngredientsList() {
     if (!list) return;
     list.innerHTML = '';
 
-    recipe.ingredients.forEach(ing => {
+    const ingredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
+    ingredients.forEach(ing => {
         const li = document.createElement('li');
         li.className = "modal-ingredients-li";
         
@@ -245,7 +246,8 @@ export function openRecipeModal(id) {
     const stepsList = document.getElementById('modal-steps-list');
     if (stepsList) {
         stepsList.innerHTML = '';
-        recipe.steps.forEach((step, idx) => {
+        const steps = Array.isArray(recipe.steps) ? recipe.steps : [];
+        steps.forEach((step, idx) => {
             const li = document.createElement('li');
             li.className = "modal-step-li";
             li.setAttribute('role', 'checkbox');
