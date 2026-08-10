@@ -75,55 +75,59 @@ serve(async (req) => {
     let lastError = null;
     let quotaExceeded = false;
 
+    const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
+
     for (const key of keys) {
-      try {
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`;
-        const response = await fetch(geminiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [
-              {
-                parts: [
-                  { text: SYSTEM_PROMPT },
-                  { text: `Receita para extrair:\n${text}` }
-                ]
+      for (const model of models) {
+        try {
+          const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+          const response = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              contents: [
+                {
+                  parts: [
+                    { text: SYSTEM_PROMPT },
+                    { text: `Receita para extrair:\n${text}` }
+                  ]
+                }
+              ],
+              generationConfig: {
+                responseMimeType: "application/json"
               }
-            ],
-            generationConfig: {
-              responseMimeType: "application/json"
-            }
-          })
-        });
+            })
+          });
 
-        if (response.status === 429) {
-          quotaExceeded = true;
-          console.warn("Quota excedida na chave, tentando próxima...");
-          continue;
+          if (response.status === 429) {
+            quotaExceeded = true;
+            console.warn(`Quota excedida no modelo ${model}, tentando próximo...`);
+            break; // tenta a próxima chave se estourar cota
+          }
+
+          if (!response.ok) {
+            const errText = await response.text();
+            console.error(`Erro na API Gemini (${model}):`, errText);
+            lastError = errText;
+            continue; // tenta o próximo modelo da lista
+          }
+
+          const data = await response.json();
+          const rawContent = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (!rawContent) {
+            throw new Error("Resposta da IA vazia.");
+          }
+
+          const parsedRecipe = JSON.parse(rawContent);
+
+          return new Response(JSON.stringify({ ok: true, recipe: parsedRecipe }), {
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+
+        } catch (err: any) {
+          lastError = err.message;
+          console.error("Erro durante execução com a chave/modelo:", err);
         }
-
-        if (!response.ok) {
-          const errText = await response.text();
-          console.error("Erro na API Gemini:", errText);
-          lastError = errText;
-          continue;
-        }
-
-        const data = await response.json();
-        const rawContent = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!rawContent) {
-          throw new Error("Resposta da IA vazia.");
-        }
-
-        const parsedRecipe = JSON.parse(rawContent);
-
-        return new Response(JSON.stringify({ ok: true, recipe: parsedRecipe }), {
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-
-      } catch (err: any) {
-        lastError = err.message;
-        console.error("Erro durante execução com a chave:", err);
       }
     }
 
@@ -134,18 +138,18 @@ serve(async (req) => {
           error: "quota_exceeded",
           message: "Todas as chaves de IA atingiram o limite diário de uso. O limite será renovado em aproximadamente 24 horas."
         }),
-        { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     return new Response(
       JSON.stringify({ ok: false, error: lastError || "Falha ao processar receita com as chaves disponíveis." }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
 
   } catch (error: any) {
     return new Response(JSON.stringify({ ok: false, error: error.message }), {
-      status: 500,
+      status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }

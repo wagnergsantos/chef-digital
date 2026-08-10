@@ -170,7 +170,14 @@ async function handleAIImport() {
         });
 
         if (error) {
-            throw new Error(error.message || 'Erro ao comunicar com a função de IA.');
+            let detail = error.message;
+            if (error.context && typeof error.context.json === 'function') {
+                try {
+                    const errBody = await error.context.json();
+                    if (errBody && errBody.error) detail = errBody.error;
+                } catch (_) {}
+            }
+            throw new Error(detail || 'Erro ao comunicar com a função de IA.');
         }
 
         if (!data || !data.ok) {
@@ -331,9 +338,40 @@ function renderSteps() {
     });
 }
 
-function addStep() {
-    steps.push({ step_text: '' });
-    renderSteps();
+function collectIngredientsFromDOM() {
+    const rows = ingredientsList.querySelectorAll('.ingredient-row');
+    const newIngredients = [];
+    rows.forEach(row => {
+        const nameInput = row.querySelector('.ingredient-name');
+        const qtyInput = row.querySelector('.ingredient-qty');
+        const unitSelect = row.querySelector('.ingredient-unit');
+        if (nameInput) {
+            newIngredients.push({
+                name: nameInput.value.trim(),
+                qty: qtyInput ? qtyInput.value.trim() : '',
+                unit: unitSelect ? unitSelect.value : ''
+            });
+        }
+    });
+    if (newIngredients.length > 0) {
+        ingredients = newIngredients;
+    }
+}
+
+function collectStepsFromDOM() {
+    const rows = stepsList.querySelectorAll('.step-row');
+    const newSteps = [];
+    rows.forEach(row => {
+        const textInput = row.querySelector('.step-text');
+        if (textInput) {
+            newSteps.push({
+                step_text: textInput.value.trim()
+            });
+        }
+    });
+    if (newSteps.length > 0) {
+        steps = newSteps;
+    }
 }
 
 // Save Recipe
@@ -346,6 +384,10 @@ async function saveRecipe(e) {
     const selectedCategoryInput = categoriesContainer.querySelector('input[type="radio"]:checked');
     const selectedCategoryId = selectedCategoryInput ? selectedCategoryInput.value : '';
     const selectedCategoryKey = selectedCategoryInput ? selectedCategoryInput.dataset.key : '';
+
+    // Sincronizar ingredientes e passos a partir do DOM antes de salvar
+    collectIngredientsFromDOM();
+    collectStepsFromDOM();
 
     const validation = validateRecipePayloadData({
         title,
