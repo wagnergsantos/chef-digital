@@ -63,6 +63,12 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ---
 
+### Fase 5 (Admin & Gestão de Receitas) — ⚪ 0% Concluído
+- [ ] **Tela de edição de receita**: Carregar e editar receitas existentes através da interface administrativa (`admin.html`).
+- [ ] **Sugestão de tags**: Apresentar sugestões automáticas e autocomplete de tags existentes ao cadastrar ou editar receitas no admin.
+
+---
+
 ## 💰 **ANÁLISE DE CUSTOS & ARQUITETURA**
 
 | Funcionalidade | API / Tecnologia | Custo Financeiro (Execução) | Custo de Dev (Sessão) |
