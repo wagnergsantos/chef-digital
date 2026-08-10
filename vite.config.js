@@ -22,13 +22,13 @@ export default defineConfig({
         scope: '/chef-digital/',
         icons: [
           {
-            src: 'icon.svg',
+            src: '/chef-digital/icon.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'any maskable'
           },
           {
-            src: '1.png',
+            src: '/chef-digital/1.png',
             sizes: '192x192',
             type: 'image/png'
           }
