@@ -163,16 +163,23 @@
     font-size: 14px;
     color: var(--text-main);
 }
+.ingredient-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+}
 .admin-ingredient-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr auto;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 12px;
 }
-.admin-step-row {
+.admin-step-row, .step-row {
     display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 .admin-textarea {
     resize: vertical;

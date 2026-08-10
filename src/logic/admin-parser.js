@@ -7,6 +7,11 @@ export function validateRecipePayloadData({ title, selectedCategoryId, ingredien
         return { isValid: false, error: 'Selecione uma categoria.' };
     }
 
+    const invalidUnitIng = (ingredients || []).find(ing => ing.name && ing.name.trim() && !ing.unit);
+    if (invalidUnitIng) {
+        return { isValid: false, error: `Selecione a unidade para o ingrediente "${invalidUnitIng.name}".` };
+    }
+
     const validIngredients = (ingredients || []).map((ing, index) => {
         const rawQty = ing.qty !== undefined && ing.qty !== null ? String(ing.qty).trim() : '';
         const parsedQty = rawQty ? parseFloat(rawQty.replace(',', '.')) : null;

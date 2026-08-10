@@ -18,7 +18,7 @@ describe('Logic: Admin Parser', () => {
         const result = validateRecipePayloadData({
             title: 'Bolo de Cenoura',
             selectedCategoryId: '3',
-            ingredients: [{ name: 'Cenoura', qty: '2,5', unit: 'unid' }],
+            ingredients: [{ name: 'Cenoura', qty: '2,5', unit: 'unidades' }],
             steps: [{ step_text: 'Bata no liquidificador' }]
         });
         expect(result.isValid).toBe(true);
