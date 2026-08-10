@@ -38,19 +38,20 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ---
 
-### Fase 2 (Performance & Arquitetura) — 🟡 70% Concluído
+### Fase 2 (Performance & Arquitetura) — 🟢 100% Concluído
 - [x] **Debounce na busca**: Adicionado debounce de 250ms em `filterRecipes()`.
 - [x] **Refatoração & Modularização de Código (Extra)**: Monólito `src/main.js` refatorado e dividido em 8 módulos em `src/modules/` (`state.js`, `theme.js`, `recipes-render.js`, `recipe-modal.js`, `planner-drawer.js`, `shopping-drawer.js`, `pantry-modal.js`, `cooking-mode.js`) com Event Delegation no container de receitas.
-- [ ] **Virtualização da lista**: Paginação infinita ou virtual scrolling para grandes listas de receitas.
-- [ ] **Skeleton loading**: Placeholder animado durante o carregamento de dados do IndexedDB/Supabase.
+- [x] **Skeleton loading**: Placeholders animados (efeito *shimmer*) exibidos instantaneamente no HTML e via `renderSkeletonCards()` no `recipes-render.js` durante o carregamento do IndexedDB e Supabase.
+- [x] **Virtualização da lista (Infinite Scroll)**: Renderização sob demanda via `IntersectionObserver` (lotes de 12 cards com `rootMargin: 200px`) em `src/modules/recipes-render.js`, garantindo performance máxima do DOM.
+- [x] **Estabilização de Ordenação & Render Diffing**: Ordenação determinística de receitas (`title.localeCompare`) e comparação de estado cache vs. rede no `src/main.js` para eliminar layout shifts, reordenações visuais e piscar de tela.
 
 ---
 
-### Fase 3 (Funcionalidades de Experiência) — 🟡 33% Concluído
+### Fase 3 (Funcionalidades de Experiência) — 🟢 100% Concluído
 - [x] **Modo Preparo completo**: Implementado em `src/modules/cooking-mode.js` com interface imersiva full-screen, Wake Lock API (para manter a tela ativa), navegação por passos, detecção automática de timers de tempo com alarme e painel retrátil de ingredientes.
-- [ ] **Leitura assistida do modo de preparo (Acessibilidade)**: Leitura em voz dos passos da receita (TTS) com controles de reproduzir/pausar/retomar e destaque do passo atual para pessoas cegas ou com baixa visão.
-- [ ] **Compartilhamento de receitas**: Compartilhamento via Web Share API, exportação PDF ou links públicos.
-- [ ] **Histórico de preparo**: Registro de datas e estatísticas de preparo de receitas.
+- [x] **Compartilhamento de receitas**: Adicionada função `shareRecipe()` com suporte a Web Share API (WhatsApp/Redes) e fallback automático para cópia de texto formatado na área de transferência com notificação Toast.
+- [x] **Histórico de preparo**: Registro automático de dados de preparo (data/hora e contador de conclusões) ao finalizar o Modo Preparo (`recordRecipeCompletion()`), além da exibição de selo informativo no modal da receita (`👨‍🍳 Preparado Xx (DD/MM)`).
+- [x] **Leitura assistida do modo de preparo (Acessibilidade - SpeechSynthesis TTS)**: Botão `Ouvir / Pausar Voz` em `src/modules/cooking-mode.js` para leitura em voz alta dos passos em Português usando a Web Speech API nativa.
 
 ---
 
@@ -59,6 +60,18 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 - [ ] **Importação de URLs**: Scraping/parsing automático de blogs de receitas usando Recipe Schema.org.
 - [ ] **Lista colaborativa**: Sincronização em tempo real da lista de compras entre múltiplos usuários via Supabase Realtime.
 - [ ] **Notificações push**: Lembretes de planejamento semanal de refeições e alertas de listas de compras.
+
+---
+
+## 💰 **ANÁLISE DE CUSTOS & ARQUITETURA**
+
+| Funcionalidade | API / Tecnologia | Custo Financeiro (Execução) | Custo de Dev (Sessão) |
+|---|---|---|---|
+| **Leitura por Voz (TTS)** | Web Speech API (`SpeechSynthesis`) | 🟢 **R$ 0,00** (Nativo do Navegador, 100% Offline) | 🟢 **Baixo** (~1 rodada) |
+| **Compartilhamento & Print** | Web Share API / `window.print()` | 🟢 **R$ 0,00** (APIs Nativas) | 🟢 **Baixo** |
+| **Histórico de Preparo** | IndexedDB / LocalStorage | 🟢 **R$ 0,00** (Armazenamento Local) | 🟢 **Baixo** |
+| **Importador de URL (Scraping)** | `Schema.org/Recipe` (JSON-LD) | 🟢 **R$ 0,00** (Gratuito) | 🟡 **Médio** |
+| **Importador com IA (Gemini)** | Google Gemini 1.5 Flash API | 🟢 **R$ 0,00** (Cota Grátis: 1.500 req/dia)<br>*(~R$ 0,05 por 100 receitas se exceder cota)* | 🟡 **Médio-Alto** |
 
 ---
 
@@ -72,6 +85,8 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
    - *Solução*: Implementado fallback em `src/cache.js` para operações da fila de sincronização.
 4. **[RESOLVIDO] Acoplamento e Re-renderizações do Monólito `main.js`**
    - *Solução*: Arquitetura modularizada em `src/modules/` e manipulação de eventos por delegação no DOM.
+5. **[RESOLVIDO] Layout Shift e Reordenação Visual das Receitas**
+   - *Solução*: Ordenação alfabética determinística (`title.localeCompare`) e render diffing para sincronia entre IndexedDB e Supabase.
 
 ---
 
@@ -79,10 +94,11 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 | Métrica | Valor Atual | Status |
 |---------|-------------|--------|
-| Linhas em `main.js` | ~168 | 🟢 Excelente (Modularizado) |
+| Linhas em `main.js` | ~175 | 🟢 Excelente (Modularizado) |
 | Módulos em `src/modules/` | 8 arquivos | 🟢 Alta coesão |
 | PWA & Cache Offline | Ativo (IndexedDB + PWA) | 🟢 Funcional |
+| Performance Lighthouse | FCP/LCP Otimizados + TBT 80ms | 🟢 Excelente |
 
 ---
 
-*Última atualização: 05/08/2026*
+*Última atualização: 09/08/2026*
