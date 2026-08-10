@@ -50,10 +50,62 @@ serve(async (req) => {
 
     const { text } = await req.json();
     if (!text || !text.trim()) {
-      return new Response(JSON.stringify({ ok: false, error: "Texto da receita é obrigatório." }), {
+      return new Response(JSON.stringify({ ok: false, error: "Texto ou URL da receita é obrigatório." }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    let recipeTextToParse = text.trim();
+    let detectedSourceUrl: string | null = null;
+
+    // Se a entrada for uma URL válida (http:// ou https://)
+    if (recipeTextToParse.startsWith("http://") || recipeTextToParse.startsWith("https://")) {
+      try {
+        detectedSourceUrl = recipeTextToParse;
+        const pageRes = await fetch(recipeTextToParse, {
+          headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+          }
+        });
+
+        if (pageRes.ok) {
+          const html = await pageRes.text();
+
+          // Tentar extrair JSON-LD Schema.org/Recipe se existir na página
+          const jsonLdMatches = html.match(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi);
+          let extractedRecipeJson = null;
+
+          if (jsonLdMatches) {
+            for (const match of jsonLdMatches) {
+              const content = match.replace(/<script[^>]*>/i, '').replace(/<\/script>/i, '').trim();
+              try {
+                const parsed = JSON.parse(content);
+                const items = Array.isArray(parsed) ? parsed : [parsed, ...(parsed['@graph'] || [])];
+                const recipeObj = items.find(item => item && (item['@type'] === 'Recipe' || (Array.isArray(item['@type']) && item['@type'].includes('Recipe'))));
+                if (recipeObj) {
+                  extractedRecipeJson = JSON.stringify(recipeObj);
+                  break;
+                }
+              } catch (_) {}
+            }
+          }
+
+          if (extractedRecipeJson) {
+            recipeTextToParse = `Dados estruturados Schema.org extraídos da URL (${detectedSourceUrl}):\n${extractedRecipeJson}`;
+          } else {
+            // Se não houver JSON-LD, limpa as tags HTML e pega o texto da página
+            const cleanText = html.replace(/<script[\s\S]*?<\/script>/gi, '')
+                                  .replace(/<style[\s\S]*?<\/style>/gi, '')
+                                  .replace(/<[^>]+>/g, ' ')
+                                  .replace(/\s+/g, ' ')
+                                  .trim();
+            recipeTextToParse = `Texto extraído da página web (${detectedSourceUrl}):\n${cleanText.slice(0, 15000)}`;
+          }
+        }
+      } catch (urlErr) {
+        console.warn("Falha ao baixar URL, enviando como texto direto para IA:", urlErr);
+      }
     }
 
     // Coletar todas as chaves GEMINI_KEY_* disponíveis nas variáveis de ambiente
@@ -89,7 +141,7 @@ serve(async (req) => {
                 {
                   parts: [
                     { text: SYSTEM_PROMPT },
-                    { text: `Receita para extrair:\n${text}` }
+                    { text: `Receita para extrair:\n${recipeTextToParse}` }
                   ]
                 }
               ],
@@ -119,6 +171,9 @@ serve(async (req) => {
           }
 
           const parsedRecipe = JSON.parse(rawContent);
+          if (detectedSourceUrl && !parsedRecipe.source_url) {
+            parsedRecipe.source_url = detectedSourceUrl;
+          }
 
           return new Response(JSON.stringify({ ok: true, recipe: parsedRecipe }), {
             headers: { ...corsHeaders, "Content-Type": "application/json" },
