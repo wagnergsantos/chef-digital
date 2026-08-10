@@ -117,8 +117,6 @@ async function loadCategories() {
 }
 
 // State
-let ingredients = [];
-let steps = [];
 let recipeTags = [];
 
 // Dynamic Tags UI
@@ -218,14 +216,18 @@ async function handleAIImport() {
     btnImport.textContent = '⏳ Processando com IA...';
 
     try {
-        // Se o usuário colou diretamente um JSON pré-gerado, faz o parse local instantâneo
+        // Se o usuário colou diretamente um JSON pré-gerado, faz o parse local seguro
         if (rawText.startsWith('{') && rawText.endsWith('}')) {
-            const parsed = JSON.parse(rawText);
-            populateFormWithRecipe(parsed);
-            textarea.value = '';
-            btnImport.disabled = false;
-            btnImport.textContent = '🪄 Processar e Preencher com IA';
-            return;
+            try {
+                const parsed = JSON.parse(rawText);
+                populateFormWithRecipe(parsed);
+                textarea.value = '';
+                btnImport.disabled = false;
+                btnImport.textContent = '🪄 Processar e Preencher com IA';
+                return;
+            } catch (jsonErr) {
+                throw new Error('O texto colado parece um JSON, mas contém erros de formatação. Verifique a estrutura.');
+            }
         }
 
         // Caso contrário, invoca a Edge Function via Supabase
@@ -235,10 +237,17 @@ async function handleAIImport() {
 
         if (error) {
             let detail = error.message;
-            if (error.context && typeof error.context.json === 'function') {
+            if (error.context && typeof error.context.text === 'function') {
                 try {
-                    const errBody = await error.context.json();
-                    if (errBody && errBody.error) detail = errBody.error;
+                    const rawErrorResponse = await error.context.text();
+                    try {
+                        const errJson = JSON.parse(rawErrorResponse);
+                        if (errJson && (errJson.error || errJson.message)) {
+                            detail = errJson.error || errJson.message;
+                        }
+                    } catch (_) {
+                        if (rawErrorResponse) detail = rawErrorResponse;
+                    }
                 } catch (_) {}
             }
             throw new Error(detail || 'Erro ao comunicar com a função de IA.');

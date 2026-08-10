@@ -183,7 +183,14 @@ serve(async (req) => {
             throw new Error("Resposta da IA vazia.");
           }
 
-          const parsedRecipe = JSON.parse(rawContent);
+          let cleanedContent = rawContent.trim();
+          if (cleanedContent.startsWith("```json")) {
+            cleanedContent = cleanedContent.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
+          } else if (cleanedContent.startsWith("```")) {
+            cleanedContent = cleanedContent.replace(/^```\s*/, "").replace(/\s*```$/, "");
+          }
+
+          const parsedRecipe = JSON.parse(cleanedContent);
           if (detectedSourceUrl && !parsedRecipe.source_url) {
             parsedRecipe.source_url = detectedSourceUrl;
           }
