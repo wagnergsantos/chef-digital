@@ -677,19 +677,58 @@ button,
     gap: 24px;
 }
 
-/* Reserve above-the-fold area during initial boot to reduce CLS */
-body[data-app-loading="true"] .recipes-grid {
-    min-height: min(62vh, 760px);
-    position: relative;
+/* Skeleton Loading Cards */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
-body[data-app-loading="true"] .recipes-grid:empty::before {
-    content: '';
-    display: block;
-    height: min(62vh, 760px);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-    background: var(--bg-card);
+.skeleton-box {
+    background: linear-gradient(
+        90deg,
+        var(--bg-light) 25%,
+        var(--border-color) 37%,
+        var(--bg-light) 63%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-card {
+    pointer-events: none;
+    user-select: none;
+}
+
+.skeleton-header {
+    height: 112px;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 85%;
+    margin-bottom: 10px;
+}
+
+.skeleton-tag {
+    height: 14px;
+    width: 50%;
+}
+
+.skeleton-meta {
+    height: 16px;
+    width: 60px;
+}
+
+.skeleton-btn {
+    height: 32px;
+    width: 32px;
+    border-radius: var(--radius-full);
 }
 
 @media (min-width: 600px) {
@@ -1686,6 +1725,7 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
 
 .modal-close-btn,
 .modal-wakelock-btn,
+.modal-share-btn,
 .modal-print-btn,
 .modal-shopping-btn,
 .modal-planner-btn {
@@ -1705,6 +1745,7 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
 
 .modal-close-btn svg,
 .modal-wakelock-btn svg,
+.modal-share-btn svg,
 .modal-print-btn svg,
 .modal-shopping-btn svg,
 .modal-planner-btn svg {
@@ -1732,6 +1773,7 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
 
 .modal-close-btn:hover,
 .modal-wakelock-btn:hover,
+.modal-share-btn:hover,
 .modal-print-btn:hover,
 .modal-shopping-btn:hover,
 .modal-planner-btn:hover {
@@ -1753,6 +1795,7 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     align-items: center;
     gap: 8px;
     margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
 .modal-badge-cat {
@@ -1773,6 +1816,17 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     font-size: var(--text-xs);
     font-weight: 600;
     color: var(--text-white);
+}
+
+.modal-badge-history {
+    background-color: rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: #ecfdf5;
 }
 
 .modal-header-banner h3 {
@@ -2650,6 +2704,14 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     gap: 20px;
 }
 
+.cooking-step-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
 .cooking-step-counter {
     display: inline-block;
     padding: 6px 16px;
@@ -2661,6 +2723,34 @@ body[data-app-loading="true"] .recipes-grid:empty::before {
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+}
+
+.cooking-speech-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.cooking-speech-btn:hover {
+    background: rgba(59, 130, 246, 0.28);
+    color: #93c5fd;
+    transform: scale(1.04);
+}
+
+.cooking-speech-btn.speaking {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.4);
+    animation: pulse 1.5s infinite;
 }
 
 .cooking-step-text {

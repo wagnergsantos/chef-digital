@@ -46,6 +46,7 @@ import {
     changePortions,
     toggleWakeLock,
     printRecipe,
+    shareRecipe,
     getActiveRecipe,
     getActiveRecipeId,
     getActiveRecipePortions,
@@ -72,6 +73,7 @@ import {
     startTimer,
     pauseTimer,
     resetTimer,
+    toggleSpeech,
     setCookingModeDependencies
 } from './modules/cooking-mode.js';
 
@@ -316,8 +318,18 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+function sortRecipesStably(recipes) {
+    return [...recipes].sort((a, b) => {
+        const titleA = (a.title || '').toString();
+        const titleB = (b.title || '').toString();
+        return titleA.localeCompare(titleB, 'pt-BR');
+    });
+}
+
 // App Initialization
 async function inicializarApp() {
+    let hasRenderedFromCache = false;
+
     try {
         const [cachedCategories, cachedRecipes, cachedTags, cachedRecipeTags] = await Promise.all([
             lerCacheLocal('categorias'),
@@ -334,7 +346,7 @@ async function inicializarApp() {
             if (cachedRecipeTags) {
                 state.recipeTags = cachedRecipeTags;
             }
-            state.recipes = cachedRecipes.map(normalizeRecipeFromRow);
+            state.recipes = sortRecipesStably(cachedRecipes.map(normalizeRecipeFromRow));
             carregarPlannerData(state.recipes);
             
             updateThemeToggleIcon();
@@ -343,69 +355,131 @@ async function inicializarApp() {
             updateShoppingListBadge();
             updatePlannerBadge();
             markInitialLoadComplete();
+            hasRenderedFromCache = true;
         }
     } catch (err) {
         console.warn('Erro ao carregar dados do IndexedDB local:', err);
     }
 
-    try {
-        const supabase = await getSupabaseClient();
+    // Schedule Supabase background sync during idle time to avoid blocking FCP / LCP
+    const fetchSupabaseData = async () => {
+        try {
+            const supabase = await getSupabaseClient();
 
-        const [
-            { data: catData, error: catErr },
-            { data: tagData, error: tagErr },
-            { data: recData, error: recErr },
-            { data: recipeTagsData, error: recipeTagsErr }
-        ] = await Promise.all([
-            supabase.from('categorias').select('*').order('sort_order'),
-            supabase.from('tags').select('*').order('sort_order'),
-            supabase.from('receitas').select(`
-                id, title, category_id, category, emoji, image, servings, tips
-            `),
-            supabase.from('receita_tags').select('receita_id, tags(key)')
-        ]);
+            // Tenta usar a view otimizada receitas_resumo (inclui ingredient_count via JOIN no banco)
+            let { data: recData, error: recErr } = await supabase
+                .from('receitas_resumo')
+                .select('id, title, category_id, category, emoji, image, servings, prep_time, cook_time, source_url, author, tips, ingredient_count')
+                .order('title');
 
-        if (!catErr && catData && catData.length > 0) {
-            buildCategoryMaps(catData);
-            safeCacheWrite('categorias', catData);
-        }
-
-        if (!tagErr && tagData && tagData.length > 0) {
-            state.tags = tagData.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {});
-            safeCacheWrite('tags', tagData);
-        }
-
-        if (!recipeTagsErr && recipeTagsData && recipeTagsData.length > 0) {
-            state.recipeTags = {};
-            recipeTagsData.forEach(rt => {
-                if (!state.recipeTags[rt.receita_id]) {
-                    state.recipeTags[rt.receita_id] = [];
+            if (recErr) {
+                // Fallback: view ainda não existe, busca receitas diretamente
+                console.warn('View receitas_resumo não disponível, usando fallback:', recErr.message);
+                const fallbackRes = await supabase.from('receitas').select(
+                    'id, title, category_id, category, emoji, image, servings, prep_time, cook_time, source_url, author, tips'
+                ).order('title');
+                if (fallbackRes.error) {
+                    // Fallback final: colunas base sem os novos campos
+                    const baseRes = await supabase.from('receitas').select(
+                        'id, title, category_id, category, emoji, image, servings, tips'
+                    ).order('title');
+                    recData = baseRes.data;
+                    recErr = baseRes.error;
+                } else {
+                    recData = fallbackRes.data;
+                    recErr = fallbackRes.error;
                 }
-                state.recipeTags[rt.receita_id].push(rt.tags.key);
-            });
-            safeCacheWrite('recipeTags', state.recipeTags);
-        }
+            }
 
-        if (!recErr && recData && recData.length > 0) {
-            const summaryRecipes = mapSummaryRecipes(recData);
-            const formattedRecipes = summaryRecipes.map((r) => normalizeRecipeFromRow({
-                ...r,
-                ingredients: [],
-                steps: []
-            }));
-            state.recipes = formattedRecipes;
-            carregarPlannerData(state.recipes);
-            safeCacheWrite('receitas', formattedRecipes);
-        }
+            // ingredient_count já vem da view; para fallback, será 0 (atualiza ao abrir receita)
+            const ingredientCountMap = {};
+            if (recData) {
+                recData.forEach(r => {
+                    if (r.ingredient_count !== undefined) {
+                        ingredientCountMap[r.id] = r.ingredient_count;
+                    }
+                });
+            }
 
-        renderTagFilters();
-        renderRecipes();
-        updateShoppingListBadge();
-        updatePlannerBadge();
-        markInitialLoadComplete();
-    } catch (err) {
-        console.warn('Supabase offline ou indisponível:', err);
-        markInitialLoadComplete();
+            const [
+                { data: catData, error: catErr },
+                { data: tagData, error: tagErr },
+                { data: recipeTagsData, error: recipeTagsErr }
+            ] = await Promise.all([
+                supabase.from('categorias').select('*').order('sort_order'),
+                supabase.from('tags').select('*').order('sort_order'),
+                supabase.from('receita_tags').select('receita_id, tags(key)')
+            ]);
+
+            if (!catErr && catData && catData.length > 0) {
+                buildCategoryMaps(catData);
+                safeCacheWrite('categorias', catData);
+            }
+
+            if (!tagErr && tagData && tagData.length > 0) {
+                state.tags = tagData.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {});
+                safeCacheWrite('tags', tagData);
+            }
+
+            if (!recipeTagsErr && recipeTagsData && recipeTagsData.length > 0) {
+                state.recipeTags = {};
+                recipeTagsData.forEach(rt => {
+                    if (!state.recipeTags[rt.receita_id]) {
+                        state.recipeTags[rt.receita_id] = [];
+                    }
+                    state.recipeTags[rt.receita_id].push(rt.tags.key);
+                });
+                safeCacheWrite('recipeTags', state.recipeTags);
+            }
+
+            if (!recErr && recData && recData.length > 0) {
+                const summaryRecipes = mapSummaryRecipes(recData);
+                const formattedRecipes = sortRecipesStably(summaryRecipes.map((r) => {
+                    const existingCached = state.recipes.find(cached => cached.id === r.id);
+                    const normalized = normalizeRecipeFromRow({
+                        ...r,
+                        ingredients: (existingCached && Array.isArray(existingCached.ingredients) && existingCached.ingredients.length > 0) ? existingCached.ingredients : (r.ingredients || []),
+                        steps: (existingCached && Array.isArray(existingCached.steps) && existingCached.steps.length > 0) ? existingCached.steps : (r.steps || [])
+                    });
+                    // Attach ingredient count from separate query
+                    normalized.ingredient_count = ingredientCountMap[r.id] ?? (existingCached?.ingredient_count ?? normalized.ingredients.length);
+                    return normalized;
+                }));
+
+                const isIdentical = hasRenderedFromCache &&
+                    state.recipes.length === formattedRecipes.length &&
+                    state.recipes.every((r, idx) =>
+                        r.id === formattedRecipes[idx].id &&
+                        r.title === formattedRecipes[idx].title &&
+                        (r.ingredient_count ?? -1) === (formattedRecipes[idx].ingredient_count ?? -1)
+                    );
+
+                state.recipes = formattedRecipes;
+                carregarPlannerData(state.recipes);
+                safeCacheWrite('receitas', formattedRecipes);
+
+                if (!isIdentical) {
+                    renderTagFilters();
+                    renderRecipes();
+                }
+            } else if (!hasRenderedFromCache) {
+                renderTagFilters();
+                renderRecipes();
+            }
+
+            updateShoppingListBadge();
+            updatePlannerBadge();
+            markInitialLoadComplete();
+        } catch (err) {
+            console.warn('Supabase offline ou indisponível:', err);
+            markInitialLoadComplete();
+        }
+    };
+
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(fetchSupabaseData, { timeout: 1000 });
+    } else {
+        setTimeout(fetchSupabaseData, 100);
     }
 }
 
@@ -455,6 +529,7 @@ window.closeRecipeModalOnBackdrop = closeRecipeModalOnBackdrop;
 window.closeRecipeModal = closeRecipeModal;
 window.toggleWakeLock = toggleWakeLock;
 window.printRecipe = printRecipe;
+window.shareRecipe = shareRecipe;
 window.getActiveRecipe = getActiveRecipe;
 window.getActiveRecipeId = getActiveRecipeId;
 window.addCurrentRecipeToShoppingList = () => addCurrentRecipeToShoppingList(getActiveRecipeId(), getActiveRecipePortions());
@@ -483,3 +558,4 @@ window.exitCookingMode = exitCookingMode;
 window.startTimer = startTimer;
 window.pauseTimer = pauseTimer;
 window.resetTimer = resetTimer;
+window.toggleSpeech = toggleSpeech;

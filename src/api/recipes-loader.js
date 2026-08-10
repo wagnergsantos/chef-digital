@@ -7,6 +7,10 @@ export function mapSummaryRecipes(rows = []) {
         emoji: r.emoji,
         image: r.image,
         servings: r.servings,
+        prep_time: r.prep_time,
+        cook_time: r.cook_time,
+        source_url: r.source_url,
+        author: r.author,
         tips: r.tips
     }));
 }

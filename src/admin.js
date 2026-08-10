@@ -255,12 +255,21 @@ async function saveRecipe(e) {
         return;
     }
 
+    const prepTimeInput = document.getElementById('recipe-prep-time');
+    const cookTimeInput = document.getElementById('recipe-cook-time');
+    const sourceUrlInput = document.getElementById('recipe-source-url');
+    const authorInput = document.getElementById('recipe-author');
+
     const payload = buildRecipePayload({
         title,
         emoji: document.getElementById('recipe-emoji').value,
         image: document.getElementById('recipe-image').value,
         tips: document.getElementById('recipe-tips').value,
         servings: document.getElementById('recipe-servings').value,
+        prep_time: prepTimeInput ? prepTimeInput.value : null,
+        cook_time: cookTimeInput ? cookTimeInput.value : null,
+        source_url: sourceUrlInput ? sourceUrlInput.value : null,
+        author: authorInput ? authorInput.value : null,
         selectedCategoryId,
         selectedCategoryKey,
         validIngredients: validation.validIngredients,

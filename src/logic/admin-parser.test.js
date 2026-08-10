@@ -42,4 +42,22 @@ describe('Logic: Admin Parser', () => {
         expect(payload.p_category_id).toBe(7);
         expect(payload.p_category_key).toBe('sopas');
     });
+    it('buildRecipePayload inclui prep_time, cook_time, source_url e author', () => {
+        const payload = buildRecipePayload({
+            title: 'Bolo de Cenoura',
+            selectedCategoryId: 1,
+            selectedCategoryKey: 'doces',
+            prep_time: '15',
+            cook_time: 45,
+            source_url: 'https://panelinha.com.br/receita/bolo',
+            author: 'Rita Lobo',
+            validIngredients: [{ name: 'cenoura', qty: 2, unit: 'unidades', ordem: 0 }],
+            validSteps: [{ step_text: 'Bata tudo no liquidificador', ordem: 0 }]
+        });
+
+        expect(payload.p_prep_time).toBe(15);
+        expect(payload.p_cook_time).toBe(45);
+        expect(payload.p_source_url).toBe('https://panelinha.com.br/receita/bolo');
+        expect(payload.p_author).toBe('Rita Lobo');
+    });
 });

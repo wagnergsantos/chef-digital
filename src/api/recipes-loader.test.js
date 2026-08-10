@@ -13,6 +13,10 @@ describe('API: Recipes Loader', () => {
             emoji: '🍲',
             image: '1.png',
             servings: 2,
+            prep_time: undefined,
+            cook_time: undefined,
+            source_url: undefined,
+            author: undefined,
             tips: 'x'
         });
     });

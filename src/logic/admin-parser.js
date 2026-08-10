@@ -48,6 +48,10 @@ export function buildRecipePayload({
     image,
     tips,
     servings,
+    prep_time,
+    cook_time,
+    source_url,
+    author,
     selectedCategoryId,
     selectedCategoryKey,
     validIngredients,
@@ -55,6 +59,13 @@ export function buildRecipePayload({
 }) {
     const numServings = servings ? parseInt(String(servings).trim(), 10) : null;
     const parsedServings = (!isNaN(numServings) && numServings > 0) ? numServings : null;
+
+    const numPrep = prep_time ? parseInt(String(prep_time).trim(), 10) : null;
+    const parsedPrepTime = (!isNaN(numPrep) && numPrep > 0) ? numPrep : null;
+
+    const numCook = cook_time ? parseInt(String(cook_time).trim(), 10) : null;
+    const parsedCookTime = (!isNaN(numCook) && numCook > 0) ? numCook : null;
+
     const parsedCategoryId = Number.parseInt(String(selectedCategoryId).trim(), 10);
 
     return {
@@ -64,6 +75,10 @@ export function buildRecipePayload({
         p_image: (image || '').trim() || null,
         p_tips: (tips || '').trim() || null,
         p_servings: parsedServings,
+        p_prep_time: parsedPrepTime,
+        p_cook_time: parsedCookTime,
+        p_source_url: (source_url || '').trim() || null,
+        p_author: (author || '').trim() || null,
         p_category_id: Number.isNaN(parsedCategoryId) ? null : parsedCategoryId,
         p_category_key: (selectedCategoryKey || '').trim() || null,
         p_ingredientes: validIngredients,

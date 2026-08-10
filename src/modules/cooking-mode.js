@@ -109,6 +109,33 @@ export function startCookingMode(recipe) {
     }, 100);
 }
 
+export function recordRecipeCompletion(recipe) {
+    if (!recipe || !recipe.id) return;
+    const recipeId = recipe.id;
+    const history = state.cookingHistory || {};
+    const record = history[recipeId] || { count: 0, history: [] };
+
+    const nowIso = new Date().toISOString();
+    record.count = (record.count || 0) + 1;
+    record.lastCooked = nowIso;
+    if (!Array.isArray(record.history)) record.history = [];
+    record.history.unshift(nowIso);
+
+    history[recipeId] = record;
+    state.cookingHistory = history;
+
+    try {
+        localStorage.setItem('chef_digital_cooking_history', JSON.stringify(history));
+    } catch (e) {
+        console.warn('Falha ao salvar histórico no localStorage:', e);
+    }
+
+    const dateStr = new Date().toLocaleDateString('pt-BR');
+    if (typeof window.showToast === 'function') {
+        window.showToast(`🎉 Parabéns! Receita concluída (${record.count}ª vez - ${dateStr})`, 'success');
+    }
+}
+
 export function nextStep() {
     if (!currentRecipe || !currentRecipe.steps) return;
     if (currentStepIndex < currentRecipe.steps.length - 1) {
@@ -116,6 +143,7 @@ export function nextStep() {
         renderStep();
         return;
     }
+    recordRecipeCompletion(currentRecipe);
     exitCookingMode();
 }
 
@@ -140,7 +168,78 @@ export function toggleIngredientsDrawer() {
     }
 }
 
+let isSpeaking = false;
+
+export function stopSpeech() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+    }
+    isSpeaking = false;
+    updateSpeechBtnState();
+}
+
+export function speakCurrentStep() {
+    if (!('speechSynthesis' in window) || !currentRecipe || !currentRecipe.steps) return;
+
+    window.speechSynthesis.cancel();
+    const stepText = currentRecipe.steps[currentStepIndex];
+    if (!stepText) return;
+
+    const utterance = new SpeechSynthesisUtterance(stepText);
+    utterance.lang = 'pt-BR';
+    utterance.rate = 1.0;
+
+    utterance.onstart = () => {
+        isSpeaking = true;
+        updateSpeechBtnState();
+    };
+
+    utterance.onend = () => {
+        isSpeaking = false;
+        updateSpeechBtnState();
+    };
+
+    utterance.onerror = () => {
+        isSpeaking = false;
+        updateSpeechBtnState();
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
+
+export function toggleSpeech() {
+    if (isSpeaking) {
+        stopSpeech();
+    } else {
+        speakCurrentStep();
+    }
+}
+
+function updateSpeechBtnState() {
+    const btn = document.getElementById('cooking-speech-btn');
+    if (!btn) return;
+
+    if (isSpeaking) {
+        btn.classList.add('speaking');
+        btn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Pausar Voz</span>
+        `;
+    } else {
+        btn.classList.remove('speaking');
+        btn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <span>Ouvir</span>
+        `;
+    }
+}
+
 export function exitCookingMode() {
+    stopSpeech();
     releaseCookingWakeLock();
     clearAllTimers();
 
@@ -283,6 +382,7 @@ function renderTimerContainer(stepIdx) {
 }
 
 export function renderStep() {
+    stopSpeech();
     if (!currentRecipe || !currentRecipe.steps) return;
     const totalSteps = currentRecipe.steps.length;
     const stepNumber = currentStepIndex + 1;

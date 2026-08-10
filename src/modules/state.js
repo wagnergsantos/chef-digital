@@ -24,7 +24,8 @@ export const state = {
     searchQuery: '',
     showFavoritesOnly: false,
     showPantryOnly: false,
-    plannedByDay: {}
+    plannedByDay: {},
+    cookingHistory: safeJsonParse('chef_digital_cooking_history', {})
 };
 
 export const WEEK_DAYS = [

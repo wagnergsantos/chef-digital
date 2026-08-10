@@ -203,6 +203,42 @@ export function openRecipeModal(id) {
         }
     }
 
+    const modalPrepBadge = document.getElementById('modal-prep-badge');
+    if (modalPrepBadge) {
+        if (recipe.prep_time) {
+            modalPrepBadge.innerText = `⏱️ Preparo: ${recipe.prep_time} min`;
+            modalPrepBadge.style.display = 'inline-block';
+        } else {
+            modalPrepBadge.innerText = '';
+            modalPrepBadge.style.display = 'none';
+        }
+    }
+
+    const modalCookBadge = document.getElementById('modal-cook-badge');
+    if (modalCookBadge) {
+        if (recipe.cook_time) {
+            modalCookBadge.innerText = `🍳 Fogo: ${recipe.cook_time} min`;
+            modalCookBadge.style.display = 'inline-block';
+        } else {
+            modalCookBadge.innerText = '';
+            modalCookBadge.style.display = 'none';
+        }
+    }
+
+    const modalHistoryBadge = document.getElementById('modal-history-badge');
+    if (modalHistoryBadge) {
+        const historyRecord = state.cookingHistory ? state.cookingHistory[id] : null;
+        if (historyRecord && historyRecord.count > 0 && historyRecord.lastCooked) {
+            const dateObj = new Date(historyRecord.lastCooked);
+            const formattedDate = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+            modalHistoryBadge.innerText = `👨‍🍳 Preparado ${historyRecord.count}x (${formattedDate})`;
+            modalHistoryBadge.style.display = 'inline-block';
+        } else {
+            modalHistoryBadge.innerText = '';
+            modalHistoryBadge.style.display = 'none';
+        }
+    }
+
     updateModalPlannerButtonState(id);
     updateIngredientsList();
 
@@ -289,3 +325,73 @@ export function printRecipe() {
     document.documentElement.dataset.printing = 'recipe';
     window.print();
 }
+
+export async function shareRecipe(recipeId) {
+    const targetId = recipeId || activeRecipeId;
+    const recipe = state.recipes.find(r => r.id === targetId);
+    if (!recipe) return;
+
+    const categoryLabel = state.categories[recipe.category] || recipe.category || '';
+    const servingsText = recipe.servings ? ` (${recipe.servings} porções)` : '';
+
+    let text = `🍽️ *${recipe.title}*${servingsText}\n`;
+    if (categoryLabel) text += `📁 Categorias: ${categoryLabel}\n`;
+    text += `\n🛒 *Ingredientes:*\n`;
+
+    if (Array.isArray(recipe.ingredients) && recipe.ingredients.length > 0) {
+        recipe.ingredients.forEach(ing => {
+            let qty = '';
+            if (ing.qty !== null && ing.qty !== undefined) {
+                qty = `${ing.qty} ${ing.unit || ''}`.trim();
+            } else if (ing.unit) {
+                qty = ing.unit;
+            }
+            text += `• ${ing.name}${qty ? ` - ${qty}` : ''}\n`;
+        });
+    }
+
+    if (Array.isArray(recipe.steps) && recipe.steps.length > 0) {
+        text += `\n👨‍🍳 *Modo de Preparo:*\n`;
+        recipe.steps.forEach((step, idx) => {
+            text += `${idx + 1}. ${step}\n`;
+        });
+    }
+
+    if (recipe.tips) {
+        text += `\n💡 *Dica:* ${recipe.tips}\n`;
+    }
+
+    if (recipe.source_url) {
+        const authorInfo = recipe.author ? ` (${recipe.author})` : '';
+        text += `\n🔗 *Fonte:* ${recipe.source_url}${authorInfo}\n`;
+    }
+
+    text += `\n---\nCompartilhado via *Chef Digital* 📖`;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: recipe.title,
+                text: text
+            });
+            return;
+        } catch (e) {
+            if (e.name !== 'AbortError') {
+                console.warn('Erro ao usar Web Share API:', e);
+            } else {
+                return; // User cancelled share
+            }
+        }
+    }
+
+    // Fallback: Copy to Clipboard
+    try {
+        await navigator.clipboard.writeText(text);
+        if (typeof window.showToast === 'function') {
+            window.showToast('📋 Receita copiada para a área de transferência!', 'success');
+        }
+    } catch (err) {
+        console.error('Falha ao copiar texto:', err);
+    }
+}
+
