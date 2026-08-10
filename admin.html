@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - Chef Digital</title>
-  <script type="module" crossorigin src="/chef-digital/assets/admin-DUciquHH.js"></script>
+  <script type="module" crossorigin src="/chef-digital/assets/admin-BtpqQR3Y.js"></script>
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/supabase-BxJ6yzbu.js">
   <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-1Pp8yUQQ.css">
@@ -39,9 +39,10 @@
 
         <!-- Gemini Import Box -->
         <div class="form-group admin-gemini-box">
-            <label class="form-label admin-gemini-label" for="gemini-json-input">🪄 Importação Inteligente (via IA)</label>
-            <textarea id="gemini-json-input" class="form-input admin-gemini-textarea" placeholder="Cole aqui o código JSON gerado pelo seu assistente..." rows="3"></textarea>
-            <button type="button" id="btn-import-gemini" class="admin-btn admin-btn-secondary admin-gemini-btn">Preencher Formulário Automaticamente</button>
+            <label class="form-label admin-gemini-label" for="gemini-json-input">🪄 Importação Inteligente com IA</label>
+            <textarea id="gemini-json-input" class="form-input admin-gemini-textarea" placeholder="Cole aqui qualquer texto de receita (do WhatsApp, site, bloco de notas)..." rows="3" aria-label="Texto da receita para importação inteligente"></textarea>
+            <button type="button" id="btn-import-gemini" class="admin-btn admin-btn-secondary admin-gemini-btn" aria-label="Importar e preencher receita com IA">🪄 Processar e Preencher com IA</button>
+            <div id="import-status" class="admin-error-box mt-2" style="display: none;"></div>
         </div>
 
         <div class="form-group">
