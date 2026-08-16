@@ -55,17 +55,21 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ---
 
-### Fase 4 (Avançado & Inteligência Artificial) — 🟡 50% Concluído
+### Fase 4 (Avançado & Inteligência Artificial) — 🟢 100% Concluído
 - [x] **Integração com IA para Importação de Receitas**: Parser inteligente via Edge Function Supabase + Gemini 1.5 Flash com suporte a rotação de múltiplas chaves de API (`GEMINI_KEY_1..N`) e fallback automático para limite diário. Extração estruturada a partir de texto livre.
 - [x] **Importação de URLs**: Scraping/parsing automático de blogs de receitas usando `Recipe Schema.org` (JSON-LD) e extração de texto HTML com pré-preenchimento automático da URL fonte.
-- [ ] **Lista colaborativa**: Sincronização em tempo real da lista de compras entre múltiplos usuários via Supabase Realtime.
-- [ ] **Notificações push**: Lembretes de planejamento semanal de refeições e alertas de listas de compras.
 
 ---
 
-### Fase 5 (Admin & Gestão de Receitas) — ⚪ 0% Concluído
-- [ ] **Tela de edição de receita**: Carregar e editar receitas existentes através da interface administrativa (`admin.html`).
-- [ ] **Sugestão de tags**: Apresentar sugestões automáticas e autocomplete de tags existentes ao cadastrar ou editar receitas no admin.
+### Fase 5 (Admin & Gestão de Receitas) — 🟢 100% Concluído
+- [x] **Tela de edição de receita**: Seletor pesquisável de receitas no painel admin; carrega todos os dados (campos, ingredientes, passos, tags, categoria) no formulário. Salva via RPC `salvar_receita` com `p_id` para UPDATE. Banner de modo edição com botão "Nova Receita" para retornar ao modo criação.
+- [x] **Sugestão de tags**: Dropdown de autocomplete ao digitar no campo de tags; filtra por substring nas tags existentes do banco (`tabela tags`); navegação por teclado (↑↓, Enter, Tab, Esc) e seleção por clique.
+
+---
+
+### 🔮 Futuro / Opcional (sem previsão)
+- [ ] **Lista colaborativa**: Sincronização em tempo real da lista de compras entre múltiplos usuários via Supabase Realtime. *(Pré-requisito: autenticação de usuários)*
+- [ ] **Notificações push**: Lembretes de planejamento semanal de refeições e alertas de listas de compras. *(Requer VAPID keys + Edge Function para subscriptions)*
 
 ---
 
@@ -107,4 +111,4 @@ Documento de acompanhamento do status de desenvolvimento, arquitetura, bugs reso
 
 ---
 
-*Última atualização: 09/08/2026*
+*Última atualização: 10/08/2026*

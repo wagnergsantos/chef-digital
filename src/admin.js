@@ -22,6 +22,10 @@ const btnSave = document.getElementById('btn-save');
 // State
 let ingredients = [];
 let steps = [];
+let recipeTags = [];
+let editingRecipeId = null;
+let allExistingTags = [];
+let allRecipes = [];
 
 // Init
 async function init() {
@@ -37,6 +41,8 @@ function setupAuthListeners() {
         updateUI();
         if (session) {
             loadCategories();
+            loadRecipes();
+            loadExistingTags();
             if (ingredients.length === 0) addIngredient();
             if (steps.length === 0) addStep();
         }
@@ -116,8 +122,279 @@ async function loadCategories() {
     });
 }
 
-// State
-let recipeTags = [];
+// Load Recipes for Edit Selector (combobox)
+async function loadRecipes() {
+    const { data, error } = await supabase
+        .from('receitas')
+        .select('id, title, emoji')
+        .order('title');
+
+    if (error) {
+        console.error('Erro ao carregar lista de receitas:', error);
+        return;
+    }
+
+    allRecipes = data || [];
+    setupRecipeSearch();
+}
+
+function setupRecipeSearch() {
+    const searchInput = document.getElementById('recipe-search');
+    const hiddenInput = document.getElementById('recipe-select');
+    const dropdown = document.getElementById('recipe-dropdown');
+    if (!searchInput || !dropdown) return;
+
+    let highlightedIdx = -1;
+
+    function renderDropdown(query) {
+        highlightedIdx = -1;
+        dropdown.innerHTML = '';
+
+        const q = query.trim().toLowerCase();
+        const matches = q
+            ? allRecipes.filter(r => r.title.toLowerCase().includes(q)).slice(0, 10)
+            : allRecipes.slice(0, 10);
+
+        if (matches.length === 0) {
+            dropdown.classList.remove('visible');
+            searchInput.setAttribute('aria-expanded', 'false');
+            return;
+        }
+
+        matches.forEach((r, idx) => {
+            const item = document.createElement('div');
+            item.className = 'admin-recipe-dropdown-item';
+            item.setAttribute('role', 'option');
+            item.setAttribute('aria-selected', 'false');
+            item.dataset.id = r.id;
+            item.dataset.idx = idx;
+
+            const emoji = document.createElement('span');
+            emoji.className = 'admin-recipe-dropdown-emoji';
+            emoji.textContent = r.emoji || '\uD83C\uDF72';
+
+            const name = document.createElement('span');
+            name.textContent = r.title;
+
+            item.appendChild(emoji);
+            item.appendChild(name);
+
+            item.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                selectRecipe(r);
+            });
+
+            dropdown.appendChild(item);
+        });
+
+        dropdown.classList.add('visible');
+        searchInput.setAttribute('aria-expanded', 'true');
+    }
+
+    function selectRecipe(r) {
+        searchInput.value = `${r.emoji || '\uD83C\uDF72'} ${r.title}`;
+        hiddenInput.value = r.id;
+        dropdown.innerHTML = '';
+        dropdown.classList.remove('visible');
+        searchInput.setAttribute('aria-expanded', 'false');
+        highlightedIdx = -1;
+    }
+
+    function updateHighlight(items) {
+        items.forEach((el, i) => {
+            el.classList.toggle('highlighted', i === highlightedIdx);
+            el.setAttribute('aria-selected', i === highlightedIdx ? 'true' : 'false');
+        });
+    }
+
+    searchInput.addEventListener('input', () => {
+        hiddenInput.value = ''; // limpa seleção ao digitar
+        renderDropdown(searchInput.value);
+    });
+
+    searchInput.addEventListener('focus', () => {
+        if (!hiddenInput.value) renderDropdown(searchInput.value);
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+        const items = dropdown.querySelectorAll('.admin-recipe-dropdown-item');
+        if (!dropdown.classList.contains('visible') || items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedIdx = Math.min(highlightedIdx + 1, items.length - 1);
+            updateHighlight(items);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedIdx = Math.max(highlightedIdx - 1, -1);
+            updateHighlight(items);
+        } else if (e.key === 'Enter' && highlightedIdx >= 0) {
+            e.preventDefault();
+            const id = parseInt(items[highlightedIdx].dataset.id, 10);
+            const r = allRecipes.find(r => r.id === id);
+            if (r) selectRecipe(r);
+        } else if (e.key === 'Escape') {
+            dropdown.innerHTML = '';
+            dropdown.classList.remove('visible');
+            searchInput.setAttribute('aria-expanded', 'false');
+            highlightedIdx = -1;
+        }
+    });
+
+    searchInput.addEventListener('blur', () => {
+        setTimeout(() => {
+            dropdown.innerHTML = '';
+            dropdown.classList.remove('visible');
+            searchInput.setAttribute('aria-expanded', 'false');
+            highlightedIdx = -1;
+        }, 150);
+    });
+}
+
+// Load full recipe data and populate form for editing
+async function loadRecipeForEdit(id) {
+    if (!id) return;
+
+    const btnLoad = document.getElementById('btn-load-recipe');
+    if (btnLoad) { btnLoad.disabled = true; btnLoad.textContent = 'Carregando...'; }
+
+    try {
+        // Buscar receita principal
+        const { data: recipe, error: recipeErr } = await supabase
+            .from('receitas')
+            .select('*, categorias(id, key, label)')
+            .eq('id', id)
+            .single();
+        if (recipeErr) throw recipeErr;
+
+        // Buscar ingredientes
+        const { data: ings, error: ingsErr } = await supabase
+            .from('ingredientes')
+            .select('*')
+            .eq('receita_id', id)
+            .order('ordem');
+        if (ingsErr) throw ingsErr;
+
+        // Buscar passos
+        const { data: stepsData, error: stepsErr } = await supabase
+            .from('passos')
+            .select('*')
+            .eq('receita_id', id)
+            .order('ordem');
+        if (stepsErr) throw stepsErr;
+
+        // Buscar tags via receita_tags → tags
+        const { data: tagsData, error: tagsErr } = await supabase
+            .from('receita_tags')
+            .select('tags(label)')
+            .eq('receita_id', id);
+        if (tagsErr) throw tagsErr;
+
+        const tagLabels = (tagsData || []).map(t => t.tags?.label).filter(Boolean);
+
+        // Montar objeto compatível com populateFormWithRecipe
+        const recipeObj = {
+            title: recipe.title,
+            emoji: recipe.emoji,
+            image: recipe.image,
+            tips: recipe.tips,
+            servings: recipe.servings,
+            prep_time: recipe.prep_time,
+            cook_time: recipe.cook_time,
+            source_url: recipe.source_url,
+            author: recipe.author,
+            category: recipe.categorias?.key || '',
+            tags: tagLabels,
+            ingredients: (ings || []).map(i => ({ name: i.name, qty: i.qty, unit: i.unit })),
+            steps: (stepsData || []).map(s => ({ step_text: s.step_text }))
+        };
+
+        populateFormWithRecipe(recipeObj);
+        enterEditMode(id, recipe.title);
+    } catch (err) {
+        console.error('Erro ao carregar receita para edição:', err);
+        alert('Erro ao carregar receita: ' + err.message);
+    } finally {
+        if (btnLoad) { btnLoad.disabled = false; btnLoad.textContent = 'Carregar'; }
+    }
+}
+
+function enterEditMode(id, title) {
+    editingRecipeId = id;
+    const banner = document.getElementById('edit-mode-banner');
+    const bannerTitle = document.getElementById('edit-mode-title');
+    const btnSaveEl = document.getElementById('btn-save');
+    if (banner) banner.style.display = 'flex';
+    if (bannerTitle) bannerTitle.textContent = `Editando: "${title}"`;
+    if (btnSaveEl) {
+        btnSaveEl.textContent = 'Salvar Alterações';
+        btnSaveEl.classList.remove('admin-btn-success');
+        btnSaveEl.classList.add('admin-btn-success-edit');
+        btnSaveEl.setAttribute('aria-label', 'Salvar alterações da receita');
+    }
+    // Scroll suave até o form
+    document.getElementById('recipe-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function exitEditMode() {
+    editingRecipeId = null;
+    const banner = document.getElementById('edit-mode-banner');
+    const btnSaveEl = document.getElementById('btn-save');
+    const searchInput = document.getElementById('recipe-search');
+    const hiddenInput = document.getElementById('recipe-select');
+    if (banner) banner.style.display = 'none';
+    if (btnSaveEl) {
+        btnSaveEl.textContent = 'Publicar Receita';
+        btnSaveEl.classList.remove('admin-btn-success-edit');
+        btnSaveEl.classList.add('admin-btn-success');
+        btnSaveEl.setAttribute('aria-label', 'Salvar receita');
+    }
+    if (searchInput) searchInput.value = '';
+    if (hiddenInput) hiddenInput.value = '';
+}
+
+async function deleteRecipe() {
+    const hiddenInput = document.getElementById('recipe-select');
+    const searchInput = document.getElementById('recipe-search');
+    const id = hiddenInput ? parseInt(hiddenInput.value, 10) : null;
+
+    if (!id) {
+        alert('Selecione uma receita para excluir.');
+        return;
+    }
+
+    const recipeName = searchInput?.value || `ID ${id}`;
+    const confirmed = confirm(`Tem certeza que deseja excluir "${recipeName.replace(/^\S+\s/, '')}"?\n\nEssa ação é irreversível.`);
+    if (!confirmed) return;
+
+    const btnDelete = document.getElementById('btn-delete-recipe');
+    if (btnDelete) { btnDelete.disabled = true; btnDelete.textContent = 'Excluindo...'; }
+
+    try {
+        // RPC atômica — deleta receita_tags, ingredientes, passos e receitas em uma transação
+        const { error } = await supabase.rpc('excluir_receita', { p_id: id });
+        if (error) throw error;
+
+        // Se estava editando essa receita, limpar o form
+        if (editingRecipeId === id) {
+            resetForm(); // já chama exitEditMode internamente
+        } else {
+            exitEditMode();
+        }
+
+        // Atualizar lista
+        allRecipes = allRecipes.filter(r => r.id !== id);
+        if (searchInput) searchInput.value = '';
+        if (hiddenInput) hiddenInput.value = '';
+
+        alert('Receita excluída com sucesso.');
+    } catch (err) {
+        console.error('Erro ao excluir receita:', err);
+        alert('Erro ao excluir: ' + err.message);
+    } finally {
+        if (btnDelete) { btnDelete.disabled = false; btnDelete.textContent = 'Excluir'; }
+    }
+}
 
 // Dynamic Tags UI
 function renderTagChips() {
@@ -189,11 +466,47 @@ function setupEventListeners() {
                 addTagFromInput();
             }
         });
+        setupTagAutocomplete(tagInput);
     }
 
     const btnImport = document.getElementById('btn-import-gemini');
     if (btnImport) {
         btnImport.addEventListener('click', handleAIImport);
+    }
+
+    // Edit mode: load recipe
+    const btnLoadRecipe = document.getElementById('btn-load-recipe');
+    if (btnLoadRecipe) {
+        btnLoadRecipe.addEventListener('click', () => {
+            const hiddenInput = document.getElementById('recipe-select');
+            const id = hiddenInput ? parseInt(hiddenInput.value, 10) : null;
+            if (id) loadRecipeForEdit(id);
+        });
+    }
+
+    // Edit mode: delete recipe
+    const btnDeleteRecipe = document.getElementById('btn-delete-recipe');
+    if (btnDeleteRecipe) {
+        btnDeleteRecipe.addEventListener('click', deleteRecipe);
+    }
+
+    // Edit mode: new recipe (exit edit)
+    const btnNewRecipe = document.getElementById('btn-new-recipe');
+    if (btnNewRecipe) {
+        btnNewRecipe.addEventListener('click', () => {
+            exitEditMode();
+            resetForm();
+        });
+    }
+
+    // Duplo clique no input de busca = carregar receita selecionada
+    const recipeSearch = document.getElementById('recipe-search');
+    if (recipeSearch) {
+        recipeSearch.addEventListener('dblclick', () => {
+            const hiddenInput = document.getElementById('recipe-select');
+            const id = hiddenInput ? parseInt(hiddenInput.value, 10) : null;
+            if (id) loadRecipeForEdit(id);
+        });
     }
 }
 
@@ -528,11 +841,12 @@ async function saveRecipe(e) {
         selectedCategoryKey,
         tags: recipeTags,
         validIngredients: validation.validIngredients,
-        validSteps: validation.validSteps
+        validSteps: validation.validSteps,
+        id: editingRecipeId
     });
 
     btnSave.disabled = true;
-    btnSave.textContent = 'Salvando...';
+    btnSave.textContent = editingRecipeId ? 'Salvando alterações...' : 'Salvando...';
 
     if (!navigator.onLine) {
         try {
@@ -551,7 +865,10 @@ async function saveRecipe(e) {
             console.log('Resposta do Supabase RPC:', { data, error });
             if (error) throw error;
             
-            alert('Receita salva com sucesso!');
+            const isEdit = !!editingRecipeId;
+            alert(isEdit ? 'Receita atualizada com sucesso!' : 'Receita salva com sucesso!');
+            // Recarregar lista de receitas (pode ter mudado o título)
+            await loadRecipes();
             resetForm();
         } catch (error) {
             console.error('Erro ao salvar no Supabase:', error);
@@ -561,7 +878,7 @@ async function saveRecipe(e) {
     }
 
     btnSave.disabled = false;
-    btnSave.textContent = 'Publicar Receita';
+    btnSave.textContent = editingRecipeId ? 'Salvar Alterações' : 'Publicar Receita';
 }
 
 function resetForm() {
@@ -570,6 +887,15 @@ function resetForm() {
     document.getElementById('recipe-image').value = '';
     document.getElementById('recipe-tips').value = '';
     document.getElementById('recipe-servings').value = '';
+
+    const prepEl = document.getElementById('recipe-prep-time');
+    const cookEl = document.getElementById('recipe-cook-time');
+    const srcEl = document.getElementById('recipe-source-url');
+    const authEl = document.getElementById('recipe-author');
+    if (prepEl) prepEl.value = '';
+    if (cookEl) cookEl.value = '';
+    if (srcEl) srcEl.value = '';
+    if (authEl) authEl.value = '';
     
     const radios = categoriesContainer.querySelectorAll('input[type="radio"]');
     radios.forEach(radio => radio.checked = false);
@@ -580,6 +906,120 @@ function resetForm() {
     renderTagChips();
     addIngredient();
     addStep();
+    exitEditMode();
+}
+
+// ========================================================================
+// Tag Autocomplete
+// ========================================================================
+async function loadExistingTags() {
+    const { data, error } = await supabase
+        .from('tags')
+        .select('label')
+        .order('label');
+    if (error) {
+        console.error('Erro ao carregar tags:', error);
+        return;
+    }
+    allExistingTags = (data || []).map(t => t.label).filter(Boolean);
+}
+
+function renderTagSuggestions(query) {
+    const suggestionsEl = document.getElementById('tag-suggestions');
+    if (!suggestionsEl) return;
+
+    const q = query.trim().toLowerCase();
+    if (!q) {
+        suggestionsEl.innerHTML = '';
+        suggestionsEl.classList.remove('visible');
+        return;
+    }
+
+    const matches = allExistingTags
+        .filter(tag => tag.toLowerCase().includes(q) && !recipeTags.includes(tag))
+        .slice(0, 8);
+
+    if (matches.length === 0) {
+        suggestionsEl.innerHTML = '';
+        suggestionsEl.classList.remove('visible');
+        return;
+    }
+
+    suggestionsEl.innerHTML = '';
+    matches.forEach((tag, idx) => {
+        const item = document.createElement('div');
+        item.className = 'admin-tag-suggestion-item';
+        item.textContent = tag;
+        item.setAttribute('role', 'option');
+        item.setAttribute('aria-selected', 'false');
+        item.dataset.idx = idx;
+        item.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // evita blur no input antes do click
+            const input = document.getElementById('tag-input');
+            if (!recipeTags.includes(tag)) {
+                recipeTags.push(tag);
+                renderTagChips();
+            }
+            if (input) input.value = '';
+            suggestionsEl.innerHTML = '';
+            suggestionsEl.classList.remove('visible');
+        });
+        suggestionsEl.appendChild(item);
+    });
+    suggestionsEl.classList.add('visible');
+}
+
+function setupTagAutocomplete(input) {
+    const suggestionsEl = document.getElementById('tag-suggestions');
+    let highlightedIdx = -1;
+
+    input.addEventListener('input', () => {
+        highlightedIdx = -1;
+        renderTagSuggestions(input.value);
+    });
+
+    input.addEventListener('keydown', (e) => {
+        const items = suggestionsEl ? suggestionsEl.querySelectorAll('.admin-tag-suggestion-item') : [];
+        if (!suggestionsEl?.classList.contains('visible') || items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedIdx = Math.min(highlightedIdx + 1, items.length - 1);
+            items.forEach((el, i) => el.classList.toggle('highlighted', i === highlightedIdx));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedIdx = Math.max(highlightedIdx - 1, -1);
+            items.forEach((el, i) => el.classList.toggle('highlighted', i === highlightedIdx));
+        } else if (e.key === 'Tab' || (e.key === 'Enter' && highlightedIdx >= 0)) {
+            if (highlightedIdx >= 0 && items[highlightedIdx]) {
+                e.preventDefault();
+                const tag = items[highlightedIdx].textContent;
+                if (!recipeTags.includes(tag)) {
+                    recipeTags.push(tag);
+                    renderTagChips();
+                }
+                input.value = '';
+                suggestionsEl.innerHTML = '';
+                suggestionsEl.classList.remove('visible');
+                highlightedIdx = -1;
+            }
+        } else if (e.key === 'Escape') {
+            suggestionsEl.innerHTML = '';
+            suggestionsEl.classList.remove('visible');
+            highlightedIdx = -1;
+        }
+    });
+
+    // Fechar ao perder o foco (com delay para permitir mousedown no item)
+    input.addEventListener('blur', () => {
+        setTimeout(() => {
+            if (suggestionsEl) {
+                suggestionsEl.innerHTML = '';
+                suggestionsEl.classList.remove('visible');
+            }
+            highlightedIdx = -1;
+        }, 150);
+    });
 }
 
 init();
