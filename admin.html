@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Admin - Chef Digital</title>
-  <script type="module" crossorigin src="/chef-digital/assets/admin-DN3A15zM.js"></script>
+  <script type="module" crossorigin src="/chef-digital/assets/admin-CfDtj4xl.js"></script>
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/modulepreload-polyfill-B5Qt9EMX.js">
   <link rel="modulepreload" crossorigin href="/chef-digital/assets/supabase-BxJ6yzbu.js">
-  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-CMgGMQt-.css">
+  <link rel="stylesheet" crossorigin href="/chef-digital/assets/admin-IQB7qEyq.css">
 <link rel="manifest" href="/chef-digital/manifest.webmanifest"></head>
 <body class="bg-neutral-bg">
     <!-- Botão para voltar ao livro de receitas -->
@@ -35,6 +35,36 @@
         <div class="admin-header-flex mb-6">
             <h2 class="section-title" style="margin: 0; border: none; padding: 0;">Painel de Receitas</h2>
             <button type="button" id="btn-logout" class="admin-btn admin-btn-secondary">Sair</button>
+        </div>
+
+        <!-- Seletor de Receita para Edição -->
+        <div class="admin-edit-section">
+            <span class="admin-edit-section-label">✏️ Editar Receita Existente</span>
+            <div class="admin-edit-row">
+                <div class="admin-recipe-combobox" id="recipe-combobox-wrapper">
+                    <input
+                        type="text"
+                        id="recipe-search"
+                        class="form-input admin-recipe-search-input"
+                        placeholder="Buscar receita pelo nome..."
+                        autocomplete="off"
+                        aria-label="Buscar receita para editar"
+                        aria-autocomplete="list"
+                        aria-controls="recipe-dropdown"
+                        aria-expanded="false"
+                    >
+                    <input type="hidden" id="recipe-select">
+                    <div id="recipe-dropdown" class="admin-recipe-dropdown" role="listbox" aria-label="Receitas encontradas"></div>
+                </div>
+                <button type="button" id="btn-load-recipe" class="admin-btn admin-btn-secondary" aria-label="Carregar receita selecionada para edição">Carregar</button>
+                <button type="button" id="btn-delete-recipe" class="admin-btn admin-btn-danger" aria-label="Excluir receita selecionada">Excluir</button>
+            </div>
+        </div>
+
+        <!-- Banner de Modo Edição (oculto por padrão) -->
+        <div id="edit-mode-banner" class="admin-edit-banner" style="display:none;" role="status" aria-live="polite">
+            <span class="admin-edit-banner-text">✏️ <span id="edit-mode-title">Editando receita</span></span>
+            <button type="button" id="btn-new-recipe" class="admin-btn-new-recipe" aria-label="Cancelar edição e criar nova receita">+ Nova Receita</button>
         </div>
 
         <!-- Gemini Import Box -->
@@ -104,8 +134,11 @@
             <label class="form-label" for="tag-input">Tags da receita (contexto, ocasiões, temas)</label>
             <div id="tags-chips-container" class="admin-tags-chips-container mb-2"></div>
             <div class="admin-tag-input-flex">
-                <input type="text" id="tag-input" class="form-input" placeholder="Digite uma tag (ex: Natal, Fit, Airfryer) e pressione Enter...">
-                <button type="button" id="btn-add-tag" class="admin-btn admin-btn-secondary">+ Tag</button>
+                <div class="admin-tag-autocomplete-wrapper" style="flex:1;">
+                    <input type="text" id="tag-input" class="form-input" placeholder="Digite uma tag (ex: Natal, Fit, Airfryer) e pressione Enter..." autocomplete="off" aria-label="Campo de tag" aria-autocomplete="list" aria-controls="tag-suggestions">
+                    <div id="tag-suggestions" class="admin-tag-suggestions" role="listbox" aria-label="Sugestões de tags"></div>
+                </div>
+                <button type="button" id="btn-add-tag" class="admin-btn admin-btn-secondary" aria-label="Adicionar tag">+ Tag</button>
             </div>
         </div>
         
@@ -119,7 +152,7 @@
 
         <div class="form-group" style="margin-top: 32px;">
             <div id="recipe-error" class="admin-error-box"></div>
-            <button type="submit" id="btn-save" class="admin-btn admin-btn-primary admin-btn-full admin-btn-success">Publicar Receita</button>
+            <button type="submit" id="btn-save" class="admin-btn admin-btn-primary admin-btn-full admin-btn-success" aria-label="Salvar receita">Publicar Receita</button>
         </div>
     </form>
 
