@@ -8,6 +8,7 @@ import { toggleTheme, updateThemeToggleIcon, initTheme } from './modules/theme.j
 import {
     renderTagFilters,
     renderRecipes,
+    filterRecipes,
     setRenderDependencies,
     initRecipesGridDelegation
 } from './modules/recipes-render.js';
@@ -512,7 +513,7 @@ window.toggleFavoritesOnly = () => {
 };
 window.togglePantryFilterOrOpenModal = (e) => togglePantryFilterOrOpenModal(e, { renderRecipes, previouslyFocusedElementRef });
 window.openPantryModal = () => openPantryModal(previouslyFocusedElementRef);
-window.filterRecipes = () => renderRecipes();
+window.filterRecipes = filterRecipes;
 window.clearSearch = () => {
     const input = document.getElementById('search-input');
     if (input) input.value = '';
