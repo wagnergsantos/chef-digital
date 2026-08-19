@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
@@ -8,6 +9,7 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
 export default defineConfig({
   base: '/chef-digital/',
   plugins: [
+    react(),
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
@@ -39,6 +41,11 @@ export default defineConfig({
       }
     })
   ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test-setup.js']
+  },
   build: {
     rollupOptions: {
       input: {
