@@ -7,7 +7,10 @@ import { formatRecipeShareText } from './logic/recipe-modal-logic.js';
 import { supabase } from './api/supabase.js';
 import { mapSummaryRecipes } from './api/recipes-loader.js';
 
+import { filterRecipesList } from './logic/recipes-filter.js';
+
 import { ThemeToggle } from './components/ThemeToggle.jsx';
+import { FilterSidebar } from './components/FilterSidebar.jsx';
 import { RecipesGrid } from './components/RecipesGrid.jsx';
 import { PlannerDrawer } from './components/PlannerDrawer.jsx';
 import { ShoppingDrawer } from './components/ShoppingDrawer.jsx';
@@ -26,11 +29,11 @@ export function App() {
     const [recipeTagsMap, setRecipeTagsMap] = useState({});
 
     // Filter states
-    const [activeCategory] = useState('todos');
+    const [activeCategory, setActiveCategory] = useState('todos');
     const [searchQuery, setSearchQuery] = useState('');
     const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
     const [showPantryOnly, setShowPantryOnly] = useState(false);
-    const [activeTags] = useState(() => safeJsonParse(STORAGE_KEYS.ACTIVE_TAGS, []));
+    const [activeTags, setActiveTags] = useState(() => safeJsonParse(STORAGE_KEYS.ACTIVE_TAGS, []));
 
     // User data persistence states
     const [favorites, setFavorites] = useState(() => safeJsonParse(STORAGE_KEYS.FAVORITES, []));
@@ -117,6 +120,28 @@ export function App() {
     useEffect(() => {
         localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
     }, [plannedByDay]);
+
+    useEffect(() => {
+        localStorage.setItem(STORAGE_KEYS.ACTIVE_TAGS, JSON.stringify(activeTags));
+    }, [activeTags]);
+
+    const handleSelectCategory = (categoryKey) => {
+        setActiveCategory(categoryKey);
+        setShowFavoritesOnly(false);
+        setActiveTags([]);
+    };
+
+    const handleToggleTag = (tagKey) => {
+        setActiveTags(prev => prev.includes(tagKey) ? prev.filter(t => t !== tagKey) : [...prev, tagKey]);
+    };
+
+    const handleClearAllFilters = () => {
+        setSearchQuery('');
+        setActiveCategory('todos');
+        setActiveTags([]);
+        setShowFavoritesOnly(false);
+        setShowPantryOnly(false);
+    };
 
     const toggleFavorite = (id) => {
         setFavorites(prev => {
@@ -238,7 +263,13 @@ export function App() {
 
                         <button
                             type="button"
-                            onClick={() => setShowFavoritesOnly(prev => !prev)}
+                            onClick={() => {
+                                setShowFavoritesOnly(prev => {
+                                    const next = !prev;
+                                    if (next) setActiveCategory('todos');
+                                    return next;
+                                });
+                            }}
                             className={`control-btn btn-favorites ${showFavoritesOnly ? 'active' : ''}`}
                             title="Visualizar Favoritos"
                         >
@@ -269,19 +300,44 @@ export function App() {
             </header>
 
             <main className="main-layout">
-                <aside className="sidebar">
-                    <div className="search-box">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Buscar por título ou ingrediente…"
-                            className="search-input"
-                        />
-                    </div>
-                </aside>
+                <FilterSidebar
+                    recipes={recipes}
+                    categories={categories}
+                    tagsMap={tagsMap}
+                    recipeTagsMap={recipeTagsMap}
+                    searchQuery={searchQuery}
+                    activeCategory={activeCategory}
+                    activeTags={activeTags}
+                    showFavoritesOnly={showFavoritesOnly}
+                    favorites={favorites}
+                    showPantryOnly={showPantryOnly}
+                    pantryItems={pantryItems}
+                    onSearchChange={setSearchQuery}
+                    onSelectCategory={handleSelectCategory}
+                    onToggleTag={handleToggleTag}
+                    onClearFilters={handleClearAllFilters}
+                />
 
                 <section className="recipes-section">
+                    <div className="results-header">
+                        <h2 id="results-count">
+                            {filterRecipesList(recipes, {
+                                activeCategory,
+                                searchQuery,
+                                showFavoritesOnly,
+                                favorites,
+                                showPantryOnly,
+                                pantryItems,
+                                activeTags,
+                                recipeTags: recipeTagsMap
+                            }).length} receita(s) encontrada(s)
+                        </h2>
+                        {activeCategory !== 'todos' && (
+                            <span className="results-indicator" id="active-category-indicator">
+                                {categories[activeCategory]}
+                            </span>
+                        )}
+                    </div>
                     <RecipesGrid
                         recipes={recipes}
                         categories={categories}
