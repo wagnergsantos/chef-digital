@@ -556,6 +556,16 @@ button,
     margin-left: 8px;
 }
 
+.drawer-item-count-badge {
+    font-size: var(--text-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
 .category-filter-btn.active .category-filter-badge {
     background-color: rgba(69, 26, 3, 0.12);
     color: #451a03;

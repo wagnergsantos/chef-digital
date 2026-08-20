@@ -39,6 +39,11 @@ export function ShoppingDrawer({
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                     </svg>
                     <h3 id="shopping-drawer-title">Lista de Compras</h3>
+                    {totalItems > 0 && (
+                        <span className="drawer-item-count-badge" aria-label={`${totalItems} itens na lista`}>
+                            {totalItems}
+                        </span>
+                    )}
                 </div>
                 <div className="drawer-header-actions">
                     {recipeKeys.length > 0 && (
