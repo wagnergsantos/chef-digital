@@ -6,6 +6,7 @@ import { RecipeCard } from './RecipeCard.jsx';
 export function RecipesGrid({
     recipes = [],
     categories = {},
+    categoriesById = {},
     tagsMap = {},
     recipeTagsMap = {},
     activeCategory = 'todos',
@@ -80,6 +81,7 @@ export function RecipesGrid({
                     isPlanned={isRecipePlanned(recipe.id, plannedByDay)}
                     isFavorite={favorites.includes(recipe.id)}
                     categories={categories}
+                    categoriesById={categoriesById}
                     tagsMap={tagsMap}
                     recipeTags={recipeTagsMap[recipe.id] || []}
                     showPantryOnly={showPantryOnly}

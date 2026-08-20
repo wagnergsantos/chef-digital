@@ -72,25 +72,26 @@ export function App() {
                     supabase.from('passos').select('receita_id, step_text').order('ordem')
                 ]);
 
-                if (recData && recData.length > 0) {
-                    const detailsIndex = buildRecipeDetailsIndex(ingData || [], stepData || []);
-                    const mapped = mapSummaryRecipes(recData).map(r => ({
-                        ...r,
-                        ingredients: detailsIndex[r.id]?.ingredients || [],
-                        steps: detailsIndex[r.id]?.steps || []
-                    }));
-                    setRecipes(mapped);
-                }
-
+                let catById = {};
                 if (catData) {
                     const catMap = { todos: 'Todas as Receitas' };
-                    const catById = {};
                     catData.forEach(c => {
                         catMap[c.key] = c.label || c.description || c.key;
                         catById[String(c.id)] = c.key;
                     });
                     setCategories(catMap);
                     setCategoriesById(catById);
+                }
+
+                if (recData && recData.length > 0) {
+                    const detailsIndex = buildRecipeDetailsIndex(ingData || [], stepData || []);
+                    const mapped = mapSummaryRecipes(recData).map(r => ({
+                        ...r,
+                        category: catById[String(r.category_id)] || r.category || 'outros',
+                        ingredients: detailsIndex[r.id]?.ingredients || [],
+                        steps: detailsIndex[r.id]?.steps || []
+                    }));
+                    setRecipes(mapped);
                 }
 
                 if (tagData) {
@@ -429,6 +430,7 @@ export function App() {
                     <RecipesGrid
                         recipes={recipes}
                         categories={categories}
+                        categoriesById={categoriesById}
                         tagsMap={tagsMap}
                         recipeTagsMap={recipeTagsMap}
                         activeCategory={activeCategory}

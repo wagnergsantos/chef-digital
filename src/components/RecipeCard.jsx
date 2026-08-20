@@ -8,6 +8,7 @@ export function RecipeCard({
     isPlanned,
     isFavorite,
     categories = {},
+    categoriesById = {},
     tagsMap = {},
     recipeTags = [],
     showPantryOnly = false,
@@ -21,7 +22,8 @@ export function RecipeCard({
 
     const safeTitle = recipe.title || 'Receita';
     const safeEmoji = recipe.emoji || '🍽️';
-    const safeCategoryLabel = categories[recipe.category] || recipe.category || 'Sem categoria';
+    const catKey = recipe.category || categoriesById[String(recipe.category_id)] || recipe.category;
+    const safeCategoryLabel = categories[catKey] || catKey || 'Sem categoria';
     const safeIngredients = Array.isArray(recipe.ingredients) ? recipe.ingredients : [];
     const safeServings = recipe.servings !== undefined && recipe.servings !== null ? String(recipe.servings) : null;
     const isFullyStocked = showPantryOnly && recipeIsFullyStocked(recipe, pantryItems);

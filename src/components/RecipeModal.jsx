@@ -61,31 +61,28 @@ export function RecipeModal({
                     className={`modal-header-banner ${recipe.image ? 'has-image' : ''}`}
                     style={recipe.image ? { backgroundImage: `url('${recipe.image}')` } : undefined}
                 >
+                    {/* Linha Superior: Badges à Esquerda, Ferramentas à Direita */}
                     <div style={{
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'flex-start',
                         gap: '16px',
-                        width: '100%'
+                        width: '100%',
+                        marginBottom: '12px'
                     }}>
-                        {/* Coluna 1: Categoria, Rendimento, Tempos e Título */}
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
-                            <div className="modal-badges" style={{ marginBottom: 0 }}>
-                                <span id="modal-category-badge" className="modal-badge-cat">{catText}</span>
-                                {recipe.servings && <span id="modal-servings-badge" className="modal-badge-src">🍽️ Rende: {recipe.servings}</span>}
-                                {recipe.prep_time && <span className="modal-badge-src">⏱️ Preparo: {recipe.prep_time} min</span>}
-                                {recipe.cook_time && <span className="modal-badge-src">🍳 Fogo: {recipe.cook_time} min</span>}
-                                {historyRecord && historyRecord.count > 0 && historyRecord.lastCooked && (
-                                    <span className="modal-badge-history">
-                                        👨‍🍳 Preparado {historyRecord.count}x ({new Date(historyRecord.lastCooked).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})
-                                    </span>
-                                )}
-                            </div>
-                            <h3 id="modal-title" className="serif-title" style={{ margin: 0 }}>{recipe.title}</h3>
+                        <div className="modal-badges" style={{ marginBottom: 0 }}>
+                            <span id="modal-category-badge" className="modal-badge-cat">{catText}</span>
+                            {recipe.servings && <span id="modal-servings-badge" className="modal-badge-src">🍽️ Rende: {recipe.servings}</span>}
+                            {recipe.prep_time && <span className="modal-badge-src">⏱️ Preparo: {recipe.prep_time} min</span>}
+                            {recipe.cook_time && <span className="modal-badge-src">🍳 Fogo: {recipe.cook_time} min</span>}
+                            {historyRecord && historyRecord.count > 0 && historyRecord.lastCooked && (
+                                <span className="modal-badge-history">
+                                    👨‍🍳 Preparado {historyRecord.count}x ({new Date(historyRecord.lastCooked).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})
+                                </span>
+                            )}
                         </div>
 
-                        {/* Coluna 2: Itens do Menu (Preparo, Planejamento, Lista, Compartilhar e Fechar) */}
-                        <div className="modal-header-tools" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div className="modal-header-tools" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                             <button
                                 type="button"
                                 onClick={() => { onClose(); onStartCooking(recipe); }}
@@ -140,6 +137,9 @@ export function RecipeModal({
                             </button>
                         </div>
                     </div>
+
+                    {/* Linha Inferior: Título da Receita com 100% de Largura */}
+                    <h3 id="modal-title" className="serif-title" style={{ margin: 0, width: '100%' }}>{recipe.title}</h3>
                 </div>
 
                 {/* Corpo do Modal em 2 Colunas */}
