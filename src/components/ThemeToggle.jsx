@@ -8,6 +8,7 @@ export function ThemeToggle({ theme, onToggle }) {
         <button
             type="button"
             id="theme-toggle"
+            className="control-btn btn-theme"
             onClick={onToggle}
             title={label}
             aria-label={label}
