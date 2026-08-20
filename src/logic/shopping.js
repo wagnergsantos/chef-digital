@@ -6,8 +6,9 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
     }
 
     const checkedItemsMap = new Set();
-    if (currentShoppingList["Menu Semanal Consolidado"]) {
-        currentShoppingList["Menu Semanal Consolidado"].forEach(item => {
+    const safeShoppingList = currentShoppingList || {};
+    if (safeShoppingList["Menu Semanal Consolidado"]) {
+        safeShoppingList["Menu Semanal Consolidado"].forEach(item => {
             if (item.checked) {
                 checkedItemsMap.add(item.name.trim().toLowerCase());
             }
@@ -45,7 +46,7 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
 
     const consolidatedItems = Object.values(tempConsolidated);
     return {
-        ...currentShoppingList,
+        ...safeShoppingList,
         "Menu Semanal Consolidado": consolidatedItems
     };
 }

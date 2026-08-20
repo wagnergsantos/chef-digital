@@ -18,7 +18,7 @@ export function RecipesGrid({
     plannedByDay = {},
     onOpenModal,
     onToggleFavorite,
-    onOpenDayPicker
+    onTogglePlanner
 }) {
     const PAGE_SIZE = 12;
     const [displayedCount, setDisplayedCount] = useState(PAGE_SIZE);
@@ -87,7 +87,7 @@ export function RecipesGrid({
                     searchQuery={searchQuery}
                     onOpenModal={onOpenModal}
                     onToggleFavorite={onToggleFavorite}
-                    onOpenDayPicker={onOpenDayPicker}
+                    onTogglePlanner={onTogglePlanner}
                 />
             ))}
 

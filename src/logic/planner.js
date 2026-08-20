@@ -1,8 +1,8 @@
-import { WEEK_DAYS } from './storage.js';
+import { PLANNER_DAYS } from './storage.js';
 
 export function createEmptyPlannedByDay() {
     const byDay = {};
-    WEEK_DAYS.forEach(d => { byDay[d.key] = []; });
+    PLANNER_DAYS.forEach(d => { byDay[d.key] = []; });
     return byDay;
 }
 
@@ -27,7 +27,7 @@ export function migratePlannedData(raw, recipesList = []) {
 
     const byDay = createEmptyPlannedByDay();
     let hasMigrated = false;
-    WEEK_DAYS.forEach(d => {
+    PLANNER_DAYS.forEach(d => {
         if (raw && Array.isArray(raw[d.key])) {
             byDay[d.key] = raw[d.key];
         } else if (raw && raw[d.key] !== undefined) {
@@ -39,7 +39,7 @@ export function migratePlannedData(raw, recipesList = []) {
 
 export function getAllPlannedEntries(plannedByDay) {
     const all = [];
-    WEEK_DAYS.forEach(d => {
+    PLANNER_DAYS.forEach(d => {
         if (plannedByDay && plannedByDay[d.key]) {
             plannedByDay[d.key].forEach(entry => {
                 all.push({ day: d.key, recipeId: entry.recipeId, people: entry.people });
@@ -50,7 +50,7 @@ export function getAllPlannedEntries(plannedByDay) {
 }
 
 export function getPlannedDaysForRecipe(recipeId, plannedByDay) {
-    return WEEK_DAYS
+    return PLANNER_DAYS
         .filter(d => plannedByDay && plannedByDay[d.key] && plannedByDay[d.key].some(e => e.recipeId === recipeId))
         .map(d => d.key);
 }

@@ -26,7 +26,7 @@ describe('RecipeCard component', () => {
                 categories={{ massas: 'Massas & Pastas' }}
                 onOpenModal={handleOpen}
                 onToggleFavorite={handleFav}
-                onOpenDayPicker={handlePlan}
+                onTogglePlanner={handlePlan}
             />
         );
 

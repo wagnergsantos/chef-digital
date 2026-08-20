@@ -10,7 +10,7 @@ import {
 describe('planner logic', () => {
     it('cria estrutura vazia por dia da semana', () => {
         const empty = createEmptyPlannedByDay();
-        expect(Object.keys(empty).length).toBe(7);
+        expect(Object.keys(empty).length).toBe(8);
         expect(empty.dom).toEqual([]);
     });
 

@@ -17,6 +17,11 @@ export const WEEK_DAYS = [
     { key: 'sab', label: 'Sábado' }
 ];
 
+export const PLANNER_DAYS = [
+    { key: 'pending', label: 'A Definir' },
+    ...WEEK_DAYS
+];
+
 export function safeJsonParse(key, fallback) {
     try {
         const item = localStorage.getItem(key);

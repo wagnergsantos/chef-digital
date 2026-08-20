@@ -15,7 +15,7 @@ export function RecipeCard({
     searchQuery = '',
     onOpenModal,
     onToggleFavorite,
-    onOpenDayPicker
+    onTogglePlanner
 }) {
     if (!recipe) return null;
 
@@ -103,7 +103,7 @@ export function RecipeCard({
                             type="button"
                             onClick={(e) => {
                                 e.stopPropagation();
-                                onOpenDayPicker(recipe.id, e.currentTarget);
+                                onTogglePlanner(recipe.id);
                             }}
                             className={`card-action-btn plan-btn ${isPlanned ? 'active' : ''}`}
                             title="Planejar para a semana"

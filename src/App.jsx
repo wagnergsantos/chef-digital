@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from './hooks/useTheme.js';
 import { STORAGE_KEYS, safeJsonParse } from './logic/storage.js';
-import { createEmptyPlannedByDay } from './logic/planner.js';
-import { calculateConsolidatedShoppingList, formatShoppingListText } from './logic/shopping.js';
+import { createEmptyPlannedByDay, getAllPlannedEntries, getPlannedDaysForRecipe } from './logic/planner.js';
+import { calculateConsolidatedShoppingList, formatShoppingListText, countShoppingItems } from './logic/shopping.js';
 import { formatRecipeShareText } from './logic/recipe-modal-logic.js';
 import { supabase } from './api/supabase.js';
-import { mapSummaryRecipes } from './api/recipes-loader.js';
+import { mapSummaryRecipes, buildRecipeDetailsIndex } from './api/recipes-loader.js';
 
 import { filterRecipesList } from './logic/recipes-filter.js';
 
@@ -64,21 +64,29 @@ export function App() {
                     .select('id, title, category_id, category, emoji, image, servings, prep_time, cook_time, source_url, author, tips, ingredient_count')
                     .order('title');
 
-                if (recData && recData.length > 0) {
-                    setRecipes(mapSummaryRecipes(recData));
-                }
-
-                const [{ data: catData }, { data: tagData }, { data: recipeTagsData }] = await Promise.all([
+                const [{ data: catData }, { data: tagData }, { data: recipeTagsData }, { data: ingData }, { data: stepData }] = await Promise.all([
                     supabase.from('categorias').select('*').order('sort_order'),
                     supabase.from('tags').select('*').order('sort_order'),
-                    supabase.from('receita_tags').select('receita_id, tags(key)')
+                    supabase.from('receita_tags').select('receita_id, tags(key)'),
+                    supabase.from('ingredientes').select('receita_id, name, qty, unit').order('ordem'),
+                    supabase.from('passos').select('receita_id, step_text').order('ordem')
                 ]);
+
+                if (recData && recData.length > 0) {
+                    const detailsIndex = buildRecipeDetailsIndex(ingData || [], stepData || []);
+                    const mapped = mapSummaryRecipes(recData).map(r => ({
+                        ...r,
+                        ingredients: detailsIndex[r.id]?.ingredients || [],
+                        steps: detailsIndex[r.id]?.steps || []
+                    }));
+                    setRecipes(mapped);
+                }
 
                 if (catData) {
                     const catMap = { todos: 'Todas as Receitas' };
                     const catById = {};
                     catData.forEach(c => {
-                        catMap[c.key] = c.description;
+                        catMap[c.key] = c.label || c.description || c.key;
                         catById[String(c.id)] = c.key;
                     });
                     setCategories(catMap);
@@ -152,6 +160,32 @@ export function App() {
         });
     };
 
+    const handleToggleRecipePlanner = (recipeId) => {
+        const plannedDays = getPlannedDaysForRecipe(recipeId, plannedByDay);
+        if (plannedDays.length > 0) {
+            // Se já está planejada em algum dia, remove de todos os dias
+            setPlannedByDay(prev => {
+                const nextPlanned = { ...prev };
+                WEEK_DAYS.forEach(d => {
+                    if (nextPlanned[d.key]) {
+                        nextPlanned[d.key] = nextPlanned[d.key].filter(e => e.recipeId !== recipeId);
+                    }
+                });
+                return nextPlanned;
+            });
+            showToast('Removido do menu semanal');
+        } else {
+            // Se não está planejada, adiciona em 'pending' (A Definir) por padrão
+            const recipe = recipes.find(r => r.id === recipeId);
+            const defaultPeople = recipe?.servings ? parseInt(recipe.servings, 10) || 1 : 1;
+            setPlannedByDay(prev => ({
+                ...prev,
+                pending: [...(prev.pending || []), { recipeId, people: defaultPeople }]
+            }));
+            showToast('Adicionado ao menu de planejamento');
+        }
+    };
+
     const handleToggleRecipeOnDay = (recipeId, day) => {
         setPlannedByDay(prev => {
             const nextPlanned = { ...prev };
@@ -160,15 +194,34 @@ export function App() {
 
             if (index !== -1) {
                 dayEntries.splice(index, 1);
-                showToast(`Removido do menu de ${day}`);
+                showToast(`Removido do menu`);
             } else {
                 const recipe = recipes.find(r => r.id === recipeId);
                 const defaultPeople = recipe?.servings ? parseInt(recipe.servings, 10) || 1 : 1;
                 dayEntries.push({ recipeId, people: defaultPeople });
-                showToast(`Adicionado ao menu de ${day}`);
+                showToast(`Adicionado ao menu`);
             }
 
             nextPlanned[day] = dayEntries;
+            return nextPlanned;
+        });
+    };
+
+    const handleMovePlannerRecipeDay = (recipeId, currentDay, targetDay) => {
+        if (currentDay === targetDay) return;
+        setPlannedByDay(prev => {
+            const nextPlanned = { ...prev };
+            const sourceEntries = nextPlanned[currentDay] ? [...nextPlanned[currentDay]] : [];
+            const entryIndex = sourceEntries.findIndex(e => e.recipeId === recipeId);
+            if (entryIndex === -1) return prev;
+
+            const [entry] = sourceEntries.splice(entryIndex, 1);
+            nextPlanned[currentDay] = sourceEntries;
+
+            const targetEntries = nextPlanned[targetDay] ? [...nextPlanned[targetDay]] : [];
+            targetEntries.push(entry);
+            nextPlanned[targetDay] = targetEntries;
+
             return nextPlanned;
         });
     };
@@ -236,7 +289,7 @@ export function App() {
     return (
         <div className="app-container">
             {toastMessage && (
-                <div className="toast show" role="status" aria-live="polite">
+                <div className="toast-message" role="status" aria-live="polite">
                     {toastMessage}
                 </div>
             )}
@@ -282,7 +335,7 @@ export function App() {
                             className="control-btn btn-planner"
                             title="Menu Semanal"
                         >
-                            📅 Menu
+                            📅 Menu ({getAllPlannedEntries(plannedByDay).length})
                         </button>
 
                         <button
@@ -291,7 +344,7 @@ export function App() {
                             className="control-btn btn-shopping"
                             title="Lista de Compras"
                         >
-                            🛒 Lista
+                            🛒 Lista ({countShoppingItems(shoppingList)})
                         </button>
 
                         <ThemeToggle theme={theme} onToggle={toggleTheme} />
@@ -353,7 +406,7 @@ export function App() {
                         plannedByDay={plannedByDay}
                         onOpenModal={(id) => setActiveRecipeModalId(id)}
                         onToggleFavorite={toggleFavorite}
-                        onOpenDayPicker={(id) => handleToggleRecipeOnDay(id, 'seg')}
+                        onTogglePlanner={handleToggleRecipePlanner}
                     />
                 </section>
             </main>
@@ -364,8 +417,10 @@ export function App() {
                 plannedByDay={plannedByDay}
                 recipes={recipes}
                 onRemoveRecipe={(id, day) => handleToggleRecipeOnDay(id, day)}
+                onChangeDay={(id, curDay, targetDay) => handleMovePlannerRecipeDay(id, curDay, targetDay)}
                 onChangePortions={handleChangePlannerPortions}
                 onClearPlanner={() => setPlannedByDay(createEmptyPlannedByDay())}
+                onGenerateConsolidated={handleGenerateConsolidated}
             />
 
             <ShoppingDrawer
@@ -424,7 +479,7 @@ export function App() {
                 categoriesById={categoriesById}
                 plannedByDay={plannedByDay}
                 cookingHistory={cookingHistory}
-                onTogglePlanner={(id) => handleToggleRecipeOnDay(id, 'seg')}
+                onTogglePlanner={(id) => handleToggleRecipePlanner(id)}
                 onAddIngredientsToShopping={handleAddRecipeToShopping}
                 onStartCooking={(recipeToCook) => {
                     setActiveRecipeModalId(null);

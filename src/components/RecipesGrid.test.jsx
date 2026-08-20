@@ -10,7 +10,7 @@ describe('RecipesGrid component', () => {
                 recipes={[]}
                 onOpenModal={() => {}}
                 onToggleFavorite={() => {}}
-                onOpenDayPicker={() => {}}
+                onTogglePlanner={() => {}}
             />
         );
         expect(screen.getByText('Nenhuma receita encontrada para os filtros selecionados.')).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe('RecipesGrid component', () => {
                 recipes={recipes}
                 onOpenModal={() => {}}
                 onToggleFavorite={() => {}}
-                onOpenDayPicker={() => {}}
+                onTogglePlanner={() => {}}
             />
         );
 

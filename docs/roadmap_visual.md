@@ -61,6 +61,12 @@
   - **Ação sugerida:** `$impeccable polish`
   - **Critério de pronto:** bloco CSS consistente e comportamento tipográfico estável.
 
+### 7) UX do Planejador Semanal (Opção B - Centralizar seleção de dias no Organizador)
+- [x] **Mover a seleção detalhada dos dias da semana do card para o `PlannerDrawer`**
+  - **Motivação:** O botão no card passa a funcionar como *toggle rápido* ("Adicionar/Remover do Planejador"), enquanto a definição exata dos dias (Segunda, Terça, etc.) e ajuste de porções é feita de forma centralizada e confortável no `PlannerDrawer`.
+  - **Vantagens:** Melhora significativa da UX em mobile, elimina popovers flutuantes no grid e alinha com a abertura do organizador que já ocorre antes de gerar a lista de compras.
+  - **Critério de pronto:** Clique simples no card altera estado no planejador; no `PlannerDrawer`, cada item possui seletor/dropdown para trocar de dia.
+
 ---
 
 ## P3 — Polimento
