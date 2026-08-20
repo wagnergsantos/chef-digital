@@ -12,8 +12,6 @@ export function PlannerDrawer({
     onClearPlanner,
     onGenerateConsolidated
 }) {
-    if (!isOpen) return null;
-
     const totalPlanned = getAllPlannedEntries(plannedByDay).length;
 
     return (
@@ -23,20 +21,24 @@ export function PlannerDrawer({
                 onClick={onClose}
                 aria-hidden="true"
             />
-            <aside className="drawer open" id="planner-drawer" role="dialog" aria-label="Menu Semanal Planejado">
+            <aside className={`drawer ${isOpen ? 'open' : ''}`} id="planner-drawer" role="dialog" aria-label="Menu Semanal Planejado">
                 <div className="drawer-header">
-                    <div className="drawer-header-title">
-                        <h3>Menu Semanal</h3>
-                        <span className="badge">{totalPlanned}</span>
+                    <div className="drawer-header-title planner-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <h3 id="planner-drawer-title">Menu da Semana</h3>
                     </div>
                     <div className="drawer-header-actions">
                         {totalPlanned > 0 && (
-                            <button type="button" onClick={onClearPlanner} className="btn-secondary danger-text" title="Limpar todo o menu semanal">
-                                Limpar
+                            <button type="button" onClick={onClearPlanner} className="drawer-clear-btn" aria-label="Limpar menu semanal">
+                                Limpar Menu
                             </button>
                         )}
-                        <button type="button" onClick={onClose} className="drawer-close-btn" aria-label="Fechar Menu Semanal">
-                            ✕
+                        <button type="button" onClick={onClose} className="drawer-close-btn" title="Fechar" aria-label="Fechar menu semanal">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -152,11 +154,14 @@ export function PlannerDrawer({
                         <button
                             type="button"
                             onClick={onGenerateConsolidated}
-                            className="btn-primary"
-                            style={{ width: '100%', justifyContent: 'center', gap: '8px', padding: '12px' }}
+                            className="btn-large btn-large-success"
                         >
-                            🛒 Gerar Lista de Compras ({totalPlanned})
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                            </svg>
+                            <span>Consolidar Lista de Compras</span>
                         </button>
+                        <p className="drawer-footer-tip">Essa ação junta e soma as quantidades de ingredientes das receitas planejadas na sua lista de compras, sem apagar seus outros itens!</p>
                     </div>
                 )}
             </aside>

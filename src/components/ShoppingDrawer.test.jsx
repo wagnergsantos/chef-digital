@@ -4,9 +4,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { ShoppingDrawer } from './ShoppingDrawer.jsx';
 
 describe('ShoppingDrawer component', () => {
-    it('nao renderiza quando isOpen e false', () => {
+    it('nao exibe o drawer quando isOpen e false', () => {
         const { container } = render(<ShoppingDrawer isOpen={false} />);
-        expect(container.firstChild).toBeNull();
+        const drawer = container.querySelector('#shopping-list-drawer');
+        expect(drawer).not.toHaveClass('open');
     });
 
     it('renderiza lista de compras com itens e reage ao clique de marcar/desmarcar', () => {

@@ -5,9 +5,10 @@ import { PlannerDrawer } from './PlannerDrawer.jsx';
 import { createEmptyPlannedByDay } from '../logic/planner.js';
 
 describe('PlannerDrawer component', () => {
-    it('nao renderiza quando isOpen e false', () => {
+    it('nao exibe o drawer quando isOpen e false', () => {
         const { container } = render(<PlannerDrawer isOpen={false} />);
-        expect(container.firstChild).toBeNull();
+        const drawer = container.querySelector('#planner-drawer');
+        expect(drawer).not.toHaveClass('open');
     });
 
     it('renderiza estado vazio quando nao ha receitas no menu', () => {

@@ -11,13 +11,17 @@ export function ShoppingDrawer({
     onCopyList,
     onGenerateConsolidated
 }) {
-    if (!isOpen) return null;
-
     const totalItems = countShoppingItems(shoppingList);
     const recipeKeys = Object.keys(shoppingList);
 
     return (
-        <aside className="drawer open" id="shopping-list-drawer" role="dialog" aria-label="Lista de Compras">
+        <>
+            <div
+                className={`drawer-backdrop ${isOpen ? 'active' : ''}`}
+                onClick={onClose}
+                aria-hidden="true"
+            />
+            <aside className={`drawer ${isOpen ? 'open' : ''}`} id="shopping-list-drawer" role="dialog" aria-label="Lista de Compras">
             <div className="drawer-header">
                 <div className="drawer-header-title">
                     <h3>Lista de Compras</h3>
@@ -121,5 +125,6 @@ export function ShoppingDrawer({
                 )}
             </div>
         </aside>
-    );
+    </>
+);
 }
