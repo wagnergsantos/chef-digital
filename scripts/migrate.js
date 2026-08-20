@@ -37,7 +37,7 @@ function normalizeCategory(category) {
 async function migrate() {
   console.log('Iniciando migração...');
   
-  const receitasJsPath = path.resolve('receitas.js');
+  const receitasJsPath = path.resolve('scripts/legacy/receitas.js');
   const tempJsPath = path.resolve('scripts/temp_receitas.js');
   
   const jsContent = fs.readFileSync(receitasJsPath, 'utf8');

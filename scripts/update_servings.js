@@ -24,7 +24,7 @@ async function updateServings() {
   console.log('Iniciando atualização do campo servings...');
 
   // 1. Importa os dados do arquivo receitas.js de forma robusta
-  const receitasJsPath = path.resolve(__dirname, '../receitas.js');
+  const receitasJsPath = path.resolve(__dirname, 'legacy/receitas.js');
   const tempJsPath = path.resolve(__dirname, 'temp_receitas_update.js');
 
   const jsContent = fs.readFileSync(receitasJsPath, 'utf8');
