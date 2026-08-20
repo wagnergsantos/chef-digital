@@ -1,0 +1,51 @@
+.recipesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 600px) {
+    .recipesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .recipesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.emptyState {
+    text-align: center;
+    padding: 64px 24px;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 2px dashed var(--border-dark);
+}
+
+.emptyStateIcon {
+    display: inline-flex;
+    padding: 16px;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: 16px;
+}
+
+.emptyStateIcon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.emptyState h3 {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.emptyState p {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}

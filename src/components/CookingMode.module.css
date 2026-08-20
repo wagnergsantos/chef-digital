@@ -1,0 +1,335 @@
+.cookingOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-card);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s var(--ease-out-quart);
+}
+
+.cookingOverlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cookingHeader {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cookingHeaderTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cookingTitle {
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cookingCloseBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.cookingCloseBtn:hover {
+    background-color: var(--border-dark);
+    color: var(--text-main);
+}
+
+.cookingCloseBtn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.cookingProgressContainer {
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.cookingProgressBar {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s var(--ease-out-quart);
+}
+
+.cookingProgressText {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.cookingMain {
+    flex-grow: 1;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.cookingStepCard {
+    max-width: 680px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+}
+
+.cookingStepHeaderRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookingStepCounter {
+    font-size: var(--text-xs);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary-hover);
+    background-color: var(--primary-light);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+.cookingStepText {
+    font-size: var(--text-xl);
+    line-height: 1.6;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+@media (min-width: 640px) {
+    .cookingStepText {
+        font-size: var(--text-2xl);
+    }
+}
+
+.cookingStepTimerContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.cookingTimerBtn {
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cookingTimerBtn:hover {
+    transform: scale(1.03);
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.cookingTimerCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-light);
+    border: 2px solid var(--primary-color);
+}
+
+.cookingTimerCard.timerFinished {
+    border-color: var(--danger-color);
+    animation: pulse 1s infinite;
+}
+
+.timerDisplayTime {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    font-mono: monospace;
+    color: var(--text-main);
+}
+
+.timerCardActions {
+    display: flex;
+    gap: 8px;
+}
+
+.timerActionBtn {
+    padding: 6px 14px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+.btnPause {
+    background-color: var(--warning-light, #fef3c7);
+    color: var(--warning-hover, #d97706);
+}
+
+.btnStart {
+    background-color: var(--success-light);
+    color: var(--success-hover);
+}
+
+.btnReset {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.cookingFooter {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.cookingNavBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.cookingBtnPrev {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.cookingBtnPrev:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.cookingBtnNext {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.cookingBtnNext.cookingBtnFinish {
+    background-color: var(--success-color);
+}
+
+.cookingSpeechBtn,
+.cookingDrawerToggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--text-main);
+    transition: background-color var(--transition-fast);
+}
+
+.cookingSpeechBtn.speaking {
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    border-color: var(--primary-light-border);
+}
+
+.cookingIngredientsDrawer {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    width: calc(100% - 32px);
+    max-width: 500px;
+    max-height: 50vh;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s var(--ease-out-quart), opacity 0.25s var(--ease-out-quart);
+    z-index: 110;
+}
+
+.cookingIngredientsDrawer.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.cookingDrawerHeader {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cookingDrawerHeader h3 {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.cookingDrawerClose {
+    color: var(--text-light);
+}
+
+.cookingIngredientsList {
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.cookingIngredientItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    padding: 6px 0;
+    border-bottom: 1px var(--border-color) dashed;
+}
+
+.cookingIngName {
+    color: var(--text-main);
+}
+
+.cookingIngQty {
+    color: var(--primary-hover);
+}

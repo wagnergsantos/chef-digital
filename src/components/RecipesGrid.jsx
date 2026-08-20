@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { filterRecipesList } from '../logic/recipes-filter.js';
 import { isRecipePlanned } from '../logic/planner.js';
 import { RecipeCard } from './RecipeCard.jsx';
+import styles from './RecipesGrid.module.css';
 
 export function RecipesGrid({
     recipes = [],
@@ -63,7 +64,7 @@ export function RecipesGrid({
 
     if (filteredRecipes.length === 0) {
         return (
-            <div id="empty-state" className="empty-state">
+            <div id="empty-state" className={styles.emptyState}>
                 <p>Nenhuma receita encontrada para os filtros selecionados.</p>
             </div>
         );
@@ -72,7 +73,7 @@ export function RecipesGrid({
     const visibleRecipes = filteredRecipes.slice(0, displayedCount);
 
     return (
-        <div id="recipes-grid" className="recipes-grid">
+        <div id="recipes-grid" className={styles.recipesGrid}>
             {visibleRecipes.map((recipe, index) => (
                 <RecipeCard
                     key={recipe.id}
@@ -104,3 +105,4 @@ export function RecipesGrid({
         </div>
     );
 }
+

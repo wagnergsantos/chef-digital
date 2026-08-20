@@ -3,6 +3,7 @@ import { parseStepTimer } from '../logic/recipes.js';
 import { formatTimerDisplay, recordRecipeCompletionHistory } from '../logic/cooking.js';
 import { STORAGE_KEYS } from '../logic/storage.js';
 import { useFocusTrap } from '../hooks/useFocusTrap.js';
+import styles from './CookingMode.module.css';
 
 export function CookingMode({
     isOpen,
@@ -194,50 +195,50 @@ export function CookingMode({
     };
 
     return (
-        <div ref={overlayRef} className={`cooking-overlay ${isOpen ? 'open' : ''}`} id="cooking-mode-overlay" role="dialog" aria-modal="true" aria-labelledby="cooking-title">
+        <div ref={overlayRef} className={`${styles.cookingOverlay} ${isOpen ? styles.open : ''}`} id="cooking-mode-overlay" role="dialog" aria-modal="true" aria-labelledby="cooking-title">
             {/* Header */}
-            <header className="cooking-header">
-                <div className="cooking-header-top">
-                    <h2 id="cooking-title" className="cooking-title">{recipe.title || 'Modo Preparo'}</h2>
-                    <button id="cooking-close-btn" type="button" onClick={onClose} className="cooking-close-btn" title="Sair do Modo Preparo" aria-label="Sair do Modo Preparo">
+            <header className={styles.cookingHeader}>
+                <div className={styles.cookingHeaderTop}>
+                    <h2 id="cooking-title" className={styles.cookingTitle}>{recipe.title || 'Modo Preparo'}</h2>
+                    <button id="cooking-close-btn" type="button" onClick={onClose} className={styles.cookingCloseBtn} title="Sair do Modo Preparo" aria-label="Sair do Modo Preparo">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                         </svg>
                     </button>
                 </div>
-                <div className="cooking-progress-container">
-                    <div id="cooking-progress-bar" className="cooking-progress-bar" style={{ width: `${percentage}%` }}></div>
+                <div className={styles.cookingProgressContainer}>
+                    <div id="cooking-progress-bar" className={styles.cookingProgressBar} style={{ width: `${percentage}%` }}></div>
                 </div>
-                <div id="cooking-progress-text" className="cooking-progress-text">Passo {currentStepIndex + 1} de {totalSteps} ({percentage}%)</div>
+                <div id="cooking-progress-text" className={styles.cookingProgressText}>Passo {currentStepIndex + 1} de {totalSteps} ({percentage}%)</div>
             </header>
 
             {/* Main Step Area */}
-            <main className="cooking-main">
-                <div className="cooking-step-card">
-                    <div className="cooking-step-header-row">
-                        <span id="cooking-step-counter" className="cooking-step-counter">Passo {currentStepIndex + 1} de {totalSteps}</span>
+            <main className={styles.cookingMain}>
+                <div className={styles.cookingStepCard}>
+                    <div className={styles.cookingStepHeaderRow}>
+                        <span id="cooking-step-counter" className={styles.cookingStepCounter}>Passo {currentStepIndex + 1} de {totalSteps}</span>
                     </div>
 
-                    <p id="cooking-step-text" className="cooking-step-text">{currentStepText}</p>
+                    <p id="cooking-step-text" className={styles.cookingStepText}>{currentStepText}</p>
 
                     {activeTimer && (
-                        <div id="cooking-step-timer-container" className="cooking-step-timer-container">
+                        <div id="cooking-step-timer-container" className={styles.cookingStepTimerContainer}>
                             {!activeTimer.isRunning && activeTimer.remainingSeconds === activeTimer.totalSeconds ? (
-                                <button type="button" className="cooking-timer-btn" onClick={handleTimerStart}>
+                                <button type="button" className={styles.cookingTimerBtn} onClick={handleTimerStart}>
                                     ⏱️ Iniciar Timer ({activeTimer.displayMinutes} min)
                                 </button>
                             ) : (
-                                <div className={`cooking-timer-card ${activeTimer.remainingSeconds === 0 ? 'timer-finished' : ''}`}>
-                                    <div className="timer-display-time">{formatTimerDisplay(activeTimer.remainingSeconds)}</div>
-                                    <div className="timer-card-actions">
+                                <div className={`${styles.cookingTimerCard} ${activeTimer.remainingSeconds === 0 ? styles.timerFinished : ''}`}>
+                                    <div className={styles.timerDisplayTime}>{formatTimerDisplay(activeTimer.remainingSeconds)}</div>
+                                    <div className={styles.timerCardActions}>
                                         {activeTimer.isRunning ? (
-                                            <button type="button" className="timer-action-btn btn-pause" onClick={handleTimerPause}>Pausar</button>
+                                            <button type="button" className={`${styles.timerActionBtn} ${styles.btnPause}`} onClick={handleTimerPause}>Pausar</button>
                                         ) : (
                                             activeTimer.remainingSeconds > 0 && (
-                                                <button type="button" className="timer-action-btn btn-start" onClick={handleTimerStart}>Retomar</button>
+                                                <button type="button" className={`${styles.timerActionBtn} ${styles.btnStart}`} onClick={handleTimerStart}>Retomar</button>
                                             )
                                         )}
-                                        <button type="button" className="timer-action-btn btn-reset" onClick={handleTimerReset}>Reiniciar</button>
+                                        <button type="button" className={`${styles.timerActionBtn} ${styles.btnReset}`} onClick={handleTimerReset}>Reiniciar</button>
                                     </div>
                                 </div>
                             )}
@@ -247,13 +248,13 @@ export function CookingMode({
             </main>
 
             {/* Footer / Navigation Controls */}
-            <footer className="cooking-footer">
+            <footer className={styles.cookingFooter}>
                 <button
                     id="cooking-prev-btn"
                     type="button"
                     onClick={handlePrev}
                     disabled={currentStepIndex === 0}
-                    className="cooking-nav-btn cooking-btn-prev"
+                    className={`${styles.cookingNavBtn} ${styles.cookingBtnPrev}`}
                     aria-label="Passo Anterior"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" width="20" height="20">
@@ -267,7 +268,7 @@ export function CookingMode({
                         id="cooking-speech-btn"
                         type="button"
                         onClick={toggleSpeech}
-                        className={`cooking-speech-btn ${isSpeaking ? 'speaking' : ''}`}
+                        className={`${styles.cookingSpeechBtn} ${isSpeaking ? styles.speaking : ''}`}
                         title="Ouvir instrução por voz"
                         aria-label="Ouvir instrução em voz alta"
                     >
@@ -281,7 +282,7 @@ export function CookingMode({
                         id="cooking-drawer-toggle"
                         type="button"
                         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-                        className="cooking-drawer-toggle"
+                        className={styles.cookingDrawerToggle}
                         aria-label="Ver Ingredientes"
                         aria-expanded={isDrawerOpen}
                     >
@@ -296,7 +297,7 @@ export function CookingMode({
                     id="cooking-next-btn"
                     type="button"
                     onClick={handleNext}
-                    className={`cooking-nav-btn cooking-btn-next ${currentStepIndex === totalSteps - 1 ? 'cooking-btn-finish' : ''}`}
+                    className={`${styles.cookingNavBtn} ${styles.cookingBtnNext} ${currentStepIndex === totalSteps - 1 ? styles.cookingBtnFinish : ''}`}
                     aria-label={currentStepIndex === totalSteps - 1 ? 'Concluir preparo' : 'Próximo Passo'}
                 >
                     <span>{currentStepIndex === totalSteps - 1 ? 'Concluir' : 'Próximo'}</span>
@@ -307,23 +308,23 @@ export function CookingMode({
             </footer>
 
             {/* Floating Ingredients Drawer */}
-            <div id="cooking-ingredients-drawer" className={`cooking-ingredients-drawer ${isDrawerOpen ? 'open' : ''}`} aria-label="Painel de Ingredientes">
-                <div className="cooking-drawer-header">
+            <div id="cooking-ingredients-drawer" className={`${styles.cookingIngredientsDrawer} ${isDrawerOpen ? styles.open : ''}`} aria-label="Painel de Ingredientes">
+                <div className={styles.cookingDrawerHeader}>
                     <h3>Ingredientes</h3>
-                    <button type="button" onClick={() => setIsDrawerOpen(false)} className="cooking-drawer-close" aria-label="Fechar painel de ingredientes">
+                    <button type="button" onClick={() => setIsDrawerOpen(false)} className={styles.cookingDrawerClose} aria-label="Fechar painel de ingredientes">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20" aria-hidden="true">
                             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                         </svg>
                     </button>
                 </div>
-                <ul id="cooking-ingredients-list" className="cooking-ingredients-list">
+                <ul id="cooking-ingredients-list" className={styles.cookingIngredientsList}>
                     {(recipe.ingredients || []).map((ing, idx) => (
-                        <li key={idx} className="cooking-ingredient-item">
-                            <span className="cooking-ing-name">{ing.name}</span>
+                        <li key={idx} className={styles.cookingIngredientItem}>
+                            <span className={styles.cookingIngName}>{ing.name}</span>
                             {ing.qty !== null && ing.qty !== undefined ? (
-                                <strong className="cooking-ing-qty">{Number(ing.qty.toFixed(2))} {ing.unit || ''}</strong>
+                                <strong className={styles.cookingIngQty}>{Number(ing.qty.toFixed(2))} {ing.unit || ''}</strong>
                             ) : (
-                                ing.unit && <strong className="cooking-ing-qty">{ing.unit}</strong>
+                                ing.unit && <strong className={styles.cookingIngQty}>{ing.unit}</strong>
                             )}
                         </li>
                     ))}
@@ -332,3 +333,4 @@ export function CookingMode({
         </div>
     );
 }
+

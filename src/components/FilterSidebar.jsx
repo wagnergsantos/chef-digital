@@ -1,5 +1,6 @@
 import React from 'react';
 import { matchRecipeSearch, recipeHasAnyPantryIngredient } from '../logic/recipes-filter.js';
+import styles from './FilterSidebar.module.css';
 
 export function FilterSidebar({
     recipes = [],
@@ -67,24 +68,24 @@ export function FilterSidebar({
         activeTags.length > 0;
 
     return (
-        <aside className="sidebar">
-            <div className="sidebar-sticky">
+        <aside className={styles.sidebar}>
+            <div className={styles.sidebarSticky}>
                 <div>
-                    <span className="sidebar-title">Buscar</span>
-                    <div className="search-box">
+                    <span className={styles.sidebarTitle}>Buscar</span>
+                    <div className={styles.searchBox}>
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => onSearchChange(e.target.value)}
                             placeholder="Buscar por título ou ingrediente…"
-                            className="search-input"
+                            className={styles.searchInput}
                             aria-label="Buscar receitas por título ou ingrediente"
                         />
                         {searchQuery.length > 0 && (
                             <button
                                 type="button"
                                 onClick={() => onSearchChange('')}
-                                className="search-clear-btn"
+                                className={styles.searchClearBtn}
                                 title="Limpar busca"
                                 aria-label="Limpar busca"
                             >
@@ -95,8 +96,8 @@ export function FilterSidebar({
                 </div>
 
                 <div>
-                    <span className="sidebar-title">Categorias</span>
-                    <div className="categories-filter-list" id="category-filters">
+                    <span className={styles.sidebarTitle}>Categorias</span>
+                    <div className={styles.categoriesFilterList} id="category-filters">
                         {sortedCategoryKeys.map(key => {
                             const count = categoryCounts[key] || 0;
                             if (count === 0 && key !== 'todos' && key !== activeCategory) return null;
@@ -104,11 +105,11 @@ export function FilterSidebar({
                                 <button
                                     key={key}
                                     type="button"
-                                    className={`category-filter-btn ${activeCategory === key ? 'active' : ''}`}
+                                    className={`${styles.categoryFilterBtn} ${activeCategory === key ? styles.active : ''}`}
                                     onClick={() => onSelectCategory(key)}
                                 >
                                     <span>{categories[key]}</span>
-                                    <span className="category-filter-badge">{count}</span>
+                                    <span className={styles.categoryFilterBadge}>{count}</span>
                                 </button>
                             );
                         })}
@@ -116,8 +117,8 @@ export function FilterSidebar({
                 </div>
 
                 <div>
-                    <span className="sidebar-title">Tags</span>
-                    <div className="tags-filter-list" id="tag-filters">
+                    <span className={styles.sidebarTitle}>Tags</span>
+                    <div className={styles.tagsFilterList} id="tag-filters">
                         {sortedTagKeys.map(key => {
                             const count = tagCounts[key] || 0;
                             const isActive = activeTags.includes(key);
@@ -126,11 +127,11 @@ export function FilterSidebar({
                                 <button
                                     key={key}
                                     type="button"
-                                    className={`tag-filter-btn ${isActive ? 'active' : ''}`}
+                                    className={`${styles.tagFilterBtn} ${isActive ? styles.active : ''}`}
                                     onClick={() => onToggleTag(key)}
                                 >
                                     <span>{tagsMap[key]}</span>
-                                    <span className="tag-filter-badge">{count}</span>
+                                    <span className={styles.tagFilterBadge}>{count}</span>
                                 </button>
                             );
                         })}
@@ -141,7 +142,7 @@ export function FilterSidebar({
                     <button
                         type="button"
                         onClick={onClearFilters}
-                        className="clear-filters-btn"
+                        className={styles.clearFiltersBtn}
                         title="Limpar todos os filtros ativos"
                         aria-label="Limpar todos os filtros ativos"
                     >
@@ -152,3 +153,4 @@ export function FilterSidebar({
         </aside>
     );
 }
+

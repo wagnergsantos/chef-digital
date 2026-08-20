@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { scaleIngredientQty } from '../logic/recipes.js';
 import { isRecipePlanned } from '../logic/planner.js';
 import { useFocusTrap } from '../hooks/useFocusTrap.js';
+import styles from './RecipeModal.module.css';
 
 export function RecipeModal({
     isOpen,
@@ -60,17 +61,17 @@ export function RecipeModal({
     return (
         <div
             ref={modalRef}
-            className="modal-overlay open"
+            className={`${styles.modalOverlay} ${styles.open}`}
             id="recipe-modal"
             role="dialog"
             aria-modal="true"
             aria-label={`Receita: ${recipe.title}`}
             onClick={(e) => e.target.id === 'recipe-modal' && onClose()}
         >
-            <div className="modal-container">
+            <div className={styles.modalContainer}>
                 {/* Banner com Botões no Topo e Título abaixo */}
                 <div
-                    className={`modal-header-banner ${recipe.image ? 'has-image' : ''}`}
+                    className={`${styles.modalHeaderBanner} ${recipe.image ? styles.hasImage : ''}`}
                     style={recipe.image ? { backgroundImage: `url('${recipe.image}')` } : undefined}
                 >
                     {/* Linha Superior: Badges à Esquerda, Ferramentas à Direita */}
@@ -82,23 +83,23 @@ export function RecipeModal({
                         width: '100%',
                         marginBottom: '12px'
                     }}>
-                        <div className="modal-badges" style={{ marginBottom: 0 }}>
-                            <span id="modal-category-badge" className="modal-badge-cat">{catText}</span>
-                            {recipe.servings && <span id="modal-servings-badge" className="modal-badge-src">🍽️ Rende: {recipe.servings}</span>}
-                            {recipe.prep_time && <span className="modal-badge-src">⏱️ Preparo: {recipe.prep_time} min</span>}
-                            {recipe.cook_time && <span className="modal-badge-src">🍳 Fogo: {recipe.cook_time} min</span>}
+                        <div className={styles.modalBadges} style={{ marginBottom: 0 }}>
+                            <span id="modal-category-badge" className={styles.modalBadgeCat}>{catText}</span>
+                            {recipe.servings && <span id="modal-servings-badge" className={styles.modalBadgeSrc}>🍽️ Rende: {recipe.servings}</span>}
+                            {recipe.prep_time && <span className={styles.modalBadgeSrc}>⏱️ Preparo: {recipe.prep_time} min</span>}
+                            {recipe.cook_time && <span className={styles.modalBadgeSrc}>🍳 Fogo: {recipe.cook_time} min</span>}
                             {historyRecord && historyRecord.count > 0 && historyRecord.lastCooked && (
-                                <span className="modal-badge-history">
+                                <span className={styles.modalBadgeHistory}>
                                     👨‍🍳 Preparado {historyRecord.count}x ({new Date(historyRecord.lastCooked).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})
                                 </span>
                             )}
                         </div>
 
-                        <div className="modal-header-tools" style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+                        <div className={styles.modalHeaderTools} style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
                             <button
                                 type="button"
                                 onClick={() => { onClose(); onStartCooking(recipe); }}
-                                className="modal-start-cooking-btn"
+                                className={styles.modalStartCookingBtn}
                                 title="Iniciar Modo Preparo passo a passo"
                                 aria-label="Iniciar Modo Preparo"
                             >
@@ -111,7 +112,7 @@ export function RecipeModal({
                             <button
                                 type="button"
                                 onClick={() => onTogglePlanner(recipe.id)}
-                                className={`modal-planner-btn ${isPlanned ? 'planned-active' : ''}`}
+                                className={`${styles.modalPlannerBtn} ${isPlanned ? styles.plannedActive : ''}`}
                                 title={isPlanned ? 'Remover do Planejamento' : 'Planejar essa refeição'}
                                 aria-label="Planejar essa refeição"
                                 aria-pressed={isPlanned}
@@ -123,7 +124,7 @@ export function RecipeModal({
                             <button
                                 type="button"
                                 onClick={() => onAddIngredientsToShopping(recipe.id, portions)}
-                                className="modal-shopping-btn"
+                                className={styles.modalShoppingBtn}
                                 title="Adicionar tudo à lista de compras"
                                 aria-label="Adicionar todos os ingredientes à lista de compras"
                             >
@@ -134,7 +135,7 @@ export function RecipeModal({
                             <button
                                 type="button"
                                 onClick={() => onShare(recipe)}
-                                className="modal-share-btn"
+                                className={styles.modalShareBtn}
                                 title="Compartilhar receita"
                                 aria-label="Compartilhar receita"
                             >
@@ -142,7 +143,7 @@ export function RecipeModal({
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                                 </svg>
                             </button>
-                            <button type="button" onClick={onClose} className="modal-close-btn" title="Fechar" aria-label="Fechar receita">
+                            <button type="button" onClick={onClose} className={styles.modalCloseBtn} title="Fechar" aria-label="Fechar receita">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                                 </svg>
@@ -155,19 +156,19 @@ export function RecipeModal({
                 </div>
 
                 {/* Corpo do Modal em 2 Colunas */}
-                <div className="modal-body">
+                <div className={styles.modalBody}>
                     {/* Coluna 1: Ingredientes */}
-                    <div className="modal-col-left">
-                        <div className="modal-section-title-wrapper">
+                    <div className={styles.modalColLeft}>
+                        <div className={styles.modalSectionTitleWrapper}>
                             <h4>Ingredientes</h4>
-                            <div className="portion-controls">
-                                <button type="button" onClick={() => handlePortionsChange(-1)} className="portion-btn" aria-label="Diminuir porções">-</button>
-                                <span className="portion-value">{isServingsMode ? `${portions} pessoas` : `${portions}x`}</span>
-                                <button type="button" onClick={() => handlePortionsChange(1)} className="portion-btn" aria-label="Aumentar porções">+</button>
+                            <div className={styles.portionControls}>
+                                <button type="button" onClick={() => handlePortionsChange(-1)} className={styles.portionBtn} aria-label="Diminuir porções">-</button>
+                                <span className={styles.portionValue}>{isServingsMode ? `${portions} pessoas` : `${portions}x`}</span>
+                                <button type="button" onClick={() => handlePortionsChange(1)} className={styles.portionBtn} aria-label="Aumentar porções">+</button>
                             </div>
                         </div>
 
-                        <ul id="modal-ingredients-list" className="modal-ingredients-ul">
+                        <ul id="modal-ingredients-list" className={styles.modalIngredientsUl}>
                             {(recipe.ingredients || []).map((ing, idx) => {
                                 let qtyDisplay = null;
                                 if (ing.qty !== null && ing.qty !== undefined) {
@@ -179,7 +180,7 @@ export function RecipeModal({
                                 }
 
                                 return (
-                                    <li key={`${ing.name}-${idx}`} className="modal-ingredients-li">
+                                    <li key={`${ing.name}-${idx}`} className={styles.modalIngredientsLi}>
                                         <span className="ing-bullet" aria-hidden="true">•</span>
                                         <div className="ing-details-row">
                                             <span className="ing-name">{ing.name}</span>
@@ -192,25 +193,25 @@ export function RecipeModal({
                     </div>
 
                     {/* Coluna 2: Modo de Preparo */}
-                    <div className="modal-col-right">
-                        <div className="modal-section-title-wrapper">
+                    <div className={styles.modalColRight}>
+                        <div className={styles.modalSectionTitleWrapper}>
                             <h4>Modo de Preparo</h4>
                         </div>
-                        <ol id="modal-steps-list" className="modal-steps-ol">
+                        <ol id="modal-steps-list" className={styles.modalStepsOl}>
                             {(recipe.steps || []).map((step, idx) => {
                                 const isDone = completedSteps.has(idx);
                                 return (
                                     <li
                                         key={idx}
-                                        className={`modal-step-li ${isDone ? 'completed' : ''}`}
+                                        className={`${styles.modalStepLi} ${isDone ? `completed ${styles.completed}` : ''}`}
                                         role="checkbox"
                                         aria-checked={isDone}
                                         tabIndex={0}
                                         onClick={() => toggleStep(idx)}
                                         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleStep(idx))}
                                     >
-                                        <span className="step-number">{idx + 1}</span>
-                                        <p className="step-text">{step}</p>
+                                        <span className={styles.stepNumber}>{idx + 1}</span>
+                                        <p className={styles.stepText}>{step}</p>
                                     </li>
                                 );
                             })}
@@ -235,3 +236,4 @@ export function RecipeModal({
         </div>
     );
 }
+

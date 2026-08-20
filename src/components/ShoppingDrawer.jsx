@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { countShoppingItems } from '../logic/shopping.js';
 import { useFocusTrap } from '../hooks/useFocusTrap.js';
+import drawerStyles from './DrawerShell.module.css';
+import styles from './ShoppingDrawer.module.css';
 
 export function ShoppingDrawer({
     isOpen,
@@ -21,37 +23,37 @@ export function ShoppingDrawer({
     return (
         <>
             <div
-                className={`drawer-backdrop ${isOpen ? 'active' : ''}`}
+                className={`${drawerStyles.drawerBackdrop} ${isOpen ? drawerStyles.active : ''}`}
                 onClick={onClose}
                 aria-hidden="true"
             />
             <aside
                 ref={drawerRef}
-                className={`drawer ${isOpen ? 'open' : ''}`}
+                className={`${drawerStyles.drawer} ${isOpen ? drawerStyles.open : ''}`}
                 id="shopping-list-drawer"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Lista de Compras"
             >
-            <div className="drawer-header">
-                <div className="drawer-header-title shopping-title">
+            <div className={drawerStyles.drawerHeader}>
+                <div className={`${drawerStyles.drawerHeaderTitle} ${drawerStyles.shoppingTitle}`}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                     </svg>
                     <h3 id="shopping-drawer-title">Lista de Compras</h3>
                     {totalItems > 0 && (
-                        <span className="drawer-item-count-badge" aria-label={`${totalItems} itens na lista`}>
+                        <span className={drawerStyles.drawerItemCountBadge} aria-label={`${totalItems} itens na lista`}>
                             {totalItems}
                         </span>
                     )}
                 </div>
-                <div className="drawer-header-actions">
+                <div className={drawerStyles.drawerHeaderActions}>
                     {recipeKeys.length > 0 && (
-                        <button type="button" onClick={onClearList} className="drawer-clear-btn" aria-label="Limpar lista de compras">
+                        <button type="button" onClick={onClearList} className={drawerStyles.drawerClearBtn} aria-label="Limpar lista de compras">
                             Limpar Tudo
                         </button>
                     )}
-                    <button type="button" onClick={onClose} className="drawer-close-btn" title="Fechar" aria-label="Fechar lista de compras">
+                    <button type="button" onClick={onClose} className={drawerStyles.drawerCloseBtn} title="Fechar" aria-label="Fechar lista de compras">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                         </svg>
@@ -59,11 +61,11 @@ export function ShoppingDrawer({
                 </div>
             </div>
 
-            <div className="drawer-content" id="shopping-list-items">
+            <div className={drawerStyles.drawerContent} id="shopping-list-items">
                 {recipeKeys.length === 0 ? (
-                    <div className="drawer-empty-state">
+                    <div className={drawerStyles.drawerEmptyState}>
                         <p>Sua lista está vazia!</p>
-                        <p className="sub">Abra uma receita e adicione ingredientes clicando no botão de lista ou gere a lista consolidada pelo menu semanal.</p>
+                        <p className={drawerStyles.sub}>Abra uma receita e adicione ingredientes clicando no botão de lista ou gere a lista consolidada pelo menu semanal.</p>
                         {onGenerateConsolidated && (
                             <button type="button" onClick={onGenerateConsolidated} className="btn-primary mt-4">
                                 Gerar do Menu Semanal
@@ -76,13 +78,13 @@ export function ShoppingDrawer({
                         if (!Array.isArray(items) || items.length === 0) return null;
 
                         return (
-                            <div key={recipeTitle} className="shopping-section">
-                                <div className="shopping-section-header">
+                            <div key={recipeTitle} className={styles.shoppingSection}>
+                                <div className={styles.shoppingSectionHeader}>
                                     <h4>{recipeTitle}</h4>
                                     <button
                                         type="button"
                                         onClick={() => onRemoveRecipeGroup(recipeTitle)}
-                                        className="drawer-card-remove"
+                                        className={drawerStyles.drawerCardRemove}
                                         title="Remover grupo de compras"
                                         aria-label={`Remover grupo de compras de ${recipeTitle}`}
                                     >
@@ -92,7 +94,7 @@ export function ShoppingDrawer({
                                     </button>
                                 </div>
 
-                                <ul className="shopping-list-items-wrapper">
+                                <ul className={styles.shoppingListItemsWrapper}>
                                     {items.map((item, index) => {
                                         let displayQty = '';
                                         if (item.qty !== null && item.qty !== undefined) {
@@ -103,9 +105,9 @@ export function ShoppingDrawer({
                                         }
 
                                         return (
-                                            <li key={`${recipeTitle}-${index}`} className="shopping-item-li">
+                                            <li key={`${recipeTitle}-${index}`} className={styles.shoppingItemLi}>
                                                 <div
-                                                    className="shopping-checkbox-wrapper"
+                                                    className={styles.shoppingCheckboxWrapper}
                                                     onClick={() => onToggleItem(recipeTitle, index)}
                                                     role="checkbox"
                                                     aria-checked={Boolean(item.checked)}
@@ -118,16 +120,16 @@ export function ShoppingDrawer({
                                                     }}
                                                     aria-label={`${item.name}${displayQty}`}
                                                 >
-                                                    <div className={`shopping-checkbox ${item.checked ? 'checked' : ''}`}>
+                                                    <div className={`${styles.shoppingCheckbox} ${item.checked ? styles.checked : ''}`}>
                                                         {item.checked && (
                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                                             </svg>
                                                         )}
                                                     </div>
-                                                    <span className={`shopping-item-name ${item.checked ? 'checked' : ''}`}>
+                                                    <span className={`${styles.shoppingItemName} ${item.checked ? styles.checked : ''}`}>
                                                         {item.name}
-                                                        {displayQty && <span className="qty-span">{displayQty}</span>}
+                                                        {displayQty && <span className={styles.qtySpan}>{displayQty}</span>}
                                                     </span>
                                                 </div>
                                             </li>
@@ -141,11 +143,11 @@ export function ShoppingDrawer({
             </div>
 
             {recipeKeys.length > 0 && onCopyList && (
-                <div className="drawer-footer">
+                <div className={drawerStyles.drawerFooter}>
                     <button
                         type="button"
                         onClick={onCopyList}
-                        className="btn-large btn-large-primary"
+                        className={`${drawerStyles.btnLarge} ${drawerStyles.btnLargePrimary}`}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
@@ -158,3 +160,4 @@ export function ShoppingDrawer({
     </>
 );
 }
+

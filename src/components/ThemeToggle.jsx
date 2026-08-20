@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ThemeToggle.module.css';
 
 export function ThemeToggle({ theme, onToggle }) {
     const isDark = theme === 'dark';
@@ -8,7 +9,7 @@ export function ThemeToggle({ theme, onToggle }) {
         <button
             type="button"
             id="theme-toggle"
-            className="control-btn btn-theme"
+            className={`${styles.controlBtn} ${styles.btnTheme}`}
             onClick={onToggle}
             title={label}
             aria-label={label}
@@ -25,3 +26,4 @@ export function ThemeToggle({ theme, onToggle }) {
         </button>
     );
 }
+

@@ -1,0 +1,354 @@
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.24s var(--ease-out-quart);
+    pointer-events: none;
+}
+
+.modalOverlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalContainer {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 768px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: transform 0.3s var(--ease-out-quart), opacity 0.3s var(--ease-out-quart);
+}
+
+.modalOverlay.open .modalContainer {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modalHeaderBanner {
+    position: relative;
+    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, #f97316 100%);
+    padding: 24px;
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 140px;
+    gap: 12px;
+}
+
+.modalHeaderBanner.hasImage {
+    background-size: cover;
+    background-position: center;
+}
+
+.modalHeaderBanner.hasImage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.55) 100%);
+    z-index: 1;
+}
+
+.modalHeaderBanner > * {
+    position: relative;
+    z-index: 2;
+}
+
+.modalHeaderTools {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.modalCloseBtn,
+.modalWakelockBtn,
+.modalShareBtn,
+.modalPrintBtn,
+.modalShoppingBtn,
+.modalPlannerBtn {
+    position: static;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modalCloseBtn svg,
+.modalWakelockBtn svg,
+.modalShareBtn svg,
+.modalPrintBtn svg,
+.modalShoppingBtn svg,
+.modalPlannerBtn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.modalStartCookingBtn {
+    position: static;
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    border-radius: var(--radius-full);
+    padding: 0 12px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modalCloseBtn:hover,
+.modalWakelockBtn:hover,
+.modalShareBtn:hover,
+.modalPrintBtn:hover,
+.modalShoppingBtn:hover,
+.modalPlannerBtn:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    transform: scale(1.05);
+}
+
+.modalPlannerBtn.plannedActive {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--success-color);
+}
+
+.modalPlannerBtn.plannedActive:hover {
+    background-color: var(--text-white);
+}
+
+.modalBadges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.modalBadgeCat {
+    background-color: var(--primary-light);
+    color: var(--primary-active);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modalBadgeSrc {
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.modalBadgeHistory {
+    background-color: rgba(16, 185, 129, 0.25);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: #ecfdf5;
+}
+
+.modalHeaderBanner h3 {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+    .modalHeaderBanner h3 {
+        font-size: var(--text-3xl);
+    }
+}
+
+@media (max-width: 640px) {
+    .modalHeaderBanner {
+        padding: 16px;
+        min-height: 120px;
+    }
+}
+
+.modalBody {
+    flex-grow: 1;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 768px) {
+    .modalBody {
+        grid-template-columns: 5fr 7fr;
+    }
+}
+
+.modalSectionTitleWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.modalSectionTitleWrapper h4 {
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.modalColLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modalIngredientsUl {
+    max-width: 65ch;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modalIngredientsLi {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.modalColRight {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modalStepsOl {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modalStepLi {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.modalStepLi.completed {
+    opacity: 0.4;
+}
+
+.stepNumber {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    background-color: var(--primary-light);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color var(--transition-fast);
+}
+
+.modalStepLi:hover .stepNumber {
+    background-color: var(--primary-hover);
+    color: var(--text-white);
+}
+
+.stepText {
+    font-size: var(--text-sm);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.portionControls {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.portionBtn {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-sm);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.portionBtn:hover {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    transform: scale(1.05);
+}
+
+.portionBtn:active {
+    transform: scale(0.95);
+}
+
+.portionValue {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0 8px;
+    color: var(--text-main);
+}

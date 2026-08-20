@@ -1,0 +1,237 @@
+.drawerBackdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 45;
+    opacity: 0;
+    transition: opacity 0.28s var(--ease-out-quart);
+    pointer-events: none;
+}
+
+.drawerBackdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 420px;
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-xl);
+    z-index: 50;
+    transform: translate3d(100%, 0, 0);
+    will-change: transform;
+    transition: transform 0.32s var(--ease-out-quint);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer.open {
+    transform: translate3d(0, 0, 0);
+}
+
+.drawerHeader {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drawerHeaderTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.drawerHeaderTitle svg {
+    width: 22px;
+    height: 22px;
+}
+
+.drawerHeaderTitle.plannerTitle svg {
+    color: var(--success-color);
+}
+
+.drawerHeaderTitle.shoppingTitle svg {
+    color: var(--primary-color);
+}
+
+.drawerHeaderTitle h3 {
+    font-family: 'Playfair Display', Georgia, Cambria, serif;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.drawerHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawerClearBtn {
+    font-size: var(--text-xs);
+    color: var(--danger-color);
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.drawerClearBtn:hover {
+    background-color: var(--danger-light);
+}
+
+.drawerCloseBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    color: var(--text-light);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawerCloseBtn:hover {
+    background-color: var(--border-dark);
+    color: var(--text-main);
+    transform: scale(1.04);
+}
+
+.drawerCloseBtn:active {
+    transform: scale(0.96);
+}
+
+.drawerCloseBtn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.drawerContent {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.drawerEmptyState {
+    text-align: center;
+    padding: 48px 16px;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.drawerEmptyState p {
+    font-size: var(--text-sm);
+}
+
+.drawerEmptyState p.sub {
+    font-size: var(--text-xs);
+    color: var(--text-light);
+}
+
+.drawerCardRemove {
+    color: var(--text-light);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+}
+
+.drawerCardRemove:hover {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+}
+
+.drawerCardRemove svg {
+    width: 18px;
+    height: 18px;
+}
+
+.drawerFooter {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.btnLarge {
+    width: 100%;
+    padding: 14px;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+.btnLarge:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btnLarge:active {
+    transform: translateY(1px);
+}
+
+.btnLargeSuccess {
+    background-color: var(--success-color);
+    color: var(--btn-success-text);
+}
+
+.btnLargeSuccess:hover {
+    background-color: var(--success-hover);
+}
+
+.btnLargePrimary {
+    background-color: var(--primary-color);
+    color: var(--btn-primary-text);
+}
+
+.btnLargePrimary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btnLarge svg {
+    width: 18px;
+    height: 18px;
+}
+
+.drawerFooterTip {
+    font-size: var(--text-xs);
+    text-align: center;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+.drawerItemCountBadge {
+    font-size: var(--text-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    background-color: var(--bg-light);
+    color: var(--text-muted);
+    margin-left: 4px;
+}

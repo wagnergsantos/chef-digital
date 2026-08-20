@@ -1,6 +1,7 @@
 import React from 'react';
 import { getCardImageLoadingAttrs, buildRecipeCardAccessibleName } from '../logic/performance-guards.js';
 import { matchRecipeSearch, recipeIsFullyStocked } from '../logic/recipes-filter.js';
+import styles from './RecipeCard.module.css';
 
 export function RecipeCard({
     recipe,
@@ -34,7 +35,7 @@ export function RecipeCard({
 
     return (
         <div
-            className={`recipe-card ${isPlanned ? 'planned' : ''}`}
+            className={`${styles.recipeCard} ${isPlanned ? styles.planned : ''}`}
             role="button"
             tabIndex={0}
             aria-label={buildRecipeCardAccessibleName(recipe.title)}
@@ -46,11 +47,11 @@ export function RecipeCard({
                 }
             }}
         >
-            <div className={`card-header-graphic ${hasImg ? 'has-image' : ''}`}>
+            <div className={`${styles.cardHeaderGraphic} ${hasImg ? styles.hasImage : ''}`}>
                 {hasImg && (
                     <img
                         src={recipe.image}
-                        className="card-header-image"
+                        className={styles.cardHeaderImage}
                         alt={`Foto de ${safeTitle}`}
                         loading={imageAttrs.loading}
                         fetchPriority={imageAttrs.fetchpriority}
@@ -58,56 +59,56 @@ export function RecipeCard({
                         height="112"
                     />
                 )}
-                <span className="card-emoji" role="img" aria-label={`Emoji representativo de ${safeTitle}`}>
+                <span className={styles.cardEmoji} role="img" aria-label={`Emoji representativo de ${safeTitle}`}>
                     {safeEmoji}
                 </span>
-                <div className="card-badges-wrapper">
-                    {isPlanned && <span className="card-badge planned-badge">Planejado</span>}
-                    {isFullyStocked && <span className="card-badge pantry-badge">✅ Você tem tudo</span>}
-                    <span className="card-badge">{safeCategoryLabel}</span>
+                <div className={styles.cardBadgesWrapper}>
+                    {isPlanned && <span className={`${styles.cardBadge} ${styles.plannedBadge}`}>Planejado</span>}
+                    {isFullyStocked && <span className={`${styles.cardBadge} ${styles.pantryBadge}`}>✅ Você tem tudo</span>}
+                    <span className={styles.cardBadge}>{safeCategoryLabel}</span>
                 </div>
             </div>
 
-            <div className="card-body">
-                <div className="card-info">
-                    <p className="card-title">{safeTitle}</p>
+            <div className={styles.cardBody}>
+                <div className={styles.cardInfo}>
+                    <p className={styles.cardTitle}>{safeTitle}</p>
                     {recipeTags.length > 0 && (
-                        <div className="card-tags">
+                        <div className={styles.cardTags}>
                             {recipeTags.map(tagKey => (
-                                <span key={tagKey} className="card-tag-badge">
+                                <span key={tagKey} className={styles.cardTagBadge}>
                                     {tagsMap[tagKey] || tagKey}
                                 </span>
                             ))}
                         </div>
                     )}
                     {matchedIngredients && matchedIngredients.length > 0 && (
-                        <p className="card-search-match">🔍 Contém: {matchedIngredients.join(', ')}</p>
+                        <p className={styles.cardSearchMatch}>🔍 Contém: {matchedIngredients.join(', ')}</p>
                     )}
                 </div>
 
-                <div className="card-footer">
-                    <div className="card-meta">
-                        <span className="card-ingredients-count">
+                <div className={styles.cardFooter}>
+                    <div className={styles.cardMeta}>
+                        <span className={styles.cardIngredientsCount}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                             {recipe.ingredient_count !== undefined && recipe.ingredient_count !== null ? recipe.ingredient_count : safeIngredients.length} ing.
                         </span>
                         {safeServings !== null && (
-                            <span className="card-servings-count" title="Rendimento da receita">
+                            <span className={styles.cardServingsCount} title="Rendimento da receita">
                                 👥 {safeServings} pessoas
                             </span>
                         )}
                     </div>
 
-                    <div className="card-actions">
+                    <div className={styles.cardActions}>
                         <button
                             type="button"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 onTogglePlanner(recipe.id);
                             }}
-                            className={`card-action-btn plan-btn ${isPlanned ? 'active' : ''}`}
+                            className={`${styles.cardActionBtn} ${styles.planBtn} ${isPlanned ? styles.active : ''}`}
                             title="Planejar para a semana"
                             aria-label={`Planejar ${safeTitle} para a semana`}
                             aria-pressed={isPlanned}
@@ -123,7 +124,7 @@ export function RecipeCard({
                                 e.stopPropagation();
                                 onToggleFavorite(recipe.id);
                             }}
-                            className={`card-action-btn fav-btn ${isFavorite ? 'active' : ''}`}
+                            className={`${styles.cardActionBtn} ${styles.favBtn} ${isFavorite ? styles.active : ''}`}
                             title="Adicionar aos favoritos"
                             aria-label={`Adicionar ${safeTitle} aos favoritos`}
                             aria-pressed={isFavorite}
@@ -138,3 +139,4 @@ export function RecipeCard({
         </div>
     );
 }
+

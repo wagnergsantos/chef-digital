@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { PLANNER_DAYS } from '../logic/storage.js';
 import { getAllPlannedEntries } from '../logic/planner.js';
 import { useFocusTrap } from '../hooks/useFocusTrap.js';
+import drawerStyles from './DrawerShell.module.css';
+import styles from './PlannerDrawer.module.css';
 
 export function PlannerDrawer({
     isOpen,
@@ -22,32 +24,32 @@ export function PlannerDrawer({
     return (
         <>
             <div
-                className={`drawer-backdrop ${isOpen ? 'active' : ''}`}
+                className={`${drawerStyles.drawerBackdrop} ${isOpen ? drawerStyles.active : ''}`}
                 onClick={onClose}
                 aria-hidden="true"
             />
             <aside
                 ref={drawerRef}
-                className={`drawer ${isOpen ? 'open' : ''}`}
+                className={`${drawerStyles.drawer} ${isOpen ? drawerStyles.open : ''}`}
                 id="planner-drawer"
                 role="dialog"
                 aria-modal="true"
                 aria-label="Menu Semanal Planejado"
             >
-                <div className="drawer-header">
-                    <div className="drawer-header-title planner-title">
+                <div className={drawerStyles.drawerHeader}>
+                    <div className={`${drawerStyles.drawerHeaderTitle} ${drawerStyles.plannerTitle}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         <h3 id="planner-drawer-title">Menu da Semana</h3>
                     </div>
-                    <div className="drawer-header-actions">
+                    <div className={drawerStyles.drawerHeaderActions}>
                         {totalPlanned > 0 && (
-                            <button type="button" onClick={onClearPlanner} className="drawer-clear-btn" aria-label="Limpar menu semanal">
+                            <button type="button" onClick={onClearPlanner} className={drawerStyles.drawerClearBtn} aria-label="Limpar menu semanal">
                                 Limpar Menu
                             </button>
                         )}
-                        <button type="button" onClick={onClose} className="drawer-close-btn" title="Fechar" aria-label="Fechar menu semanal">
+                        <button type="button" onClick={onClose} className={drawerStyles.drawerCloseBtn} title="Fechar" aria-label="Fechar menu semanal">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                             </svg>
@@ -55,11 +57,11 @@ export function PlannerDrawer({
                     </div>
                 </div>
 
-                <div className="drawer-content" id="planner-items">
+                <div className={drawerStyles.drawerContent} id="planner-items">
                     {totalPlanned === 0 ? (
-                        <div className="drawer-empty-state">
+                        <div className={drawerStyles.drawerEmptyState}>
                             <p>Seu Menu Semanal está vazio!</p>
-                            <p className="sub">Clique no botão de calendário 📅 nos cartões para adicionar receitas ao menu.</p>
+                            <p className={drawerStyles.sub}>Clique no botão de calendário 📅 nos cartões para adicionar receitas ao menu.</p>
                         </div>
                     ) : (
                         PLANNER_DAYS.map(d => {
@@ -67,14 +69,14 @@ export function PlannerDrawer({
                             if (d.key === 'pending' && dayEntries.length === 0) return null;
 
                             return (
-                                <div key={d.key} className="planner-day-section">
-                                    <div className="planner-day-header">
+                                <div key={d.key} className={styles.plannerDaySection}>
+                                    <div className={styles.plannerDayHeader}>
                                         <h4>{d.label}</h4>
-                                        {dayEntries.length > 0 && <span className="planner-day-count">{dayEntries.length}</span>}
+                                        {dayEntries.length > 0 && <span className={styles.plannerDayCount}>{dayEntries.length}</span>}
                                     </div>
-                                    <div className="planner-day-body">
+                                    <div className={styles.plannerDayBody}>
                                         {dayEntries.length === 0 ? (
-                                            <p className="planner-day-empty">Nenhuma receita planejada</p>
+                                            <p className={styles.plannerDayEmpty}>Nenhuma receita planejada</p>
                                         ) : (
                                             dayEntries.map(entry => {
                                                 const recipe = recipes.find(r => r.id === entry.recipeId);
@@ -87,20 +89,20 @@ export function PlannerDrawer({
                                                 const labelText = isServingsMode ? "Pessoas:" : "Porções:";
 
                                                 return (
-                                                    <div key={`${d.key}-${recipe.id}`} className="drawer-card">
-                                                        <div className="drawer-card-top">
-                                                            <div className="drawer-card-info">
-                                                                <span className="drawer-card-emoji" role="img" aria-label={`Emoji representativo de ${recipe.title}`}>
+                                                    <div key={`${d.key}-${recipe.id}`} className={styles.drawerCard}>
+                                                        <div className={styles.drawerCardTop}>
+                                                            <div className={styles.drawerCardInfo}>
+                                                                <span className={styles.drawerCardEmoji} role="img" aria-label={`Emoji representativo de ${recipe.title}`}>
                                                                     {recipe.emoji || '🍽'}
                                                                 </span>
-                                                                <div className="drawer-card-meta">
+                                                                <div className={styles.drawerCardMeta}>
                                                                     <h4>{recipe.title}</h4>
                                                                 </div>
                                                             </div>
                                                             <button
                                                                 type="button"
                                                                 onClick={() => onRemoveRecipe(recipe.id, d.key)}
-                                                                className="drawer-card-remove"
+                                                                className={drawerStyles.drawerCardRemove}
                                                                 title="Remover do menu"
                                                                 aria-label={`Remover ${recipe.title} do planejamento de ${d.label}`}
                                                             >
@@ -110,13 +112,13 @@ export function PlannerDrawer({
                                                             </button>
                                                         </div>
 
-                                                        <div className="drawer-card-bottom">
+                                                        <div className={styles.drawerCardBottom}>
                                                             <div className="day-select-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                                                 <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>Dia:</span>
                                                                 <select
                                                                     value={d.key}
                                                                     onChange={(e) => onChangeDay && onChangeDay(recipe.id, d.key, e.target.value)}
-                                                                    className="planner-day-select"
+                                                                    className={styles.plannerDaySelect}
                                                                     aria-label={`Mudar dia da receita ${recipe.title}`}
                                                                 >
                                                                     {PLANNER_DAYS.map(w => (
@@ -129,20 +131,20 @@ export function PlannerDrawer({
 
                                                             <div className="portion-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                                                                 <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)' }}>{labelText}</span>
-                                                                <div className="portion-controls">
+                                                                <div className={styles.portionControls}>
                                                                     <button
                                                                         type="button"
                                                                         onClick={() => onChangePortions(recipe.id, d.key, -1)}
-                                                                        className="portion-btn"
+                                                                        className={styles.portionBtn}
                                                                         aria-label="Diminuir porções"
                                                                     >
                                                                         -
                                                                     </button>
-                                                                    <span className="portion-value">{displayValue}</span>
+                                                                    <span className={styles.portionValue}>{displayValue}</span>
                                                                     <button
                                                                         type="button"
                                                                         onClick={() => onChangePortions(recipe.id, d.key, 1)}
-                                                                        className="portion-btn"
+                                                                        className={styles.portionBtn}
                                                                         aria-label="Aumentar porções"
                                                                     >
                                                                         +
@@ -162,21 +164,22 @@ export function PlannerDrawer({
                 </div>
 
                 {totalPlanned > 0 && onGenerateConsolidated && (
-                    <div className="drawer-footer">
+                    <div className={drawerStyles.drawerFooter}>
                         <button
                             type="button"
                             onClick={onGenerateConsolidated}
-                            className="btn-large btn-large-success"
+                            className={`${drawerStyles.btnLarge} ${drawerStyles.btnLargeSuccess}`}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
                             <span>Consolidar Lista de Compras</span>
                         </button>
-                        <p className="drawer-footer-tip">Essa ação junta e soma as quantidades de ingredientes das receitas planejadas na sua lista de compras, sem apagar seus outros itens!</p>
+                        <p className={drawerStyles.drawerFooterTip}>Essa ação junta e soma as quantidades de ingredientes das receitas planejadas na sua lista de compras, sem apagar seus outros itens!</p>
                     </div>
                 )}
             </aside>
         </>
     );
 }
+
