@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from './hooks/useTheme.js';
-import { STORAGE_KEYS, safeJsonParse } from './logic/storage.js';
+import { STORAGE_KEYS, PLANNER_DAYS, safeJsonParse } from './logic/storage.js';
 import { createEmptyPlannedByDay, getAllPlannedEntries, getPlannedDaysForRecipe } from './logic/planner.js';
 import { calculateConsolidatedShoppingList, formatShoppingListText, countShoppingItems } from './logic/shopping.js';
 import { formatRecipeShareText } from './logic/recipe-modal-logic.js';
@@ -166,7 +166,7 @@ export function App() {
             // Se já está planejada em algum dia, remove de todos os dias
             setPlannedByDay(prev => {
                 const nextPlanned = { ...prev };
-                WEEK_DAYS.forEach(d => {
+                PLANNER_DAYS.forEach(d => {
                     if (nextPlanned[d.key]) {
                         nextPlanned[d.key] = nextPlanned[d.key].filter(e => e.recipeId !== recipeId);
                     }

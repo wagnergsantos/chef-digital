@@ -414,10 +414,7 @@ button,
     display: flex;
     flex-direction: column;
     gap: 14px;
-    position: sticky;
-    top: 80px;
-    max-height: calc(100vh - 95px);
-    overflow: hidden;
+    position: static;
 }
 
 .sidebar-title {
