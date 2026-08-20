@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { parsePantryInput, formatPantryText } from '../logic/pantry.js';
+import { useFocusTrap } from '../hooks/useFocusTrap.js';
 
 export function PantryDrawer({
     isOpen,
@@ -11,6 +12,9 @@ export function PantryDrawer({
     onClearPantry
 }) {
     const [textValue, setTextValue] = useState('');
+    const drawerRef = useRef(null);
+
+    useFocusTrap(isOpen, onClose, drawerRef);
 
     useEffect(() => {
         if (isOpen) {
@@ -35,7 +39,14 @@ export function PantryDrawer({
                 onClick={onClose}
                 aria-hidden="true"
             />
-            <aside className={`drawer ${isOpen ? 'open' : ''}`} id="pantry-drawer" role="dialog" aria-label="Gerenciar Despensa">
+            <aside
+                ref={drawerRef}
+                className={`drawer ${isOpen ? 'open' : ''}`}
+                id="pantry-drawer"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Gerenciar Despensa"
+            >
                 <div className="drawer-header">
                     <div className="drawer-header-title shopping-title">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">

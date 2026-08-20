@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { parseStepTimer } from '../logic/recipes.js';
 import { formatTimerDisplay, recordRecipeCompletionHistory } from '../logic/cooking.js';
 import { STORAGE_KEYS } from '../logic/storage.js';
+import { useFocusTrap } from '../hooks/useFocusTrap.js';
 
 export function CookingMode({
     isOpen,
@@ -13,6 +14,9 @@ export function CookingMode({
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isSpeaking, setIsSpeaking] = useState(false);
     const [timersState, setTimersState] = useState({});
+    const overlayRef = useRef(null);
+
+    useFocusTrap(isOpen, onClose, overlayRef);
 
     const wakeLockRef = useRef(null);
 
@@ -190,7 +194,7 @@ export function CookingMode({
     };
 
     return (
-        <div className={`cooking-overlay ${isOpen ? 'open' : ''}`} id="cooking-mode-overlay" role="dialog" aria-modal="true" aria-labelledby="cooking-title">
+        <div ref={overlayRef} className={`cooking-overlay ${isOpen ? 'open' : ''}`} id="cooking-mode-overlay" role="dialog" aria-modal="true" aria-labelledby="cooking-title">
             {/* Header */}
             <header className="cooking-header">
                 <div className="cooking-header-top">

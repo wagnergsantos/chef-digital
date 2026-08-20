@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { scaleIngredientQty } from '../logic/recipes.js';
 import { isRecipePlanned } from '../logic/planner.js';
+import { useFocusTrap } from '../hooks/useFocusTrap.js';
 
 export function RecipeModal({
     isOpen,
@@ -17,6 +18,9 @@ export function RecipeModal({
 }) {
     const [portions, setPortions] = useState(1);
     const [completedSteps, setCompletedSteps] = useState(new Set());
+    const modalRef = useRef(null);
+
+    useFocusTrap(isOpen, onClose, modalRef);
 
     useEffect(() => {
         if (recipe) {
@@ -54,7 +58,15 @@ export function RecipeModal({
     const historyRecord = cookingHistory ? cookingHistory[recipe.id] : null;
 
     return (
-        <div className="modal-overlay open" id="recipe-modal" role="dialog" aria-label={`Receita: ${recipe.title}`} onClick={(e) => e.target.id === 'recipe-modal' && onClose()}>
+        <div
+            ref={modalRef}
+            className="modal-overlay open"
+            id="recipe-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Receita: ${recipe.title}`}
+            onClick={(e) => e.target.id === 'recipe-modal' && onClose()}
+        >
             <div className="modal-container">
                 {/* Banner com Botões no Topo e Título abaixo */}
                 <div

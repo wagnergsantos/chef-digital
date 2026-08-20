@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { countShoppingItems } from '../logic/shopping.js';
+import { useFocusTrap } from '../hooks/useFocusTrap.js';
 
 export function ShoppingDrawer({
     isOpen,
@@ -13,6 +14,9 @@ export function ShoppingDrawer({
 }) {
     const totalItems = countShoppingItems(shoppingList);
     const recipeKeys = Object.keys(shoppingList);
+    const drawerRef = useRef(null);
+
+    useFocusTrap(isOpen, onClose, drawerRef);
 
     return (
         <>
@@ -21,7 +25,14 @@ export function ShoppingDrawer({
                 onClick={onClose}
                 aria-hidden="true"
             />
-            <aside className={`drawer ${isOpen ? 'open' : ''}`} id="shopping-list-drawer" role="dialog" aria-label="Lista de Compras">
+            <aside
+                ref={drawerRef}
+                className={`drawer ${isOpen ? 'open' : ''}`}
+                id="shopping-list-drawer"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Lista de Compras"
+            >
             <div className="drawer-header">
                 <div className="drawer-header-title shopping-title">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">

@@ -409,7 +409,7 @@ export function App() {
 
                 <section className="recipes-section">
                     <div className="results-header">
-                        <h2 id="results-count">
+                        <h2 id="results-count" role="status" aria-live="polite">
                             {filterRecipesList(recipes, {
                                 activeCategory,
                                 searchQuery,

@@ -1,5 +1,7 @@
+import React, { useRef } from 'react';
 import { PLANNER_DAYS } from '../logic/storage.js';
 import { getAllPlannedEntries } from '../logic/planner.js';
+import { useFocusTrap } from '../hooks/useFocusTrap.js';
 
 export function PlannerDrawer({
     isOpen,
@@ -13,6 +15,9 @@ export function PlannerDrawer({
     onGenerateConsolidated
 }) {
     const totalPlanned = getAllPlannedEntries(plannedByDay).length;
+    const drawerRef = useRef(null);
+
+    useFocusTrap(isOpen, onClose, drawerRef);
 
     return (
         <>
@@ -21,7 +26,14 @@ export function PlannerDrawer({
                 onClick={onClose}
                 aria-hidden="true"
             />
-            <aside className={`drawer ${isOpen ? 'open' : ''}`} id="planner-drawer" role="dialog" aria-label="Menu Semanal Planejado">
+            <aside
+                ref={drawerRef}
+                className={`drawer ${isOpen ? 'open' : ''}`}
+                id="planner-drawer"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Menu Semanal Planejado"
+            >
                 <div className="drawer-header">
                     <div className="drawer-header-title planner-title">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">

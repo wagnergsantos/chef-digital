@@ -21,7 +21,7 @@ colors:
   neutral-border-dark: "#e2e8f0"
   text-main: "#1e293b"
   text-muted: "#64748b"
-  text-light: "#94a3b8"
+  text-light: "#a6b4c9"
   text-white: "#ffffff"
 typography:
   display:
@@ -97,9 +97,10 @@ A paleta de cores adota uma estratégia de restrição, concentrando os tons mai
 ### Neutral
 - **Background Main** (#fafaf9): O fundo principal da página, oferecendo um contraste off-white quente e confortável.
 - **Card Background** (#ffffff): O fundo das receitas e blocos principais, destacando-se de forma limpa sobre o fundo geral.
-- **Text Main** (#1e293b): Cor principal do texto para garantir legibilidade de ingredientes e etapas de receitas.
-- **Text Muted** (#64748b): Usado para legendas secundárias e rótulos discretos.
-- **Border Color** (#f1f5f9): Cor padrão de contornos e linhas de separação discretas.
+- **Text Main** (#1e293b / #f1f5f9 no Dark Mode): Cor principal do texto para garantir legibilidade de ingredientes e etapas de receitas.
+- **Text Muted** (#64748b / #cbd5e1 no Dark Mode): Usado para legendas secundárias e rótulos discretos.
+- **Text Light** (#94a3b8 / #a6b4c9 no Dark Mode): Usado para metadados e contadores com garantia de contraste WCAG AA 4.5:1.
+- **Border Color** (#f1f5f9 / #292524 no Dark Mode): Cor padrão de contornos e linhas de separação discretas.
 
 **The Amber Warmth Rule.** O tom primário de âmbar (#f59e0b) é reservado para marca, estados ativos e ações primárias. Ele nunca deve exceder 10% da superfície de qualquer tela para manter sua força de destaque e evitar saturação visual.
 
@@ -147,9 +148,9 @@ O Chef Digital utiliza uma elevação plana por padrão, dependendo de contornos
 - **Focus:** Contorno destacado na cor âmbar primária e suave transição de fundo.
 
 ### Modals & Drawers
-- **Overlays:** Fundo escurecido semi-transparente que isola a tarefa (ex: edição da despensa ou receita completa).
-- **Behavior:** Entram em cena usando transições rápidas (cubic-bezier) e exibem sombras acentuadas (`var(--shadow-xl)`) para sinalizar elevação máxima.
-- **Header:** Inclui título, botões de ação rápidos (imprimir, fechar) e badges semânticos para identificação de categoria ou origem.
+- **Overlays:** Fundo escurecido semi-transparente que isola a tarefa com travamento de foco (`useFocusTrap`) e `aria-modal="true"`.
+- **Behavior:** Entram em cena usando transições aceleradas por GPU (`transform: translate3d`) com curva exponencial (`var(--ease-out-quint)`), e exibem sombras acentuadas (`var(--shadow-xl)`).
+- **Header:** Inclui título, botões de ação rápidos (imprimir, fechar com área de toque mínima de 44x44px) e badges semânticos para identificação de categoria ou origem.
 
 ## 6. Do's and Don'ts
 
