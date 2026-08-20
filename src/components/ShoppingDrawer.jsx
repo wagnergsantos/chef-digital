@@ -23,28 +23,27 @@ export function ShoppingDrawer({
             />
             <aside className={`drawer ${isOpen ? 'open' : ''}`} id="shopping-list-drawer" role="dialog" aria-label="Lista de Compras">
             <div className="drawer-header">
-                <div className="drawer-header-title">
-                    <h3>Lista de Compras</h3>
-                    <span className="badge">{totalItems}</span>
+                <div className="drawer-header-title shopping-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                    </svg>
+                    <h3 id="shopping-drawer-title">Lista de Compras</h3>
                 </div>
                 <div className="drawer-header-actions">
                     {recipeKeys.length > 0 && (
-                        <>
-                            <button type="button" onClick={onCopyList} className="btn-secondary" title="Copiar lista para transferência">
-                                Copiar
-                            </button>
-                            <button type="button" onClick={onClearList} className="btn-secondary danger-text" title="Limpar toda a lista">
-                                Limpar
-                            </button>
-                        </>
+                        <button type="button" onClick={onClearList} className="drawer-clear-btn" aria-label="Limpar lista de compras">
+                            Limpar Tudo
+                        </button>
                     )}
-                    <button type="button" onClick={onClose} className="drawer-close" aria-label="Fechar Lista de Compras">
-                        ✕
+                    <button type="button" onClick={onClose} className="drawer-close-btn" title="Fechar" aria-label="Fechar lista de compras">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
 
-            <div className="drawer-body" id="shopping-list-items">
+            <div className="drawer-content" id="shopping-list-items">
                 {recipeKeys.length === 0 ? (
                     <div className="drawer-empty-state">
                         <p>Sua lista está vazia!</p>
@@ -124,6 +123,21 @@ export function ShoppingDrawer({
                     })
                 )}
             </div>
+
+            {recipeKeys.length > 0 && onCopyList && (
+                <div className="drawer-footer">
+                    <button
+                        type="button"
+                        onClick={onCopyList}
+                        className="btn-large btn-large-primary"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                        </svg>
+                        <span>Copiar Lista</span>
+                    </button>
+                </div>
+            )}
         </aside>
     </>
 );
