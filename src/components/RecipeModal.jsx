@@ -54,71 +54,100 @@ export function RecipeModal({
     const historyRecord = cookingHistory ? cookingHistory[recipe.id] : null;
 
     return (
-        <div className="modal open" id="recipe-modal" role="dialog" aria-label={`Receita: ${recipe.title}`} onClick={(e) => e.target.id === 'recipe-modal' && onClose()}>
-            <div className="modal-content recipe-modal-content">
+        <div className="modal-overlay open" id="recipe-modal" role="dialog" aria-label={`Receita: ${recipe.title}`} onClick={(e) => e.target.id === 'recipe-modal' && onClose()}>
+            <div className="modal-container">
+                {/* Banner com Botões no Topo e Título abaixo */}
                 <div
                     className={`modal-header-banner ${recipe.image ? 'has-image' : ''}`}
                     style={recipe.image ? { backgroundImage: `url('${recipe.image}')` } : undefined}
                 >
-                    <button type="button" onClick={onClose} className="modal-close-btn" aria-label="Fechar receita">
-                        ✕
-                    </button>
-                    <div className="modal-header-info">
-                        <span id="modal-category-badge" className="category-badge">{catText}</span>
-                        <h2 id="modal-title">{recipe.title}</h2>
-                        <div className="modal-badges">
-                            {recipe.servings && <span className="info-badge">🍽️ Rende: {recipe.servings}</span>}
-                            {recipe.prep_time && <span className="info-badge">⏱️ Preparo: {recipe.prep_time} min</span>}
-                            {recipe.cook_time && <span className="info-badge">🍳 Fogo: {recipe.cook_time} min</span>}
-                            {historyRecord && historyRecord.count > 0 && historyRecord.lastCooked && (
-                                <span className="info-badge">
-                                    👨‍🍳 Preparado {historyRecord.count}x ({new Date(historyRecord.lastCooked).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})
-                                </span>
-                            )}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        gap: '16px',
+                        width: '100%'
+                    }}>
+                        {/* Coluna 1: Categoria, Rendimento, Tempos e Título */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                            <div className="modal-badges" style={{ marginBottom: 0 }}>
+                                <span id="modal-category-badge" className="modal-badge-cat">{catText}</span>
+                                {recipe.servings && <span id="modal-servings-badge" className="modal-badge-src">🍽️ Rende: {recipe.servings}</span>}
+                                {recipe.prep_time && <span className="modal-badge-src">⏱️ Preparo: {recipe.prep_time} min</span>}
+                                {recipe.cook_time && <span className="modal-badge-src">🍳 Fogo: {recipe.cook_time} min</span>}
+                                {historyRecord && historyRecord.count > 0 && historyRecord.lastCooked && (
+                                    <span className="modal-badge-history">
+                                        👨‍🍳 Preparado {historyRecord.count}x ({new Date(historyRecord.lastCooked).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})
+                                    </span>
+                                )}
+                            </div>
+                            <h3 id="modal-title" className="serif-title" style={{ margin: 0 }}>{recipe.title}</h3>
+                        </div>
+
+                        {/* Coluna 2: Itens do Menu (Preparo, Planejamento, Lista, Compartilhar e Fechar) */}
+                        <div className="modal-header-tools" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <button
+                                type="button"
+                                onClick={() => { onClose(); onStartCooking(recipe); }}
+                                className="modal-start-cooking-btn"
+                                title="Iniciar Modo Preparo passo a passo"
+                                aria-label="Iniciar Modo Preparo"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" width="18" height="18">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Preparo</span>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => onTogglePlanner(recipe.id)}
+                                className={`modal-planner-btn ${isPlanned ? 'planned-active' : ''}`}
+                                title={isPlanned ? 'Remover do Planejamento' : 'Planejar essa refeição'}
+                                aria-label="Planejar essa refeição"
+                                aria-pressed={isPlanned}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => onAddIngredientsToShopping(recipe.id, portions)}
+                                className="modal-shopping-btn"
+                                title="Adicionar tudo à lista de compras"
+                                aria-label="Adicionar todos os ingredientes à lista de compras"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => onShare(recipe)}
+                                className="modal-share-btn"
+                                title="Compartilhar receita"
+                                aria-label="Compartilhar receita"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                                </svg>
+                            </button>
+                            <button type="button" onClick={onClose} className="modal-close-btn" title="Fechar" aria-label="Fechar receita">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="modal-actions-bar">
-                    <button
-                        type="button"
-                        onClick={() => onTogglePlanner(recipe.id)}
-                        className={`btn-action ${isPlanned ? 'planned-active' : ''}`}
-                        title={isPlanned ? 'Remover do Planejamento' : 'Planejar essa refeição'}
-                        aria-pressed={isPlanned}
-                    >
-                        📅 {isPlanned ? 'Planejado' : 'Planejar'}
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => onAddIngredientsToShopping(recipe.id, portions)}
-                        className="btn-action"
-                        title="Adicionar ingredientes à lista de compras"
-                    >
-                        🛒 Add à Lista
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => onShare(recipe)}
-                        className="btn-action"
-                        title="Compartilhar receita"
-                    >
-                        📤 Compartilhar
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => onStartCooking(recipe)}
-                        className="btn-action primary-action"
-                        title="Iniciar Modo Preparo"
-                    >
-                        👨‍🍳 Cozinhar
-                    </button>
-                </div>
-
+                {/* Corpo do Modal em 2 Colunas */}
                 <div className="modal-body">
-                    <div className="recipe-section">
-                        <div className="section-header-row">
-                            <h3>Ingredientes</h3>
+                    {/* Coluna 1: Ingredientes */}
+                    <div className="modal-col-left">
+                        <div className="modal-section-title-wrapper">
+                            <h4>Ingredientes</h4>
                             <div className="portion-controls">
                                 <button type="button" onClick={() => handlePortionsChange(-1)} className="portion-btn" aria-label="Diminuir porções">-</button>
                                 <span className="portion-value">{isServingsMode ? `${portions} pessoas` : `${portions}x`}</span>
@@ -126,7 +155,7 @@ export function RecipeModal({
                             </div>
                         </div>
 
-                        <ul className="modal-ingredients-list">
+                        <ul id="modal-ingredients-list" className="modal-ingredients-ul">
                             {(recipe.ingredients || []).map((ing, idx) => {
                                 let qtyDisplay = null;
                                 if (ing.qty !== null && ing.qty !== undefined) {
@@ -150,9 +179,12 @@ export function RecipeModal({
                         </ul>
                     </div>
 
-                    <div className="recipe-section">
-                        <h3>Modo de Preparo</h3>
-                        <ol className="modal-steps-list">
+                    {/* Coluna 2: Modo de Preparo */}
+                    <div className="modal-col-right">
+                        <div className="modal-section-title-wrapper">
+                            <h4>Modo de Preparo</h4>
+                        </div>
+                        <ol id="modal-steps-list" className="modal-steps-ol">
                             {(recipe.steps || []).map((step, idx) => {
                                 const isDone = completedSteps.has(idx);
                                 return (
@@ -171,14 +203,21 @@ export function RecipeModal({
                                 );
                             })}
                         </ol>
-                    </div>
 
-                    {recipe.tips && (
-                        <div className="modal-tips-container">
-                            <h4>💡 Dica do Chef</h4>
-                            <p>{recipe.tips}</p>
-                        </div>
-                    )}
+                        {recipe.tips && (
+                            <div id="modal-tips-container" className="tip-box">
+                                <div className="tip-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                    </svg>
+                                </div>
+                                <div className="tip-content">
+                                    <span className="tip-title">Dica de Preparo</span>
+                                    <p id="modal-tips-text" className="tip-text">{recipe.tips}</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

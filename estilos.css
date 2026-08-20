@@ -1693,12 +1693,12 @@ button,
     position: relative;
     background-color: var(--primary-color);
     background: linear-gradient(135deg, var(--primary-color) 0%, #f97316 100%);
-    padding: 32px;
+    padding: 20px 24px;
     color: var(--text-white);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    min-height: 160px;
+    min-height: 110px;
 }
 
 .modal-header-banner.has-image {
@@ -1875,6 +1875,7 @@ button,
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 40px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 12px;
     margin-bottom: 16px;
