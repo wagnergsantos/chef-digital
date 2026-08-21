@@ -428,6 +428,7 @@ button,
     100% {
         background-position: 200% 0;
     }
+}
 
 @media (min-width: 600px) {
     .recipes-grid {

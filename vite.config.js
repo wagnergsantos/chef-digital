@@ -24,7 +24,7 @@ export default defineConfig({
         scope: '/chef-digital/',
         icons: [
           {
-            src: '/chef-digital/icon.svg',
+            src: 'icon.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
             purpose: 'any maskable'
