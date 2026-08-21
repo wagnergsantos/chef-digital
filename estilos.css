@@ -191,10 +191,6 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
-.serif-title {
-    font-family: 'Playfair Display', Georgia, Cambria, serif;
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
@@ -393,38 +389,6 @@ button,
     }
 }
 
-
-
-/* Card Tag Badges */
-
-.card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 5px;
-    margin-top: 6px;
-}
-
-.card-tag-badge {
-    display: inline-block;
-    padding: 1px 8px;
-    border-radius: var(--radius-full);
-    background-color: var(--tag-badge-bg);
-    color: var(--tag-badge-text);
-    border: 1px solid var(--tag-badge-border);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    line-height: 1.35;
-    white-space: nowrap;
-}
-
-/* Recipe Content Grid Section */
-.recipes-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 .results-header {
     display: flex;
     align-items: center;
@@ -464,51 +428,6 @@ button,
     100% {
         background-position: 200% 0;
     }
-}
-
-.skeleton-box {
-    background: linear-gradient(
-        90deg,
-        var(--bg-light) 25%,
-        var(--border-color) 37%,
-        var(--bg-light) 63%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite linear;
-    border-radius: var(--radius-sm);
-}
-
-.skeleton-card {
-    pointer-events: none;
-    user-select: none;
-}
-
-.skeleton-header {
-    height: 112px;
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-}
-
-.skeleton-title {
-    height: 20px;
-    width: 85%;
-    margin-bottom: 10px;
-}
-
-.skeleton-tag {
-    height: 14px;
-    width: 50%;
-}
-
-.skeleton-meta {
-    height: 16px;
-    width: 60px;
-}
-
-.skeleton-btn {
-    height: 32px;
-    width: 32px;
-    border-radius: var(--radius-full);
-}
 
 @media (min-width: 600px) {
     .recipes-grid {
@@ -578,26 +497,8 @@ button,
 /* Recipe Card Styling */
 
 
-
-
-
 .hidden {
     display: none !important;
-}
-
-/* ========================================================================
-   Slide-over Drawers (Planner and Shopping List)
-======================================================================== */
-
-.drawer-backdrop {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(15, 23, 42, 0.3);
-    backdrop-filter: blur(2px);
-    z-index: 45;
-    opacity: 0;
-    transition: opacity 0.28s var(--ease-out-quart);
-    pointer-events: none;
 }
 
 .drawer-backdrop.active {
@@ -696,115 +597,14 @@ button,
     }
 }
 
-
-
-.ing-checkbox {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    border: 1px solid var(--border-dark);
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.ing-checkbox:hover {
-    transform: scale(1.05);
-}
-
-.ing-checkbox:active {
-    transform: scale(0.95);
-}
-
 .ing-checkbox.checked {
     background-color: var(--primary-light);
     border-color: var(--primary-hover);
 }
 
-.ing-checkbox svg {
-    width: 12px;
-    height: 12px;
-    color: var(--primary-hover);
-    opacity: 0;
-    transform: scale(0.6);
-    transition: transform 0.18s var(--ease-out-quart), opacity 0.18s var(--ease-out-quart);
-}
-
 .ing-checkbox.checked svg {
     opacity: 1;
     transform: scale(1);
-}
-
-.ing-details-row {
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-}
-
-.ing-name {
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-.ing-qty-tag {
-    color: var(--primary-hover);
-    font-weight: 700;
-    font-size: var(--text-sm);
-    flex-shrink: 0;
-}
-
-.ing-unit-only-tag {
-    color: var(--primary-hover);
-    font-weight: 600;
-    font-size: var(--text-xs);
-    background-color: var(--primary-light);
-    padding: 2px 6px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--primary-light-border);
-    flex-shrink: 0;
-}
-
-/* Modal action buttons (used by pantry modal buttons) */
-.btn-modal-action {
-    width: 100%;
-    padding: 10px 16px;
-    font-size: var(--text-sm);
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-}
-
-.btn-modal-action:hover {
-    transform: translateY(-1px);
-}
-
-.btn-modal-action:active {
-    transform: translateY(1px);
-}
-
-.btn-modal-action-planner {
-    background-color: var(--success-light);
-    color: var(--success-color);
-    border: 1px solid var(--success-light-border);
-}
-
-.btn-modal-action-planner:hover {
-    background-color: var(--success-light-border);
-}
-
-.btn-modal-action svg {
-    width: 16px;
-    height: 16px;
 }
 
 /* Wake Lock indicator (see .modal-wakelock-btn for the toggle button) */
@@ -819,62 +619,8 @@ button,
     display: inline-block;
 }
 
-/* Cooking Steps Panel */
-.modal-col-right {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.modal-steps-ol {
-    max-width: 65ch;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.modal-step-li {
-    display: flex;
-    gap: 12px;
-    cursor: pointer;
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.modal-step-li:hover {
-    transform: translateX(4px);
-}
-
 .modal-step-li.completed {
     opacity: 0.4;
-}
-
-.ing-name, .shopping-item-name {
-    transition: color 0.22s var(--ease-out-quart), opacity 0.22s var(--ease-out-quart);
-}
-
-.ing-name::first-letter, .shopping-item-name::first-letter {
-    text-transform: uppercase;
-}
-
-.step-number {
-    width: 24px;
-    height: 24px;
-    border-radius: var(--radius-full);
-    background-color: var(--primary-light);
-    color: var(--primary-hover);
-    border: 1px solid var(--primary-light-border);
-    font-weight: 700;
-    font-size: var(--text-xs);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background-color var(--transition-fast);
-}
-
-.modal-step-li:hover .step-number {
-    background-color: var(--primary-light-border);
 }
 
 .step-text {
@@ -882,47 +628,6 @@ button,
     color: var(--text-main);
     line-height: 1.6;
     padding-top: 2px;
-}
-
-/* Tip Box in Modal */
-.tip-box {
-    background-color: var(--primary-light);
-    border: 1px solid var(--primary-light-border);
-    border-radius: var(--radius-lg);
-    padding: 18px;
-    display: flex;
-    gap: 12px;
-}
-
-.tip-icon {
-    color: var(--primary-color);
-    flex-shrink: 0;
-    display: flex;
-}
-
-.tip-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.tip-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.tip-title {
-    font-size: var(--text-xs);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--primary-active);
-}
-
-.tip-text {
-    font-size: var(--text-xs);
-    color: var(--primary-active);
-    line-height: 1.5;
 }
 
 /* ========================================================================
@@ -949,14 +654,6 @@ button,
     animation: toast-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.toast-message.toast-success {
-    background-color: var(--success-color);
-}
-
-.toast-message.toast-error {
-    background-color: var(--danger-color);
-}
-
 @keyframes toast-fade-in {
     from {
         opacity: 0;
@@ -967,7 +664,6 @@ button,
         transform: translate(-50%, 0);
     }
 }
-
 
 
 /* Pantry Button Theme states */
@@ -981,63 +677,8 @@ button,
     background-color: var(--success-light);
 }
 
-/* Wrapper holding the pantry toggle + the small edit affordance */
-.pantry-toggle-wrapper {
-    position: relative;
-    display: inline-flex;
-}
-
-.pantry-edit-btn {
-    position: absolute;
-    bottom: -4px;
-    right: -4px;
-    width: 18px;
-    height: 18px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-card);
-    color: var(--text-muted);
-    border: 1px solid var(--border-dark);
-    border-radius: var(--radius-full);
-    cursor: pointer;
-    transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.pantry-edit-btn svg {
-    width: 10px;
-    height: 10px;
-}
-
-.pantry-edit-btn:hover {
-    color: var(--success-hover);
-    border-color: var(--success-light-border);
-    background-color: var(--success-light);
-}
-
 .pantry-edit-btn.hidden {
     display: none;
-}
-
-/* Pantry Modal Container Layout */
-#pantry-modal-content .modal-header-banner {
-    min-height: auto;
-    padding: 24px;
-}
-
-.pantry-modal-body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
-    background: var(--bg-card);
-}
-
-.pantry-modal-help {
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-    line-height: 1.5;
 }
 
 /* Textarea input styles matching theme tokens */
@@ -1060,36 +701,6 @@ button,
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px var(--primary-light-border);
-}
-
-/* Modal Actions Layout */
-.pantry-actions {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 12px;
-    margin-top: 8px;
-}
-
-.pantry-actions .btn-modal-action {
-    width: 100%;
-    justify-content: center;
-}
-
-.btn-modal-clear {
-    background-color: var(--danger-light);
-    color: var(--danger-hover);
-}
-
-.btn-modal-clear:hover {
-    background-color: var(--danger-hover);
-    color: var(--text-white);
-}
-
-/* Card pantry badge style */
-.card-badge.pantry-badge {
-    background-color: var(--success-light);
-    color: var(--success-hover);
-    border-color: var(--success-light-border);
 }
 
 /* prefers-reduced-motion media query */
@@ -1184,89 +795,10 @@ button,
     }
 }
 
-/* ========================================================================
-   Agenda semanal por dia (drawer "Menu da Semana")
-======================================================================== */
-
-.planner-day-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.planner-day-section + .planner-day-section {
-    border-top: 1px solid var(--border-color);
-    padding-top: 16px;
-}
-
-.planner-day-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.planner-day-header h4 {
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    color: var(--text-muted);
-}
-
-.planner-day-count {
-    font-size: var(--text-xs);
-    font-weight: 700;
+.day-picker-option.active {
     color: var(--success-hover);
     background-color: var(--success-light);
-    border-radius: var(--radius-full);
-    padding: 2px 8px;
-}
-
-.planner-day-empty {
-    font-size: var(--text-xs);
-    color: var(--text-light);
-}
-
-.planner-day-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* ========================================================================
-   Day Picker Popover (seleção de dia da semana no botão de calendário)
-======================================================================== */
-
-.day-picker-popover {
-    position: absolute;
-    z-index: 60;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: 6px;
-    gap: 2px;
-}
-
-.day-picker-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 8px 10px;
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--text-main);
-    border-radius: var(--radius-sm);
-    text-align: left;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-.day-picker-option:hover {
-    background-color: var(--bg-light);
+    font-weight: 700;
 }
 
 .day-picker-option.active {
@@ -1274,68 +806,5 @@ button,
     background-color: var(--success-light);
     font-weight: 700;
 }
-
-.day-picker-check {
-    font-size: var(--text-sm);
-}
-
-.planner-day-empty {
-    font-size: var(--text-xs);
-    color: var(--text-light);
-}
-
-.planner-day-body {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* ========================================================================
-   Day Picker Popover (seleção de dia da semana no botão de calendário)
-======================================================================== */
-
-.day-picker-popover {
-    position: absolute;
-    z-index: 60;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-dark);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: 6px;
-    gap: 2px;
-}
-
-.day-picker-option {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 8px 10px;
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--text-main);
-    border-radius: var(--radius-sm);
-    text-align: left;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-.day-picker-option:hover {
-    background-color: var(--bg-light);
-}
-
-.day-picker-option.active {
-    color: var(--success-hover);
-    background-color: var(--success-light);
-    font-weight: 700;
-}
-
-.day-picker-check {
-    font-size: var(--text-sm);
-}
-
-
 
 

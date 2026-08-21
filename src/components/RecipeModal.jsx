@@ -152,7 +152,7 @@ export function RecipeModal({
                     </div>
 
                     {/* Linha Inferior: Título da Receita com 100% de Largura */}
-                    <h3 id="modal-title" className="serif-title" style={{ margin: 0, width: '100%' }}>{recipe.title}</h3>
+                    <h3 id="modal-title" className={styles.serifTitle} style={{ margin: 0, width: '100%' }}>{recipe.title}</h3>
                 </div>
 
                 {/* Corpo do Modal em 2 Colunas */}
@@ -174,16 +174,16 @@ export function RecipeModal({
                                 if (ing.qty !== null && ing.qty !== undefined) {
                                     const scaledQty = scaleIngredientQty(ing.qty, portions, recipe.servings);
                                     const formattedQty = Number(scaledQty.toFixed(2)).toString();
-                                    qtyDisplay = <strong className="ing-qty-tag">{formattedQty} {ing.unit}</strong>;
+                                    qtyDisplay = <strong className={styles.ingQtyTag}>{formattedQty} {ing.unit}</strong>;
                                 } else if (ing.unit) {
-                                    qtyDisplay = <strong className="ing-unit-only-tag">{ing.unit}</strong>;
+                                    qtyDisplay = <strong className={styles.ingUnitOnlyTag}>{ing.unit}</strong>;
                                 }
 
                                 return (
                                     <li key={`${ing.name}-${idx}`} className={styles.modalIngredientsLi}>
-                                        <span className="ing-bullet" aria-hidden="true">•</span>
-                                        <div className="ing-details-row">
-                                            <span className="ing-name">{ing.name}</span>
+                                        <span className={styles.ingBullet} aria-hidden="true">•</span>
+                                        <div className={styles.ingDetailsRow}>
+                                            <span className={styles.ingName}>{ing.name}</span>
                                             {qtyDisplay}
                                         </div>
                                     </li>
@@ -218,15 +218,15 @@ export function RecipeModal({
                         </ol>
 
                         {recipe.tips && (
-                            <div id="modal-tips-container" className="tip-box">
-                                <div className="tip-icon">
+                            <div id="modal-tips-container" className={styles.tipBox}>
+                                <div className={styles.tipIcon}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                                     </svg>
                                 </div>
-                                <div className="tip-content">
-                                    <span className="tip-title">Dica de Preparo</span>
-                                    <p id="modal-tips-text" className="tip-text">{recipe.tips}</p>
+                                <div className={styles.tipContent}>
+                                    <span className={styles.tipTitle}>Dica de Preparo</span>
+                                    <p id="modal-tips-text" className={styles.tipText}>{recipe.tips}</p>
                                 </div>
                             </div>
                         )}

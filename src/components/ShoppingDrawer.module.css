@@ -79,6 +79,11 @@
     font-weight: 500;
     color: var(--text-main);
     user-select: none;
+    transition: color 0.22s var(--ease-out-quart), opacity 0.22s var(--ease-out-quart);
+}
+
+.shoppingItemName::first-letter {
+    text-transform: uppercase;
 }
 
 .shoppingItemName.checked {
