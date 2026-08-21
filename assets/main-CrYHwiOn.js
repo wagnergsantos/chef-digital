@@ -1,4 +1,4 @@
-import{s as Ze}from"./supabase-DAJto-i6.js";function Ho(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var Ro={exports:{}},Zu={};/**
+import{s as Ze}from"./supabase-CevLup_k.js";function Ho(t){return t&&t.__esModule&&Object.prototype.hasOwnProperty.call(t,"default")?t.default:t}var Ro={exports:{}},Zu={};/**
  * @license React
  * react-jsx-runtime.production.js
  *
