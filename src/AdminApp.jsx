@@ -246,7 +246,11 @@ export function AdminApp() {
       selectedCategoryId: formData.category_id ? parseInt(formData.category_id, 10) : null
     };
 
-    const validation = validateRecipePayloadData(currentData, ingredients, steps);
+    const validation = validateRecipePayloadData({
+      ...currentData,
+      ingredients,
+      steps
+    });
     if (!validation.isValid) {
       setSaveErrorMsg(validation.error);
       return;
