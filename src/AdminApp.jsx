@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getSession, onAuthStateChange, signOut } from '../auth/session.js';
+import { getSession, onAuthStateChange, signOut } from './auth/session.js';
 import { LoginForm } from './components/admin/LoginForm.jsx';
 import { CategoryPicker } from './components/admin/CategoryPicker.jsx';
 import { IngredientsEditor } from './components/admin/IngredientsEditor.jsx';
