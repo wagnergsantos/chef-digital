@@ -243,11 +243,11 @@ export function AdminApp() {
 
     const currentData = {
       ...formData,
-      category_id: formData.category_id ? parseInt(formData.category_id, 10) : null
+      selectedCategoryId: formData.category_id ? parseInt(formData.category_id, 10) : null
     };
 
     const validation = validateRecipePayloadData(currentData, ingredients, steps);
-    if (!validation.valid) {
+    if (!validation.isValid) {
       setSaveErrorMsg(validation.error);
       return;
     }
@@ -255,13 +255,15 @@ export function AdminApp() {
     setSaving(true);
 
     try {
-      const payload = buildRecipePayload(
-        currentData,
-        ingredients,
-        steps,
-        recipeTags,
-        editingRecipeId
-      );
+      const selectedCategory = categories.find((c) => String(c.id) === String(formData.category_id));
+      const payload = buildRecipePayload({
+        id: editingRecipeId,
+        ...currentData,
+        selectedCategoryKey: selectedCategory?.key || '',
+        tags: recipeTags,
+        validIngredients: validation.validIngredients,
+        validSteps: validation.validSteps
+      });
 
       if (!navigator.onLine) {
         await enfileirarSincronizacao(payload);
