@@ -7,6 +7,7 @@ import { StepsEditor } from './components/admin/StepsEditor.jsx';
 import { TagInput } from './components/admin/TagInput.jsx';
 import { RecipeSearchCombobox } from './components/admin/RecipeSearchCombobox.jsx';
 import { AIImportBox } from './components/admin/AIImportBox.jsx';
+import { BulkImportModal } from './components/admin/BulkImportModal.jsx';
 import {
   fetchCategories,
   fetchRecipesList,
@@ -34,6 +35,7 @@ const INITIAL_FORM = {
 export function AdminApp() {
   const [session, setSession] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const [showBulkModal, setShowBulkModal] = useState(false);
 
   // Aux state
   const [categories, setCategories] = useState([]);
@@ -298,18 +300,36 @@ export function AdminApp() {
 
   return (
     <form id="admin-panel" className="max-w-2xl mx-auto admin-card mb-20" onSubmit={handleSaveRecipe}>
+      {showBulkModal && (
+        <BulkImportModal
+          categories={categories}
+          onClose={() => setShowBulkModal(false)}
+          onRefreshData={loadData}
+        />
+      )}
+
       <div className="admin-header-flex mb-6">
         <h2 className="section-title" style={{ margin: 0, border: 'none', padding: 0 }}>
           Painel de Receitas
         </h2>
-        <button
-          type="button"
-          id="btn-logout"
-          className="admin-btn admin-btn-secondary"
-          onClick={() => signOut()}
-        >
-          Sair
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <button
+            type="button"
+            className="admin-btn admin-btn-secondary"
+            onClick={() => setShowBulkModal(true)}
+            title="Importar várias fotos de receitas de uma só vez"
+          >
+            📦 Importar em Lote (Fotos)
+          </button>
+          <button
+            type="button"
+            id="btn-logout"
+            className="admin-btn admin-btn-secondary"
+            onClick={() => signOut()}
+          >
+            Sair
+          </button>
+        </div>
       </div>
 
       <RecipeSearchCombobox

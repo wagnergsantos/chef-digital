@@ -61,15 +61,15 @@ serve(async (req) => {
       });
     }
 
-    const { text } = await req.json();
-    if (!text || !text.trim()) {
-      return new Response(JSON.stringify({ ok: false, error: "Texto ou URL da receita é obrigatório." }), {
+    const { text, image } = await req.json();
+    if ((!text || !text.trim()) && !image) {
+      return new Response(JSON.stringify({ ok: false, error: "Texto, URL ou imagem da receita é obrigatório." }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    let recipeTextToParse = text.trim();
+    let recipeTextToParse = text ? text.trim() : "";
     let detectedSourceUrl: string | null = null;
 
     // Se a entrada for uma URL válida (http:// ou https://)
@@ -121,6 +121,25 @@ serve(async (req) => {
       }
     }
 
+    // Preparar as partes para o Gemini (suporta texto e/ou imagem base64)
+    const promptParts: any[] = [{ text: SYSTEM_PROMPT }];
+    
+    if (recipeTextToParse) {
+      promptParts.push({ text: `Receita/Texto para extrair:\n${recipeTextToParse}` });
+    }
+
+    if (image && image.data && image.mimeType) {
+      promptParts.push({
+        inlineData: {
+          mimeType: image.mimeType,
+          data: image.data
+        }
+      });
+      if (!recipeTextToParse) {
+        promptParts.push({ text: "Por favor, extraia e estruture a receita contida nesta imagem." });
+      }
+    }
+
     // Coletar todas as chaves GEMINI_KEY_* disponíveis nas variáveis de ambiente
     const keys: string[] = [];
     for (let i = 1; i <= 10; i++) {
@@ -140,7 +159,7 @@ serve(async (req) => {
     let lastError = null;
     let quotaExceeded = false;
 
-    const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
+    const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash-latest", "gemini-1.5-flash-8b"];
 
     for (const key of keys) {
       for (const model of models) {
@@ -152,10 +171,7 @@ serve(async (req) => {
             body: JSON.stringify({
               contents: [
                 {
-                  parts: [
-                    { text: SYSTEM_PROMPT },
-                    { text: `Receita para extrair:\n${recipeTextToParse}` }
-                  ]
+                  parts: promptParts
                 }
               ],
               generationConfig: {

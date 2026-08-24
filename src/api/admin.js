@@ -58,9 +58,10 @@ export async function saveRecipeRpc(payload) {
   if (error) throw error;
 }
 
-export async function parseRecipeAiFunction(text) {
+export async function parseRecipeAiFunction(payload) {
+  const body = typeof payload === 'string' ? { text: payload } : payload;
   const { data, error } = await supabase.functions.invoke('parse-recipe', {
-    body: { text }
+    body
   });
   if (error) throw error;
   return data;

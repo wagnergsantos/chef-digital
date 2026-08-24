@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "oxlint",
+    "process-images": "node scripts/process-images.js",
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
