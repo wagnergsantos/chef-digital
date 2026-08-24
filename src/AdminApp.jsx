@@ -179,6 +179,27 @@ export function AdminApp() {
   };
 
   const handleAIImportSuccess = (imported) => {
+    let matchedCategoryId = null;
+    if (imported.category && categories.length > 0) {
+      const catKey = String(imported.category).toLowerCase().trim();
+      // 1. Chave exata
+      const matchExact = categories.find((c) => c.key && c.key.toLowerCase().trim() === catKey);
+      if (matchExact) {
+        matchedCategoryId = String(matchExact.id);
+      } else {
+        // 2. Rótulo ou inclusão
+        const matchPartial = categories.find(
+          (c) => c.label.toLowerCase().includes(catKey) || catKey.includes((c.key || '').toLowerCase())
+        );
+        if (matchPartial) {
+          matchedCategoryId = String(matchPartial.id);
+        } else if (categories.length > 0) {
+          // 3. Fallback primeira categoria
+          matchedCategoryId = String(categories[0].id);
+        }
+      }
+    }
+
     setFormData((prev) => ({
       ...prev,
       title: imported.title || prev.title,
@@ -189,36 +210,12 @@ export function AdminApp() {
       prep_time: imported.prep_time !== undefined && imported.prep_time !== null ? String(imported.prep_time) : prev.prep_time,
       cook_time: imported.cook_time !== undefined && imported.cook_time !== null ? String(imported.cook_time) : prev.cook_time,
       source_url: imported.source_url || prev.source_url,
-      author: imported.author || prev.author
+      author: imported.author || prev.author,
+      ...(matchedCategoryId ? { category_id: matchedCategoryId } : {})
     }));
 
     if (Array.isArray(imported.tags) && imported.tags.length > 0) {
       setRecipeTags([...imported.tags]);
-    }
-
-    if (imported.category && categories.length > 0) {
-      const catKey = String(imported.category).toLowerCase().trim();
-      let matchedId = null;
-
-      // 1. Chave exata
-      const matchExact = categories.find((c) => c.key && c.key.toLowerCase().trim() === catKey);
-      if (matchExact) {
-        matchedId = String(matchExact.id);
-      } else {
-        // 2. Rótulo ou inclusão
-        const matchPartial = categories.find(
-          (c) => c.label.toLowerCase().includes(catKey) || catKey.includes((c.key || '').toLowerCase())
-        );
-        if (matchPartial) {
-          matchedId = String(matchPartial.id);
-        } else if (categories.length > 0) {
-          // 3. Fallback primeira categoria
-          matchedId = String(categories[0].id);
-        }
-      }
-      if (matchedId) {
-        setFormData((prev) => ({ ...prev, category_id: matchedId }));
-      }
     }
 
     if (Array.isArray(imported.ingredients) && imported.ingredients.length > 0) {
