@@ -55,6 +55,17 @@ export function App() {
         setTimeout(() => setToastMessage(null), 3000);
     }, []);
 
+    // Clear the print target marker once the browser's print dialog closes
+    // (fired whether the user confirms or cancels), so the app returns to
+    // its normal screen state.
+    useEffect(() => {
+        const handleAfterPrint = () => {
+            delete document.documentElement.dataset.printing;
+        };
+        window.addEventListener('afterprint', handleAfterPrint);
+        return () => window.removeEventListener('afterprint', handleAfterPrint);
+    }, []);
+
     // Initial fetch / cache loading
     useEffect(() => {
         async function loadInitialData() {

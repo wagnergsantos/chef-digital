@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { scaleIngredientQty } from '../logic/recipes.js';
 import { isRecipePlanned } from '../logic/planner.js';
 import { useFocusTrap } from '../hooks/useFocusTrap.js';
+import { printRecipe } from '../logic/print.js';
 import styles from './RecipeModal.module.css';
 
 export function RecipeModal({
@@ -68,7 +69,7 @@ export function RecipeModal({
             aria-label={`Receita: ${recipe.title}`}
             onClick={(e) => e.target.id === 'recipe-modal' && onClose()}
         >
-            <div className={styles.modalContainer}>
+            <div className={styles.modalContainer} data-print-panel>
                 {/* Banner com Botões no Topo e Título abaixo */}
                 <div
                     className={`${styles.modalHeaderBanner} ${recipe.image ? styles.hasImage : ''}`}
@@ -102,6 +103,7 @@ export function RecipeModal({
                                 className={styles.modalStartCookingBtn}
                                 title="Iniciar Modo Preparo passo a passo"
                                 aria-label="Iniciar Modo Preparo"
+                                data-print-hide
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true" width="18" height="18">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
@@ -116,6 +118,7 @@ export function RecipeModal({
                                 title={isPlanned ? 'Remover do Planejamento' : 'Planejar essa refeição'}
                                 aria-label="Planejar essa refeição"
                                 aria-pressed={isPlanned}
+                                data-print-hide
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -127,6 +130,7 @@ export function RecipeModal({
                                 className={styles.modalShoppingBtn}
                                 title="Adicionar tudo à lista de compras"
                                 aria-label="Adicionar todos os ingredientes à lista de compras"
+                                data-print-hide
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -138,12 +142,25 @@ export function RecipeModal({
                                 className={styles.modalShareBtn}
                                 title="Compartilhar receita"
                                 aria-label="Compartilhar receita"
+                                data-print-hide
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                                 </svg>
                             </button>
-                            <button type="button" onClick={onClose} className={styles.modalCloseBtn} title="Fechar" aria-label="Fechar receita">
+                            <button
+                                type="button"
+                                onClick={() => printRecipe()}
+                                className={styles.modalPrintBtn}
+                                title="Imprimir receita"
+                                aria-label="Imprimir receita"
+                                data-print-hide
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z"></path>
+                                </svg>
+                            </button>
+                            <button type="button" onClick={onClose} className={styles.modalCloseBtn} title="Fechar" aria-label="Fechar receita" data-print-hide>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                     <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path>
                                 </svg>
@@ -161,7 +178,7 @@ export function RecipeModal({
                     <div className={styles.modalColLeft}>
                         <div className={styles.modalSectionTitleWrapper}>
                             <h4>Ingredientes</h4>
-                            <div className={styles.portionControls}>
+                            <div className={styles.portionControls} data-print-hide>
                                 <button type="button" onClick={() => handlePortionsChange(-1)} className={styles.portionBtn} aria-label="Diminuir porções">-</button>
                                 <span className={styles.portionValue}>{isServingsMode ? `${portions} pessoas` : `${portions}x`}</span>
                                 <button type="button" onClick={() => handlePortionsChange(1)} className={styles.portionBtn} aria-label="Aumentar porções">+</button>
@@ -180,7 +197,7 @@ export function RecipeModal({
                                 }
 
                                 return (
-                                    <li key={`${ing.name}-${idx}`} className={styles.modalIngredientsLi}>
+                                    <li key={`${ing.name}-${idx}`} className={styles.modalIngredientsLi} data-print-card>
                                         <span className={styles.ingBullet} aria-hidden="true">•</span>
                                         <div className={styles.ingDetailsRow}>
                                             <span className={styles.ingName}>{ing.name}</span>
@@ -207,6 +224,7 @@ export function RecipeModal({
                                         role="checkbox"
                                         aria-checked={isDone}
                                         tabIndex={0}
+                                        data-print-card
                                         onClick={() => toggleStep(idx)}
                                         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleStep(idx))}
                                     >

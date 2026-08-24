@@ -476,12 +476,6 @@ button,
             gap: 20px;
         }
 
-        .sidebar-sticky {
-            position: static;
-            top: auto;
-            max-height: none;
-        }
-
         .results-header {
             align-items: flex-start;
             flex-direction: column;
@@ -500,135 +494,6 @@ button,
 
 .hidden {
     display: none !important;
-}
-
-.drawer-backdrop.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.drawer {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100vw;
-    max-width: 420px;
-    background-color: var(--bg-card);
-    box-shadow: var(--shadow-xl);
-    z-index: 50;
-    transform: translate3d(100%, 0, 0);
-    will-change: transform;
-    transition: transform 0.32s var(--ease-out-quint);
-    border-left: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-}
-
-@media (max-width: 480px) {
-    .drawer {
-        width: 100vw;
-        max-width: 100vw;
-        border-left: none;
-    }
-
-    .drawer-header {
-        padding: 14px 12px;
-    }
-
-    .drawer-header-title h3 {
-        font-size: var(--text-base);
-    }
-
-    .drawer-header-actions {
-        gap: 4px;
-    }
-
-    .drawer-content {
-        padding: 12px;
-    }
-
-    .drawer-footer {
-        padding: 12px;
-    }
-
-    .modal-container {
-        width: 100vw;
-        max-width: 100vw;
-        border-radius: 0;
-        margin: 0;
-        min-height: 100vh;
-    }
-
-    .modal-header-banner {
-        padding: 60px 14px 16px 14px;
-        min-height: 130px;
-    }
-
-    .modal-header-banner h3 {
-        font-size: var(--text-xl);
-    }
-
-    .modal-header-tools {
-        gap: 4px;
-    }
-
-    .modal-close-btn,
-    .modal-wakelock-btn,
-    .modal-print-btn,
-    .modal-shopping-btn,
-    .modal-planner-btn {
-        width: 34px;
-        height: 34px;
-    }
-
-    .modal-start-cooking-btn {
-        height: 34px;
-        padding: 0 10px;
-        font-size: 11px;
-    }
-
-    .modal-body {
-        padding: 14px 12px;
-        gap: 16px;
-    }
-
-    .modal-section-title-wrapper h4 {
-        font-size: var(--text-base);
-    }
-}
-
-.ing-checkbox.checked {
-    background-color: var(--primary-light);
-    border-color: var(--primary-hover);
-}
-
-.ing-checkbox.checked svg {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Wake Lock indicator (see .modal-wakelock-btn for the toggle button) */
-#wake-lock-indicator {
-    display: none;
-    font-size: 1rem;
-    margin-left: 0.4rem;
-    vertical-align: middle;
-}
-
-#wake-lock-indicator.visible {
-    display: inline-block;
-}
-
-.modal-step-li.completed {
-    opacity: 0.4;
-}
-
-.step-text {
-    font-size: var(--text-sm);
-    color: var(--text-main);
-    line-height: 1.6;
-    padding-top: 2px;
 }
 
 /* ========================================================================
@@ -717,7 +582,13 @@ button,
 /* ========================================================================
    Print Support (Recipe Modal, Shopping List and Weekly Planner)
    Controlled by the html[data-printing] attribute, set by printRecipe(),
-   printShoppingList() and printPlanner() in index.html.
+   printShoppingList() and printPlanner() in src/logic/print.js, and
+   cleared on the 'afterprint' event (see App.jsx). The target containers
+   are matched by their stable #id (CSS Modules only scope classes, not
+   ids), and inner elements to hide/protect during print opt in via the
+   plain data-print-hide / data-print-card / data-print-panel attributes
+   set directly in JSX — this avoids depending on any component's hashed
+   CSS Module class names from this global stylesheet.
 ======================================================================== */
 @media print {
     /* 1. Hide every top-level section of the app. display:none removes it
@@ -728,10 +599,27 @@ button,
         display: none !important;
     }
 
+    /* 1b. The whole app renders inside a single #root > .app-container
+       tree (React mounts everything under one node, unlike the old
+       vanilla markup where the modal/drawers were direct children of
+       <body>). display:none on an ancestor can't be overridden by a
+       descendant's own display value, so #root itself — and its child
+       .app-container — must be explicitly kept visible, then every
+       *other* direct child of .app-container hidden, before the one
+       target container is revealed below. */
+    html[data-printing] #root,
+    html[data-printing] .app-container {
+        display: block !important;
+    }
+
+    html[data-printing] .app-container > * {
+        display: none !important;
+    }
+
     /* 2. Reveal only the active target container, flowing from the top */
-    html[data-printing="recipe"] #recipe-modal,
-    html[data-printing="shopping"] #shopping-list-drawer,
-    html[data-printing="planner"] #planner-drawer {
+    html[data-printing="recipe"] .app-container > #recipe-modal,
+    html[data-printing="shopping"] .app-container > #shopping-list-drawer,
+    html[data-printing="planner"] .app-container > #planner-drawer {
         display: block !important;
     }
 
@@ -739,7 +627,8 @@ button,
        used to hide these containers on screen when closed, so the revealed
        target flows naturally from the top of the printed page */
     html[data-printing="recipe"] #recipe-modal,
-    html[data-printing] .drawer {
+    html[data-printing="shopping"] #shopping-list-drawer,
+    html[data-printing="planner"] #planner-drawer {
         position: static !important;
         opacity: 1 !important;
         pointer-events: auto !important;
@@ -753,7 +642,7 @@ button,
         backdrop-filter: none !important;
     }
 
-    html[data-printing="recipe"] .modal-container {
+    html[data-printing="recipe"] [data-print-panel] {
         max-height: none !important;
         max-width: 100% !important;
         box-shadow: none !important;
@@ -770,38 +659,15 @@ button,
     }
 
     /* 5. Hide action/navigation elements that make no sense on paper */
-    html[data-printing] .modal-close-btn,
-    html[data-printing] .modal-wakelock-btn,
-    html[data-printing] #wake-lock-indicator,
-    html[data-printing] .modal-shopping-btn,
-    html[data-printing] .modal-planner-btn,
-    html[data-printing] .portion-btn,
-    html[data-printing] .card-action-btn,
-    html[data-printing] .drawer-card-remove,
-    html[data-printing] .print-btn,
-    html[data-printing] .drawer-print-btn,
-    html[data-printing] .drawer-clear-btn,
-    html[data-printing] .drawer-close-btn,
-    html[data-printing] .drawer-footer,
-    html[data-printing] #drawer-backdrop {
+    html[data-printing] [data-print-hide] {
         display: none !important;
     }
 
     /* 6. Avoid cutting cards/groups in half across a page break */
-    html[data-printing] .shopping-section,
-    html[data-printing] .drawer-card,
-    html[data-printing] .modal-ingredients-li,
-    html[data-printing] .modal-step-li {
+    html[data-printing] [data-print-card] {
         break-inside: avoid;
     }
 }
-
-.day-picker-option.active {
-    color: var(--success-hover);
-    background-color: var(--success-light);
-    font-weight: 700;
-}
-
 .day-picker-option.active {
     color: var(--success-hover);
     background-color: var(--success-light);

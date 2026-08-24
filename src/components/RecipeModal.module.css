@@ -440,3 +440,50 @@
     color: var(--primary-active);
     line-height: 1.5;
 }
+
+@media (max-width: 480px) {
+    .modalContainer {
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    .modalHeaderBanner {
+        padding: 60px 14px 16px 14px;
+        min-height: 130px;
+    }
+
+    .modalHeaderBanner h3 {
+        font-size: var(--text-xl);
+    }
+
+    .modalHeaderTools {
+        gap: 4px;
+    }
+
+    .modalCloseBtn,
+    .modalWakelockBtn,
+    .modalPrintBtn,
+    .modalShoppingBtn,
+    .modalPlannerBtn {
+        width: 34px;
+        height: 34px;
+    }
+
+    .modalStartCookingBtn {
+        height: 34px;
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
+    .modalBody {
+        padding: 14px 12px;
+        gap: 16px;
+    }
+
+    .modalSectionTitleWrapper h4 {
+        font-size: var(--text-base);
+    }
+}
