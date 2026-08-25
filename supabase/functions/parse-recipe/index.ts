@@ -61,7 +61,7 @@ serve(async (req) => {
       });
     }
 
-    const { text, image } = await req.json();
+    const { text, image, customPrompt } = await req.json();
     if ((!text || !text.trim()) && !image) {
       return new Response(JSON.stringify({ ok: false, error: "Texto, URL ou imagem da receita é obrigatório." }), {
         status: 400,
@@ -123,6 +123,10 @@ serve(async (req) => {
 
     // Preparar as partes para o Gemini (suporta texto e/ou imagem base64)
     const promptParts: any[] = [{ text: SYSTEM_PROMPT }];
+
+    if (customPrompt && customPrompt.trim()) {
+      promptParts.push({ text: `INSTRUÇÕES ADICIONAIS DO USUÁRIO PARA ESTA RECEITA/LOTE (siga rigorosamente estas orientações e inclua as tags/informações solicitadas):\n"${customPrompt.trim()}"` });
+    }
     
     if (recipeTextToParse) {
       promptParts.push({ text: `Receita/Texto para extrair:\n${recipeTextToParse}` });
@@ -159,7 +163,14 @@ serve(async (req) => {
     let lastError = null;
     let quotaExceeded = false;
 
-    const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash-latest", "gemini-1.5-flash-8b"];
+    // Lista de modelos por ordem de preferência, com fallback em cascata.
+    // IMPORTANTE: a família Gemini 1.5 foi totalmente desativada e o
+    // Gemini 2.0 Flash foi desligado em 01/06/2026 — não reintroduzir
+    // nomes dessas famílias aqui. O gemini-2.5-flash também já tem
+    // desligamento agendado (16/10/2026), mantido só como último fallback.
+    // Ao atualizar esta lista no futuro, sempre conferir a página oficial
+    // de deprecations: https://ai.google.dev/gemini-api/docs/deprecations
+    const models = ["gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"];
 
     for (const key of keys) {
       for (const model of models) {
@@ -182,13 +193,15 @@ serve(async (req) => {
 
           if (response.status === 429) {
             quotaExceeded = true;
-            console.warn(`Quota excedida no modelo ${model}, tentando próximo...`);
-            break; // tenta a próxima chave se estourar cota
+            const errText = await response.text();
+            console.warn(`Quota excedida no modelo ${model} (chave ...${key.slice(-4)}):`, errText);
+            lastError = `Quota excedida na API Gemini (429).`;
+            continue; // tenta o próximo modelo / chave
           }
 
           if (!response.ok) {
             const errText = await response.text();
-            console.error(`Erro na API Gemini (${model}):`, errText);
+            console.error(`Erro na API Gemini (${model}, chave ...${key.slice(-4)}):`, errText);
             lastError = errText;
             continue; // tenta o próximo modelo da lista
           }

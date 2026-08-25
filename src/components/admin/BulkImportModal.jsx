@@ -6,6 +6,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
   const [itemsStatus, setItemsStatus] = useState([]); // [{ file, status: 'pending'|'parsing'|'success'|'error', recipe: null, error: null }]
   const [processing, setProcessing] = useState(false);
   const [autoSaveDb, setAutoSaveDb] = useState(true);
+  const [customPrompt, setCustomPrompt] = useState('');
   const fileInputRef = useRef(null);
 
   const handleFilesSelect = (e) => {
@@ -52,7 +53,8 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
           image: {
             data: base64,
             mimeType: item.file.type
-          }
+          },
+          customPrompt: customPrompt || undefined
         });
 
         if (!data || !data.ok) {
@@ -185,6 +187,21 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
         <p style={{ fontSize: '0.9rem', color: '#666', marginTop: 0 }}>
           Selecione múltiplas fotos de receitas do seu dispositivo. A IA irá processar cada imagem individualmente.
         </p>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.3rem', color: '#4a5568' }}>
+            💡 Orientações / Tags Adicionais para este Lote (Opcional)
+          </label>
+          <input
+            type="text"
+            className="form-input"
+            placeholder="Ex: 'Todas são receitas de muffin, adicionar a tag Saudável e Airfryer'"
+            value={customPrompt}
+            onChange={(e) => setCustomPrompt(e.target.value)}
+            disabled={processing}
+            style={{ width: '100%', padding: '0.5rem', fontSize: '0.875rem' }}
+          />
+        </div>
 
         <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap' }}>
           <input

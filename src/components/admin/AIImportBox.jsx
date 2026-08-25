@@ -96,7 +96,7 @@ export function AIImportBox({ onImportSuccess }) {
           setRawText('');
           removeImage();
           return;
-        } catch (jsonParseErr) {
+        } catch {
           throw new Error('O texto colado parece um JSON, mas contém erros de formatação. Verifique a estrutura.');
         }
       }
