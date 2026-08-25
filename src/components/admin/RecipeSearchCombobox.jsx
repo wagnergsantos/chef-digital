@@ -16,8 +16,11 @@ export function RecipeSearchCombobox({
 
   const cleanQuery = query.trim().toLowerCase();
   const matches = cleanQuery
-    ? recipes.filter((r) => r.title.toLowerCase().includes(cleanQuery)).slice(0, 10)
-    : recipes.slice(0, 10);
+    ? recipes.filter((r) => 
+        r.title.toLowerCase().includes(cleanQuery) || 
+        (r.tags && r.tags.some(t => t.toLowerCase().includes(cleanQuery)))
+      ).slice(0, 15)
+    : recipes.slice(0, 15);
 
   const handleSelect = (recipe) => {
     setQuery(`${recipe.emoji || '🍲'} ${recipe.title}`);
@@ -110,9 +113,17 @@ export function RecipeSearchCombobox({
                     e.preventDefault();
                     handleSelect(r);
                   }}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                 >
-                  <span className="admin-recipe-dropdown-emoji">{r.emoji || '🍲'}</span>
-                  <span>{r.title}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <span className="admin-recipe-dropdown-emoji">{r.emoji || '🍲'}</span>
+                    <span>{r.title}</span>
+                  </div>
+                  {r.tags && r.tags.includes('A Revisar') && (
+                    <span style={{ fontSize: '0.75rem', background: '#feebc8', color: '#744210', padding: '0.1rem 0.4rem', borderRadius: '4px', fontWeight: 'bold' }}>
+                      🔍 A Revisar
+                    </span>
+                  )}
                 </div>
               ))}
             </div>

@@ -12,10 +12,13 @@ export async function fetchCategories() {
 export async function fetchRecipesList() {
   const { data, error } = await supabase
     .from('receitas')
-    .select('id, title, emoji')
+    .select('id, title, emoji, receita_tags(tags(label))')
     .order('title');
   if (error) throw error;
-  return data || [];
+  return (data || []).map((r) => ({
+    ...r,
+    tags: (r.receita_tags || []).map((t) => t.tags?.label).filter(Boolean)
+  }));
 }
 
 export async function fetchRecipeDetails(id) {

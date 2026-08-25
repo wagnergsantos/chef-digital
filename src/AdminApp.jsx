@@ -90,7 +90,13 @@ export function AdminApp() {
 
   useEffect(() => {
     if (session) {
-      loadData();
+      loadData().then(() => {
+        const params = new URLSearchParams(window.location.search);
+        const editId = params.get('edit');
+        if (editId) {
+          handleLoadRecipe(parseInt(editId, 10));
+        }
+      });
     }
   }, [session]);
 
@@ -126,7 +132,7 @@ export function AdminApp() {
         author: r.author || '',
         source_url: r.source_url || '',
         tips: r.tips || '',
-        category_id: r.categoria_id ? String(r.categoria_id) : ''
+        category_id: (r.categoria_id || r.categorias?.id) ? String(r.categoria_id || r.categorias?.id) : ''
       });
 
       setIngredients(

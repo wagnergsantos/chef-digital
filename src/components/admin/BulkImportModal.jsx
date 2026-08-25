@@ -3,7 +3,6 @@ import { parseRecipeAiFunction, saveRecipeRpc } from '../../api/admin.js';
 import { buildRecipePayload } from '../../logic/admin-parser.js';
 
 export function BulkImportModal({ categories, onClose, onRefreshData }) {
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [itemsStatus, setItemsStatus] = useState([]); // [{ file, status: 'pending'|'parsing'|'success'|'error', recipe: null, error: null }]
   const [processing, setProcessing] = useState(false);
   const [autoSaveDb, setAutoSaveDb] = useState(true);
@@ -13,7 +12,6 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
     const files = Array.from(e.target.files || []).filter((f) => f.type.startsWith('image/'));
     if (files.length === 0) return;
 
-    setSelectedFiles((prev) => [...prev, ...files]);
     const newItems = files.map((file) => ({
       file,
       status: 'pending',
@@ -24,7 +22,6 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
   };
 
   const removeFile = (index) => {
-    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
     setItemsStatus((prev) => prev.filter((_, i) => i !== index));
   };
 
@@ -67,12 +64,19 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
         // Se autoSaveDb estiver ativo, salvar via RPC
         if (autoSaveDb && recipe) {
           let categoryId = null;
-          if (recipe.category && categories.length > 0) {
-            const catKey = String(recipe.category).toLowerCase().trim();
-            const match = categories.find(
-              (c) => (c.key && c.key.toLowerCase().trim() === catKey) || c.label.toLowerCase().includes(catKey)
-            );
-            if (match) categoryId = match.id;
+          if (categories && categories.length > 0) {
+            if (recipe.category) {
+              const catKey = String(recipe.category).toLowerCase().trim();
+              const match = categories.find(
+                (c) => (c.key && c.key.toLowerCase().trim() === catKey) || (c.label && c.label.toLowerCase().includes(catKey)) || catKey.includes((c.key || '').toLowerCase())
+              );
+              if (match) categoryId = match.id;
+            }
+            // Se não encontrou correspondência exata, usa a categoria "outros" ou a primeira disponível
+            if (!categoryId) {
+              const outrosCat = categories.find((c) => c.key === 'outros');
+              categoryId = outrosCat ? outrosCat.id : categories[0].id;
+            }
           }
 
           const payload = buildRecipePayload({
@@ -88,7 +92,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
             tips: recipe.tips || '',
             selectedCategoryId: categoryId,
             selectedCategoryKey: recipe.category || '',
-            tags: Array.isArray(recipe.tags) ? recipe.tags : [],
+            tags: Array.from(new Set(['A Revisar', ...(Array.isArray(recipe.tags) ? recipe.tags : [])])),
             validIngredients: (recipe.ingredients || []).map((ing) => ({
               name: ing.name || '',
               qty: ing.qty !== undefined && ing.qty !== null ? ing.qty : null,
