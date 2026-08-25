@@ -163,11 +163,17 @@ serve(async (req) => {
     let lastError = null;
     let quotaExceeded = false;
 
-    // Modelos em ordem de preferência. Se um modelo retornar 404 (não existe),
-    // ele é descartado imediatamente para todas as chaves — sem tentar as demais.
-    // Lista validada via GET /v1beta/models?key=... | select(generateContent + inputTokenLimit>=32k)
-    // Modelos -image são para geração de imagem (output), não análise — não usar aqui.
-    const models = ["gemini-3.7-flash", "gemini-3.5-flash", "gemini-2.5-flash", "gemini-2.5-flash-lite"];
+    // Modelos em ordem de preferência.
+    // Se 404 (inexistente) ou 503 (alta demanda temporária no Google), descarta o modelo imediatamente.
+    // gemini-2.5-flash-lite foi depreciado em favor de gemini-3.5-flash-lite.
+    const models = [
+      "gemini-3.5-flash-lite",
+      "gemini-3.1-flash-lite",
+      "gemini-2.5-flash",
+      "gemini-3.7-flash",
+      "gemini-3.5-flash",
+      "gemini-2.5-pro"
+    ];
 
     modelLoop:
     for (const model of models) {
@@ -177,6 +183,7 @@ serve(async (req) => {
           const response = await fetch(geminiUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            signal: AbortSignal.timeout(12000), // Timeout de 12s para não travar a Edge Function
             body: JSON.stringify({
               contents: [
                 {
@@ -207,7 +214,14 @@ serve(async (req) => {
             const errText = await response.text();
             console.warn(`Modelo ${model} não encontrado (404) — descartando modelo:`, errText);
             lastError = errText;
-            continue modelLoop; // pula TODAS as chaves restantes deste modelo
+            continue modelLoop; // pula TODAS as chaves deste modelo
+          }
+
+          if (response.status === 503) {
+            const errText = await response.text();
+            console.warn(`Modelo ${model} sob alta demanda (503) — pulando para próximo modelo:`, errText);
+            lastError = errText;
+            continue modelLoop; // pula TODAS as chaves deste modelo para não queimar tempo
           }
 
           if (!response.ok) {
