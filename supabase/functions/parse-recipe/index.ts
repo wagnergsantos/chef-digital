@@ -165,8 +165,8 @@ serve(async (req) => {
 
     // Modelos em ordem de preferência. Se um modelo retornar 404 (não existe),
     // ele é descartado imediatamente para todas as chaves — sem tentar as demais.
-    // Atualizar conforme https://ai.google.dev/gemini-api/docs/models
-    const models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
+    // Lista obtida via GET /v1beta/models?key=... filtrando supportedGenerationMethods=generateContent
+    const models = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-3.1-flash-lite"];
 
     modelLoop:
     for (const model of models) {
@@ -182,8 +182,14 @@ serve(async (req) => {
                   parts: promptParts
                 }
               ],
+              // temperature baixo = saída determinística (JSON estruturado, não criativo)
+              // maxOutputTokens = receita não precisa de 65k tokens
+              // thinkingBudget 0 = desabilita raciocínio estendido (muito mais rápido para extração simples)
               generationConfig: {
-                responseMimeType: "application/json"
+                responseMimeType: "application/json",
+                temperature: 0.1,
+                maxOutputTokens: 4096,
+                thinkingConfig: { thinkingBudget: 0 }
               }
             })
           });
