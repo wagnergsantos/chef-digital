@@ -165,8 +165,9 @@ serve(async (req) => {
 
     // Modelos em ordem de preferência. Se um modelo retornar 404 (não existe),
     // ele é descartado imediatamente para todas as chaves — sem tentar as demais.
-    // Lista obtida via GET /v1beta/models?key=... filtrando supportedGenerationMethods=generateContent
-    const models = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-3.1-flash-lite"];
+    // Lista validada via GET /v1beta/models?key=... | select(generateContent + inputTokenLimit>=32k)
+    // Modelos -image são para geração de imagem (output), não análise — não usar aqui.
+    const models = ["gemini-3.7-flash", "gemini-3.5-flash", "gemini-2.5-flash", "gemini-2.5-flash-lite"];
 
     modelLoop:
     for (const model of models) {
