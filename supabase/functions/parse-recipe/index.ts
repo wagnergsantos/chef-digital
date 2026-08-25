@@ -163,17 +163,14 @@ serve(async (req) => {
     let lastError = null;
     let quotaExceeded = false;
 
-    // Lista de modelos por ordem de preferência, com fallback em cascata.
-    // IMPORTANTE: a família Gemini 1.5 foi totalmente desativada e o
-    // Gemini 2.0 Flash foi desligado em 01/06/2026 — não reintroduzir
-    // nomes dessas famílias aqui. O gemini-2.5-flash também já tem
-    // desligamento agendado (16/10/2026), mantido só como último fallback.
-    // Ao atualizar esta lista no futuro, sempre conferir a página oficial
-    // de deprecations: https://ai.google.dev/gemini-api/docs/deprecations
-    const models = ["gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash", "gemini-2.5-flash"];
+    // Modelos em ordem de preferência. Se um modelo retornar 404 (não existe),
+    // ele é descartado imediatamente para todas as chaves — sem tentar as demais.
+    // Atualizar conforme https://ai.google.dev/gemini-api/docs/models
+    const models = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
 
-    for (const key of keys) {
-      for (const model of models) {
+    modelLoop:
+    for (const model of models) {
+      for (const key of keys) {
         try {
           const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
           const response = await fetch(geminiUrl, {
@@ -196,14 +193,21 @@ serve(async (req) => {
             const errText = await response.text();
             console.warn(`Quota excedida no modelo ${model} (chave ...${key.slice(-4)}):`, errText);
             lastError = `Quota excedida na API Gemini (429).`;
-            continue; // tenta o próximo modelo / chave
+            continue; // tenta próxima chave
+          }
+
+          if (response.status === 404) {
+            const errText = await response.text();
+            console.warn(`Modelo ${model} não encontrado (404) — descartando modelo:`, errText);
+            lastError = errText;
+            continue modelLoop; // pula TODAS as chaves restantes deste modelo
           }
 
           if (!response.ok) {
             const errText = await response.text();
             console.error(`Erro na API Gemini (${model}, chave ...${key.slice(-4)}):`, errText);
             lastError = errText;
-            continue; // tenta o próximo modelo da lista
+            continue; // tenta próxima chave
           }
 
           const data = await response.json();
