@@ -8,17 +8,31 @@ export function AIImportBox({ onImportSuccess }) {
   const [errorMsg, setErrorMsg] = useState('');
   const fileInputRef = useRef(null);
 
-  const fileToBase64 = (file) => {
+  const compressAndToBase64 = (file, { maxPx = 1024, quality = 0.82 } = {}) => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const result = reader.result;
-        // remove header ex: "data:image/png;base64,"
-        const base64Data = result.split(',')[1];
-        resolve(base64Data);
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        let { width, height } = img;
+        if (width > maxPx || height > maxPx) {
+          if (width > height) {
+            height = Math.round((height * maxPx) / width);
+            width = maxPx;
+          } else {
+            width = Math.round((width * maxPx) / height);
+            height = maxPx;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve({ base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' });
       };
-      reader.onerror = (err) => reject(err);
-      reader.readAsDataURL(file);
+      img.onerror = reject;
+      img.src = objectUrl;
     });
   };
 
@@ -29,13 +43,13 @@ export function AIImportBox({ onImportSuccess }) {
     }
 
     try {
-      const base64 = await fileToBase64(file);
+      const { base64, mimeType } = await compressAndToBase64(file);
       const previewUrl = URL.createObjectURL(file);
       setSelectedImage({
         file,
         previewUrl,
         base64,
-        mimeType: file.type
+        mimeType
       });
       setErrorMsg('');
     } catch (err) {

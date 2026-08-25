@@ -26,12 +26,31 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
     setItemsStatus((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const fileToBase64 = (file) => {
+  const compressAndToBase64 = (file, { maxPx = 1024, quality = 0.82 } = {}) => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result.split(',')[1]);
-      reader.onerror = (err) => reject(err);
-      reader.readAsDataURL(file);
+      const img = new Image();
+      const objectUrl = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(objectUrl);
+        let { width, height } = img;
+        if (width > maxPx || height > maxPx) {
+          if (width > height) {
+            height = Math.round((height * maxPx) / width);
+            width = maxPx;
+          } else {
+            width = Math.round((width * maxPx) / height);
+            height = maxPx;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve({ base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' });
+      };
+      img.onerror = reject;
+      img.src = objectUrl;
     });
   };
 
@@ -48,11 +67,11 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
       );
 
       try {
-        const base64 = await fileToBase64(item.file);
+        const { base64, mimeType } = await compressAndToBase64(item.file);
         const data = await parseRecipeAiFunction({
           image: {
             data: base64,
-            mimeType: item.file.type
+            mimeType
           },
           customPrompt: customPrompt || undefined
         });

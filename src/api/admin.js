@@ -66,6 +66,26 @@ export async function parseRecipeAiFunction(payload) {
   const { data, error } = await supabase.functions.invoke('parse-recipe', {
     body
   });
-  if (error) throw error;
+  if (error) {
+    // FunctionsHttpError descarta o body real — tentar extrair a mensagem verdadeira
+    let detail = error.message;
+    try {
+      if (error.context && typeof error.context.json === 'function') {
+        const errJson = await error.context.json();
+        detail = errJson?.error || errJson?.message || detail;
+      } else if (error.context && typeof error.context.text === 'function') {
+        const raw = await error.context.text();
+        try {
+          const parsed = JSON.parse(raw);
+          detail = parsed?.error || parsed?.message || raw;
+        } catch {
+          detail = raw || detail;
+        }
+      }
+    } catch {
+      // mantém detail original
+    }
+    throw new Error(detail);
+  }
   return data;
 }
