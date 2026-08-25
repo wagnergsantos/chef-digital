@@ -5,7 +5,7 @@ import { createEmptyPlannedByDay, getAllPlannedEntries, getPlannedDaysForRecipe 
 import { calculateConsolidatedShoppingList, formatShoppingListText, countShoppingItems } from './logic/shopping.js';
 import { formatRecipeShareText } from './logic/recipe-modal-logic.js';
 import { supabase } from './api/supabase.js';
-import { mapSummaryRecipes, buildRecipeDetailsIndex } from './api/recipes-loader.js';
+import { mapFullRecipes } from './api/recipes-loader.js';
 
 import { filterRecipesList } from './logic/recipes-filter.js';
 
@@ -70,17 +70,19 @@ export function App() {
     useEffect(() => {
         async function loadInitialData() {
             try {
-                const { data: recData } = await supabase
-                    .from('receitas_resumo')
-                    .select('id, title, category_id, category, emoji, image, servings, prep_time, cook_time, source_url, author, tips, ingredient_count')
-                    .order('title');
-
-                const [{ data: catData }, { data: tagData }, { data: recipeTagsData }, { data: ingData }, { data: stepData }] = await Promise.all([
+                const [{ data: recData }, { data: catData }, { data: tagData }] = await Promise.all([
+                    supabase
+                        .from('receitas')
+                        .select(`
+                            id, title, category_id, emoji, image, servings, prep_time, cook_time, source_url, author, tips,
+                            categorias (id, key, label),
+                            receita_tags (tags (key)),
+                            ingredientes (name, qty, unit, ordem),
+                            passos (step_text, ordem)
+                        `)
+                        .order('title'),
                     supabase.from('categorias').select('*').order('sort_order'),
-                    supabase.from('tags').select('*').order('sort_order'),
-                    supabase.from('receita_tags').select('receita_id, tags(key)'),
-                    supabase.from('ingredientes').select('receita_id, name, qty, unit').order('ordem'),
-                    supabase.from('passos').select('receita_id, step_text').order('ordem')
+                    supabase.from('tags').select('*').order('sort_order')
                 ]);
 
                 let catById = {};
@@ -95,27 +97,22 @@ export function App() {
                 }
 
                 if (recData && recData.length > 0) {
-                    const detailsIndex = buildRecipeDetailsIndex(ingData || [], stepData || []);
-                    const mapped = mapSummaryRecipes(recData).map(r => ({
-                        ...r,
-                        category: catById[String(r.category_id)] || r.category || 'outros',
-                        ingredients: detailsIndex[r.id]?.ingredients || [],
-                        steps: detailsIndex[r.id]?.steps || []
-                    }));
+                    const mapped = mapFullRecipes(recData, catById);
                     setRecipes(mapped);
+
+                    const rtMap = {};
+                    recData.forEach(r => {
+                        if (Array.isArray(r.receita_tags)) {
+                            rtMap[r.id] = r.receita_tags
+                                .map(rt => rt.tags?.key)
+                                .filter(Boolean);
+                        }
+                    });
+                    setRecipeTagsMap(rtMap);
                 }
 
                 if (tagData) {
                     setTagsMap(tagData.reduce((acc, tag) => ({ ...acc, [tag.key]: tag.label }), {}));
-                }
-
-                if (recipeTagsData) {
-                    const rtMap = {};
-                    recipeTagsData.forEach(rt => {
-                        if (!rtMap[rt.receita_id]) rtMap[rt.receita_id] = [];
-                        rtMap[rt.receita_id].push(rt.tags.key);
-                    });
-                    setRecipeTagsMap(rtMap);
                 }
             } catch (e) {
                 console.warn('Erro ao carregar dados do Supabase:', e);
