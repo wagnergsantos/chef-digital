@@ -2,141 +2,90 @@
 
 ## Contexto
 
-`chef-digital` tem 127 imagens de receita em `public/*.png` (12MB no
-total), referenciadas pela coluna `receitas.image` no Supabase como
-**nomes de arquivo locais** (`"148.png"`, `"10.png"`, etc. — confirmado
-via `receitas.image: "1.png"` no formato usado desde antes da migração
-pro Supabase). O `vite.config.js` faz o service worker do PWA pré-cachear
-**todas** essas imagens no navegador de todo usuário
-(`globPatterns: ['**/*.{js,css,html,png,svg,ico}']`), usadas ou não.
+`chef-digital` continha 127 imagens de receita em `public/*.png` (11.62MB no
+total), referenciadas pela coluna `receitas.image` no Supabase como nomes de
+arquivo locais (`"148.png"`, `"10.png"`, etc.). O `vite.config.js` fazia o
+service worker do PWA pré-cachear todas essas imagens no navegador de todo
+usuário (`globPatterns: ['**/*.{js,css,html,png,svg,ico}']`).
 
-**Hoje não existe upload de imagem de verdade no admin** — o campo
-`recipe-image` em `src/AdminApp.jsx` é um `<input type="text">` onde o
-usuário digita manualmente o nome de um arquivo que precisa já estar
-presente em `public/` (colocado lá por fora, via FTP/commit direto). Não
-há Supabase Storage configurado no projeto (confirmado: nenhuma referência
-a `supabase.storage` em todo o código).
+Hoje o campo de imagem em `src/AdminApp.jsx` é um `<input type="text">` onde o
+usuário digita manualmente o nome do arquivo.
 
-**Decisão de produto**: as imagens novas devem passar a ser armazenadas no
-Supabase Storage, com compressão no cliente antes do upload. As 127
-imagens antigas continuam sendo otimizadas *in place* em `public/` — a
-decisão de migrá-las pro Storage também é adiada, não é bloqueante.
-
-## Por que em duas fases, não uma coisa só
-
-Estas são duas mudanças de risco muito diferente e **devem ser patches
-separados**, mesmo compartilhando esta spec:
-
-- **Fase 1** (otimizar as 127 existentes): não toca banco de dados, não
-  toca URLs, não toca admin. É troca de bytes por bytes menores no mesmo
-  caminho de arquivo. Baixíssimo risco, reversível com um `git revert`.
-- **Fase 2** (pipeline novo): cria infraestrutura nova (bucket, política
-  de acesso), constrói UI de upload que não existe hoje, e muda o que a
-  coluna `receitas.image` passa a conter pra receitas novas. Risco real —
-  bug aqui afeta o fluxo de salvar receita inteiro.
-
-Não prosseguir pra Fase 2 sem a Fase 1 estar validada e no ar.
+**Decisão de produto atualizada**:
+Unificar 100% do armazenamento de imagens no Supabase Storage. A entrega foi
+estruturada em 3 fases sequenciais e seguras:
+1. **Fase 1 (Concluída)**: Otimização *in place* das 127 imagens existentes em `public/` com script permanente e idempotente.
+2. **Fase 2 (Próxima)**: Infraestrutura de Storage + Pipeline de Upload completo no Admin (API + UI integrada com preview).
+3. **Fase 3**: Migração total das 127 imagens para o Storage, atualização no banco de dados, limpeza de `public/` e configuração de cache offline (Workbox) no PWA.
 
 ---
 
-## Fase 1 — Otimizar as 127 imagens existentes (baixo risco)
+## Fase 1 — Otimizar as 127 imagens existentes (CONCLUÍDA ✅)
 
-### Levantamento atual
-- 127 arquivos, 12MB total, dimensões de 146×83 até 988×664 (média
-  ~250×147px)
-- Dois outliers bem acima da média: `148.png` (988×664, 762KB) e `98.png`
-  (784×441, 554KB) — provavelmente fotos de celular coladas sem redimensionar
-- Mesmo imagens pequenas estão pesadas pro tamanho: `100.png` (315×180)
-  pesa 113KB — um PNG bem otimizado nessas dimensões deveria pesar uma
-  fração disso
-- Renderização real: `RecipeCard.module.css` (`.cardHeaderImage`) usa
-  `object-fit: cover` preenchendo o card — não precisa de imagem em
-  resolução maior que o card exibido. Confirme a largura máxima real do
-  card renderizado (provavelmente não passa de ~400-500px em nenhum
-  breakpoint) antes de decidir a dimensão-alvo do redimensionamento.
+### O que foi implementado
+- Script idempotente permanente [`scripts/optimize-images.js`](../scripts/optimize-images.js) com `sharp`.
+- Manifesto de cache com SHA-256 em [`scripts/.optimized-cache.json`](../scripts/.optimized-cache.json) para evitar reprocessamento/degradação cumulativa em novas execuções.
+- Comando npm adicionado: `npm run optimize-images` (suporta `--dry-run` e `--force`).
+- Teto de redimensionamento em 800px de largura máxima (atende com folga os 768px do modal e ~350px dos cards).
+- Compressão PNG com quantização de paleta (qualidade 80).
 
-### O que fazer
-1. Redimensionar toda imagem cuja maior dimensão passe de um teto razoável
-   (sugestão: 800px de largura máxima, dá margem pra telas retina/2x sem
-   desperdiçar em telas normais — confirme contra a largura real do card
-   antes de fixar o número)
-2. Recomprimir mantendo o mesmo nome de arquivo e extensão `.png`
-   (`pngquant`, `oxipng` ou equivalente) — **não renomear, não trocar
-   extensão**, já que `receitas.image` referencia o nome exato
-3. Depois de otimizar, medir o tamanho total de `public/` de novo e
-   reportar a redução
-
-### Validação
-- Comparar visualmente uma amostra (os 2 outliers + 3-4 aleatórias) antes
-  e depois — perda de qualidade perceptível é motivo pra usar uma
-  qualidade de compressão menos agressiva, não é uma race-to-the-bottom
-- `npm run build` continua funcionando normalmente (nada de código muda
-  nesta fase, só os bytes dos arquivos)
-- Conferir que o app carrega essas receitas normalmente depois do build
+### Resultados
+- Redução de **11.62 MB** para **3.47 MB** (**-70.2% / 8.15 MB economizados**).
+- Precache do PWA reduzido de ~12MB para ~4.1MB.
 
 ---
 
-## Fase 2 — Pipeline de upload com Supabase Storage (risco real, faça depois da Fase 1 validada)
+## Fase 2 — Pipeline de Upload no Admin (Supabase Storage)
 
-### Arquitetura sugerida
+### Escopo unificado (API + UI)
 
-Seguindo a mesma separação de camadas do resto do projeto (`api/` pra
-chamadas externas, `logic/` pra lógica pura, componente só orquestra):
+Seguindo a separação de camadas do projeto (`api/` para chamadas externas, `logic/` para lógica pura, componentes React orquestrando UI):
 
-1. **Bucket no Supabase Storage** (ex.: `recipe-images`), com acesso
-   público de leitura (as imagens de receita não são sensíveis)
-2. **Compressão no cliente antes do upload** — já existe
-   `src/logic/image-compression.js` (`compressImageFile`), criado pra
-   comprimir imagens antes de mandar pro import via IA. **Reaproveitar
-   essa mesma função aqui**, não duplicar lógica de redimensionamento/
-   recompressão de novo
-3. **`src/api/admin.js`**: adicionar uma função `uploadRecipeImage(file)`
-   que comprime via `compressImageFile`, sobe pro bucket
-   (`supabase.storage.from('recipe-images').upload(...)`) com um nome de
-   arquivo único (ex.: timestamp + id da receita, ou UUID — não usar o
-   nome original do arquivo do usuário), e retorna a URL pública
-4. **`src/AdminApp.jsx`**: trocar o `<input type="text">` do campo de
-   imagem por um upload de arquivo real (input file ou drag-and-drop),
-   mostrando preview e barra/indicador de progresso simples. O valor
-   salvo em `formData.image` passa a ser a URL pública retornada pelo
-   Storage em vez de um nome de arquivo local
-5. Manter compatibilidade com receitas antigas: `receitas.image` vai ter
-   uma mistura de `"148.png"` (resolve contra `public/`, imagens da Fase 1)
-   e URLs completas do Storage (`https://...supabase.co/storage/...`,
-   imagens novas) — o componente que renderiza a imagem (`RecipeCard.jsx`,
-   `RecipeModal.jsx`) já usa `src={recipe.image}` direto, então **isso já
-   funciona sem mudança**, já que ambos os formatos são strings válidas
-   pra atributo `src`. Não precisa de lógica condicional pra isso.
+1. **Infraestrutura Supabase**:
+   - Bucket `recipe-images` com acesso público de leitura (`public: true`).
+2. **Compressão client-side**:
+   - Reutilizar e adaptar [`src/logic/image-compression.js`](../src/logic/image-compression.js) (`compressImageFile`) para redimensionar (máx 800px) e converter para WebP antes do envio.
+3. **Camada de API (`src/api/admin.js`)**:
+   - Função `uploadRecipeImage(file)`: valida tamanho pré-upload (< 10MB), comprime no navegador, envia para `supabase.storage.from('recipe-images').upload(...)` com nome único baseado em timestamp/UUID e retorna a URL pública gerada.
+4. **Interface no Admin (`src/AdminApp.jsx`)**:
+   - Substituição do `<input type="text">` por componente de upload com seletor de arquivo e suporte a drag-and-drop.
+   - Preview visual instantâneo da imagem selecionada.
+   - Feedback visual de loading/spinner durante o upload.
+   - Ações de "Trocar imagem" e "Remover".
+   - Vinculação da URL do Storage em `formData.image`.
+5. **Fluxo offline**:
+   - Upload de binário não entra na fila offline do IndexedDB.
+   - Bloqueio amigável: se desconectado, exibe aviso claro solicitando conexão para enviar a foto.
 
-### Fluxo offline
-O app já tem fila de sincronização offline (`enfileirarSincronizacao` em
-`src/cache/db.js`) pro `salvar_receita`. Upload de imagem **não** deve
-tentar entrar nessa fila — se estiver offline, o upload deve falhar
-explicitamente com uma mensagem clara ("Você está offline — conecte-se
-pra enviar a imagem"), não tentar enfileirar um arquivo binário grande no
-IndexedDB. Simplicidade antes de robustez aqui, dado o porte do projeto.
+### Validação da Fase 2
+- `npm run lint` && `npm run test` && `npm run build`.
+- Teste manual: upload de foto crua de alta resolução $\rightarrow$ verificar compressão client-side $\rightarrow$ salvar receita $\rightarrow$ validar exibição da URL no card e no modal.
 
-### O que perguntar/decidir antes de implementar
-- Nome do bucket e se já existe ou precisa ser criado manualmente no
-  painel do Supabase antes do código ser escrito (a criação do bucket em
-  si não é algo que dá pra fazer só com o patch — precisa acontecer no
-  painel/CLI do Supabase, como qualquer mudança de infra)
-- Tamanho máximo de upload aceito (sugestão: recusar arquivos acima de um
-  teto generoso tipo 8-10MB *antes* de comprimir, pra não travar o
-  navegador tentando processar uma foto de 40MB de celular moderno)
+---
 
-### Validação
-- Mesmo processo de sempre: clone limpo → patch → `npm install` →
-  `npm run lint` → `npx vitest run` → `npm run build`
-- Testar manualmente: upload de uma imagem grande (foto de celular sem
-  redimensionar) e confirmar que primeiro comprime no cliente antes de
-  subir; testar receita salva com sucesso e imagem aparecendo no card e
-  no modal depois
+## Fase 3 — Migração Total para Storage & PWA Runtime Cache
 
-## Fora de escopo (nas duas fases)
-- Migrar as 127 imagens antigas pro Storage — decisão adiada, sem
-  bloquear nada
-- CDN/otimização de entrega (ex.: Supabase Image Transformations) — só
-  considerar se a Fase 2 já estiver estável e o custo/benefício fizer
-  sentido pro porte do projeto
-- Qualquer mudança de design do formulário além do campo de imagem em si
+### Escopo
+
+1. **Script de migração em lote (`scripts/migrate-images-to-storage.js`)**:
+   - Lê as 127 imagens de `public/*.png`.
+   - Faz upload em lote para o bucket `recipe-images`.
+   - Executa `UPDATE receitas SET image = '<storage_url>' WHERE image = '<nome.png>'` no Supabase.
+2. **Limpeza do repositório**:
+   - Exclusão dos arquivos `public/*.png` legados.
+   - Remoção de ~3.5MB de binários do histórico recente/working tree.
+3. **PWA & Cache Offline (`vite.config.js`)**:
+   - Configurar `workbox.runtimeCaching` no plugin PWA com estratégia `CacheFirst` (ou `StaleWhileRevalidate`) para o domínio do Supabase Storage.
+   - Garantir que imagens acessadas fiquem salvas no cache do navegador para uso offline posterior.
+   - O precache inicial de build cai para **< 500 KB** (apenas assets essenciais de código JS/CSS).
+
+### Validação da Fase 3
+- Todas as 127 receitas continuam renderizando suas fotos normalmente.
+- Precache do Service Worker cai drasticamente.
+- Teste offline: receitas abertas anteriormente continuam exibindo imagens sem rede via runtime cache do Workbox.
+
+---
+
+## Fora de escopo
+- CDN dedicada / transformações dinâmicas pagas do Supabase.
+- Redesenho completo do formulário do admin além do campo de imagem.
