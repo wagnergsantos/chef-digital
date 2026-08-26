@@ -161,3 +161,11 @@
   - Cache de runtime Workbox (`CacheFirst`, max 200 itens, 30 dias) configurado para imagens no PWA.
   - Remoção de todos os arquivos binários estáticos de `public/*.png`.
   - Redução drástica do precache do PWA de ~11.6MB inicial para **581 KiB** (apenas assets essenciais de código).
+
+- **2026-08-26 — Consolidação de Arquitetura, Resiliência & Contratos de API**
+  - Eliminação de duplicação com módulos compartilhados (`src/constants/categories.js`, `src/utils/`).
+  - Ambiente de testes estabilizado no Vitest 4.1.10 (103/103 testes passando sem warnings).
+  - Camada `StorageRepository` unificada e limitação de retenção de histórico de preparo (máx 20/receita, 100 global).
+  - Resiliência na Edge Function `parse-recipe` com *circuit breaker* em escopo de instância e *exponential backoff com jitter*.
+  - Regras do linter `oxlint` rigorosas e documentação formal de contratos em `docs/api-contracts.md`.
+
