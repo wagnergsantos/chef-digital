@@ -148,6 +148,7 @@ export async function processarFilaOnline() {
                   name: ing.name,
                   qty: ing.qty,
                   unit: ing.unit,
+                  group_name: ing.group_name || null,
                   ordem: ing.ordem
                 }));
                 const { error: ingErr } = await supabase.from('ingredientes').insert(ingRows);

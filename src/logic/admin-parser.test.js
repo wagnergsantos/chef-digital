@@ -18,11 +18,16 @@ describe('Logic: Admin Parser', () => {
         const result = validateRecipePayloadData({
             title: 'Bolo de Cenoura',
             selectedCategoryId: '3',
-            ingredients: [{ name: 'Cenoura', qty: '2,5', unit: 'unidades' }],
+            ingredients: [
+                { name: 'Cenoura', qty: '2,5', unit: 'unidades', group_name: ' Massa ' },
+                { name: 'Chocolate', qty: '100', unit: 'g', group_name: '' }
+            ],
             steps: [{ step_text: 'Bata no liquidificador' }]
         });
         expect(result.isValid).toBe(true);
         expect(result.validIngredients[0].qty).toBe(2.5);
+        expect(result.validIngredients[0].group_name).toBe('Massa');
+        expect(result.validIngredients[1].group_name).toBeNull();
         expect(result.validSteps[0].step_text).toBe('Bata no liquidificador');
     });
 

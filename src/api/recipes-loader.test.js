@@ -23,10 +23,16 @@ describe('API: Recipes Loader', () => {
 
     it('buildRecipeDetailsIndex should group ingredients and steps by recipe id', () => {
         const details = buildRecipeDetailsIndex(
-            [{ receita_id: 1, name: 'Sal', qty: 1, unit: 'colher' }],
+            [{ receita_id: 1, name: 'Sal', qty: 1, unit: 'colher', group_name: 'Massa' }],
             [{ receita_id: 1, step_text: 'Misture' }]
         );
         expect(details[1].ingredients).toHaveLength(1);
+        expect(details[1].ingredients[0]).toEqual({
+            name: 'Sal',
+            qty: 1,
+            unit: 'colher',
+            group_name: 'Massa'
+        });
         expect(details[1].steps).toEqual(['Misture']);
     });
 
@@ -45,8 +51,8 @@ describe('API: Recipes Loader', () => {
             author: 'Chef',
             tips: 'Dica boa',
             ingredientes: [
-                { name: 'Farinha', qty: 2, unit: 'xícaras', ordem: 2 },
-                { name: 'Açúcar', qty: 1, unit: 'xícara', ordem: 1 }
+                { name: 'Farinha', qty: 2, unit: 'xícaras', ordem: 2, group_name: 'Massa' },
+                { name: 'Açúcar', qty: 1, unit: 'xícara', ordem: 1, group_name: null }
             ],
             passos: [
                 { step_text: 'Asse', ordem: 2 },
@@ -60,8 +66,8 @@ describe('API: Recipes Loader', () => {
         expect(result.category).toBe('doces');
         expect(result.ingredient_count).toBe(2);
         expect(result.ingredients).toEqual([
-            { name: 'Açúcar', qty: 1, unit: 'xícara' },
-            { name: 'Farinha', qty: 2, unit: 'xícaras' }
+            { name: 'Açúcar', qty: 1, unit: 'xícara', group_name: null },
+            { name: 'Farinha', qty: 2, unit: 'xícaras', group_name: 'Massa' }
         ]);
         expect(result.steps).toEqual([
             'Misture tudo',

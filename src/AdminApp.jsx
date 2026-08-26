@@ -58,6 +58,7 @@ export function AdminApp() {
   // UI state
   const [saveErrorMsg, setSaveErrorMsg] = useState('');
   const [saving, setSaving] = useState(false);
+  const [copiedJson, setCopiedJson] = useState(false);
 
   useEffect(() => {
     getSession().then((sess) => {
@@ -102,7 +103,7 @@ export function AdminApp() {
 
   const resetForm = () => {
     setFormData(INITIAL_FORM);
-    setIngredients([{ name: '', qty: '', unit: '' }]);
+    setIngredients([{ name: '', qty: '', unit: '', group_name: '' }]);
     setSteps([{ step_text: '' }]);
     setRecipeTags([]);
     setEditingRecipeId(null);
@@ -137,8 +138,8 @@ export function AdminApp() {
 
       setIngredients(
         details.ingredients.length > 0
-          ? details.ingredients.map((i) => ({ name: i.name, qty: i.qty, unit: i.unit }))
-          : [{ name: '', qty: '', unit: '' }]
+          ? details.ingredients.map((i) => ({ name: i.name, qty: i.qty, unit: i.unit, group_name: i.group_name || '' }))
+          : [{ name: '', qty: '', unit: '', group_name: '' }]
       );
 
       setSteps(
@@ -231,7 +232,8 @@ export function AdminApp() {
         imported.ingredients.map((ing) => ({
           name: ing.name || '',
           qty: ing.qty !== undefined && ing.qty !== null ? ing.qty : '',
-          unit: ing.unit || ''
+          unit: ing.unit || '',
+          group_name: ing.group_name || ''
         }))
       );
     }
@@ -293,6 +295,56 @@ export function AdminApp() {
       setSaveErrorMsg('Erro ao salvar receita: ' + err.message);
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handleCopyJson = async () => {
+    const selectedCategory = categories.find((c) => String(c.id) === String(formData.category_id));
+    const categoryKey = selectedCategory ? selectedCategory.key : null;
+
+    const formattedIngredients = ingredients
+      .filter((i) => (i.name || '').trim())
+      .map((i) => {
+        const rawQty = i.qty !== undefined && i.qty !== null ? String(i.qty).trim() : '';
+        const parsedQty = rawQty ? parseFloat(rawQty.replace(',', '.')) : null;
+        const item = {
+          name: (i.name || '').trim(),
+          qty: isNaN(parsedQty) ? null : parsedQty,
+          unit: (i.unit || '').trim() || null
+        };
+        if (i.group_name && String(i.group_name).trim()) {
+          item.group_name = String(i.group_name).trim();
+        }
+        return item;
+      });
+
+    const formattedSteps = steps
+      .map((s) => (s.step_text || '').trim())
+      .filter(Boolean);
+
+    const jsonPayload = {
+      title: (formData.title || '').trim(),
+      category: categoryKey,
+      tags: recipeTags,
+      emoji: formData.emoji || '🍲',
+      image: (formData.image || '').trim() || null,
+      ingredients: formattedIngredients,
+      steps: formattedSteps,
+      servings: formData.servings ? parseInt(formData.servings, 10) || null : null,
+      prep_time: formData.prep_time ? parseInt(formData.prep_time, 10) || null : null,
+      cook_time: formData.cook_time ? parseInt(formData.cook_time, 10) || null : null,
+      source_url: (formData.source_url || '').trim() || null,
+      author: (formData.author || '').trim() || null,
+      tips: (formData.tips || '').trim() || null
+    };
+
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(jsonPayload, null, 2));
+      setCopiedJson(true);
+      setTimeout(() => setCopiedJson(false), 2500);
+    } catch (err) {
+      console.error('Falha ao copiar JSON:', err);
+      alert('Erro ao copiar JSON para a área de transferência.');
     }
   };
 
@@ -536,21 +588,38 @@ export function AdminApp() {
             {saveErrorMsg}
           </div>
         )}
-        <button
-          type="submit"
-          id="btn-save"
-          className={`admin-btn admin-btn-primary admin-btn-full ${
-            editingRecipeId ? 'admin-btn-success-edit' : 'admin-btn-success'
-          }`}
-          aria-label={editingRecipeId ? 'Salvar alterações da receita' : 'Salvar receita'}
-          disabled={saving}
-        >
-          {saving
-            ? 'Salvando...'
-            : editingRecipeId
-            ? 'Salvar Alterações'
-            : 'Publicar Receita'}
-        </button>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <button
+            type="submit"
+            id="btn-save"
+            className={`admin-btn admin-btn-primary ${
+              editingRecipeId ? 'admin-btn-success-edit' : 'admin-btn-success'
+            }`}
+            style={{ flex: '2 1 200px' }}
+            aria-label={editingRecipeId ? 'Salvar alterações da receita' : 'Salvar receita'}
+            disabled={saving}
+          >
+            {saving
+              ? 'Salvando...'
+              : editingRecipeId
+              ? 'Salvar Alterações'
+              : 'Publicar Receita'}
+          </button>
+          <button
+            type="button"
+            id="btn-copy-json"
+            className="admin-btn admin-btn-secondary"
+            style={{ flex: '1 1 140px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+            onClick={handleCopyJson}
+            aria-label="Copiar JSON da receita"
+            title="Copiar dados da receita em formato JSON estruturado"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" width="18" height="18" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span>{copiedJson ? 'Copiado! ✓' : 'Copiar JSON'}</span>
+          </button>
+        </div>
       </div>
     </form>
   );

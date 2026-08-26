@@ -317,18 +317,59 @@ export function CookingMode({
                         </svg>
                     </button>
                 </div>
-                <ul id="cooking-ingredients-list" className={styles.cookingIngredientsList}>
-                    {(recipe.ingredients || []).map((ing, idx) => (
-                        <li key={idx} className={styles.cookingIngredientItem}>
-                            <span className={styles.cookingIngName}>{ing.name}</span>
-                            {ing.qty !== null && ing.qty !== undefined ? (
-                                <strong className={styles.cookingIngQty}>{Number(ing.qty.toFixed(2))} {ing.unit || ''}</strong>
-                            ) : (
-                                ing.unit && <strong className={styles.cookingIngQty}>{ing.unit}</strong>
-                            )}
-                        </li>
-                    ))}
-                </ul>
+                <div id="cooking-ingredients-list" className={styles.cookingIngredientsList}>
+                    {(() => {
+                        const rawIngredients = recipe.ingredients || [];
+                        const hasGroups = rawIngredients.some((i) => i.group_name && i.group_name.trim());
+
+                        const renderItem = (ing, idx) => (
+                            <li key={idx} className={styles.cookingIngredientItem}>
+                                <span className={styles.cookingIngName}>{ing.name}</span>
+                                {ing.qty !== null && ing.qty !== undefined ? (
+                                    <strong className={styles.cookingIngQty}>{Number(ing.qty.toFixed(2))} {ing.unit || ''}</strong>
+                                ) : (
+                                    ing.unit && <strong className={styles.cookingIngQty}>{ing.unit}</strong>
+                                )}
+                            </li>
+                        );
+
+                        if (!hasGroups) {
+                            return (
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    {rawIngredients.map((ing, idx) => renderItem(ing, idx))}
+                                </ul>
+                            );
+                        }
+
+                        const groupedSections = [];
+                        const groupMap = new Map();
+
+                        rawIngredients.forEach((ing, idx) => {
+                            const gName = (ing.group_name || '').trim();
+                            if (!groupMap.has(gName)) {
+                                const groupObj = { name: gName, items: [] };
+                                groupMap.set(gName, groupObj);
+                                groupedSections.push(groupObj);
+                            }
+                            groupMap.get(gName).items.push({ ing, idx });
+                        });
+
+                        return (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                {groupedSections.map((section, sIdx) => (
+                                    <div key={sIdx}>
+                                        {section.name && (
+                                            <h4 className={styles.cookingGroupTitle}>{section.name}</h4>
+                                        )}
+                                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                                            {section.items.map(({ ing, idx }) => renderItem(ing, idx))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        );
+                    })()}
+                </div>
             </div>
         </div>
     );

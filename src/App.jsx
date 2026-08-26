@@ -77,7 +77,7 @@ export function App() {
                             id, title, category_id, emoji, image, servings, prep_time, cook_time, source_url, author, tips,
                             categorias (id, key, label),
                             receita_tags (tags (key)),
-                            ingredientes (name, qty, unit, ordem),
+                            ingredientes (name, qty, unit, group_name, ordem),
                             passos (step_text, ordem)
                         `)
                         .order('title'),

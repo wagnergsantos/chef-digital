@@ -29,9 +29,9 @@ O campo "category" deve conter obrigatoriamente a chave exata da categoria princ
   "emoji": "🥩",
   "image": null,
   "ingredients": [
-    { "name": "contra filé", "qty": 400, "unit": "g" },
-    { "name": "cebola ralada", "qty": 0.5, "unit": "unidade(s)" },
-    { "name": "catchup", "qty": 3, "unit": "colher(es) de sopa" }
+    { "name": "leite", "qty": 2, "unit": "xícara(s)", "group_name": "Massa" },
+    { "name": "ovos", "qty": 3, "unit": "unidade(s)", "group_name": "Massa" },
+    { "name": "sardinha", "qty": 2, "unit": "lata(s)", "group_name": "Recheio" }
   ],
   "steps": [ "Passo 1..." ],
   "servings": 4,
@@ -43,6 +43,7 @@ O campo "category" deve conter obrigatoriamente a chave exata da categoria princ
 }
 
 Regras adicionais:
+- **GRUPOS DE INGREDIENTES**: Se o texto/imagem tiver seções/divisões de ingredientes (ex: "Massa:", "Recheio:", "Para a Cobertura:", "Molho:", "Para o Tempero:"), extraia o nome limpo da seção no campo \`group_name\` (ex: "Massa", "Recheio", "Cobertura", "Molho"). Se não houver divisões na receita, defina \`group_name: null\`.
 - No campo "tags", extraia termos relevantes de contexto, datas comemorativas ou ocasiões (ex: "Natal", "Dia das Mães", "Páscoa", "Airfryer", "Fit", "Almoço de Domingo") vindos de keywords, título ou texto. Retorne como array de strings limpas.
 - Retorne estritamente o JSON sem marcações markdown adicionais ou texto extra.
 - Desmembre ingredientes combinados.`;

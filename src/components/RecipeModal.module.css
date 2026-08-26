@@ -249,6 +249,24 @@
     gap: 12px;
 }
 
+.modalIngredientGroupWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.modalIngredientGroupTitle {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--primary-hover);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed var(--border-color);
+    margin: 0;
+}
+
 .modalIngredientsLi {
     display: flex;
     align-items: flex-start;

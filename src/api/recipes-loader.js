@@ -44,7 +44,8 @@ export function mapFullRecipe(r, catById = {}) {
         ingredients: sortedIngs.map((i) => ({
             name: i.name,
             qty: i.qty,
-            unit: i.unit
+            unit: i.unit,
+            group_name: i.group_name || null
         })),
         steps: sortedSteps.map((s) => s.step_text)
     };
@@ -65,7 +66,8 @@ export function buildRecipeDetailsIndex(ingredientsRows = [], stepsRows = []) {
         details[recipeId].ingredients.push({
             name: ing.name,
             qty: ing.qty,
-            unit: ing.unit
+            unit: ing.unit,
+            group_name: ing.group_name || null
         });
     }
 

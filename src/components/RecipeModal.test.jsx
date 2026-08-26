@@ -40,4 +40,36 @@ describe('RecipeModal component', () => {
         fireEvent.click(step);
         expect(step).toHaveClass('completed');
     });
+
+    it('renderiza seções de ingredientes agrupados com títulos correspondentes', () => {
+        const recipe = {
+            id: 2,
+            title: 'Torta de Sardinha',
+            category: 'massas',
+            servings: 6,
+            ingredients: [
+                { name: 'Farinha de trigo', qty: 2, unit: 'xícaras', group_name: 'Massa' },
+                { name: 'Ovos', qty: 3, unit: 'unidades', group_name: 'Massa' },
+                { name: 'Sardinha', qty: 2, unit: 'latas', group_name: 'Recheio' }
+            ],
+            steps: ['Bata a massa', 'Monte o recheio', 'Asse']
+        };
+
+        render(
+            <RecipeModal
+                isOpen={true}
+                recipe={recipe}
+                onClose={() => {}}
+                onTogglePlanner={() => {}}
+                onAddIngredientsToShopping={() => {}}
+                onStartCooking={() => {}}
+                onShare={() => {}}
+            />
+        );
+
+        expect(screen.getByText('Massa')).toBeInTheDocument();
+        expect(screen.getByText('Recheio')).toBeInTheDocument();
+        expect(screen.getByText('Farinha de trigo')).toBeInTheDocument();
+        expect(screen.getByText('Sardinha')).toBeInTheDocument();
+    });
 });

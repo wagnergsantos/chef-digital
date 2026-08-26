@@ -15,11 +15,13 @@ export function validateRecipePayloadData({ title, selectedCategoryId, ingredien
     const validIngredients = (ingredients || []).map((ing, index) => {
         const rawQty = ing.qty !== undefined && ing.qty !== null ? String(ing.qty).trim() : '';
         const parsedQty = rawQty ? parseFloat(rawQty.replace(',', '.')) : null;
+        const groupName = ing.group_name && String(ing.group_name).trim() ? String(ing.group_name).trim() : null;
         
         return {
             name: (ing.name || '').trim(),
             qty: isNaN(parsedQty) ? null : parsedQty,
             unit: (ing.unit || '').trim() || null,
+            group_name: groupName,
             ordem: index
         };
     }).filter(ing => ing.name);

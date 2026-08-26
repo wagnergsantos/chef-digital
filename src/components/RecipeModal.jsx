@@ -196,8 +196,11 @@ export function RecipeModal({
                             </div>
                         </div>
 
-                        <ul id="modal-ingredients-list" className={styles.modalIngredientsUl}>
-                            {(recipe.ingredients || []).map((ing, idx) => {
+                        {(() => {
+                            const rawIngredients = recipe.ingredients || [];
+                            const hasGroups = rawIngredients.some((i) => i.group_name && i.group_name.trim());
+
+                            const renderIngredientItem = (ing, idx) => {
                                 let qtyDisplay = null;
                                 if (ing.qty !== null && ing.qty !== undefined) {
                                     const scaledQty = scaleIngredientQty(ing.qty, portions, recipe.servings);
@@ -216,8 +219,44 @@ export function RecipeModal({
                                         </div>
                                     </li>
                                 );
-                            })}
-                        </ul>
+                            };
+
+                            if (!hasGroups) {
+                                return (
+                                    <ul id="modal-ingredients-list" className={styles.modalIngredientsUl}>
+                                        {rawIngredients.map((ing, idx) => renderIngredientItem(ing, idx))}
+                                    </ul>
+                                );
+                            }
+
+                            const groupedSections = [];
+                            const groupMap = new Map();
+
+                            rawIngredients.forEach((ing, idx) => {
+                                const gName = (ing.group_name || '').trim();
+                                if (!groupMap.has(gName)) {
+                                    const groupObj = { name: gName, items: [] };
+                                    groupMap.set(gName, groupObj);
+                                    groupedSections.push(groupObj);
+                                }
+                                groupMap.get(gName).items.push({ ing, idx });
+                            });
+
+                            return (
+                                <div id="modal-ingredients-list">
+                                    {groupedSections.map((section, sIdx) => (
+                                        <div key={sIdx} className={styles.modalIngredientGroupWrapper}>
+                                            {section.name && (
+                                                <h5 className={styles.modalIngredientGroupTitle}>{section.name}</h5>
+                                            )}
+                                            <ul className={styles.modalIngredientsUl}>
+                                                {section.items.map(({ ing, idx }) => renderIngredientItem(ing, idx))}
+                                            </ul>
+                                        </div>
+                                    ))}
+                                </div>
+                            );
+                        })()}
                     </div>
 
                     {/* Coluna 2: Modo de Preparo */}
