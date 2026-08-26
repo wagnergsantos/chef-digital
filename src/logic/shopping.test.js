@@ -21,6 +21,9 @@ describe('shopping logic', () => {
         const text = formatShoppingListText(list);
         expect(text).toContain('MINHA LISTA DE COMPRAS');
         expect(text).toContain('[ ] Farinha (2 xícaras)');
+
+        expect(formatShoppingListText({})).toBe('');
+        expect(formatShoppingListText(null)).toBe('');
     });
 
     it('retorna objeto com lista vazia em vez de quebrar ou retornar null quando não há itens planejados', () => {

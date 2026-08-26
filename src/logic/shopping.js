@@ -58,6 +58,10 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
 }
 
 export function formatShoppingListText(shoppingList) {
+    if (!shoppingList || typeof shoppingList !== 'object') {
+        return "";
+    }
+
     let text = "🛒 MINHA LISTA DE COMPRAS - CHEF DIGITAL\n\n";
     let empty = true;
 
@@ -75,7 +79,7 @@ export function formatShoppingListText(shoppingList) {
         }
     });
 
-    return empty ? null : text;
+    return empty ? "" : text;
 }
 
 export function countShoppingItems(shoppingList) {

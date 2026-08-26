@@ -101,7 +101,9 @@ serve(async (req) => {
                   extractedRecipeJson = JSON.stringify(recipeObj);
                   break;
                 }
-              } catch (_) {}
+              } catch {
+                // ignora blocos de script que não sejam JSON-LD válido
+              }
             }
           }
 
@@ -208,6 +210,8 @@ serve(async (req) => {
             const errText = await response.text();
             console.warn(`Quota excedida no modelo ${model} (chave ...${key.slice(-4)}):`, errText);
             lastError = `Quota excedida na API Gemini (429).`;
+            // Backoff curto antes de tentar próxima chave para amortecer rate limit
+            await new Promise((r) => setTimeout(r, 250));
             continue; // tenta próxima chave
           }
 
@@ -229,6 +233,7 @@ serve(async (req) => {
             const errText = await response.text();
             console.error(`Erro na API Gemini (${model}, chave ...${key.slice(-4)}):`, errText);
             lastError = errText;
+            await new Promise((r) => setTimeout(r, 300));
             continue; // tenta próxima chave
           }
 

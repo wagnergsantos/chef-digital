@@ -1,3 +1,5 @@
+import { normalizeCategoryKey } from '../constants/categories.js';
+
 export function validateRecipePayloadData({ title, selectedCategoryId, ingredients, steps }) {
     if (!title || !title.trim()) {
         return { isValid: false, error: 'O título da receita é obrigatório.' };
@@ -77,6 +79,7 @@ export function buildRecipePayload({
     const parsedCategoryId = Number.parseInt(String(selectedCategoryId).trim(), 10);
 
     const validTags = Array.isArray(tags) ? tags.map(t => String(t).trim()).filter(Boolean) : [];
+    const normalizedCategory = selectedCategoryKey ? normalizeCategoryKey(selectedCategoryKey) : null;
 
     return {
         p_id: id,
@@ -90,7 +93,7 @@ export function buildRecipePayload({
         p_source_url: (source_url || '').trim() || null,
         p_author: (author || '').trim() || null,
         p_category_id: Number.isNaN(parsedCategoryId) ? null : parsedCategoryId,
-        p_category_key: (selectedCategoryKey || '').trim() || null,
+        p_category_key: normalizedCategory,
         p_tags: validTags,
         p_ingredientes: validIngredients,
         p_passos: validSteps

@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 
-if (typeof globalThis.localStorage === 'undefined' || globalThis.localStorage === null) {
+const createLocalStorageMock = () => {
     const store = new Map();
-    globalThis.localStorage = {
+    return {
         getItem: (key) => store.get(String(key)) ?? null,
         setItem: (key, value) => store.set(String(key), String(value)),
         removeItem: (key) => store.delete(String(key)),
@@ -10,4 +10,22 @@ if (typeof globalThis.localStorage === 'undefined' || globalThis.localStorage ==
         key: (index) => Array.from(store.keys())[index] ?? null,
         get length() { return store.size; }
     };
+};
+
+try {
+    Object.defineProperty(globalThis, 'localStorage', {
+        value: createLocalStorageMock(),
+        configurable: true,
+        writable: true
+    });
+    if (typeof window !== 'undefined') {
+        Object.defineProperty(window, 'localStorage', {
+            value: globalThis.localStorage,
+            configurable: true,
+            writable: true
+        });
+    }
+} catch {
+    // fallback silencioso
 }
+

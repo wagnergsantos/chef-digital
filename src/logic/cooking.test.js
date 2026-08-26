@@ -15,4 +15,10 @@ describe('cooking logic', () => {
         expect(updated[10].history).toHaveLength(1);
         expect(updated[10].lastCooked).toBeDefined();
     });
+
+    it('limita histórico por receita a no máximo 20 timestamps', () => {
+        let history = { 1: { count: 25, history: Array.from({ length: 25 }, (_, i) => `2026-01-${i + 1}`) } };
+        const updated = recordRecipeCompletionHistory(history, 1);
+        expect(updated[1].history).toHaveLength(20);
+    });
 });

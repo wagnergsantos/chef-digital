@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTheme } from './hooks/useTheme.js';
-import { STORAGE_KEYS, PLANNER_DAYS, safeJsonParse } from './logic/storage.js';
+import { STORAGE_KEYS, PLANNER_DAYS, safeJsonParse, StorageRepository } from './logic/storage.js';
 import { createEmptyPlannedByDay, getAllPlannedEntries, getPlannedDaysForRecipe } from './logic/planner.js';
 import { calculateConsolidatedShoppingList, formatShoppingListText, countShoppingItems } from './logic/shopping.js';
 import { formatRecipeShareText } from './logic/recipe-modal-logic.js';
@@ -39,7 +39,7 @@ export function App() {
     const [favorites, setFavorites] = useState(() => safeJsonParse(STORAGE_KEYS.FAVORITES, []));
     const [shoppingList, setShoppingList] = useState(() => safeJsonParse(STORAGE_KEYS.SHOPPING, {}));
     const [pantryItems, setPantryItems] = useState(() => safeJsonParse(STORAGE_KEYS.PANTRY, []));
-    const [plannedByDay, setPlannedByDay] = useState(() => safeJsonParse('chef_digital_planned', createEmptyPlannedByDay()));
+    const [plannedByDay, setPlannedByDay] = useState(() => safeJsonParse(STORAGE_KEYS.PLANNED, createEmptyPlannedByDay()));
     const [cookingHistory] = useState(() => safeJsonParse(STORAGE_KEYS.COOKING_HISTORY, {}));
 
     // UI Drawers / Modals states
@@ -123,23 +123,23 @@ export function App() {
 
     // Save persistent states
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.FAVORITES, JSON.stringify(favorites));
+        StorageRepository.set(STORAGE_KEYS.FAVORITES, favorites);
     }, [favorites]);
 
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.SHOPPING, JSON.stringify(shoppingList));
+        StorageRepository.set(STORAGE_KEYS.SHOPPING, shoppingList);
     }, [shoppingList]);
 
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.PANTRY, JSON.stringify(pantryItems));
+        StorageRepository.set(STORAGE_KEYS.PANTRY, pantryItems);
     }, [pantryItems]);
 
     useEffect(() => {
-        localStorage.setItem('chef_digital_planned', JSON.stringify(plannedByDay));
+        StorageRepository.set(STORAGE_KEYS.PLANNED, plannedByDay);
     }, [plannedByDay]);
 
     useEffect(() => {
-        localStorage.setItem(STORAGE_KEYS.ACTIVE_TAGS, JSON.stringify(activeTags));
+        StorageRepository.set(STORAGE_KEYS.ACTIVE_TAGS, activeTags);
     }, [activeTags]);
 
     const handleSelectCategory = (categoryKey) => {
