@@ -1,4 +1,5 @@
 import { supabase } from './supabase.js';
+import { compressImageFile } from '../logic/image-compression.js';
 
 export async function fetchCategories() {
   const { data, error } = await supabase
@@ -89,3 +90,77 @@ export async function parseRecipeAiFunction(payload) {
   }
   return data;
 }
+
+/**
+ * Envia uma imagem para o bucket `recipe-images` no Supabase Storage.
+ * Realiza compressão WebP client-side antes do upload.
+ * @param {File|Blob} file
+ * @returns {Promise<string>} URL pública da imagem
+ */
+export async function uploadRecipeImage(file) {
+  const compressedBlob = await compressImageFile(file, {
+    maxWidth: 800,
+    maxHeight: 800,
+    quality: 0.8,
+    type: 'image/webp'
+  });
+
+  const timestamp = Date.now();
+  const randomSuffix = Math.random().toString(36).substring(2, 9);
+  const fileName = `recipe_${timestamp}_${randomSuffix}.webp`;
+
+  const { data, error } = await supabase.storage
+    .from('recipe-images')
+    .upload(fileName, compressedBlob, {
+      contentType: 'image/webp',
+      cacheControl: '31536000',
+      upsert: false
+    });
+
+  if (error) {
+    throw new Error(`Falha no upload para o Storage: ${error.message || error.error_description || 'Erro desconhecido'}`);
+  }
+
+  const { data: publicUrlData } = supabase.storage
+    .from('recipe-images')
+    .getPublicUrl(data.path);
+
+  if (!publicUrlData?.publicUrl) {
+    throw new Error('Não foi possível obter a URL pública da imagem enviada.');
+  }
+
+  return publicUrlData.publicUrl;
+}
+
+/**
+ * Extrai o caminho do arquivo no bucket `recipe-images` a partir de sua URL pública.
+ * Retorna null se não for uma imagem do bucket `recipe-images`.
+ * @param {string} url
+ * @returns {string|null}
+ */
+export function getStoragePathFromUrl(url) {
+  if (!url || typeof url !== 'string') return null;
+  const match = url.match(/\/recipe-images\/(.+)$/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Remove uma imagem do Supabase Storage no bucket `recipe-images`.
+ * Ignora silenciosamente se a URL não for do Supabase Storage.
+ * @param {string} urlOrPath
+ * @returns {Promise<void>}
+ */
+export async function deleteRecipeImageFromStorage(urlOrPath) {
+  const path = getStoragePathFromUrl(urlOrPath) || (urlOrPath.startsWith('recipe_') ? urlOrPath : null);
+  if (!path) return;
+
+  const { error } = await supabase.storage
+    .from('recipe-images')
+    .remove([path]);
+
+  if (error) {
+    console.warn(`Aviso: Falha ao deletar imagem anterior (${path}) do Storage:`, error.message);
+  }
+}
+
+

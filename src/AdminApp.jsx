@@ -8,6 +8,7 @@ import { TagInput } from './components/admin/TagInput.jsx';
 import { RecipeSearchCombobox } from './components/admin/RecipeSearchCombobox.jsx';
 import { AIImportBox } from './components/admin/AIImportBox.jsx';
 import { BulkImportModal } from './components/admin/BulkImportModal.jsx';
+import { ImageUploadField } from './components/admin/ImageUploadField.jsx';
 import adminUi from './components/admin/AdminUI.module.css';
 import styles from './AdminApp.module.css';
 import {
@@ -16,7 +17,8 @@ import {
   fetchRecipeDetails,
   fetchExistingTags,
   deleteRecipeRpc,
-  saveRecipeRpc
+  saveRecipeRpc,
+  deleteRecipeImageFromStorage
 } from './api/admin.js';
 import { enfileirarSincronizacao } from './cache/db.js';
 import { validateRecipePayloadData, buildRecipePayload } from './logic/admin-parser.js';
@@ -174,6 +176,9 @@ export function AdminApp() {
 
     setLoadingDelete(true);
     try {
+      if (editingRecipeId === id && formData.image) {
+        deleteRecipeImageFromStorage(formData.image).catch((err) => console.warn('Erro ao limpar imagem da receita excluída:', err));
+      }
       await deleteRecipeRpc(id);
       if (editingRecipeId === id) {
         resetForm();
@@ -462,19 +467,11 @@ export function AdminApp() {
             onChange={(e) => handleFieldChange('emoji', e.target.value)}
           />
         </div>
-        <div className={adminUi.formGroup}>
-          <label className={adminUi.formLabel} htmlFor="recipe-image">
-            Arquivo de Imagem (opcional)
-          </label>
-          <input
-            type="text"
-            id="recipe-image"
-            className={adminUi.formInput}
-            placeholder="Ex: 10.png"
-            value={formData.image}
-            onChange={(e) => handleFieldChange('image', e.target.value)}
-          />
-        </div>
+        <ImageUploadField
+          value={formData.image}
+          onChange={(val) => handleFieldChange('image', val)}
+          disabled={saving}
+        />
       </div>
 
       <div className={styles.formGrid2}>
