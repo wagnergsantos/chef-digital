@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import { parseRecipeAiFunction } from '../../api/admin.js';
+import adminUi from './AdminUI.module.css';
+import styles from './AIImportBox.module.css';
 
 export function AIImportBox({ onImportSuccess }) {
   const [rawText, setRawText] = useState('');
@@ -146,14 +148,14 @@ export function AIImportBox({ onImportSuccess }) {
   };
 
   return (
-    <div className="form-group admin-gemini-box">
-      <label className="form-label admin-gemini-label" htmlFor="gemini-json-input">
+    <div className={`${adminUi.formGroup} ${styles.geminiBox}`}>
+      <label className={`${adminUi.formLabel} ${styles.geminiLabel}`} htmlFor="gemini-json-input">
         🪄 Importação Inteligente com IA (Texto, Link ou Imagem)
       </label>
 
       <textarea
         id="gemini-json-input"
-        className="form-input admin-gemini-textarea"
+        className={`${adminUi.formInput} ${styles.geminiTextarea}`}
         placeholder="Cole aqui o texto/link da receita ou COLE UMA IMAGEM diretamente com Ctrl+V / Cmd+V..."
         rows={3}
         aria-label="Texto, URL ou imagem da receita para importação inteligente"
@@ -173,7 +175,7 @@ export function AIImportBox({ onImportSuccess }) {
         />
         <button
           type="button"
-          className="admin-btn admin-btn-secondary"
+          className={`${adminUi.btn} ${adminUi.btnSecondary}`}
           onClick={() => fileInputRef.current?.click()}
           style={{ padding: '0.4rem 0.8rem', fontSize: '0.9rem' }}
         >
@@ -199,7 +201,7 @@ export function AIImportBox({ onImportSuccess }) {
       <button
         type="button"
         id="btn-import-gemini"
-        className="admin-btn admin-btn-secondary admin-gemini-btn mt-2"
+        className={`${adminUi.btn} ${adminUi.btnSecondary} ${styles.geminiBtn} mt-2`}
         aria-label="Importar e preencher receita com IA"
         disabled={loading}
         onClick={handleAIImport}
@@ -208,7 +210,7 @@ export function AIImportBox({ onImportSuccess }) {
       </button>
 
       {errorMsg && (
-        <div id="import-status" className="admin-error-box mt-2" style={{ display: 'block' }}>
+        <div id="import-status" className={`${adminUi.errorBox} mt-2`} style={{ display: 'block' }}>
           {errorMsg}
         </div>
       )}

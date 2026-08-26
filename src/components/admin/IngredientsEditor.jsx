@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import adminUi from './AdminUI.module.css';
+import styles from './IngredientsEditor.module.css';
 
 const UNITS = [
   '',
@@ -21,7 +23,7 @@ function DeleteRowButton({ onClick, ariaLabel }) {
   return (
     <button
       type="button"
-      className="btn-delete-row"
+      className={adminUi.btnDeleteRow}
       title="Remover item"
       aria-label={ariaLabel || 'Remover item'}
       onClick={onClick}
@@ -46,10 +48,10 @@ function DeleteRowButton({ onClick, ariaLabel }) {
 
 function ReorderButtons({ index, total, onMoveUp, onMoveDown }) {
   return (
-    <div className="ingredient-actions">
+    <div className={styles.ingredientActions}>
       <button
         type="button"
-        className="btn-reorder-row"
+        className={adminUi.btnReorderRow}
         title="Mover para cima"
         aria-label="Mover ingrediente para cima"
         disabled={index === 0}
@@ -61,7 +63,7 @@ function ReorderButtons({ index, total, onMoveUp, onMoveDown }) {
       </button>
       <button
         type="button"
-        className="btn-reorder-row"
+        className={adminUi.btnReorderRow}
         title="Mover para baixo"
         aria-label="Mover ingrediente para baixo"
         disabled={index === total - 1}
@@ -87,10 +89,10 @@ function IngredientRow({
   onMoveDown
 }) {
   return (
-    <div className="ingredient-row">
+    <div className={styles.ingredientRow}>
       <input
         type="text"
-        className="form-input ingredient-name"
+        className={adminUi.formInput}
         placeholder="Nome do ingrediente..."
         required
         value={ing.name || ''}
@@ -99,14 +101,14 @@ function IngredientRow({
       />
       <input
         type="text"
-        className="form-input ingredient-qty"
+        className={adminUi.formInput}
         placeholder="Qtd (ex: 1.5)"
         value={ing.qty !== null && ing.qty !== undefined ? ing.qty : ''}
         aria-label={`Quantidade do ingrediente ${index + 1}`}
         onChange={(e) => onFieldChange(index, 'qty', e.target.value)}
       />
       <select
-        className="form-input ingredient-unit"
+        className={adminUi.formInput}
         value={ing.unit || ''}
         aria-label={`Unidade do ingrediente ${index + 1}`}
         onChange={(e) => onFieldChange(index, 'unit', e.target.value)}
@@ -120,7 +122,7 @@ function IngredientRow({
 
       {sections.length > 0 && (
         <select
-          className="form-input ingredient-group-select"
+          className={`${adminUi.formInput} ${styles.ingredientGroupSelect}`}
           value={ing.group_name || ''}
           aria-label={`Seção do ingrediente ${index + 1}`}
           onChange={(e) => onMoveToSection(index, e.target.value)}
@@ -259,7 +261,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
   if (!hasGroups) {
     return (
       <>
-        <h3 className="section-title">Ingredientes</h3>
+        <h3 className={adminUi.sectionTitle}>Ingredientes</h3>
         <div id="ingredients-list" className="mb-4">
           {ingredients.map((ing, index) => (
             <IngredientRow
@@ -276,11 +278,11 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
             />
           ))}
         </div>
-        <div className="admin-ingredients-toolbar">
+        <div className={styles.toolbar}>
           <button
             type="button"
             id="btn-add-ingredient"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             onClick={onAdd || (() => onChange([...ingredients, { name: '', qty: '', unit: '', group_name: '' }]))}
           >
             + Adicionar Ingrediente
@@ -288,7 +290,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
           <button
             type="button"
             id="btn-add-group"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             onClick={handleAddGroup}
             title="Dividir ingredientes em seções como Massa, Recheio, etc."
           >
@@ -308,11 +310,11 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
 
   return (
     <>
-      <h3 className="section-title">Ingredientes (Divididos em Seções)</h3>
+      <h3 className={adminUi.sectionTitle}>Ingredientes (Divididos em Seções)</h3>
 
       {ungrouped.length > 0 && (
-        <div className="admin-group-card mb-4">
-          <div className="admin-group-header">
+        <div className={`${styles.groupCard} mb-4`}>
+          <div className={styles.groupHeader}>
             <span style={{ fontWeight: 600, fontSize: '14px', color: 'var(--text-muted)' }}>
               Ingredientes Gerais (Sem seção)
             </span>
@@ -333,7 +335,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
           ))}
           <button
             type="button"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             style={{ fontSize: '13px', padding: '6px 12px' }}
             onClick={() => handleAddIngredientToGroup('')}
           >
@@ -348,11 +350,11 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
           .filter(({ item }) => (item.group_name || '').trim() === sec.name.trim());
 
         return (
-          <div key={sec.id} className="admin-group-card mb-4">
-            <div className="admin-group-header">
+          <div key={sec.id} className={`${styles.groupCard} mb-4`}>
+            <div className={styles.groupHeader}>
               <input
                 type="text"
-                className="admin-group-title-input"
+                className={styles.groupTitleInput}
                 value={sec.name}
                 placeholder="Nome da seção (ex: Massa, Recheio)..."
                 aria-label={`Nome da seção ${sec.name || 'sem nome'}`}
@@ -360,7 +362,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
               />
               <button
                 type="button"
-                className="admin-btn-group-remove"
+                className={styles.btnGroupRemove}
                 title={`Excluir seção ${sec.name}`}
                 aria-label={`Excluir seção ${sec.name}`}
                 onClick={() => handleRemoveGroup(sec.id)}
@@ -386,7 +388,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
 
             <button
               type="button"
-              className="admin-btn admin-btn-secondary"
+              className={`${adminUi.btn} ${adminUi.btnSecondary}`}
               style={{ fontSize: '13px', padding: '6px 12px' }}
               onClick={() => handleAddIngredientToGroup(sec.name)}
             >
@@ -396,11 +398,11 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
         );
       })}
 
-      <div className="admin-ingredients-toolbar">
+      <div className={styles.toolbar}>
         <button
           type="button"
           id="btn-add-group"
-          className="admin-btn admin-btn-secondary"
+          className={`${adminUi.btn} ${adminUi.btnSecondary}`}
           onClick={handleAddGroup}
         >
           + Adicionar Nova Seção

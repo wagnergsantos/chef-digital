@@ -1,0 +1,40 @@
+.editSection {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.editSectionLabel {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+.editRow {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.comboboxWrapper {
+    position: relative;
+    flex: 1;
+}
+
+.searchInput {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dropdownEmoji {
+    font-size: 18px;
+    flex-shrink: 0;
+    line-height: 1;
+}

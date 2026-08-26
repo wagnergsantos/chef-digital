@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 function readProjectFile(relativePath) {
@@ -15,10 +15,11 @@ describe('Build structure: public/admin css split', () => {
         expect(publicCss).not.toMatch(/\.form-input\b/);
     });
 
-    it('loads admin.css only on admin page', () => {
+    it('has eliminated global src/admin.css in favor of CSS Modules', () => {
         const adminHtml = readProjectFile('admin.html');
         const indexHtml = readProjectFile('index.html');
-        expect(adminHtml).toContain('href="src/admin.css"');
+        expect(adminHtml).not.toContain('href="src/admin.css"');
         expect(indexHtml).not.toContain('href="src/admin.css"');
+        expect(existsSync(join(process.cwd(), 'src/admin.css'))).toBe(false);
     });
 });

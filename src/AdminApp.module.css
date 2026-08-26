@@ -1,0 +1,64 @@
+.formGrid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.headerFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editBanner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: hsl(220 90% 96%);
+    border: 1px solid hsl(220 80% 80%);
+    border-radius: var(--radius-md);
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    font-size: var(--text-sm);
+    font-family: 'Inter', sans-serif;
+    color: hsl(220 60% 35%);
+    font-weight: 600;
+}
+
+.editBannerText {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btnNewRecipe {
+    background: transparent;
+    color: hsl(220 60% 35%);
+    border: 1px solid hsl(220 70% 70%);
+    border-radius: var(--radius-md);
+    padding: 5px 12px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btnNewRecipe:hover {
+    background: hsl(220 80% 88%);
+}
+
+.btnSuccess {
+    background: var(--success-color);
+}
+
+.btnSuccessEdit {
+    background: hsl(220 80% 52%);
+}
+
+.btnSuccessEdit:hover {
+    background: hsl(220 80% 44%);
+}

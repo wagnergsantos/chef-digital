@@ -1,4 +1,7 @@
 import { useState, useRef } from 'react';
+import adminUi from './AdminUI.module.css';
+import autoStyles from './Autocomplete.module.css';
+import styles from './RecipeSearchCombobox.module.css';
 
 export function RecipeSearchCombobox({
   recipes,
@@ -74,14 +77,14 @@ export function RecipeSearchCombobox({
   };
 
   return (
-    <div className="admin-edit-section">
-      <span className="admin-edit-section-label">✏️ Editar Receita Existente</span>
-      <div className="admin-edit-row">
-        <div className="admin-recipe-combobox" id="recipe-combobox-wrapper">
+    <div className={styles.editSection}>
+      <span className={styles.editSectionLabel}>✏️ Editar Receita Existente</span>
+      <div className={styles.editRow}>
+        <div className={styles.comboboxWrapper} id="recipe-combobox-wrapper">
           <input
             type="text"
             id="recipe-search"
-            className="form-input admin-recipe-search-input"
+            className={`${adminUi.formInput} ${styles.searchInput}`}
             placeholder="Buscar receita pelo nome..."
             autoComplete="off"
             aria-label="Buscar receita para editar"
@@ -99,24 +102,25 @@ export function RecipeSearchCombobox({
           {isOpen && matches.length > 0 && (
             <div
               id="recipe-dropdown"
-              className="admin-recipe-dropdown visible"
+              className={`${autoStyles.dropdown} ${autoStyles.visible}`}
+              style={{ zIndex: 200, maxHeight: '220px' }}
               role="listbox"
               aria-label="Receitas encontradas"
             >
               {matches.map((r, idx) => (
                 <div
                   key={r.id}
-                  className={`admin-recipe-dropdown-item ${idx === highlightedIdx ? 'highlighted' : ''}`}
+                  className={`${autoStyles.dropdownItem} ${idx === highlightedIdx ? autoStyles.highlighted : ''}`}
                   role="option"
                   aria-selected={idx === highlightedIdx ? 'true' : 'false'}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     handleSelect(r);
                   }}
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <span className="admin-recipe-dropdown-emoji">{r.emoji || '🍲'}</span>
+                    <span className={styles.dropdownEmoji}>{r.emoji || '🍲'}</span>
                     <span>{r.title}</span>
                   </div>
                   {r.tags && r.tags.includes('A Revisar') && (
@@ -132,7 +136,7 @@ export function RecipeSearchCombobox({
         <button
           type="button"
           id="btn-load-recipe"
-          className="admin-btn admin-btn-secondary"
+          className={`${adminUi.btn} ${adminUi.btnSecondary}`}
           aria-label="Carregar receita selecionada para edição"
           disabled={loadingLoad || !selectedRecipeId}
           onClick={() => onLoadRecipe(selectedRecipeId)}
@@ -142,7 +146,7 @@ export function RecipeSearchCombobox({
         <button
           type="button"
           id="btn-delete-recipe"
-          className="admin-btn admin-btn-danger"
+          className={`${adminUi.btn} ${adminUi.btnDanger}`}
           aria-label="Excluir receita selecionada"
           disabled={loadingDelete || !selectedRecipeId}
           onClick={() => onDeleteRecipe(selectedRecipeId, query)}

@@ -8,6 +8,8 @@ import { TagInput } from './components/admin/TagInput.jsx';
 import { RecipeSearchCombobox } from './components/admin/RecipeSearchCombobox.jsx';
 import { AIImportBox } from './components/admin/AIImportBox.jsx';
 import { BulkImportModal } from './components/admin/BulkImportModal.jsx';
+import adminUi from './components/admin/AdminUI.module.css';
+import styles from './AdminApp.module.css';
 import {
   fetchCategories,
   fetchRecipesList,
@@ -328,14 +330,14 @@ export function AdminApp() {
       tags: recipeTags,
       emoji: formData.emoji || '🍲',
       image: (formData.image || '').trim() || null,
-      ingredients: formattedIngredients,
-      steps: formattedSteps,
       servings: formData.servings ? parseInt(formData.servings, 10) || null : null,
       prep_time: formData.prep_time ? parseInt(formData.prep_time, 10) || null : null,
       cook_time: formData.cook_time ? parseInt(formData.cook_time, 10) || null : null,
       source_url: (formData.source_url || '').trim() || null,
       author: (formData.author || '').trim() || null,
-      tips: (formData.tips || '').trim() || null
+      tips: (formData.tips || '').trim() || null,
+      ingredients: formattedIngredients,
+      steps: formattedSteps
     };
 
     try {
@@ -357,7 +359,13 @@ export function AdminApp() {
   }
 
   return (
-    <form id="admin-panel" className="max-w-2xl mx-auto admin-card mb-20" onSubmit={handleSaveRecipe}>
+    <div className="max-w-2xl mx-auto mb-20 px-4">
+      <div className="mt-6 mb-4">
+        <a href="index.html" className={`${adminUi.btn} ${adminUi.btnSecondary} ${adminUi.btnLink}`}>
+          ← Voltar ao Livro de Receitas
+        </a>
+      </div>
+      <form id="admin-panel" className={adminUi.card} onSubmit={handleSaveRecipe}>
       {showBulkModal && (
         <BulkImportModal
           categories={categories}
@@ -366,14 +374,14 @@ export function AdminApp() {
         />
       )}
 
-      <div className="admin-header-flex mb-6">
-        <h2 className="section-title" style={{ margin: 0, border: 'none', padding: 0 }}>
+      <div className={`${styles.headerFlex} mb-6`}>
+        <h2 className={adminUi.sectionTitle} style={{ margin: 0, border: 'none', padding: 0 }}>
           Painel de Receitas
         </h2>
         <div style={{ display: 'flex', gap: '0.5rem' }}>
           <button
             type="button"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             onClick={() => setShowBulkModal(true)}
             title="Importar várias fotos de receitas de uma só vez"
           >
@@ -382,7 +390,7 @@ export function AdminApp() {
           <button
             type="button"
             id="btn-logout"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             onClick={() => signOut()}
           >
             Sair
@@ -403,18 +411,18 @@ export function AdminApp() {
       {editingRecipeId && (
         <div
           id="edit-mode-banner"
-          className="admin-edit-banner"
+          className={styles.editBanner}
           style={{ display: 'flex' }}
           role="status"
           aria-live="polite"
         >
-          <span className="admin-edit-banner-text">
+          <span className={styles.editBannerText}>
             ✏️ <span id="edit-mode-title">Editando: "{editingRecipeTitle}"</span>
           </span>
           <button
             type="button"
             id="btn-new-recipe"
-            className="admin-btn-new-recipe"
+            className={styles.btnNewRecipe}
             aria-label="Cancelar edição e criar nova receita"
             onClick={resetForm}
           >
@@ -425,14 +433,14 @@ export function AdminApp() {
 
       <AIImportBox onImportSuccess={handleAIImportSuccess} />
 
-      <div className="form-group">
-        <label className="form-label" htmlFor="recipe-title">
+      <div className={adminUi.formGroup}>
+        <label className={adminUi.formLabel} htmlFor="recipe-title">
           Título da Receita
         </label>
         <input
           type="text"
           id="recipe-title"
-          className="form-input"
+          className={adminUi.formInput}
           placeholder="Ex: Risoto de Alho Poró"
           required
           value={formData.title}
@@ -440,28 +448,28 @@ export function AdminApp() {
         />
       </div>
 
-      <div className="admin-form-grid-2">
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-emoji">
+      <div className={styles.formGrid2}>
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-emoji">
             Emoji
           </label>
           <input
             type="text"
             id="recipe-emoji"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="🍲"
             value={formData.emoji}
             onChange={(e) => handleFieldChange('emoji', e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-image">
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-image">
             Arquivo de Imagem (opcional)
           </label>
           <input
             type="text"
             id="recipe-image"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: 10.png"
             value={formData.image}
             onChange={(e) => handleFieldChange('image', e.target.value)}
@@ -469,29 +477,29 @@ export function AdminApp() {
         </div>
       </div>
 
-      <div className="admin-form-grid-2">
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-servings">
+      <div className={styles.formGrid2}>
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-servings">
             Rendimento (porções)
           </label>
           <input
             type="number"
             id="recipe-servings"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: 4"
             min="1"
             value={formData.servings}
             onChange={(e) => handleFieldChange('servings', e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-prep-time">
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-prep-time">
             Tempo de Preparo (min)
           </label>
           <input
             type="number"
             id="recipe-prep-time"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: 15"
             min="0"
             value={formData.prep_time}
@@ -500,29 +508,29 @@ export function AdminApp() {
         </div>
       </div>
 
-      <div className="admin-form-grid-2">
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-cook-time">
+      <div className={styles.formGrid2}>
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-cook-time">
             Tempo de Cozimento (min)
           </label>
           <input
             type="number"
             id="recipe-cook-time"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: 45"
             min="0"
             value={formData.cook_time}
             onChange={(e) => handleFieldChange('cook_time', e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label className="form-label" htmlFor="recipe-author">
+        <div className={adminUi.formGroup}>
+          <label className={adminUi.formLabel} htmlFor="recipe-author">
             Autor / Fonte
           </label>
           <input
             type="text"
             id="recipe-author"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: Rita Lobo / Panelinha"
             value={formData.author}
             onChange={(e) => handleFieldChange('author', e.target.value)}
@@ -530,28 +538,28 @@ export function AdminApp() {
         </div>
       </div>
 
-      <div className="form-group">
-        <label className="form-label" htmlFor="recipe-source-url">
+      <div className={adminUi.formGroup}>
+        <label className={adminUi.formLabel} htmlFor="recipe-source-url">
           URL da Fonte Original (opcional)
         </label>
         <input
           type="url"
           id="recipe-source-url"
-          className="form-input"
+          className={adminUi.formInput}
           placeholder="https://..."
           value={formData.source_url}
           onChange={(e) => handleFieldChange('source_url', e.target.value)}
         />
       </div>
 
-      <div className="form-group">
-        <label className="form-label" htmlFor="recipe-tips">
+      <div className={adminUi.formGroup}>
+        <label className={adminUi.formLabel} htmlFor="recipe-tips">
           Dica rápida (opcional)
         </label>
         <input
           type="text"
           id="recipe-tips"
-          className="form-input"
+          className={adminUi.formInput}
           placeholder="Ex: Sirva bem quente com parmesão"
           value={formData.tips}
           onChange={(e) => handleFieldChange('tips', e.target.value)}
@@ -582,9 +590,9 @@ export function AdminApp() {
         onAdd={() => setSteps((prev) => [...prev, { step_text: '' }])}
       />
 
-      <div className="form-group" style={{ marginTop: '32px' }}>
+      <div className={adminUi.formGroup} style={{ marginTop: '32px' }}>
         {saveErrorMsg && (
-          <div id="recipe-error" className="admin-error-box" style={{ display: 'block' }}>
+          <div id="recipe-error" className={adminUi.errorBox} style={{ display: 'block' }}>
             {saveErrorMsg}
           </div>
         )}
@@ -592,8 +600,8 @@ export function AdminApp() {
           <button
             type="submit"
             id="btn-save"
-            className={`admin-btn admin-btn-primary ${
-              editingRecipeId ? 'admin-btn-success-edit' : 'admin-btn-success'
+            className={`${adminUi.btn} ${adminUi.btnPrimary} ${
+              editingRecipeId ? styles.btnSuccessEdit : styles.btnSuccess
             }`}
             style={{ flex: '2 1 200px' }}
             aria-label={editingRecipeId ? 'Salvar alterações da receita' : 'Salvar receita'}
@@ -608,7 +616,7 @@ export function AdminApp() {
           <button
             type="button"
             id="btn-copy-json"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             style={{ flex: '1 1 140px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
             onClick={handleCopyJson}
             aria-label="Copiar JSON da receita"
@@ -622,5 +630,6 @@ export function AdminApp() {
         </div>
       </div>
     </form>
+    </div>
   );
 }

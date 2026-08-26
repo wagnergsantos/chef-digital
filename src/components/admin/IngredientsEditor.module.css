@@ -1,0 +1,77 @@
+.ingredientRow {
+    display: grid;
+    grid-template-columns: minmax(140px, 2fr) minmax(70px, 1fr) minmax(110px, 1.2fr) minmax(100px, 1.2fr) auto;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.ingredientActions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ingredientGroupSelect {
+    font-size: 13px;
+    padding: 8px;
+    width: 100%;
+}
+
+.groupCard {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: 16px;
+}
+
+.groupHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.groupTitleInput {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-main);
+    border: 1px dashed var(--border-dark);
+    background: var(--bg-card);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    flex: 1;
+    max-width: 280px;
+}
+
+.groupTitleInput:focus {
+    border-style: solid;
+    border-color: var(--primary-color);
+}
+
+.btnGroupRemove {
+    background: transparent;
+    border: 1px solid var(--border-dark);
+    color: var(--danger-color);
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btnGroupRemove:hover {
+    background: var(--danger-light);
+    border-color: var(--danger-color);
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+}

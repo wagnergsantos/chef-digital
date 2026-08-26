@@ -1,8 +1,11 @@
+import adminUi from './AdminUI.module.css';
+import styles from './StepsEditor.module.css';
+
 function DeleteRowButton({ onClick, ariaLabel }) {
   return (
     <button
       type="button"
-      className="btn-delete-row"
+      className={adminUi.btnDeleteRow}
       title="Remover item"
       aria-label={ariaLabel || 'Remover item'}
       onClick={onClick}
@@ -43,12 +46,12 @@ export function StepsEditor({ steps, onChange, onAdd }) {
 
   return (
     <>
-      <h3 className="section-title">Modo de Preparo</h3>
+      <h3 className={adminUi.sectionTitle}>Modo de Preparo</h3>
       <div id="steps-list" className="mb-4">
         {steps.map((step, index) => (
-          <div key={index} className="step-row">
+          <div key={index} className={styles.stepRow}>
             <textarea
-              className="form-input step-text admin-textarea"
+              className={`${adminUi.formInput} ${styles.stepText}`}
               placeholder={`Passo ${index + 1}...`}
               required
               rows={2}
@@ -66,7 +69,7 @@ export function StepsEditor({ steps, onChange, onAdd }) {
       <button
         type="button"
         id="btn-add-step"
-        className="admin-btn admin-btn-secondary"
+        className={`${adminUi.btn} ${adminUi.btnSecondary}`}
         onClick={onAdd}
       >
         + Adicionar Passo

@@ -1,4 +1,7 @@
 import { useState, useRef } from 'react';
+import adminUi from './AdminUI.module.css';
+import autoStyles from './Autocomplete.module.css';
+import styles from './TagInput.module.css';
 
 export function TagInput({ tags, allExistingTags, onChange }) {
   const [inputValue, setInputValue] = useState('');
@@ -75,21 +78,21 @@ export function TagInput({ tags, allExistingTags, onChange }) {
   };
 
   return (
-    <div className="form-group">
-      <label className="form-label" htmlFor="tag-input">
+    <div className={adminUi.formGroup}>
+      <label className={adminUi.formLabel} htmlFor="tag-input">
         Tags da receita (contexto, ocasiões, temas)
       </label>
-      <div id="tags-chips-container" className="admin-tags-chips-container mb-2">
+      <div id="tags-chips-container" className={`${styles.chipsContainer} mb-2`}>
         {tags.length === 0 ? (
           <span className="text-sm text-muted" style={{ color: 'var(--text-muted)' }}>
             Nenhuma tag adicionada ainda.
           </span>
         ) : (
           tags.map((tag, index) => (
-            <span key={index} className="admin-tag-chip">
+            <span key={index} className={styles.tagChip}>
               {tag}
               <span
-                className="admin-tag-chip-remove"
+                className={styles.tagChipRemove}
                 title="Remover tag"
                 onClick={() => handleRemoveTag(index)}
               >
@@ -99,12 +102,12 @@ export function TagInput({ tags, allExistingTags, onChange }) {
           ))
         )}
       </div>
-      <div className="admin-tag-input-flex">
-        <div className="admin-tag-autocomplete-wrapper" style={{ flex: 1 }}>
+      <div className={styles.tagInputFlex}>
+        <div className={styles.autocompleteWrapper} style={{ flex: 1 }}>
           <input
             type="text"
             id="tag-input"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Digite uma tag (ex: Natal, Fit, Airfryer) e pressione Enter..."
             autoComplete="off"
             aria-label="Campo de tag"
@@ -119,14 +122,14 @@ export function TagInput({ tags, allExistingTags, onChange }) {
           {isOpen && suggestions.length > 0 && (
             <div
               id="tag-suggestions"
-              className="admin-tag-suggestions visible"
+              className={`${autoStyles.dropdown} ${autoStyles.visible}`}
               role="listbox"
               aria-label="Sugestões de tags"
             >
               {suggestions.map((tag, idx) => (
                 <div
                   key={tag}
-                  className={`admin-tag-suggestion-item ${idx === highlightedIdx ? 'highlighted' : ''}`}
+                  className={`${autoStyles.dropdownItem} ${idx === highlightedIdx ? autoStyles.highlighted : ''}`}
                   role="option"
                   aria-selected={idx === highlightedIdx ? 'true' : 'false'}
                   onMouseDown={(e) => {
@@ -143,7 +146,7 @@ export function TagInput({ tags, allExistingTags, onChange }) {
         <button
           type="button"
           id="btn-add-tag"
-          className="admin-btn admin-btn-secondary"
+          className={`${adminUi.btn} ${adminUi.btnSecondary}`}
           aria-label="Adicionar tag"
           onClick={() => handleAddTag()}
         >

@@ -1,0 +1,161 @@
+/* ========================================================================
+   Admin Shared Design Tokens & Component Styles
+======================================================================== */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 24px;
+    margin-top: 40px;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formLabel {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.formInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition-fast);
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-light-border);
+}
+
+.btn {
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-light-border);
+}
+
+.btnPrimary {
+    background: var(--primary-color);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 24px;
+}
+
+.btnPrimary:hover {
+    background: var(--primary-hover);
+}
+
+.btnSecondary {
+    background: var(--bg-light);
+    color: var(--text-main);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+}
+
+.btnSecondary:hover {
+    background: var(--border-color);
+}
+
+.btnDanger {
+    background: var(--danger-color);
+    color: var(--text-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+}
+
+.btnDanger:hover {
+    background: var(--danger-hover);
+}
+
+.btnLink {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sectionTitle {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    margin-top: 24px;
+}
+
+.errorBox {
+    color: var(--danger-color);
+    font-size: var(--text-sm);
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--danger-light);
+    border: 1px solid var(--danger-color);
+    border-radius: var(--radius-sm);
+}
+
+.btnDeleteRow,
+.btnReorderRow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.btnDeleteRow {
+    color: var(--danger-color);
+    background: var(--danger-light);
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+.btnDeleteRow:hover {
+    background: var(--danger-color);
+    color: #ffffff;
+    border-color: var(--danger-color);
+}
+
+.btnDeleteRow svg,
+.btnReorderRow svg {
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+}
+
+.btnReorderRow:hover:not(:disabled) {
+    background: var(--bg-light);
+    color: var(--text-main);
+    border-color: var(--border-dark);
+}
+
+.btnReorderRow:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}

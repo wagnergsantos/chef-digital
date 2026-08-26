@@ -1,0 +1,46 @@
+.chipsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 38px;
+    align-items: center;
+    padding: 6px;
+    background: var(--bg-light);
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-md);
+}
+
+.tagChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: var(--primary-light);
+    color: var(--primary-hover);
+    border: 1px solid var(--primary-light-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+
+.tagChipRemove {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+
+.tagChipRemove:hover {
+    color: var(--danger-color);
+}
+
+.tagInputFlex {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.autocompleteWrapper {
+    position: relative;
+}

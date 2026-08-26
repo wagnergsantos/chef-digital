@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { parseRecipeAiFunction, saveRecipeRpc } from '../../api/admin.js';
 import { buildRecipePayload } from '../../logic/admin-parser.js';
+import adminUi from './AdminUI.module.css';
+import styles from './BulkImportModal.module.css';
 
 export function BulkImportModal({ categories, onClose, onRefreshData }) {
   const [itemsStatus, setItemsStatus] = useState([]); // [{ file, status: 'pending'|'parsing'|'success'|'error', recipe: null, error: null }]
@@ -60,7 +62,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
 
     for (let i = 0; i < itemsStatus.length; i++) {
       const item = itemsStatus[i];
-      if (item.status === 'success') continue; // pula os já concluídos
+      if (item.status === 'success') continue;
 
       setItemsStatus((prev) =>
         prev.map((it, idx) => (idx === i ? { ...it, status: 'parsing', error: null } : it))
@@ -82,7 +84,6 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
 
         const recipe = data.recipe;
 
-        // Se autoSaveDb estiver ativo, salvar via RPC
         if (autoSaveDb && recipe) {
           let categoryId = null;
           if (categories && categories.length > 0) {
@@ -93,110 +94,74 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
               );
               if (match) categoryId = match.id;
             }
-            // Se não encontrou correspondência exata, usa a categoria "outros" ou a primeira disponível
             if (!categoryId) {
               const outrosCat = categories.find((c) => c.key === 'outros');
               categoryId = outrosCat ? outrosCat.id : categories[0].id;
             }
           }
 
-          const payload = buildRecipePayload({
-            id: null,
-            title: recipe.title || item.file.name,
-            emoji: recipe.emoji || '🍲',
-            image: recipe.image || '',
-            servings: recipe.servings,
-            prep_time: recipe.prep_time,
-            cook_time: recipe.cook_time,
-            author: recipe.author || '',
-            source_url: recipe.source_url || '',
-            tips: recipe.tips || '',
-            selectedCategoryId: categoryId,
-            selectedCategoryKey: recipe.category || '',
-            tags: Array.from(new Set(['A Revisar', ...(Array.isArray(recipe.tags) ? recipe.tags : [])])),
-            validIngredients: (recipe.ingredients || []).map((ing) => ({
-              name: ing.name || '',
-              qty: ing.qty !== undefined && ing.qty !== null ? ing.qty : null,
-              unit: ing.unit || ''
-            })),
-            validSteps: (recipe.steps || []).map((s) => ({
-              step_text: typeof s === 'string' ? s : s.step_text || ''
-            }))
-          });
+          const payload = buildRecipePayload(
+            recipe,
+            categoryId,
+            null,
+            null
+          );
 
           await saveRecipeRpc(payload);
         }
 
         setItemsStatus((prev) =>
-          prev.map((it, idx) => (idx === i ? { ...it, status: 'success', recipe } : it))
+          prev.map((it, idx) =>
+            idx === i ? { ...it, status: 'success', recipe: recipe, error: null } : it
+          )
         );
       } catch (err) {
-        console.error(`Erro ao processar ${item.file.name}:`, err);
+        console.error(`Erro ao processar item ${i}:`, err);
         setItemsStatus((prev) =>
-          prev.map((it, idx) => (idx === i ? { ...it, status: 'error', error: err.message } : it))
+          prev.map((it, idx) =>
+            idx === i ? { ...it, status: 'error', error: err.message || 'Erro desconhecido' } : it
+          )
         );
       }
 
-      // Pequeno delay entre requisições
       if (i < itemsStatus.length - 1) {
         await new Promise((r) => setTimeout(r, 1200));
       }
     }
 
     setProcessing(false);
-    if (onRefreshData) onRefreshData();
+    if (onRefreshData) {
+      onRefreshData();
+    }
   };
 
   const downloadJsonsZipOrFiles = () => {
-    itemsStatus.forEach((item) => {
-      if (item.status === 'success' && item.recipe) {
-        const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(item.recipe, null, 2));
-        const downloadAnchor = document.createElement('a');
-        const fileName = `${item.file.name.replace(/\.[^/.]+$/, '')}.json`;
-        downloadAnchor.setAttribute('href', dataStr);
-        downloadAnchor.setAttribute('download', fileName);
-        document.body.appendChild(downloadAnchor);
-        downloadAnchor.click();
-        downloadAnchor.remove();
-      }
+    const successItems = itemsStatus.filter((i) => i.status === 'success' && i.recipe);
+    if (successItems.length === 0) return;
+
+    successItems.forEach((item, index) => {
+      const filename = `${item.recipe.title ? item.recipe.title.toLowerCase().replace(/[^a-z0-9]/g, '_') : `recipe_${index + 1}`}.json`;
+      const blob = new Blob([JSON.stringify(item.recipe, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     });
   };
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.65)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 9999,
-        padding: '1rem'
-      }}
-    >
-      <div
-        className="admin-card"
-        style={{
-          width: '100%',
-          maxWidth: '680px',
-          maxHeight: '90vh',
-          display: 'flex',
-          flexDirection: 'column',
-          boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-          overflow: 'hidden',
-          padding: '1.5rem'
-        }}
-      >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+    <div className={styles.modalOverlay}>
+      <div className={`${adminUi.card} ${styles.modalContent}`}>
+        <div className={styles.header}>
           <h3 style={{ margin: 0, fontSize: '1.25rem' }}>📦 Importação de Receitas em Lote (Bulk)</h3>
           <button
             type="button"
             onClick={onClose}
-            style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}
+            className={styles.closeBtn}
             disabled={processing}
           >
             ✕
@@ -213,7 +178,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
           </label>
           <input
             type="text"
-            className="form-input"
+            className={adminUi.formInput}
             placeholder="Ex: 'Todas são receitas de muffin, adicionar a tag Saudável e Airfryer'"
             value={customPrompt}
             onChange={(e) => setCustomPrompt(e.target.value)}
@@ -233,7 +198,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
           />
           <button
             type="button"
-            className="admin-btn admin-btn-secondary"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
             onClick={() => fileInputRef.current?.click()}
             disabled={processing}
           >
@@ -252,25 +217,12 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
         </div>
 
         {itemsStatus.length > 0 && (
-          <div
-            style={{
-              flex: 1,
-              overflowY: 'auto',
-              border: '1px solid #e2e8f0',
-              borderRadius: '6px',
-              padding: '0.5rem',
-              marginBottom: '1rem',
-              maxHeight: '300px'
-            }}
-          >
+          <div className={styles.itemsContainer} style={{ maxHeight: '300px' }}>
             {itemsStatus.map((item, idx) => (
               <div
                 key={idx}
+                className={styles.itemRow}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0.5rem',
                   borderBottom: idx < itemsStatus.length - 1 ? '1px solid #edf2f7' : 'none',
                   fontSize: '0.875rem'
                 }}
@@ -314,7 +266,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
           {itemsStatus.some((i) => i.status === 'success') && (
             <button
               type="button"
-              className="admin-btn admin-btn-secondary"
+              className={`${adminUi.btn} ${adminUi.btnSecondary}`}
               onClick={downloadJsonsZipOrFiles}
               disabled={processing}
             >
@@ -324,7 +276,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
 
           <button
             type="button"
-            className="admin-btn admin-btn-primary"
+            className={`${adminUi.btn} ${adminUi.btnPrimary}`}
             onClick={processBulk}
             disabled={processing || itemsStatus.length === 0}
           >
