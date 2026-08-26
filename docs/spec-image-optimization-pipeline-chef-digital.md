@@ -15,8 +15,8 @@ usuário digita manualmente o nome do arquivo.
 Unificar 100% do armazenamento de imagens no Supabase Storage. A entrega foi
 estruturada em 3 fases sequenciais e seguras:
 1. **Fase 1 (Concluída)**: Otimização *in place* das 127 imagens existentes em `public/` com script permanente e idempotente.
-2. **Fase 2 (Próxima)**: Infraestrutura de Storage + Pipeline de Upload completo no Admin (API + UI integrada com preview).
-3. **Fase 3**: Migração total das 127 imagens para o Storage, atualização no banco de dados, limpeza de `public/` e configuração de cache offline (Workbox) no PWA.
+2. **Fase 2 (Concluída ✅)**: Infraestrutura de Storage + Pipeline de Upload completo no Admin (API + UI integrada com preview, compressão WebP e limpeza automática).
+3. **Fase 3 (Próxima)**: Migração total das 127 imagens para o Storage, atualização no banco de dados, limpeza de `public/` e configuração de cache offline (Workbox) no PWA.
 
 ---
 
@@ -35,7 +35,7 @@ estruturada em 3 fases sequenciais e seguras:
 
 ---
 
-## Fase 2 — Pipeline de Upload no Admin (Supabase Storage)
+## Fase 2 — Pipeline de Upload no Admin (Supabase Storage) (CONCLUÍDA ✅)
 
 ### Escopo unificado (API + UI)
 

@@ -190,13 +190,10 @@ e `ultimo_erro` já guardados por item da fila.
 
 ---
 
-### B2. Otimização automática de imagem no upload (admin)
+### B2. Otimização automática de imagem no upload (admin) — CONCLUÍDA ✅
 
-Evita que o problema de A4 volte a se acumular: converter/redimensionar no
-momento do upload (client-side antes de enviar ao Storage, ou via Edge
-Function), reaproveitando a infra de `supabase/functions` já existente.
-
-**Esforço:** médio.
+Implementado pipeline de compressão client-side (WebP máx 800px) e upload direto para o Supabase Storage (`recipe-images`), com componente `ImageUploadField` no admin e limpeza automática de fotos substituídas/excluídas.
+Ver [`docs/spec-image-optimization-pipeline-chef-digital.md`](spec-image-optimization-pipeline-chef-digital.md).
 
 ---
 
@@ -234,7 +231,7 @@ colaborativa" no ROADMAP. Ver sequenciamento recomendado na seção 2.
 | 7 | B3 — destaque do modo despensa | Código | 🚀 Feature | Reaproveita lógica pronta e testada. |
 | 8 | **Lista colaborativa (Supabase Realtime)** | ROADMAP Fase 4 | 🚀 Feature (já planejada) | Definir modelo de dados antes de investir mais na lista atual (ver B4). |
 | 9 | B4 — Web Share na lista de compras | Código | 🚀 Feature | Complementa item 8, não compete — pode entrar antes ou depois. |
-| 10 | B2 — otimização automática de imagem no upload | Código | 🚀 Feature | Depende de decisão sobre Storage/Edge Function (relacionado a A4). |
+| 10 | B2 — otimização automática de imagem no upload | Código | 🟢 Concluído | Pipeline de compressão WebP + upload Supabase Storage no Admin. |
 | 11 | **Notificações push** | ROADMAP Fase 4 | ⏸️ Baixa/backlog | Já planejada, mas com custo de infra persistente maior do que o ROADMAP detalha — mesma ressalva feita para o AniMatch. |
 
 ---
