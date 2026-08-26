@@ -85,11 +85,13 @@ export function App() {
                     supabase.from('tags').select('*').order('sort_order')
                 ]);
 
-                let catById = {};
+                const catById = {};
                 if (catData) {
                     const catMap = { todos: 'Todas as Receitas' };
                     catData.forEach(c => {
                         catMap[c.key] = c.label || c.description || c.key;
+                    });
+                    (catData || []).forEach(c => {
                         catById[String(c.id)] = c.key;
                     });
                     setCategories(catMap);

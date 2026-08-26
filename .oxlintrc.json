@@ -1,7 +1,67 @@
 {
   "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/crates/oxc_linter/src/rules.json",
+  "plugins": ["react", "unicorn", "oxc"],
   "rules": {
     "no-unused-vars": "warn",
-    "no-undef": "off"
-  }
+    "no-undef": "error",
+    "no-debugger": "error",
+    "eqeqeq": "error",
+    "no-var": "error",
+    "prefer-const": "warn",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "require-await": "warn",
+    "valid-typeof": "error",
+    "no-throw-literal": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2022": true
+  },
+  "globals": {
+    "Deno": "readonly",
+    "globalThis": "readonly",
+    "process": "readonly",
+    "console": "readonly",
+    "window": "readonly",
+    "document": "readonly",
+    "localStorage": "readonly",
+    "fetch": "readonly",
+    "Request": "readonly",
+    "Response": "readonly",
+    "Headers": "readonly",
+    "crypto": "readonly",
+    "URL": "readonly",
+    "URLSearchParams": "readonly",
+    "Blob": "readonly",
+    "File": "readonly",
+    "FormData": "readonly",
+    "ReadableStream": "readonly",
+    "TransformStream": "readonly",
+    "TextEncoder": "readonly",
+    "TextDecoder": "readonly",
+    "AbortController": "readonly",
+    "AbortSignal": "readonly",
+    "EventTarget": "readonly",
+    "Event": "readonly",
+    "MessageEvent": "readonly",
+    "WebSocket": "readonly",
+    "setInterval": "readonly",
+    "clearInterval": "readonly",
+    "setTimeout": "readonly",
+    "clearTimeout": "readonly",
+    "queueMicrotask": "readonly",
+    "structuredClone": "readonly",
+    "btoa": "readonly",
+    "atob": "readonly"
+  },
+  "ignorePatterns": [
+    "dist/**",
+    "node_modules/**",
+    ".agents/**",
+    ".github/**"
+  ]
 }

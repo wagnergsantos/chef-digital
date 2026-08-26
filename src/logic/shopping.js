@@ -32,7 +32,7 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
             const normalizedUnit = normalizeUnit(ing.unit);
             const key = `${normName.toLowerCase()}|${normalizedUnit.toLowerCase()}`;
 
-            let scaledQty = scaleIngredientQty(ing.qty, p.people, recipe.servings);
+            const scaledQty = scaleIngredientQty(ing.qty, p.people, recipe.servings);
 
             if (tempConsolidated[key]) {
                 if (tempConsolidated[key].qty !== null && scaledQty !== null) {

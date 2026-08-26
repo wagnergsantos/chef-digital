@@ -44,7 +44,7 @@ export function AIImportBox({ onImportSuccess }) {
     const items = e.clipboardData?.items;
     if (!items) return;
 
-    for (let item of items) {
+    for (const item of items) {
       if (item.type.indexOf('image') !== -1) {
         e.preventDefault();
         const file = item.getAsFile();
