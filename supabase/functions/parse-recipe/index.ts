@@ -48,6 +48,19 @@ Regras adicionais:
 - Retorne estritamente o JSON sem marcações markdown adicionais ou texto extra.
 - Desmembre ingredientes combinados.`;
 
+// Circuit breaker state (escopo de instância Deno persistido entre requisições)
+const CIRCUIT_BREAKER_THRESHOLD = 5; // falhas consecutivas para abrir o circuito
+const CIRCUIT_BREAKER_TIMEOUT = 30000; // 30s de timeout antes de tentar novamente (half-open)
+let consecutiveFailures = 0;
+let circuitOpenUntil = 0;
+
+// Função para delay exponencial com jitter
+const exponentialBackoff = async (attempt: number, baseDelay: number = 250, maxDelay: number = 4000) => {
+  const delay = Math.min(baseDelay * Math.pow(2, attempt), maxDelay);
+  const jitter = Math.random() * 0.3 * delay; // 30% de jitter
+  await new Promise((r) => setTimeout(r, delay + jitter));
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -178,10 +191,38 @@ serve(async (req) => {
       "gemini-2.5-pro"
     ];
 
+    // Verifica se o circuit breaker está aberto
+    const now = Date.now();
+    if (circuitOpenUntil > now) {
+      const remainingTime = Math.ceil((circuitOpenUntil - now) / 1000);
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: "circuit_breaker_open",
+          message: `Serviço temporariamente indisponível devido a múltiplas falhas. Tente novamente em ${remainingTime} segundos.`
+        }),
+        { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     modelLoop:
     for (const model of models) {
-      for (const key of keys) {
+      for (let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
+        const key = keys[keyIndex];
         try {
+          const currentTime = Date.now();
+          if (circuitOpenUntil > currentTime) {
+            const remainingTime = Math.ceil((circuitOpenUntil - currentTime) / 1000);
+            return new Response(
+              JSON.stringify({
+                ok: false,
+                error: "circuit_breaker_open",
+                message: `Serviço temporariamente indisponível. Tente novamente em ${remainingTime} segundos.`
+              }),
+              { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+            );
+          }
+
           const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
           const response = await fetch(geminiUrl, {
             method: "POST",
@@ -193,9 +234,6 @@ serve(async (req) => {
                   parts: promptParts
                 }
               ],
-              // temperature baixo = saída determinística (JSON estruturado, não criativo)
-              // maxOutputTokens = receita não precisa de 65k tokens
-              // thinkingBudget 0 = desabilita raciocínio estendido (muito mais rápido para extração simples)
               generationConfig: {
                 responseMimeType: "application/json",
                 temperature: 0.1,
@@ -207,15 +245,16 @@ serve(async (req) => {
 
           if (response.status === 429) {
             quotaExceeded = true;
+            consecutiveFailures++;
             const errText = await response.text();
             console.warn(`Quota excedida no modelo ${model} (chave ...${key.slice(-4)}):`, errText);
             lastError = `Quota excedida na API Gemini (429).`;
-            // Backoff curto antes de tentar próxima chave para amortecer rate limit
-            await new Promise((r) => setTimeout(r, 250));
+            await exponentialBackoff(keyIndex);
             continue; // tenta próxima chave
           }
 
           if (response.status === 404) {
+            consecutiveFailures++;
             const errText = await response.text();
             console.warn(`Modelo ${model} não encontrado (404) — descartando modelo:`, errText);
             lastError = errText;
@@ -223,6 +262,7 @@ serve(async (req) => {
           }
 
           if (response.status === 503) {
+            consecutiveFailures++;
             const errText = await response.text();
             console.warn(`Modelo ${model} sob alta demanda (503) — pulando para próximo modelo:`, errText);
             lastError = errText;
@@ -230,11 +270,18 @@ serve(async (req) => {
           }
 
           if (!response.ok) {
+            consecutiveFailures++;
             const errText = await response.text();
             console.error(`Erro na API Gemini (${model}, chave ...${key.slice(-4)}):`, errText);
             lastError = errText;
-            await new Promise((r) => setTimeout(r, 300));
+            await exponentialBackoff(keyIndex);
             continue; // tenta próxima chave
+          }
+
+          // Sucesso: reseta contadores de falha e limpa circuit breaker
+          consecutiveFailures = 0;
+          if (circuitOpenUntil > 0) {
+            circuitOpenUntil = 0;
           }
 
           const data = await response.json();
@@ -261,7 +308,15 @@ serve(async (req) => {
 
         } catch (err: any) {
           lastError = err.message;
+          consecutiveFailures++;
           console.error("Erro durante execução com a chave/modelo:", err);
+
+          if (consecutiveFailures >= CIRCUIT_BREAKER_THRESHOLD) {
+            circuitOpenUntil = Date.now() + CIRCUIT_BREAKER_TIMEOUT;
+            console.warn(`Circuit breaker aberto após ${consecutiveFailures} falhas consecutivas.`);
+          }
+
+          await exponentialBackoff(keyIndex);
         }
       }
     }
