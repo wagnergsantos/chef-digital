@@ -82,9 +82,9 @@ export function TagInput({ tags, allExistingTags, onChange }) {
       <label className={adminUi.formLabel} htmlFor="tag-input">
         Tags da receita (contexto, ocasiões, temas)
       </label>
-      <div id="tags-chips-container" className={`${styles.chipsContainer} mb-2`}>
+      <div id="tags-chips-container" className={styles.chipsContainer}>
         {tags.length === 0 ? (
-          <span className="text-sm text-muted" style={{ color: 'var(--text-muted)' }}>
+          <span className={styles.emptyText}>
             Nenhuma tag adicionada ainda.
           </span>
         ) : (

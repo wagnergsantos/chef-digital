@@ -3,8 +3,8 @@ import styles from './CategoryPicker.module.css';
 
 export function CategoryPicker({ categories, selectedCategoryId, onChange }) {
   return (
-    <div className={`${adminUi.formGroup} mb-6`}>
-      <label className={`${adminUi.formLabel} mb-2`}>Categoria *</label>
+    <div className={adminUi.formGroup}>
+      <label className={adminUi.formLabel}>Categoria *</label>
       <div id="categories-container" className={styles.categoriesGrid}>
         {categories.map((cat) => (
           <label key={cat.id} className={styles.categoryItem}>

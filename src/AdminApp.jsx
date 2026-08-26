@@ -359,8 +359,8 @@ export function AdminApp() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mb-20 px-4">
-      <div className="mt-6 mb-4">
+    <div className={styles.container}>
+      <div className={styles.navContainer}>
         <a href="index.html" className={`${adminUi.btn} ${adminUi.btnSecondary} ${adminUi.btnLink}`}>
           ← Voltar ao Livro de Receitas
         </a>
@@ -374,7 +374,7 @@ export function AdminApp() {
         />
       )}
 
-      <div className={`${styles.headerFlex} mb-6`}>
+      <div className={styles.headerFlex}>
         <h2 className={adminUi.sectionTitle} style={{ margin: 0, border: 'none', padding: 0 }}>
           Painel de Receitas
         </h2>

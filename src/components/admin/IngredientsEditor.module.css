@@ -1,6 +1,6 @@
 .ingredientRow {
     display: grid;
-    grid-template-columns: minmax(140px, 2fr) minmax(70px, 1fr) minmax(110px, 1.2fr) minmax(100px, 1.2fr) auto;
+    grid-template-columns: minmax(140px, 2.2fr) minmax(42px, 0.6fr) minmax(140px, 1.6fr) minmax(100px, 1.2fr) auto;
     gap: 8px;
     margin-bottom: 10px;
     align-items: center;
@@ -67,6 +67,10 @@
 .btnGroupRemove:hover {
     background: var(--danger-light);
     border-color: var(--danger-color);
+}
+
+.ingredientsList {
+    margin-bottom: 16px;
 }
 
 .toolbar {

@@ -1,3 +1,14 @@
+.container {
+    max-width: 886px;
+    margin: 0 auto 80px auto;
+    padding: 0 16px;
+}
+
+.navContainer {
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
 .formGrid2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -8,6 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
 }
 
 .editBanner {

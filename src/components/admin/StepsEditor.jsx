@@ -47,7 +47,7 @@ export function StepsEditor({ steps, onChange, onAdd }) {
   return (
     <>
       <h3 className={adminUi.sectionTitle}>Modo de Preparo</h3>
-      <div id="steps-list" className="mb-4">
+      <div id="steps-list" className={styles.stepsList}>
         {steps.map((step, index) => (
           <div key={index} className={styles.stepRow}>
             <textarea

@@ -1,3 +1,14 @@
+.wrapper {
+    max-width: 448px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.navContainer {
+    margin-top: 24px;
+    margin-bottom: -76px;
+}
+
 .loginContainer {
     margin-top: 100px;
 }

@@ -262,7 +262,7 @@ export function IngredientsEditor({ ingredients = [], onChange, onAdd }) {
     return (
       <>
         <h3 className={adminUi.sectionTitle}>Ingredientes</h3>
-        <div id="ingredients-list" className="mb-4">
+        <div id="ingredients-list" className={styles.ingredientsList}>
           {ingredients.map((ing, index) => (
             <IngredientRow
               key={index}

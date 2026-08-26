@@ -30,8 +30,8 @@ export function LoginForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <div style={{ marginTop: '24px', marginBottom: '-76px' }}>
+    <div className={styles.wrapper}>
+      <div className={styles.navContainer}>
         <a href="index.html" className={`${adminUi.btn} ${adminUi.btnSecondary} ${adminUi.btnLink}`}>
           ← Voltar ao Livro de Receitas
         </a>

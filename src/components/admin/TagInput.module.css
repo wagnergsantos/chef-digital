@@ -8,6 +8,12 @@
     background: var(--bg-light);
     border: 1px dashed var(--border-dark);
     border-radius: var(--radius-md);
+    margin-bottom: 8px;
+}
+
+.emptyText {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
 }
 
 .tagChip {

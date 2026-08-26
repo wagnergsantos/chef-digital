@@ -7,3 +7,7 @@
 .stepText {
     resize: vertical;
 }
+
+.stepsList {
+    margin-bottom: 16px;
+}
