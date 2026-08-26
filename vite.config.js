@@ -66,7 +66,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/test-setup.js']
+    setupFiles: ['./src/test-setup.js'],
+    env: {
+      VITE_SUPABASE_URL: 'https://test-chef-digital.supabase.co',
+      VITE_SUPABASE_ANON_KEY: 'test-anon-key'
+    }
   },
   build: {
     rollupOptions: {

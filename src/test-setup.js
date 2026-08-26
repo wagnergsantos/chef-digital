@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import 'fake-indexeddb/auto';
 
 const createLocalStorageMock = () => {
     const store = new Map();
@@ -29,3 +30,21 @@ try {
     // fallback silencioso
 }
 
+if (typeof window !== 'undefined') {
+    if (!window.IntersectionObserver) {
+        class IntersectionObserverMock {
+            constructor(callback) {
+                this.callback = callback;
+            }
+            observe() {}
+            unobserve() {}
+            disconnect() {}
+        }
+        window.IntersectionObserver = IntersectionObserverMock;
+        globalThis.IntersectionObserver = IntersectionObserverMock;
+    }
+
+    if (!window.scrollTo) {
+        window.scrollTo = () => {};
+    }
+}
