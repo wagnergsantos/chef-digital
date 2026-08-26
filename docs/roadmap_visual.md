@@ -154,8 +154,10 @@
   - **Anti-patterns:** 3/4 (sem sinais críticos; manter atenção ao uso de scrollbar customizada).
   - **Prioridades abertas:** reduzir LCP/FCP e fechar CLS para <= 0.10.
 
-- **2026-08-06 — Otimização LCP-first paint + deploy + Lighthouse**
-  - Deploy publicado e workflow `pages-build-deployment` confirmado como **success** antes da medição.
-  - Resultado Lighthouse: **Performance 83**, **Accessibility 100**, **Best Practices 96**, **SEO 91**.
-  - Vitals: **LCP 3.2s**, **FCP 3.2s**, **TTI 3.4s**, **TBT 10ms**, **CLS 0.122**.
-  - Leitura: `mainthread-work-breakdown` segue controlado (1.8s), `unused-javascript` reduziu para ~40 KiB, mas LCP/FCP e CLS continuam acima do alvo.
+- **2026-08-25 — Pipeline de Imagens & Storage (Fases 1, 2 e 3 Concluídas)**
+  - Migração de 100% das 127 imagens de receitas para o Supabase Storage (`recipe-images`) com conversão para WebP.
+  - Tabela `receitas` atualizada com URLs do Storage.
+  - Pipeline de upload e compressão client-side integrado no Admin (`ImageUploadField`).
+  - Cache de runtime Workbox (`CacheFirst`, max 200 itens, 30 dias) configurado para imagens no PWA.
+  - Remoção de todos os arquivos binários estáticos de `public/*.png`.
+  - Redução drástica do precache do PWA de ~11.6MB inicial para **581 KiB** (apenas assets essenciais de código).

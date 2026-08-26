@@ -14,9 +14,9 @@ usuário digita manualmente o nome do arquivo.
 **Decisão de produto atualizada**:
 Unificar 100% do armazenamento de imagens no Supabase Storage. A entrega foi
 estruturada em 3 fases sequenciais e seguras:
-1. **Fase 1 (Concluída)**: Otimização *in place* das 127 imagens existentes em `public/` com script permanente e idempotente.
+1. **Fase 1 (Concluída ✅)**: Otimização *in place* das 127 imagens existentes em `public/` com script permanente e idempotente.
 2. **Fase 2 (Concluída ✅)**: Infraestrutura de Storage + Pipeline de Upload completo no Admin (API + UI integrada com preview, compressão WebP e limpeza automática).
-3. **Fase 3 (Próxima)**: Migração total das 127 imagens para o Storage, atualização no banco de dados, limpeza de `public/` e configuração de cache offline (Workbox) no PWA.
+3. **Fase 3 (Concluída ✅)**: Migração total das 127 imagens para o Storage, atualização no banco de dados, limpeza de `public/` e configuração de cache offline (Workbox `CacheFirst`) no PWA.
 
 ---
 
@@ -79,10 +79,13 @@ Seguindo a separação de camadas do projeto (`api/` para chamadas externas, `lo
    - Garantir que imagens acessadas fiquem salvas no cache do navegador para uso offline posterior.
    - O precache inicial de build cai para **< 500 KB** (apenas assets essenciais de código JS/CSS).
 
-### Validação da Fase 3
-- Todas as 127 receitas continuam renderizando suas fotos normalmente.
-- Precache do Service Worker cai drasticamente.
-- Teste offline: receitas abertas anteriormente continuam exibindo imagens sem rede via runtime cache do Workbox.
+### Validação da Fase 3 (Executada ✅)
+- 127 imagens de `public/*.png` migradas para WebP no Supabase Storage (`recipe-images`).
+- Tabela `receitas` atualizada com URLs públicas do Storage.
+- `public/*.png` e `scripts/.optimized-cache.json` removidos do repositório.
+- Workbox `runtimeCaching` configurado com `CacheFirst` (max 200 entradas, expiração de 30 dias).
+- Precache do PWA reduzido de ~3.5MB para **581 KiB** (apenas JS/CSS/HTML e icon.svg).
+- Suite de testes (91/91) e linter aprovados.
 
 ---
 
