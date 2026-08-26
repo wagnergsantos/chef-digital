@@ -164,6 +164,20 @@ opcionalmente diferenciar itens travados em `MAX_TENTATIVAS`.
 
 ---
 
+### A6. Otimização de Performance da Página Principal (Code-Splitting & Query Inicial Leve)
+
+**Onde:** `src/App.jsx`, `src/components/`, chamadas Supabase
+
+**Problema:** Carregamento síncrono de modais e drawers (`PlannerDrawer`, `ShoppingDrawer`, `PantryDrawer`, `RecipeModal`, `CookingMode`) inflando o bundle JS principal, somado a busca de dados profundos (`ingredientes` completos e `passos`) de todas as receitas no primeiro paint.
+
+**Correção proposta:** Code-splitting com `React.lazy()` para gavetas/modais + divisão da query Supabase em listagem rasa e detalhes sob demanda.
+
+**Spec detalhada:** Ver [`docs/superpowers/specs/2026-08-25-performance-pagina-principal-design.md`](superpowers/specs/2026-08-25-performance-pagina-principal-design.md).
+
+**Esforço estimado:** Médio.
+
+---
+
 ## 4. Frente B — Melhorias (não cobertas pelo ROADMAP)
 
 ### B1. Badge de sincronização pendente no admin (extensão direta de A5)
@@ -214,13 +228,14 @@ colaborativa" no ROADMAP. Ver sequenciamento recomendado na seção 2.
 | 1 | A1 — escapar `recipe.image` | Código | 🔥 Alta | Risco de segurança, correção trivial. |
 | 2 | A3 — remover `console.log` de debug | Código | 🔥 Alta | Trivial, vaza dado interno em produção. |
 | 3 | A2 — remover/mover `receitas.js` | Código + Roadmap | 🟢 Rápida | Fecha loose end de bug já marcado como resolvido no ROADMAP. |
-| 4 | A5 + B1 (entregues juntos) | Código | 🟡 Média | Fecha o ciclo do tratamento de erro de sync já resolvido (Fase 1), expondo o resultado na UI. |
-| 5 | A4 — otimizar imagens existentes | Código | 🟡 Média | Impacto em tempo de build/clone; pode ser feito em lote. |
-| 6 | B3 — destaque do modo despensa | Código | 🚀 Feature | Reaproveita lógica pronta e testada. |
-| 7 | **Lista colaborativa (Supabase Realtime)** | ROADMAP Fase 4 | 🚀 Feature (já planejada) | Definir modelo de dados antes de investir mais na lista atual (ver B4). |
-| 8 | B4 — Web Share na lista de compras | Código | 🚀 Feature | Complementa item 7, não compete — pode entrar antes ou depois. |
-| 9 | B2 — otimização automática de imagem no upload | Código | 🚀 Feature | Depende de decisão sobre Storage/Edge Function (relacionado a A4). |
-| 10 | **Notificações push** | ROADMAP Fase 4 | ⏸️ Baixa/backlog | Já planejada, mas com custo de infra persistente maior do que o ROADMAP detalha — mesma ressalva feita para o AniMatch. |
+| 4 | A6 — Otimização de Performance Home | Código + Spec | 🟡 Média | Code-splitting e otimização de payload inicial Supabase (reduz JS/FCP/TBT). |
+| 5 | A5 + B1 (entregues juntos) | Código | 🟡 Média | Fecha o ciclo do tratamento de erro de sync já resolvido (Fase 1), expondo o resultado na UI. |
+| 6 | A4 — otimizar imagens existentes | Código | 🟡 Média | Impacto em tempo de build/clone; pode ser feito em lote. |
+| 7 | B3 — destaque do modo despensa | Código | 🚀 Feature | Reaproveita lógica pronta e testada. |
+| 8 | **Lista colaborativa (Supabase Realtime)** | ROADMAP Fase 4 | 🚀 Feature (já planejada) | Definir modelo de dados antes de investir mais na lista atual (ver B4). |
+| 9 | B4 — Web Share na lista de compras | Código | 🚀 Feature | Complementa item 8, não compete — pode entrar antes ou depois. |
+| 10 | B2 — otimização automática de imagem no upload | Código | 🚀 Feature | Depende de decisão sobre Storage/Edge Function (relacionado a A4). |
+| 11 | **Notificações push** | ROADMAP Fase 4 | ⏸️ Baixa/backlog | Já planejada, mas com custo de infra persistente maior do que o ROADMAP detalha — mesma ressalva feita para o AniMatch. |
 
 ---
 
@@ -231,6 +246,7 @@ colaborativa" no ROADMAP. Ver sequenciamento recomendado na seção 2.
   resolvido — faria sentido atualizar essa entrada mencionando a limpeza do
   arquivo de origem).
 - A1 e A3 podem sair numa única PR trivial de hardening + cleanup.
+- A6 (Performance da Home) está especificado em `docs/superpowers/specs/2026-08-25-performance-pagina-principal-design.md` pronto para ser planejado/executado.
 - Antes de priorizar "Notificações push" da Fase 4, vale um levantamento de
   esforço específico (Edge Function + cron + VAPID + tabela de
   subscriptions), já que o ROADMAP hoje só marca como pendente sem detalhar
