@@ -66,28 +66,19 @@ export function calculateTargetDimensions(srcWidth, srcHeight, maxWidth = 800, m
 }
 
 /**
- * Comprime um arquivo de imagem no navegador usando Canvas e exportando para WebP.
+ * Carrega um arquivo de imagem no navegador e desenha no canvas já
+ * redimensionado, pronto pra exportar no formato desejado (blob ou
+ * data URL). Etapa compartilhada entre compressImageFile (usada no
+ * upload pro Supabase Storage) e compressImageToBase64 (usada no
+ * import de receita via IA, que precisa de base64 pro payload do
+ * Gemini) — evita duplicar a lógica de redimensionamento em cada
+ * consumidor.
  * @param {File|Blob} file
- * @param {Object} [options]
- * @param {number} [options.maxWidth=800]
- * @param {number} [options.maxHeight=800]
- * @param {number} [options.quality=0.8]
- * @param {string} [options.type='image/webp']
- * @returns {Promise<Blob>}
+ * @param {number} maxWidth
+ * @param {number} maxHeight
+ * @returns {Promise<HTMLCanvasElement>}
  */
-export async function compressImageFile(file, options = {}) {
-  const {
-    maxWidth = 800,
-    maxHeight = 800,
-    quality = 0.8,
-    type = 'image/webp'
-  } = options;
-
-  const validation = validateImageFile(file);
-  if (!validation.valid) {
-    throw new Error(validation.error);
-  }
-
+function drawResizedToCanvas(file, maxWidth, maxHeight) {
   return new Promise((resolve, reject) => {
     const img = new Image();
     const objectUrl = URL.createObjectURL(file);
@@ -116,17 +107,7 @@ export async function compressImageFile(file, options = {}) {
       ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(img, 0, 0, width, height);
 
-      canvas.toBlob(
-        (blob) => {
-          if (!blob) {
-            reject(new Error('Falha ao exportar imagem compactada.'));
-            return;
-          }
-          resolve(blob);
-        },
-        type,
-        quality
-      );
+      resolve(canvas);
     };
 
     img.onerror = () => {
@@ -136,4 +117,73 @@ export async function compressImageFile(file, options = {}) {
 
     img.src = objectUrl;
   });
+}
+
+/**
+ * Comprime um arquivo de imagem no navegador usando Canvas e exportando para WebP.
+ * @param {File|Blob} file
+ * @param {Object} [options]
+ * @param {number} [options.maxWidth=800]
+ * @param {number} [options.maxHeight=800]
+ * @param {number} [options.quality=0.8]
+ * @param {string} [options.type='image/webp']
+ * @returns {Promise<Blob>}
+ */
+export async function compressImageFile(file, options = {}) {
+  const {
+    maxWidth = 800,
+    maxHeight = 800,
+    quality = 0.8,
+    type = 'image/webp'
+  } = options;
+
+  const validation = validateImageFile(file);
+  if (!validation.valid) {
+    throw new Error(validation.error);
+  }
+
+  const canvas = await drawResizedToCanvas(file, maxWidth, maxHeight);
+
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) {
+          reject(new Error('Falha ao exportar imagem compactada.'));
+          return;
+        }
+        resolve(blob);
+      },
+      type,
+      quality
+    );
+  });
+}
+
+/**
+ * Comprime um arquivo de imagem e retorna como base64 (sem o prefixo
+ * "data:...;base64,"), formato exigido pelo payload inline_data da API
+ * do Gemini no import de receita via IA. Usa a mesma etapa de
+ * redimensionamento de compressImageFile — só muda o formato de saída.
+ * @param {File|Blob} file
+ * @param {Object} [options]
+ * @param {number} [options.maxWidth=1024]
+ * @param {number} [options.maxHeight=1024]
+ * @param {number} [options.quality=0.82]
+ * @returns {Promise<{ base64: string, mimeType: string }>}
+ */
+export async function compressImageToBase64(file, options = {}) {
+  const {
+    maxWidth = 1024,
+    maxHeight = 1024,
+    quality = 0.82
+  } = options;
+
+  const validation = validateImageFile(file);
+  if (!validation.valid) {
+    throw new Error(validation.error);
+  }
+
+  const canvas = await drawResizedToCanvas(file, maxWidth, maxHeight);
+  const dataUrl = canvas.toDataURL('image/jpeg', quality);
+  return { base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' };
 }

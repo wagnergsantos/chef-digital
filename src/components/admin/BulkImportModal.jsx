@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { parseRecipeAiFunction, saveRecipeRpc } from '../../api/admin.js';
 import { buildRecipePayload } from '../../logic/admin-parser.js';
+import { compressImageToBase64 } from '../../logic/image-compression.js';
 import adminUi from './AdminUI.module.css';
 import styles from './BulkImportModal.module.css';
 
@@ -28,34 +29,6 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
     setItemsStatus((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const compressAndToBase64 = (file, { maxPx = 1024, quality = 0.82 } = {}) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const objectUrl = URL.createObjectURL(file);
-      img.onload = () => {
-        URL.revokeObjectURL(objectUrl);
-        let { width, height } = img;
-        if (width > maxPx || height > maxPx) {
-          if (width > height) {
-            height = Math.round((height * maxPx) / width);
-            width = maxPx;
-          } else {
-            width = Math.round((width * maxPx) / height);
-            height = maxPx;
-          }
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-        const dataUrl = canvas.toDataURL('image/jpeg', quality);
-        resolve({ base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' });
-      };
-      img.onerror = reject;
-      img.src = objectUrl;
-    });
-  };
-
   const processBulk = async () => {
     if (itemsStatus.length === 0) return;
     setProcessing(true);
@@ -69,7 +42,7 @@ export function BulkImportModal({ categories, onClose, onRefreshData }) {
       );
 
       try {
-        const { base64, mimeType } = await compressAndToBase64(item.file);
+        const { base64, mimeType } = await compressImageToBase64(item.file);
         const data = await parseRecipeAiFunction({
           image: {
             data: base64,

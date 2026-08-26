@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { parseRecipeAiFunction } from '../../api/admin.js';
+import { compressImageToBase64 } from '../../logic/image-compression.js';
 import adminUi from './AdminUI.module.css';
 import styles from './AIImportBox.module.css';
 
@@ -10,34 +11,6 @@ export function AIImportBox({ onImportSuccess }) {
   const [errorMsg, setErrorMsg] = useState('');
   const fileInputRef = useRef(null);
 
-  const compressAndToBase64 = (file, { maxPx = 1024, quality = 0.82 } = {}) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      const objectUrl = URL.createObjectURL(file);
-      img.onload = () => {
-        URL.revokeObjectURL(objectUrl);
-        let { width, height } = img;
-        if (width > maxPx || height > maxPx) {
-          if (width > height) {
-            height = Math.round((height * maxPx) / width);
-            width = maxPx;
-          } else {
-            width = Math.round((width * maxPx) / height);
-            height = maxPx;
-          }
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-        const dataUrl = canvas.toDataURL('image/jpeg', quality);
-        resolve({ base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' });
-      };
-      img.onerror = reject;
-      img.src = objectUrl;
-    });
-  };
-
   const handleImageFile = async (file) => {
     if (!file || !file.type.startsWith('image/')) {
       setErrorMsg('Por favor, selecione um arquivo de imagem válido (PNG, JPG, WEBP, etc).');
@@ -45,7 +18,7 @@ export function AIImportBox({ onImportSuccess }) {
     }
 
     try {
-      const { base64, mimeType } = await compressAndToBase64(file);
+      const { base64, mimeType } = await compressImageToBase64(file);
       const previewUrl = URL.createObjectURL(file);
       setSelectedImage({
         file,

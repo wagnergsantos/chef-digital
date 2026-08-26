@@ -2,7 +2,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   validateImageFile,
   calculateTargetDimensions,
-  compressImageFile
+  compressImageFile,
+  compressImageToBase64
 } from './image-compression.js';
 
 describe('image-compression logic', () => {
@@ -124,6 +125,63 @@ describe('image-compression logic', () => {
       expect(mockCanvas.width).toBe(800);
       expect(mockCanvas.height).toBe(600);
       expect(mockCtx.drawImage).toHaveBeenCalled();
+    });
+  });
+
+  describe('compressImageToBase64', () => {
+    let originalCreateObjectURL;
+    let originalRevokeObjectURL;
+
+    beforeEach(() => {
+      originalCreateObjectURL = globalThis.URL.createObjectURL;
+      originalRevokeObjectURL = globalThis.URL.revokeObjectURL;
+      globalThis.URL.createObjectURL = vi.fn(() => 'blob:mock-url');
+      globalThis.URL.revokeObjectURL = vi.fn();
+    });
+
+    afterEach(() => {
+      globalThis.URL.createObjectURL = originalCreateObjectURL;
+      globalThis.URL.revokeObjectURL = originalRevokeObjectURL;
+      vi.restoreAllMocks();
+    });
+
+    it('rejeita se a validação falhar', async () => {
+      await expect(compressImageToBase64(null)).rejects.toThrow('Nenhum arquivo');
+    });
+
+    it('retorna base64 (sem prefixo data URL) e mimeType image/jpeg, usado pelo import via IA', async () => {
+      class MockImage {
+        constructor() {
+          this.naturalWidth = 2000;
+          this.naturalHeight = 1000;
+          setTimeout(() => {
+            if (this.onload) this.onload();
+          }, 0);
+        }
+      }
+      globalThis.Image = MockImage;
+
+      const mockCtx = { drawImage: vi.fn() };
+      const mockCanvas = {
+        width: 0,
+        height: 0,
+        getContext: vi.fn(() => mockCtx),
+        toDataURL: vi.fn(() => 'data:image/jpeg;base64,ZmFrZS1qcGVn')
+      };
+
+      const originalCreateElement = document.createElement.bind(document);
+      vi.spyOn(document, 'createElement').mockImplementation((tagName) => {
+        if (tagName === 'canvas') return mockCanvas;
+        return originalCreateElement(tagName);
+      });
+
+      const file = new File(['raw-img'], 'receita-foto.jpg', { type: 'image/jpeg' });
+      const result = await compressImageToBase64(file);
+
+      expect(result).toEqual({ base64: 'ZmFrZS1qcGVn', mimeType: 'image/jpeg' });
+      // maxWidth padrão (1024) é maior que a imagem de teste (2000x1000 redimensiona por largura)
+      expect(mockCanvas.width).toBe(1024);
+      expect(mockCanvas.height).toBe(512);
     });
   });
 });
