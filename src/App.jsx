@@ -306,17 +306,13 @@ export function App() {
             <header className="header">
                 <div className="header-container">
                     <div className="brand">
-                        <div className="brand-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                                {/* Garfo */}
-                                <path d="M6 3v6a3 3 0 0 0 3 3v9" />
-                                <path d="M6 3v4" />
-                                <path d="M9 3v4" />
-                                <path d="M12 3v4" />
-                                {/* Faca */}
-                                <path d="M18 3v18M18 3c-2 0-3 2-3 5v4h3" />
-                            </svg>
-                        </div>
+                        <img
+                            src="icon.svg"
+                            alt="Logo Chef Digital"
+                            className="brand-icon-img"
+                            width="48"
+                            height="48"
+                        />
                         <div className="brand-text">
                             <h1>Chef Digital</h1>
                             <p>Todas as suas receitas em um só lugar</p>

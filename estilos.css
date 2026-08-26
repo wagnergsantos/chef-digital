@@ -256,20 +256,13 @@ button,
     gap: 12px;
 }
 
-.brand-icon {
-    padding: 10px;
-    background-color: var(--primary-color);
-    color: var(--text-white);
+.brand-icon-img {
+    width: 48px;
+    height: 48px;
     border-radius: 16px;
     box-shadow: 0 4px 10px rgb(from var(--primary-color) r g b / 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.brand-icon svg {
-    width: 28px;
-    height: 28px;
+    display: block;
+    flex-shrink: 0;
 }
 
 .brand-text h1 {
@@ -441,13 +434,10 @@ button,
             padding: 0 14px;
         }
 
-        .brand-icon {
-            padding: 8px;
-        }
-
-        .brand-icon svg {
-            width: 24px;
-            height: 24px;
+        .brand-icon-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
         }
 
         .brand-text h1 {
