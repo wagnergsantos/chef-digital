@@ -73,7 +73,7 @@ export function RecipeModal({
                 {/* Banner com Botões no Topo e Título abaixo */}
                 <div
                     className={`${styles.modalHeaderBanner} ${recipe.image ? styles.hasImage : ''}`}
-                    style={recipe.image ? { backgroundImage: `url('${recipe.image}')` } : undefined}
+                    style={recipe.image ? { backgroundImage: `url("${encodeURI(recipe.image.replace(/["'\\]/g, ''))}")` } : undefined}
                 >
                     {/* Linha Superior: Badges à Esquerda, Ferramentas à Direita */}
                     <div style={{

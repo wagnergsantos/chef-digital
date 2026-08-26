@@ -1,15 +1,19 @@
 import { scaleIngredientQty } from './recipes.js';
+import { normalizeUnit } from '../utils/units.js';
 
 export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList, currentShoppingList) {
-    if (!allPlannedEntries || allPlannedEntries.length === 0) {
-        return null;
+    const safeShoppingList = currentShoppingList || {};
+    if (!allPlannedEntries || !Array.isArray(allPlannedEntries) || allPlannedEntries.length === 0 || !Array.isArray(recipesList)) {
+        return {
+            ...safeShoppingList,
+            "Menu Semanal Consolidado": []
+        };
     }
 
     const checkedItemsMap = new Set();
-    const safeShoppingList = currentShoppingList || {};
-    if (safeShoppingList["Menu Semanal Consolidado"]) {
+    if (safeShoppingList["Menu Semanal Consolidado"] && Array.isArray(safeShoppingList["Menu Semanal Consolidado"])) {
         safeShoppingList["Menu Semanal Consolidado"].forEach(item => {
-            if (item.checked) {
+            if (item && item.checked && item.name) {
                 checkedItemsMap.add(item.name.trim().toLowerCase());
             }
         });
@@ -18,13 +22,15 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
     const tempConsolidated = {};
 
     allPlannedEntries.forEach(p => {
-        const recipe = recipesList.find(r => r.id === p.recipeId);
+        if (!p) return;
+        const recipe = recipesList.find(r => r && r.id === p.recipeId);
         if (!recipe || !Array.isArray(recipe.ingredients)) return;
 
         recipe.ingredients.forEach(ing => {
+            if (!ing || !ing.name) return;
             const normName = ing.name.trim();
-            const normUnit = (ing.unit || "").toLowerCase().trim();
-            const key = `${normName.toLowerCase()}|${normUnit}`;
+            const normalizedUnit = normalizeUnit(ing.unit);
+            const key = `${normName.toLowerCase()}|${normalizedUnit.toLowerCase()}`;
 
             let scaledQty = scaleIngredientQty(ing.qty, p.people, recipe.servings);
 
@@ -37,7 +43,7 @@ export function calculateConsolidatedShoppingList(allPlannedEntries, recipesList
                 tempConsolidated[key] = {
                     name: normName,
                     qty: scaledQty,
-                    unit: ing.unit,
+                    unit: normalizedUnit || ing.unit || '',
                     checked: wasChecked
                 };
             }

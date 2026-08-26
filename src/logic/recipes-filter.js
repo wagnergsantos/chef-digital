@@ -1,7 +1,6 @@
-export function normalizeSearchText(str) {
-    return (str || '').toString().toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
+import { normalizeSearchText } from '../utils/text.js';
+
+export { normalizeSearchText };
 
 export function recipeIsFullyStocked(recipe, pantryItems = []) {
     if (!pantryItems || pantryItems.length === 0 || !recipe || !Array.isArray(recipe.ingredients)) return false;

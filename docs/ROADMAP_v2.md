@@ -85,26 +85,9 @@ implementação, só marca como pendente.
 
 ## 3. Frente A — Correções e débitos técnicos (não cobertos pelo ROADMAP)
 
-### A1. `recipe.image` não passa por `escapeHtml()` no atributo `src`
+### A1. `recipe.image` sanitização de imagem / atributos — CONCLUÍDA ✅
 
-**Onde:** `src/modules/recipes-render.js`, linha 487
-
-```js
-${hasImg ? `<img src="${recipe.image}" class="card-header-image" alt="Foto de ${safeTitle}" ... />` : ''}
-```
-
-**Problema:** título, emoji, categoria, tags e ingredientes buscados passam
-por `escapeHtml()` antes de entrar no template — `recipe.image` não. Risco
-prático baixo hoje (só admin autenticado escreve receitas), mas é o único
-campo sem sanitização, e uma aspa dupla no valor quebra o atributo. Vale
-corrigir como defesa em profundidade, especialmente se no futuro a
-importação por URL (já existente, Fase 4) alimentar esse campo com dado
-menos controlado.
-
-**Correção proposta:** `<img src="${escapeHtml(recipe.image)}" ...>` —
-checar se o mesmo padrão se repete no modal de receita e no modo preparo.
-
-**Esforço estimado:** trivial.
+Migração para React elimina XSS por injeção direta de string em HTML (prop `src={recipe.image}` com escape nativo do JSX em `RecipeCard.jsx`). O estilo inline de background em [`RecipeModal.jsx`](file:///C:/Sistemas/Projetos/receitas/src/components/RecipeModal.jsx) foi blindado com sanitização de aspas e `encodeURI()`.
 
 ---
 
@@ -114,19 +97,9 @@ checar se o mesmo padrão se repete no modal de receita e no modo preparo.
 
 ---
 
-### A3. `console.log` de debug esquecidos em produção
+### A3. `console.log` de debug esquecidos em produção — CONCLUÍDO ✅
 
-**Onde:** `src/main.js`, `loadRecipeDetailsById()` e
-`openRecipeModalWithDetails()` (linhas ~248-287)
-
-**Problema:** 7 chamadas `console.log('[DEBUG Modal] ...')` logam o objeto
-inteiro da receita a cada abertura de modal — não é bug funcional, mas polui
-o console em produção e expõe estrutura de dados interna.
-
-**Correção proposta:** remover, ou trocar por logger com flag de ambiente
-(`if (DEBUG) console.log(...)`).
-
-**Esforço estimado:** trivial.
+Os logs verbosos `[DEBUG Modal]` presentes na versão legada vanilla foram eliminados na refatoração e migração para os componentes React (`RecipeModal.jsx` / `App.jsx`). Verificação via grep confirmou a ausência de logs residuais.
 
 ---
 
@@ -218,31 +191,71 @@ colaborativa" no ROADMAP. Ver sequenciamento recomendado na seção 2.
 
 ---
 
-## 5. Ordem sugerida de execução
+## 5. Inconsistências Identificadas & Melhorias Técnicas
 
-| # | Item | Origem | Prioridade | Motivo |
-|---|------|--------|------------|--------|
-| 1 | A1 — escapar `recipe.image` | Código | 🔥 Alta | Risco de segurança, correção trivial. |
-| 2 | A3 — remover `console.log` de debug | Código | 🔥 Alta | Trivial, vaza dado interno em produção. |
-| 3 | A2 — remover/mover `receitas.js` | Código + Roadmap | 🟢 Rápida | Fecha loose end de bug já marcado como resolvido no ROADMAP. |
-| 4 | A6 — Otimização de Performance Home | Código + Spec | 🟡 Média | Code-splitting e otimização de payload inicial Supabase (reduz JS/FCP/TBT). |
-| 5 | A5 + B1 (entregues juntos) | Código | 🟡 Média | Fecha o ciclo do tratamento de erro de sync já resolvido (Fase 1), expondo o resultado na UI. |
-| 6 | A4 — otimizar imagens existentes | Código | 🟡 Média | Impacto em tempo de build/clone; pode ser feito em lote. |
-| 7 | B3 — destaque do modo despensa | Código | 🚀 Feature | Reaproveita lógica pronta e testada. |
-| 8 | **Lista colaborativa (Supabase Realtime)** | ROADMAP Fase 4 | 🚀 Feature (já planejada) | Definir modelo de dados antes de investir mais na lista atual (ver B4). |
-| 9 | B4 — Web Share na lista de compras | Código | 🚀 Feature | Complementa item 8, não compete — pode entrar antes ou depois. |
-| 10 | B2 — otimização automática de imagem no upload | Código | 🟢 Concluído | Pipeline de compressão WebP + upload Supabase Storage no Admin. |
-| 11 | **Notificações push** | ROADMAP Fase 4 | ⏸️ Baixa/backlog | Já planejada, mas com custo de infra persistente maior do que o ROADMAP detalha — mesma ressalva feita para o AniMatch. |
+### 5.1 Inconsistências Mapeadas
+1. **Duplicação de código:** Funções como `normalizeSearchText()` e regras de busca/filtro repetidas em múltiplos arquivos (`src/logic/recipes.js`, `src/logic/recipes-filter.js`, `src/main.js`).
+2. **Ambiente de dependências:** Divergência de versão do Node.js (engines/libs exigindo Node v22+, ambiente local/CI em v20.19.5).
+3. **Fragilidades no Shopping List:** `generateShoppingList()` pode retornar `null` em vez de objeto vazio `{}` em cenários vazios/inválidos, quebrando encadeamentos.
+4. **Parser de Receita (Edge Function):** Timeout fixo de 12s insuficiente para parsing pesado de IA + ausência de rate limiting explícito.
+5. **Gestão de Estado & Storage:** Acesso direto espalhado a `localStorage` sem camada unificada de abstração/tipagem defensiva.
+6. **Tratamento de Erros:** Supabase Edge Function retornando status HTTP 200 contendo corpo com erro, mascarando falhas para clientes HTTP.
+
+### 5.2 Sugestões de Melhoria por Prioridade
+
+#### 🔥 Alta Prioridade
+- **Eliminar duplicações de utilitários:** Criar módulo compartilhado `src/utils/text.js` consolidando `normalizeSearchText` e lógicas correlatas de strings.
+- **Estabilizar ambiente de build/testes:** Harmonizar versão do Node.js (via `.nvmrc` / `package.json` engines) ou ajustar dependências conflitantes.
+- **Robustez na Lista de Compras:** Garantir retorno `{}` padronizado em vez de `null` e blindar parsing.
+- **Normalização de Unidades:** Implementar parser/normalizador de unidades de medida (ex: `g`/`kg`, `xícara`/`xícaras`) antes da consolidação e agregação de quantidades.
+
+#### 🟡 Média Prioridade
+- **Resiliência na Edge Function:** Implementar retries com backoff exponencial, circuit breaker e status HTTP semânticos (4xx/5xx).
+- **Validação Cruzada de Categorias:** Unificar enum/validação de categorias e tags entre backend/Edge Function e frontend.
+- **Limitação de Histórico:** Implementar política de retenção / LRU limitando o tamanho do histórico de `cooking` no storage local.
+- **Camada de Abstração de Armazenamento:** Centralizar leituras/escritas de `localStorage` em wrapper defensivo (fallback gracioso e parse seguro).
+
+#### 🟢 Baixa Prioridade / Backlog Técnico
+- **Linting & Code Quality:** Configurar regras estritas de ESLint/Prettier específicas do projeto.
+- **Testes de Integração:** Expandir cobertura com testes integrando módulos de dados, cache e UI.
+- **Migração Gradual para TypeScript:** Introduzir tipagem estática nos módulos de lógica de negócio e contratos de dados.
+- **Documentação de Contratos de API:** Documentar esquemas de payload/resposta das Edge Functions e estruturas de dados do IndexedDB/Storage.
 
 ---
 
-## 6. Próximos passos
+## 6. Ordem sugerida de execução
+
+| # | Item | Origem | Prioridade | Motivo |
+|---|------|--------|------------|--------|
+| 1 | A1 — escapar `recipe.image` / sanitização de imagem | Código | 🟢 Concluído | JSX prop nativo + encodeURI/strip quotes no modal background. |
+| 2 | A3 — remover `console.log` de debug | Código | 🟢 Concluído | Limpeza efetuada na migração React; sem resíduos de logs no modal. |
+| 3 | Módulos utilitários compartilhados (`normalizeSearchText`) | Análise | 🟢 Concluído | Criado `src/utils/text.js` e suite de testes, eliminando duplicações em `recipes.js` e `recipes-filter.js`. |
+| 4 | Robustez shopping list + normalização de unidades | Análise | 🟢 Concluído | Criado `src/utils/units.js`, garantido retorno padronizado `{}` e agregação correta de unidades em `calculateConsolidatedShoppingList`. |
+| 5 | Harmonização de ambiente Node.js / deps | Análise | 🔥 Alta | Garante reprodutibilidade de CI/CD e testes. |
+| 6 | A2 — remover/mover `receitas.js` | Código + Roadmap | 🟢 Rápida | Fecha loose end de bug já marcado como resolvido no ROADMAP. |
+| 7 | A6 — Otimização de Performance Home | Código + Spec | 🟡 Média | Code-splitting e otimização de payload inicial Supabase (reduz JS/FCP/TBT). |
+| 8 | Resiliência & status HTTP na Edge Function | Análise | 🟡 Média | Corrige retorno 200 em erros e adiciona retry/timeout seguro. |
+| 9 | Camada de abstração para Storage + limite de histórico | Análise | 🟡 Média | Protege `localStorage` contra corrupção e estouro de cota. |
+| 10 | A5 + B1 (entregues juntos) | Código | 🟡 Média | Fecha o ciclo do tratamento de erro de sync já resolvido (Fase 1), expondo o resultado na UI. |
+| 11 | A4 — otimizar imagens existentes | Código | 🟡 Média | Impacto em tempo de build/clone; pode ser feito em lote. |
+| 12 | B3 — destaque do modo despensa | Código | 🚀 Feature | Reaproveita lógica pronta e testada. |
+| 13 | **Lista colaborativa (Supabase Realtime)** | ROADMAP Fase 4 | 🚀 Feature (já planejada) | Definir modelo de dados antes de investir mais na lista atual (ver B4). |
+| 14 | B4 — Web Share na lista de compras | Código | 🚀 Feature | Complementa item 13, não compete — pode entrar antes ou depois. |
+| 15 | B2 — otimização automática de imagem no upload | Código | 🟢 Concluído | Pipeline de compressão WebP + upload Supabase Storage no Admin. |
+| 16 | Backlog técnico (Linting, TypeScript, Testes integração) | Análise | ⏸️ Baixa | Evolução incremental de manutenibilidade. |
+| 17 | **Notificações push** | ROADMAP Fase 4 | ⏸️ Baixa/backlog | Já planejada, mas com custo de infra persistente maior do que o ROADMAP detalha — mesma ressalva feita para o AniMatch. |
+
+---
+
+## 7. Próximos passos
 
 - Validar com o mantenedor (você) se A2 pode ser fechado como parte do
   histórico de bugs do ROADMAP (ele já cita o bug relacionado como
   resolvido — faria sentido atualizar essa entrada mencionando a limpeza do
   arquivo de origem).
 - A1 e A3 podem sair numa única PR trivial de hardening + cleanup.
+- Extrair `normalizeSearchText` para `src/utils/text.js` e atualizar callers.
+- Corrigir `generateShoppingList` (retorno de `{}`) e adicionar normalização de unidades.
 - A6 (Performance da Home) está especificado em `docs/superpowers/specs/2026-08-25-performance-pagina-principal-design.md` pronto para ser planejado/executado.
 - Antes de priorizar "Notificações push" da Fase 4, vale um levantamento de
   esforço específico (Edge Function + cron + VAPID + tabela de
