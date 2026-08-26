@@ -10,6 +10,7 @@
     "test": "vitest run",
     "lint": "oxlint",
     "process-images": "node scripts/process-images.js",
+    "optimize-images": "node scripts/optimize-images.js",
     "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "gh-pages": "^6.1.1",
     "jsdom": "^30.0.1",
     "oxlint": "^1.76.0",
+    "sharp": "^0.35.3",
     "vite": "^5.1.4",
     "vite-plugin-pwa": "^0.19.0",
     "vitest": "^4.1.10"

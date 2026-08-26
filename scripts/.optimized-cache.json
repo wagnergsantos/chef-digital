@@ -1,0 +1,1399 @@
+{
+  "1.png": {
+    "hash": "8a0edc5a67ff9a94a63d116ffec92d7b16a8be7e2422587e4791f0ee426668c8",
+    "originalSize": 34585,
+    "optimizedSize": 11824,
+    "savedBytes": 22761,
+    "dimensions": {
+      "width": 146,
+      "height": 83
+    },
+    "updatedAt": "2026-08-26T01:25:14.252Z"
+  },
+  "10.png": {
+    "hash": "65e9566e78456e9ec073e42c866028d51a59aa605cd5488592a4540960824968",
+    "originalSize": 65872,
+    "optimizedSize": 21832,
+    "savedBytes": 44040,
+    "dimensions": {
+      "width": 219,
+      "height": 109
+    },
+    "updatedAt": "2026-08-26T01:25:14.383Z"
+  },
+  "100.png": {
+    "hash": "92f9b122433c8c06b421e81177be3ad13a8bdcc82ff61f2f56208dd2c23153e7",
+    "originalSize": 113884,
+    "optimizedSize": 32626,
+    "savedBytes": 81258,
+    "dimensions": {
+      "width": 315,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:14.597Z"
+  },
+  "101.png": {
+    "hash": "0b9d4fdc3350f0618de524c66c3228ad01fc4995b61850f4f4553d4aa3b11608",
+    "originalSize": 137774,
+    "optimizedSize": 43854,
+    "savedBytes": 93920,
+    "dimensions": {
+      "width": 329,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:14.783Z"
+  },
+  "102.png": {
+    "hash": "f8c82dc678245a181bfd9f10a642b07b4fe3454c8d34b3895a07a7c1a90a293f",
+    "originalSize": 120932,
+    "optimizedSize": 33854,
+    "savedBytes": 87078,
+    "dimensions": {
+      "width": 335,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:14.944Z"
+  },
+  "103.png": {
+    "hash": "625171df236a2314e85b78ebec4dfae755570b4c81e64e1347fc00771cf35523",
+    "originalSize": 106227,
+    "optimizedSize": 32203,
+    "savedBytes": 74024,
+    "dimensions": {
+      "width": 276,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:15.086Z"
+  },
+  "104.png": {
+    "hash": "86bd040b7aeeafd33deeec62e93e52ef3ff4e8c021c758cb4f6aaef55abe17e5",
+    "originalSize": 97144,
+    "optimizedSize": 29588,
+    "savedBytes": 67556,
+    "dimensions": {
+      "width": 276,
+      "height": 142
+    },
+    "updatedAt": "2026-08-26T01:25:15.246Z"
+  },
+  "105.png": {
+    "hash": "0909d583ec5275176cef279fc95fcaa4732e245c6cea0a6c521cab8b723deb0e",
+    "originalSize": 94226,
+    "optimizedSize": 29113,
+    "savedBytes": 65113,
+    "dimensions": {
+      "width": 270,
+      "height": 135
+    },
+    "updatedAt": "2026-08-26T01:25:15.399Z"
+  },
+  "106.png": {
+    "hash": "7199c943562e88fb7ed32df86d3c7c820cd8973e9d62dd537d87d4d95a0177e6",
+    "originalSize": 90287,
+    "optimizedSize": 27647,
+    "savedBytes": 62640,
+    "dimensions": {
+      "width": 274,
+      "height": 133
+    },
+    "updatedAt": "2026-08-26T01:25:15.536Z"
+  },
+  "107.png": {
+    "hash": "aa72a79406c0d540bcc83b0b42eb032e1b4b0a552a15ecc73458e1a84ad92b90",
+    "originalSize": 96752,
+    "optimizedSize": 29296,
+    "savedBytes": 67456,
+    "dimensions": {
+      "width": 274,
+      "height": 139
+    },
+    "updatedAt": "2026-08-26T01:25:15.696Z"
+  },
+  "108.png": {
+    "hash": "3948f55e7babc86c15cf73b3b4c7071784cfc453fee554167f4ef396bc8d2c8f",
+    "originalSize": 130630,
+    "optimizedSize": 39579,
+    "savedBytes": 91051,
+    "dimensions": {
+      "width": 326,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:15.887Z"
+  },
+  "109.png": {
+    "hash": "887f38189934bf60dd27942adaf0de35ff6b9823b41feae5ab8cf401439a910c",
+    "originalSize": 120172,
+    "optimizedSize": 35811,
+    "savedBytes": 84361,
+    "dimensions": {
+      "width": 281,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:16.037Z"
+  },
+  "11.png": {
+    "hash": "18fdb1e68fcf2f2c18b973e52c89c2b46f5a8b376cb21c57c88b8f044965bfe7",
+    "originalSize": 59775,
+    "optimizedSize": 19899,
+    "savedBytes": 39876,
+    "dimensions": {
+      "width": 218,
+      "height": 100
+    },
+    "updatedAt": "2026-08-26T01:25:16.159Z"
+  },
+  "111.png": {
+    "hash": "e0e9d5a265e241248557d1ba92333c6e2e4478026a7030b57250247e6e827593",
+    "originalSize": 171292,
+    "optimizedSize": 53849,
+    "savedBytes": 117443,
+    "dimensions": {
+      "width": 364,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:16.427Z"
+  },
+  "114.png": {
+    "hash": "b5181ce2ff692d7ceee121c9912984f1b1043bbbfe00af18950c0ec8c08358eb",
+    "originalSize": 116671,
+    "optimizedSize": 34532,
+    "savedBytes": 82139,
+    "dimensions": {
+      "width": 305,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:16.650Z"
+  },
+  "115.png": {
+    "hash": "d25a43fcf83dafc606a37547f719c8d70629309b157cebf218e33b170afe3e67",
+    "originalSize": 133285,
+    "optimizedSize": 44731,
+    "savedBytes": 88554,
+    "dimensions": {
+      "width": 292,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:16.847Z"
+  },
+  "116.png": {
+    "hash": "7f19d57243cfa4114384b8f93d477ba7c519485efc8e3c27404a8b272d5e5848",
+    "originalSize": 100621,
+    "optimizedSize": 27903,
+    "savedBytes": 72718,
+    "dimensions": {
+      "width": 248,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:17.003Z"
+  },
+  "117.png": {
+    "hash": "11f8b3099440672df6bd427608a7f2ec9d2ae893e6fa741f28c0bb48c6f8d263",
+    "originalSize": 77297,
+    "optimizedSize": 20548,
+    "savedBytes": 56749,
+    "dimensions": {
+      "width": 248,
+      "height": 141
+    },
+    "updatedAt": "2026-08-26T01:25:17.133Z"
+  },
+  "118.png": {
+    "hash": "0ebc91dc4c8ad46e68333fd4fcee1b8d322bdce9909baf4a921eb2b757eae7e0",
+    "originalSize": 95536,
+    "optimizedSize": 27394,
+    "savedBytes": 68142,
+    "dimensions": {
+      "width": 273,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:17.283Z"
+  },
+  "119.png": {
+    "hash": "659b520fc58e7ff91b7b546775837dc72a31445545e9a1e0998e887717ebbb11",
+    "originalSize": 104457,
+    "optimizedSize": 29515,
+    "savedBytes": 74942,
+    "dimensions": {
+      "width": 245,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:17.447Z"
+  },
+  "12.png": {
+    "hash": "9ef21cac31b4a5bbc16a6c48976a91ba76da3fd189d9601280a7b846a5933154",
+    "originalSize": 61549,
+    "optimizedSize": 20076,
+    "savedBytes": 41473,
+    "dimensions": {
+      "width": 228,
+      "height": 101
+    },
+    "updatedAt": "2026-08-26T01:25:17.567Z"
+  },
+  "120.png": {
+    "hash": "13d912e8d43e4402192345efc6bfb1ac0dcefcb33ce806b5172a2cdb2c2997c8",
+    "originalSize": 103339,
+    "optimizedSize": 31759,
+    "savedBytes": 71580,
+    "dimensions": {
+      "width": 330,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:17.720Z"
+  },
+  "121.png": {
+    "hash": "3339a4675e5858e7949afb5ab5daf5e844a23dae91410ae1c5034dbb50304368",
+    "originalSize": 101202,
+    "optimizedSize": 32861,
+    "savedBytes": 68341,
+    "dimensions": {
+      "width": 255,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:17.855Z"
+  },
+  "122.png": {
+    "hash": "2f5d169a8dac6f83168a5bd208ad9c5ca5a7c4ec424924341ee8905640db3ce4",
+    "originalSize": 136207,
+    "optimizedSize": 40871,
+    "savedBytes": 95336,
+    "dimensions": {
+      "width": 363,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:18.051Z"
+  },
+  "123.png": {
+    "hash": "8723a0688f68d11d895e6f80a7ba9bf81ba89deb069e289e7b75bc1eab754988",
+    "originalSize": 79957,
+    "optimizedSize": 24030,
+    "savedBytes": 55927,
+    "dimensions": {
+      "width": 272,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:18.162Z"
+  },
+  "124.png": {
+    "hash": "28b465d9705733aef6ee03fd9a9ae05020c236ef9c4a91c094ccb2b24edbf1f7",
+    "originalSize": 77648,
+    "optimizedSize": 24285,
+    "savedBytes": 53363,
+    "dimensions": {
+      "width": 202,
+      "height": 135
+    },
+    "updatedAt": "2026-08-26T01:25:18.291Z"
+  },
+  "125.png": {
+    "hash": "361c8b42c6a5192a5ccc92611671f9b4535bc5cb5d24f8440499df707308fc40",
+    "originalSize": 70700,
+    "optimizedSize": 22852,
+    "savedBytes": 47848,
+    "dimensions": {
+      "width": 201,
+      "height": 125
+    },
+    "updatedAt": "2026-08-26T01:25:18.405Z"
+  },
+  "126.png": {
+    "hash": "2a09d4dd9147baced66f167f53329b86ec8548ce2f42cf04b24a4b3fbc6b08e9",
+    "originalSize": 66588,
+    "optimizedSize": 21571,
+    "savedBytes": 45017,
+    "dimensions": {
+      "width": 203,
+      "height": 113
+    },
+    "updatedAt": "2026-08-26T01:25:18.542Z"
+  },
+  "127.png": {
+    "hash": "eadc9c5636887234b67102237cfce45fa361c01415165185c206cae2655d0a26",
+    "originalSize": 104414,
+    "optimizedSize": 31668,
+    "savedBytes": 72746,
+    "dimensions": {
+      "width": 239,
+      "height": 171
+    },
+    "updatedAt": "2026-08-26T01:25:18.707Z"
+  },
+  "128.png": {
+    "hash": "8a6a8daebeff00293f0a85ff06ca254784965ba721ed8573465a01b3980c478a",
+    "originalSize": 54019,
+    "optimizedSize": 17381,
+    "savedBytes": 36638,
+    "dimensions": {
+      "width": 200,
+      "height": 102
+    },
+    "updatedAt": "2026-08-26T01:25:18.802Z"
+  },
+  "129.png": {
+    "hash": "7c03e62baafdbdb1bf49e56febbd04a1752689327ff63e48de418bda35fc75f3",
+    "originalSize": 155995,
+    "optimizedSize": 50332,
+    "savedBytes": 105663,
+    "dimensions": {
+      "width": 309,
+      "height": 188
+    },
+    "updatedAt": "2026-08-26T01:25:19.001Z"
+  },
+  "13.png": {
+    "hash": "95504e603e0149284ed79e00c90747e1aafa9d0021026c9b2c874ad6537a0c12",
+    "originalSize": 55165,
+    "optimizedSize": 18456,
+    "savedBytes": 36709,
+    "dimensions": {
+      "width": 215,
+      "height": 92
+    },
+    "updatedAt": "2026-08-26T01:25:19.114Z"
+  },
+  "130.png": {
+    "hash": "aed4cfc08a2aed26d0f1892222451d7d75180736d6e218daf1e3c6dfdb42b9e0",
+    "originalSize": 125457,
+    "optimizedSize": 40002,
+    "savedBytes": 85455,
+    "dimensions": {
+      "width": 301,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:19.257Z"
+  },
+  "131.png": {
+    "hash": "f09af6732a1181508d38bd23d6138501551cb49b6c6165c2d0098e63caf2c13b",
+    "originalSize": 121033,
+    "optimizedSize": 39930,
+    "savedBytes": 81103,
+    "dimensions": {
+      "width": 292,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:19.431Z"
+  },
+  "132.png": {
+    "hash": "032c2b55690f3fc7336c4b9b9f368a938216f6adb9996e0058e39432150a836f",
+    "originalSize": 96645,
+    "optimizedSize": 27079,
+    "savedBytes": 69566,
+    "dimensions": {
+      "width": 254,
+      "height": 173
+    },
+    "updatedAt": "2026-08-26T01:25:19.604Z"
+  },
+  "133.png": {
+    "hash": "fcdf1da6b618bfb1d030411150d67b9ac67b529ea3b51e4199f9e0159e7afbf0",
+    "originalSize": 126032,
+    "optimizedSize": 34378,
+    "savedBytes": 91654,
+    "dimensions": {
+      "width": 285,
+      "height": 184
+    },
+    "updatedAt": "2026-08-26T01:25:19.818Z"
+  },
+  "134.png": {
+    "hash": "26b91c4e5bb6695667b8acfc3365a7c8417300ccf8d9e6e7f58a0e3c967e438e",
+    "originalSize": 133016,
+    "optimizedSize": 33538,
+    "savedBytes": 99478,
+    "dimensions": {
+      "width": 294,
+      "height": 201
+    },
+    "updatedAt": "2026-08-26T01:25:20.007Z"
+  },
+  "135.png": {
+    "hash": "1aac172dd94e265f075322c1f2e44c41fd4f384b15afce5abb5dc31b77a3680a",
+    "originalSize": 97730,
+    "optimizedSize": 23956,
+    "savedBytes": 73774,
+    "dimensions": {
+      "width": 295,
+      "height": 142
+    },
+    "updatedAt": "2026-08-26T01:25:20.171Z"
+  },
+  "136.png": {
+    "hash": "7cb25a5a07a3d07f0f1fd8cc2163c748623acd3b950201a9177fbccadb652d2d",
+    "originalSize": 187070,
+    "optimizedSize": 46542,
+    "savedBytes": 140528,
+    "dimensions": {
+      "width": 349,
+      "height": 247
+    },
+    "updatedAt": "2026-08-26T01:25:20.414Z"
+  },
+  "137.png": {
+    "hash": "a1113f393e384e4057bc14bed618d18eefe431ceebd440dae3fd156876d2de12",
+    "originalSize": 160358,
+    "optimizedSize": 37564,
+    "savedBytes": 122794,
+    "dimensions": {
+      "width": 336,
+      "height": 203
+    },
+    "updatedAt": "2026-08-26T01:25:20.674Z"
+  },
+  "138.png": {
+    "hash": "7bc1180e925af7f31e43ab0feaa27205af2264a38ecbd941bb37ffbda393ddc2",
+    "originalSize": 158387,
+    "optimizedSize": 42817,
+    "savedBytes": 115570,
+    "dimensions": {
+      "width": 374,
+      "height": 182
+    },
+    "updatedAt": "2026-08-26T01:25:20.894Z"
+  },
+  "139.png": {
+    "hash": "d2322dd21b3f7a7c5906ff8976f80964fc64c0be690f8aa232376fa49434df86",
+    "originalSize": 154962,
+    "optimizedSize": 37792,
+    "savedBytes": 117170,
+    "dimensions": {
+      "width": 343,
+      "height": 197
+    },
+    "updatedAt": "2026-08-26T01:25:21.112Z"
+  },
+  "14.png": {
+    "hash": "c33641cfcdda9bb64488eed86f99512723440ec26e14c7d70609398ca3815a51",
+    "originalSize": 73389,
+    "optimizedSize": 24231,
+    "savedBytes": 49158,
+    "dimensions": {
+      "width": 220,
+      "height": 123
+    },
+    "updatedAt": "2026-08-26T01:25:21.249Z"
+  },
+  "140.png": {
+    "hash": "29c3a50ae3d6becab11545fa0470fc735c81aea18c35f2a05f1bb7172bfab9cf",
+    "originalSize": 167627,
+    "optimizedSize": 38605,
+    "savedBytes": 129022,
+    "dimensions": {
+      "width": 362,
+      "height": 205
+    },
+    "updatedAt": "2026-08-26T01:25:21.491Z"
+  },
+  "141.png": {
+    "hash": "d25cc0d4161c4fb751e209f9148303b4fe0dad54ec3806a1a021d9946696714e",
+    "originalSize": 179316,
+    "optimizedSize": 43508,
+    "savedBytes": 135808,
+    "dimensions": {
+      "width": 365,
+      "height": 203
+    },
+    "updatedAt": "2026-08-26T01:25:21.733Z"
+  },
+  "142.png": {
+    "hash": "57a8c3caf5b3b9faa14c37c95ff9de8b0cc58e5cad350c514587b80cd62c01e6",
+    "originalSize": 154797,
+    "optimizedSize": 37768,
+    "savedBytes": 117029,
+    "dimensions": {
+      "width": 322,
+      "height": 205
+    },
+    "updatedAt": "2026-08-26T01:25:21.903Z"
+  },
+  "143.png": {
+    "hash": "ab7b96b8b9c5f230ed4395a9507476a5f7b176fa130b1f46cfbf4397a9d08201",
+    "originalSize": 153855,
+    "optimizedSize": 40047,
+    "savedBytes": 113808,
+    "dimensions": {
+      "width": 352,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:22.070Z"
+  },
+  "144.png": {
+    "hash": "304a0a12a7998ea459bb82fba8dc94bc8f7d3672361983a2b18cdec00576debb",
+    "originalSize": 115685,
+    "optimizedSize": 35414,
+    "savedBytes": 80271,
+    "dimensions": {
+      "width": 281,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:22.259Z"
+  },
+  "145.png": {
+    "hash": "c2d36acfc9d84b7fc5386cfb595a26a103be08c680ffa6472a3327633cd1e919",
+    "originalSize": 45231,
+    "optimizedSize": 13951,
+    "savedBytes": 31280,
+    "dimensions": {
+      "width": 147,
+      "height": 126
+    },
+    "updatedAt": "2026-08-26T01:25:22.348Z"
+  },
+  "146.png": {
+    "hash": "495c272a6d72f84861886635cd485b8949b4626a11c89b9019b1ca7806a68aae",
+    "originalSize": 41842,
+    "optimizedSize": 13865,
+    "savedBytes": 27977,
+    "dimensions": {
+      "width": 148,
+      "height": 109
+    },
+    "updatedAt": "2026-08-26T01:25:22.431Z"
+  },
+  "147.png": {
+    "hash": "e734fa520f07cbcbc7d0a592057ec3602cf44d598ac773f9df56e3511f4acdd3",
+    "originalSize": 31296,
+    "optimizedSize": 11628,
+    "savedBytes": 19668,
+    "dimensions": {
+      "width": 149,
+      "height": 87
+    },
+    "updatedAt": "2026-08-26T01:25:22.508Z"
+  },
+  "148.png": {
+    "hash": "645546880d20d76f97e274903143e9bc3fd1709dee52dfa0c823dee8856fa0e9",
+    "originalSize": 762273,
+    "optimizedSize": 168025,
+    "savedBytes": 594248,
+    "dimensions": {
+      "width": 988,
+      "height": 664
+    },
+    "updatedAt": "2026-08-26T01:25:23.503Z"
+  },
+  "15.png": {
+    "hash": "685f0c3841171e0efa5e758aa4c406458b86cbeed57e0b1d2dd0d1b82d808b16",
+    "originalSize": 61435,
+    "optimizedSize": 21594,
+    "savedBytes": 39841,
+    "dimensions": {
+      "width": 215,
+      "height": 115
+    },
+    "updatedAt": "2026-08-26T01:25:23.642Z"
+  },
+  "157.png": {
+    "hash": "6ea99f511f09f2a4c6b20253dbf100493c73343d94ed8be7f97af281561a3347",
+    "originalSize": 63346,
+    "optimizedSize": 20656,
+    "savedBytes": 42690,
+    "dimensions": {
+      "width": 202,
+      "height": 115
+    },
+    "updatedAt": "2026-08-26T01:25:23.799Z"
+  },
+  "16.png": {
+    "hash": "0f9dd076a1c435942e39f0ad71a5307a775df93f34e03e31eb862b467bf0c7ec",
+    "originalSize": 67517,
+    "optimizedSize": 22624,
+    "savedBytes": 44893,
+    "dimensions": {
+      "width": 224,
+      "height": 115
+    },
+    "updatedAt": "2026-08-26T01:25:23.965Z"
+  },
+  "17.png": {
+    "hash": "e49699863a7b0ad90a09b2fe7b5969f498f2f2b687fd628e6e6a4ae5f1556895",
+    "originalSize": 65140,
+    "optimizedSize": 21510,
+    "savedBytes": 43630,
+    "dimensions": {
+      "width": 223,
+      "height": 111
+    },
+    "updatedAt": "2026-08-26T01:25:24.142Z"
+  },
+  "18.png": {
+    "hash": "6a71151797669bfb6540eb91d0396b6cdcf52256e7299729fea14cca787ac426",
+    "originalSize": 60201,
+    "optimizedSize": 19890,
+    "savedBytes": 40311,
+    "dimensions": {
+      "width": 211,
+      "height": 111
+    },
+    "updatedAt": "2026-08-26T01:25:24.306Z"
+  },
+  "19.png": {
+    "hash": "8126a68ff4598f0d8e5d8b063748d828de577ba8dac9771b62c2994221d355c6",
+    "originalSize": 68457,
+    "optimizedSize": 23271,
+    "savedBytes": 45186,
+    "dimensions": {
+      "width": 224,
+      "height": 114
+    },
+    "updatedAt": "2026-08-26T01:25:24.491Z"
+  },
+  "2.png": {
+    "hash": "ca41dee1d2ea336d3c24b6564a6f87aa7286af99b03c5a2bce9b9a5c1d9f65a8",
+    "originalSize": 37977,
+    "optimizedSize": 12810,
+    "savedBytes": 25167,
+    "dimensions": {
+      "width": 153,
+      "height": 87
+    },
+    "updatedAt": "2026-08-26T01:25:24.579Z"
+  },
+  "20.png": {
+    "hash": "4a2e267951485deb1aa505d761e5b283e6092eccf9fa78b3df25b11dd45b7070",
+    "originalSize": 112626,
+    "optimizedSize": 35131,
+    "savedBytes": 77495,
+    "dimensions": {
+      "width": 260,
+      "height": 183
+    },
+    "updatedAt": "2026-08-26T01:25:24.851Z"
+  },
+  "21.png": {
+    "hash": "1ba71c5be97f5618c46bd8d698d2980f7410bafdf5398b1415538f14a68585ec",
+    "originalSize": 80279,
+    "optimizedSize": 26753,
+    "savedBytes": 53526,
+    "dimensions": {
+      "width": 232,
+      "height": 136
+    },
+    "updatedAt": "2026-08-26T01:25:25.028Z"
+  },
+  "22.png": {
+    "hash": "60df8ecab6952c28ec0b20de50650b57b36df2c28b560308c03a84defcc94fd3",
+    "originalSize": 88548,
+    "optimizedSize": 28585,
+    "savedBytes": 59963,
+    "dimensions": {
+      "width": 255,
+      "height": 141
+    },
+    "updatedAt": "2026-08-26T01:25:25.153Z"
+  },
+  "24.png": {
+    "hash": "9b1d171bf69a52db9f3eda26d43e493f6662070c20792e5bfbc7c847a11a3d79",
+    "originalSize": 107618,
+    "optimizedSize": 31051,
+    "savedBytes": 76567,
+    "dimensions": {
+      "width": 248,
+      "height": 163
+    },
+    "updatedAt": "2026-08-26T01:25:25.325Z"
+  },
+  "25.png": {
+    "hash": "a35295564fd0f9c4a99736c0164e83893ce65ca97aefab0bbe1c7f7396322cfd",
+    "originalSize": 74220,
+    "optimizedSize": 24160,
+    "savedBytes": 50060,
+    "dimensions": {
+      "width": 217,
+      "height": 125
+    },
+    "updatedAt": "2026-08-26T01:25:25.447Z"
+  },
+  "26.png": {
+    "hash": "f569b25a7d94e3000f99d92ded8c04822e6980027124e15c7abee78199842feb",
+    "originalSize": 76707,
+    "optimizedSize": 22218,
+    "savedBytes": 54489,
+    "dimensions": {
+      "width": 255,
+      "height": 141
+    },
+    "updatedAt": "2026-08-26T01:25:25.579Z"
+  },
+  "27.png": {
+    "hash": "ccfaae548ba18d122e729b1ff492374f47c3eace5b2a22e93c623aa100fd6421",
+    "originalSize": 100477,
+    "optimizedSize": 28914,
+    "savedBytes": 71563,
+    "dimensions": {
+      "width": 255,
+      "height": 146
+    },
+    "updatedAt": "2026-08-26T01:25:25.762Z"
+  },
+  "28.png": {
+    "hash": "95bc418cb8d691ce8d3ed734c0959ecea4ca677e5432d33ef648bef0e0c5b7ed",
+    "originalSize": 48371,
+    "optimizedSize": 15675,
+    "savedBytes": 32696,
+    "dimensions": {
+      "width": 158,
+      "height": 107
+    },
+    "updatedAt": "2026-08-26T01:25:25.846Z"
+  },
+  "29.png": {
+    "hash": "de312243570506c13c2d860b7e0a2c3aeee8ee289c35ef2e5e3e6e8c3fd6638f",
+    "originalSize": 50787,
+    "optimizedSize": 16923,
+    "savedBytes": 33864,
+    "dimensions": {
+      "width": 166,
+      "height": 109
+    },
+    "updatedAt": "2026-08-26T01:25:25.935Z"
+  },
+  "3.png": {
+    "hash": "8e3468e357717b4130cff2b15e808144d1f3a7457a114e0389a31a5d0d066512",
+    "originalSize": 35612,
+    "optimizedSize": 12694,
+    "savedBytes": 22918,
+    "dimensions": {
+      "width": 149,
+      "height": 86
+    },
+    "updatedAt": "2026-08-26T01:25:26.004Z"
+  },
+  "30.png": {
+    "hash": "f9e5829c0da6cf3c9eeeb63006cc727eb2d685fcb7bd7a77987bce92dc2b62df",
+    "originalSize": 49878,
+    "optimizedSize": 16108,
+    "savedBytes": 33770,
+    "dimensions": {
+      "width": 156,
+      "height": 111
+    },
+    "updatedAt": "2026-08-26T01:25:26.094Z"
+  },
+  "32.png": {
+    "hash": "b2a829ecfa7685de1481c7f691a26bc23d7dae82b2143902e7f04f9bab066c29",
+    "originalSize": 41201,
+    "optimizedSize": 14751,
+    "savedBytes": 26450,
+    "dimensions": {
+      "width": 154,
+      "height": 97
+    },
+    "updatedAt": "2026-08-26T01:25:26.176Z"
+  },
+  "33.png": {
+    "hash": "189bc17e55f3ac80a939814be2b3ef41bf04cad2997e238a832e8f1635a0582c",
+    "originalSize": 45203,
+    "optimizedSize": 14617,
+    "savedBytes": 30586,
+    "dimensions": {
+      "width": 165,
+      "height": 95
+    },
+    "updatedAt": "2026-08-26T01:25:26.261Z"
+  },
+  "34.png": {
+    "hash": "4771bbbf70188830a08fbb0483fe02a43d875dda523d9c5ffa68f9f507bb584f",
+    "originalSize": 136976,
+    "optimizedSize": 45060,
+    "savedBytes": 91916,
+    "dimensions": {
+      "width": 284,
+      "height": 198
+    },
+    "updatedAt": "2026-08-26T01:25:26.439Z"
+  },
+  "35.png": {
+    "hash": "75266e121b0c54f6036518ffc15da4a7776e7fec359f5b87a9ed483914384969",
+    "originalSize": 119596,
+    "optimizedSize": 37984,
+    "savedBytes": 81612,
+    "dimensions": {
+      "width": 267,
+      "height": 175
+    },
+    "updatedAt": "2026-08-26T01:25:26.632Z"
+  },
+  "36.png": {
+    "hash": "0f44c9af76ad9fc4034c471db8fed0570239f66f75164cf455d5067dd0c2f061",
+    "originalSize": 105944,
+    "optimizedSize": 32937,
+    "savedBytes": 73007,
+    "dimensions": {
+      "width": 259,
+      "height": 155
+    },
+    "updatedAt": "2026-08-26T01:25:26.793Z"
+  },
+  "37.png": {
+    "hash": "41ec59c15de261776ab3e9abc1b6aa4c19ea945b4f59418ce0a05df78e19ecb0",
+    "originalSize": 98390,
+    "optimizedSize": 33263,
+    "savedBytes": 65127,
+    "dimensions": {
+      "width": 271,
+      "height": 139
+    },
+    "updatedAt": "2026-08-26T01:25:26.919Z"
+  },
+  "38.png": {
+    "hash": "8c7806646d43d3b486a7b4269c44022daa03c9ceecd8cd7e2938317f672c1c7a",
+    "originalSize": 78840,
+    "optimizedSize": 25918,
+    "savedBytes": 52922,
+    "dimensions": {
+      "width": 207,
+      "height": 144
+    },
+    "updatedAt": "2026-08-26T01:25:27.051Z"
+  },
+  "39.png": {
+    "hash": "b941ac252bdaf4054a8eb87bed2195cdbe7f5d1c522d7513b75ae96a5ca747c8",
+    "originalSize": 65767,
+    "optimizedSize": 21823,
+    "savedBytes": 43944,
+    "dimensions": {
+      "width": 201,
+      "height": 121
+    },
+    "updatedAt": "2026-08-26T01:25:27.189Z"
+  },
+  "40.png": {
+    "hash": "d525b426feb4c276162099b7a1d00325d5619c96727411353cdd6479dba541ce",
+    "originalSize": 77124,
+    "optimizedSize": 24264,
+    "savedBytes": 52860,
+    "dimensions": {
+      "width": 212,
+      "height": 124
+    },
+    "updatedAt": "2026-08-26T01:25:27.310Z"
+  },
+  "41.png": {
+    "hash": "3e2c68a4206b2c449aedd689143cc90b84bc7e894f9e364b661e39e5c8e927af",
+    "originalSize": 59638,
+    "optimizedSize": 19738,
+    "savedBytes": 39900,
+    "dimensions": {
+      "width": 211,
+      "height": 104
+    },
+    "updatedAt": "2026-08-26T01:25:27.417Z"
+  },
+  "42.png": {
+    "hash": "756f67478bf80330f280107eaec01993574e62ae2a61bc0ddd2f3ba4b766c301",
+    "originalSize": 83293,
+    "optimizedSize": 28716,
+    "savedBytes": 54577,
+    "dimensions": {
+      "width": 220,
+      "height": 158
+    },
+    "updatedAt": "2026-08-26T01:25:27.535Z"
+  },
+  "43.png": {
+    "hash": "70ff01cfea60ce82b0b2e4d2bce6a1e3c3473e88f74dac46df05522e51e60dc1",
+    "originalSize": 81462,
+    "optimizedSize": 25246,
+    "savedBytes": 56216,
+    "dimensions": {
+      "width": 220,
+      "height": 136
+    },
+    "updatedAt": "2026-08-26T01:25:27.674Z"
+  },
+  "44.png": {
+    "hash": "f2bdfa86d8d96ee824522887ce97524e7d18afafc6ee5f3fb86a226997ff49c5",
+    "originalSize": 86850,
+    "optimizedSize": 27629,
+    "savedBytes": 59221,
+    "dimensions": {
+      "width": 213,
+      "height": 157
+    },
+    "updatedAt": "2026-08-26T01:25:27.813Z"
+  },
+  "45.png": {
+    "hash": "102627e1ffe4e94697c4fe610b13d9df13e702040be2ea68cfe1b57813dfcaa8",
+    "originalSize": 72798,
+    "optimizedSize": 23920,
+    "savedBytes": 48878,
+    "dimensions": {
+      "width": 221,
+      "height": 133
+    },
+    "updatedAt": "2026-08-26T01:25:27.928Z"
+  },
+  "46.png": {
+    "hash": "02a1e32016b9969a1471cdfe46d745f7714ab18419012d6e1f8ee78de398fab2",
+    "originalSize": 55805,
+    "optimizedSize": 17796,
+    "savedBytes": 38009,
+    "dimensions": {
+      "width": 193,
+      "height": 100
+    },
+    "updatedAt": "2026-08-26T01:25:28.028Z"
+  },
+  "47.png": {
+    "hash": "1ba3af3ffade12139e87f69d94cbc771b9904b70e22d37bfc383a25a57fd6b7d",
+    "originalSize": 52815,
+    "optimizedSize": 17168,
+    "savedBytes": 35647,
+    "dimensions": {
+      "width": 184,
+      "height": 97
+    },
+    "updatedAt": "2026-08-26T01:25:28.128Z"
+  },
+  "48.png": {
+    "hash": "07d6996c302dd9c817fdb3fb4d31691bfd8683ab318029fbce069956eebdd006",
+    "originalSize": 70447,
+    "optimizedSize": 22367,
+    "savedBytes": 48080,
+    "dimensions": {
+      "width": 203,
+      "height": 136
+    },
+    "updatedAt": "2026-08-26T01:25:28.259Z"
+  },
+  "49.png": {
+    "hash": "1c4072a871c108ac54d157b78748cf01eb0735ce60af1c02fe5ade74cee3e85f",
+    "originalSize": 55623,
+    "optimizedSize": 18490,
+    "savedBytes": 37133,
+    "dimensions": {
+      "width": 186,
+      "height": 103
+    },
+    "updatedAt": "2026-08-26T01:25:28.364Z"
+  },
+  "50.png": {
+    "hash": "9c51aa1623b9bb609bcea3a4fcc26e83128fc0e1031974e0007c85a1bca79f58",
+    "originalSize": 48466,
+    "optimizedSize": 15700,
+    "savedBytes": 32766,
+    "dimensions": {
+      "width": 182,
+      "height": 93
+    },
+    "updatedAt": "2026-08-26T01:25:28.452Z"
+  },
+  "51.png": {
+    "hash": "80a4592dfb35c30fe25f5484b53e5694757b2af119c5afc2bf5c54d827117667",
+    "originalSize": 53157,
+    "optimizedSize": 17864,
+    "savedBytes": 35293,
+    "dimensions": {
+      "width": 183,
+      "height": 101
+    },
+    "updatedAt": "2026-08-26T01:25:28.542Z"
+  },
+  "52.png": {
+    "hash": "8f7e7d0753fed100f5938bf707fcaf9c8de44bcb2de117aaaa1ecc6bae4990de",
+    "originalSize": 79598,
+    "optimizedSize": 24064,
+    "savedBytes": 55534,
+    "dimensions": {
+      "width": 221,
+      "height": 126
+    },
+    "updatedAt": "2026-08-26T01:25:28.667Z"
+  },
+  "53.png": {
+    "hash": "ed28f01cadc39548ade2ce4f470cd980eeafe5dbec95308b704ca9edd00d10bd",
+    "originalSize": 84304,
+    "optimizedSize": 27496,
+    "savedBytes": 56808,
+    "dimensions": {
+      "width": 220,
+      "height": 137
+    },
+    "updatedAt": "2026-08-26T01:25:28.811Z"
+  },
+  "54.png": {
+    "hash": "f88bf34b2ca4dd72b26fe307aac6e7744db3e899776ebc16849b102e01d4d2a6",
+    "originalSize": 76243,
+    "optimizedSize": 24053,
+    "savedBytes": 52190,
+    "dimensions": {
+      "width": 223,
+      "height": 115
+    },
+    "updatedAt": "2026-08-26T01:25:28.922Z"
+  },
+  "55.png": {
+    "hash": "ad19ef169efd304240039d36511c79954709a8de0dd876088dae46ad204c8925",
+    "originalSize": 79768,
+    "optimizedSize": 25616,
+    "savedBytes": 54152,
+    "dimensions": {
+      "width": 221,
+      "height": 125
+    },
+    "updatedAt": "2026-08-26T01:25:29.036Z"
+  },
+  "56.png": {
+    "hash": "06ec3ff661c835176a161650babaae61c463ac2829541a340192f9126f2c6544",
+    "originalSize": 144265,
+    "optimizedSize": 42932,
+    "savedBytes": 101333,
+    "dimensions": {
+      "width": 295,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:29.232Z"
+  },
+  "57.png": {
+    "hash": "9309009b62a916d977cb2b69addff38b8cdcf39fc797a23e35685e2b5ae47235",
+    "originalSize": 129783,
+    "optimizedSize": 35221,
+    "savedBytes": 94562,
+    "dimensions": {
+      "width": 316,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:29.482Z"
+  },
+  "58.png": {
+    "hash": "050da4ce4eca14779ad71628a2fc3f9274d4dfb2e0bf1d0c18ee43c40c46c219",
+    "originalSize": 76432,
+    "optimizedSize": 22915,
+    "savedBytes": 53517,
+    "dimensions": {
+      "width": 255,
+      "height": 125
+    },
+    "updatedAt": "2026-08-26T01:25:29.620Z"
+  },
+  "59.png": {
+    "hash": "99297e7bb5c8add461f14bc7a8df5506b125980e768594159078529c29066419",
+    "originalSize": 85776,
+    "optimizedSize": 25444,
+    "savedBytes": 60332,
+    "dimensions": {
+      "width": 255,
+      "height": 130
+    },
+    "updatedAt": "2026-08-26T01:25:29.748Z"
+  },
+  "61.png": {
+    "hash": "85b3897239a89144e178aabb246a6958ad5e12ea82c41fbd2d910f52025cd386",
+    "originalSize": 35425,
+    "optimizedSize": 12185,
+    "savedBytes": 23240,
+    "dimensions": {
+      "width": 145,
+      "height": 87
+    },
+    "updatedAt": "2026-08-26T01:25:29.834Z"
+  },
+  "62.png": {
+    "hash": "3563a2074a4330ccd8464eb24a2316a6f83c76b34f7ac5a7643456d6e3924100",
+    "originalSize": 36931,
+    "optimizedSize": 12420,
+    "savedBytes": 24511,
+    "dimensions": {
+      "width": 150,
+      "height": 86
+    },
+    "updatedAt": "2026-08-26T01:25:29.912Z"
+  },
+  "67.png": {
+    "hash": "127656f0d003152fcf6fd3e133c641bbeb25a3b892e03211126892aac4b44f82",
+    "originalSize": 30373,
+    "optimizedSize": 10059,
+    "savedBytes": 20314,
+    "dimensions": {
+      "width": 147,
+      "height": 77
+    },
+    "updatedAt": "2026-08-26T01:25:29.978Z"
+  },
+  "68.png": {
+    "hash": "6ba536769d8e651d32ba922f06a86acd318d07ae7c144432e5a8269f08add9df",
+    "originalSize": 33532,
+    "optimizedSize": 11350,
+    "savedBytes": 22182,
+    "dimensions": {
+      "width": 150,
+      "height": 76
+    },
+    "updatedAt": "2026-08-26T01:25:30.051Z"
+  },
+  "69.png": {
+    "hash": "9275eaf6fd2bffd263f76d51a22d3991bd39f74f882c96c64770f0d3900a66cc",
+    "originalSize": 185955,
+    "optimizedSize": 56455,
+    "savedBytes": 129500,
+    "dimensions": {
+      "width": 346,
+      "height": 249
+    },
+    "updatedAt": "2026-08-26T01:25:30.339Z"
+  },
+  "72.png": {
+    "hash": "b6ac057118926fa08fdb8a94c13630f5de86b916a129a88721c2a85b25013287",
+    "originalSize": 89289,
+    "optimizedSize": 28899,
+    "savedBytes": 60390,
+    "dimensions": {
+      "width": 242,
+      "height": 170
+    },
+    "updatedAt": "2026-08-26T01:25:30.470Z"
+  },
+  "73.png": {
+    "hash": "12b6902405837cf89ddb69bc662adc5e56c179416ce8145d4b456899c4ce6e60",
+    "originalSize": 93966,
+    "optimizedSize": 28249,
+    "savedBytes": 65717,
+    "dimensions": {
+      "width": 242,
+      "height": 170
+    },
+    "updatedAt": "2026-08-26T01:25:30.627Z"
+  },
+  "75.png": {
+    "hash": "7a67383b7bf96e56970e75d61359816afe886afe3d7b0cb87a446c79cec90c8b",
+    "originalSize": 78189,
+    "optimizedSize": 28064,
+    "savedBytes": 50125,
+    "dimensions": {
+      "width": 239,
+      "height": 159
+    },
+    "updatedAt": "2026-08-26T01:25:30.757Z"
+  },
+  "76.png": {
+    "hash": "3672f6fba4675ecc80bda2b990d22b2db9c5968145f3b53bfc2dceeeee7cd867",
+    "originalSize": 92299,
+    "optimizedSize": 29805,
+    "savedBytes": 62494,
+    "dimensions": {
+      "width": 239,
+      "height": 163
+    },
+    "updatedAt": "2026-08-26T01:25:30.920Z"
+  },
+  "77.png": {
+    "hash": "3d28cfd5221d5c2bba4d6dcd0d79d01edd51b43cd4c7da875684b86c01490f02",
+    "originalSize": 87793,
+    "optimizedSize": 30167,
+    "savedBytes": 57626,
+    "dimensions": {
+      "width": 244,
+      "height": 167
+    },
+    "updatedAt": "2026-08-26T01:25:31.032Z"
+  },
+  "78.png": {
+    "hash": "eacd5b8267b03483c642793b9e34b26a41f4dcaa29cef5854ec20acf3abb46fd",
+    "originalSize": 29256,
+    "optimizedSize": 9764,
+    "savedBytes": 19492,
+    "dimensions": {
+      "width": 139,
+      "height": 72
+    },
+    "updatedAt": "2026-08-26T01:25:31.099Z"
+  },
+  "8.png": {
+    "hash": "52362994f33b6d94dd588679d69df177e594b5ac9bb7bc46aa41c31c0d493ac7",
+    "originalSize": 62505,
+    "optimizedSize": 21302,
+    "savedBytes": 41203,
+    "dimensions": {
+      "width": 217,
+      "height": 105
+    },
+    "updatedAt": "2026-08-26T01:25:31.202Z"
+  },
+  "80.png": {
+    "hash": "b3da8e46a3e26e478eb7984c1279ef6b7e51b9f651aafa61ca3706fecb1d5c3d",
+    "originalSize": 30301,
+    "optimizedSize": 10065,
+    "savedBytes": 20236,
+    "dimensions": {
+      "width": 145,
+      "height": 74
+    },
+    "updatedAt": "2026-08-26T01:25:31.263Z"
+  },
+  "81.png": {
+    "hash": "9e3773c0b5fb5b118306e79491d191a2eadaf5284776c9611836722d89b1d7f2",
+    "originalSize": 27278,
+    "optimizedSize": 9719,
+    "savedBytes": 17559,
+    "dimensions": {
+      "width": 138,
+      "height": 70
+    },
+    "updatedAt": "2026-08-26T01:25:31.329Z"
+  },
+  "82.png": {
+    "hash": "e9b7b33e3bf6dddd24f56f1b0126a6c5b654b458411fb1018d695345b6da1237",
+    "originalSize": 29890,
+    "optimizedSize": 10337,
+    "savedBytes": 19553,
+    "dimensions": {
+      "width": 160,
+      "height": 74
+    },
+    "updatedAt": "2026-08-26T01:25:31.387Z"
+  },
+  "83.png": {
+    "hash": "3bb2c72c7129aca48e7de037796bf9c4905a31d94150cb1ad181766d790d7469",
+    "originalSize": 33992,
+    "optimizedSize": 11660,
+    "savedBytes": 22332,
+    "dimensions": {
+      "width": 165,
+      "height": 74
+    },
+    "updatedAt": "2026-08-26T01:25:31.459Z"
+  },
+  "84.png": {
+    "hash": "1d88ee32f87dd3fd9674d08cf337a82b1f498d36e726dd9a02d15eb505352d21",
+    "originalSize": 33832,
+    "optimizedSize": 11611,
+    "savedBytes": 22221,
+    "dimensions": {
+      "width": 168,
+      "height": 78
+    },
+    "updatedAt": "2026-08-26T01:25:31.523Z"
+  },
+  "85.png": {
+    "hash": "78ce4ff3ca3c102573486af26709ffd24e70b9a049699e323f15258426c512bb",
+    "originalSize": 37738,
+    "optimizedSize": 12318,
+    "savedBytes": 25420,
+    "dimensions": {
+      "width": 169,
+      "height": 80
+    },
+    "updatedAt": "2026-08-26T01:25:31.603Z"
+  },
+  "88.png": {
+    "hash": "f09fe3d07d1390f1fa5287d7e0be4b288c35f4d189caea8dc263cc0824e6b035",
+    "originalSize": 71396,
+    "optimizedSize": 23168,
+    "savedBytes": 48228,
+    "dimensions": {
+      "width": 207,
+      "height": 135
+    },
+    "updatedAt": "2026-08-26T01:25:31.738Z"
+  },
+  "89.png": {
+    "hash": "5ece72d7157c1d30551a77d802344ce041765701659108c478544d1c1bc33ed5",
+    "originalSize": 58828,
+    "optimizedSize": 20070,
+    "savedBytes": 38758,
+    "dimensions": {
+      "width": 199,
+      "height": 126
+    },
+    "updatedAt": "2026-08-26T01:25:31.839Z"
+  },
+  "9.png": {
+    "hash": "410fc0fdcfa4ca56315ee5d1015d43b00211efb59e188438a041f2316f26a0f4",
+    "originalSize": 69074,
+    "optimizedSize": 23155,
+    "savedBytes": 45919,
+    "dimensions": {
+      "width": 218,
+      "height": 119
+    },
+    "updatedAt": "2026-08-26T01:25:31.971Z"
+  },
+  "90.png": {
+    "hash": "e155a51adf0d40d2bb7c071ac7f452dd0412cd93e5df5d7a3cedd877ce12b67c",
+    "originalSize": 73380,
+    "optimizedSize": 23652,
+    "savedBytes": 49728,
+    "dimensions": {
+      "width": 207,
+      "height": 128
+    },
+    "updatedAt": "2026-08-26T01:25:32.100Z"
+  },
+  "92.png": {
+    "hash": "e853f0f17f010050db6df7e32a0b97528594675579a2bac0b45dfb8d1162ec8f",
+    "originalSize": 63493,
+    "optimizedSize": 21401,
+    "savedBytes": 42092,
+    "dimensions": {
+      "width": 205,
+      "height": 120
+    },
+    "updatedAt": "2026-08-26T01:25:32.230Z"
+  },
+  "94.png": {
+    "hash": "434a2bc43032b77e05b11a40efbb27866d8092108c3733c122ce73bd8efe6fb2",
+    "originalSize": 59391,
+    "optimizedSize": 19288,
+    "savedBytes": 40103,
+    "dimensions": {
+      "width": 205,
+      "height": 117
+    },
+    "updatedAt": "2026-08-26T01:25:32.370Z"
+  },
+  "95.png": {
+    "hash": "68f9087e4770f5b163d0a9ec19999f9e7d339bf7313f577f1ef33f6403ee2d86",
+    "originalSize": 133278,
+    "optimizedSize": 40444,
+    "savedBytes": 92834,
+    "dimensions": {
+      "width": 306,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:32.595Z"
+  },
+  "96.png": {
+    "hash": "7be1e541f3d0caa216fef6b8a978968c3830d35a66379f78a1eec24d1ff6f7ed",
+    "originalSize": 99546,
+    "optimizedSize": 33986,
+    "savedBytes": 65560,
+    "dimensions": {
+      "width": 326,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:32.721Z"
+  },
+  "97.png": {
+    "hash": "958ef4deba3b02063595c69adb35fc0f36850913dde801f5e8ba8ce079c71237",
+    "originalSize": 118016,
+    "optimizedSize": 36105,
+    "savedBytes": 81911,
+    "dimensions": {
+      "width": 292,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:32.914Z"
+  },
+  "98.png": {
+    "hash": "bbc63eff7445d4b1048b8b7e4a125c97ac7b640504cff61a4f638922ea50e30f",
+    "originalSize": 554456,
+    "optimizedSize": 143918,
+    "savedBytes": 410538,
+    "dimensions": {
+      "width": 784,
+      "height": 441
+    },
+    "updatedAt": "2026-08-26T01:25:33.510Z"
+  },
+  "99.png": {
+    "hash": "13659cfeb7300ec6a04696969ddbe95e6b3529a7b9364086a5d6aad2efc3d2e1",
+    "originalSize": 119970,
+    "optimizedSize": 38670,
+    "savedBytes": 81300,
+    "dimensions": {
+      "width": 330,
+      "height": 180
+    },
+    "updatedAt": "2026-08-26T01:25:33.649Z"
+  }
+}
