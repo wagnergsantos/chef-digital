@@ -156,6 +156,7 @@ export function AdminApp() {
 
       setEditingRecipeId(id);
       setEditingRecipeTitle(r.title);
+      setSelectedComboboxId(id);
       document.getElementById('recipe-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
       console.error('Erro ao carregar receita para edição:', err);
