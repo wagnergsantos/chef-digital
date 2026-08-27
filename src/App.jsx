@@ -29,11 +29,27 @@ export function App() {
     const [recipeTagsMap, setRecipeTagsMap] = useState({});
 
     // Filter states
-    const [activeCategory, setActiveCategory] = useState('todos');
+    const [activeCategory, setActiveCategory] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const cat = params.get('categoria');
+            if (cat) return cat;
+        }
+        return 'todos';
+    });
     const [searchQuery, setSearchQuery] = useState('');
     const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
     const [showPantryOnly, setShowPantryOnly] = useState(false);
-    const [activeTags, setActiveTags] = useState(() => safeJsonParse(STORAGE_KEYS.ACTIVE_TAGS, []));
+    const [activeTags, setActiveTags] = useState(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const tagsParam = params.get('tags');
+            if (tagsParam !== null) {
+                return tagsParam ? tagsParam.split(',').filter(Boolean) : [];
+            }
+        }
+        return safeJsonParse(STORAGE_KEYS.ACTIVE_TAGS, []);
+    });
 
     // User data persistence states
     const [favorites, setFavorites] = useState(() => safeJsonParse(STORAGE_KEYS.FAVORITES, []));
@@ -64,6 +80,90 @@ export function App() {
         };
         window.addEventListener('afterprint', handleAfterPrint);
         return () => window.removeEventListener('afterprint', handleAfterPrint);
+    }, []);
+
+    // Deep linking: sincroniza URL com estado da aplicação
+    useEffect(() => {
+        const syncFromUrl = () => {
+            if (typeof window === 'undefined') return;
+            const params = new URLSearchParams(window.location.search);
+            
+            const id = params.get('receita');
+            setActiveRecipeModalId(id || null);
+
+            const cat = params.get('categoria');
+            if (cat) {
+                setActiveCategory(cat);
+            } else {
+                setActiveCategory('todos');
+            }
+
+            const tagsParam = params.get('tags');
+            if (tagsParam !== null) {
+                setActiveTags(tagsParam ? tagsParam.split(',').filter(Boolean) : []);
+            }
+        };
+
+        syncFromUrl();
+        window.addEventListener('popstate', syncFromUrl);
+        return () => window.removeEventListener('popstate', syncFromUrl);
+    }, []);
+
+    // Sincroniza filtros de categoria e tags na URL sem poluir histórico (replaceState)
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const url = new URL(window.location.href);
+        let changed = false;
+
+        const currentCat = url.searchParams.get('categoria');
+        const expectedCat = activeCategory && activeCategory !== 'todos' ? activeCategory : null;
+        if (expectedCat) {
+            if (currentCat !== expectedCat) {
+                url.searchParams.set('categoria', expectedCat);
+                changed = true;
+            }
+        } else if (currentCat !== null) {
+            url.searchParams.delete('categoria');
+            changed = true;
+        }
+
+        const currentTags = url.searchParams.get('tags');
+        const expectedTags = activeTags.length > 0 ? activeTags.join(',') : null;
+        if (expectedTags) {
+            if (currentTags !== expectedTags) {
+                url.searchParams.set('tags', expectedTags);
+                changed = true;
+            }
+        } else if (currentTags !== null) {
+            url.searchParams.delete('tags');
+            changed = true;
+        }
+
+        if (changed) {
+            window.history.replaceState(window.history.state, '', url);
+        }
+    }, [activeCategory, activeTags]);
+
+    const handleOpenRecipeModal = useCallback((id) => {
+        setActiveRecipeModalId(String(id));
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            if (url.searchParams.get('receita') !== String(id)) {
+                url.searchParams.set('receita', id);
+                window.history.pushState({ recipeId: id }, '', url);
+            }
+        }
+    }, []);
+
+    const handleCloseRecipeModal = useCallback(() => {
+        setActiveRecipeModalId(null);
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            if (url.searchParams.has('receita')) {
+                url.searchParams.delete('receita');
+                window.history.pushState({}, '', url);
+            }
+        }
     }, []);
 
     // Initial fetch / cache loading
@@ -295,7 +395,7 @@ export function App() {
         showToast('Ingredientes adicionados à Lista!');
     };
 
-    const activeRecipeModal = recipes.find(r => r.id === activeRecipeModalId);
+    const activeRecipeModal = recipes.find(r => String(r.id) === String(activeRecipeModalId));
 
     return (
         <div className="app-container">
@@ -447,7 +547,7 @@ export function App() {
                         pantryItems={pantryItems}
                         activeTags={activeTags}
                         plannedByDay={plannedByDay}
-                        onOpenModal={(id) => setActiveRecipeModalId(id)}
+                        onOpenModal={handleOpenRecipeModal}
                         onToggleFavorite={toggleFavorite}
                         onTogglePlanner={handleToggleRecipePlanner}
                     />
@@ -521,8 +621,8 @@ export function App() {
             />
 
             <RecipeModal
-                isOpen={Boolean(activeRecipeModalId)}
-                onClose={() => setActiveRecipeModalId(null)}
+                isOpen={Boolean(activeRecipeModalId && activeRecipeModal)}
+                onClose={handleCloseRecipeModal}
                 recipe={activeRecipeModal}
                 categories={categories}
                 categoriesById={categoriesById}
@@ -531,13 +631,19 @@ export function App() {
                 onTogglePlanner={(id) => handleToggleRecipePlanner(id)}
                 onAddIngredientsToShopping={handleAddRecipeToShopping}
                 onStartCooking={(recipeToCook) => {
-                    setActiveRecipeModalId(null);
+                    handleCloseRecipeModal();
                     setCookingModeRecipe(recipeToCook);
                 }}
                 onShare={(r) => {
-                    const text = formatRecipeShareText(r, categories);
+                    let appUrl = '';
+                    if (typeof window !== 'undefined') {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('receita', r.id);
+                        appUrl = url.toString();
+                    }
+                    const text = formatRecipeShareText(r, categories, appUrl);
                     navigator.clipboard.writeText(text);
-                    showToast('Receita copiada!');
+                    showToast('Receita copiada com link!');
                 }}
             />
 

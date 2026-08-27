@@ -18,4 +18,13 @@ describe('recipe modal logic', () => {
         expect(text).toContain('1. Misturar tudo');
         expect(text).toContain('💡 *Dica:* Sirva morno');
     });
+
+    it('inclui link do app quando fornecido', () => {
+        const recipe = {
+            title: 'Bolo de Fubá',
+            category: 'bolos'
+        };
+        const text = formatRecipeShareText(recipe, {}, 'https://app.local/?receita=123');
+        expect(text).toContain('📱 *Ver no app:* https://app.local/?receita=123');
+    });
 });

@@ -75,12 +75,27 @@ flowchart LR
 
 ---
 
+### 🟢 Melhorias Funcionais de Produto (Brainstorm 26/08/2026)
+*Diferente do restante deste roadmap (que é majoritariamente técnico/performance), este bloco é sobre comportamento e valor de uso direto — ideias que conectam features que já existem no código mas ainda não conversam entre si.*
+
+1. **Lista de Compras Inteligente (desconta a Despensa)**:
+   - Hoje `logic/shopping.js` gera a lista consolidada sem consultar `pantryItems` em nenhum momento — a despensa só é usada hoje para filtrar quais receitas dá pra cozinhar agora (`recipeIsFullyStocked`).
+   - Proposta: ao gerar a lista de compras/consolidado, itens que já constam na despensa não entram na lista (ou entram numa seção separada "você já tem"). Não exige mudar o modelo de dados da despensa (que hoje é só uma lista de nomes, sem quantidade) — a primeira versão pode ser um match simples por nome normalizado.
+2. **Notas Pessoais por Receita**:
+   - O app já registra histórico de preparo (`cookingHistory`, exibido como "Preparado 3x (25/08)" no `RecipeModal`) mas não guarda o que o usuário aprendeu naquele preparo.
+   - Proposta: campo de texto livre por receita (ex.: "da próxima vez, menos sal", "meu forno esquenta mais, ajustar 10°C pra baixo"). Baixo esforço técnico (uma coluna a mais + textarea no modal/admin), alto valor de uso — é o tipo de ajuste que hoje só existe na cabeça do usuário entre um preparo e outro.
+3. **Alerta de Repetição no Planejador Semanal**:
+   - Hoje nada avisa se a mesma receita for planejada em dois dias da mesma semana sem querer.
+   - Proposta: aviso simples (não bloqueante) tipo "Você já planejou [receita] para terça" ao tentar planejar a mesma receita de novo na mesma semana.
+4. **Destaque do Modo Despensa na Home** *(já estava no roadmap, mantido aqui por ser complementar ao item 1 acima)*:
+   - Seção ou filtro rápido em destaque na home usando a lógica já testada `recipeIsFullyStocked()` + `pantryItems`, mostrando de cara "o que dá pra cozinhar agora com o que você tem".
+
+---
+
 ### 🟡 Prioridade Média — UX & Funcionalidades Complementares
-1. **Destaque do Modo Despensa ("O que posso cozinhar agora")**:
-   - Criar seção ou filtro rápido em destaque na home utilizando a lógica já testada `recipeIsFullyStocked()` e `pantryItems`.
-2. **Badge Visual de Fila Offline no Admin**:
+1. **Badge Visual de Fila Offline no Admin**:
    - Exibir no header do Admin o status visual da fila do IndexedDB ("X alterações pendentes de sincronização").
-3. **Web Share API na Lista de Compras**:
+2. **Web Share API na Lista de Compras**:
    - Exportação e compartilhamento direto da lista de compras formatada via WhatsApp / apps nativos do dispositivo.
 
 ---

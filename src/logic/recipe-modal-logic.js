@@ -1,4 +1,4 @@
-export function formatRecipeShareText(recipe, categoriesMap = {}) {
+export function formatRecipeShareText(recipe, categoriesMap = {}, recipeUrl = '') {
     if (!recipe) return '';
 
     const categoryLabel = categoriesMap[recipe.category] || recipe.category || '';
@@ -34,6 +34,10 @@ export function formatRecipeShareText(recipe, categoriesMap = {}) {
     if (recipe.source_url) {
         const authorInfo = recipe.author ? ` (${recipe.author})` : '';
         text += `\n🔗 *Fonte:* ${recipe.source_url}${authorInfo}\n`;
+    }
+
+    if (recipeUrl) {
+        text += `\n📱 *Ver no app:* ${recipeUrl}\n`;
     }
 
     text += `\n---\nCompartilhado via *Chef Digital* 📖`;
