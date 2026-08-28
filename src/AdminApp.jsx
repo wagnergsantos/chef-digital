@@ -103,6 +103,18 @@ export function AdminApp() {
         }
       });
     }
+
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const editId = params.get('edit');
+      if (editId) {
+        handleLoadRecipe(parseInt(editId, 10));
+      } else {
+        resetForm();
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, [session]);
 
   const resetForm = () => {
@@ -114,6 +126,13 @@ export function AdminApp() {
     setEditingRecipeTitle('');
     setSelectedComboboxId(null);
     setSaveErrorMsg('');
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('edit')) {
+        url.searchParams.delete('edit');
+        window.history.pushState({}, '', url.toString());
+      }
+    }
   };
 
   const handleFieldChange = (field, value) => {
@@ -157,6 +176,13 @@ export function AdminApp() {
       setEditingRecipeId(id);
       setEditingRecipeTitle(r.title);
       setSelectedComboboxId(id);
+      if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('edit') !== String(id)) {
+          url.searchParams.set('edit', String(id));
+          window.history.pushState({}, '', url.toString());
+        }
+      }
       document.getElementById('recipe-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
       console.error('Erro ao carregar receita para edição:', err);
@@ -423,7 +449,7 @@ export function AdminApp() {
           aria-live="polite"
         >
           <span className={styles.editBannerText}>
-            ✏️ <span id="edit-mode-title">Editando: "{editingRecipeTitle}"</span>
+            ✏️ <span id="edit-mode-title">Editando #{editingRecipeId}: "{editingRecipeTitle}"</span>
           </span>
           <button
             type="button"

@@ -6,15 +6,86 @@
     margin-bottom: 24px;
 }
 
+.editHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
 .editSectionLabel {
-    display: block;
+    display: inline-block;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: var(--text-sm);
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 10px;
+}
+
+.auditChipsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.auditChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-dark);
+    border-radius: var(--radius-full);
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    user-select: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.auditChip:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-light);
+    color: var(--text-main);
+}
+
+.auditChipActive {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--btn-primary-text) !important;
+    font-weight: 700;
+}
+
+.auditChipActive:hover {
+    background: var(--primary-hover) !important;
+    border-color: var(--primary-hover) !important;
+}
+
+.auditBadgeCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--bg-light);
+    color: var(--text-main);
+    border: 1px solid var(--border-dark);
+}
+
+.auditChipActive .auditBadgeCount {
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--btn-primary-text);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .editRow {
@@ -26,15 +97,81 @@
 .comboboxWrapper {
     position: relative;
     flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .searchInput {
     width: 100%;
     box-sizing: border-box;
+    padding-right: 36px;
+}
+
+.clearBtn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+}
+
+.clearBtn:hover {
+    background: var(--border-color);
+    color: var(--text-main);
 }
 
 .dropdownEmoji {
     font-size: 18px;
     flex-shrink: 0;
     line-height: 1;
+}
+
+.itemBadges {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.itemBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.72rem;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.badgeWarning {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badgeDanger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.badgeInfo {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+.badgeReview {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
 }

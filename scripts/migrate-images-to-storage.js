@@ -85,14 +85,14 @@ async function migrateImages() {
   }
 
   const allFiles = fs.readdirSync(PUBLIC_DIR);
-  let pngFiles = allFiles.filter((file) => /^\d+\.png$/i.test(file));
+  let imageFiles = allFiles.filter((file) => /^\d+\.(png|jpe?g|webp|avif)$/i.test(file));
 
-  if (pngFiles.length === 0) {
-    pngFiles = allFiles.filter((file) => file.endsWith('.png') && file !== 'icon.png');
+  if (imageFiles.length === 0) {
+    imageFiles = allFiles.filter((file) => /\.(png|jpe?g|webp|avif)$/i.test(file) && !file.startsWith('icon') && file !== 'favicon.ico');
   }
 
   // Ordena numericamente
-  pngFiles.sort((a, b) => {
+  imageFiles.sort((a, b) => {
     const numA = parseInt(a.replace(/\D/g, ''), 10) || 0;
     const numB = parseInt(b.replace(/\D/g, ''), 10) || 0;
     return numA - numB;
@@ -100,12 +100,12 @@ async function migrateImages() {
 
   if (limit && !isNaN(limit) && limit > 0) {
     console.log(`⏳ Limitando execução a ${limit} imagens.`);
-    pngFiles = pngFiles.slice(0, limit);
+    imageFiles = imageFiles.slice(0, limit);
   }
 
-  console.log(`📸 Encontradas ${pngFiles.length} imagens para migrar.`);
+  console.log(`📸 Encontradas ${imageFiles.length} imagens para migrar.`);
 
-  // 1. Busca receitas atuais no banco para validar quais apontam para PNGs locais
+  // 1. Busca receitas atuais no banco para validar quais apontam para imagens locais
   const { data: recipes, error: recError } = await supabase
     .from('receitas')
     .select('id, title, image');
@@ -120,7 +120,7 @@ async function migrateImages() {
   let successCount = 0;
   let errorCount = 0;
 
-  for (const fileName of pngFiles) {
+  for (const fileName of imageFiles) {
     const filePath = path.join(PUBLIC_DIR, fileName);
     const id = path.parse(fileName).name;
     const targetStorageName = `recipe_${id}.webp`;
@@ -179,7 +179,16 @@ async function migrateImages() {
         throw new Error('Falha ao gerar URL pública do Storage.');
       }
 
-      console.log(`   🌐 URL Pública: ${publicUrl}`);
+      // Se havia imagem anterior no storage com nome diferente, remove para evitar arquivo órfão
+      const currentRecipe = (recipes || []).find((r) => String(r.id) === String(id));
+      if (currentRecipe?.image) {
+        const match = currentRecipe.image.match(/\/recipe-images\/(.+)$/);
+        const oldStoragePath = match ? match[1] : null;
+        if (oldStoragePath && oldStoragePath !== targetStorageName) {
+          console.log(`   🧹 Removendo imagem anterior órfã do Storage: ${oldStoragePath}`);
+          await supabase.storage.from(BUCKET_NAME).remove([oldStoragePath]);
+        }
+      }
 
       // Atualizar receitas no banco que apontam para o nome antigo ou que sejam do mesmo ID
       const { error: updateError } = await supabase
