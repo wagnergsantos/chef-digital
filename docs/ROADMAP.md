@@ -1,9 +1,12 @@
 # Roadmap Unificado & Registro Arquitetural — Chef Digital
 
 **Repositório:** wagnergsantos/chef-digital  
-**Última Atualização:** 26/08/2026  
+**Última Atualização:** 10/11/2026  
 **Stack Atual:** React 19 + Vite 5 + Supabase (Database, Auth, Storage, Edge Functions Deno) + PWA Workbox (Offline-First com IndexedDB + LocalStorage).  
-**Suíte de Testes:** **103/103 aprovados** (31 suites Vitest) | **Linter:** 0 erros no Oxlint.
+**Suíte de Testes:** **103/103 aprovados** (31 suites Vitest) | **Linter:** 0 erros no Oxlint.  
+**Roadmaps Especializados (Auditoria 10/11/2026):**
+- 🛡️ **[roadmap_seguranca.md](./roadmap_seguranca.md)** — Segurança da Informação, Hardening das 5 Portas Abertas e Infraestrutura (`S1–S4`, Issues `#1`, `#11–#13`).
+- ⚖️ **[roadmap_legal_privacidade.md](./roadmap_legal_privacidade.md)** — Adequação Legal, Direito Autoral, Privacidade (LGPD / Preparação GA4) e Acessibilidade LBI/WCAG 2.2 AA (`L1–L4`, Issues `#14–#17`).
 
 ---
 
@@ -14,16 +17,18 @@ flowchart LR
     F1["Fase 1: Estabilização Offline ✅"] --> F2["Fase 2: Arquitetura & React ✅"]
     F2 --> F3["Fase 3: Storage & Otimização de Imagens ✅"]
     F3 --> F4["Fase 4: Resiliência & IA ✅"]
-    F4 --> F5["Fase 5: Performance Core & Lighthouse 🟡"]
+    F4 --> FS["Segurança & Legal (S1-S4 / L1-L4) 🔥"]
+    FS --> F5["Fase 5: Performance Core & Lighthouse 🟡"]
     F5 --> F6["Fase 6: Colaboração & Futuro 🔮"]
 ```
 
 | Fase | Escopo | Status |
 |---|---|:---:|
-| **Fase 1 — Estabilização Offline** | IndexedDB (`ChefDigitalDB`), sincronização bidirecional, fallback offline seguro. | 🟢 100% Concluído |
+| **Fase 1 — Estabilização Offline** | IndexedDB (`ChefDigitalDB`), sincronização bidirecional, fallback offline seguro *(reconexão em `App.jsx` rastreada em `L2` / #15)*. | 🟢 Concluído (ajuste `L2`) |
 | **Fase 2 — Arquitetura & React 19** | Migração do app legado para componentes React 19, hooks customizados, design tokens. | 🟢 100% Concluído |
 | **Fase 3 — Imagens & Storage** | Pipeline WebP client-side, Supabase Storage (`recipe-images`), Workbox `runtimeCaching` (`CacheFirst`), precache < 582 KiB. | 🟢 100% Concluído |
 | **Fase 4 — IA, Parser & Resiliência** | Edge Function `parse-recipe` (JSON-LD + Gemini multimodal), circuit breaker, exponential backoff com jitter, contratos em `docs/api-contracts.md`. | 🟢 100% Concluído |
+| **Segurança & Adequação Legal (`S1–S4` / `L1–L4`)** | Blindagem RLS/RPCs (`#11`), Firewall/Anti-SSRF Edge Function (`#13`), Sanitização/Logout (`#1`), Auth/Deploy (`#12`), Autoral (`#14`), Fontes Locais/PWA/IDB (`#15`), Modal Legal/GA4 (`#16`) e Acessibilidade WCAG AA (`#17`). | 🔥 Prioridade Imediata |
 | **Fase 5 — Performance Core & UX Visual** | Metas Lighthouse (LCP < 2.5s, CLS <= 0.10, TTI), code-splitting com `React.lazy()`, queries Supabase sob demanda. | 🟡 Em Progresso |
 | **Fase 6 — Colaboração em Tempo Real** | Lista de compras colaborativa (Supabase Realtime) e Web Push Notifications. | 🔮 Futuro |
 

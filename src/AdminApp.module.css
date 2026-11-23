@@ -24,30 +24,202 @@
 
 .editBanner {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 12px;
     background: hsl(220 90% 96%);
     border: 1px solid hsl(220 80% 80%);
     border-radius: var(--radius-md);
-    padding: 10px 16px;
+    padding: 12px 16px;
     margin-bottom: 20px;
     font-size: var(--text-sm);
     font-family: 'Inter', sans-serif;
     color: hsl(220 60% 35%);
-    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.editBannerIncomplete {
+    background: #fffbeb;
+    border-color: #fde68a;
+    color: #92400e;
+}
+
+.editBannerComplete {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+    color: #065f46;
+}
+
+:global([data-theme="dark"]) .editBanner {
+    background: #1e293b;
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+:global([data-theme="dark"]) .editBannerIncomplete {
+    background: #451a03;
+    border-color: #78350f;
+    color: #fef3c7;
+}
+
+:global([data-theme="dark"]) .editBannerComplete {
+    background: #064e3b;
+    border-color: #047857;
+    color: #d1fae5;
+}
+
+.editBannerHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
 }
 
 .editBannerText {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-weight: 600;
+}
+
+.auditStatusSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.12);
+}
+
+:global([data-theme="dark"]) .auditStatusSection {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+.auditStatusAlert {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.auditStatusAlertIcon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.auditStatusHelpText {
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.auditIssuesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.auditIssueBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all var(--transition-fast);
+    background: transparent;
+}
+
+.auditIssueBadge:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.auditIssueIcon {
+    font-size: 0.9rem;
+}
+
+.auditIssueLabel {
+    font-weight: 700;
+}
+
+.auditIssueDetail {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.auditIssueAction {
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-left: 4px;
+    text-decoration: underline;
+}
+
+.auditStatusComplete {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: inherit;
+}
+
+.badgeWarning {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badgeDanger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.badgeInfo {
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+.badgeReview {
+    background: #ffedd5;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+}
+
+:global([data-theme="dark"]) .badgeWarning {
+    background: #78350f;
+    color: #fde68a;
+    border-color: #92400e;
+}
+
+:global([data-theme="dark"]) .badgeDanger {
+    background: #7f1d1d;
+    color: #fecaca;
+    border-color: #991b1b;
+}
+
+:global([data-theme="dark"]) .badgeInfo {
+    background: #0c4a6e;
+    color: #bae6fd;
+    border-color: #0284c7;
+}
+
+:global([data-theme="dark"]) .badgeReview {
+    background: #7c2d12;
+    color: #fed7aa;
+    border-color: #9a3412;
 }
 
 .btnNewRecipe {
     background: transparent;
-    color: hsl(220 60% 35%);
-    border: 1px solid hsl(220 70% 70%);
+    color: inherit;
+    border: 1px solid currentColor;
+    opacity: 0.85;
     border-radius: var(--radius-md);
     padding: 5px 12px;
     font-size: 12px;
@@ -60,7 +232,12 @@
 }
 
 .btnNewRecipe:hover {
-    background: hsl(220 80% 88%);
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+:global([data-theme="dark"]) .btnNewRecipe:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .btnSuccess {

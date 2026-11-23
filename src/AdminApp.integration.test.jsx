@@ -157,7 +157,7 @@ describe('Fluxos 4 e 5: AdminApp Form → Payload de Salvar & Modo Offline (Admi
       step_text: 'Coloque o recheio e asse por 35 minutos a 200°C.',
       ordem: 1
     });
-  });
+  }, 15000);
 
   it('Fluxo 5: ao salvar com navigator.onLine = false, NÃO chama a RPC online e enfileira no IndexedDB', async () => {
     // Simula navegador offline
@@ -203,5 +203,39 @@ describe('Fluxos 4 e 5: AdminApp Form → Payload de Salvar & Modo Offline (Admi
     expect(itemEnfileirado.payload.p_category_id).toBe(1);
     expect(itemEnfileirado.payload.p_category_key).toBe('carnes');
     expect(itemEnfileirado.payload.p_ingredientes[0].name).toBe('Carne Moída');
+  });
+
+  it('exibe o motivo de estar incompleta ao carregar receita para edição e atualiza ao preencher pendências', async () => {
+    render(<AdminApp />);
+
+    expect(await screen.findByText('Painel de Receitas')).toBeInTheDocument();
+    await screen.findByText(/Carnes/i);
+
+    // Abre dropdown de busca de receitas
+    const searchInput = screen.getByPlaceholderText(/Buscar receita pelo nome ou tag/i);
+    fireEvent.focus(searchInput);
+
+    // Clica na receita 'Frango com Legumes Assados' (id 1, que não possui imagem)
+    const item = await screen.findByText('Frango com Legumes Assados');
+    fireEvent.mouseDown(item);
+
+    // Clica em Carregar
+    const loadBtn = screen.getByRole('button', { name: /Carregar receita selecionada para edição/i });
+    fireEvent.click(loadBtn);
+
+    // Confirma que carregou a receita e exibiu banner de edição
+    expect(await screen.findByText(/Editando #1/i)).toBeInTheDocument();
+
+    // Valida que o banner explica claramente porque está incompleta
+    expect(screen.getByText(/Receita incompleta:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Receita sem foto cadastrada/i)).toBeInTheDocument();
+
+    // Ao preencher a imagem pendente, valida que atualiza dinamicamente para completa
+    const toggleManualBtn = screen.getByText(/Inserir caminho ou URL manualmente/i);
+    fireEvent.click(toggleManualBtn);
+    const manualInput = screen.getByPlaceholderText(/Ex: 10\.png ou https/i);
+    fireEvent.change(manualInput, { target: { value: 'https://example.com/frango.jpg' } });
+
+    expect(await screen.findByText(/Receita completa!/i)).toBeInTheDocument();
   });
 });

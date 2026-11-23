@@ -12,11 +12,51 @@ export function checkRecipeAudit(recipe) {
   );
 
   const issues = [];
-  if (hasNoImage) issues.push({ id: 'no-image', label: 'Sem foto', icon: '📷' });
-  if (hasNoCategory) issues.push({ id: 'no-category', label: 'Sem categoria', icon: '📁' });
-  if (hasNoTimeOrServings) issues.push({ id: 'no-time-servings', label: 'Sem tempo/rend.', icon: '⏱️' });
-  if (hasNoTags) issues.push({ id: 'no-tags', label: 'Sem tags', icon: '🏷️' });
-  if (needsReview) issues.push({ id: 'needs-review', label: 'A revisar', icon: '🔍' });
+  if (hasNoImage) {
+    issues.push({
+      id: 'no-image',
+      label: 'Sem foto',
+      icon: '📷',
+      description: 'Receita sem foto cadastrada',
+      targetId: 'recipe-image-input'
+    });
+  }
+  if (hasNoCategory) {
+    issues.push({
+      id: 'no-category',
+      label: 'Sem categoria',
+      icon: '📁',
+      description: 'Nenhuma categoria selecionada',
+      targetId: 'categories-container'
+    });
+  }
+  if (hasNoTimeOrServings) {
+    issues.push({
+      id: 'no-time-servings',
+      label: 'Sem tempo/rend.',
+      icon: '⏱️',
+      description: 'Falta tempo (preparo/cozimento) ou rendimento',
+      targetId: 'recipe-prep-time'
+    });
+  }
+  if (hasNoTags) {
+    issues.push({
+      id: 'no-tags',
+      label: 'Sem tags',
+      icon: '🏷️',
+      description: 'Nenhuma tag adicionada',
+      targetId: 'tag-input'
+    });
+  }
+  if (needsReview) {
+    issues.push({
+      id: 'needs-review',
+      label: 'A revisar',
+      icon: '🔍',
+      description: 'Receita marcada com a tag "A revisar"',
+      targetId: 'tag-input'
+    });
+  }
 
   const isIncomplete = issues.length > 0;
 

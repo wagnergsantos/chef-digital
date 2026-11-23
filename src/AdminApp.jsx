@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { getSession, onAuthStateChange, signOut } from './auth/session.js';
 import { LoginForm } from './components/admin/LoginForm.jsx';
 import { CategoryPicker } from './components/admin/CategoryPicker.jsx';
@@ -22,6 +22,7 @@ import {
 } from './api/admin.js';
 import { enfileirarSincronizacao } from './cache/db.js';
 import { validateRecipePayloadData, buildRecipePayload } from './logic/admin-parser.js';
+import { checkRecipeAudit } from './logic/recipe-audit.js';
 
 const INITIAL_FORM = {
   title: '',
@@ -63,6 +64,27 @@ export function AdminApp() {
   const [saveErrorMsg, setSaveErrorMsg] = useState('');
   const [saving, setSaving] = useState(false);
   const [copiedJson, setCopiedJson] = useState(false);
+
+  const currentAudit = useMemo(() => {
+    if (!editingRecipeId) return null;
+    return checkRecipeAudit({
+      image: formData.image,
+      categoria_id: formData.category_id,
+      category_id: formData.category_id,
+      prep_time: formData.prep_time,
+      cook_time: formData.cook_time,
+      servings: formData.servings,
+      tags: recipeTags
+    });
+  }, [
+    editingRecipeId,
+    formData.image,
+    formData.category_id,
+    formData.prep_time,
+    formData.cook_time,
+    formData.servings,
+    recipeTags
+  ]);
 
   useEffect(() => {
     getSession().then((sess) => {
@@ -183,7 +205,7 @@ export function AdminApp() {
           window.history.pushState({}, '', url.toString());
         }
       }
-      document.getElementById('recipe-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('recipe-title')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
     } catch (err) {
       console.error('Erro ao carregar receita para edição:', err);
       alert('Erro ao carregar receita: ' + err.message);
@@ -443,23 +465,84 @@ export function AdminApp() {
       {editingRecipeId && (
         <div
           id="edit-mode-banner"
-          className={styles.editBanner}
-          style={{ display: 'flex' }}
+          className={`${styles.editBanner} ${currentAudit?.isIncomplete ? styles.editBannerIncomplete : styles.editBannerComplete}`}
           role="status"
           aria-live="polite"
         >
-          <span className={styles.editBannerText}>
-            ✏️ <span id="edit-mode-title">Editando #{editingRecipeId}: "{editingRecipeTitle}"</span>
-          </span>
-          <button
-            type="button"
-            id="btn-new-recipe"
-            className={styles.btnNewRecipe}
-            aria-label="Cancelar edição e criar nova receita"
-            onClick={resetForm}
-          >
-            + Nova Receita
-          </button>
+          <div className={styles.editBannerHeader}>
+            <span className={styles.editBannerText}>
+              ✏️ <span id="edit-mode-title">Editando #{editingRecipeId}: "{editingRecipeTitle}"</span>
+            </span>
+            <button
+              type="button"
+              id="btn-new-recipe"
+              className={styles.btnNewRecipe}
+              aria-label="Cancelar edição e criar nova receita"
+              onClick={resetForm}
+            >
+              + Nova Receita
+            </button>
+          </div>
+
+          {currentAudit && (
+            <div className={styles.auditStatusSection} id="edit-recipe-audit-status">
+              {currentAudit.isIncomplete ? (
+                <>
+                  <div className={styles.auditStatusAlert}>
+                    <span className={styles.auditStatusAlertIcon}>⚠️</span>
+                    <div>
+                      <strong>Receita incompleta:</strong>{' '}
+                      <span className={styles.auditStatusHelpText}>
+                        Preencha as pendências abaixo para completá-la:
+                      </span>
+                    </div>
+                  </div>
+                  <div className={styles.auditIssuesList} role="list" aria-label="Pendências da receita">
+                    {currentAudit.issues.map((issue) => (
+                      <button
+                        type="button"
+                        key={issue.id}
+                        className={`${styles.auditIssueBadge} ${
+                          issue.id === 'no-image'
+                            ? styles.badgeDanger
+                            : issue.id === 'no-category' || issue.id === 'no-tags'
+                            ? styles.badgeWarning
+                            : issue.id === 'needs-review'
+                            ? styles.badgeReview
+                            : styles.badgeInfo
+                        }`}
+                        title={`${issue.description} (clique para ir ao campo)`}
+                        onClick={() => {
+                          if (issue.targetId) {
+                            const el = document.getElementById(issue.targetId);
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                              el.focus?.();
+                            }
+                          }
+                        }}
+                      >
+                        <span className={styles.auditIssueIcon}>{issue.icon}</span>
+                        <span className={styles.auditIssueLabel}>{issue.label}</span>
+                        <span className={styles.auditIssueDetail}>— {issue.description}</span>
+                        <span className={styles.auditIssueAction}>Ir para campo →</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className={styles.auditStatusComplete}>
+                  <span>✅</span>
+                  <div>
+                    <strong>Receita completa!</strong>{' '}
+                    <span className={styles.auditStatusHelpText}>
+                      Todos os critérios de auditoria estão preenchidos (foto, categoria, tempo/rendimento e tags).
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 

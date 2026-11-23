@@ -94,6 +94,9 @@ describe('recipe-audit', () => {
     expect(audit.hasNoImage).toBe(true);
     expect(audit.isIncomplete).toBe(true);
     expect(audit.issues.some((i) => i.id === 'no-image')).toBe(true);
+    const imgIssue = audit.issues.find((i) => i.id === 'no-image');
+    expect(imgIssue.description).toBe('Receita sem foto cadastrada');
+    expect(imgIssue.targetId).toBe('recipe-image-input');
   });
 
   it('filters recipes by audit type', () => {

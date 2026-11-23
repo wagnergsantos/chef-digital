@@ -238,7 +238,7 @@ export function RecipeSearchCombobox({
                       )}
                       {audit.hasNoTimeOrServings && (
                         <span className={`${styles.itemBadge} ${styles.badgeInfo}`} title="Sem tempo ou rendimento">
-                          ⏱️ Incompleto
+                          ⏱️ Sem tempo/rend.
                         </span>
                       )}
                       {audit.hasNoTags && (

@@ -103,4 +103,37 @@ describe('RecipeSearchCombobox Component', () => {
 
     expect(handleSelect).toHaveBeenCalledWith(1);
   });
+
+  it('renders badges for audit issues accurately in dropdown', () => {
+    const recipesWithMissingTime = [
+      {
+        id: 99,
+        title: 'Sem Tempo',
+        emoji: '⏱️',
+        image: 'https://example.com/foto.jpg',
+        categoria_id: 1,
+        prep_time: null,
+        cook_time: null,
+        servings: null,
+        tags: ['Gourmet']
+      }
+    ];
+
+    render(
+      <RecipeSearchCombobox
+        recipes={recipesWithMissingTime}
+        selectedRecipeId={null}
+        onSelectRecipe={vi.fn()}
+        onLoadRecipe={vi.fn()}
+        onDeleteRecipe={vi.fn()}
+        loadingLoad={false}
+        loadingDelete={false}
+      />
+    );
+
+    const input = screen.getByRole('textbox');
+    fireEvent.focus(input);
+
+    expect(screen.getByTitle('Sem tempo ou rendimento')).toHaveTextContent('⏱️ Sem tempo/rend.');
+  });
 });
