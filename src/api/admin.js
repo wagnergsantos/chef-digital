@@ -1,5 +1,6 @@
 import { supabase } from './supabase.js';
 import { compressImageFile } from '../logic/image-compression.js';
+import { buildRecipePayload } from '../logic/admin-parser.js';
 
 export async function fetchCategories() {
   const { data, error } = await supabase
@@ -61,6 +62,104 @@ export async function deleteRecipeRpc(id) {
 export async function saveRecipeRpc(payload) {
   const { error } = await supabase.rpc('salvar_receita', payload);
   if (error) throw error;
+}
+
+export async function fetchFullRecipesByIds(ids) {
+  if (!ids || ids.length === 0) return [];
+
+  const [recipesRes, ingredientsRes, stepsRes, tagsRes] = await Promise.all([
+    supabase.from('receitas').select('*, categorias(id, key, label)').in('id', ids).order('title'),
+    supabase.from('ingredientes').select('*').in('receita_id', ids).order('ordem'),
+    supabase.from('passos').select('*').in('receita_id', ids).order('ordem'),
+    supabase.from('receita_tags').select('receita_id, tags(label)').in('receita_id', ids)
+  ]);
+
+  if (recipesRes.error) throw recipesRes.error;
+  if (ingredientsRes.error) throw ingredientsRes.error;
+  if (stepsRes.error) throw stepsRes.error;
+  if (tagsRes.error) throw tagsRes.error;
+
+  const ingMap = new Map();
+  for (const ing of (ingredientsRes.data || [])) {
+    if (!ingMap.has(ing.receita_id)) ingMap.set(ing.receita_id, []);
+    ingMap.get(ing.receita_id).push(ing);
+  }
+
+  const stepsMap = new Map();
+  for (const st of (stepsRes.data || [])) {
+    if (!stepsMap.has(st.receita_id)) stepsMap.set(st.receita_id, []);
+    stepsMap.get(st.receita_id).push(st);
+  }
+
+  const tagsMap = new Map();
+  for (const rt of (tagsRes.data || [])) {
+    if (!tagsMap.has(rt.receita_id)) tagsMap.set(rt.receita_id, []);
+    if (rt.tags?.label) tagsMap.get(rt.receita_id).push(rt.tags.label);
+  }
+
+  return (recipesRes.data || []).map((r) => ({
+    ...r,
+    categoria_id: r.category_id || r.categoria_id,
+    ingredients: ingMap.get(r.id) || [],
+    steps: stepsMap.get(r.id) || [],
+    tags: tagsMap.get(r.id) || []
+  }));
+}
+
+export async function applyRecipeAuditPatches(patches = [], onProgress = null) {
+  const results = { success: 0, failed: 0, errors: [] };
+
+  for (let i = 0; i < patches.length; i++) {
+    const patch = patches[i];
+    try {
+      if (onProgress) {
+        onProgress({ current: i + 1, total: patches.length, title: patch.title || `Receita #${patch.id}` });
+      }
+
+      const details = await fetchRecipeDetails(patch.id);
+      const r = details.recipe;
+
+      const mergedTags = patch.tags && patch.tags.length > 0
+        ? Array.from(new Set([...details.tags, ...patch.tags]))
+        : details.tags;
+
+      const payload = buildRecipePayload({
+        id: patch.id,
+        title: r.title,
+        emoji: r.emoji || '🍲',
+        image: r.image,
+        tips: r.tips,
+        servings: patch.servings !== null && patch.servings !== undefined ? patch.servings : r.servings,
+        prep_time: patch.prep_time !== null && patch.prep_time !== undefined ? patch.prep_time : r.prep_time,
+        cook_time: patch.cook_time !== null && patch.cook_time !== undefined ? patch.cook_time : r.cook_time,
+        source_url: r.source_url,
+        author: r.author,
+        selectedCategoryId: r.category_id || r.categoria_id || r.categorias?.id,
+        selectedCategoryKey: r.categorias?.key || '',
+        tags: mergedTags,
+        validIngredients: details.ingredients.map((ing, idx) => ({
+          name: ing.name,
+          qty: ing.qty,
+          unit: ing.unit,
+          group_name: ing.group_name || null,
+          ordem: ing.ordem ?? idx
+        })),
+        validSteps: details.steps.map((st, idx) => ({
+          step_text: st.step_text,
+          ordem: st.ordem ?? idx
+        }))
+      });
+
+      await saveRecipeRpc(payload);
+      results.success++;
+    } catch (err) {
+      console.error(`Erro ao aplicar patch na receita ${patch.id}:`, err);
+      results.failed++;
+      results.errors.push({ id: patch.id, title: patch.title, error: err.message });
+    }
+  }
+
+  return results;
 }
 
 export async function parseRecipeAiFunction(payload) {

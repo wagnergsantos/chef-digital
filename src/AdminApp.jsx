@@ -8,6 +8,7 @@ import { TagInput } from './components/admin/TagInput.jsx';
 import { RecipeSearchCombobox } from './components/admin/RecipeSearchCombobox.jsx';
 import { AIImportBox } from './components/admin/AIImportBox.jsx';
 import { BulkImportModal } from './components/admin/BulkImportModal.jsx';
+import { AuditExportModal } from './components/admin/AuditExportModal.jsx';
 import { ImageUploadField } from './components/admin/ImageUploadField.jsx';
 import adminUi from './components/admin/AdminUI.module.css';
 import styles from './AdminApp.module.css';
@@ -41,6 +42,7 @@ export function AdminApp() {
   const [session, setSession] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [showBulkModal, setShowBulkModal] = useState(false);
+  const [showAuditExportModal, setShowAuditExportModal] = useState(false);
 
   // Aux state
   const [categories, setCategories] = useState([]);
@@ -427,12 +429,29 @@ export function AdminApp() {
           onRefreshData={loadData}
         />
       )}
+      {showAuditExportModal && (
+        <AuditExportModal
+          categories={categories}
+          recipesList={recipesList}
+          allExistingTags={allExistingTags}
+          onClose={() => setShowAuditExportModal(false)}
+          onRefreshData={loadData}
+        />
+      )}
 
       <div className={styles.headerFlex}>
         <h2 className={adminUi.sectionTitle} style={{ margin: 0, border: 'none', padding: 0 }}>
           Painel de Receitas
         </h2>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button
+            type="button"
+            className={`${adminUi.btn} ${adminUi.btnSecondary}`}
+            onClick={() => setShowAuditExportModal(true)}
+            title="Exportar receitas incompletas para IA e aplicar correções"
+          >
+            🪄 IA: Completar Cadastro
+          </button>
           <button
             type="button"
             className={`${adminUi.btn} ${adminUi.btnSecondary}`}
