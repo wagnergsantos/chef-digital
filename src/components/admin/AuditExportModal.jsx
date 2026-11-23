@@ -147,7 +147,7 @@ export function AuditExportModal({
     <div className={styles.modalOverlay} role="dialog" aria-modal="true" aria-label="Auditoria e Exportação para IA">
       <div className={styles.modalContent}>
         <div className={styles.header}>
-          <h3 className={adminUi.sectionTitle} style={{ margin: 0, border: 'none', padding: 0 }}>
+          <h3 className={styles.title}>
             🪄 Assistente IA: Completar Receitas Incompletas
           </h3>
           <button
@@ -237,7 +237,7 @@ export function AuditExportModal({
                     >
                       💾 Baixar Arquivo JSON
                     </button>
-                    {copyFeedback && <span style={{ alignSelf: 'center', fontWeight: 'bold', color: '#10b981' }}>{copyFeedback}</span>}
+                    {copyFeedback && <span className={styles.copyFeedbackMsg}>{copyFeedback}</span>}
                   </div>
 
                   <textarea
@@ -276,20 +276,20 @@ export function AuditExportModal({
               </div>
 
               {validationError && (
-                <div style={{ color: '#ef4444', fontWeight: 600, fontSize: '0.875rem' }}>
+                <div className={styles.errorMsg}>
                   ❌ {validationError}
                 </div>
               )}
 
               {applySuccessMsg && (
-                <div style={{ color: '#10b981', fontWeight: 600, fontSize: '0.875rem' }}>
+                <div className={styles.successMsg}>
                   {applySuccessMsg}
                 </div>
               )}
 
               {parsedPatches.length > 0 && (
                 <>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 600 }}>
+                  <div className={styles.previewCountTitle}>
                     Pré-visualização: {parsedPatches.length} receitas a atualizar
                   </div>
 
